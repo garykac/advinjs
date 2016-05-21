@@ -1,0 +1,44 @@
+TITLE = Add key status
+ID = 184
+
+B: Load an image of the key that we can use in the status area.
+
+BEGIN_CODE
+.function init_game() {
+.	...
+.	_game.meter_width = 150;
+.	_game.meter_height = 20;
++
++	// Status images
++	_game.img_key = new Image();
++	_game.img_key.src = _game.imagedir_items + "key.png";
+.}
+END_CODE
+
+B: ???
+
+
+BEGIN_CODE
+.function draw_status(ctx) {
+.	var health = (_game.meter_width * _player.health) / _player.health_max;
+.	ctx.fillStyle = "rgba(0,255,0, 0.5)";
+.	ctx.fillRect(_game.meter_x, _game.meter_y, health, _game.meter_height);
+.
+.	ctx.strokeStyle = "black";
+.	ctx.strokeRect(_game.meter_x, _game.meter_y, _game.meter_width, _game.meter_height);
++
++	// If the player has the key, draw it in the status area.
++	var level = _levels[_game.current_level];
++	if (level.player_has_key) {
++		ctx.drawImage(_game.img_key, _game.meter_width + 15, 11);
++	}
+.}
+END_CODE
+
+
+
+GOTO 192 IF_BADGE Vitality II - Reincarnation
+
+GOTO 134 IF_NOT_BADGE Treasure I - Key
+
+GOTO 100

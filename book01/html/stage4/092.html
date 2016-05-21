@@ -1,0 +1,94 @@
+<html>
+<head>
+<title>092 : Adding a second level</title>
+
+<link rel="stylesheet" href="../css/bootstrap.min.css">
+<link type="text/css" rel="stylesheet" href="../css/style.css" />
+<link href='http://fonts.googleapis.com/css?family=Trade+Winds' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Sacramento' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Piedra' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Aclonica' rel='stylesheet' type='text/css'>
+
+<script type="text/javascript">
+	var _gaq = _gaq || [];
+	_gaq.push(['_setAccount', 'UA-17513364-1']);
+	_gaq.push(['_setDomainName', 'cse4k12.org']);
+	_gaq.push(['_setAllowLinker', true]);
+	_gaq.push(['_trackPageview']);
+
+	(function() {
+		var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+		ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+		var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+	})();
+</script>
+
+</head>
+
+<body>
+<div class="navbar navbar-inverse navbar-static-top" role="navigation"><div class="container"><div class="navbar-header">
+<a class="navbar-brand" href="../index.html"><span class="title1">Adventures in</span> <span class="title2">JavaScript</span></a>
+</div></div></div>
+<div class="container">
+<h1>092 : Adding a second level</h1>
+<div class="name">Balthazar:</div><p class="balthazar">Now that level 1 has been cleaned up, it's easy to add more levels.</p>
+<div class="panel panel-default">
+<div class="panel-code code"><span class="context">function init_level1() {</span>
+<span class="context">    ...</span>
+<span class="context">}</span>
+<span class="context"></span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">function init_level2() {</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    var level = {};</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    init_level_defaults(level);</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add"></span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    level.player_start_x = 20;</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    level.player_start_y = 260;</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add"></span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    add_default_platforms(level);</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add"></span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    level.goal = create_goal(500, 360);</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add"></span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    _levels.push(level);</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">}</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add"></span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">function init_level3() {</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    var level = {};</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    init_level_defaults(level);</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add"></span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    level.player_start_x = 20;</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    level.player_start_y = 260;</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add"></span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    add_default_platforms(level);</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add"></span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    level.goal = create_goal(500, 360);</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add"></span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    _levels.push(level);</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">}</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add"></span>
+<span class="context">// platform_data: [x, y, width, height]</span>
+<span class="context">function add_platforms(level, platform_data) {</span>
+<span class="context">    ...</span>
+<span class="context">}</span>
+</div>
+</div>
+<div class="name">Balthazar:</div><p class="balthazar">These are basically empty placeholder levels at the moment. We'll be fleshing them out later. For now, we just want to get these levels hooked up and then finish up level 1.</p>
+<div class="panel panel-default">
+<div class="panel-code code"><span class="context">// Initialize the game state.</span>
+<span class="context">function init() {</span>
+<span class="context">    init_game();</span>
+<span class="context">    init_player();</span>
+<span class="context">    init_level1();</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    init_level2();</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    init_level3();</span>
+<span class="context">}</span>
+</div>
+</div>
+<div class="name">You:</div><p class="you">If we're going to leave them empty, why'd we bother creating them now?</p>
+<div class="name">Balthazar:</div><p class="balthazar">So that we have the structure and framework in place. If we plow ahead with level 1 now, we'll have to make lots of tiny changes later when we want to add new levels. By adding this framework now, when we're ready to work on the other levels, we'll be able to start immediately rather than cleaning up the (much larger) mess that we made.</p>
+<p class="run">RUN your code in a browser and verify that it loads without errors.</p>
+<div class="name">Balthazar:</div><p class="balthazar">Run your code now and nothing (still!) has changed.</p>
+<div class="name">Balthazar:</div><p class="balthazar">We need to connect the levels to each other.</p>
+<p class="alert alert-info"><a href="093.html"><span class="goto">GOTO 093</span></a></p>
+</div>
+</body>
+</html>

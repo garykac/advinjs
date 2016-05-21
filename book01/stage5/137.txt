@@ -1,0 +1,58 @@
+TITLE = Keys for level 2 and 3
+ID = 137
+
+
+B: We can add a key to level 2
+
+BEGIN_CODE
+.function init_level2() {
+.	...
+.	add_default_platforms(level);
+.
++	var item_data = [
++		[250, 360, 18, 20, "key", "key"],
++	];
++	add_items(level, item_data);
++
+.	level.goal = create_goal(500, 360, 2);
+.	...
+.}
+END_CODE
+
+B: Rather than add a key to level 3 (which would just allow us to loop back to level 1 in any case), we can add a new item that ends the game when you acquire it.
+
+
+B: Copy the =gem.png= image into the =images/items= directory.
+
+BEGIN_IMAGE_TABLE 1
+TABLE_IMAGE images/items/gem.png 42x54 gem.png
+END_IMAGE_TABLE
+
+BEGIN_COPY_FILE
+COPY_FILE images/items/gem.png
+END_COPY_FILE
+
+
+BEGIN_CODE
+.function init_level3() {
+.	...
+.	add_default_platforms(level);
+.
++	var item_data = [
++		[500, 360, 21, 27, "finish", "gem"],
++	];
++	add_items(level, item_data);
++
+.	level.goal = create_goal(500, 360, 0);
+.	
+.	_levels.push(level);
+.}
+END_CODE
+
+
+B: Note that you the goal doesn't indicate whether or not it is currently locked. We'll can fix that now.
+
+
+GOTO 113 IF_BADGE Platform III - Pattern
+
+GOTO 141

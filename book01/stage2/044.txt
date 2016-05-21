@@ -1,0 +1,34 @@
+TITLE = Show game over
+ID = 044
+
+B: As I said earlier, all the code does so far is set a flag when it detects a collision. This makes it hard to verify that the code is actually working as intended.
+
+B: We need to show something to the player when the game is over. We can do that in the =draw()= function.
+
+BEGIN_CODE_INFO Display a "game over" message.
+.function draw() {
+.	var canvas = document.getElementById("stage");
+.	var ctx = canvas.getContext("2d");
+.
+.	erase(ctx);
+.	draw_platforms(ctx);
+.	draw_goal(ctx);
+.	draw_player(ctx);
++
++	if (_game.game_over) {
++		// Dim out the stage by drawing a transparent black rectangle over it.
++		ctx.fillStyle = "rgba(0, 0, 0, 0.5)";
++		ctx.fillRect(0, 0, _game.width, _game.height);
++
++		ctx.fillStyle = "black";
++		ctx.font = "48px Helvetica";
++		ctx.fillText("Game Over", 140, 150);
++	}
+.}
+END_CODE_OK
+
+B: After making this change, when the player touches the goal, the screen will dim and a large "Game Over" message will be shown in the middle of the screen.
+
+GAIN Collision I - Basic
+
+GOTO 042

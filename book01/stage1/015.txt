@@ -1,0 +1,89 @@
+TITLE = Slowing down
+ID = 015
+
+B: Now that you have the player constrained to move on the main platform, you can start working on the rest of the game.
+
+B: Did we come up with a list of things to do?
+
+U: Well, we had Platforms, Jumping, Monsters, ...
+
+B: Oh wait, I just remembered, we should fix the player movement so that player can build up speed and come sliding to a stop.
+
+U: Why do we need that?
+
+B: We don't **need** it, but it makes the game far more satisfying to play than simply moving one or two pixels at a time.
+
+U: It sounds like it's going to be hard. 
+
+B: Actually, it's not. We already have a velocity. We just need to add a maximum velocity and then add some friction.
+
+U: Friction?
+
+B: Yes, that will slow the player down to a stop, but it will be a smooth stop rather than an abrupt one. You should define a global friction value in =init_game()=.
+
+BEGIN_CODE_INFO Define a global friction variable.
+.function init_game() {
+.	...
+.	// The keymap keeps track of which keys are currently being pressed.
+.	_game.keymap = {};
+.
+.	// Game state.
+.	_game.platform = create_platform(0, 360, _game.width, 40);
++
++	// Global world parameters.
++	_game.friction = 0.15;
+.}
+END_CODE_OK
+
+B: You'll also want to define the amount that the velocity increases while the player hold down movement keys. This can be stored in =velocity_x_delta=.
+
+B: And you'll also need a maximum velocity to prevent the player from going too fast.
+
+BEGIN_CODE_INFO Define how fast the player's velocity should increase.
+.function init_player() {
+.	...
+.	_player.velocity_x = 0;
++	_player.velocity_x_delta = 0.8;
++	_player.velocity_x_max = 3.5;
+.	_player.velocity_y = 0;
+.}
+END_CODE_OK
+
+B: Now you can simply add the player's =velocity_x_delta= the current velocity as long as they're holding a movement key, but you'll need to clamp the velocity so that it doesn't get larger than =velocity_x_max=.
+
+U: Previously, I had =-1= when the player was moving left. Do I need to subtract from the velocity when moving left and add when moving right?
+
+B: Yes. And you need to make sure you don't go less than -=velocity_x_max= when going left, or greater than +=velocity_x_max= when going right.
+
+BEGIN_CODE_INFO Update the player's velocity using the new variables.
+.function check_input() {
+-	_player.velocity_x = 0;
+-	_player.velocity_y = 0;
+-	
+.	// Left arrow or 'a' to move left.
+.	if (_game.keymap[37] || _game.keymap[65]) {
+-		_player.velocity_x = -1;
++		_player.velocity_x -= _player.velocity_x_delta;
++		if (_player.velocity_x < -_player.velocity_x_max) {
++			_player.velocity_x = -_player.velocity_x_max;
++		}
+.	}
+.	// Right arrow or 'd' to move right.
+.	if (_game.keymap[39] || _game.keymap[68]) {
+-		_player.velocity_x = 1;
++		_player.velocity_x += _player.velocity_x_delta;
++		if (_player.velocity_x > _player.velocity_x_max) {
++			_player.velocity_x = _player.velocity_x_max;
++		}
+.	}
+.}
+END_CODE_OK
+
+B: Even though the friction support is not yet complete, you should run the code now to see what happens.
+
+U: Yargh! The player keeps moving and it's hard to make it stop.
+
+B: Hmm.. we should probably fix that.
+
+GOTO 017
+

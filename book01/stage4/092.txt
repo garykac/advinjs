@@ -1,0 +1,69 @@
+TITLE = Adding a second level
+ID = 092
+
+B: Now that level 1 has been cleaned up, it's easy to add more levels.
+
+BEGIN_CODE
+.function init_level1() {
+.	...
+.}
+.
++function init_level2() {
++	var level = {};
++	init_level_defaults(level);
++
++	level.player_start_x = 20;
++	level.player_start_y = 260;
++
++	add_default_platforms(level);
++
++	level.goal = create_goal(500, 360);
++	
++	_levels.push(level);
++}
++
++function init_level3() {
++	var level = {};
++	init_level_defaults(level);
++
++	level.player_start_x = 20;
++	level.player_start_y = 260;
++
++	add_default_platforms(level);
++
++	level.goal = create_goal(500, 360);
++	
++	_levels.push(level);
++}
++
+.// platform_data: [x, y, width, height]
+.function add_platforms(level, platform_data) {
+.	...
+.}
+END_CODE
+
+B: These are basically empty placeholder levels at the moment. We'll be fleshing them out later. For now, we just want to get these levels hooked up and then finish up level 1.
+
+
+BEGIN_CODE
+.// Initialize the game state.
+.function init() {
+.	init_game();
+.	init_player();
+.	init_level1();
++	init_level2();
++	init_level3();
+.}
+END_CODE
+
+U: If we're going to leave them empty, why'd we bother creating them now?
+
+B: So that we have the structure and framework in place. If we plow ahead with level 1 now, we'll have to make lots of tiny changes later when we want to add new levels. By adding this framework now, when we're ready to work on the other levels, we'll be able to start immediately rather than cleaning up the (much larger) mess that we made.
+
+RUN_VERIFY
+
+B: Run your code now and nothing (still!) has changed.
+
+B: We need to connect the levels to each other.
+
+GOTO 093

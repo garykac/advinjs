@@ -1,0 +1,50 @@
+TITLE = Platform patterns
+ID = 163
+
+B: We need to set a transform. We already have code for this for the player (and monters), but it needs a =dir= attribute to know if it needs to flip the transform. Since we never flip platforms, we can set the =dir= to =1= and never change it.
+
+BEGIN_CODE
+.function create_platform(x, y, width, height, pattern) {
+.	...
+.	p.width = width;
+.	p.height = height;
+.	p.origin_x = 0;
+.	p.origin_y = 0;
++	p.dir = 1;
+.	...
+.}
+END_CODE
+
+
+BEGIN_CODE
+.function draw_platforms(ctx) {
+.	var level = _levels[_game.current_level];
+.	var platforms = level.platforms;
+.	for (var i = 0; i < platforms.length; i++) {
+.		var platform = platforms[i];
+-		ctx.fillStyle = "rgb(153, 102, 51)";
+-		ctx.fillRect(platform.x, platform.y, platform.width, platform.height);
++
++		set_transform(ctx, platform);
++		if (platform.background_color) {
++			ctx.fillStyle = platform.background_color;
++			ctx.fillRect(0, 0, platform.width, platform.height);
++			ctx.strokeStyle = "rgba(0,0,0,0.5)";
++			ctx.strokeRect(0, 0, platform.width, platform.height);
++		} else {
++			var pat = ctx.createPattern(platform.pattern, "repeat");
++			ctx.fillStyle = pat;
++			ctx.fillRect(0, 0, platform.width, platform.height);
++		}
++		reset_transform(ctx);
+.	}
+.}
+END_CODE
+
+B: ???
+
+GAIN Platform III - Pattern
+
+GOTO 114 IF_BADGE Treasure II - Finish
+
+GOTO 100

@@ -1,0 +1,47 @@
+TITLE = Adding transforms
+ID = 016
+
+B: Put these before the draw() function:
+
+BEGIN_CODE
+.function start_level(level_id) {
+.	...
+.}
+.
++function set_transform(ctx, obj) {
++	var x = obj.x - obj.origin_x;
++	var y = obj.y - obj.origin_y;
++
++	// Adjust origin if we're facing left.
++	if (obj.dir < 0)
++		x += obj.width;
++
++	// Translate origin to (x,y).
++	ctx.setTransform(1, 0, 0, 1, x, y);
++
++	// Flip the image if we're facing left.
++	if (obj.dir < 0)
++		ctx.scale(-1, 1);
++}
++
++function reset_transform(ctx) {
++	// Reset transform to the identity matrix.
++	ctx.setTransform(1, 0, 0, 1, 0, 0);
++}
++
+END_CODE
+
+
+B: keep track of the current direction for players and monsters
+
+BEGIN_CODE
+.function init_player() {
+.	...
+.	_player.platform = null;
++	_player.dir = 1;
+.	...
+.}
+END_CODE
+
+
+GOTO 118

@@ -1,0 +1,31 @@
+TITLE = Friction
+ID = 017
+
+U: So how are we going to fix the player moving too far?
+
+B: By adding friction. You already have a friction value (=0.15=), so all you have to do is multiply the player's velocity by =(1 - friction)= each time you update the player. In our case, you'll be multiplying by 0.85 (= 1 - 0.15).
+
+B: This will cause the velocity to slowly decrease based on how much friction we specify. Higher friction values will cause the player to slow down more quickly. Lower friction will have the player slide for a longer time before stopping.
+
+BEGIN_CODE_INFO Slow the player down by applying friction.
+.function update_player() {
+.	check_input();
+.
++	// Apply the global world effects on the player.
++	_player.velocity_x *= (1.0 - _game.friction);
++
+.	// Move the player to the new location.
+.	_player.x += _player.velocity_x;
+.	_player.y += _player.velocity_y;
+.}
+END_CODE_OK
+
+U: If I keep multiplying by 0.85, the number will keep getting smaller and smaller, but it'll never reach 0. Doesn't that mean that the player will keep sliding forever? 
+
+B: Mathematically, the velocity won't ever reach 0, but practically once the velocity is less than 0.01 the player won't be moving on the screen anymore.
+
+GAIN Movement II - Friction
+
+GOTO 016 IF experiment with different friction values
+
+GOTO 018

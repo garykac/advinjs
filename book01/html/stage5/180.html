@@ -1,0 +1,90 @@
+<html>
+<head>
+<title>180 : Player health</title>
+
+<link rel="stylesheet" href="../css/bootstrap.min.css">
+<link type="text/css" rel="stylesheet" href="../css/style.css" />
+<link href='http://fonts.googleapis.com/css?family=Trade+Winds' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Sacramento' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Piedra' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Aclonica' rel='stylesheet' type='text/css'>
+
+<script type="text/javascript">
+	var _gaq = _gaq || [];
+	_gaq.push(['_setAccount', 'UA-17513364-1']);
+	_gaq.push(['_setDomainName', 'cse4k12.org']);
+	_gaq.push(['_setAllowLinker', true]);
+	_gaq.push(['_trackPageview']);
+
+	(function() {
+		var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+		ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+		var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+	})();
+</script>
+
+</head>
+
+<body>
+<div class="navbar navbar-inverse navbar-static-top" role="navigation"><div class="container"><div class="navbar-header">
+<a class="navbar-brand" href="../index.html"><span class="title1">Adventures in</span> <span class="title2">JavaScript</span></a>
+</div></div></div>
+<div class="container">
+<h1>180 : Player health</h1>
+<div class="name">Balthazar:</div><p class="balthazar">Add player health  (this adds status bar)</p>
+<div class="name">Balthazar:</div><p class="balthazar">fdafdsa</p>
+<div class="panel panel-default">
+<div class="panel-code code"><span class="context">function init_player() {</span>
+<span class="context">    ...</span>
+<span class="context">    _player.platform = null;</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    _player.health_max = 50;</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    _player.health = _player.health_max;</span>
+<span class="context">    ...</span>
+<span class="context">}</span>
+</div>
+</div>
+<div class="name">Balthazar:</div><p class="balthazar">fdafdasfad</p>
+<div class="panel panel-default">
+<div class="panel-code code"><span class="context">function start_level(level_id) {</span>
+<span class="context">    ...</span>
+<span class="context">}</span>
+<span class="context"></span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">function adjust_health(amount) {</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    _player.health += amount;</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    if (_player.health <= 0) {</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">        _player.health = 0;</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">        _game.game_over = true;</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    }</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    if (_player.health > _player.health_max) {</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">        _player.health = _player.health_max;</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    }</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">}</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add"></span>
+</div>
+</div>
+<div class="name">Balthazar:</div><p class="balthazar">???</p>
+<div class="panel panel-default">
+<div class="panel-code code"><span class="context">function check_monster_collisions() {</span>
+<span class="context">    var level = _levels[_game.current_level];</span>
+<span class="context">    var monsters = level.monsters;</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    var damage = 0;</span>
+<span class="context">    for (var i = 0; i < monsters.length; i++) {</span>
+<span class="context">        var m = monsters[i];</span>
+<span class="context">        if (collide(m, _player)) {</span>
+<img src="../css/cross.png" width="15" height="15"/><span class="delete">            _game.game_over = true;</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">            damage++;</span>
+<span class="context">        }</span>
+<span class="context">    }</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    if (damage != 0) {</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">        adjust_health(-damage);</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    }</span>
+<span class="context">}</span>
+</div>
+</div>
+<div class="name">Balthazar:</div><p class="balthazar">???</p>
+<div class="name">Balthazar:</div><p class="balthazar">you have health, but you can't see how much.</p>
+<div class="name">Balthazar:</div><p class="balthazar">let's add a health meter at the top of the screen to track our current health.</p>
+<p class="alert alert-info"><a href="182.html"><span class="goto">GOTO 182</span></a></p>
+</div>
+</body>
+</html>

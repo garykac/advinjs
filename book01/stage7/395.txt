@@ -1,0 +1,8 @@
+TITLE = Finish stage 7
+ID = 395
+
+B: Congratulations! You've finished stage 7.
+
+FINISH_STAGE 7
+
+GOTO 400 STAGE 8

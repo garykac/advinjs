@@ -1,0 +1,21 @@
+TITLE = Init monsters
+ID = 063
+
+B: in init_game():
+
+BEGIN_CODE
+.function init_game() {
+.	...
+.	// Game state.
+.	_game.game_over = false;
+.	_game.platform = create_platform(0, 360, _game.width, 40);
++	_game.monsters = [];
++	_game.monsters.push(create_monster(350, 360, 20, 20));
+.	_game.goal = create_goal(500, 360);
+.	...
+.}
+END_CODE
+
+
+
+GOTO 065

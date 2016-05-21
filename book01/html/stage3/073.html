@@ -1,0 +1,72 @@
+<html>
+<head>
+<title>073 : Fixing the platforms</title>
+
+<link rel="stylesheet" href="../css/bootstrap.min.css">
+<link type="text/css" rel="stylesheet" href="../css/style.css" />
+<link href='http://fonts.googleapis.com/css?family=Trade+Winds' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Sacramento' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Piedra' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Aclonica' rel='stylesheet' type='text/css'>
+
+<script type="text/javascript">
+	var _gaq = _gaq || [];
+	_gaq.push(['_setAccount', 'UA-17513364-1']);
+	_gaq.push(['_setDomainName', 'cse4k12.org']);
+	_gaq.push(['_setAllowLinker', true]);
+	_gaq.push(['_trackPageview']);
+
+	(function() {
+		var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+		ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+		var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+	})();
+</script>
+
+</head>
+
+<body>
+<div class="navbar navbar-inverse navbar-static-top" role="navigation"><div class="container"><div class="navbar-header">
+<a class="navbar-brand" href="../index.html"><span class="title1">Adventures in</span> <span class="title2">JavaScript</span></a>
+</div></div></div>
+<div class="container">
+<h1>073 : Fixing the platforms</h1>
+<div class="name">Balthazar:</div><p class="balthazar">Now that we have the collision info, we can fix up the platforms.</p>
+<div class="name">Balthazar:</div><p class="balthazar">To do that we need to change how we handle platform collisions</p>
+<div class="panel panel-default">
+<div class="panel-code code"><span class="context">function check_platform_collisions() {</span>
+<span class="context">    var platforms = _game.platforms;</span>
+<span class="context">    _player.platform = null;</span>
+<span class="context">    for (var i = 0; i < platforms.length; i++) {</span>
+<img src="../css/cross.png" width="15" height="15"/><span class="delete">        if (collide(platforms[i], _player)) {</span>
+<img src="../css/cross.png" width="15" height="15"/><span class="delete">            _player.platform = platforms[i];</span>
+<img src="../css/cross.png" width="15" height="15"/><span class="delete">            _player.y = platforms[i].y;</span>
+<img src="../css/cross.png" width="15" height="15"/><span class="delete">            _player.velocity_y = 0;</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">        var overlap = collide(platforms[i], _player);</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">        if (overlap) {</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">            // Adjust player location so it no longer overlaps with platform.</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">            _player.x += overlap[0];</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">            _player.y += overlap[1];</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add"></span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">            var dir = overlap[2];</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">            if (dir == "left" || dir == "right") {</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">                // Smack into left/right side of platform.</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">                _player.velocity_x = 0;</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">            } else if (dir == "top") {</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">                // Land on top of platform.</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">                _player.platform = platforms[i];</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">                _player.velocity_y = 0;</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">            } else {</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">                // Bounce off bottom of platform.</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">                _player.velocity_y *= -1;</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">            }</span>
+<span class="context">        }</span>
+<span class="context">    }</span>
+<span class="context">}</span>
+</div>
+</div>
+<p class="alert alert-success"><strong>Congratulations!</strong> You've earned the <span class="badge-gain">Platform II - Four Sided</span> badge!</p>
+<p class="alert alert-info"><a href="074.html"><span class="goto">GOTO 074</span></a></p>
+</div>
+</body>
+</html>

@@ -1,0 +1,21 @@
+TITLE = More title screen monsters
+ID = 390
+
+B: Since we added more monsters to the game, we should add them to the title screen animation as well.
+
+BEGIN_CODE
+.function init_level0_title() {
+.	...
+.	var monster_data = [
+.		// [x_start, y, width, height, x_min, x_max, movement, image]
+.		[-20, height, 20, 24, x_min, x_max, 1, "doppleganger"],
++		[-140, height, 28, 26, x_min, x_max, 1, "rufus"],
++		[-170, height, 26, 28, x_min, x_max, 1, "prescott"],
+.		[-205, height, 30, 30, x_min, x_max, 1, "henrietta"],
+.		[-235, height, 20, 24, x_min, x_max, 1, "vlad"],
+.	];
+.	...
+.}
+END_CODE
+
+GOTO 395

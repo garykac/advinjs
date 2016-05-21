@@ -1,0 +1,22 @@
+TITLE = Second platform
+ID = 079
+
+B: Adding a second platform
+
+B: To add a new platform, all we need to do is create a new one and add it to the platforms array.
+
+BEGIN_CODE
+.function init_game() {
+.	...
+.	// Game state.
+.	_game.game_over = false;
+.	_game.game_win = false;
+.	_game.platforms = [];
+.	_game.platforms.push(create_platform(0, 360, _game.width, 40));
++	_game.platforms.push(create_platform(200, 290, 80, 20));
+.	_game.monsters = [];
+.	...
+.}
+END_CODE
+
+GOTO 078

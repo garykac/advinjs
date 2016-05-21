@@ -1,0 +1,81 @@
+TITLE = Moving monsters
+ID = 061
+
+B: Let's make the monsters move.
+
+
+BEGIN_CODE
+.function draw_player(ctx) {
+.	...
+.}
+.
++function update_monsters() {
++	var monsters = _game.monsters;
++	for (var i = 0; i < monsters.length; i++) {
++		var m = monsters[i];
++		m.x += m.move_x;
++		if (m.x <= m.min_x || m.x >= m.max_x) {
++			m.move_x *= -1;
++		}
++	}
++}
++
+.// Handle input and move the player.
+.function update_player() {
+.	...
+.}
+END_CODE
+
+B: fdfafd
+
+BEGIN_CODE
+.function update_world() {
++	update_monsters();
+.	update_player();
+.	check_collisions();
+.	draw();
+.	
+.	requestAnimationFrame(update_world);
+.}
+END_CODE
+
+
+B: We need to initialize these values:
+
+BEGIN_CODE
+-function create_monster(x, y, width, height) {
++function create_monster(x, y, width, height, min_x, max_x, move_x) {
+.	var m = {};
+.	m.x = x;
+.	m.y = y;
+.	m.width = width;
+.	m.height = height;
+.	m.origin_x = m.width / 2;
+.	m.origin_y = m.height;
++	m.min_x = min_x;
++	m.max_x = max_x;
++	m.move_x = move_x;
+.	return m;
+.}
+END_CODE
+
+B: in init_game()
+
+BEGIN_CODE
+.function init_game() {
+.	...
+.	_game.monsters = [];
+-	_game.monsters.push(create_monster(350, 360, 20, 20));
++	_game.monsters.push(create_monster(350, 360, 20, 20, 60, 470, -1.0));
+-	_game.monsters.push(create_monster(400, 360, 20, 20));
++	_game.monsters.push(create_monster(400, 360, 20, 20, 60, 470, 0.8));
+.	...
+.}
+END_CODE
+
+GAIN Monster II - Roaming
+
+GOTO 089 IF_BADGE Platform II - Four Sided
+
+GOTO 070
+

@@ -1,0 +1,143 @@
+<html>
+<head>
+<title>360 : Adding coins</title>
+
+<link rel="stylesheet" href="../css/bootstrap.min.css">
+<link type="text/css" rel="stylesheet" href="../css/style.css" />
+<link href='http://fonts.googleapis.com/css?family=Trade+Winds' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Sacramento' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Piedra' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Aclonica' rel='stylesheet' type='text/css'>
+
+<script type="text/javascript">
+	var _gaq = _gaq || [];
+	_gaq.push(['_setAccount', 'UA-17513364-1']);
+	_gaq.push(['_setDomainName', 'cse4k12.org']);
+	_gaq.push(['_setAllowLinker', true]);
+	_gaq.push(['_trackPageview']);
+
+	(function() {
+		var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+		ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+		var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+	})();
+</script>
+
+</head>
+
+<body>
+<div class="navbar navbar-inverse navbar-static-top" role="navigation"><div class="container"><div class="navbar-header">
+<a class="navbar-brand" href="../index.html"><span class="title1">Adventures in</span> <span class="title2">JavaScript</span></a>
+</div></div></div>
+<div class="container">
+<h1>360 : Adding coins</h1>
+<div class="name">Balthazar:</div><p class="balthazar">Adding coins that the player can gather.</p>
+<div class="name">Balthazar:</div><p class="balthazar">We'll need a coin image to display.</p>
+<div class="row">
+<div class="col-sm-12 col-md-12"><div class="image-table">
+<a href="../images/items/coin.png"><img src="../images/items/coin.png" width="40" height="40" /></a>
+<div class="caption"><p align="center">coin.png</p></div>
+</div></div>
+</div>
+<div class="alert alert-info"><p>Copy the following files into your project:</p><ul class="list-group">
+<li class="list-group-item"><span class="code-inline">images/items/coin.png</span></li>
+</ul></div>
+<div class="name">Balthazar:</div><p class="balthazar">The player should start out with <span class="code-inline-color">0</span> coind.</p>
+<div class="panel panel-default">
+<div class="panel-code code"><span class="context">function init_player() {</span>
+<span class="context">    ...</span>
+<span class="context">    _player.platform = null;</span>
+<span class="context">    _player.health_max = 50;</span>
+<span class="context">    _player.health = _player.health_max;</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    _player.coins = 0;</span>
+<span class="context">    _player.dir = 1;</span>
+<span class="context">    ...</span>
+<span class="context">}</span>
+</div>
+</div>
+<div class="name">Balthazar:</div><p class="balthazar">And we can scatter some coins around level 1.</p>
+<div class="panel panel-default">
+<div class="panel-code code"><span class="context">function init_level1() {</span>
+<span class="context">    ...</span>
+<span class="context">    // Create the items.</span>
+<span class="context">    var item_data = [</span>
+<span class="context">        // [x, y, width, height, type, image]</span>
+<span class="context">        [530, 358, 18, 20, "key", "key"],</span>
+<span class="context">        [465, 270, 16, 23, "potion", "potion"],</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">        [50, 250, 20, 20, "coin", "coin"],</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">        [530, 190, 20, 20, "coin", "coin"],</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">        [230, 120, 20, 20, "coin", "coin"],</span>
+<span class="context">    ];</span>
+<span class="context">    add_items(level, item_data);</span>
+<span class="context">    ...</span>
+<span class="context">}</span>
+</div>
+</div>
+<div class="name">Balthazar:</div><p class="balthazar">When the player collides with a coin, we need to increment the current coin count.</p>
+<div class="panel panel-default">
+<div class="panel-code code"><span class="context">function check_item_collisions() {</span>
+<span class="context">    var level = _levels[_game.current_level];</span>
+<span class="context">    var items = level.items;</span>
+<span class="context">    for (var i = 0; i < items.length; i++) {</span>
+<span class="context">        var item = items[i];</span>
+<span class="context">        if (!item.found) {</span>
+<span class="context">            if (collide(item, _player)) {</span>
+<span class="context">                if (item.type == "key") {</span>
+<span class="context">                    level.player_has_key = true;</span>
+<span class="context">                } else if (item.type == "potion") {</span>
+<span class="context">                    adjust_health(30);</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">                } else if (item.type == "coin") {</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">                    _player.coins++;</span>
+<span class="context">                } else if (item.type == "finish") {</span>
+<span class="context">                    _game.game_over = true;</span>
+<span class="context">                    _game.game_win = true;</span>
+<span class="context">                }</span>
+<span class="context">                item.found = true;</span>
+<span class="context">            }</span>
+<span class="context">        }</span>
+<span class="context">    }</span>
+<span class="context">}</span>
+</div>
+</div>
+<div class="name">Balthazar:</div><p class="balthazar">And we need to update the status bar at the top of the screen.</p>
+<div class="panel panel-default">
+<div class="panel-code code"><span class="context">function init_game() {</span>
+<span class="context">    ...</span>
+<span class="context">    // Status images</span>
+<span class="context">    _game.img_key = new Image();</span>
+<span class="context">    _game.img_key.src = _game.imagedir_items + "key.png";</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    _game.img_coin = new Image();</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    _game.img_coin.src = _game.imagedir_items + "coin.png";</span>
+<span class="context">    _game.img_player = new Image();</span>
+<span class="context">    _game.img_player.src = _game.imagedir_player + "icon.png";</span>
+<span class="context">}</span>
+</div>
+</div>
+<div class="name">Balthazar:</div><p class="balthazar">Note that we need to move the player icons over to make room for the coin info.</p>
+<div class="panel panel-default">
+<div class="panel-code code"><span class="context">function draw_status(ctx) {</span>
+<span class="context">    ...</span>
+<span class="context">    // If the player has the key, draw it in the status area.</span>
+<span class="context">    var level = _levels[_game.current_level];</span>
+<span class="context">    if (level.player_has_key) {</span>
+<span class="context">        ctx.drawImage(_game.img_key, _game.meter_width + 15, 11);</span>
+<span class="context">    }</span>
+<span class="context"></span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    ctx.drawImage(_game.img_coin, _game.width - 58, 11);</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    ctx.fillStyle = "#606060";</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    ctx.font = "16px Helvetica";</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    ctx.fillText("x" + _player.coins, _game.width - 37, 26);</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add"></span>
+<span class="context">    // Draw player icons to indicate how many extra lives remain.</span>
+<span class="context">    for (var i = 0; i < _game.player_lives-1; i++) {</span>
+<img src="../css/cross.png" width="15" height="15"/><span class="delete">        ctx.drawImage(_game.img_player, _game.width - 30 - (i * 20), 12);</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">        ctx.drawImage(_game.img_player, _game.width - 80 - (i * 20), 12);</span>
+<span class="context">    }</span>
+<span class="context">}</span>
+</div>
+</div>
+<p class="alert alert-success"><strong>Congratulations!</strong> You've earned the <span class="badge-gain">Treasure IV - Coin</span> badge!</p>
+<p class="alert alert-info"><a href="370.html"><span class="goto">GOTO 370</span></a></p>
+</div>
+</body>
+</html>

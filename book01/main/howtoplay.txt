@@ -1,0 +1,116 @@
+TITLE = Adventures in JavaScript - How to Play
+
+H2 How to play
+
+INFO This section covers the basic of how to play the game.
+
+H2 Navigating
+
+INFO At the bottom of each section, there is one or more GOTO links that direct you to the next "page". Because this is a webpage, you can simply click on the link but you can imagine that if this was a real book, you'd have to actually turn pages to get to the next section.
+
+INFO The following is an example of a simple link that will take you to the starting page.
+
+GOTO 001
+
+INFO As you progress through this book, you will gain various badges which will affect which paths you're allowed to take. For example:
+
+GAIN Platform I - Base
+
+INFO As you collect these badges, be sure to mark your character sheet. There are GOTO lines that require specific badges so you'll need to keep careful track of your accomplishments.
+
+H2 Editing your code
+
+INFO During the adventure, you will need to edit your code. This section describes the format used to specify the changes you need to make.
+
+H3 Adding lines
+
+INFO New lines that you need to add are marked with a green plus ('+') sign. Sufficient context (shown in gray) is provided so that you can see exactly where the new line of code needs to be added.
+
+INFO For example:
+
+BEGIN_CODE
+.function draw() {
+.	var canvas = document.getElementById("stage");
+.	var ctx = canvas.getContext("2d");
+.
+.	erase(ctx);
++	draw_platforms(ctx);
+.	draw_player(ctx);
+.}
+END_CODE
+
+H3 Deleting lines
+
+BEGIN_CODE
+.function check_input() {
+.	...
+.	// Right arrow or 'd' to move right.
+.	if (_game.keymap[39] || _game.keymap[68]) {
+.		_player.velocity_x = 1;
+.	}
+-	// Up arrow or 'w' to move up.
+-	if (_game.keymap[38] || _game.keymap[87]) {
+-		_player.velocity_y = -1;
+-	}
+-	// Down arrow or 's' to move up.
+-	if (_game.keymap[40] || _game.keymap[83]) {
+-		_player.velocity_y = 1;
+-	}
+.}
+END_CODE
+
+H3 Modifying lines
+
+INFO A line which needs to be modified is presented as a line being deleted and a line being added. This allows you to see the before and after content of the line.
+
+BEGIN_CODE
+.function init_player() {
+.	_player.x = 0;
+-	_player.y = 0;
++	_player.y = 360;
+.	_player.width = 20;
+.	_player.height = 20;
+.}
+END_CODE
+
+H3 Ellipses
+
+INFO It's often too cumbersome to include the entire function context, so the code will sometimes use ellipses (three periods) to indicate that you have extra code there that is not being shown.
+
+INFO As in the following example, where the =init_game()= function has a lot of code that the beginning, but the part that we're interested in doesn't start until around =_game.keymap=.
+
+BEGIN_CODE
+.function init_game() {
+.	...
+.	// The keymap keeps track of which keys are currently being pressed.
+.	_game.keymap = {};
++
++	// Game state.
++	_game.platform = create_platform(0, 360, _game.width, 40);
+.}
+END_CODE
+
+H3 Function order
+
+INFO In order to make sure that everyone puts the functions in the same order, this book also provides neighboring function context as needed.
+
+INFO In the following example, the new =draw_platforms()= function should be placed between the =erase()= and =draw_player()= functions.
+
+BEGIN_CODE
+.// Erase the stage by filling it with white.
+.function erase(ctx) {
+.	...
+.}
+.
++// Draw the platforms.
++function draw_platforms(ctx) {
++	var platform = _game.platform;
++	ctx.fillStyle = "rgb(153, 102, 51)";
++	ctx.fillRect(platform.x, platform.y, platform.width, platform.height);
++}
++
+.// Draw the player.
+.function draw_player(ctx) {
+.	...
+.}
+END_CODE

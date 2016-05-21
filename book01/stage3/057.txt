@@ -1,0 +1,50 @@
+TITLE = Game over / Game win
+ID = 057
+
+B: It's kinda disappointing that winning and losing both result in the same message, so let's change the message based on whether or not the player reaches the goal.
+
+BEGIN_CODE
+.function init_game() {
+.	...
+.	// Game state.
+.	_game.game_over = false;
++	_game.game_win = false;
+.	...
+.}
+END_CODE
+
+B: defad
+
+BEGIN_CODE
+.function check_goal_collisions() {
+.	var goal = _game.goal;
+.	if (collide(goal, _player)) {
+.		_game.game_over = true;
++		_game.game_win = true;
+.	}
+.}
+END_CODE
+
+B: in draw():
+
+BEGIN_CODE
+.function draw() {
+.	...
+.	if (_game.game_over) {
+.		// Dim out the stage by drawing a transparent black rectangle over it.
+.		ctx.fillStyle = "rgba(0, 0, 0, 0.5)";
+.		ctx.fillRect(0, 0, _game.width, _game.height);
+.
+.		ctx.fillStyle = "black";
+.		ctx.font = "48px Helvetica";
++		if (_game.game_win) {
++			ctx.fillText("You Win!", 155, 150);
++		} else {
+>			ctx.fillText("Game Over", 140, 150);
++		}
+.	}
+.	...
+.}
+END_CODE
+
+GOTO 060

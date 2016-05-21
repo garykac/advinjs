@@ -1,0 +1,58 @@
+TITLE = Level names
+ID = 340
+
+B: Give each level a name.
+
+BEGIN_CODE
+.function init_level0_title() {
+.	var level = {};
++	level.name = "";
+.	init_level_defaults(level);
+.	...
+.}
+.
+.function init_level1() {
+.	var level = {};
++	level.name = "Level 1";
+.	init_level_defaults(level);
+.	...
+.}
+.
+.function init_level2() {
+.	var level = {};
++	level.name = "Level 2";
+.	init_level_defaults(level);
+.	...
+.}
+.
+.function init_level3() {
+.	var level = {};
++	level.name = "Level 3";
+.	init_level_defaults(level);
+.	...
+.}
+END_CODE
+
+B: Draw the level name at the lower-left corner of the screen (over the main platform).
+
+BEGIN_CODE
+.function draw_platforms(ctx) {
+.	var level = _levels[_game.current_level];
+.	var platforms = level.platforms;
+.	for (var i = 0; i < platforms.length; i++) {
+.		var platform = platforms[i];
+.
+.		set_transform(ctx, platform);
+.		...
+.		reset_transform(ctx);
+.	}
++
++	if (level.name != "") {
++		ctx.fillStyle = "rgb(50, 50, 50)";
++		ctx.font = "28px " + _game.font_family;
++		ctx.fillText(level.name, 10, 390);
++	}
+.}
+END_CODE
+
+GOTO 345

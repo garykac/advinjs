@@ -1,0 +1,126 @@
+TITLE = Adding a base platform
+ID = 003
+
+B: Where do you think you should start?
+
+U: Since it's a platformer, adding platforms seems like an obvious place to start.
+
+B: How do you think you can do that?
+
+U: By drawing a big rectangle on the screen.
+
+B: Where?
+
+U: At the bottom.
+
+B: No, I mean where in the code do you do that?
+
+U: Oh. Probably in the =draw()= function.
+
+B: Right, but before you draw it you should first create a platform. A platform needs an x, y location and a width and a height. You can write a function called =create_platform()= that takes these parameters and then creates a platform.
+
+BEGIN_CODE_INFO Create the =create_platform()= function
+.function init_player() {
+.	...
+.}
+.
++function create_platform(x, y, width, height) {
++	var p = {};
++	p.x = x;
++	p.y = y;
++	p.width = width;
++	p.height = height;
++	return p;
++}
++
+.// Erase the canvas and draw all the objects.
+.function draw() {
+.	...
+.}
+END_CODE_OK
+
+B: And now to create a platform, you simply call this function with the appropriate arguments. Your main platform should cover the entire bottom left-to-right and probably be about 40 pixels high.
+
+U: Since our screen size is 550x400, that means that I should place the platform at =0,360= and give it a width and height of =550= and =40=.
+
+B: Indeed, but instead of hard-coding the width at =550=, you should use =_game.width=, which will always be equal to the width of the screen, even if you decide to resize it later.
+
+U: OK, but why don't I also do that with =_game.height=?
+
+B: You could, but since you're doing a jumping game, you don't want the platforms to move up or down if the screen resizes. That'll mess up all the jumps and might make the game impossible to win. It's OK if the main platform gets wider, but you don't want it to move up or down.
+
+U: But I could make all the platforms relative to the bottom and then that wouldn't be a problem.
+
+B: True, but that's a lot of work to support being able to resize your screen.
+
+U: Ah. A lot of work. Gotcha. Let's skip that, then.
+
+BEGIN_CODE_INFO Call =create_platform()= to create the base platform.
+.function init_game() {
+.	...
+.	// The keymap keeps track of which keys are currently being pressed.
+.	_game.keymap = {};
++
++	// Game state.
++	_game.platform = create_platform(0, 360, _game.width, 40);
+.}
+END_CODE_OK
+
+B: And now we need to...?
+
+U: Draw the platforms... in the =draw()= function.
+
+B: Good. But rather than adding the drawing code directly to the =draw()= function, you should add a new =draw_platforms()= function and call that from =draw()= &mdash; just like you do for =draw_player()=.
+
+U: You mean "draw platforms" with an 's'? But we're only drawing one platform.
+
+B: True, but we'll be adding more platforms soon enough, and we might as well give the function its proper name now so that we don't have to rename it later.
+
+U: OK. {Whatever}
+
+B: Add a call to =draw_platforms()= in the =draw()= function. Place it after the =erase()= but before the call to =draw_player()=, that way the player will be drawn in front of the platforms.
+
+BEGIN_CODE_INFO Call =draw_platforms()= from within =draw()=
+.function draw() {
+.	var canvas = document.getElementById("stage");
+.	var ctx = canvas.getContext("2d");
+.
+.	erase(ctx);
++	draw_platforms(ctx);
+.	draw_player(ctx);
+.}
+END_CODE_ERROR the =draw_platforms()= function has not yet been defined
+
+B: And finally you need to create the =draw_platforms()= function that will do the actual drawing. For now, you should just fill a rectangle with an appropriately brownish color like RGB = 153, 102, 51.
+
+U: Can I choose another color?
+
+B: Any color you like, just replace the red, green and blue components of the =rgb()= with values between 0 and 255 (inclusive).
+
+BEGIN_CODE_INFO Create the =draw_platforms()= function
+.// Erase the canvas by filling it with white.
+.function erase(ctx) {
+.	...
+.}
+.
++// Draw the platforms.
++function draw_platforms(ctx) {
++	var platform = _game.platform;
++	ctx.fillStyle = "rgb(153, 102, 51)";
++	ctx.fillRect(platform.x, platform.y, platform.width, platform.height);
++}
++
+.// Draw the player.
+.function draw_player(ctx) {
+.	...
+.}
+END_CODE_OK
+
+B: After you've typed in all that code, try it out and see what happens.
+
+U: OK. I've got a giant brown platform along the bottom of the screen, but I can still move the player all around the screen.
+
+B: That's OK. We'll fix that next.
+
+GAIN Platform I - Base
+GOTO 004

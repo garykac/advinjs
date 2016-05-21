@@ -1,0 +1,120 @@
+TITLE = Platform pattern
+ID = 111
+
+B: Use bitmap images for the platforms
+
+B: Create an =images/backgrounds= directory in your project. This is where the background images will be stored.
+
+CREATE_DIR images/backgrounds
+
+B: Copy the following 3 background images into the backgrounds directory: =block.png=, =brick.png= and =dirt.png=.
+
+BEGIN_IMAGE_TABLE 3
+TABLE_IMAGE images/backgrounds/block.png 40x40 block.png
+TABLE_IMAGE images/backgrounds/brick.png 18x16 brick.png
+TABLE_IMAGE images/backgrounds/dirt.png 80x40 dirt.png
+END_IMAGE_TABLE
+
+BEGIN_COPY_FILE
+COPY_FILE images/backgrounds/block.png
+COPY_FILE images/backgrounds/brick.png
+COPY_FILE images/backgrounds/dirt.png
+END_COPY_FILE
+
+B: ???
+
+BEGIN_CODE
+.function init_game() {
+.	...
+.	_game.imagedir = "images/";
+.	_game.imagedir_player = _game.imagedir + "player/";
++	_game.imagedir_backgrounds = _game.imagedir + "backgrounds/";
+.	_game.imagedir_monsters = _game.imagedir + "monsters/";
+.	...
+.}
+END_CODE
+
+B: ???
+
+
+BEGIN_CODE
+.function init_level1() {
+.	...
+.	add_default_platforms(level);
+.	var platform_data = [
+-		[200, 290, 80, 20],
++		[200, 290, 80, 20, "dirt"],
+-		[300, 240, 80, 20],
++		[300, 240, 80, 20, "block"],
+-		[400, 170, 80, 20],
++		[400, 170, 80, 20, "block"],
+-		[460, 110, 40, 20],
++		[460, 110, 40, 20, "dirt"],
+.	];
+.	add_platforms(level, platform_data);
+.	...
+.}
+END_CODE
+
+B: The default platforms need to be updated as well
+
+BEGIN_CODE
+.function add_default_platforms(level) {
+.	var platform_data = [
+.		// The bottom brick platform along the bottom of the stage.
+-		[0, 360, _game.width, 40],
++		[0, 360, _game.width, 40, "brick"],
+.		// The left offstage 'wall' to keep the player on the stage.
+-		[-60, -_game.height, 60, 2*_game.height],
++		[-60, -_game.height, 60, 2*_game.height, "#000000"],
+.		// The right offstage 'wall' to keep the player on the stage.
+-		[_game.width, -_game.height, 60, 2*_game.height],
++		[_game.width, -_game.height, 60, 2*_game.height, "#000000"],
+.	];
+.	add_platforms(level, platform_data);
+.}
+END_CODE
+
+B: ???
+
+BEGIN_CODE
+-// platform_data: [x, y, width, height]
++// platform_data: [x, y, width, height, pattern]
+.function add_platforms(level, platform_data) {
+.	for (var i = 0; i < platform_data.length; i++) {
+.		var p = platform_data[i];
+-		var plat = create_platform(p[0], p[1], p[2], p[3]);
++		var plat = create_platform(p[0], p[1], p[2], p[3], p[4]);
+.		level.platforms.push(plat);
+.	}
+.}
+END_CODE
+
+B: ???
+
+BEGIN_CODE
+-function create_platform(x, y, width, height) {
++function create_platform(x, y, width, height, pattern) {
+.	var p = {};
+.	p.x = x;
+.	p.y = y;
+.	p.width = width;
+.	p.height = height;
+.	p.origin_x = 0;
+.	p.origin_y = 0;	
++
++	// If pattern begins with '#' then it's really a background color.
++	if (pattern.charAt(0) == '#') {
++		p.background_color = pattern;
++	} else {
++		p.pattern = new Image();
++		p.pattern.src = _game.imagedir_backgrounds + pattern + ".png";
++	}
++	
+.	return p;
+.}
+END_CODE
+
+
+GOTO 163
+

@@ -1,0 +1,16 @@
+TITLE = Choices IV - Platforms or Moving monsters
+ID = 060
+
+
+GOTO 061 IF_BADGE Platform II - Four Sided
+
+
+B: What do you want to do next:
+
+B: Make monsters move
+B: Add more platforms
+
+GOTO 070 IF add more platforms
+
+GOTO 061 IF make the monsters move
+

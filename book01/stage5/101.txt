@@ -1,0 +1,6 @@
+TITLE = Challenge Badge
+ID = 100
+
+GAIN Challenge I
+
+GOTO 100

@@ -1,0 +1,80 @@
+<html>
+<head>
+<title>057 : Game over / Game win</title>
+
+<link rel="stylesheet" href="../css/bootstrap.min.css">
+<link type="text/css" rel="stylesheet" href="../css/style.css" />
+<link href='http://fonts.googleapis.com/css?family=Trade+Winds' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Sacramento' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Piedra' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Aclonica' rel='stylesheet' type='text/css'>
+
+<script type="text/javascript">
+	var _gaq = _gaq || [];
+	_gaq.push(['_setAccount', 'UA-17513364-1']);
+	_gaq.push(['_setDomainName', 'cse4k12.org']);
+	_gaq.push(['_setAllowLinker', true]);
+	_gaq.push(['_trackPageview']);
+
+	(function() {
+		var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+		ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+		var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+	})();
+</script>
+
+</head>
+
+<body>
+<div class="navbar navbar-inverse navbar-static-top" role="navigation"><div class="container"><div class="navbar-header">
+<a class="navbar-brand" href="../index.html"><span class="title1">Adventures in</span> <span class="title2">JavaScript</span></a>
+</div></div></div>
+<div class="container">
+<h1>057 : Game over / Game win</h1>
+<div class="name">Balthazar:</div><p class="balthazar">It's kinda disappointing that winning and losing both result in the same message, so let's change the message based on whether or not the player reaches the goal.</p>
+<div class="panel panel-default">
+<div class="panel-code code"><span class="context">function init_game() {</span>
+<span class="context">    ...</span>
+<span class="context">    // Game state.</span>
+<span class="context">    _game.game_over = false;</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    _game.game_win = false;</span>
+<span class="context">    ...</span>
+<span class="context">}</span>
+</div>
+</div>
+<div class="name">Balthazar:</div><p class="balthazar">defad</p>
+<div class="panel panel-default">
+<div class="panel-code code"><span class="context">function check_goal_collisions() {</span>
+<span class="context">    var goal = _game.goal;</span>
+<span class="context">    if (collide(goal, _player)) {</span>
+<span class="context">        _game.game_over = true;</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">        _game.game_win = true;</span>
+<span class="context">    }</span>
+<span class="context">}</span>
+</div>
+</div>
+<div class="name">Balthazar:</div><p class="balthazar">in draw():</p>
+<div class="panel panel-default">
+<div class="panel-code code"><span class="context">function draw() {</span>
+<span class="context">    ...</span>
+<span class="context">    if (_game.game_over) {</span>
+<span class="context">        // Dim out the stage by drawing a transparent black rectangle over it.</span>
+<span class="context">        ctx.fillStyle = "rgba(0, 0, 0, 0.5)";</span>
+<span class="context">        ctx.fillRect(0, 0, _game.width, _game.height);</span>
+<span class="context"></span>
+<span class="context">        ctx.fillStyle = "black";</span>
+<span class="context">        ctx.font = "48px Helvetica";</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">        if (_game.game_win) {</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">            ctx.fillText("You Win!", 155, 150);</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">        } else {</span>
+<span class="indent">            ctx.fillText("Game Over", 140, 150);</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">        }</span>
+<span class="context">    }</span>
+<span class="context">    ...</span>
+<span class="context">}</span>
+</div>
+</div>
+<p class="alert alert-info"><a href="060.html"><span class="goto">GOTO 060</span></a></p>
+</div>
+</body>
+</html>

@@ -1,0 +1,38 @@
+TITLE = Horizontal only
+ID = 010
+
+U: Alright, let's make the player move left and right.
+
+B: Good. And how do we do that?
+
+U: By removing the code that handles up and down keys?
+
+B: And where is that code?
+
+U: It's in the =check_input()= function. We can just remove the parts that deal with the up arrow and down arrow.
+
+BEGIN_CODE_INFO Delete the code that moves the player up and down.
+.function check_input() {
+.	...
+.	// Right arrow or 'd' to move right.
+.	if (_game.keymap[39] || _game.keymap[68]) {
+.		_player.velocity_x = 1;
+.	}
+-	// Up arrow or 'w' to move up.
+-	if (_game.keymap[38] || _game.keymap[87]) {
+-		_player.velocity_y = -1;
+-	}
+-	// Down arrow or 's' to move up.
+-	if (_game.keymap[40] || _game.keymap[83]) {
+-		_player.velocity_y = 1;
+-	}
+.}
+END_CODE_OK
+
+B: Excellent, try that and verify that is works.
+
+GAIN Movement I - Horizontal
+
+GOTO 015 IF_BADGE Sprite I - Origin
+
+GOTO 005

@@ -1,0 +1,152 @@
+<html>
+<head>
+<title>122 : Adding key images</title>
+
+<link rel="stylesheet" href="../css/bootstrap.min.css">
+<link type="text/css" rel="stylesheet" href="../css/style.css" />
+<link href='http://fonts.googleapis.com/css?family=Trade+Winds' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Sacramento' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Piedra' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Aclonica' rel='stylesheet' type='text/css'>
+
+<script type="text/javascript">
+	var _gaq = _gaq || [];
+	_gaq.push(['_setAccount', 'UA-17513364-1']);
+	_gaq.push(['_setDomainName', 'cse4k12.org']);
+	_gaq.push(['_setAllowLinker', true]);
+	_gaq.push(['_trackPageview']);
+
+	(function() {
+		var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+		ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+		var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+	})();
+</script>
+
+</head>
+
+<body>
+<div class="navbar navbar-inverse navbar-static-top" role="navigation"><div class="container"><div class="navbar-header">
+<a class="navbar-brand" href="../index.html"><span class="title1">Adventures in</span> <span class="title2">JavaScript</span></a>
+</div></div></div>
+<div class="container">
+<h1>122 : Adding key images</h1>
+<div class="name">Balthazar:</div><p class="balthazar">draw key image</p>
+<div class="name">Balthazar:</div><p class="balthazar">Create the images/player directory.</p>
+<div class="alert alert-info"><p>Create the following directory in your project:</p><ul class="list-group"><li class="list-group-item"><span class="code-inline">images/items</span></li></ul></div>
+<div class="name">Balthazar:</div><p class="balthazar">Copy 2 images: <span class="code-inline-color">key.png</span> and <span class="code-inline-color">gem.png</span>.</p>
+<div class="row">
+<div class="col-sm-6 col-md-6"><div class="image-table">
+<a href="../images/items/key.png"><img src="../images/items/key.png" width="36" height="40" /></a>
+<div class="caption"><p align="center">key.png</p></div>
+</div></div>
+<div class="col-sm-6 col-md-6"><div class="image-table">
+<a href="../images/items/gem.png"><img src="../images/items/gem.png" width="42" height="54" /></a>
+<div class="caption"><p align="center">gem.png</p></div>
+</div></div>
+</div>
+<div class="alert alert-info"><p>Copy the following files into your project:</p><ul class="list-group">
+<li class="list-group-item"><span class="code-inline">images/items/key.png</span></li>
+<li class="list-group-item"><span class="code-inline">images/items/gem.png</span></li>
+</ul></div>
+<div class="name">Balthazar:</div><p class="balthazar">???</p>
+<div class="panel panel-default">
+<div class="panel-code code"><span class="context">function init_game() {</span>
+<span class="context">    ...</span>
+<span class="context">    _game.imagedir_monsters = _game.imagedir + "monsters/";</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    _game.imagedir_items = _game.imagedir + "items/";</span>
+<span class="context">    ...</span>
+<span class="context">}</span>
+</div>
+</div>
+<div class="name">Balthazar:</div><p class="balthazar">Specify the image name for each item</p>
+<div class="panel panel-default">
+<div class="panel-code code"><span class="context">function init_level1() {</span>
+<span class="context">    ...</span>
+<span class="context">    var item_data = [</span>
+<img src="../css/cross.png" width="15" height="15"/><span class="delete">        [480, 110, 20, 20, "key"],</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">        [480, 110, 18, 20, "key", "key"],</span>
+<span class="context">    ];</span>
+<span class="context">    add_items(level, item_data);</span>
+<span class="context">    ...</span>
+<span class="context">}</span>
+<span class="context"></span>
+<span class="context">function init_level2() {</span>
+<span class="context">    ...</span>
+<span class="context">    var item_data = [</span>
+<img src="../css/cross.png" width="15" height="15"/><span class="delete">        [250, 360, 20, 20, "key"],</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">        [250, 360, 18, 20, "key", "key"],</span>
+<span class="context">    ];</span>
+<span class="context">    add_items(level, item_data);</span>
+<span class="context">    ...</span>
+<span class="context">}</span>
+</div>
+</div>
+<div class="name">Balthazar:</div><p class="balthazar">for level 3, we don't have a key, but we have a gem instead.</p>
+<div class="panel panel-default">
+<div class="panel-code code"><span class="context">function init_level3() {</span>
+<span class="context">    ...</span>
+<span class="context">    var item_data = [</span>
+<img src="../css/cross.png" width="15" height="15"/><span class="delete">        [500, 360, 20, 20, "finish"],</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">        [500, 360, 21, 27, "finish", "gem"],</span>
+<span class="context">    ];</span>
+<span class="context">    add_items(level, item_data);</span>
+<span class="context">    ...</span>
+<span class="context">}</span>
+</div>
+</div>
+<div class="name">Balthazar:</div><p class="balthazar">???</p>
+<div class="panel panel-default">
+<div class="panel-code code"><img src="../css/cross.png" width="15" height="15"/><span class="delete">// item_data: [x, y, width, height, type]</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">// item_data: [x, y, width, height, type, image]</span>
+<span class="context">function add_items(level, item_data) {</span>
+<span class="context">    for (var i = 0; i < item_data.length; i++) {</span>
+<span class="context">        var d = item_data[i];</span>
+<img src="../css/cross.png" width="15" height="15"/><span class="delete">        var item = create_item(d[0], d[1], d[2], d[3], d[4]);</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">        var item = create_item(d[0], d[1], d[2], d[3], d[4], d[5]);</span>
+<span class="context">        level.items.push(item);</span>
+<span class="context">    }</span>
+<span class="context">}</span>
+<span class="context"></span>
+<img src="../css/cross.png" width="15" height="15"/><span class="delete">function create_item(x, y, width, height, type) {</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">function create_item(x, y, width, height, type, image) {</span>
+<span class="context">    var d = {};</span>
+<span class="context">    d.x = x;</span>
+<span class="context">    d.y = y;</span>
+<span class="context">    d.width = width;</span>
+<span class="context">    d.height = height;</span>
+<span class="context">    d.origin_x = width / 2;</span>
+<span class="context">    d.origin_y = height;</span>
+<span class="context">    d.type = type;</span>
+<span class="context">    d.found = false;</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add"></span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    d.img = new Image();</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    d.img.src = _game.imagedir_items + image + ".png";</span>
+<span class="context">    return d;</span>
+<span class="context">}</span>
+</div>
+</div>
+<div class="name">Balthazar:</div><p class="balthazar">???</p>
+<p class="run">RUN your code in a browser and verify that it loads without errors.</p>
+<div class="name">Balthazar:</div><p class="balthazar">code is the same as before. now we'll draw the items</p>
+<div class="panel panel-default">
+<div class="panel-code code"><span class="context">function draw_items(ctx) {</span>
+<span class="context">    var level = _levels[_game.current_level];</span>
+<span class="context">    var items = level.items;</span>
+<span class="context">    for (var i = 0; i < items.length; i++) {</span>
+<span class="context">        var t = items[i];</span>
+<span class="context">        if (!t.found) {</span>
+<img src="../css/cross.png" width="15" height="15"/><span class="delete">            ctx.fillStyle = "magenta";</span>
+<img src="../css/cross.png" width="15" height="15"/><span class="delete">            ctx.fillRect(t.x - t.origin_x, t.y - t.origin_y, t.width, t.height);</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">            ctx.drawImage(t.img, t.x - t.origin_x, t.y - t.origin_y);</span>
+<span class="context">        }</span>
+<span class="context">    }</span>
+<span class="context">}</span>
+</div>
+</div>
+<div class="name">Balthazar:</div><p class="balthazar">???</p>
+<p class="alert alert-info"><a href="184.html"><span class="goto">GOTO 184</span></a> if you already have the <span class="badge-check">Vitality I - Health</span> badge.</p>
+<p class="alert alert-info"><a href="100.html"><span class="goto">GOTO 100</span></a></p>
+</div>
+</body>
+</html>

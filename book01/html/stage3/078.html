@@ -1,0 +1,57 @@
+<html>
+<head>
+<title>078 : Even more platforms</title>
+
+<link rel="stylesheet" href="../css/bootstrap.min.css">
+<link type="text/css" rel="stylesheet" href="../css/style.css" />
+<link href='http://fonts.googleapis.com/css?family=Trade+Winds' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Sacramento' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Piedra' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Aclonica' rel='stylesheet' type='text/css'>
+
+<script type="text/javascript">
+	var _gaq = _gaq || [];
+	_gaq.push(['_setAccount', 'UA-17513364-1']);
+	_gaq.push(['_setDomainName', 'cse4k12.org']);
+	_gaq.push(['_setAllowLinker', true]);
+	_gaq.push(['_trackPageview']);
+
+	(function() {
+		var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+		ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+		var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+	})();
+</script>
+
+</head>
+
+<body>
+<div class="navbar navbar-inverse navbar-static-top" role="navigation"><div class="container"><div class="navbar-header">
+<a class="navbar-brand" href="../index.html"><span class="title1">Adventures in</span> <span class="title2">JavaScript</span></a>
+</div></div></div>
+<div class="container">
+<h1>078 : Even more platforms</h1>
+<div class="name">Balthazar:</div><p class="balthazar">Try it out to see how it works.</p>
+<div class="name">Balthazar:</div><p class="balthazar">When you land on the top it works well, but when you hit the bottom or sides, it acts a bit weird. You always jump to the top of the platform.</p>
+<div class="name">Balthazar:</div><p class="balthazar">Indeed, all collisions with the platforms are currently assumed to be at the top.</p>
+<div class="name">Balthazar:</div><p class="balthazar">To fix this, we need to do a better job with our collision detection. In addition to answering the question "did object A collide with object B", we also need to know if object B (the player) collided with the top, bottom, left or right of object A (the platform).</p>
+<div class="name">Balthazar:</div><p class="balthazar">Not surprisingly, this is a bit more complicated than the simple collision detection we did earlier.</p>
+<div class="name">Balthazar:</div><p class="balthazar">But before doing that add a few more platforms:</p>
+<div class="panel panel-default">
+<div class="panel-code code"><span class="context">function init_game() {</span>
+<span class="context">    ...</span>
+<span class="context">    _game.platforms = [];</span>
+<span class="context">    _game.platforms.push(create_platform(0, 360, _game.width, 40));</span>
+<span class="context">    _game.platforms.push(create_platform(200, 290, 80, 20));</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    _game.platforms.push(create_platform(300, 240, 80, 20));</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    _game.platforms.push(create_platform(400, 170, 80, 20));</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    _game.platforms.push(create_platform(460, 110, 40, 20));</span>
+<span class="context">    ...</span>
+<span class="context">}</span>
+</div>
+</div>
+<div class="name">Balthazar:</div><p class="balthazar">???</p>
+<p class="alert alert-info"><a href="072.html"><span class="goto">GOTO 072</span></a></p>
+</div>
+</body>
+</html>

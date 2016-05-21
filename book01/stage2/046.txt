@@ -1,0 +1,35 @@
+TITLE = Use collide for jumps
+ID = 046
+
+B: But before we do that, now that we have this nifty =collide()= function, we can use it for our platform collisions as well.
+
+B: Note that =collide()= needs each object to have an =origin_x= and =origin_y= set. Platforms don't have that, so we'll need to add them.
+
+BEGIN_CODE
+.function create_platform(x, y, width, height) {
+.	var p = {};
+.	p.x = x;
+.	p.y = y;
+.	p.width = width;
+.	p.height = height;
++	p.origin_x = 0;
++	p.origin_y = 0;	
+.	return p;
+.}
+END_CODE
+
+B: And with that change, we can switch the platform collision detection over to using =collide()=.
+
+BEGIN_CODE
+.function check_platform_collisions() {
+.	_player.platform = false;
+-	if (_player.y > _game.platform.y) {
++	if (collide(_game.platform, _player)) {
+.		_player.platform = true;
+.		_player.y = _game.platform.y;
+.		_player.velocity_y = 0;
+.	}
+.}
+END_CODE
+
+GOTO 044

@@ -1,0 +1,177 @@
+TITLE = Vitality
+ID = 230
+
+B: We'll start by adding support for health.
+
+TODO Merge with 182
+
+BEGIN_CODE
+.function init_game() {
+.	...
+.	// Global world parameters.
+.	_game.friction = 0.15;
+.	_game.gravity = 0.5;
++
++	// Health meter.
++	_game.meter_x = 10;
++	_game.meter_y = 10;
++	_game.meter_width = 150;
++	_game.meter_height = 20;
+.}
+END_CODE
+
+
+BEGIN_CODE
+.function draw_player(ctx) {
+.	...
+.}
++
++// Draw the player status information.
++function draw_status(ctx) {
++	var health = (_game.meter_width * _player.health) / _player.health_max;
++	ctx.fillStyle = "rgba(0,255,0, 0.5)";
++	ctx.fillRect(_game.meter_x, _game.meter_y, health, _game.meter_height);
++
++	ctx.strokeStyle = "black";
++	ctx.strokeRect(_game.meter_x, _game.meter_y, _game.meter_width, _game.meter_height);
++}
+END_CODE
+
+B: and call it from our draw function
+
+BEGIN_CODE
+.function draw() {
+.	...
+.	draw_monsters(ctx);
+.	draw_player(ctx);
++	draw_status(ctx);
+.	...
+.}
+END_CODE
+
+GAIN Vitality I - Health
+
+
+B: Now we can add support for multiple lives
+
+
+BEGIN_CODE
+.function init_game() {
+.	...
+.	// Game state.
+.	_game.game_over = false;
+.	_game.game_win = false;
+.	_game.current_level = 0;
++	_game.player_lives = 3;
+.	...
+.}
+END_CODE
+
+BEGIN_CODE
+.function init_player() {
+.	...
+.	_player.platform = null;
++	_player.health_max = 50;
++	_player.health = _player.health_max;
+.	_player.dir = 1;
+.	...
+.}
+END_CODE
+
+
+BEGIN_CODE
+.function start_level(level_id) {
+.	...
+.}
+.
++function adjust_health(amount) {
++	_player.health += amount;
++	if (_player.health <= 0) {
++		_player.health = 0;
++		_game.game_over = true;
++	}
++	if (_player.health > _player.health_max) {
++		_player.health = _player.health_max;
++	}
++}
++
+END_CODE
+
+BEGIN_CODE
+.function start_level(level_id) {
+.	...
+.}
+.
++function lose_life() {
++	_game.player_lives--;
++	if (_game.player_lives > 0) {
++		_player.health = _player.health_max;
++	} else {
++		_game.game_over = true;
++	}
++}
++
+.function adjust_health(amount) {
+.	_player.health += amount;
+.	if (_player.health <= 0) {
+.		_player.health = 0;
+-		_game.game_over = true;
++		lose_life();
+.	}
+.	if (_player.health > _player.health_max) {
+.		_player.health = _player.health_max;
+.	}
+.}
+END_CODE
+
+
+B: Copy the player icon file into the =images/player= directory: =icon.png=.
+
+BEGIN_IMAGE_TABLE 1
+TABLE_IMAGE images/player/icon.png 28x34 icon.png
+END_IMAGE_TABLE
+
+BEGIN_COPY_FILE
+COPY_FILE images/player/icon.png
+END_COPY_FILE
+
+
+BEGIN_CODE
+.function draw_status(ctx) {
+.	var health = (_game.meter_width * _player.health) / _player.health_max;
+.	ctx.fillStyle = "rgba(0,255,0, 0.5)";
+.	ctx.fillRect(_game.meter_x, _game.meter_y, health, _game.meter_height);
+.
+.	ctx.strokeStyle = "black";
+.	ctx.strokeRect(_game.meter_x, _game.meter_y, _game.meter_width, _game.meter_height);
++
++	// Draw player icons to indicate how many extra lives remain.
++	for (var i = 0; i < _game.player_lives-1; i++) {
++		ctx.drawImage(_game.img_player, _game.width - 30 - (i * 20), 12);
++	}
+.}
+END_CODE
+
+
+BEGIN_CODE
+.function check_monster_collisions() {
+.	var level = _levels[_game.current_level];
+.	var monsters = level.monsters;
++	var damage = 0;
+.	for (var i = 0; i < monsters.length; i++) {
+.		var m = monsters[i];
+.		if (collide(m, _player)) {
+-			_game.game_over = true;
++			damage++;
+.		}
+.	}
++	if (damage != 0) {
++		adjust_health(-damage);
++	}
+.}
+END_CODE
+
+
+GAIN Vitality II - Reincarnation
+
+GOTO 260

@@ -1,0 +1,79 @@
+<html>
+<head>
+<title>074 : Better side walls</title>
+
+<link rel="stylesheet" href="../css/bootstrap.min.css">
+<link type="text/css" rel="stylesheet" href="../css/style.css" />
+<link href='http://fonts.googleapis.com/css?family=Trade+Winds' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Sacramento' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Piedra' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Aclonica' rel='stylesheet' type='text/css'>
+
+<script type="text/javascript">
+	var _gaq = _gaq || [];
+	_gaq.push(['_setAccount', 'UA-17513364-1']);
+	_gaq.push(['_setDomainName', 'cse4k12.org']);
+	_gaq.push(['_setAllowLinker', true]);
+	_gaq.push(['_trackPageview']);
+
+	(function() {
+		var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+		ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+		var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+	})();
+</script>
+
+</head>
+
+<body>
+<div class="navbar navbar-inverse navbar-static-top" role="navigation"><div class="container"><div class="navbar-header">
+<a class="navbar-brand" href="../index.html"><span class="title1">Adventures in</span> <span class="title2">JavaScript</span></a>
+</div></div></div>
+<div class="container">
+<h1>074 : Better side walls</h1>
+<div class="name">Balthazar:</div><p class="balthazar">Now that we have properly behaving platforms, we can add side walls on the left and right and remove our earlier code that constrained the player on the screen.</p>
+<div class="panel panel-default">
+<div class="panel-code code"><span class="context">function init_game() {</span>
+<span class="context">    ...</span>
+<span class="context">    _game.platforms = [];</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    // The bottom brick platform along the bottom of the stage.</span>
+<span class="context">    _game.platforms.push(create_platform(0, 360, _game.width, 40));</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    // The left offstage 'wall' to keep the player on the stage.</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    _game.platforms.push(</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">        create_platform(-60, -_game.height, 60, 2 * _game.height));</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    // The right offstage 'wall' to keep the player on the stage.</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    _game.platforms.push(</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">        create_platform(_game.width, -_game.height, 60, 2 * _game.height));</span>
+<span class="context">    _game.platforms.push(create_platform(200, 290, 80, 20));</span>
+<span class="context">    _game.platforms.push(create_platform(300, 240, 80, 20));</span>
+<span class="context">    _game.platforms.push(create_platform(400, 170, 80, 20));</span>
+<span class="context">    _game.platforms.push(create_platform(460, 110, 40, 20));</span>
+<span class="context">    ...</span>
+<span class="context">}</span>
+</div>
+</div>
+<div class="name">Balthazar:</div><p class="balthazar">Pay attention: Note that -_game.height looks a bit weird because of the negative sign next to the underscore in _game.</p>
+<div class="name">Balthazar:</div><p class="balthazar">Now, we can remove:</p>
+<div class="panel panel-default">
+<div class="panel-code code"><span class="context">function update_player() {</span>
+<span class="context">    ...</span>
+<span class="context">    // Move the player to the new location.</span>
+<span class="context">    _player.x += _player.velocity_x;</span>
+<span class="context">    _player.y += _player.velocity_y;</span>
+<img src="../css/cross.png" width="15" height="15"/><span class="delete"></span>
+<img src="../css/cross.png" width="15" height="15"/><span class="delete">    if (_player.x < 0) {</span>
+<img src="../css/cross.png" width="15" height="15"/><span class="delete">        _player.x = 0;</span>
+<img src="../css/cross.png" width="15" height="15"/><span class="delete">    } else if (_player.x > _game.width) {</span>
+<img src="../css/cross.png" width="15" height="15"/><span class="delete">        _player.x = _game.width;</span>
+<img src="../css/cross.png" width="15" height="15"/><span class="delete">    }</span>
+<span class="context">}</span>
+</div>
+</div>
+<p class="run">RUN your code in a browser and verify that it loads without errors.</p>
+<div class="name">Balthazar:</div><p class="balthazar">Note that the player now stays completely on the screen since it's colliding with a tall platform just offscreen.</p>
+<p class="alert alert-info"><a href="089.html"><span class="goto">GOTO 089</span></a> if you already have the <span class="badge-check">Monster II - Roaming</span> badge.</p>
+<p class="alert alert-info"><a href="061.html"><span class="goto">GOTO 061</span></a> if you already have the <span class="badge-check">Monster I - Stationary</span> badge.</p>
+<p class="alert alert-info"><a href="055.html"><span class="goto">GOTO 055</span></a></p>
+</div>
+</body>
+</html>

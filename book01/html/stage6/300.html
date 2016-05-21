@@ -1,0 +1,197 @@
+<html>
+<head>
+<title>300 : Title screen</title>
+
+<link rel="stylesheet" href="../css/bootstrap.min.css">
+<link type="text/css" rel="stylesheet" href="../css/style.css" />
+<link href='http://fonts.googleapis.com/css?family=Trade+Winds' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Sacramento' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Piedra' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Aclonica' rel='stylesheet' type='text/css'>
+
+<script type="text/javascript">
+	var _gaq = _gaq || [];
+	_gaq.push(['_setAccount', 'UA-17513364-1']);
+	_gaq.push(['_setDomainName', 'cse4k12.org']);
+	_gaq.push(['_setAllowLinker', true]);
+	_gaq.push(['_trackPageview']);
+
+	(function() {
+		var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+		ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+		var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+	})();
+</script>
+
+</head>
+
+<body>
+<div class="navbar navbar-inverse navbar-static-top" role="navigation"><div class="container"><div class="navbar-header">
+<a class="navbar-brand" href="../index.html"><span class="title1">Adventures in</span> <span class="title2">JavaScript</span></a>
+</div></div></div>
+<div class="container">
+<h1>300 : Title screen</h1>
+<div class="name">Balthazar:</div><p class="balthazar">Add a new title screen as the first "level" of the game.</p>
+<div class="panel panel-default">
+<div class="panel-code code"><span class="context">function init_level_defaults(level) {</span>
+<span class="context">    ...</span>
+<span class="context">}</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add"></span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">function init_level0_title() {</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    var level = {};</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    init_level_defaults(level);</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add"></span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    _levels.push(level);</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">}</span>
+</div>
+</div>
+<div class="panel panel-default">
+<div class="panel-code code"><span class="context">function init() {</span>
+<span class="context">    init_game();</span>
+<span class="context">    init_player();</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    init_level0_title();</span>
+<span class="context">    init_level1();</span>
+<span class="context">    init_level2();</span>
+<span class="context">    init_level3();</span>
+<span class="context">}</span>
+</div>
+</div>
+<div class="name">Balthazar:</div><p class="balthazar">Update the links between levels 1, 2 and 3. The title is level 0.</p>
+<div class="panel panel-default">
+<div class="panel-code code"><span class="context">function init_level1() {</span>
+<span class="context">    ...</span>
+<span class="context">    add_items(level, item_data);</span>
+<span class="context"></span>
+<img src="../css/cross.png" width="15" height="15"/><span class="delete">    level.goal = create_goal(500, 360, 1);</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    level.goal = create_goal(500, 360, 2);</span>
+<span class="context"></span>
+<span class="context">    _levels.push(level);</span>
+<span class="context">}</span>
+<span class="context"></span>
+<span class="context">function init_level2() {</span>
+<span class="context">    ...</span>
+<span class="context">    add_items(level, item_data);</span>
+<span class="context"></span>
+<img src="../css/cross.png" width="15" height="15"/><span class="delete">    level.goal = create_goal(500, 360, 2);</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    level.goal = create_goal(500, 360, 3);</span>
+<span class="context"></span>
+<span class="context">    _levels.push(level);</span>
+<span class="context">}</span>
+</div>
+</div>
+<div class="name">Balthazar:</div><p class="balthazar">Add a function to draw the title screen.</p>
+<div class="panel panel-default">
+<div class="panel-code code"><span class="context">function draw_status(ctx) {</span>
+<span class="context">    ...</span>
+<span class="context">}</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add"></span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">function draw_title_screen() {</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    // Check for spacebar press to exit title screen.</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    if (_game.keymap[32]) {</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">        start_level(1);</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    }</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add"></span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    update_monsters();</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add"></span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    var canvas = document.getElementById("stage");</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    var ctx = canvas.getContext("2d");</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add"></span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    erase(ctx);</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    ctx.fillStyle = "black";</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    ctx.font = "28px " + _game.font_family;</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    ctx.fillText("The Legend of", 75, 130);</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add"></span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    ctx.font = "64px " + _game.font_family;</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    ctx.fillText("JavaScript", 115, 180);</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add"></span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    ctx.font = "20px " + _game.font_family;</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    ctx.fillText("PRESS THE SPACE KEY TO START", 90, 350);</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add"></span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    draw_monsters(ctx);</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">}</span>
+</div>
+</div>
+<div class="name">Balthazar:</div><p class="balthazar">Add a level <span class="code-inline-color">type</span> to distinguish the regular game levels from the title screen.</p>
+<div class="name">Balthazar:</div><p class="balthazar">Normal levels should have <span class="code-inline-color">type</span> of "game".</p>
+<div class="panel panel-default">
+<div class="panel-code code"><span class="context">function init_level_defaults(level) {</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    level.type = "game";</span>
+<span class="context">    level.player_has_key = false;</span>
+<span class="context"></span>
+<span class="context">    level.player_start_x = 0;</span>
+<span class="context">    level.player_start_y = 0;</span>
+<span class="context">    ...</span>
+<span class="context">}</span>
+</div>
+</div>
+<div class="name">Balthazar:</div><p class="balthazar">The title level should have a <span class="code-inline-color">type</span> of "title".</p>
+<div class="panel panel-default">
+<div class="panel-code code"><span class="context">function init_level0_title() {</span>
+<span class="context">    var level = {};</span>
+<span class="context">    init_level_defaults(level);</span>
+<span class="context"></span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    // Override the level defaults.</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    level.type = "title";</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add"></span>
+<span class="context">    _levels.push(level);</span>
+<span class="context">}</span>
+</div>
+</div>
+<div class="name">Balthazar:</div><p class="balthazar">Modify the <span class="code-inline-color">update_world()</span> function to handle "game" levels and "title" levels differently.</p>
+<div class="panel panel-default">
+<div class="panel-code code"><span class="context">function update_world() {</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    var level = _levels[_game.current_level];</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add"></span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    if (level.type == "game") {</span>
+<span class="indent">        update_monsters();</span>
+<span class="indent">        update_player();</span>
+<span class="indent">        check_collisions();</span>
+<span class="indent">        draw();</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    } else if (level.type == "title") {</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">        draw_title_screen();</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    }</span>
+<span class="context"></span>
+<span class="context">    requestAnimationFrame(update_world);</span>
+<span class="context">}</span>
+</div>
+</div>
+<div class="name">Balthazar:</div><p class="balthazar">For the title screen, we can add a animation sequence where a group of monsters are chasing the player.</p>
+<div class="name">Balthazar:</div><p class="balthazar">Since all monster images must be located in the <span class="code-inline-color">monsters</span> directory, we'll make a copy of the player image in the monster directory.</p>
+<div class="row">
+<div class="col-sm-12 col-md-12"><div class="image-table">
+<a href="../images/monsters/doppleganger.png"><img src="../images/monsters/doppleganger.png" width="40" height="48" /></a>
+<div class="caption"><p align="center">doppleganger.png</p></div>
+</div></div>
+</div>
+<div class="alert alert-info"><p>Copy the following files into your project:</p><ul class="list-group">
+<li class="list-group-item"><span class="code-inline">images/monsters/doppleganger.png</span></li>
+</ul></div>
+<div class="panel panel-default">
+<div class="panel-code code"><span class="context">function init_level0_title() {</span>
+<span class="context">    var level = {};</span>
+<span class="context">    init_level_defaults(level);</span>
+<span class="context"></span>
+<span class="context">    // Override the level defaults.</span>
+<span class="context">    level.type = "title";</span>
+<span class="context"></span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    // Create the monsters.</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    var height = 270;</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    var x_min = -280;</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    var x_max = 700;</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    var monster_data = [</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">        // [x_start, y, width, height, x_min, x_max, movement, image]</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">        [-20, height, 20, 24, x_min, x_max, 1, "doppleganger"],</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">        [-205, height, 30, 30, x_min, x_max, 1, "henrietta"],</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">        [-235, height, 20, 24, x_min, x_max, 1, "vlad"],</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    ];</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    add_monsters(level, monster_data);</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add"></span>
+<span class="context">    _levels.push(level);</span>
+<span class="context">}</span>
+</div>
+</div>
+<p class="alert alert-success"><strong>Congratulations!</strong> You've earned the <span class="badge-gain">Transition II - Title</span> badge!</p>
+<p class="alert alert-info"><a href="310.html"><span class="goto">GOTO 310</span></a></p>
+</div>
+</body>
+</html>

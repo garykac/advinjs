@@ -1,0 +1,8 @@
+TITLE = Vitality
+ID = 170
+
+GOTO 180 IF_NOT_BADGE Vitality I - Health
+
+GOTO 190 IF_NOT_BADGE Vitality II - Reincarnation
+
+GOTO 100

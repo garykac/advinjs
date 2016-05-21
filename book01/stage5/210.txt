@@ -1,0 +1,100 @@
+TITLE = Monster images
+ID = 210
+
+B: Create the images/monsters directory.
+
+CREATE_DIR images/monsters
+
+B: Copy 2 monster images: =vlad.png=, =henrietta.png=.
+
+BEGIN_IMAGE_TABLE 2
+TABLE_IMAGE images/monsters/vlad.png 40x48 vlad.png
+TABLE_IMAGE images/monsters/henrietta.png 60x60 henrietta.png
+END_IMAGE_TABLE
+
+BEGIN_COPY_FILE
+COPY_FILE images/monsters/vlad.png
+COPY_FILE images/monsters/henrietta.png
+END_COPY_FILE
+
+
+B: Note that the width and height of the monsters is changed to match the size of the bitmap
+
+B: Vlad is 20x24 and Henrietta is 30x30
+
+BEGIN_CODE
+.function init_level1() {
+.	...
+.	var monster_data = [
+-		[350, 360, 20, 20, 60, 470, -1.0],
++		[350, 360, 20, 24, 60, 470, -1.0, "vlad"],
+-		[400, 360, 20, 20, 60, 470, 0.8],
++		[400, 360, 30, 30, 60, 470, 0.8, "henrietta"],
+.	];
+.	add_monsters(level, monster_data);
+.	...
+.}
+END_CODE
+
+
+BEGIN_CODE
+-// monster_data: [x, y, width, height, min_x, max_x, move_x]
++// monster_data: [x, y, width, height, min_x, max_x, move_x, image]
+.function add_monsters(level, monster_data) {
+.	for (var i = 0; i < monster_data.length; i++) {
+.		var m = monster_data[i];
+-		var monst = create_monster(m[0], m[1], m[2], m[3], m[4], m[5], m[6]);
++		var monst = create_monster(m[0], m[1], m[2], m[3], m[4], m[5], m[6], m[7]);
+.		level.monsters.push(monst);
+.	}
+.}
+.
+-function create_monster(x, y, width, height, min_x, max_x, move_x) {
++function create_monster(x, y, width, height, min_x, max_x, move_x, image) {
+.	...
+.	m.min_x = min_x;
+.	m.max_x = max_x;
+.	m.move_x = move_x;
++	m.dir = (move_x > 0) ? 1 : -1;
++
++	m.img = new Image();
++	m.img.src = _game.imagedir_monsters + image + ".png";
++
+.	return m;
+.}
+END_CODE
+
+BEGIN_CODE
+.function draw_monsters(ctx) {
+.	var level = _levels[_game.current_level];
+.	var monsters = level.monsters;
+.	for (var i = 0; i < monsters.length; i++) {
+.		var m = monsters[i];
+-		ctx.fillStyle = "#800000";
+-		ctx.fillRect(m.x - m.origin_x, m.y - m.origin_y, m.width, m.height);
++		set_transform(ctx, m);
++		ctx.drawImage(m.img, 0, 0);
++		reset_transform(ctx);
+.	}
+.}
+END_CODE
+
+BEGIN_CODE
+.function update_monsters() {
+.	var level = _levels[_game.current_level];
+.	var monsters = level.monsters;
+.	for (var i = 0; i < monsters.length; i++) {
+.		var m = monsters[i];
+.		m.x += m.move_x;
+.		if (m.x <= m.min_x || m.x >= m.max_x) {
+.			m.move_x *= -1;
++			m.dir *= -1;
+.		}
+.	}
+.}
+END_CODE
+
+GAIN Sprite II - Image
+GAIN Sprite III - Direction
+
+GOTO 215

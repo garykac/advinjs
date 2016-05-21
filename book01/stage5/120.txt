@@ -1,0 +1,148 @@
+TITLE = Player bitmaps
+ID = 120
+
+
+B: Create the =images/player= directory.
+
+CREATE_DIR images/player
+
+B: Create 3 player images and put them in the player directory: =happy.png=, =normal.png= and =sad.png=.
+
+BEGIN_IMAGE_TABLE 3
+TABLE_IMAGE images/player/normal.png 40x48 normal.png
+TABLE_IMAGE images/player/happy.png 40x48 happy.png
+TABLE_IMAGE images/player/sad.png 60x34 sad.png
+END_IMAGE_TABLE
+
+BEGIN_COPY_FILE
+COPY_FILE images/player/happy.png
+COPY_FILE images/player/normal.png
+COPY_FILE images/player/sad.png
+END_COPY_FILE
+
+B: Now we need to make the code aware of where we're storing these images.
+
+BEGIN_CODE
+.function init_game() {
+.	...
+.	// The keymap keeps track of which keys are currently being pressed.
+.	_game.keymap = {};
+.
++	_game.imagedir = "images/";
++	_game.imagedir_player = _game.imagedir + "player/";
++
+.	// Game state.
+.	_game.game_over = false;
+.	...
+.}
+END_CODE
+
+B: First, we need to load the sprites. Since the code to load the 3 images is the same, we create an =init_player_sprite()= function and call it to do the work.
+
+BEGIN_CODE
+.function init_player() {
+.	...
+.	_player.velocity_y = 0;
+.	_player.velocity_y_jump = -10;
+.	_player.velocity_y_max = 10;
++
++	_player.sprite = init_player_sprite("normal", 20, 24);
++	_player.sprite_sad = init_player_sprite("sad", 30, 17);
++	_player.sprite_happy = init_player_sprite("happy", 20, 24);
+.}
+.
++function init_player_sprite(name, width, height, origin_x, origin_y) {
++	var sprite = {};
++	sprite.width = width;
++	sprite.height = height;
++	sprite.origin_x = width / 2;
++	sprite.origin_y = height;
++	sprite.img = new Image();
++	sprite.img.src = _game.imagedir_player + name + ".png";
++	return sprite;
++}
++
+.function init_level_defaults(level) {
+.	...
+.}
+END_CODE
+
+B: To select the appropriate image to display, we'll create a =update_player_sprite()= function that checks the game state to choose the appropriate image and then set the player =width= and =height= accordingly.
+
+BEGIN_CODE
+.function init_player_sprite(name, width, height, origin_x, origin_y) {
+.	...
+.}
+.
++function update_player_sprite() {
++	var sprite;
++	if (_game.game_over && !_game.game_win) {
++		sprite = _player.sprite_sad;
++	} else if (_game.game_win) {
++		sprite = _player.sprite_happy;
++	} else {
++		sprite = _player.sprite;
++	}
++
++	// Update the player width, height and origin based on the current sprite.
++	_player.width = sprite.width;
++	_player.height = sprite.height;
++	_player.origin_x = sprite.origin_x;
++	_player.origin_y = sprite.origin_y;
++	
++	return sprite;
++}
++
+.function init_level_defaults(level) {
+.	...
+.}
+END_CODE
+
+B: And finally, we need to call =update_player_sprite()= whenever we need the player sprite updated. We need to call it once in =init_player()=.
+
+BEGIN_CODE
+.function init_player() {
+.	...
+.	_player.sprite = init_player_sprite("normal", 20, 24);
+.	_player.sprite_sad = init_player_sprite("sad", 30, 17);
+.	_player.sprite_happy = init_player_sprite("happy", 20, 24);
++	update_player_sprite();
+.}
+END_CODE
+
+B: And we also need to update =draw_player()= to use =update_player_sprite()= just before we draw the player.
+
+BEGIN_CODE
+.function draw_player(ctx) {
+-	ctx.fillStyle = "blue";
+-	ctx.fillRect(_player.x - _player.origin_x, _player.y - _player.origin_y,
+-					_player.width, _player.height);
++	var sprite = update_player_sprite();
++	ctx.drawImage(sprite.img, _player.x - _player.origin_x,
++					_player.y - _player.origin_y);
+.}
+END_CODE
+
+B: Since we're setting the player width and height in =update_player_sprite()=, we can set these values to =0= in =init_player()=.
+
+BEGIN_CODE
+.function init_player() {
+.	// Player x,y are initialized by the level.
+.	_player.x = 0;
+.	_player.y = 0;
+.	
++	// Player width, height and origin are initialized by the current sprite.
+-	_player.width = 20;
++	_player.width = 0;
+-	_player.height = 20;
++	_player.height = 0;
+-	_player.origin_x = _player.width / 2;
++	_player.origin_x = 0;
+-	_player.origin_y = _player.height;
++	_player.origin_y = 0;
+.
+.	...
+.}
+END_CODE
+
+GOTO 121

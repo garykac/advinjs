@@ -1,0 +1,26 @@
+TITLE = Create items
+ID = 131
+
+B: Add key
+
+B: We'll add a key as an item. and support items just like we do for monsters where we have an array that describes the items that we want to create.
+
+
+BEGIN_CODE
+.function init_level_defaults(level) {
+.	level.player_start_x = 0;
+.	level.player_start_y = 0;
+.
+.	level.platforms = [];
+.	level.monsters = [];
++	level.items = [];
+.}
+END_CODE
+
+B: This initializes all of the levels.
+
+
+GOTO 133 IF_BADGE Sprite II - Image
+
+GOTO 132
+

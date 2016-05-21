@@ -1,0 +1,70 @@
+TITLE = Player health
+ID = 180
+
+B: Add player health  (this adds status bar)
+
+
+
+B: fdafdsa
+
+BEGIN_CODE
+.function init_player() {
+.	...
+.	_player.platform = null;
++	_player.health_max = 50;
++	_player.health = _player.health_max;
+.	...
+.}
+END_CODE
+
+B: fdafdasfad
+
+BEGIN_CODE
+.function start_level(level_id) {
+.	...
+.}
+.
++function adjust_health(amount) {
++	_player.health += amount;
++	if (_player.health <= 0) {
++		_player.health = 0;
++		_game.game_over = true;
++	}
++	if (_player.health > _player.health_max) {
++		_player.health = _player.health_max;
++	}
++}
++
+END_CODE
+
+
+B: ???
+
+
+BEGIN_CODE
+.function check_monster_collisions() {
+.	var level = _levels[_game.current_level];
+.	var monsters = level.monsters;
++	var damage = 0;
+.	for (var i = 0; i < monsters.length; i++) {
+.		var m = monsters[i];
+.		if (collide(m, _player)) {
+-			_game.game_over = true;
++			damage++;
+.		}
+.	}
++	if (damage != 0) {
++		adjust_health(-damage);
++	}
+.}
+END_CODE
+
+B: ???
+
+B: you have health, but you can't see how much.
+
+B: let's add a health meter at the top of the screen to track our current health.
+
+
+
+GOTO 182

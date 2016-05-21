@@ -1,0 +1,10 @@
+TITLE = Items
+ID = 130
+
+GOTO 131 IF_NOT_BADGE Treasure I - Key
+
+GOTO 100 IF_BADGE Treasure III - Potion
+
+GOTO 145 IF_BADGE Vitality I - Health; Sprite II - Image
+
+GOTO 100

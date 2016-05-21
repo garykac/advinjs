@@ -1,0 +1,54 @@
+TITLE = Health meter
+ID = 182
+
+B: ???
+
+BEGIN_CODE
+.function init_game() {
+.	...
+.	// Global world parameters.
+.	_game.friction = 0.15;
+.	_game.gravity = 0.5;
++
++	// Health meter.
++	_game.meter_x = 10;
++	_game.meter_y = 10;
++	_game.meter_width = 150;
++	_game.meter_height = 20;
+.}
+END_CODE
+
+B: ???
+
+BEGIN_CODE
+.function draw_player(ctx) {
+.	...
+.}
++
++// Draw the player status information.
++function draw_status(ctx) {
++	var health = (_game.meter_width * _player.health) / _player.health_max;
++	ctx.fillStyle = "rgba(0,255,0, 0.5)";
++	ctx.fillRect(_game.meter_x, _game.meter_y, health, _game.meter_height);
++
++	ctx.strokeStyle = "black";
++	ctx.strokeRect(_game.meter_x, _game.meter_y, _game.meter_width, _game.meter_height);
++}
+END_CODE
+
+B: and call it from our draw function
+
+BEGIN_CODE
+.function draw() {
+.	...
+.	draw_player(ctx);
++	draw_status(ctx);
+.	...
+.}
+END_CODE
+
+GAIN Vitality I - Health
+ 
+GOTO 184 IF_BADGE Treasure I - Key; Sprite II - Image
+
+GOTO 100

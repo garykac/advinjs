@@ -1,0 +1,92 @@
+<html>
+<head>
+<title>072 : Better collisions</title>
+
+<link rel="stylesheet" href="../css/bootstrap.min.css">
+<link type="text/css" rel="stylesheet" href="../css/style.css" />
+<link href='http://fonts.googleapis.com/css?family=Trade+Winds' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Sacramento' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Piedra' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Aclonica' rel='stylesheet' type='text/css'>
+
+<script type="text/javascript">
+	var _gaq = _gaq || [];
+	_gaq.push(['_setAccount', 'UA-17513364-1']);
+	_gaq.push(['_setDomainName', 'cse4k12.org']);
+	_gaq.push(['_setAllowLinker', true]);
+	_gaq.push(['_trackPageview']);
+
+	(function() {
+		var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+		ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+		var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+	})();
+</script>
+
+</head>
+
+<body>
+<div class="navbar navbar-inverse navbar-static-top" role="navigation"><div class="container"><div class="navbar-header">
+<a class="navbar-brand" href="../index.html"><span class="title1">Adventures in</span> <span class="title2">JavaScript</span></a>
+</div></div></div>
+<div class="container">
+<h1>072 : Better collisions</h1>
+<div class="name">Balthazar:</div><p class="balthazar">Update collide():</p>
+<!-- TODO: describe how this works! -->
+<!-- TODO: describe how collision detection works -->
+<div class="panel panel-default">
+<div class="panel-code code"><img src="../css/cross.png" width="15" height="15"/><span class="delete">// Return true if the 2 objects overlap.</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">// If the 2 objects overlap, return a [dx, dy, dir] array containing the x,y</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">// overlap and the direction of the collision (relative to obj1).</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">// Return null if they don't overlap.</span>
+<span class="context">function collide(obj1, obj2) {</span>
+<img src="../css/cross.png" width="15" height="15"/><span class="delete">    if ((obj1.x - obj1.origin_x + obj1.width) <= (obj2.x - obj2.origin_x))</span>
+<img src="../css/cross.png" width="15" height="15"/><span class="delete">        return false;</span>
+<img src="../css/cross.png" width="15" height="15"/><span class="delete">    if ((obj1.y - obj1.origin_y + obj1.height) <= (obj2.y - obj2.origin_y))</span>
+<img src="../css/cross.png" width="15" height="15"/><span class="delete">        return false;</span>
+<img src="../css/cross.png" width="15" height="15"/><span class="delete">    if ((obj2.x - obj2.origin_x + obj2.width) <= (obj1.x - obj1.origin_x))</span>
+<img src="../css/cross.png" width="15" height="15"/><span class="delete">        return false;</span>
+<img src="../css/cross.png" width="15" height="15"/><span class="delete">    if ((obj2.y - obj2.origin_y + obj2.height) <= (obj1.y - obj1.origin_y))</span>
+<img src="../css/cross.png" width="15" height="15"/><span class="delete">        return false;</span>
+<img src="../css/cross.png" width="15" height="15"/><span class="delete"></span>
+<img src="../css/cross.png" width="15" height="15"/><span class="delete">    return true;</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    var o1_center_x = obj1.x - obj1.origin_x + (obj1.width / 2);</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    var o1_center_y = obj1.y - obj1.origin_y + (obj1.height / 2);</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add"></span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    var o2_center_x = obj2.x - obj2.origin_x + (obj2.width / 2);</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    var o2_center_y = obj2.y - obj2.origin_y + (obj2.height / 2);</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add"></span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    var dx = o1_center_x - o2_center_x;</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    var dy = o1_center_y - o2_center_y;</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add"></span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    var half_width = (obj1.width + obj2.width) / 2;</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    var half_height = (obj1.height + obj2.height) / 2;</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add"></span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    // No overlap.</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    if (half_width <= Math.abs(dx) || half_height <= Math.abs(dy))</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">        return null;</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add"></span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    var overlap_x = half_width - Math.abs(dx);</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    var overlap_y = half_height - Math.abs(dy);</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add"></span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    if (overlap_x >= overlap_y) {</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">        if (dy > 0)</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">            return [0, -overlap_y, "top"];</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">        else</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">            return [0, overlap_y, "bottom"];</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    } else {</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">        if (dx > 0)</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">            return [-overlap_x, 0, "left"];</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">        else</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">            return [overlap_x, 0, "right"];</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    }</span>
+<span class="context">}</span>
+</div>
+</div>
+<div class="name">Balthazar:</div><p class="balthazar">It now returns an array instead of true/false. Fortunately, JavaScript considers a null array to be false and any valid array to be true.</p>
+<div class="name">Balthazar:</div><p class="balthazar">run the code now and everything should still work like before, but now we have the information we need to make the platforms behave properly.</p>
+<p class="alert alert-success"><strong>Congratulations!</strong> You've earned the <span class="badge-gain">Collision II - Advanced</span> badge!</p>
+<p class="alert alert-info"><a href="073.html"><span class="goto">GOTO 073</span></a></p>
+</div>
+</body>
+</html>

@@ -1,0 +1,43 @@
+TITLE = Fixing the platforms
+ID = 073
+
+B: Now that we have the collision info, we can fix up the platforms.
+
+B: To do that we need to change how we handle platform collisions
+
+BEGIN_CODE
+.function check_platform_collisions() {
+.	var platforms = _game.platforms;
+.	_player.platform = null;
+.	for (var i = 0; i < platforms.length; i++) {
+-		if (collide(platforms[i], _player)) {
+-			_player.platform = platforms[i];
+-			_player.y = platforms[i].y;
+-			_player.velocity_y = 0;
++		var overlap = collide(platforms[i], _player);
++		if (overlap) {
++			// Adjust player location so it no longer overlaps with platform.
++			_player.x += overlap[0];
++			_player.y += overlap[1];
++
++			var dir = overlap[2];
++			if (dir == "left" || dir == "right") {
++				// Smack into left/right side of platform.
++				_player.velocity_x = 0;
++			} else if (dir == "top") {
++				// Land on top of platform.
++				_player.platform = platforms[i];
++				_player.velocity_y = 0;
++			} else {
++				// Bounce off bottom of platform.
++				_player.velocity_y *= -1;
++			}
+.		}
+.	}
+.}
+END_CODE
+
+
+GAIN Platform II - Four Sided
+
+GOTO 074

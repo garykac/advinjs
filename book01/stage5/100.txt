@@ -1,0 +1,21 @@
+TITLE = Choices
+ID = 100
+
+B: What would you like to do next?
+
+B: Work on your Sprite badges if you want to add bitmap images for the player, monsters, items and platforms.
+
+B: Work on your Vitality badges if you want to add health and multiple lives.
+
+B: Work on your Treasure badges if you want to add items like keys and potions.
+
+
+GOTO 110 IF_WANT_BADGE Sprite II - Image; Sprite III - Direction; Platform III - Pattern
+
+GOTO 170 IF_WANT_BADGE Vitality I - Health; Vitality II - Reincarnation
+
+GOTO 130 IF_WANT_BADGE Treasure I - Key; Treasure II - Finish; Treasure III - Potion
+
+
+GOTO 299 IF_BADGE Treasure III - Potion; Sprite III - Direction; Platform III - Pattern; Vitality II - Reincarnation
+

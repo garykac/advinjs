@@ -1,0 +1,127 @@
+<html>
+<head>
+<title>Adventures in JavaScript - How to Play</title>
+
+<link rel="stylesheet" href="css/bootstrap.min.css">
+<link type="text/css" rel="stylesheet" href="css/style.css" />
+<link href='http://fonts.googleapis.com/css?family=Trade+Winds' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Sacramento' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Piedra' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Aclonica' rel='stylesheet' type='text/css'>
+
+<script type="text/javascript">
+	var _gaq = _gaq || [];
+	_gaq.push(['_setAccount', 'UA-17513364-1']);
+	_gaq.push(['_setDomainName', 'cse4k12.org']);
+	_gaq.push(['_setAllowLinker', true]);
+	_gaq.push(['_trackPageview']);
+
+	(function() {
+		var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+		ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+		var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+	})();
+</script>
+
+</head>
+
+<body>
+<div class="navbar navbar-inverse navbar-static-top" role="navigation"><div class="container"><div class="navbar-header">
+<a class="navbar-brand" href="../index.html"><span class="title1">Adventures in</span> <span class="title2">JavaScript</span></a>
+</div></div></div>
+<div class="container">
+<h2>How to play</h2>
+<p class="info">This section covers the basic of how to play the game.</p>
+<h2>Navigating</h2>
+<p class="info">At the bottom of each section, there is one or more GOTO links that direct you to the next "page". Because this is a webpage, you can simply click on the link but you can imagine that if this was a real book, you'd have to actually turn pages to get to the next section.</p>
+<p class="info">The following is an example of a simple link that will take you to the starting page.</p>
+<p class="alert alert-info"><a href="stage1/001.html"><span class="goto">GOTO 001</span></a></p>
+<p class="info">As you progress through this book, you will gain various badges which will affect which paths you're allowed to take. For example:</p>
+<p class="alert alert-success"><strong>Congratulations!</strong> You've earned the <span class="badge-gain">Platform I - Base</span> badge!</p>
+<p class="info">As you collect these badges, be sure to mark your character sheet. There are GOTO lines that require specific badges so you'll need to keep careful track of your accomplishments.</p>
+<h2>Editing your code</h2>
+<p class="info">During the adventure, you will need to edit your code. This section describes the format used to specify the changes you need to make.</p>
+<h3>Adding lines</h3>
+<p class="info">New lines that you need to add are marked with a green plus ('+') sign. Sufficient context (shown in gray) is provided so that you can see exactly where the new line of code needs to be added.</p>
+<p class="info">For example:</p>
+<div class="panel panel-default">
+<div class="panel-code code"><span class="context">function draw() {</span>
+<span class="context">    var canvas = document.getElementById("stage");</span>
+<span class="context">    var ctx = canvas.getContext("2d");</span>
+<span class="context"></span>
+<span class="context">    erase(ctx);</span>
+<img src="css/plus.png" width="15" height="15"/><span class="add">    draw_platforms(ctx);</span>
+<span class="context">    draw_player(ctx);</span>
+<span class="context">}</span>
+</div>
+</div>
+<h3>Deleting lines</h3>
+<div class="panel panel-default">
+<div class="panel-code code"><span class="context">function check_input() {</span>
+<span class="context">    ...</span>
+<span class="context">    // Right arrow or 'd' to move right.</span>
+<span class="context">    if (_game.keymap[39] || _game.keymap[68]) {</span>
+<span class="context">        _player.velocity_x = 1;</span>
+<span class="context">    }</span>
+<img src="css/cross.png" width="15" height="15"/><span class="delete">    // Up arrow or 'w' to move up.</span>
+<img src="css/cross.png" width="15" height="15"/><span class="delete">    if (_game.keymap[38] || _game.keymap[87]) {</span>
+<img src="css/cross.png" width="15" height="15"/><span class="delete">        _player.velocity_y = -1;</span>
+<img src="css/cross.png" width="15" height="15"/><span class="delete">    }</span>
+<img src="css/cross.png" width="15" height="15"/><span class="delete">    // Down arrow or 's' to move up.</span>
+<img src="css/cross.png" width="15" height="15"/><span class="delete">    if (_game.keymap[40] || _game.keymap[83]) {</span>
+<img src="css/cross.png" width="15" height="15"/><span class="delete">        _player.velocity_y = 1;</span>
+<img src="css/cross.png" width="15" height="15"/><span class="delete">    }</span>
+<span class="context">}</span>
+</div>
+</div>
+<h3>Modifying lines</h3>
+<p class="info">A line which needs to be modified is presented as a line being deleted and a line being added. This allows you to see the before and after content of the line.</p>
+<div class="panel panel-default">
+<div class="panel-code code"><span class="context">function init_player() {</span>
+<span class="context">    _player.x = 0;</span>
+<img src="css/cross.png" width="15" height="15"/><span class="delete">    _player.y = 0;</span>
+<img src="css/plus.png" width="15" height="15"/><span class="add">    _player.y = 360;</span>
+<span class="context">    _player.width = 20;</span>
+<span class="context">    _player.height = 20;</span>
+<span class="context">}</span>
+</div>
+</div>
+<h3>Ellipses</h3>
+<p class="info">It's often too cumbersome to include the entire function context, so the code will sometimes use ellipses (three periods) to indicate that you have extra code there that is not being shown.</p>
+<p class="info">As in the following example, where the <span class="code-inline-color">init_game()</span> function has a lot of code that the beginning, but the part that we're interested in doesn't start until around <span class="code-inline-color">_game.keymap</span>.</p>
+<div class="panel panel-default">
+<div class="panel-code code"><span class="context">function init_game() {</span>
+<span class="context">    ...</span>
+<span class="context">    // The keymap keeps track of which keys are currently being pressed.</span>
+<span class="context">    _game.keymap = {};</span>
+<img src="css/plus.png" width="15" height="15"/><span class="add"></span>
+<img src="css/plus.png" width="15" height="15"/><span class="add">    // Game state.</span>
+<img src="css/plus.png" width="15" height="15"/><span class="add">    _game.platform = create_platform(0, 360, _game.width, 40);</span>
+<span class="context">}</span>
+</div>
+</div>
+<h3>Function order</h3>
+<p class="info">In order to make sure that everyone puts the functions in the same order, this book also provides neighboring function context as needed.</p>
+<p class="info">In the following example, the new <span class="code-inline-color">draw_platforms()</span> function should be placed between the <span class="code-inline-color">erase()</span> and <span class="code-inline-color">draw_player()</span> functions.</p>
+<div class="panel panel-default">
+<div class="panel-code code"><span class="context">// Erase the stage by filling it with white.</span>
+<span class="context">function erase(ctx) {</span>
+<span class="context">    ...</span>
+<span class="context">}</span>
+<span class="context"></span>
+<img src="css/plus.png" width="15" height="15"/><span class="add">// Draw the platforms.</span>
+<img src="css/plus.png" width="15" height="15"/><span class="add">function draw_platforms(ctx) {</span>
+<img src="css/plus.png" width="15" height="15"/><span class="add">    var platform = _game.platform;</span>
+<img src="css/plus.png" width="15" height="15"/><span class="add">    ctx.fillStyle = "rgb(153, 102, 51)";</span>
+<img src="css/plus.png" width="15" height="15"/><span class="add">    ctx.fillRect(platform.x, platform.y, platform.width, platform.height);</span>
+<img src="css/plus.png" width="15" height="15"/><span class="add">}</span>
+<img src="css/plus.png" width="15" height="15"/><span class="add"></span>
+<span class="context">// Draw the player.</span>
+<span class="context">function draw_player(ctx) {</span>
+<span class="context">    ...</span>
+<span class="context">}</span>
+</div>
+</div>
+</div>
+</body>
+</html>

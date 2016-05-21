@@ -1,0 +1,71 @@
+TITLE = Adventures in JavaScript
+
+HTML <p class="h1-title"><span class="title1">Adventures in</span> <span class="title2">JavaScript</span><span class="beta"> &nbsp;&nbsp;~&nbsp;beta&nbsp;~</span></p>
+
+BYLINE Created by <a href="https://plus.google.com/100423542577776884627">Gary Kacmarcik</a>
+
+GOTO 001 IF want to get started with your programming adventure...
+
+H2 About
+
+INFO <strong>Adventures in JavaScript</strong> is a "branching path book" that shows you how to write a canvas-based JavaScript game (a classic platform-jumping game) during the course of the adventure.
+
+BEGIN_SCREENSHOT_TABLE
+SCREENSHOT_TABLE_IMAGE screenshots/level0-title.png 206x150 Title screen
+SCREENSHOT_TABLE_IMAGE screenshots/level1.png 206x150 Level 1
+SCREENSHOT_TABLE_IMAGE screenshots/level2.png 206x150 Level 2
+SCREENSHOT_TABLE_IMAGE screenshots/level3.png 206x150 Level 3
+END_SCREENSHOT_TABLE
+
+INFO Unlike most branching path books, there are no wrong paths in this book. The choices merely determine the order in which you perform the various tasks necessary for the game. Two adventurers who choose different paths through this book will still end up in the same place at the end - they will both have created the same sample game.
+
+INFO This book is intended to serve as a jumping off point so that students can continue to develop their programming skills by modifying the levels and adding new ones.
+
+INFO Currently, this book is in beta, and it also assumes that the student has already completed a simple "baseline" project where they were introduced to:
+
+BEGIN_LIST
+LIST_ITEM HTML
+LIST_ITEM CSS
+LIST_ITEM Adding JavaScript to a webpage
+LIST_ITEM Variables and functions
+LIST_ITEM Using the browser's inspector to debug web pages and view the console log
+LIST_ITEM Creating a canvas and drawing on it from JavaScript
+LIST_ITEM Using the arrow keys (and WASD) to move an object around the screen
+END_LIST
+
+INFO However, if you have any familiarity with HTML and/or JavaScript, you can probably just jump in without having any problems. Just grab a copy of the <a href="baseline.html">baseline project</a> to get started.
+
+H2 Requirements
+
+INFO To play the game (and learn how to program a game), you will need the following:
+
+BEGIN_LIST
+LIST_ITEM A <strong>web browser</strong>. Something modern.
+LIST_ITEM A <strong>text editor</strong>. Modern or otherwise.
+LIST_ITEM A copy of the <a href="baseline.html"><strong>baseline project</strong></a>.
+LIST_ITEM The <a href="images.html"><strong>sample images</strong></a>.
+LIST_ITEM A <a href="docs/character-sheet.pdf"><strong>character sheet</strong></a> to track your progress<sup><a href="#dw">&dagger;</a></sup>.
+LIST_ITEM A <a href="docs/map-5.pdf"><strong>map for Stage 5</strong></a> (assuming you accept the challenge token).
+END_LIST
+
+INFO If you plan on making your own images (and you should!) you may also want to track down an image editor. Nothing fancy is needed and there are a lot of "icon editors" that are perfect for drawing the small sprite images used in these sort of games.
+
+H2 How to play
+
+INFO See the <a href="howtoplay.html">How to play</a> page.
+
+H2 Current status
+
+INFO The game is now 100% complete, but the text is still a painfully early draft. There are many placeholders where a section needs to be expanded with more information.
+
+INFO However, all of the programming parts are in working order. The build process for this project walks through every possible pathway in the adventure and performs the code edits to ensure that everything works as intended. At the end of each stage, a check is made to verify that every pathway through that stage produces the exact same code.
+
+INFO Be aware that, while the code parts that are done are reasonably stable, this project is still in beta, so some tweaks to the code may take place. This would only cause problems if you were part-way through the adventure when these changes were made. Whenever changes like this are made, they will be noted in a <a href="changes.html">changelog</a>.
+
+H2 Development info
+
+INFO To get an idea of how the final game plays, you can take a look at a <a href="prototype/game.html">prototype of the finished game</a>. The code in the final version will be slightly different as the code gets chopped up into bite-sized pieces, but the overall gameplay will be basically the same.
+
+INFO For those who are curious, there are 2 development maps (one for <a href="docs/devmap-1-4.pdf">stages 1-4</a> and one for <a href="docs/devmap-5.pdf">stage 5</a>) that show the overall structure of the game. These maps are not needed while playing.
+
+FOOTNOTE <a name="dw">&dagger;</a> - Character sheet based on <strong><a href="http://dungeon-world.com">Dungeon World</a></strong> by Sage LaTorra and Adam Koebel.

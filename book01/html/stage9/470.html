@@ -1,0 +1,162 @@
+<html>
+<head>
+<title>470 : Moving platforms</title>
+
+<link rel="stylesheet" href="../css/bootstrap.min.css">
+<link type="text/css" rel="stylesheet" href="../css/style.css" />
+<link href='http://fonts.googleapis.com/css?family=Trade+Winds' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Sacramento' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Piedra' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Aclonica' rel='stylesheet' type='text/css'>
+
+<script type="text/javascript">
+	var _gaq = _gaq || [];
+	_gaq.push(['_setAccount', 'UA-17513364-1']);
+	_gaq.push(['_setDomainName', 'cse4k12.org']);
+	_gaq.push(['_setAllowLinker', true]);
+	_gaq.push(['_trackPageview']);
+
+	(function() {
+		var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+		ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+		var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+	})();
+</script>
+
+</head>
+
+<body>
+<div class="navbar navbar-inverse navbar-static-top" role="navigation"><div class="container"><div class="navbar-header">
+<a class="navbar-brand" href="../index.html"><span class="title1">Adventures in</span> <span class="title2">JavaScript</span></a>
+</div></div></div>
+<div class="container">
+<h1>470 : Moving platforms</h1>
+<div class="name">Balthazar:</div><p class="balthazar">We need a new platform image.</p>
+<div class="row">
+<div class="col-sm-12 col-md-12"><div class="image-table">
+<a href="../images/backgrounds/wheel.png"><img src="../images/backgrounds/wheel.png" width="20" height="20" /></a>
+<div class="caption"><p align="center">wheel.png</p></div>
+</div></div>
+</div>
+<div class="alert alert-info"><p>Copy the following files into your project:</p><ul class="list-group">
+<li class="list-group-item"><span class="code-inline">images/backgrounds/wheel.png</span></li>
+</ul></div>
+<div class="panel panel-default">
+<div class="panel-code code"><span class="context">function init_level3() {</span>
+<span class="context">    ...</span>
+<span class="context">    add_default_platforms(level);</span>
+<span class="context">    var platform_data = [</span>
+<span class="context">        // [x, y, width, height, pattern]</span>
+<span class="context">        ...</span>
+<span class="context">    ];</span>
+<span class="context">    add_platforms(level, platform_data);</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    var moving_platform_data = [</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">        // [x, y, width, height, pattern, min_x, max_x, move_x]</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">        [400, 50, 30, 10, "wheel", 350, 490, -1],</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">        [350, 180, 20, 10, "wheel", 300, 480, 0.5],</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    ];</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    add_moving_platforms(level, moving_platform_data);</span>
+<span class="context"></span>
+<span class="context">    ...</span>
+<span class="context">}</span>
+</div>
+</div>
+<div class="panel panel-default">
+<div class="panel-code code"><span class="context">function add_default_platforms(level) {</span>
+<span class="context">    ...</span>
+<span class="context">}</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add"></span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">// platform_data: [x, y, width, height, pattern, min_x, max_x, move_x]</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">function add_moving_platforms(level, platform_data) {</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    for (var i = 0; i < platform_data.length; i++) {</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">        var p = platform_data[i];</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">        var plat = create_platform(p[0], p[1], p[2], p[3], p[4]);</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add"></span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">        plat.moving = true;</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">        plat.min_x = platform_data[i][5];</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">        plat.max_x = platform_data[i][6];</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">        plat.move_x = platform_data[i][7];</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">        level.platforms.push(plat);</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    }</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">}</span>
+</div>
+</div>
+<div class="panel panel-default">
+<div class="panel-code code"><span class="context">function create_platform(x, y, width, height, pattern) {</span>
+<span class="context">    ...</span>
+<span class="context">    p.width = width;</span>
+<span class="context">    p.height = height;</span>
+<span class="context">    p.origin_x = 0;</span>
+<span class="context">    p.origin_y = 0;</span>
+<span class="context">    p.dir = 1;</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    p.moving = false;</span>
+<span class="context"></span>
+<span class="context">    ...</span>
+<span class="context">}</span>
+</div>
+</div>
+<div class="panel panel-default">
+<div class="panel-code code"><span class="context">function draw_transition_screen() {</span>
+<span class="context">    ...</span>
+<span class="context">}</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add"></span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">function update_platforms() {</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    var platforms = _levels[_game.current_level].platforms;</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    for (var i = 0; i < platforms.length; i++) {</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">        var p = platforms[i];</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">        if (p.moving) {</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">            p.x += p.move_x;</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">            if (p.x <= p.min_x || p.x >= p.max_x) {</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">                p.move_x *= -1;</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">            }</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">        }</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    }</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">}</span>
+<span class="context"></span>
+<span class="context">function update_monsters() {</span>
+<span class="context">    ...</span>
+<span class="context">}</span>
+</div>
+</div>
+<div class="panel panel-default">
+<div class="panel-code code"><span class="context">function update_world() {</span>
+<span class="context">    var level = _levels[_game.current_level];</span>
+<span class="context"></span>
+<span class="context">    if (_game.in_transition) {</span>
+<span class="context">        draw_transition_screen();</span>
+<span class="context">    } else if (level.type == "game") {</span>
+<span class="context">        update_monsters();</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">        update_platforms();</span>
+<span class="context">        update_items();</span>
+<span class="context">        update_player();</span>
+<span class="context">        check_collisions();</span>
+<span class="context">        draw();</span>
+<span class="context">    } else if (level.type == "title") {</span>
+<span class="context">        draw_title_screen();</span>
+<span class="context">    }</span>
+<span class="context"></span>
+<span class="context">    requestAnimationFrame(update_world);</span>
+<span class="context">}</span>
+</div>
+</div>
+<div class="name">Balthazar:</div><p class="balthazar">If the player is on a moving platform, it needs to move along with the platform.</p>
+<div class="panel panel-default">
+<div class="panel-code code"><span class="context">function update_player() {</span>
+<span class="context">    ...</span>
+<span class="context">    // Move the player to the new location.</span>
+<span class="context">    _player.x += _player.velocity_x;</span>
+<span class="context">    _player.y += _player.velocity_y;</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add"></span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    // If the player is on a moving platform, then the player should move along</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    // with the platform.</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    if (_player.platform && _player.platform.moving) {</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">        _player.x += _player.platform.move_x;</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    }</span>
+<span class="context">}</span>
+</div>
+</div>
+<p class="alert alert-success"><strong>Congratulations!</strong> You've earned the <span class="badge-gain">Platform IV - Moving</span> badge!</p>
+<p class="alert alert-info"><a href="480.html"><span class="goto">GOTO 480</span></a></p>
+</div>
+</body>
+</html>

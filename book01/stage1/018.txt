@@ -1,0 +1,29 @@
+TITLE = Finish stage 1
+ID = 018
+
+U: I notie that the player can still go off the left/right side of the screen.
+
+B: Hmm... you can put a temporary fix in =update_player()= to keep the player on the screen, but there's a proper fix that you'll be doing later.
+
+BEGIN_CODE_INFO Add temporary fix to keep the player on the screen
+.function update_player() {
+.	...
+.	// Move the player to the new location.
+.	_player.x += _player.velocity_x;
+.	_player.y += _player.velocity_y;
++
++	if (_player.x < 0) {
++		_player.x = 0;
++	} else if (_player.x > _game.width) {
++		_player.x = _game.width;
++	}
+.}
+END_CODE_OK
+
+U: After doing that, I can't move the player completely offscreen, but I can still move it partway offscreen.
+
+B: That's because we're constraining the origin of the player, and the player's origin is the center (horizontally). Don't worry about this for now, we'll be fixing this up properly later.
+
+FINISH_STAGE 1
+
+GOTO 020 STAGE 2

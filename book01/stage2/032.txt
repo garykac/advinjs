@@ -1,0 +1,23 @@
+TITLE = Check platform collisions
+ID = 032
+
+B: Whenever the player collides with a platform, we want to record that the player is on a platform.
+
+B: We do this by initializing the =_player.platform= variable to =false= and then checking the platform to see if the player has collided with it. If the player has collided with the platform, then we set =_player.platform= to be =true=.
+
+B: This works because gravity is constantly pulling the character down onto the platform. The only time the player will **not** be colliding with a platform is when the player is in the middle of a jump.
+
+BEGIN_CODE_INFO Record the platform if the player collides with it.
+.function check_platform_collisions() {
++	_player.platform = false;
+.	if (_player.y > _game.platform.y) {
++		_player.platform = true;
+.		_player.y = _game.platform.y;
+.		_player.velocity_y = 0;
+.	}
+.}
+END_CODE_OK
+
+B: Make sure your player can jump around before continuing.
+
+GOTO 034

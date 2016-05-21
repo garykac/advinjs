@@ -1,0 +1,213 @@
+<html>
+<head>
+<title>200 : Player images</title>
+
+<link rel="stylesheet" href="../css/bootstrap.min.css">
+<link type="text/css" rel="stylesheet" href="../css/style.css" />
+<link href='http://fonts.googleapis.com/css?family=Trade+Winds' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Sacramento' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Piedra' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Aclonica' rel='stylesheet' type='text/css'>
+
+<script type="text/javascript">
+	var _gaq = _gaq || [];
+	_gaq.push(['_setAccount', 'UA-17513364-1']);
+	_gaq.push(['_setDomainName', 'cse4k12.org']);
+	_gaq.push(['_setAllowLinker', true]);
+	_gaq.push(['_trackPageview']);
+
+	(function() {
+		var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+		ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+		var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+	})();
+</script>
+
+</head>
+
+<body>
+<div class="navbar navbar-inverse navbar-static-top" role="navigation"><div class="container"><div class="navbar-header">
+<a class="navbar-brand" href="../index.html"><span class="title1">Adventures in</span> <span class="title2">JavaScript</span></a>
+</div></div></div>
+<div class="container">
+<h1>200 : Player images</h1>
+<div class="name">Balthazar:</div><p class="balthazar">We'll start by adding support for images.</p>
+<div class="name">Balthazar:</div><p class="balthazar">Create the images/player directory.</p>
+<div class="alert alert-info"><p>Create the following directory in your project:</p><ul class="list-group"><li class="list-group-item"><span class="code-inline">images/player</span></li></ul></div>
+<div class="name">Balthazar:</div><p class="balthazar">Copy 3 player images into the <span class="code-inline-color">images/player</span> directory: <span class="code-inline-color">happy.png</span>, <span class="code-inline-color">normal.png</span> and <span class="code-inline-color">sad.png</span>.</p>
+<div class="row">
+<div class="col-sm-6 col-md-4"><div class="image-table">
+<a href="../images/player/normal.png"><img src="../images/player/normal.png" width="40" height="48" /></a>
+<div class="caption"><p align="center">normal.png</p></div>
+</div></div>
+<div class="col-sm-6 col-md-4"><div class="image-table">
+<a href="../images/player/happy.png"><img src="../images/player/happy.png" width="40" height="48" /></a>
+<div class="caption"><p align="center">happy.png</p></div>
+</div></div>
+<div class="col-sm-6 col-md-4"><div class="image-table">
+<a href="../images/player/sad.png"><img src="../images/player/sad.png" width="60" height="34" /></a>
+<div class="caption"><p align="center">sad.png</p></div>
+</div></div>
+</div>
+<div class="alert alert-info"><p>Copy the following files into your project:</p><ul class="list-group">
+<li class="list-group-item"><span class="code-inline">images/player/happy.png</span></li>
+<li class="list-group-item"><span class="code-inline">images/player/normal.png</span></li>
+<li class="list-group-item"><span class="code-inline">images/player/sad.png</span></li>
+</ul></div>
+<div class="panel panel-default">
+<div class="panel-code code"><span class="context">function init_game() {</span>
+<span class="context">    ...</span>
+<span class="context">    // The keymap keeps track of which keys are currently being pressed.</span>
+<span class="context">    _game.keymap = {};</span>
+<span class="context"></span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    _game.imagedir = "images/";</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    _game.imagedir_player = _game.imagedir + "player/";</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    _game.imagedir_backgrounds = _game.imagedir + "backgrounds/";</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    _game.imagedir_monsters = _game.imagedir + "monsters/";</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    _game.imagedir_items = _game.imagedir + "items/";</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add"></span>
+<span class="context">    // Game state.</span>
+<span class="context">    _game.game_over = false;</span>
+<span class="context">    _game.game_win = false;</span>
+<span class="context">    ...</span>
+<span class="context">}</span>
+</div>
+</div>
+<div class="name">Balthazar:</div><p class="balthazar">???</p>
+<div class="panel panel-default">
+<div class="panel-code code"><span class="context">function init_player() {</span>
+<span class="context">    // Player x,y are initialized by the level.</span>
+<span class="context">    _player.x = 0;</span>
+<span class="context">    _player.y = 0;</span>
+<span class="context"></span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    // Player width, height and origin are initialized by the current sprite.</span>
+<img src="../css/cross.png" width="15" height="15"/><span class="delete">    _player.width = 20;</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    _player.width = 0;</span>
+<img src="../css/cross.png" width="15" height="15"/><span class="delete">    _player.height = 20;</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    _player.height = 0;</span>
+<img src="../css/cross.png" width="15" height="15"/><span class="delete">    _player.origin_x = _player.width / 2;</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    _player.origin_x = 0;</span>
+<img src="../css/cross.png" width="15" height="15"/><span class="delete">    _player.origin_y = _player.height;</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    _player.origin_y = 0;</span>
+<span class="context"></span>
+<span class="context">    _player.platform = null;</span>
+<span class="context">    ...</span>
+<span class="context">}</span>
+</div>
+</div>
+<div class="name">Balthazar:</div><p class="balthazar">???</p>
+<div class="panel panel-default">
+<div class="panel-code code"><span class="context">function init_player() {</span>
+<span class="context">    ...</span>
+<span class="context">    _player.platform = null;</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    _player.dir = 1;</span>
+<span class="context"></span>
+<span class="context">    ...</span>
+<span class="context">    _player.velocity_y_jump = -10;</span>
+<span class="context">    _player.velocity_y_max = 10;</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add"></span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    _player.sprite = init_player_sprite("normal", 20, 24);</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    _player.sprite_sad = init_player_sprite("sad", 30, 17);</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    _player.sprite_happy = init_player_sprite("happy", 20, 24);</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    update_player_sprite();</span>
+<span class="context">}</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add"></span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">function init_player_sprite(name, width, height, origin_x, origin_y) {</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    var sprite = {};</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    sprite.width = width;</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    sprite.height = height;</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    sprite.origin_x = width / 2;</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    sprite.origin_y = height;</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    sprite.img = new Image();</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    sprite.img.src = _game.imagedir_player + name + ".png";</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    return sprite;</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">}</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add"></span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">function update_player_sprite() {</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    var sprite;</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    if (_game.game_over && !_game.game_win) {</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">        sprite = _player.sprite_sad;</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    } else if (_game.game_win) {</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">        sprite = _player.sprite_happy;</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    } else {</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">        sprite = _player.sprite;</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    }</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add"></span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    // Update the player width, height and origin based on the current sprite.</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    _player.width = sprite.width;</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    _player.height = sprite.height;</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    _player.origin_x = sprite.origin_x;</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    _player.origin_y = sprite.origin_y;</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add"></span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    return sprite;</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">}</span>
+</div>
+</div>
+<div class="panel panel-default">
+<div class="panel-code code"><span class="context">function start_level(level_id) {</span>
+<span class="context">    ...</span>
+<span class="context">}</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add"></span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">function set_transform(ctx, obj) {</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    var x = obj.x - obj.origin_x;</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    var y = obj.y - obj.origin_y;</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add"></span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    // Adjust origin if we're facing left.</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    if (obj.dir < 0)</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">        x += obj.width;</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add"></span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    // Translate origin to (x,y).</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    ctx.setTransform(1, 0, 0, 1, x, y);</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add"></span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    // Flip the image if we're facing left.</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    if (obj.dir < 0)</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">        ctx.scale(-1, 1);</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">}</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add"></span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">function reset_transform(ctx) {</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    // Reset transform to the identity matrix.</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    ctx.setTransform(1, 0, 0, 1, 0, 0);</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">}</span>
+</div>
+</div>
+<div class="name">Balthazar:</div><p class="balthazar">???</p>
+<div class="panel panel-default">
+<div class="panel-code code"><span class="context">function check_input() {</span>
+<span class="context">    // Left arrow or 'a' to move left.</span>
+<span class="context">    if (_game.keymap[37] || _game.keymap[65]) {</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">        _player.dir = -1;</span>
+<span class="context">        _player.velocity_x -= _player.velocity_x_delta;</span>
+<span class="context">        if (_player.velocity_x < -_player.velocity_x_max) {</span>
+<span class="context">            _player.velocity_x = -_player.velocity_x_max;</span>
+<span class="context">        }</span>
+<span class="context">    }</span>
+<span class="context">    // Right arrow or 'd' to move right.</span>
+<span class="context">    if (_game.keymap[39] || _game.keymap[68]) {</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">        _player.dir = 1;</span>
+<span class="context">        _player.velocity_x += _player.velocity_x_delta;</span>
+<span class="context">        if (_player.velocity_x > _player.velocity_x_max) {</span>
+<span class="context">            _player.velocity_x = _player.velocity_x_max;</span>
+<span class="context">        }</span>
+<span class="context">    }</span>
+<span class="context">    ...</span>
+<span class="context">}</span>
+</div>
+</div>
+<div class="name">Balthazar:</div><p class="balthazar">???</p>
+<div class="panel panel-default">
+<div class="panel-code code"><span class="context">function draw_player(ctx) {</span>
+<img src="../css/cross.png" width="15" height="15"/><span class="delete">    ctx.fillStyle = "blue";</span>
+<img src="../css/cross.png" width="15" height="15"/><span class="delete">    ctx.fillRect(_player.x - _player.origin_x, _player.y - _player.origin_y,</span>
+<img src="../css/cross.png" width="15" height="15"/><span class="delete">                    _player.width, _player.height);</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    var sprite = update_player_sprite();</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    set_transform(ctx, _player);</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    ctx.drawImage(sprite.img, 0, 0);</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    reset_transform(ctx);</span>
+<span class="context">}</span>
+</div>
+</div>
+<div class="name">Balthazar:</div><p class="balthazar">???</p>
+<p class="alert alert-info"><a href="210.html"><span class="goto">GOTO 210</span></a></p>
+</div>
+</body>
+</html>

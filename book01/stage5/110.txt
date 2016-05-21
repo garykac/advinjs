@@ -1,0 +1,10 @@
+TITLE = Images
+ID = 110
+
+GOTO 120 IF_NOT_BADGE Sprite II - Image
+
+GOTO 115 IF_NOT_BADGE Sprite III - Direction
+
+GOTO 111 IF_NOT_BADGE Platform III - Pattern
+
+GOTO 100

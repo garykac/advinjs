@@ -1,0 +1,65 @@
+TITLE = Digging out the player
+ID = 006
+
+U: Why is the player drawn below the platform?
+
+B: Because we start drawing from the upper left corner, and the rectangle hangs down and to the right.
+
+B: To properly display the player, you need to subtract the height.
+
+U: So, I can just subtract =20= more from =y=?
+
+B: You could do that, and it would certainly appear to fix the problem, but what we really want is to be able to specify the player location relative to the bottom (since that's the part that sits on the platform).
+
+B: And you can do that by defining an origin for the player. As a default, you can just use the middle of the bottom of the player.
+
+FIGURE platform.png 493x207
+
+U: So =origin_x= is half of the player width and =origin_y= is the full height of the player.
+
+BEGIN_CODE_INFO Initialize the player's origin based on the player width and height.
+.function init_player() {
+.	...
+.	_player.width = 20;
+.	_player.height = 20;
++	_player.origin_x = _player.width / 2;
++	_player.origin_y = _player.height;
+.	
+.	_player.velocity_x = 0;
+.	_player.velocity_y = 0;
+.}
+END_CODE_OK
+
+B: And now that origin can be used to calculate the upper-left corner when we need to draw the player. You simply subtract off the origin when drawing.
+
+BEGIN_CODE_INFO Update =draw_player()= to use the player origin.
+.function draw_player(ctx) {
+.	ctx.fillStyle = "blue";
+-	ctx.fillRect(_player.x, _player.y, _player.width, _player.height);
++	ctx.fillRect(_player.x - _player.origin_x, _player.y - _player.origin_y,
++					_player.width, _player.height);
+.}
+END_CODE_OK
+
+B: Since the player's horizontal origin is now the center, you'll probably want to adjust the initial =x= position (otherwise the player will be halfway off the screen). The player doesn't have to be exactly at the left edge, so we can just add something like =20=.
+
+BEGIN_CODE_INFO Adjust the player's starting x-position.
+.function init_player() {
+-	_player.x = 0;
++	_player.x = 20;
+.	_player.y = 360;
+.	...
+.}
+END_CODE_OK
+
+U: That sounds like more work than just subtracting the player height.
+
+B: Yes, but later on you're going to want to change the size of the player and you're going to be happy you made this change.
+
+U: I hope so.
+
+GAIN Sprite I - Origin
+
+GOTO 007 IF experiment with changing the player width and height
+
+GOTO 008

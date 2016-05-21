@@ -1,0 +1,62 @@
+TITLE = Collide with platform
+ID = 026
+
+B: We can add a =check_platform_collisions()= function that makes sure the player doesn't go below the platform.
+
+B: We check to make sure that player's y-coordinate (the bottom of the player) doesn't go below the platform's y-coordinate (the top of the platform). If that ever happens, we move the player to the top of the platform and set the player's y-velocity to 0.
+
+B: Right now, this platform collision detection is pretty basic - and only works with a single platform. We'll be expanding it later to make it more general.
+
+BEGIN_CODE_INFO Create the =check_platform_collisions()= function.
+.function check_input() {
+.	...
+.}
+.
++function check_platform_collisions() {
++	if (_player.y > _game.platform.y) {
++		_player.y = _game.platform.y;
++		_player.velocity_y = 0;
++	}
++}
++
+.// This is called ~60 times per second to update the world.
+.function update_world() {
+.	...
+.}
+END_CODE_OK
+
+B: Since we'll be doing a lot more collision detection, we might as well create a =check_collisions()= function that will check for all the collisions that we care about in the game.
+
+B: Right now, we only have platform collisions, so we only need to call =check_platform_collisions()=. We'll be adding more to this function later.
+
+BEGIN_CODE_INFO Create the =check_collisions()= function.
+.function check_input() {
+.	...
+.}
+.
++function check_collisions() {
++	check_platform_collisions();
++}
++
+.function check_platform_collisions() {
+.	...
+.}
+END_CODE_OK
+
+B: And finally, we need to call our =check_collisions()= function. We need to do that in =update_world()= so that the game checks for collisions whenever anything moves on the screen.
+
+BEGIN_CODE_INFO Add a call to =check_collision()= in =update_world()=.
+.// This is called ~60 times per second to update the world.
+.function update_world() {
+.	update_player();
++	check_collisions();
+.	draw();
+.	
+.	requestAnimationFrame(update_world);
+.}
+END_CODE_OK
+
+B: Run your code and see if you can jump.
+
+GOTO 028
+

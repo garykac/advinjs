@@ -1,0 +1,64 @@
+TITLE = Key
+ID = 135
+
+B: Now that we have support for generic items, we have add different item types the behave differently.
+
+B: The first item is a key that can be used to unlock the goal.
+
+B: We have one key on each level that is used to unlock the goal. If the play does not have the key, they will not be able to enter the goal.
+
+BEGIN_CODE
+.function init_level_defaults(level) {
++	level.player_has_key = false;
++
+.	level.player_start_x = 0;
+.	level.player_start_y = 0;
+.
+.	level.platforms = [];
+.	level.monsters = [];
+.	level.items = [];
+.}
+END_CODE
+
+B: fdasfdsa
+
+BEGIN_CODE
+.function check_item_collisions() {
+.	var level = _levels[_game.current_level];
+.	var items = level.items;
+.	for (var i = 0; i < items.length; i++) {
+.		var item = items[i];
+.		if (!item.found) {
+.			if (collide(item, _player)) {
++				if (item.type == "key") {
++					level.player_has_key = true;
++				}
+.				item.found = true;
+.			}
+.		}
+.	}
+.}
+END_CODE
+
+B: adds and only allow the goal to work if the player has the key for this level
+
+BEGIN_CODE
+.function check_goal_collisions() {
+.	var level = _levels[_game.current_level];
+.	var goal = level.goal;
+-	if (collide(goal, _player)) {
++	if (collide(goal, _player) && level.player_has_key) {
+.		start_level(goal.next_level);
+.	}
+.}
+END_CODE
+
+B: with this change, the goal won't work until you get the key.
+
+B: Unfortunately level 2 doesn't have a key, so you can't get to level 3 anymore.
+
+GAIN Treasure I - Key
+
+GOTO 137 IF_BADGE Sprite II - Image
+
+GOTO 136

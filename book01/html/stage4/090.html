@@ -1,0 +1,226 @@
+<html>
+<head>
+<title>090 : Multiple levels</title>
+
+<link rel="stylesheet" href="../css/bootstrap.min.css">
+<link type="text/css" rel="stylesheet" href="../css/style.css" />
+<link href='http://fonts.googleapis.com/css?family=Trade+Winds' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Sacramento' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Piedra' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Aclonica' rel='stylesheet' type='text/css'>
+
+<script type="text/javascript">
+	var _gaq = _gaq || [];
+	_gaq.push(['_setAccount', 'UA-17513364-1']);
+	_gaq.push(['_setDomainName', 'cse4k12.org']);
+	_gaq.push(['_setAllowLinker', true]);
+	_gaq.push(['_trackPageview']);
+
+	(function() {
+		var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+		ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+		var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+	})();
+</script>
+
+</head>
+
+<body>
+<div class="navbar navbar-inverse navbar-static-top" role="navigation"><div class="container"><div class="navbar-header">
+<a class="navbar-brand" href="../index.html"><span class="title1">Adventures in</span> <span class="title2">JavaScript</span></a>
+</div></div></div>
+<div class="container">
+<h1>090 : Multiple levels</h1>
+<div class="name">Balthazar:</div><p class="balthazar">Multiple levels</p>
+<div class="name">Balthazar:</div><p class="balthazar">init_game is getting to be kindofa mess. We should clean that up. and add multiple levels since we're going to need then.</p>
+<div class="name">You:</div><p class="you">but we haven't finished the first level yet.</p>
+<div class="name">Balthazar:</div><p class="balthazar">Let's add a new _levels global variable.</p>
+<div class="panel panel-default">
+<div class="panel-code code"><span class="context">// Global variables.</span>
+<span class="context">var _game = {};</span>
+<span class="context">var _player = {};</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">var _levels = [];</span>
+</div>
+</div>
+<div class="name">Balthazar:</div><p class="balthazar">Note the square brackets since _levels is an array.</p>
+<div class="name">Balthazar:</div><p class="balthazar">And copy over the platforms, monsters and goal into a new function called init_level1()</p>
+<div class="panel panel-default">
+<div class="panel-code code"><span class="context">function init_game() {</span>
+<span class="context">    ...</span>
+<span class="context">    // Game state.</span>
+<span class="context">    _game.game_over = false;</span>
+<span class="context">    _game.game_win = false;</span>
+<img src="../css/cross.png" width="15" height="15"/><span class="delete">    _game.platforms = [];</span>
+<img src="../css/cross.png" width="15" height="15"/><span class="delete">    // The bottom brick platform along the bottom of the stage.</span>
+<img src="../css/cross.png" width="15" height="15"/><span class="delete">    _game.platforms.push(create_platform(0, 360, _game.width, 40));</span>
+<img src="../css/cross.png" width="15" height="15"/><span class="delete">    // The left offstage 'wall' to keep the player on the stage.</span>
+<img src="../css/cross.png" width="15" height="15"/><span class="delete">    _game.platforms.push(</span>
+<img src="../css/cross.png" width="15" height="15"/><span class="delete">        create_platform(-60, -_game.height, 60, 2 * _game.height));</span>
+<img src="../css/cross.png" width="15" height="15"/><span class="delete">    // The right offstage 'wall' to keep the player on the stage.</span>
+<img src="../css/cross.png" width="15" height="15"/><span class="delete">    _game.platforms.push(</span>
+<img src="../css/cross.png" width="15" height="15"/><span class="delete">        create_platform(_game.width, -_game.height, 60, 2 * _game.height));</span>
+<img src="../css/cross.png" width="15" height="15"/><span class="delete">    _game.platforms.push(create_platform(200, 290, 80, 20));</span>
+<img src="../css/cross.png" width="15" height="15"/><span class="delete">    _game.platforms.push(create_platform(300, 240, 80, 20));</span>
+<img src="../css/cross.png" width="15" height="15"/><span class="delete">    _game.platforms.push(create_platform(400, 170, 80, 20));</span>
+<img src="../css/cross.png" width="15" height="15"/><span class="delete">    _game.platforms.push(create_platform(460, 110, 40, 20));</span>
+<img src="../css/cross.png" width="15" height="15"/><span class="delete">    _game.monsters = [];</span>
+<img src="../css/cross.png" width="15" height="15"/><span class="delete">    _game.monsters.push(create_monster(350, 360, 20, 20, 60, 470, -1.0));</span>
+<img src="../css/cross.png" width="15" height="15"/><span class="delete">    _game.monsters.push(create_monster(400, 360, 20, 20, 60, 470, 0.8));</span>
+<img src="../css/cross.png" width="15" height="15"/><span class="delete">    _game.goal = create_goal(500, 360);</span>
+<span class="context">    ...</span>
+<span class="context">}</span>
+</div>
+</div>
+<div class="name">Balthazar:</div><p class="balthazar">Note: If you cut and paste, be sure the change all the _game to level.</p>
+<div class="panel panel-default">
+<div class="panel-code code"><span class="context">function init_player() {</span>
+<span class="context">    ...</span>
+<span class="context">}</span>
+<span class="context"></span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">function init_level1() {</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    var level = {};</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add"></span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    level.platforms = [];</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    // The bottom brick platform along the bottom of the stage.</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    level.platforms.push(create_platform(0, 360, _game.width, 40));</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    // The left offstage 'wall' to keep the player on the stage.</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    level.platforms.push(</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">        create_platform(-60, -_game.height, 60, 2 * _game.height));</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    // The right offstage 'wall' to keep the player on the stage.</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    level.platforms.push(</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">        create_platform(_game.width, -_game.height, 60, 2 * _game.height));</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    level.platforms.push(create_platform(200, 290, 80, 20));</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    level.platforms.push(create_platform(300, 240, 80, 20));</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    level.platforms.push(create_platform(400, 170, 80, 20));</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    level.platforms.push(create_platform(460, 110, 40, 20));</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add"></span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    level.monsters = [];</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    level.monsters.push(create_monster(350, 360, 20, 20, 60, 470, -1.0));</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    level.monsters.push(create_monster(400, 360, 20, 20, 60, 470, 0.8));</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add"></span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    level.goal = create_goal(500, 360);</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add"></span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    _levels.push(level);</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">}</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add"></span>
+<span class="context">function create_platform(x, y, width, height) {</span>
+<span class="context">    ...</span>
+<span class="context">}</span>
+</div>
+</div>
+<div class="name">Balthazar:</div><p class="balthazar">And call this new function from init():</p>
+<div class="panel panel-default">
+<div class="panel-code code"><span class="context">function init() {</span>
+<span class="context">    init_game();</span>
+<span class="context">    init_player();</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    init_level1();</span>
+<span class="context">}</span>
+</div>
+</div>
+<div class="name">Balthazar:</div><p class="balthazar">Since we're creating an array of levels, we need to keep track of the current level.</p>
+<div class="panel panel-default">
+<div class="panel-code code"><span class="context">function init_game() {</span>
+<span class="context">    ...</span>
+<span class="context">    // Game state.</span>
+<span class="context">    _game.game_over = false;</span>
+<span class="context">    _game.game_win = false;</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    _game.current_level = 0;</span>
+<span class="context">    ...</span>
+<span class="context">}</span>
+</div>
+</div>
+<div class="name">Balthazar:</div><p class="balthazar">We need to</p>
+<div class="name">Balthazar:</div><p class="balthazar">Now we need to fix up all the references to _game.platform, _game.monsters and _game.goal</p>
+<div class="panel panel-default">
+<div class="panel-code code"><span class="context">function draw_platforms(ctx) {</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    var level = _levels[_game.current_level];</span>
+<img src="../css/cross.png" width="15" height="15"/><span class="delete">    var platforms = _game.platforms;</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    var platforms = level.platforms;</span>
+<span class="context">    for (var i = 0; i < platforms.length; i++) {</span>
+<span class="context">        var platform = platforms[i];</span>
+<span class="context">        ctx.fillStyle = "rgb(153, 102, 51)";</span>
+<span class="context">        ctx.fillRect(platform.x, platform.y, platform.width, platform.height);</span>
+<span class="context">    }</span>
+<span class="context">}</span>
+<span class="context"></span>
+<span class="context">function draw_monsters(ctx) {</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    var level = _levels[_game.current_level];</span>
+<img src="../css/cross.png" width="15" height="15"/><span class="delete">    var monsters = _game.monsters;</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    var monsters = level.monsters;</span>
+<span class="context">    for (var i = 0; i < monsters.length; i++) {</span>
+<span class="context">        var m = monsters[i];</span>
+<span class="context">        ctx.fillStyle = "#800000";</span>
+<span class="context">        ctx.fillRect(m.x - m.origin_x, m.y - m.origin_y, m.width, m.height);</span>
+<span class="context">    }</span>
+<span class="context">}</span>
+<span class="context"></span>
+<span class="context">function draw_goal(ctx) {</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    var level = _levels[_game.current_level];</span>
+<img src="../css/cross.png" width="15" height="15"/><span class="delete">    var goal = _game.goal;</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    var goal = level.goal;</span>
+<span class="context">    ctx.fillStyle = "green";</span>
+<span class="context">    ctx.fillRect(goal.x - goal.origin_x, goal.y - goal.origin_y,</span>
+<span class="context">                    goal.width, goal.height);</span>
+<span class="context">}</span>
+</div>
+</div>
+<div class="name">Balthazar:</div><p class="balthazar">Fixup update_monsters</p>
+<div class="panel panel-default">
+<div class="panel-code code"><span class="context">function update_monsters() {</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    var level = _levels[_game.current_level];</span>
+<img src="../css/cross.png" width="15" height="15"/><span class="delete">    var monsters = _game.monsters;</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    var monsters = level.monsters;</span>
+<span class="context">    for (var i = 0; i < monsters.length; i++) {</span>
+<span class="context">        var m = monsters[i];</span>
+<span class="context">        m.x += m.move_x;</span>
+<span class="context">        if (m.x <= m.min_x || m.x >= m.max_x) {</span>
+<span class="context">            m.move_x *= -1;</span>
+<span class="context">        }</span>
+<span class="context">    }</span>
+<span class="context">}</span>
+</div>
+</div>
+<div class="name">Balthazar:</div><p class="balthazar">And fix up the collisions as well</p>
+<div class="panel panel-default">
+<div class="panel-code code"><span class="context">function check_platform_collisions() {</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    var level = _levels[_game.current_level];</span>
+<img src="../css/cross.png" width="15" height="15"/><span class="delete">    var platforms = _game.platforms;</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    var platforms = level.platforms;</span>
+<span class="context">    _player.platform = null;</span>
+<span class="context">    for (var i = 0; i < platforms.length; i++) {</span>
+<span class="context">        var overlap = collide(platforms[i], _player);</span>
+<span class="context">        if (overlap) {</span>
+<span class="context">            ...</span>
+<span class="context">        }</span>
+<span class="context">    }</span>
+<span class="context">}</span>
+<span class="context"></span>
+<span class="context">function check_monster_collisions() {</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    var level = _levels[_game.current_level];</span>
+<img src="../css/cross.png" width="15" height="15"/><span class="delete">    var monsters = _game.monsters;</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    var monsters = level.monsters;</span>
+<span class="context">    for (var i = 0; i < monsters.length; i++) {</span>
+<span class="context">        var m = monsters[i];</span>
+<span class="context">        if (collide(m, _player)) {</span>
+<span class="context">            _game.game_over = true;</span>
+<span class="context">        }</span>
+<span class="context">    }</span>
+<span class="context">}</span>
+<span class="context"></span>
+<span class="context">function check_goal_collisions() {</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    var level = _levels[_game.current_level];</span>
+<img src="../css/cross.png" width="15" height="15"/><span class="delete">    var goal = _game.goal;</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    var goal = level.goal;</span>
+<span class="context">    if (collide(goal, _player)) {</span>
+<span class="context">        _game.game_over = true;</span>
+<span class="context">        _game.game_win = true;</span>
+<span class="context">    }</span>
+<span class="context">}</span>
+</div>
+</div>
+<p class="run">RUN your code in a browser and verify that it loads without errors.</p>
+<div class="name">Balthazar:</div><p class="balthazar">Nothing should have changed.</p>
+<p class="alert alert-info"><a href="091.html"><span class="goto">GOTO 091</span></a></p>
+</div>
+</body>
+</html>

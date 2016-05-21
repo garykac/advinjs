@@ -1,0 +1,76 @@
+TITLE = Adding eyeball monsters
+ID = 490
+
+B: To add monster eyes that peek out from the platforms, we'll first need 3 eye images.
+
+BEGIN_IMAGE_TABLE 3
+TABLE_IMAGE images/monsters/eyes0.png 40x40 eyes0.png
+TABLE_IMAGE images/monsters/eyes1.png 40x40 eyes1.png
+TABLE_IMAGE images/monsters/eyes2.png 40x40 eyes2.png
+END_IMAGE_TABLE
+
+BEGIN_COPY_FILE
+COPY_FILE images/monsters/eyes0.png
+COPY_FILE images/monsters/eyes1.png
+COPY_FILE images/monsters/eyes2.png
+END_COPY_FILE
+
+BEGIN_CODE
+.function init_level3() {
+.	...
+.	// Create the monsters.
+.	var monster_data = [
+.		...
+.	];
+.	add_monsters(level, monster_data);
++	var eyes1 = [
++		[110, 200],
++		[540, 300],
++		[120, 55],
++		[130, 280],
++		[10, 180],
++		[350, 260],
++	];
++	add_eyeball_monsters(level, eyes1, 200, 100, 10);
++	var eyes2 = [
++		[390, 180],
++		[270, 220],
++		[490, 240],
++		[510, 140],		
++		[290, 280],
++		[10, 220],
++		[250, 140],
++		[180, 55],
++	];
++	add_eyeball_monsters(level, eyes2, 450, 100, 10);
+.	...
+.}
+END_CODE
+
+
+
+BEGIN_CODE
+.function add_projectile_monsters(level, monster_data) {
+.	...
+.}
++
++function add_eyeball_monsters(level, eyes, pause, open, close) {
++	var num_eyes = eyes.length;
++	var blink_duration = open + close + open;
++	var eye_loop = num_eyes * (blink_duration + pause);
++	for (var i = 0; i < num_eyes; i++) {
++		var sprites = [];
++		var start_delay = pause/2 + (i * (blink_duration + pause));
++		sprites.push(["eyes0", start_delay]);
++		sprites.push(["eyes1", open]);
++		sprites.push(["eyes2", close]);
++		sprites.push(["eyes1", open]);
++		sprites.push(["eyes0", eye_loop - blink_duration - start_delay]);
++		
++		var monst = create_monster(eyes[i][0], eyes[i][1], 20, 20, 0, 550, 0, sprites);
++		level.monsters.push(monst);
++	}
++}
+END_CODE
+
+GOTO 495

@@ -1,0 +1,41 @@
+TITLE = If goal
+ID = 142
+
+
+B: If you run the code now, the game will stop when you reach the third level. This is because we have code that assumes that each level has a 'goal' object. Since this is no longer the case, it will throw an exception (error) and stop when you get to a level without a goal (level 3 in our case).
+
+B: We can fix this by making the code work by having the draw_goal() and check_goal_collisions() functions check to make sure it has a valid goal object before trying to draw it.
+
+
+BEGIN_CODE
+.function draw_goal(ctx) {
+.	var level = _levels[_game.current_level];
+.	var goal = level.goal;
++	if (goal) {
+>		var image = goal.img_closed;
+>		if (level.player_has_key) {
+>			image = goal.img_open;
+>		}
+>		set_transform(ctx, goal);
+>		ctx.drawImage(image, 0, 0);
+>		reset_transform(ctx);
++	}
+.}
+END_CODE
+
+
+BEGIN_CODE
+.function check_goal_collisions() {
+.	var level = _levels[_game.current_level];
+.	var goal = level.goal;
++	if (goal) {
+>		if (collide(goal, _player) && level.player_has_key) {
+>			start_level(goal.next_level);
+>		}
++	}
+.}
+END_CODE
+
+
+
+GOTO 138

@@ -1,0 +1,73 @@
+<html>
+<head>
+<title>134 : Item collide</title>
+
+<link rel="stylesheet" href="../css/bootstrap.min.css">
+<link type="text/css" rel="stylesheet" href="../css/style.css" />
+<link href='http://fonts.googleapis.com/css?family=Trade+Winds' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Sacramento' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Piedra' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Aclonica' rel='stylesheet' type='text/css'>
+
+<script type="text/javascript">
+	var _gaq = _gaq || [];
+	_gaq.push(['_setAccount', 'UA-17513364-1']);
+	_gaq.push(['_setDomainName', 'cse4k12.org']);
+	_gaq.push(['_setAllowLinker', true]);
+	_gaq.push(['_trackPageview']);
+
+	(function() {
+		var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+		ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+		var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+	})();
+</script>
+
+</head>
+
+<body>
+<div class="navbar navbar-inverse navbar-static-top" role="navigation"><div class="container"><div class="navbar-header">
+<a class="navbar-brand" href="../index.html"><span class="title1">Adventures in</span> <span class="title2">JavaScript</span></a>
+</div></div></div>
+<div class="container">
+<h1>134 : Item collide</h1>
+<div class="name">Balthazar:</div><p class="balthazar">To make player collide with item</p>
+<div class="panel panel-default">
+<div class="panel-code code"><span class="context">function check_collisions() {</span>
+<span class="context">    check_platform_collisions();</span>
+<span class="context">    check_monster_collisions();</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    check_item_collisions();</span>
+<span class="context">    check_goal_collisions();</span>
+<span class="context">}</span>
+</div>
+</div>
+<div class="name">Balthazar:</div><p class="balthazar">???</p>
+<div class="panel panel-default">
+<div class="panel-code code"><span class="context">function check_monster_collisions() {</span>
+<span class="context">    ...</span>
+<span class="context">}</span>
+<span class="context"></span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">function check_item_collisions() {</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    var level = _levels[_game.current_level];</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    var items = level.items;</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    for (var i = 0; i < items.length; i++) {</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">        var item = items[i];</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">        if (!item.found) {</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">            if (collide(item, _player)) {</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">                item.found = true;</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">            }</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">        }</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    }</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">}</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add"></span>
+<span class="context">function check_goal_collisions() {</span>
+<span class="context">    ...</span>
+<span class="context">}</span>
+</div>
+</div>
+<p class="run">RUN your code in a browser and verify that it loads without errors.</p>
+<div class="name">Balthazar:</div><p class="balthazar">Now the item will disappear once the player touches it.</p>
+<p class="alert alert-info"><a href="135.html"><span class="goto">GOTO 135</span></a></p>
+</div>
+</body>
+</html>

@@ -1,0 +1,322 @@
+<html>
+<head>
+<title>091 : Cleaning up</title>
+
+<link rel="stylesheet" href="../css/bootstrap.min.css">
+<link type="text/css" rel="stylesheet" href="../css/style.css" />
+<link href='http://fonts.googleapis.com/css?family=Trade+Winds' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Sacramento' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Piedra' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Aclonica' rel='stylesheet' type='text/css'>
+
+<script type="text/javascript">
+	var _gaq = _gaq || [];
+	_gaq.push(['_setAccount', 'UA-17513364-1']);
+	_gaq.push(['_setDomainName', 'cse4k12.org']);
+	_gaq.push(['_setAllowLinker', true]);
+	_gaq.push(['_trackPageview']);
+
+	(function() {
+		var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+		ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+		var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+	})();
+</script>
+
+</head>
+
+<body>
+<div class="navbar navbar-inverse navbar-static-top" role="navigation"><div class="container"><div class="navbar-header">
+<a class="navbar-brand" href="../index.html"><span class="title1">Adventures in</span> <span class="title2">JavaScript</span></a>
+</div></div></div>
+<div class="container">
+<h1>091 : Cleaning up</h1>
+<div class="name">Balthazar:</div><p class="balthazar">Before we add new levels we should streamline the level creation code so that it is easy to create new levels.</p>
+<div class="name">You:</div><p class="you">"streamline" and "clean up" sound like fancy ways of saying that I'm going to write a lot of code, but I'm not going to see the game get any better.</p>
+<div class="name">Balthazar:</div><p class="balthazar">True, but the code will get better, which will make it easier for you to add more interesting features to the game. If you don't do this, the code will become harder to manage.</p>
+<div class="name">Balthazar:</div><p class="balthazar">We could just copy and paste everything, but that would make future changes more difficult to make.</p>
+<div class="name">Balthazar:</div><p class="balthazar">Things that we know will be the same for every level. currently not much, but we'll be adding more here.</p>
+<div class="panel panel-default">
+<div class="panel-code code"><span class="context">function init_player() {</span>
+<span class="context">    ...</span>
+<span class="context">}</span>
+<span class="context"></span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">function init_level_defaults(level) {</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    level.platforms = [];</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    level.monsters = [];</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">}</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add"></span>
+<span class="context">function init_level1() {</span>
+<span class="context">    ...</span>
+<span class="context">}</span>
+</div>
+</div>
+<div class="name">Balthazar:</div><p class="balthazar">???</p>
+<div class="panel panel-default">
+<div class="panel-code code"><span class="context">function init_level1() {</span>
+<span class="context">    var level = {};</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    init_level_defaults(level);</span>
+<span class="context"></span>
+<img src="../css/cross.png" width="15" height="15"/><span class="delete">    level.platforms = [];</span>
+<span class="context">    // The bottom brick platform along the bottom of the stage.</span>
+<span class="context">    level.platforms.push(create_platform(0, 360, _game.width, 40));</span>
+<span class="context">    // The left offstage 'wall' to keep the player on the stage.</span>
+<span class="context">    level.platforms.push(</span>
+<span class="context">        create_platform(-60, -_game.height, 60, 2 * _game.height));</span>
+<span class="context">    // The right offstage 'wall' to keep the player on the stage.</span>
+<span class="context">    level.platforms.push(</span>
+<span class="context">        create_platform(_game.width, -_game.height, 60, 2 * _game.height));</span>
+<span class="context">    level.platforms.push(create_platform(200, 290, 80, 20));</span>
+<span class="context">    level.platforms.push(create_platform(300, 240, 80, 20));</span>
+<span class="context">    level.platforms.push(create_platform(400, 170, 80, 20));</span>
+<span class="context">    level.platforms.push(create_platform(460, 110, 40, 20));</span>
+<span class="context"></span>
+<img src="../css/cross.png" width="15" height="15"/><span class="delete">    level.monsters = [];</span>
+<span class="context">    level.monsters.push(create_monster(350, 360, 20, 20, 60, 470, -1.0));</span>
+<span class="context">    level.monsters.push(create_monster(400, 360, 20, 20, 60, 470, 0.8));</span>
+<span class="context"></span>
+<span class="context">    level.goal = create_goal(500, 360);</span>
+<span class="context"></span>
+<span class="context">    _levels.push(level);</span>
+<span class="context">}</span>
+</div>
+</div>
+<p class="run">RUN your code in a browser and verify that it loads without errors.</p>
+<div class="name">Balthazar:</div><p class="balthazar">Now let's look at the platform code. very repetitive.  the only thing different are the values that we pass to create_platform each time.  We can simplify by having an array of just those values and looping through them.</p>
+<div class="name">Balthazar:</div><p class="balthazar">Delete the current platform creation code:</p>
+<div class="panel panel-default">
+<div class="panel-code code"><span class="context">function init_level1() {</span>
+<span class="context">    var level = {};</span>
+<span class="context">    init_level_defaults(level);</span>
+<span class="context"></span>
+<span class="context">    // The bottom brick platform along the bottom of the stage.</span>
+<img src="../css/cross.png" width="15" height="15"/><span class="delete">    level.platforms.push(create_platform(0, 360, _game.width, 40));</span>
+<span class="context">    // The left offstage 'wall' to keep the player on the stage.</span>
+<img src="../css/cross.png" width="15" height="15"/><span class="delete">    level.platforms.push(</span>
+<img src="../css/cross.png" width="15" height="15"/><span class="delete">        create_platform(-60, -_game.height, 60, 2 * _game.height));</span>
+<span class="context">    // The right offstage 'wall' to keep the player on the stage.</span>
+<img src="../css/cross.png" width="15" height="15"/><span class="delete">    level.platforms.push(</span>
+<img src="../css/cross.png" width="15" height="15"/><span class="delete">        create_platform(_game.width, -_game.height, 60, 2 * _game.height));</span>
+<img src="../css/cross.png" width="15" height="15"/><span class="delete">    level.platforms.push(create_platform(200, 290, 80, 20));</span>
+<img src="../css/cross.png" width="15" height="15"/><span class="delete">    level.platforms.push(create_platform(300, 240, 80, 20));</span>
+<img src="../css/cross.png" width="15" height="15"/><span class="delete">    level.platforms.push(create_platform(400, 170, 80, 20));</span>
+<img src="../css/cross.png" width="15" height="15"/><span class="delete">    level.platforms.push(create_platform(460, 110, 40, 20));</span>
+<span class="context">    ...</span>
+<span class="context">}</span>
+</div>
+</div>
+<div class="name">Balthazar:</div><p class="balthazar">and replace it with:</p>
+<div class="panel panel-default">
+<div class="panel-code code"><span class="context">function init_level1() {</span>
+<span class="context">    var level = {};</span>
+<span class="context">    init_level_defaults(level);</span>
+<span class="context"></span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    var platform_data = [</span>
+<span class="indent">        // The bottom brick platform along the bottom of the stage.</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">        [0, 360, _game.width, 40],</span>
+<span class="indent">        // The left offstage 'wall' to keep the player on the stage.</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">        [-60, -_game.height, 60, 2 * _game.height],</span>
+<span class="indent">        // The right offstage 'wall' to keep the player on the stage.</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">        [_game.width, -_game.height, 60, 2 * _game.height],</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">        [200, 290, 80, 20],</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">        [300, 240, 80, 20],</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">        [400, 170, 80, 20],</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">        [460, 110, 40, 20],</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    ];</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    for (var i = 0; i < platform_data.length; i++) {</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">        var p = platform_data[i];</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">        var plat = create_platform(p[0], p[1], p[2], p[3], p[4]);</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">        level.platforms.push(plat);</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    }</span>
+<span class="context">    ...</span>
+<span class="context">}</span>
+</div>
+</div>
+<p class="run">RUN your code in a browser and verify that it loads without errors.</p>
+<div class="name">Balthazar:</div><p class="balthazar">The loop to create the platforms from the data is going to be the same for each level, so we can extract that code out into a separate function.</p>
+<div class="panel panel-default">
+<div class="panel-code code"><span class="context">function init_level1() {</span>
+<span class="context">    ...</span>
+<span class="context">}</span>
+<span class="context"></span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">// platform_data: [x, y, width, height]</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">function add_platforms(level, platform_data) {</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    for (var i = 0; i < platform_data.length; i++) {</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">        var p = platform_data[i];</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">        var plat = create_platform(p[0], p[1], p[2], p[3]);</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">        level.platforms.push(plat);</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    }</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">}</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add"></span>
+<span class="context">function create_platform(x, y, width, height) {</span>
+<span class="context">    ...</span>
+<span class="context">}</span>
+</div>
+</div>
+<div class="name">Balthazar:</div><p class="balthazar">???</p>
+<div class="panel panel-default">
+<div class="panel-code code"><span class="context">function init_level1() {</span>
+<span class="context">    var level = {};</span>
+<span class="context">    init_level_defaults(level);</span>
+<span class="context"></span>
+<span class="context">    var platform_data = [</span>
+<span class="context">        // The bottom brick platform along the bottom of the stage.</span>
+<span class="context">        [0, 360, _game.width, 40],</span>
+<span class="context">        // The left offstage 'wall' to keep the player on the stage.</span>
+<span class="context">        [-60, -_game.height, 60, 2 * _game.height],</span>
+<span class="context">        // The right offstage 'wall' to keep the player on the stage.</span>
+<span class="context">        [_game.width, -_game.height, 60, 2 * _game.height],</span>
+<span class="context">        [200, 290, 80, 20],</span>
+<span class="context">        [300, 240, 80, 20],</span>
+<span class="context">        [400, 170, 80, 20],</span>
+<span class="context">        [460, 110, 40, 20],</span>
+<span class="context">    ];</span>
+<img src="../css/cross.png" width="15" height="15"/><span class="delete">    for (var i = 0; i < platform_data.length; i++) {</span>
+<img src="../css/cross.png" width="15" height="15"/><span class="delete">        var p = platform_data[i];</span>
+<img src="../css/cross.png" width="15" height="15"/><span class="delete">        var plat = create_platform(p[0], p[1], p[2], p[3], p[4]);</span>
+<img src="../css/cross.png" width="15" height="15"/><span class="delete">        level.platforms.push(plat);</span>
+<img src="../css/cross.png" width="15" height="15"/><span class="delete">    }</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    add_platforms(level, platform_data);</span>
+<span class="context">    ...</span>
+<span class="context">}</span>
+</div>
+</div>
+<p class="run">RUN your code in a browser and verify that it loads without errors.</p>
+<div class="name">Balthazar:</div><p class="balthazar">In addition, the main platform on the bottom and the ones on the left and right side are going to be the same for each level, so we can extract those out into a function as well.</p>
+<div class="panel panel-default">
+<div class="panel-code code"><span class="context">function add_platforms(level, platform_data) {</span>
+<span class="context">    ...</span>
+<span class="context">}</span>
+<span class="context"></span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">function add_default_platforms(level) {</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    var platform_data = [</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">        // The bottom brick platform along the bottom of the stage.</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">        [0, 360, _game.width, 40],</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">        // The left offstage 'wall' to keep the player on the stage.</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">        [-60, -_game.height, 60, 2*_game.height],</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">        // The right offstage 'wall' to keep the player on the stage.</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">        [_game.width, -_game.height, 60, 2*_game.height],</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    ];</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    add_platforms(level, platform_data);</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">}</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add"></span>
+<span class="context">function create_platform(x, y, width, height) {</span>
+<span class="context">    ...</span>
+<span class="context">}</span>
+</div>
+</div>
+<div class="name">Balthazar:</div><p class="balthazar">???</p>
+<div class="panel panel-default">
+<div class="panel-code code"><span class="context">function init_level1() {</span>
+<span class="context">    var level = {};</span>
+<span class="context">    init_level_defaults(level);</span>
+<span class="context"></span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    add_default_platforms(level);</span>
+<span class="context">    var platform_data = [</span>
+<img src="../css/cross.png" width="15" height="15"/><span class="delete">        // The bottom brick platform along the bottom of the stage.</span>
+<img src="../css/cross.png" width="15" height="15"/><span class="delete">        [0, 360, _game.width, 40],</span>
+<img src="../css/cross.png" width="15" height="15"/><span class="delete">        // The left offstage 'wall' to keep the player on the stage.</span>
+<img src="../css/cross.png" width="15" height="15"/><span class="delete">        [-60, -_game.height, 60, 2 * _game.height],</span>
+<img src="../css/cross.png" width="15" height="15"/><span class="delete">        // The right offstage 'wall' to keep the player on the stage.</span>
+<img src="../css/cross.png" width="15" height="15"/><span class="delete">        [_game.width, -_game.height, 60, 2 * _game.height],</span>
+<span class="context">        [200, 290, 80, 20],</span>
+<span class="context">        [300, 240, 80, 20],</span>
+<span class="context">        [400, 170, 80, 20],</span>
+<span class="context">        [460, 110, 40, 20],</span>
+<span class="context">    ];</span>
+<span class="context">    add_platforms(level, platform_data);</span>
+<span class="context">    ...</span>
+<span class="context">}</span>
+</div>
+</div>
+<p class="run">RUN your code in a browser and verify that it loads without errors.</p>
+<div class="name">Balthazar:</div><p class="balthazar">Now we need to do the same thing for the monsters.</p>
+<div class="name">Balthazar:</div><p class="balthazar">The current monster code should be deleted</p>
+<div class="panel panel-default">
+<div class="panel-code code"><span class="context">function init_level1() {</span>
+<span class="context">    ...</span>
+<span class="context">    add_platforms(level, platform_data);</span>
+<span class="context"></span>
+<img src="../css/cross.png" width="15" height="15"/><span class="delete">    level.monsters.push(create_monster(350, 360, 20, 20, 60, 470, -1.0));</span>
+<img src="../css/cross.png" width="15" height="15"/><span class="delete">    level.monsters.push(create_monster(400, 360, 20, 20, 60, 470, 0.8));</span>
+<span class="context"></span>
+<span class="context">    level.goal = create_goal(500, 360);</span>
+<span class="context">    ...</span>
+<span class="context">}</span>
+</div>
+</div>
+<div class="name">Balthazar:</div><p class="balthazar">and replaced with:</p>
+<div class="panel panel-default">
+<div class="panel-code code"><span class="context">function init_level1() {</span>
+<span class="context">    ...</span>
+<span class="context">    add_platforms(level, platform_data);</span>
+<span class="context"></span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    var monster_data = [</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">        [350, 360, 20, 20, 60, 470, -1.0],</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">        [400, 360, 20, 20, 60, 470, 0.8],</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    ];</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    add_monsters(level, monster_data);</span>
+<span class="context"></span>
+<span class="context">    level.goal = create_goal(500, 360);</span>
+<span class="context">    ...</span>
+<span class="context">}</span>
+</div>
+</div>
+<div class="name">Balthazar:</div><p class="balthazar">and we can add</p>
+<div class="panel panel-default">
+<div class="panel-code code"><span class="context">function create_platform(x, y, width, height) {</span>
+<span class="context">    ...</span>
+<span class="context">}</span>
+<span class="context"></span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">// monster_data: [x, y, width, height, min_x, max_x, move_x]</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">function add_monsters(level, monster_data) {</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    for (var i = 0; i < monster_data.length; i++) {</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">        var m = monster_data[i];</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">        var monst = create_monster(m[0], m[1], m[2], m[3], m[4], m[5], m[6]);</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">        level.monsters.push(monst);</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    }</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">}</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add"></span>
+<span class="context">function create_monster(x, y, width, height, min_x, max_x, move_x) {</span>
+<span class="context">    ...</span>
+<span class="context">}</span>
+</div>
+</div>
+<div class="name">Balthazar:</div><p class="balthazar">one last thing to add is a starting position for the player since each level may want to have the player start in a different location.</p>
+<div class="name">Balthazar:</div><p class="balthazar">You should set an appropriate default in <span class="code-inline-color">init_level_defaults()</span> and then set a proper value in <span class="code-inline-color">init_level1()</span>.</p>
+<div class="panel panel-default">
+<div class="panel-code code"><span class="context">function init_level_defaults(level) {</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    level.player_start_x = 0;</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    level.player_start_y = 0;</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add"></span>
+<span class="context">    level.platforms = [];</span>
+<span class="context">    level.monsters = [];</span>
+<span class="context">}</span>
+</div>
+</div>
+<div class="panel panel-default">
+<div class="panel-code code"><span class="context">function init_level1() {</span>
+<span class="context">    var level = {};</span>
+<span class="context">    init_level_defaults(level);</span>
+<span class="context"></span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    level.player_start_x = 20;</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    level.player_start_y = 260;</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add"></span>
+<span class="context">    add_default_platforms(level);</span>
+<span class="context">    var platform_data = [</span>
+<span class="context">        [200, 290, 80, 20],</span>
+<span class="context">        [300, 240, 80, 20],</span>
+<span class="context">        [400, 170, 80, 20],</span>
+<span class="context">        [460, 110, 40, 20],</span>
+<span class="context">    ];</span>
+<span class="context">    add_platforms(level, platform_data);</span>
+<span class="context">    ...</span>
+<span class="context">}</span>
+</div>
+</div>
+<div class="name">Balthazar:</div><p class="balthazar">We'll use these values when we connect the levels together</p>
+<p class="run">RUN your code in a browser and verify that it loads without errors.</p>
+<p class="alert alert-info"><a href="092.html"><span class="goto">GOTO 092</span></a></p>
+</div>
+</body>
+</html>

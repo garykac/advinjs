@@ -1,0 +1,137 @@
+TITLE = Animating monsters
+ID = 410
+
+B: The flying monster looks odd because the wings are not flapping. To fix this we need to animate the flying monster.
+
+B: For the animation, we'll need a second image of the monster (with the wings in a down position).
+
+BEGIN_IMAGE_TABLE 1
+TABLE_IMAGE images/monsters/falco2.png 80x48 falco2.png
+END_IMAGE_TABLE
+
+BEGIN_COPY_FILE
+COPY_FILE images/monsters/falco2.png
+END_COPY_FILE
+
+BEGIN_CODE
+.function init_level2() {
+.	...
+.	// Create the monsters.
+.	var monster_data = [
+.		// [x, y, width, height, min_x, max_x, move_x, image]
+-		[380, 180, 40, 24, 330, 410, 0.5, "falco1"],
++		[380, 180, 40, 24, 330, 410, 0.5, [["falco1", 10], ["falco2", 10]]],
+.		[70, 190, 28, 26, 50, 230, -0.5, "rufus"],
+.		[400, 360, 26, 28, 320, 515, 1.0, "prescott"],
+.		[100, 360, 20, 24, 30, 270, -1.0, "vlad"],
+.	];
+.	add_monsters(level, monster_data);
+.	...
+.}
+END_CODE
+
+B: And modify =create_monster()= to build an array of images for the animation.
+
+BEGIN_CODE
+.function create_monster(x, y, width, height, min_x, max_x, move_x, image) {
+.	...
+.	m.min_x = min_x;
+.	m.max_x = max_x;
+.	m.move_x = move_x;
+.	m.dir = (move_x > 0) ? 1 : -1;
+.
+-	m.img = new Image();
+-	m.img.src = _game.imagedir_monsters + image + ".png";
++	m.sprite = [];
++	// If the image is specified as an array, then it defines a set of
++	// images that need to be animated.
++	if (image instanceof Array) {
++		for (var j = 0; j < image.length; j++) {
++			var image_name = image[j][0];
++			var delay = image[j][1];
++			var sprite = {};
++			sprite.img = new Image();
++			sprite.img.src = _game.imagedir_monsters + image_name + ".png";
++			sprite.delay = delay;
++			m.sprite.push(sprite);
++		}
++	} else {
++		// Single non-animated image.
++		var sprite = {};
++		sprite.img = new Image();
++		sprite.img.src = _game.imagedir_monsters + image + ".png";
++		sprite.delay = 0;
++		m.sprite.push(sprite);
++	}
++	m.curr_image = 0;
++	m.current_animation_delay = 0;
+.
+.	return m;
+.}
+END_CODE
+
+B: The =curr_image= variable is the current image being shown, and the =current_animation_delay= variable is the timer that keeps track of when to switch to the next image.
+
+BEGIN_CODE
+.function draw_monsters(ctx) {
+.	var level = _levels[_game.current_level];
+.	var monsters = level.monsters;
+.	for (var i = 0; i < monsters.length; i++) {
+.		var m = monsters[i];
+.		set_transform(ctx, m);
+-		ctx.drawImage(m.img, 0, 0);
++		ctx.drawImage(m.sprite[m.curr_image].img, 0, 0);
+.		reset_transform(ctx);
+.	}
+.}
+END_CODE
+
+B: When we update the monsters, we need to check the animation timer, and switch to the next image in the animation sequence when appropriate.
+
+BEGIN_CODE
+.function update_monsters() {
+.	var level = _levels[_game.current_level];
+.	var monsters = level.monsters;
+.	for (var i = 0; i < monsters.length; i++) {
+.		var m = monsters[i];
+.		m.x += m.move_x;
+.		if (m.x <= m.min_x || m.x >= m.max_x) {
+.			m.move_x *= -1;
+.			m.dir *= -1;
+.		}
++		
++		// Animate the monster.
++		m.current_animation_delay++;
++		if (m.current_animation_delay >= m.sprite[m.curr_image].delay) {
++			m.current_animation_delay = 0;
++			m.curr_image++;
++			if (m.curr_image >= m.sprite.length)
++				m.curr_image = 0;			
++		}
+.	}
+.}
+END_CODE
+
+B: And while we're at it, we might as well add the new monster to the title screen animation. Instead of being at the same level as the other monsters, we'll move it up 20 pixels so that it is flying.
+
+BEGIN_CODE
+.function init_level0_title() {
+.	...
+.	var monster_data = [
+.		// [x_start, y, width, height, x_min, x_max, movement, image]
+.		[-20, height, 20, 24, x_min, x_max, 1, "doppleganger"],
+.		[-140, height, 28, 26, x_min, x_max, 1, "rufus"],
+.		[-170, height, 26, 28, x_min, x_max, 1, "prescott"],
+.		[-205, height, 30, 30, x_min, x_max, 1, "henrietta"],
+.		[-235, height, 20, 24, x_min, x_max, 1, "vlad"],
++		[-275, height-20, 40, 24, x_min, x_max, 1, [["falco1", 10], ["falco2", 10]]],
+.	];
+.	add_monsters(level, monster_data);
+.
+.	_levels.push(level);
+.}
+END_CODE
+
+GAIN Monster III - Animate
+
+GOTO 420

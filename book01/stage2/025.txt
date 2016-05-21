@@ -1,0 +1,70 @@
+TITLE = Jump
+ID = 025
+
+B: First define how much gravity there should be in this world:
+
+BEGIN_CODE_INFO Define a gravity variable.
+.function init_game() {
+.	...
+.	// Global world parameters.
+.	_game.friction = 0.15;
++	_game.gravity = 0.5;
+.}
+END_CODE_OK
+
+B: We need to set the initial jump velocity and the max allowed velocity for the player
+
+BEGIN_CODE_INFO Define the initial jump velocity.
+.function init_player() {
+.	...
+.	_player.velocity_x = 0;
+.	_player.velocity_x_delta = 0.8;
+.	_player.velocity_x_max = 3.5;
+.	_player.velocity_y = 0;
++	_player.velocity_y_jump = -10;
++	_player.velocity_y_max = 10;
+.}
+END_CODE_OK
+
+B: We need to apply gravity to the player (just like we did with friction).
+
+BEGIN_CODE_INFO Update the player y-velocity to account for gravity.
+.function update_player() {
+.	...
+.	// Apply the global world effects on the player.
+.	_player.velocity_x *= (1.0 - _game.friction);
++	_player.velocity_y += _game.gravity;
++	if (_player.velocity_y > _player.velocity_y_max)
++		_player.velocity_y = _player.velocity_y_max;
+.	...
+.}
+END_CODE_OK
+
+B: and finally check for the jump key to initiate the jump. In this case, Up arrow, 'w' and spacebar:
+
+BEGIN_CODE_INFO Add support for the jump keys.
+.function check_input() {
+.	...
+.	// Right arrow or 'd' to move right.
+.	if (_game.keymap[39] || _game.keymap[68]) {
+.		_player.velocity_x += _player.velocity_x_delta;
+.		if (_player.velocity_x > _player.velocity_x_max) {
+.			_player.velocity_x = _player.velocity_x_max;
+.		}
+.	}
++	// Up arrow, 'w'  and spacebar to jump.
++	if (_game.keymap[38] || _game.keymap[87] || _game.keymap[32]) {
++		_player.velocity_y = _player.velocity_y_jump;
++	}
+.}
+END_CODE_OK
+
+B: Go ahead and run your code now.
+
+U: The player fall off the bottom of the screen!
+
+B: That's because gravity is pulling the player down - that't what gravity does.
+
+U: How are we going to fix it?
+
+GOTO 029

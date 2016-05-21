@@ -1,0 +1,83 @@
+TITLE = Collide with goal
+ID = 041
+
+B: We show the goal on the screen, but we want to detect when the player touches the goal and then end the game.
+
+B: The first thing we need is a boolean variable that keeps track of whether or not the game is over. This should be initialized to =false=.
+
+BEGIN_CODE_INFO Add =game_over= variable.
+.function init_game() {
+.	...
+.	// Game state.
++	_game.game_over = false;
+.	_game.platform = create_platform(0, 360, _game.width, 40);
+.	_game.goal = create_goal(500, 360);
+.	
+.	// Global world parameters.
+.	...
+.}
+END_CODE_OK
+
+B: Now that we have this variable, we can set it to =true= when the player touches (collides with) the goal that we just added.
+
+B: We can add a =check_goal_collisions()= function to detect when the player collides with the goal object. If that happens, we set the =game_over= flag to =true=.
+
+B: We're also temporarily adding a "dummy" version of the =collide()= function. This dummy version does nothing except return =false= (meaning no collision found). We'll be creating a proper version of =collide()= once we finish hooking up the goal collision code.
+
+BEGIN_CODE_INFO Create the =check_goal_collisions()= function.
+.function check_input() {
+.	...
+.}
+.
++function check_goal_collisions() {
++	var goal = _game.goal;
++	if (collide(goal, _player)) {
++		_game.game_over = true;
++	}
++}
++
++// Return true if the 2 objects overlap.
++function collide(obj1, obj2) {
++	return false;
++}
++
+.// This is called ~60 times per second to update the world.
+.function update_world() {
+.	...
+.}
+END_CODE_OK
+
+B: Since we'll be doing a lot more collision detection, we might as well create a =check_collisions()= function that will check for all the collisions that we care about in the game.
+
+B: Right now, we only have goal collisions, so we only need to call =check_goal_collisions()=. We'll be adding more to this function later.
+
+BEGIN_CODE
+.function check_input() {
+.	...
+.}
+.
++function check_collisions() {
++	check_goal_collisions();
++}
++
+.function check_goal_collisions() {
+.	...
+.}
+END_CODE
+
+B: And finally, we need to call our =check_collisions()= function. We need to do that in =update_world()= so that the game checks for collisions whenever anything moves on the screen.
+
+BEGIN_CODE
+.// This is called ~60 times per second to update the world.
+.function update_world() {
+.	update_player();
++	check_collisions();
+.	draw();
+.	
+.	requestAnimationFrame(update_world);
+.}
+END_CODE
+
+B: The only thing missing is a proper =collide()= function. We'll add that now.
+
+GOTO 045

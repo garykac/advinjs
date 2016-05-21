@@ -1,0 +1,28 @@
+TITLE = Flip direction
+ID = 115
+
+B: We could redraw the images in the other direction and then load both of them and choose the appropriate image based on the direction, but it's tedious to draw each image twice.
+
+B: It's easier to have the computer flip them for us as needed.
+
+B: We do that by adding transformations. A transformation changes the coordinate system that we're drawing into.
+
+B: For example: origin at top; draw @ 100, 150
+
+B: or transform to move origin down to 100, 150; draw @ 0,0
+
+B: are the same thing. this is called translation since we have simply translated (moved) the origin of the coordinate system.
+
+B: We can also do a scaling transformation.
+B: If we apply a 2x scale transformation then drawing a 10x10 box at 100,150 will appear to draw a 20x20 box at 200,300
+
+B: Negative scales can be used to flip the image. We need to adjust the origin so that it flips in the correct spot.
+
+B: Setting the transformation affects all drawing the comes afterward. So we need to set the transform that we want and then restore it to its original.
+
+B: the canvas context provides functions to save and restore the context, but they are slow because they save the *entire* context font, fillStyle, strokeStyle, transformation and a bunch of other stuff. Since we only need the transform to be saved and restored, we can write our own functions to do this.
+
+
+GOTO 117 IF_BADGE Vitality I - Health
+
+GOTO 116

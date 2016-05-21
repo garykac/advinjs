@@ -1,0 +1,113 @@
+<html>
+<head>
+<title>490 : Adding eyeball monsters</title>
+
+<link rel="stylesheet" href="../css/bootstrap.min.css">
+<link type="text/css" rel="stylesheet" href="../css/style.css" />
+<link href='http://fonts.googleapis.com/css?family=Trade+Winds' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Sacramento' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Piedra' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Aclonica' rel='stylesheet' type='text/css'>
+
+<script type="text/javascript">
+	var _gaq = _gaq || [];
+	_gaq.push(['_setAccount', 'UA-17513364-1']);
+	_gaq.push(['_setDomainName', 'cse4k12.org']);
+	_gaq.push(['_setAllowLinker', true]);
+	_gaq.push(['_trackPageview']);
+
+	(function() {
+		var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+		ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+		var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+	})();
+</script>
+
+</head>
+
+<body>
+<div class="navbar navbar-inverse navbar-static-top" role="navigation"><div class="container"><div class="navbar-header">
+<a class="navbar-brand" href="../index.html"><span class="title1">Adventures in</span> <span class="title2">JavaScript</span></a>
+</div></div></div>
+<div class="container">
+<h1>490 : Adding eyeball monsters</h1>
+<div class="name">Balthazar:</div><p class="balthazar">To add monster eyes that peek out from the platforms, we'll first need 3 eye images.</p>
+<div class="row">
+<div class="col-sm-6 col-md-4"><div class="image-table">
+<a href="../images/monsters/eyes0.png"><img src="../images/monsters/eyes0.png" width="40" height="40" /></a>
+<div class="caption"><p align="center">eyes0.png</p></div>
+</div></div>
+<div class="col-sm-6 col-md-4"><div class="image-table">
+<a href="../images/monsters/eyes1.png"><img src="../images/monsters/eyes1.png" width="40" height="40" /></a>
+<div class="caption"><p align="center">eyes1.png</p></div>
+</div></div>
+<div class="col-sm-6 col-md-4"><div class="image-table">
+<a href="../images/monsters/eyes2.png"><img src="../images/monsters/eyes2.png" width="40" height="40" /></a>
+<div class="caption"><p align="center">eyes2.png</p></div>
+</div></div>
+</div>
+<div class="alert alert-info"><p>Copy the following files into your project:</p><ul class="list-group">
+<li class="list-group-item"><span class="code-inline">images/monsters/eyes0.png</span></li>
+<li class="list-group-item"><span class="code-inline">images/monsters/eyes1.png</span></li>
+<li class="list-group-item"><span class="code-inline">images/monsters/eyes2.png</span></li>
+</ul></div>
+<div class="panel panel-default">
+<div class="panel-code code"><span class="context">function init_level3() {</span>
+<span class="context">    ...</span>
+<span class="context">    // Create the monsters.</span>
+<span class="context">    var monster_data = [</span>
+<span class="context">        ...</span>
+<span class="context">    ];</span>
+<span class="context">    add_monsters(level, monster_data);</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    var eyes1 = [</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">        [110, 200],</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">        [540, 300],</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">        [120, 55],</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">        [130, 280],</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">        [10, 180],</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">        [350, 260],</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    ];</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    add_eyeball_monsters(level, eyes1, 200, 100, 10);</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    var eyes2 = [</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">        [390, 180],</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">        [270, 220],</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">        [490, 240],</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">        [510, 140],</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">        [290, 280],</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">        [10, 220],</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">        [250, 140],</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">        [180, 55],</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    ];</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    add_eyeball_monsters(level, eyes2, 450, 100, 10);</span>
+<span class="context">    ...</span>
+<span class="context">}</span>
+</div>
+</div>
+<div class="panel panel-default">
+<div class="panel-code code"><span class="context">function add_projectile_monsters(level, monster_data) {</span>
+<span class="context">    ...</span>
+<span class="context">}</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add"></span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">function add_eyeball_monsters(level, eyes, pause, open, close) {</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    var num_eyes = eyes.length;</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    var blink_duration = open + close + open;</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    var eye_loop = num_eyes * (blink_duration + pause);</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    for (var i = 0; i < num_eyes; i++) {</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">        var sprites = [];</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">        var start_delay = pause/2 + (i * (blink_duration + pause));</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">        sprites.push(["eyes0", start_delay]);</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">        sprites.push(["eyes1", open]);</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">        sprites.push(["eyes2", close]);</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">        sprites.push(["eyes1", open]);</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">        sprites.push(["eyes0", eye_loop - blink_duration - start_delay]);</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add"></span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">        var monst = create_monster(eyes[i][0], eyes[i][1], 20, 20, 0, 550, 0, sprites);</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">        level.monsters.push(monst);</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    }</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">}</span>
+</div>
+</div>
+<p class="alert alert-info"><a href="495.html"><span class="goto">GOTO 495</span></a></p>
+</div>
+</body>
+</html>

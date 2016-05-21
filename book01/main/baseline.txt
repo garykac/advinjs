@@ -1,0 +1,21 @@
+TITLE = Adventures in JavaScript - Baseline Project
+
+H2 The "baseline" project
+
+INFO In its current state, <strong>Adventures in JavaScript</strong> assumes that you've already completed a simple baseline project that introduces very basic concepts about HTML, CSS and JavaScript.
+
+INFO This project consists of 3 files: =main.html=, =style.css= and =script.js=.
+
+INFO You can copy-n-paste the file content individually from this page, or <a href="baseline.zip">download a =.zip= file</a> that contains all of them.
+
+INFO =main.html=
+
+PRE_FILE data/baseline/game.html
+
+INFO =style.css=
+
+PRE_FILE data/baseline/style.css
+
+INFO =script.js=
+
+PRE_FILE data/baseline/script.js

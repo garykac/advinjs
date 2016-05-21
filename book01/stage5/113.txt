@@ -1,0 +1,61 @@
+TITLE = Unlocked goal image
+ID = 113
+
+B: Get open/close image
+
+B: We need 2 images - one for the open gate and another for the closed gate.
+
+BEGIN_IMAGE_TABLE 2
+TABLE_IMAGE images/backgrounds/gate-closed.png 60x80 gate-closed.png
+TABLE_IMAGE images/backgrounds/gate-open.png 60x80 gate-open.png
+END_IMAGE_TABLE
+
+BEGIN_COPY_FILE
+COPY_FILE images/backgrounds/gate-closed.png
+COPY_FILE images/backgrounds/gate-open.png
+END_COPY_FILE
+
+B: Since we'e changing the size of the goal, we need to update the width and height.
+
+BEGIN_CODE
+.function create_goal(x, y, next_level) {
+.	var goal = {};
+.	goal.x = x;
+.	goal.y = y;
+-	goal.width = 20;
++	goal.width = 30;
+-	goal.height = 20;
++	goal.height = 40;
+.	goal.origin_x = goal.width / 2;
+.	goal.origin_y = goal.height;
+.	goal.next_level = next_level;
++	goal.img_open = new Image();
++	goal.img_open.src = _game.imagedir_backgrounds + "gate-open.png";
++	goal.img_closed = new Image();
++	goal.img_closed.src = _game.imagedir_backgrounds + "gate-closed.png";
+.	return goal;
+.}
+END_CODE
+
+B: ???
+
+BEGIN_CODE
+.function draw_goal(ctx) {
+.	var level = _levels[_game.current_level];
+.	var goal = level.goal;
+-	ctx.fillStyle = "green";
+-	ctx.fillRect(goal.x - goal.origin_x, goal.y - goal.origin_y,
+-					goal.width, goal.height);
++	var image = goal.img_closed;
++	if (level.player_has_key) {
++		image = goal.img_open;
++	}
++	set_transform(ctx, goal);
++	ctx.drawImage(image, 0, 0);
++	reset_transform(ctx);
+.}
+END_CODE
+
+B: ???
+
+GOTO 142

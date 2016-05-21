@@ -1,0 +1,88 @@
+<html>
+<head>
+<title>135 : Key</title>
+
+<link rel="stylesheet" href="../css/bootstrap.min.css">
+<link type="text/css" rel="stylesheet" href="../css/style.css" />
+<link href='http://fonts.googleapis.com/css?family=Trade+Winds' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Sacramento' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Piedra' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Aclonica' rel='stylesheet' type='text/css'>
+
+<script type="text/javascript">
+	var _gaq = _gaq || [];
+	_gaq.push(['_setAccount', 'UA-17513364-1']);
+	_gaq.push(['_setDomainName', 'cse4k12.org']);
+	_gaq.push(['_setAllowLinker', true]);
+	_gaq.push(['_trackPageview']);
+
+	(function() {
+		var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+		ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+		var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+	})();
+</script>
+
+</head>
+
+<body>
+<div class="navbar navbar-inverse navbar-static-top" role="navigation"><div class="container"><div class="navbar-header">
+<a class="navbar-brand" href="../index.html"><span class="title1">Adventures in</span> <span class="title2">JavaScript</span></a>
+</div></div></div>
+<div class="container">
+<h1>135 : Key</h1>
+<div class="name">Balthazar:</div><p class="balthazar">Now that we have support for generic items, we have add different item types the behave differently.</p>
+<div class="name">Balthazar:</div><p class="balthazar">The first item is a key that can be used to unlock the goal.</p>
+<div class="name">Balthazar:</div><p class="balthazar">We have one key on each level that is used to unlock the goal. If the play does not have the key, they will not be able to enter the goal.</p>
+<div class="panel panel-default">
+<div class="panel-code code"><span class="context">function init_level_defaults(level) {</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    level.player_has_key = false;</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add"></span>
+<span class="context">    level.player_start_x = 0;</span>
+<span class="context">    level.player_start_y = 0;</span>
+<span class="context"></span>
+<span class="context">    level.platforms = [];</span>
+<span class="context">    level.monsters = [];</span>
+<span class="context">    level.items = [];</span>
+<span class="context">}</span>
+</div>
+</div>
+<div class="name">Balthazar:</div><p class="balthazar">fdasfdsa</p>
+<div class="panel panel-default">
+<div class="panel-code code"><span class="context">function check_item_collisions() {</span>
+<span class="context">    var level = _levels[_game.current_level];</span>
+<span class="context">    var items = level.items;</span>
+<span class="context">    for (var i = 0; i < items.length; i++) {</span>
+<span class="context">        var item = items[i];</span>
+<span class="context">        if (!item.found) {</span>
+<span class="context">            if (collide(item, _player)) {</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">                if (item.type == "key") {</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">                    level.player_has_key = true;</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">                }</span>
+<span class="context">                item.found = true;</span>
+<span class="context">            }</span>
+<span class="context">        }</span>
+<span class="context">    }</span>
+<span class="context">}</span>
+</div>
+</div>
+<div class="name">Balthazar:</div><p class="balthazar">adds and only allow the goal to work if the player has the key for this level</p>
+<div class="panel panel-default">
+<div class="panel-code code"><span class="context">function check_goal_collisions() {</span>
+<span class="context">    var level = _levels[_game.current_level];</span>
+<span class="context">    var goal = level.goal;</span>
+<img src="../css/cross.png" width="15" height="15"/><span class="delete">    if (collide(goal, _player)) {</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    if (collide(goal, _player) && level.player_has_key) {</span>
+<span class="context">        start_level(goal.next_level);</span>
+<span class="context">    }</span>
+<span class="context">}</span>
+</div>
+</div>
+<div class="name">Balthazar:</div><p class="balthazar">with this change, the goal won't work until you get the key.</p>
+<div class="name">Balthazar:</div><p class="balthazar">Unfortunately level 2 doesn't have a key, so you can't get to level 3 anymore.</p>
+<p class="alert alert-success"><strong>Congratulations!</strong> You've earned the <span class="badge-gain">Treasure I - Key</span> badge!</p>
+<p class="alert alert-info"><a href="137.html"><span class="goto">GOTO 137</span></a> if you already have the <span class="badge-check">Sprite II - Image</span> badge.</p>
+<p class="alert alert-info"><a href="136.html"><span class="goto">GOTO 136</span></a></p>
+</div>
+</body>
+</html>

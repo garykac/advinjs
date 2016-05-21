@@ -1,0 +1,152 @@
+<html>
+<head>
+<title>450 : Adding Level 3</title>
+
+<link rel="stylesheet" href="../css/bootstrap.min.css">
+<link type="text/css" rel="stylesheet" href="../css/style.css" />
+<link href='http://fonts.googleapis.com/css?family=Trade+Winds' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Sacramento' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Piedra' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Aclonica' rel='stylesheet' type='text/css'>
+
+<script type="text/javascript">
+	var _gaq = _gaq || [];
+	_gaq.push(['_setAccount', 'UA-17513364-1']);
+	_gaq.push(['_setDomainName', 'cse4k12.org']);
+	_gaq.push(['_setAllowLinker', true]);
+	_gaq.push(['_trackPageview']);
+
+	(function() {
+		var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+		ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+		var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+	})();
+</script>
+
+</head>
+
+<body>
+<div class="navbar navbar-inverse navbar-static-top" role="navigation"><div class="container"><div class="navbar-header">
+<a class="navbar-brand" href="../index.html"><span class="title1">Adventures in</span> <span class="title2">JavaScript</span></a>
+</div></div></div>
+<div class="container">
+<h1>450 : Adding Level 3</h1>
+<div class="name">Balthazar:</div><p class="balthazar">While you're working on Level 3, it's convenient to have the game temporarily start on level 3 so that you can test the third level without having to play through Level 1 and 2 each time.</p>
+<div class="panel panel-default">
+<div class="panel-code code"><span class="context">function handle_load(event) {</span>
+<span class="context">    init();</span>
+<img src="../css/cross.png" width="15" height="15"/><span class="delete">    start_level(0);</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    start_level(3);</span>
+<span class="context">    requestAnimationFrame(update_world);</span>
+<span class="context">}</span>
+</div>
+</div>
+<div class="name">Balthazar:</div><p class="balthazar">We need a new background image.</p>
+<div class="row">
+<div class="col-sm-12 col-md-12"><div class="image-table">
+<a href="../images/backgrounds/block2.png"><img src="../images/backgrounds/block2.png" width="40" height="40" /></a>
+<div class="caption"><p align="center">block2.png</p></div>
+</div></div>
+</div>
+<div class="alert alert-info"><p>Copy the following files into your project:</p><ul class="list-group">
+<li class="list-group-item"><span class="code-inline">images/backgrounds/block2.png</span></li>
+</ul></div>
+<div class="name">Balthazar:</div><p class="balthazar">And the images for the boss.</p>
+<div class="row">
+<div class="col-sm-6 col-md-4"><div class="image-table">
+<a href="../images/monsters/octoboss1.png"><img src="../images/monsters/octoboss1.png" width="76" height="48" /></a>
+<div class="caption"><p align="center">octoboss1.png</p></div>
+</div></div>
+<div class="col-sm-6 col-md-4"><div class="image-table">
+<a href="../images/monsters/octoboss2.png"><img src="../images/monsters/octoboss2.png" width="76" height="48" /></a>
+<div class="caption"><p align="center">octoboss2.png</p></div>
+</div></div>
+<div class="col-sm-6 col-md-4"><div class="image-table">
+<a href="../images/monsters/octoboss3.png"><img src="../images/monsters/octoboss3.png" width="76" height="48" /></a>
+<div class="caption"><p align="center">octoboss3.png</p></div>
+</div></div>
+</div>
+<div class="alert alert-info"><p>Copy the following files into your project:</p><ul class="list-group">
+<li class="list-group-item"><span class="code-inline">images/monsters/octoboss1.png</span></li>
+<li class="list-group-item"><span class="code-inline">images/monsters/octoboss2.png</span></li>
+<li class="list-group-item"><span class="code-inline">images/monsters/octoboss3.png</span></li>
+</ul></div>
+<div class="panel panel-default">
+<div class="panel-code code"><span class="context">function init_level3() {</span>
+<span class="context">    var level = {};</span>
+<span class="context">    level.name = "Level 3";</span>
+<span class="context">    init_level_defaults(level);</span>
+<span class="context"></span>
+<img src="../css/cross.png" width="15" height="15"/><span class="delete">    level.player_start_x = 20;</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    level.player_start_x = 30;</span>
+<img src="../css/cross.png" width="15" height="15"/><span class="delete">    level.player_start_y = 260;</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    level.player_start_y = 80;</span>
+<span class="context"></span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    // Create the platforms.</span>
+<span class="context">    add_default_platforms(level);</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    var platform_data = [</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">        // [x, y, width, height, pattern]</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">        // Platform above player.</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">        [50, 35, 140, 20, "block2"],</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">        // Platforms around the left potion.</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">        [0, 120, 120, 20, "block2"],</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">        [0, 200, 60, 20, "block2"],</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">        [0, 140, 20, 60, "block2"],</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">        [100, 140, 20, 80, "block2"],</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">        // Platforms around the right potion.</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">        [180, 120, 120, 20, "block2"],</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">        [180, 200, 120, 20, "block2"],</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">        [180, 140, 20, 60, "block2"],</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">        [280, 180, 20, 20, "block2"],</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">        // Platform under hoard of monsters.</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">        [0, 260, 300, 20, "block2"],</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">        [480, 60, 40, 20, "block2"],</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">        [500, 80, 20, 160, "block2"],</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">        [300, 280, 200, 20, "block2"],</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">        [340, 220, 40, 20, "block2"],</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">        [340, 240, 20, 40, "block2"],</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">        [380, 160, 20, 40, "block2"],</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">        [480, 220, 20, 60, "block2"],</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">        [530, 280, 20, 20, "block2"],</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">        [0, 320, 250, 10, "dirt"],</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    ];</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    add_platforms(level, platform_data);</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add"></span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    // Create the monsters.</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    var monster_data = [</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">        // [x, y, width, height, min_x, max_x, move_x, image]</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">        [180, 260, 20, 24, 15, 280, -1.0, "vlad"],</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">        [120, 260, 30, 30, 15, 280, 0.8, "henrietta"],</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">        [20, 260, 28, 26, 15, 280, -0.5, "rufus"],</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">        [75, 260, 26, 28, 15, 280, 1.0, "prescott"],</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">        [200, 260, 28, 26, 15, 280, 0.5, "rufus"],</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">        [250, 260, 20, 24, 15, 280, 1.0, "vlad"],</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">        [80, 260, 26, 28, 15, 280, -1.0, "prescott"],</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">        [380, 130, 40, 24, 330, 460, 0.5, [["falco1", 10], ["falco2", 10]]],</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">        [200, 360, 38, 24, 150, 450, 1.0,</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">            [["octoboss1", 10], ["octoboss2", 10], ["octoboss3", 10], ["octoboss2", 10]],</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">            ],</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    ];</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    add_monsters(level, monster_data);</span>
+<span class="context"></span>
+<span class="context">    var item_data = [</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">        // [x, y, width, height, type, image]</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">        [490, 100, 20, 20, "coin", "coin"],</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">        [370, 260, 20, 20, "coin", "coin"],</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">        [210, 160, 20, 20, "coin", "coin"],</span>
+<img src="../css/cross.png" width="15" height="15"/><span class="delete">        [500, 360, 21, 27, "finish", "gem"],</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">        [20, 314, 21, 27, "finish", "gem"],</span>
+<span class="context">    ];</span>
+<span class="context">    add_items(level, item_data);</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    add_potion_item(level, 30, 200);</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    add_potion_item(level, 230, 200);</span>
+<span class="context"></span>
+<span class="context">    _levels.push(level);</span>
+<span class="context">}</span>
+</div>
+</div>
+<p class="alert alert-success"><strong>Congratulations!</strong> You've earned the <span class="badge-gain">Level III</span> badge!</p>
+<p class="alert alert-info"><a href="470.html"><span class="goto">GOTO 470</span></a></p>
+</div>
+</body>
+</html>

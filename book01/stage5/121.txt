@@ -1,0 +1,113 @@
+TITLE = Monster bitaps
+ID = 121
+
+B: Now do the same thing for monsters
+
+B: Create the images/monsters directory.
+
+CREATE_DIR images/monsters
+
+B: Copy 2 monster images into your monster directory: =vlad.png= and =henrietta.png=.
+
+BEGIN_IMAGE_TABLE 2
+TABLE_IMAGE images/monsters/vlad.png 40x48 vlad.png
+TABLE_IMAGE images/monsters/henrietta.png 60x60 henrietta.png
+END_IMAGE_TABLE
+
+BEGIN_COPY_FILE
+COPY_FILE images/monsters/vlad.png
+COPY_FILE images/monsters/henrietta.png
+END_COPY_FILE
+
+BEGIN_CODE
+.function init_game() {
+.	...
+.	_game.imagedir = "images/";
+.	_game.imagedir_player = _game.imagedir + "player/";
++	_game.imagedir_monsters = _game.imagedir + "monsters/";
+.	...
+.}
+END_CODE
+
+B: And now we need to specify which image to use for each monster.
+
+BEGIN_CODE
+.function init_level1() {
+.	...
+.	var monster_data = [
+-		[350, 360, 20, 20, 60, 470, -1.0],
++		[350, 360, 20, 24, 60, 470, -1.0, "vlad"],
+-		[400, 360, 20, 20, 60, 470, 0.8],
++		[400, 360, 30, 30, 60, 470, 0.8, "henrietta"],
+.	];
+.	add_monsters(level, monster_data);
+.	...
+.}
+END_CODE
+
+B: don't forget to update the width and height of each monster. vlad is 20x24 and henrietta is 30x30
+
+BEGIN_CODE
+-// monster_data: [x, y, width, height, min_x, max_x, move_x]
++// monster_data: [x, y, width, height, min_x, max_x, move_x, image]
+.function add_monsters(level, monster_data) {
+.	for (var i = 0; i < monster_data.length; i++) {
+.		var m = monster_data[i];
+-		var monst = create_monster(m[0], m[1], m[2], m[3], m[4], m[5], m[6]);
++		var monst = create_monster(m[0], m[1], m[2], m[3], m[4], m[5], m[6], m[7]);
+.		level.monsters.push(monst);
+.	}
+.}
+END_CODE
+
+B: and finally create_monsters needs to 
+
+BEGIN_CODE
+-function create_monster(x, y, width, height, min_x, max_x, move_x) {
++function create_monster(x, y, width, height, min_x, max_x, move_x, image) {
+.	var m = {};
+.	m.x = x;
+.	m.y = y;
+.	m.width = width;
+.	m.height = height;
+.	m.origin_x = m.width / 2;
+.	m.origin_y = m.height;
+.	m.min_x = min_x;
+.	m.max_x = max_x;
+.	m.move_x = move_x;
++
++	m.img = new Image();
++	m.img.src = _game.imagedir_monsters + image + ".png";
++	
+.	return m;
+.}
+END_CODE
+
+B: ??
+
+BEGIN_CODE
+.function draw_monsters(ctx) {
+.	var level = _levels[_game.current_level];
+.	var monsters = level.monsters;
+.	for (var i = 0; i < monsters.length; i++) {
+.		var m = monsters[i];
+-		ctx.fillStyle = "#800000";
+-		ctx.fillRect(m.x - m.origin_x, m.y - m.origin_y, m.width, m.height);
++		ctx.drawImage(m.img, m.x - m.origin_x, m.y - m.origin_y);
+.	}
+.}
+END_CODE
+
+
+B: Now you have monsters!
+U: yay!
+
+U: But they're still walking backwards.
+
+B: Yes, yes, yes. We'll fix that now.
+
+GAIN Sprite II - Image
+
+GOTO 122 IF_BADGE Treasure II - Finish
+
+GOTO 100

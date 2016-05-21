@@ -1,0 +1,399 @@
+TITLE = Items
+ID = 260
+
+B: Now we'll add support for items
+
+
+B: Create the images/player directory.
+
+CREATE_DIR images/items
+
+B: Copy 3 item images in to the =images/items= directory: =key.png=, =gem.png= and =potion.png=.
+
+BEGIN_IMAGE_TABLE 3
+TABLE_IMAGE images/items/key.png 36x40 key.png
+TABLE_IMAGE images/items/gem.png 42x54 gem.png
+TABLE_IMAGE images/items/potion.png 32x46 potion.png
+END_IMAGE_TABLE
+
+BEGIN_COPY_FILE
+COPY_FILE images/items/key.png
+COPY_FILE images/items/gem.png
+COPY_FILE images/items/potion.png
+END_COPY_FILE
+
+
+TODO Merge this with 131
+
+BEGIN_CODE
+.function init_level_defaults(level) {
+.	level.player_start_x = 0;
+.	level.player_start_y = 0;
+.
+.	level.platforms = [];
+.	level.monsters = [];
++	level.items = [];
+.}
+END_CODE
+
+
+BEGIN_CODE
+.function init_level1() {
+.	...
+.	add_monsters(level, monster_data);
+.
++	var item_data = [
++		[480, 110, 18, 20, "key", "key"],
++		[465, 170, 16, 23, "potion", "potion"],
++	];
++	add_items(level, item_data);
++
+.	level.goal = create_goal(500, 360, 1);
+.	...
+.}
+END_CODE
+
+
+B: and level 2
+
+BEGIN_CODE
+.function init_level2() {
+.	...
+.	add_default_platforms(level);
+.
++	var item_data = [
++		[250, 360, 18, 20, "key", "key"],
++	];
++	add_items(level, item_data);
++
+.	level.goal = create_goal(500, 360, 2);
+.	...
+.}
+END_CODE
+
+B: and level 3
+
+BEGIN_CODE
+.function init_level3() {
+.	...
+.	add_default_platforms(level);
+.
++	var item_data = [
++		[500, 360, 21, 27, "finish", "gem"],
++	];
++	add_items(level, item_data);
++
+.	level.goal = create_goal(500, 360, 0);
+.	...
+.}
+END_CODE
+
+
+TODO Merge with 138
+
+B: Now that we have a 'finish' gem, we should remove the goal from level 3.
+
+BEGIN_CODE
+.function init_level3() {
+.	...
+.	add_items(level, item_data);
+.
+-	level.goal = create_goal(500, 360, 0);
+-
+.	_levels.push(level);
+.}
+END_CODE
+
+B: If you run the code now, the game will stop when you reach the third level. This is because we have code that assumes that each level has a 'goal' object. Since this is no longer the case, it will throw an exception (error) and stop when you get to a level without a goal (level 3 in our case).
+
+B: We can fix this by making the code work by having the draw_goal() and check_goal_collisions() functions check to make sure it has a valid goal object before trying to draw it.
+
+BEGIN_CODE
+.function draw_goal(ctx) {
+.	var level = _levels[_game.current_level];
+.	var goal = level.goal;
++	if (goal) {
+>		ctx.fillStyle = "green";
+>		ctx.fillRect(goal.x - goal.origin_x, goal.y - goal.origin_y,
+>						goal.width, goal.height);
++	}
+.}
+END_CODE
+
+BEGIN_CODE
+.function check_goal_collisions() {
+.	var level = _levels[_game.current_level];
+.	var goal = level.goal;
++	if (goal) {
+>		if (collide(goal, _player)) {
+>			start_level(goal.next_level);
+>		}
++	}
+.}
+END_CODE
+
+
+BEGIN_CODE
+.function create_monster(x, y, width, height, min_x, max_x, move_x, image) {
+.	...
+.}
+.
++// item_data: [x, y, width, height, type, image]
++function add_items(level, item_data) {
++	for (var i = 0; i < item_data.length; i++) {
++		var d = item_data[i];
++		var item = create_item(d[0], d[1], d[2], d[3], d[4], d[5]);
++		level.items.push(item);
++	}
++}
++
++function create_item(x, y, width, height, type, image) {
++	var d = {};
++	d.x = x;
++	d.y = y;
++	d.width = width;
++	d.height = height;
++	d.origin_x = width / 2;
++	d.origin_y = height;
++	d.type = type;
++	d.found = false;
++
++	d.img = new Image();
++	d.img.src = _game.imagedir_items + image + ".png";
++	return d;
++}
++
+END_CODE
+
+
+
+BEGIN_CODE
+.function draw() {
+.	...
+.	erase(ctx);
+.	draw_platforms(ctx);
+.	draw_goal(ctx);
+.	draw_monsters(ctx);
++	draw_items(ctx);
+.	draw_player(ctx);
+.	...
+.}
+END_CODE
+
+BEGIN_CODE
+.function draw_monsters(ctx) {
+.	...
+.}
+.
++function draw_items(ctx) {
++	var level = _levels[_game.current_level];
++	var items = level.items;
++	for (var i = 0; i < items.length; i++) {
++		var t = items[i];
++		if (!t.found) {
++			ctx.drawImage(t.img, t.x - t.origin_x, t.y - t.origin_y);
++		}
++	}
++}
++
+END_CODE
+
+
+BEGIN_CODE
+.function check_collisions() {
+.	check_platform_collisions();
+.	check_monster_collisions();
++	check_item_collisions();
+.	check_goal_collisions();
+.}
+END_CODE
+
+
+BEGIN_CODE
+.function check_monster_collisions() {
+.	...
+.}
+.
++function check_item_collisions() {
++	var level = _levels[_game.current_level];
++	var items = level.items;
++	for (var i = 0; i < items.length; i++) {
++		var item = items[i];
++		if (!item.found) {
++			if (collide(item, _player)) {
++				item.found = true;
++			}
++		}
++	}
++}
++
+END_CODE
+
+
+BEGIN_CODE
+.function init_level_defaults(level) {
++	level.player_has_key = false;
++
+.	level.player_start_x = 0;
+.	level.player_start_y = 0;
+.
+.	level.platforms = [];
+.	level.monsters = [];
+.	level.items = [];
+.}
+END_CODE
+
+BEGIN_CODE
+.function check_goal_collisions() {
+.	var level = _levels[_game.current_level];
+.	var goal = level.goal;
+.	if (goal) {
+-		if (collide(goal, _player)) {
++		if (collide(goal, _player) && level.player_has_key) {
+.			start_level(goal.next_level);
+.		}
+.	}
+.}
+END_CODE
+
+GAIN Treasure I - Key
+
+B: We need images of the gate open and closed.
+
+BEGIN_IMAGE_TABLE 2
+TABLE_IMAGE images/backgrounds/gate-closed.png 60x80 gate-closed.png
+TABLE_IMAGE images/backgrounds/gate-open.png 60x80 gate-open.png
+END_IMAGE_TABLE
+
+BEGIN_COPY_FILE
+COPY_FILE images/backgrounds/gate-closed.png
+COPY_FILE images/backgrounds/gate-open.png
+END_COPY_FILE
+
+B: Since we'e changing the size of the goal, we need to update the width and height.
+
+BEGIN_CODE
+.function create_goal(x, y, next_level) {
+.	var goal = {};
+.	goal.x = x;
+.	goal.y = y;
+-	goal.width = 20;
++	goal.width = 30;
+-	goal.height = 20;
++	goal.height = 40;
+.	goal.origin_x = goal.width / 2;
+.	goal.origin_y = goal.height;
+.	goal.next_level = next_level;
++	goal.img_open = new Image();
++	goal.img_open.src = _game.imagedir_backgrounds + "gate-open.png";
++	goal.img_closed = new Image();
++	goal.img_closed.src = _game.imagedir_backgrounds + "gate-closed.png";
+.	return goal;
+.}
+END_CODE
+
+BEGIN_CODE
+.function draw_goal(ctx) {
+.	var level = _levels[_game.current_level];
+.	var goal = level.goal;
+.	if (goal) {
+-		ctx.fillStyle = "green";
+-		ctx.fillRect(goal.x - goal.origin_x, goal.y - goal.origin_y,
+-						goal.width, goal.height);
++		var image = goal.img_closed;
++		if (level.player_has_key) {
++			image = goal.img_open;
++		}
++		set_transform(ctx, goal);
++		ctx.drawImage(image, 0, 0);
++		reset_transform(ctx);
+.	}
+.}
+END_CODE
+
+BEGIN_CODE
+.function check_item_collisions() {
+.	var level = _levels[_game.current_level];
+.	var items = level.items;
+.	for (var i = 0; i < items.length; i++) {
+.		var item = items[i];
+.		if (!item.found) {
+.			if (collide(item, _player)) {
++				if (item.type == "key") {
++					level.player_has_key = true;
++				} else if (item.type == "finish") {
++					_game.game_over = true;
++					_game.game_win = true;
++				}
+.				item.found = true;
+.			}
+.		}
+.	}
+.}
+END_CODE
+
+GAIN Treasure II - Finish
+
+
+TODO split this into 2 parts
+
+BEGIN_CODE
+.function init_game() {
+.	...
+.	_game.meter_width = 150;
+.	_game.meter_height = 20;
++
++	// Status images
++	_game.img_key = new Image();
++	_game.img_key.src = _game.imagedir_items + "key.png";
++	_game.img_player = new Image();
++	_game.img_player.src = _game.imagedir_player + "icon.png";
+.}
+END_CODE
+
+
+BEGIN_CODE
+.function draw_status(ctx) {
+.	...
+.	ctx.strokeStyle = "black";
+.	ctx.strokeRect(_game.meter_x, _game.meter_y, _game.meter_width, _game.meter_height);
+.
++	// If the player has the key, draw it in the status area.
++	var level = _levels[_game.current_level];
++	if (level.player_has_key) {
++		ctx.drawImage(_game.img_key, _game.meter_width + 15, 11);
++	}
++
+.	// Draw player icons to indicate how many extra lives remain.
+.	for (var i = 0; i < _game.player_lives-1; i++) {
+.		ctx.drawImage(_game.img_player, _game.width - 30 - (i * 20), 12);
+.	}
+.}
+END_CODE
+
+BEGIN_CODE
+.function check_item_collisions() {
+.	var level = _levels[_game.current_level];
+.	var items = level.items;
+.	for (var i = 0; i < items.length; i++) {
+.		var item = items[i];
+.		if (!item.found) {
+.			if (collide(item, _player)) {
+.				if (item.type == "key") {
+.					level.player_has_key = true;
++				} else if (item.type == "potion") {
++					adjust_health(30);
+.				} else if (item.type == "finish") {
+.					_game.game_over = true;
+.					_game.game_win = true;
+.				}
+.				item.found = true;
+.			}
+.		}
+.	}
+.}
+END_CODE
+
+GAIN Treasure III - Potion
+
+GOTO 299

@@ -1,0 +1,117 @@
+TITLE = Adding coins
+ID = 360
+
+B: Adding coins that the player can gather.
+
+B: We'll need a coin image to display.
+
+BEGIN_IMAGE_TABLE 1
+TABLE_IMAGE images/items/coin.png 40x40 coin.png
+END_IMAGE_TABLE
+
+BEGIN_COPY_FILE
+COPY_FILE images/items/coin.png
+END_COPY_FILE
+
+B: The player should start out with =0= coind.
+
+BEGIN_CODE
+.function init_player() {
+.	...
+.	_player.platform = null;
+.	_player.health_max = 50;
+.	_player.health = _player.health_max;
++	_player.coins = 0;
+.	_player.dir = 1;
+.	...
+.}
+END_CODE
+
+B: And we can scatter some coins around level 1.
+
+BEGIN_CODE
+.function init_level1() {
+.	...
+.	// Create the items.
+.	var item_data = [
+.		// [x, y, width, height, type, image]
+.		[530, 358, 18, 20, "key", "key"],
+.		[465, 270, 16, 23, "potion", "potion"],
++		[50, 250, 20, 20, "coin", "coin"],
++		[530, 190, 20, 20, "coin", "coin"],
++		[230, 120, 20, 20, "coin", "coin"],
+.	];
+.	add_items(level, item_data);
+.	...
+.}
+END_CODE
+
+B: When the player collides with a coin, we need to increment the current coin count.
+
+BEGIN_CODE
+.function check_item_collisions() {
+.	var level = _levels[_game.current_level];
+.	var items = level.items;
+.	for (var i = 0; i < items.length; i++) {
+.		var item = items[i];
+.		if (!item.found) {
+.			if (collide(item, _player)) {
+.				if (item.type == "key") {
+.					level.player_has_key = true;
+.				} else if (item.type == "potion") {
+.					adjust_health(30);
++				} else if (item.type == "coin") {
++					_player.coins++;
+.				} else if (item.type == "finish") {
+.					_game.game_over = true;
+.					_game.game_win = true;
+.				}
+.				item.found = true;
+.			}
+.		}
+.	}
+.}
+END_CODE
+
+B: And we need to update the status bar at the top of the screen.
+
+BEGIN_CODE
+.function init_game() {
+.	...
+.	// Status images
+.	_game.img_key = new Image();
+.	_game.img_key.src = _game.imagedir_items + "key.png";
++	_game.img_coin = new Image();
++	_game.img_coin.src = _game.imagedir_items + "coin.png";
+.	_game.img_player = new Image();
+.	_game.img_player.src = _game.imagedir_player + "icon.png";
+.}
+END_CODE
+
+B: Note that we need to move the player icons over to make room for the coin info.
+
+BEGIN_CODE
+.function draw_status(ctx) {
+.	...
+.	// If the player has the key, draw it in the status area.
+.	var level = _levels[_game.current_level];
+.	if (level.player_has_key) {
+.		ctx.drawImage(_game.img_key, _game.meter_width + 15, 11);
+.	}
+.	
++	ctx.drawImage(_game.img_coin, _game.width - 58, 11);
++	ctx.fillStyle = "#606060";
++	ctx.font = "16px Helvetica";
++	ctx.fillText("x" + _player.coins, _game.width - 37, 26);
++	
+.	// Draw player icons to indicate how many extra lives remain.
+.	for (var i = 0; i < _game.player_lives-1; i++) {
+-		ctx.drawImage(_game.img_player, _game.width - 30 - (i * 20), 12);
++		ctx.drawImage(_game.img_player, _game.width - 80 - (i * 20), 12);
+.	}
+.}
+END_CODE
+
+GAIN Treasure IV - Coin
+
+GOTO 370

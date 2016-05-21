@@ -1,0 +1,183 @@
+TITLE = Monster projectiles
+ID = 480
+
+B: Images we need for the projectile.
+
+BEGIN_IMAGE_TABLE 2
+TABLE_IMAGE images/monsters/ball-left.png 20x10 ball-left.png
+TABLE_IMAGE images/monsters/ball-right.png 20x10 ball-right.png
+END_IMAGE_TABLE
+
+BEGIN_COPY_FILE
+COPY_FILE images/monsters/ball-left.png
+COPY_FILE images/monsters/ball-right.png
+END_COPY_FILE
+
+B: And the we need to add the projectile info to the monster. We create a new =add_projectile_monster()= function so that we don't have to add empty projectiles to all the other monsters.
+
+BEGIN_CODE
+.function init_level3() {
+.	...
+.	// Create the monsters.
+.	var monster_data = [
+.		// [x, y, width, height, min_x, max_x, move_x, image]
+.		...
+.		[250, 260, 20, 24, 15, 280, 1.0, "vlad"],
+.		[80, 260, 26, 28, 15, 280, -1.0, "prescott"],
+.		[380, 130, 40, 24, 330, 460, 0.5, [["falco1", 10], ["falco2", 10]]],
+-		[200, 360, 38, 24, 150, 450, 1.0,
+-			[["octoboss1", 10], ["octoboss2", 10], ["octoboss3", 10], ["octoboss2", 10]],
+-			],
+.	];
+.	add_monsters(level, monster_data);
++	var projectile_monster_data = [
++		// [x_start, y, width, height, min_x, max_x, move_x, image, projectile-info]
++		[200, 360, 38, 24, 150, 450, 1.0,
++			[["octoboss1", 10], ["octoboss2", 10], ["octoboss3", 10], ["octoboss2", 10]],
++			[["ball-right", 2], ["ball-left", -2]]],
++	];
++	add_projectile_monsters(level, projectile_monster_data);
+.	...
+.}
+END_CODE
+
+B: And we have to define =add_projectile_monster()=.
+
+BEGIN_CODE
+.function add_monsters(level, monster_data) {
+.	...
+.}
++
++// monster_data: [x, y, width, height, min_x, max_x, move_x, image, projectile-info]
++function add_projectile_monsters(level, monster_data) {
++	for (var im = 0; im < monster_data.length; im++) {
++		var m = monster_data[im];
++		var monst = create_monster(m[0], m[1], m[2], m[3], m[4], m[5], m[6], m[7]);
++		var projectiles = m[8];
++		for (var ip = 0; ip < projectiles.length; ip++) {
++			// projectile-info: [image-name speed]
++			var p = {};
++			p.active = false;
++			p.x = 0;
++			p.y = 0;
++			p.origin_x = 0;
++			p.origin_y = 0;
++			p.width = 5;
++			p.height = 5;
++			p.img = new Image();
++			p.img.src = _game.imagedir_monsters + projectiles[ip][0] + ".png";
++			p.speed = projectiles[ip][1];
++			monst.projectiles.push(p);
++		}
++		level.monsters.push(monst);
++	}
++}
+END_CODE
+
+B: By default, monsters don't have projectiles, so =create_monster()= can initialize the =projectiles= array to be empty.
+
+BEGIN_CODE
+.function create_monster(x, y, width, height, min_x, max_x, move_x, image) {
+.	...
+.	m.min_x = min_x;
+.	m.max_x = max_x;
+.	m.move_x = move_x;
+.	m.dir = (move_x > 0) ? 1 : -1;
++	m.projectiles = [];
+.
+.	m.sprite = [];
+.	...
+.}
+END_CODE
+
+B: We need to draw the projectiles. We can do that at the same time we're drawing the monsters.
+
+BEGIN_CODE
+.function draw_monsters(ctx) {
+.	var level = _levels[_game.current_level];
+.	var monsters = level.monsters;
+.	for (var i = 0; i < monsters.length; i++) {
+.		var m = monsters[i];
+.		set_transform(ctx, m);
+.		ctx.drawImage(m.sprite[m.curr_image].img, 0, 0);
+.		reset_transform(ctx);
++		
++		// Draw this monster's projectiles.
++		for (var ip = 0; ip < m.projectiles.length; ip++) {
++			var p = m.projectiles[ip];
++			if (p.active) {
++				ctx.drawImage(p.img, p.x, p.y);
++			}
++		}
+.	}
+.}
+END_CODE
+
+B: Whenever we update the monster, we'll update any projectiles as well.
+
+BEGIN_CODE
+.function update_monsters() {
+.	var level = _levels[_game.current_level];
+.	var monsters = level.monsters;
+.	for (var i = 0; i < monsters.length; i++) {
+.		...
+.
+.		// Animate the monster.
+.		m.current_animation_delay++;
+.		if (m.current_animation_delay >= m.sprite[m.curr_image].delay) {
+.			m.current_animation_delay = 0;
+.			m.curr_image++;
+.			if (m.curr_image >= m.sprite.length)
+.				m.curr_image = 0;
+.		}
++		
++		// Move any monster projectiles.
++		for (var ip = 0; ip < m.projectiles.length; ip++) {
++			var p = m.projectiles[ip];
++			if (!p.active) {
++				p.x = m.x + 4 * p.speed;
++				p.y = m.y - m.height/2;
++				p.active = true;
++			}
++			p.x += p.speed;
++			if ((p.x + p.width) < 0 || p.x > _game.width)
++				p.active = false;
++		}
+.	}
+.}
+END_CODE
+
+B: And finally, we can handle projectile collisions when we're checking monster collisions.
+
+BEGIN_CODE
+.function check_monster_collisions() {
+.	var level = _levels[_game.current_level];
+.	var monsters = level.monsters;
+.	var damage = 0;
+.	_player.is_touching_monster = false;
+.	for (var i = 0; i < monsters.length; i++) {
+.		var m = monsters[i];
+.		if (collide(m, _player)) {
+.			damage++;
+.			_player.is_touching_monster = true;
+.		}
++
++		// Collision with monster projectiles.
++		for (var ip = 0; ip < m.projectiles.length; ip++) {
++			var p = m.projectiles[ip];
++			if (p.active && collide(p, _player)) {
++				damage += 5;
++				p.active = false;
++			}
++		}		
+.	}
+.	if (damage != 0) {
+.		adjust_health(-damage);
+.	}
+.}
+END_CODE
+
+GAIN Monster IV - Projectile
+
+GOTO 485
+

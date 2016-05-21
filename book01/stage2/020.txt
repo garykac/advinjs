@@ -1,0 +1,23 @@
+TITLE = Choices II - Jump or Goal
+ID = 020
+
+B: So we have few things that we can work on next:
+
+BEGIN_TASK_LIST
+
+TASK_LIST_ITEM_START
+TASK_LIST_ITEM_DATA Jumping
+TASK_LIST_ITEM_DATA This will make the player jump up off the platform. It will require adding gravity to pull the player back down.
+TASK_LIST_ITEM_END
+
+TASK_LIST_ITEM_START
+TASK_LIST_ITEM_DATA Goals
+TASK_LIST_ITEM_DATA This will add a goal and end the game when the player reaches the goal.
+TASK_LIST_ITEM_END
+
+END_TASK_LIST
+
+GOTO 025 IF make the player jump
+
+GOTO 040 IF add a goal for this game
+

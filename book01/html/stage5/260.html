@@ -1,0 +1,413 @@
+<html>
+<head>
+<title>260 : Items</title>
+
+<link rel="stylesheet" href="../css/bootstrap.min.css">
+<link type="text/css" rel="stylesheet" href="../css/style.css" />
+<link href='http://fonts.googleapis.com/css?family=Trade+Winds' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Sacramento' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Piedra' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Aclonica' rel='stylesheet' type='text/css'>
+
+<script type="text/javascript">
+	var _gaq = _gaq || [];
+	_gaq.push(['_setAccount', 'UA-17513364-1']);
+	_gaq.push(['_setDomainName', 'cse4k12.org']);
+	_gaq.push(['_setAllowLinker', true]);
+	_gaq.push(['_trackPageview']);
+
+	(function() {
+		var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+		ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+		var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+	})();
+</script>
+
+</head>
+
+<body>
+<div class="navbar navbar-inverse navbar-static-top" role="navigation"><div class="container"><div class="navbar-header">
+<a class="navbar-brand" href="../index.html"><span class="title1">Adventures in</span> <span class="title2">JavaScript</span></a>
+</div></div></div>
+<div class="container">
+<h1>260 : Items</h1>
+<div class="name">Balthazar:</div><p class="balthazar">Now we'll add support for items</p>
+<div class="name">Balthazar:</div><p class="balthazar">Create the images/player directory.</p>
+<div class="alert alert-info"><p>Create the following directory in your project:</p><ul class="list-group"><li class="list-group-item"><span class="code-inline">images/items</span></li></ul></div>
+<div class="name">Balthazar:</div><p class="balthazar">Copy 3 item images in to the <span class="code-inline-color">images/items</span> directory: <span class="code-inline-color">key.png</span>, <span class="code-inline-color">gem.png</span> and <span class="code-inline-color">potion.png</span>.</p>
+<div class="row">
+<div class="col-sm-6 col-md-4"><div class="image-table">
+<a href="../images/items/key.png"><img src="../images/items/key.png" width="36" height="40" /></a>
+<div class="caption"><p align="center">key.png</p></div>
+</div></div>
+<div class="col-sm-6 col-md-4"><div class="image-table">
+<a href="../images/items/gem.png"><img src="../images/items/gem.png" width="42" height="54" /></a>
+<div class="caption"><p align="center">gem.png</p></div>
+</div></div>
+<div class="col-sm-6 col-md-4"><div class="image-table">
+<a href="../images/items/potion.png"><img src="../images/items/potion.png" width="32" height="46" /></a>
+<div class="caption"><p align="center">potion.png</p></div>
+</div></div>
+</div>
+<div class="alert alert-info"><p>Copy the following files into your project:</p><ul class="list-group">
+<li class="list-group-item"><span class="code-inline">images/items/key.png</span></li>
+<li class="list-group-item"><span class="code-inline">images/items/gem.png</span></li>
+<li class="list-group-item"><span class="code-inline">images/items/potion.png</span></li>
+</ul></div>
+<!-- TODO: Merge this with 131 -->
+<div class="panel panel-default">
+<div class="panel-code code"><span class="context">function init_level_defaults(level) {</span>
+<span class="context">    level.player_start_x = 0;</span>
+<span class="context">    level.player_start_y = 0;</span>
+<span class="context"></span>
+<span class="context">    level.platforms = [];</span>
+<span class="context">    level.monsters = [];</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    level.items = [];</span>
+<span class="context">}</span>
+</div>
+</div>
+<div class="panel panel-default">
+<div class="panel-code code"><span class="context">function init_level1() {</span>
+<span class="context">    ...</span>
+<span class="context">    add_monsters(level, monster_data);</span>
+<span class="context"></span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    var item_data = [</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">        [480, 110, 18, 20, "key", "key"],</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">        [465, 170, 16, 23, "potion", "potion"],</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    ];</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    add_items(level, item_data);</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add"></span>
+<span class="context">    level.goal = create_goal(500, 360, 1);</span>
+<span class="context">    ...</span>
+<span class="context">}</span>
+</div>
+</div>
+<div class="name">Balthazar:</div><p class="balthazar">and level 2</p>
+<div class="panel panel-default">
+<div class="panel-code code"><span class="context">function init_level2() {</span>
+<span class="context">    ...</span>
+<span class="context">    add_default_platforms(level);</span>
+<span class="context"></span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    var item_data = [</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">        [250, 360, 18, 20, "key", "key"],</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    ];</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    add_items(level, item_data);</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add"></span>
+<span class="context">    level.goal = create_goal(500, 360, 2);</span>
+<span class="context">    ...</span>
+<span class="context">}</span>
+</div>
+</div>
+<div class="name">Balthazar:</div><p class="balthazar">and level 3</p>
+<div class="panel panel-default">
+<div class="panel-code code"><span class="context">function init_level3() {</span>
+<span class="context">    ...</span>
+<span class="context">    add_default_platforms(level);</span>
+<span class="context"></span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    var item_data = [</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">        [500, 360, 21, 27, "finish", "gem"],</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    ];</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    add_items(level, item_data);</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add"></span>
+<span class="context">    level.goal = create_goal(500, 360, 0);</span>
+<span class="context">    ...</span>
+<span class="context">}</span>
+</div>
+</div>
+<!-- TODO: Merge with 138 -->
+<div class="name">Balthazar:</div><p class="balthazar">Now that we have a 'finish' gem, we should remove the goal from level 3.</p>
+<div class="panel panel-default">
+<div class="panel-code code"><span class="context">function init_level3() {</span>
+<span class="context">    ...</span>
+<span class="context">    add_items(level, item_data);</span>
+<span class="context"></span>
+<img src="../css/cross.png" width="15" height="15"/><span class="delete">    level.goal = create_goal(500, 360, 0);</span>
+<img src="../css/cross.png" width="15" height="15"/><span class="delete"></span>
+<span class="context">    _levels.push(level);</span>
+<span class="context">}</span>
+</div>
+</div>
+<div class="name">Balthazar:</div><p class="balthazar">If you run the code now, the game will stop when you reach the third level. This is because we have code that assumes that each level has a 'goal' object. Since this is no longer the case, it will throw an exception (error) and stop when you get to a level without a goal (level 3 in our case).</p>
+<div class="name">Balthazar:</div><p class="balthazar">We can fix this by making the code work by having the draw_goal() and check_goal_collisions() functions check to make sure it has a valid goal object before trying to draw it.</p>
+<div class="panel panel-default">
+<div class="panel-code code"><span class="context">function draw_goal(ctx) {</span>
+<span class="context">    var level = _levels[_game.current_level];</span>
+<span class="context">    var goal = level.goal;</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    if (goal) {</span>
+<span class="indent">        ctx.fillStyle = "green";</span>
+<span class="indent">        ctx.fillRect(goal.x - goal.origin_x, goal.y - goal.origin_y,</span>
+<span class="indent">                        goal.width, goal.height);</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    }</span>
+<span class="context">}</span>
+</div>
+</div>
+<div class="panel panel-default">
+<div class="panel-code code"><span class="context">function check_goal_collisions() {</span>
+<span class="context">    var level = _levels[_game.current_level];</span>
+<span class="context">    var goal = level.goal;</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    if (goal) {</span>
+<span class="indent">        if (collide(goal, _player)) {</span>
+<span class="indent">            start_level(goal.next_level);</span>
+<span class="indent">        }</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    }</span>
+<span class="context">}</span>
+</div>
+</div>
+<div class="panel panel-default">
+<div class="panel-code code"><span class="context">function create_monster(x, y, width, height, min_x, max_x, move_x, image) {</span>
+<span class="context">    ...</span>
+<span class="context">}</span>
+<span class="context"></span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">// item_data: [x, y, width, height, type, image]</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">function add_items(level, item_data) {</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    for (var i = 0; i < item_data.length; i++) {</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">        var d = item_data[i];</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">        var item = create_item(d[0], d[1], d[2], d[3], d[4], d[5]);</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">        level.items.push(item);</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    }</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">}</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add"></span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">function create_item(x, y, width, height, type, image) {</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    var d = {};</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    d.x = x;</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    d.y = y;</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    d.width = width;</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    d.height = height;</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    d.origin_x = width / 2;</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    d.origin_y = height;</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    d.type = type;</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    d.found = false;</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add"></span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    d.img = new Image();</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    d.img.src = _game.imagedir_items + image + ".png";</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    return d;</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">}</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add"></span>
+</div>
+</div>
+<div class="panel panel-default">
+<div class="panel-code code"><span class="context">function draw() {</span>
+<span class="context">    ...</span>
+<span class="context">    erase(ctx);</span>
+<span class="context">    draw_platforms(ctx);</span>
+<span class="context">    draw_goal(ctx);</span>
+<span class="context">    draw_monsters(ctx);</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    draw_items(ctx);</span>
+<span class="context">    draw_player(ctx);</span>
+<span class="context">    ...</span>
+<span class="context">}</span>
+</div>
+</div>
+<div class="panel panel-default">
+<div class="panel-code code"><span class="context">function draw_monsters(ctx) {</span>
+<span class="context">    ...</span>
+<span class="context">}</span>
+<span class="context"></span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">function draw_items(ctx) {</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    var level = _levels[_game.current_level];</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    var items = level.items;</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    for (var i = 0; i < items.length; i++) {</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">        var t = items[i];</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">        if (!t.found) {</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">            ctx.drawImage(t.img, t.x - t.origin_x, t.y - t.origin_y);</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">        }</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    }</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">}</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add"></span>
+</div>
+</div>
+<div class="panel panel-default">
+<div class="panel-code code"><span class="context">function check_collisions() {</span>
+<span class="context">    check_platform_collisions();</span>
+<span class="context">    check_monster_collisions();</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    check_item_collisions();</span>
+<span class="context">    check_goal_collisions();</span>
+<span class="context">}</span>
+</div>
+</div>
+<div class="panel panel-default">
+<div class="panel-code code"><span class="context">function check_monster_collisions() {</span>
+<span class="context">    ...</span>
+<span class="context">}</span>
+<span class="context"></span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">function check_item_collisions() {</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    var level = _levels[_game.current_level];</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    var items = level.items;</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    for (var i = 0; i < items.length; i++) {</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">        var item = items[i];</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">        if (!item.found) {</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">            if (collide(item, _player)) {</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">                item.found = true;</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">            }</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">        }</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    }</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">}</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add"></span>
+</div>
+</div>
+<div class="panel panel-default">
+<div class="panel-code code"><span class="context">function init_level_defaults(level) {</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    level.player_has_key = false;</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add"></span>
+<span class="context">    level.player_start_x = 0;</span>
+<span class="context">    level.player_start_y = 0;</span>
+<span class="context"></span>
+<span class="context">    level.platforms = [];</span>
+<span class="context">    level.monsters = [];</span>
+<span class="context">    level.items = [];</span>
+<span class="context">}</span>
+</div>
+</div>
+<div class="panel panel-default">
+<div class="panel-code code"><span class="context">function check_goal_collisions() {</span>
+<span class="context">    var level = _levels[_game.current_level];</span>
+<span class="context">    var goal = level.goal;</span>
+<span class="context">    if (goal) {</span>
+<img src="../css/cross.png" width="15" height="15"/><span class="delete">        if (collide(goal, _player)) {</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">        if (collide(goal, _player) && level.player_has_key) {</span>
+<span class="context">            start_level(goal.next_level);</span>
+<span class="context">        }</span>
+<span class="context">    }</span>
+<span class="context">}</span>
+</div>
+</div>
+<p class="alert alert-success"><strong>Congratulations!</strong> You've earned the <span class="badge-gain">Treasure I - Key</span> badge!</p>
+<div class="name">Balthazar:</div><p class="balthazar">We need images of the gate open and closed.</p>
+<div class="row">
+<div class="col-sm-6 col-md-6"><div class="image-table">
+<a href="../images/backgrounds/gate-closed.png"><img src="../images/backgrounds/gate-closed.png" width="60" height="80" /></a>
+<div class="caption"><p align="center">gate-closed.png</p></div>
+</div></div>
+<div class="col-sm-6 col-md-6"><div class="image-table">
+<a href="../images/backgrounds/gate-open.png"><img src="../images/backgrounds/gate-open.png" width="60" height="80" /></a>
+<div class="caption"><p align="center">gate-open.png</p></div>
+</div></div>
+</div>
+<div class="alert alert-info"><p>Copy the following files into your project:</p><ul class="list-group">
+<li class="list-group-item"><span class="code-inline">images/backgrounds/gate-closed.png</span></li>
+<li class="list-group-item"><span class="code-inline">images/backgrounds/gate-open.png</span></li>
+</ul></div>
+<div class="name">Balthazar:</div><p class="balthazar">Since we'e changing the size of the goal, we need to update the width and height.</p>
+<div class="panel panel-default">
+<div class="panel-code code"><span class="context">function create_goal(x, y, next_level) {</span>
+<span class="context">    var goal = {};</span>
+<span class="context">    goal.x = x;</span>
+<span class="context">    goal.y = y;</span>
+<img src="../css/cross.png" width="15" height="15"/><span class="delete">    goal.width = 20;</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    goal.width = 30;</span>
+<img src="../css/cross.png" width="15" height="15"/><span class="delete">    goal.height = 20;</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    goal.height = 40;</span>
+<span class="context">    goal.origin_x = goal.width / 2;</span>
+<span class="context">    goal.origin_y = goal.height;</span>
+<span class="context">    goal.next_level = next_level;</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    goal.img_open = new Image();</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    goal.img_open.src = _game.imagedir_backgrounds + "gate-open.png";</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    goal.img_closed = new Image();</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    goal.img_closed.src = _game.imagedir_backgrounds + "gate-closed.png";</span>
+<span class="context">    return goal;</span>
+<span class="context">}</span>
+</div>
+</div>
+<div class="panel panel-default">
+<div class="panel-code code"><span class="context">function draw_goal(ctx) {</span>
+<span class="context">    var level = _levels[_game.current_level];</span>
+<span class="context">    var goal = level.goal;</span>
+<span class="context">    if (goal) {</span>
+<img src="../css/cross.png" width="15" height="15"/><span class="delete">        ctx.fillStyle = "green";</span>
+<img src="../css/cross.png" width="15" height="15"/><span class="delete">        ctx.fillRect(goal.x - goal.origin_x, goal.y - goal.origin_y,</span>
+<img src="../css/cross.png" width="15" height="15"/><span class="delete">                        goal.width, goal.height);</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">        var image = goal.img_closed;</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">        if (level.player_has_key) {</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">            image = goal.img_open;</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">        }</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">        set_transform(ctx, goal);</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">        ctx.drawImage(image, 0, 0);</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">        reset_transform(ctx);</span>
+<span class="context">    }</span>
+<span class="context">}</span>
+</div>
+</div>
+<div class="panel panel-default">
+<div class="panel-code code"><span class="context">function check_item_collisions() {</span>
+<span class="context">    var level = _levels[_game.current_level];</span>
+<span class="context">    var items = level.items;</span>
+<span class="context">    for (var i = 0; i < items.length; i++) {</span>
+<span class="context">        var item = items[i];</span>
+<span class="context">        if (!item.found) {</span>
+<span class="context">            if (collide(item, _player)) {</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">                if (item.type == "key") {</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">                    level.player_has_key = true;</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">                } else if (item.type == "finish") {</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">                    _game.game_over = true;</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">                    _game.game_win = true;</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">                }</span>
+<span class="context">                item.found = true;</span>
+<span class="context">            }</span>
+<span class="context">        }</span>
+<span class="context">    }</span>
+<span class="context">}</span>
+</div>
+</div>
+<p class="alert alert-success"><strong>Congratulations!</strong> You've earned the <span class="badge-gain">Treasure II - Finish</span> badge!</p>
+<!-- TODO: split this into 2 parts -->
+<div class="panel panel-default">
+<div class="panel-code code"><span class="context">function init_game() {</span>
+<span class="context">    ...</span>
+<span class="context">    _game.meter_width = 150;</span>
+<span class="context">    _game.meter_height = 20;</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add"></span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    // Status images</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    _game.img_key = new Image();</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    _game.img_key.src = _game.imagedir_items + "key.png";</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    _game.img_player = new Image();</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    _game.img_player.src = _game.imagedir_player + "icon.png";</span>
+<span class="context">}</span>
+</div>
+</div>
+<div class="panel panel-default">
+<div class="panel-code code"><span class="context">function draw_status(ctx) {</span>
+<span class="context">    ...</span>
+<span class="context">    ctx.strokeStyle = "black";</span>
+<span class="context">    ctx.strokeRect(_game.meter_x, _game.meter_y, _game.meter_width, _game.meter_height);</span>
+<span class="context"></span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    // If the player has the key, draw it in the status area.</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    var level = _levels[_game.current_level];</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    if (level.player_has_key) {</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">        ctx.drawImage(_game.img_key, _game.meter_width + 15, 11);</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    }</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add"></span>
+<span class="context">    // Draw player icons to indicate how many extra lives remain.</span>
+<span class="context">    for (var i = 0; i < _game.player_lives-1; i++) {</span>
+<span class="context">        ctx.drawImage(_game.img_player, _game.width - 30 - (i * 20), 12);</span>
+<span class="context">    }</span>
+<span class="context">}</span>
+</div>
+</div>
+<div class="panel panel-default">
+<div class="panel-code code"><span class="context">function check_item_collisions() {</span>
+<span class="context">    var level = _levels[_game.current_level];</span>
+<span class="context">    var items = level.items;</span>
+<span class="context">    for (var i = 0; i < items.length; i++) {</span>
+<span class="context">        var item = items[i];</span>
+<span class="context">        if (!item.found) {</span>
+<span class="context">            if (collide(item, _player)) {</span>
+<span class="context">                if (item.type == "key") {</span>
+<span class="context">                    level.player_has_key = true;</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">                } else if (item.type == "potion") {</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">                    adjust_health(30);</span>
+<span class="context">                } else if (item.type == "finish") {</span>
+<span class="context">                    _game.game_over = true;</span>
+<span class="context">                    _game.game_win = true;</span>
+<span class="context">                }</span>
+<span class="context">                item.found = true;</span>
+<span class="context">            }</span>
+<span class="context">        }</span>
+<span class="context">    }</span>
+<span class="context">}</span>
+</div>
+</div>
+<p class="alert alert-success"><strong>Congratulations!</strong> You've earned the <span class="badge-gain">Treasure III - Potion</span> badge!</p>
+<p class="alert alert-info"><a href="299.html"><span class="goto">GOTO 299</span></a></p>
+</div>
+</body>
+</html>

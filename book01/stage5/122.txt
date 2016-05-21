@@ -1,0 +1,130 @@
+TITLE = Adding key images
+ID = 122
+
+
+B: draw key image
+
+B: Create the images/player directory.
+
+CREATE_DIR images/items
+
+B: Copy 2 images: =key.png= and =gem.png=.
+
+BEGIN_IMAGE_TABLE 2
+TABLE_IMAGE images/items/key.png 36x40 key.png
+TABLE_IMAGE images/items/gem.png 42x54 gem.png
+END_IMAGE_TABLE
+
+BEGIN_COPY_FILE
+COPY_FILE images/items/key.png
+COPY_FILE images/items/gem.png
+END_COPY_FILE
+
+
+B: ???
+
+BEGIN_CODE
+.function init_game() {
+.	...
+.	_game.imagedir_monsters = _game.imagedir + "monsters/";
++	_game.imagedir_items = _game.imagedir + "items/";
+.	...
+.}
+END_CODE
+
+B: Specify the image name for each item
+
+BEGIN_CODE
+.function init_level1() {
+.	...
+.	var item_data = [
+-		[480, 110, 20, 20, "key"],
++		[480, 110, 18, 20, "key", "key"],
+.	];
+.	add_items(level, item_data);
+.	...
+.}
+.
+.function init_level2() {
+.	...
+.	var item_data = [
+-		[250, 360, 20, 20, "key"],
++		[250, 360, 18, 20, "key", "key"],
+.	];
+.	add_items(level, item_data);
+.	...
+.}
+END_CODE
+
+B: for level 3, we don't have a key, but we have a gem instead.
+
+BEGIN_CODE
+.function init_level3() {
+.	...
+.	var item_data = [
+-		[500, 360, 20, 20, "finish"],
++		[500, 360, 21, 27, "finish", "gem"],
+.	];
+.	add_items(level, item_data);
+.	...
+.}
+END_CODE
+
+B: ???
+
+BEGIN_CODE
+-// item_data: [x, y, width, height, type]
++// item_data: [x, y, width, height, type, image]
+.function add_items(level, item_data) {
+.	for (var i = 0; i < item_data.length; i++) {
+.		var d = item_data[i];
+-		var item = create_item(d[0], d[1], d[2], d[3], d[4]);
++		var item = create_item(d[0], d[1], d[2], d[3], d[4], d[5]);
+.		level.items.push(item);
+.	}
+.}
+.
+-function create_item(x, y, width, height, type) {
++function create_item(x, y, width, height, type, image) {
+.	var d = {};
+.	d.x = x;
+.	d.y = y;
+.	d.width = width;
+.	d.height = height;
+.	d.origin_x = width / 2;
+.	d.origin_y = height;
+.	d.type = type;
+.	d.found = false;
++
++	d.img = new Image();
++	d.img.src = _game.imagedir_items + image + ".png";
+.	return d;
+.}
+END_CODE
+
+B: ???
+
+RUN_VERIFY
+
+B: code is the same as before. now we'll draw the items
+
+BEGIN_CODE
+.function draw_items(ctx) {
+.	var level = _levels[_game.current_level];
+.	var items = level.items;
+.	for (var i = 0; i < items.length; i++) {
+.		var t = items[i];
+.		if (!t.found) {
+-			ctx.fillStyle = "magenta";
+-			ctx.fillRect(t.x - t.origin_x, t.y - t.origin_y, t.width, t.height);
++			ctx.drawImage(t.img, t.x - t.origin_x, t.y - t.origin_y);
+.		}
+.	}
+.}
+END_CODE
+
+B: ???
+
+GOTO 184 IF_BADGE Vitality I - Health
+
+GOTO 100

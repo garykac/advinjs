@@ -1,0 +1,186 @@
+TITLE = Player images
+ID = 200
+
+B: We'll start by adding support for images.
+
+B: Create the images/player directory.
+
+CREATE_DIR images/player
+
+B: Copy 3 player images into the =images/player= directory: =happy.png=, =normal.png= and =sad.png=.
+
+BEGIN_IMAGE_TABLE 3
+TABLE_IMAGE images/player/normal.png 40x48 normal.png
+TABLE_IMAGE images/player/happy.png 40x48 happy.png
+TABLE_IMAGE images/player/sad.png 60x34 sad.png
+END_IMAGE_TABLE
+
+BEGIN_COPY_FILE
+COPY_FILE images/player/happy.png
+COPY_FILE images/player/normal.png
+COPY_FILE images/player/sad.png
+END_COPY_FILE
+
+
+BEGIN_CODE
+.function init_game() {
+.	...
+.	// The keymap keeps track of which keys are currently being pressed.
+.	_game.keymap = {};
+.
++	_game.imagedir = "images/";
++	_game.imagedir_player = _game.imagedir + "player/";
++	_game.imagedir_backgrounds = _game.imagedir + "backgrounds/";
++	_game.imagedir_monsters = _game.imagedir + "monsters/";
++	_game.imagedir_items = _game.imagedir + "items/";
++
+.	// Game state.
+.	_game.game_over = false;
+.	_game.game_win = false;
+.	...
+.}
+END_CODE
+
+B: ???
+
+BEGIN_CODE
+.function init_player() {
+.	// Player x,y are initialized by the level.
+.	_player.x = 0;
+.	_player.y = 0;
+.
++	// Player width, height and origin are initialized by the current sprite.
+-	_player.width = 20;
++	_player.width = 0;
+-	_player.height = 20;
++	_player.height = 0;
+-	_player.origin_x = _player.width / 2;
++	_player.origin_x = 0;
+-	_player.origin_y = _player.height;
++	_player.origin_y = 0;
+.
+.	_player.platform = null;
+.	...
+.}
+END_CODE
+
+
+B: ???
+
+BEGIN_CODE
+.function init_player() {
+.	...
+.	_player.platform = null;
++	_player.dir = 1;
+.
+.	...
+.	_player.velocity_y_jump = -10;
+.	_player.velocity_y_max = 10;
++
++	_player.sprite = init_player_sprite("normal", 20, 24);
++	_player.sprite_sad = init_player_sprite("sad", 30, 17);
++	_player.sprite_happy = init_player_sprite("happy", 20, 24);
++	update_player_sprite();
+.}
++
++function init_player_sprite(name, width, height, origin_x, origin_y) {
++	var sprite = {};
++	sprite.width = width;
++	sprite.height = height;
++	sprite.origin_x = width / 2;
++	sprite.origin_y = height;
++	sprite.img = new Image();
++	sprite.img.src = _game.imagedir_player + name + ".png";
++	return sprite;
++}
++
++function update_player_sprite() {
++	var sprite;
++	if (_game.game_over && !_game.game_win) {
++		sprite = _player.sprite_sad;
++	} else if (_game.game_win) {
++		sprite = _player.sprite_happy;
++	} else {
++		sprite = _player.sprite;
++	}
++
++	// Update the player width, height and origin based on the current sprite.
++	_player.width = sprite.width;
++	_player.height = sprite.height;
++	_player.origin_x = sprite.origin_x;
++	_player.origin_y = sprite.origin_y;
++
++	return sprite;
++}
+END_CODE
+
+
+BEGIN_CODE
+.function start_level(level_id) {
+.	...
+.}
++
++function set_transform(ctx, obj) {
++	var x = obj.x - obj.origin_x;
++	var y = obj.y - obj.origin_y;
++
++	// Adjust origin if we're facing left.
++	if (obj.dir < 0)
++		x += obj.width;
++
++	// Translate origin to (x,y).
++	ctx.setTransform(1, 0, 0, 1, x, y);
++
++	// Flip the image if we're facing left.
++	if (obj.dir < 0)
++		ctx.scale(-1, 1);
++}
++
++function reset_transform(ctx) {
++	// Reset transform to the identity matrix.
++	ctx.setTransform(1, 0, 0, 1, 0, 0);
++}
+END_CODE
+
+B: ???
+
+
+BEGIN_CODE
+.function check_input() {
+.	// Left arrow or 'a' to move left.
+.	if (_game.keymap[37] || _game.keymap[65]) {
++		_player.dir = -1;
+.		_player.velocity_x -= _player.velocity_x_delta;
+.		if (_player.velocity_x < -_player.velocity_x_max) {
+.			_player.velocity_x = -_player.velocity_x_max;
+.		}
+.	}
+.	// Right arrow or 'd' to move right.
+.	if (_game.keymap[39] || _game.keymap[68]) {
++		_player.dir = 1;
+.		_player.velocity_x += _player.velocity_x_delta;
+.		if (_player.velocity_x > _player.velocity_x_max) {
+.			_player.velocity_x = _player.velocity_x_max;
+.		}
+.	}
+.	...
+.}
+END_CODE
+
+B: ???
+
+BEGIN_CODE
+.function draw_player(ctx) {
+-	ctx.fillStyle = "blue";
+-	ctx.fillRect(_player.x - _player.origin_x, _player.y - _player.origin_y,
+-					_player.width, _player.height);
++	var sprite = update_player_sprite();
++	set_transform(ctx, _player);
++	ctx.drawImage(sprite.img, 0, 0);
++	reset_transform(ctx);
+.}
+END_CODE
+
+B: ???
+
+GOTO 210

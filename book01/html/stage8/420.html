@@ -1,0 +1,360 @@
+<html>
+<head>
+<title>420 : Better potions</title>
+
+<link rel="stylesheet" href="../css/bootstrap.min.css">
+<link type="text/css" rel="stylesheet" href="../css/style.css" />
+<link href='http://fonts.googleapis.com/css?family=Trade+Winds' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Sacramento' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Piedra' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Aclonica' rel='stylesheet' type='text/css'>
+
+<script type="text/javascript">
+	var _gaq = _gaq || [];
+	_gaq.push(['_setAccount', 'UA-17513364-1']);
+	_gaq.push(['_setDomainName', 'cse4k12.org']);
+	_gaq.push(['_setAllowLinker', true]);
+	_gaq.push(['_trackPageview']);
+
+	(function() {
+		var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+		ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+		var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+	})();
+</script>
+
+</head>
+
+<body>
+<div class="navbar navbar-inverse navbar-static-top" role="navigation"><div class="container"><div class="navbar-header">
+<a class="navbar-brand" href="../index.html"><span class="title1">Adventures in</span> <span class="title2">JavaScript</span></a>
+</div></div></div>
+<div class="container">
+<h1>420 : Better potions</h1>
+<div class="name">Balthazar:</div><p class="balthazar">Rather than have the potion disappear immediately when the player touches it, we'd like to have the player slowly drink from it.</p>
+<div class="name">Balthazar:</div><p class="balthazar">We need a set of potion images that all have a different amount of liquid shown.</p>
+<div class="row">
+<div class="col-sm-6 col-md-2"><div class="image-table">
+<a href="../images/items/potion-1.png"><img src="../images/items/potion-1.png" width="32" height="46" /></a>
+<div class="caption"><p align="center">potion-1.png</p></div>
+</div></div>
+<div class="col-sm-6 col-md-2"><div class="image-table">
+<a href="../images/items/potion-2.png"><img src="../images/items/potion-2.png" width="32" height="46" /></a>
+<div class="caption"><p align="center">potion-2.png</p></div>
+</div></div>
+<div class="col-sm-6 col-md-2"><div class="image-table">
+<a href="../images/items/potion-3.png"><img src="../images/items/potion-3.png" width="32" height="46" /></a>
+<div class="caption"><p align="center">potion-3.png</p></div>
+</div></div>
+<div class="col-sm-6 col-md-2"><div class="image-table">
+<a href="../images/items/potion-4.png"><img src="../images/items/potion-4.png" width="32" height="46" /></a>
+<div class="caption"><p align="center">potion-4.png</p></div>
+</div></div>
+<div class="col-sm-6 col-md-2"><div class="image-table">
+<a href="../images/items/potion-5.png"><img src="../images/items/potion-5.png" width="32" height="46" /></a>
+<div class="caption"><p align="center">potion-5.png</p></div>
+</div></div>
+<div class="col-sm-6 col-md-2"><div class="image-table">
+<a href="../images/items/potion-6.png"><img src="../images/items/potion-6.png" width="32" height="46" /></a>
+<div class="caption"><p align="center">potion-6.png</p></div>
+</div></div>
+</div>
+<div class="row">
+<div class="col-sm-6 col-md-2"><div class="image-table">
+<a href="../images/items/potion-7.png"><img src="../images/items/potion-7.png" width="32" height="46" /></a>
+<div class="caption"><p align="center">potion-7.png</p></div>
+</div></div>
+<div class="col-sm-6 col-md-2"><div class="image-table">
+<a href="../images/items/potion-8.png"><img src="../images/items/potion-8.png" width="32" height="46" /></a>
+<div class="caption"><p align="center">potion-8.png</p></div>
+</div></div>
+<div class="col-sm-6 col-md-2"><div class="image-table">
+<a href="../images/items/potion-9.png"><img src="../images/items/potion-9.png" width="32" height="46" /></a>
+<div class="caption"><p align="center">potion-9.png</p></div>
+</div></div>
+<div class="col-sm-6 col-md-2"><div class="image-table">
+<a href="../images/items/potion-10.png"><img src="../images/items/potion-10.png" width="32" height="46" /></a>
+<div class="caption"><p align="center">potion-10.png</p></div>
+</div></div>
+<div class="col-sm-6 col-md-2"><div class="image-table">
+<a href="../images/items/potion-11.png"><img src="../images/items/potion-11.png" width="32" height="46" /></a>
+<div class="caption"><p align="center">potion-11.png</p></div>
+</div></div>
+<div class="col-sm-6 col-md-2"><div class="image-table">
+<a href="../images/items/potion-12.png"><img src="../images/items/potion-12.png" width="32" height="46" /></a>
+<div class="caption"><p align="center">potion-12.png</p></div>
+</div></div>
+</div>
+<div class="row">
+<div class="col-sm-6 col-md-4"><div class="image-table">
+<a href="../images/items/potion-13.png"><img src="../images/items/potion-13.png" width="32" height="46" /></a>
+<div class="caption"><p align="center">potion-13.png</p></div>
+</div></div>
+<div class="col-sm-6 col-md-4"><div class="image-table">
+<a href="../images/items/potion-14.png"><img src="../images/items/potion-14.png" width="32" height="46" /></a>
+<div class="caption"><p align="center">potion-14.png</p></div>
+</div></div>
+<div class="col-sm-6 col-md-4"><div class="image-table">
+<a href="../images/items/potion-15.png"><img src="../images/items/potion-15.png" width="32" height="46" /></a>
+<div class="caption"><p align="center">potion-15.png</p></div>
+</div></div>
+</div>
+<div class="alert alert-info"><p>Copy the following files into your project:</p><ul class="list-group">
+<li class="list-group-item"><span class="code-inline">images/items/potion-1.png</span></li>
+<li class="list-group-item"><span class="code-inline">images/items/potion-2.png</span></li>
+<li class="list-group-item"><span class="code-inline">images/items/potion-3.png</span></li>
+<li class="list-group-item"><span class="code-inline">images/items/potion-4.png</span></li>
+<li class="list-group-item"><span class="code-inline">images/items/potion-5.png</span></li>
+<li class="list-group-item"><span class="code-inline">images/items/potion-6.png</span></li>
+<li class="list-group-item"><span class="code-inline">images/items/potion-7.png</span></li>
+<li class="list-group-item"><span class="code-inline">images/items/potion-8.png</span></li>
+<li class="list-group-item"><span class="code-inline">images/items/potion-9.png</span></li>
+<li class="list-group-item"><span class="code-inline">images/items/potion-10.png</span></li>
+<li class="list-group-item"><span class="code-inline">images/items/potion-11.png</span></li>
+<li class="list-group-item"><span class="code-inline">images/items/potion-12.png</span></li>
+<li class="list-group-item"><span class="code-inline">images/items/potion-13.png</span></li>
+<li class="list-group-item"><span class="code-inline">images/items/potion-14.png</span></li>
+<li class="list-group-item"><span class="code-inline">images/items/potion-15.png</span></li>
+</ul></div>
+<div class="name">Balthazar:</div><p class="balthazar">Since potions are going to be more complicated than other items, we should add a function specifically for creating them.</p>
+<div class="panel panel-default">
+<div class="panel-code code"><span class="context">function init_level1() {</span>
+<span class="context">    ...</span>
+<span class="context">    var item_data = [</span>
+<span class="context">        // [x, y, width, height, type, image]</span>
+<span class="context">        [530, 358, 18, 20, "key", "key"],</span>
+<img src="../css/cross.png" width="15" height="15"/><span class="delete">        [465, 270, 16, 23, "potion", "potion"],</span>
+<span class="context">        [50, 250, 20, 20, "coin", "coin"],</span>
+<span class="context">        [530, 190, 20, 20, "coin", "coin"],</span>
+<span class="context">        [230, 120, 20, 20, "coin", "coin"],</span>
+<span class="context">    ];</span>
+<span class="context">    add_items(level, item_data);</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    add_potion_item(level, 465, 270);</span>
+<span class="context">    ...</span>
+<span class="context">}</span>
+<span class="context"></span>
+<span class="context">function init_level2() {</span>
+<span class="context">    ...</span>
+<span class="context">    var item_data = [</span>
+<span class="context">        // [x, y, width, height, type, image]</span>
+<span class="context">        [80, 272, 18, 20, "key", "key"],</span>
+<img src="../css/cross.png" width="15" height="15"/><span class="delete">        [55, 230, 16, 23, "potion", "potion"],</span>
+<span class="context">        [20, 280, 20, 20, "coin", "coin"],</span>
+<span class="context">        [420, 230, 20, 20, "coin", "coin"],</span>
+<span class="context">        [320, 140, 20, 20, "coin", "coin"],</span>
+<span class="context">    ];</span>
+<span class="context">    add_items(level, item_data);</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    add_potion_item(level, 55, 230);</span>
+<span class="context">    ...</span>
+<span class="context">}</span>
+</div>
+</div>
+<div class="name">Balthazar:</div><p class="balthazar">For the potion, we'll add a <span class="code-inline-color">value</span> (and a <span class="code-inline-color">max_value</span>) that indicates the current amount of potion remaining. All items will get this new <span class="code-inline-color">value</span> attribute, but it will be set to <span class="code-inline-color">0</span> for all non-potion items.</p>
+<div class="panel panel-default">
+<div class="panel-code code"><span class="context">function add_items(level, item_data) {</span>
+<span class="context">    ...</span>
+<span class="context">}</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add"></span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">function add_potion_item(level, x, y) {</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    var val_images = [</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">        // [image, percentage]</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">        ["potion-1", 0],</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">        ["potion-2", 3],</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">        ["potion-3", 10],</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">        ["potion-4", 20],</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">        ["potion-5", 30],</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">        ["potion-6", 40],</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">        ["potion-7", 50],</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">        ["potion-8", 60],</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">        ["potion-9", 70],</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">        ["potion-10", 79],</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">        ["potion-11", 86],</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">        ["potion-12", 91],</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">        ["potion-13", 94],</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">        ["potion-14", 97],</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">        ["potion-15", 100],</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    ];</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    var item = create_item(x, y, 16, 23, "potion", val_images);</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    item.value_max = 20;</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    item.value = item.value_max;</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    item.consume_rate = 0.25;</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    item.replenish_rate = 0.01;</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    level.items.push(item);</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">}</span>
+</div>
+</div>
+<div class="panel panel-default">
+<div class="panel-code code"><span class="context">function create_item(x, y, width, height, type, image) {</span>
+<span class="context">    var d = {};</span>
+<span class="context">    d.x = x;</span>
+<span class="context">    d.y = y;</span>
+<span class="context">    d.width = width;</span>
+<span class="context">    d.height = height;</span>
+<span class="context">    d.origin_x = width / 2;</span>
+<span class="context">    d.origin_y = height;</span>
+<span class="context">    d.type = type;</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    d.value_max = 0;</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    d.value = 0;</span>
+<span class="context">    d.found = false;</span>
+<span class="context"></span>
+<img src="../css/cross.png" width="15" height="15"/><span class="delete">    d.img = new Image();</span>
+<img src="../css/cross.png" width="15" height="15"/><span class="delete">    d.img.src = _game.imagedir_items + image + ".png";</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    d.value_images = [];</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    // If the image is specified as an array, then it defines a set of</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    // images that are associated with different values for this item.</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    if (image instanceof Array) {</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">        for (var j = 0; j < image.length; j++) {</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">            var image_name = image[j][0];</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">            var percent = image[j][1];</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">            var sprite = {};</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">            sprite.img = new Image();</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">            sprite.img.src = _game.imagedir_items + image_name + ".png";</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">            sprite.percent = percent;</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">            d.value_images.push(sprite);</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">        }</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    } else {</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">        // Single non-animated image.</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">        var sprite = {};</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">        sprite.img = new Image();</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">        sprite.img.src = _game.imagedir_items + image + ".png";</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">        sprite.percent = 0;</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">        d.value_images.push(sprite);</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    }</span>
+<span class="context">    return d;</span>
+<span class="context">}</span>
+</div>
+</div>
+<div class="name">Balthazar:</div><p class="balthazar">Update draw items to draw the appropriate image. For potions, this will choose an image based on the percentage of potion remaining.</p>
+<div class="name">Balthazar:</div><p class="balthazar">For items that have their <span class="code-inline-color">value</span> and <span class="code-inline-color">value_max</span> equal to <span class="code-inline-color">0</span>, this will select the first image (at index 0).</p>
+<div class="panel panel-default">
+<div class="panel-code code"><span class="context">function draw_items(ctx) {</span>
+<span class="context">    var level = _levels[_game.current_level];</span>
+<span class="context">    var items = level.items;</span>
+<span class="context">    for (var i = 0; i < items.length; i++) {</span>
+<span class="context">        var t = items[i];</span>
+<span class="context">        if (!t.found) {</span>
+<img src="../css/cross.png" width="15" height="15"/><span class="delete">            ctx.drawImage(t.img, t.x - t.origin_x, t.y - t.origin_y);</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">            var index = 0;</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">            for (var ival = 0; ival < t.value_images.length; ival++) {</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">                var curr_percent = 100 * t.value / t.value_max;</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">                if (t.value_images[ival].percent >= curr_percent) {</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">                    index = ival;</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">                    break;</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">                }</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">            }</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">            set_transform(ctx, t);</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">            ctx.drawImage(t.value_images[index].img, 0, 0);</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">            reset_transform(ctx);</span>
+<span class="context">        }</span>
+<span class="context">    }</span>
+<span class="context">}</span>
+</div>
+</div>
+<div class="name">Balthazar:</div><p class="balthazar">We no longer want the potions to disappear immediately when the player touches them, so we should stop setting <span class="code-inline-color">found</span> to <span class="code-inline-color">true</span> for potions.</p>
+<div class="panel panel-default">
+<div class="panel-code code"><span class="context">function check_item_collisions() {</span>
+<span class="context">    var level = _levels[_game.current_level];</span>
+<span class="context">    var items = level.items;</span>
+<span class="context">    for (var i = 0; i < items.length; i++) {</span>
+<span class="context">        var item = items[i];</span>
+<span class="context">        if (!item.found) {</span>
+<span class="context">            if (collide(item, _player)) {</span>
+<span class="context">                if (item.type == "key") {</span>
+<span class="context">                    level.player_has_key = true;</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">                    item.found = true;</span>
+<span class="context">                } else if (item.type == "potion") {</span>
+<span class="context">                    adjust_health(30);</span>
+<span class="context">                } else if (item.type == "coin") {</span>
+<span class="context">                    _player.coins++;</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">                    item.found = true;</span>
+<span class="context">                } else if (item.type == "finish") {</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">                    item.found = true;</span>
+<span class="context">                    _game.game_over = true;</span>
+<span class="context">                    _game.game_win = true;</span>
+<span class="context">                }</span>
+<img src="../css/cross.png" width="15" height="15"/><span class="delete">                item.found = true;</span>
+<span class="context">            }</span>
+<span class="context">        }</span>
+<span class="context">    }</span>
+<span class="context">}</span>
+</div>
+</div>
+<div class="name">Balthazar:</div><p class="balthazar">Instead of a single 30 point health boost, the potion will now adjust the player's health by its <span class="code-inline-color">consume_rate</span> as long as the player is touching the potion.</p>
+<div class="panel panel-default">
+<div class="panel-code code"><span class="context">function check_item_collisions() {</span>
+<span class="context">    var level = _levels[_game.current_level];</span>
+<span class="context">    var items = level.items;</span>
+<span class="context">    for (var i = 0; i < items.length; i++) {</span>
+<span class="context">        var item = items[i];</span>
+<span class="context">        if (!item.found) {</span>
+<span class="context">            if (collide(item, _player)) {</span>
+<span class="context">                if (item.type == "key") {</span>
+<span class="context">                    level.player_has_key = true;</span>
+<span class="context">                    item.found = true;</span>
+<span class="context">                } else if (item.type == "potion") {</span>
+<img src="../css/cross.png" width="15" height="15"/><span class="delete">                    adjust_health(30);</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">                    if (item.value >= item.consume_rate) {</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">                        adjust_health(item.consume_rate);</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">                        item.value -= item.consume_rate;</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">                    }</span>
+<span class="context">                } else if (item.type == "coin") {</span>
+<span class="context">                    _player.coins++;</span>
+<span class="context">                    item.found = true;</span>
+<span class="context">                } else if (item.type == "finish") {</span>
+<span class="context">                    item.found = true;</span>
+<span class="context">                    _game.game_over = true;</span>
+<span class="context">                    _game.game_win = true;</span>
+<span class="context">                }</span>
+<span class="context">            }</span>
+<span class="context">        }</span>
+<span class="context">    }</span>
+<span class="context">}</span>
+</div>
+</div>
+<div class="name">Balthazar:</div><p class="balthazar">And finally, having an empty potion on the screen is rather boring, so let's have the potion slowly replenish itself over time.</p>
+<div class="name">Balthazar:</div><p class="balthazar">We can do this by adding a <span class="code-inline-color">update_items()</span> function.</p>
+<div class="panel panel-default">
+<div class="panel-code code"><span class="context">function update_monsters() {</span>
+<span class="context">    ...</span>
+<span class="context">}</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add"></span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">function update_items() {</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    var items = _levels[_game.current_level].items;</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    for (var i = 0; i < items.length; i++) {</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">        var item = items[i];</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">        if (item.type == "potion") {</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">            item.value += item.replenish_rate;</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">            if (item.value > item.value_max) {</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">                item.value = item.value_max;</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">            }</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">        }</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    }</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">}</span>
+</div>
+</div>
+<div class="name">Balthazar:</div><p class="balthazar">We'll need to call this function from our <span class="code-inline-color">update_world()</span> function.</p>
+<div class="panel panel-default">
+<div class="panel-code code"><span class="context">function update_world() {</span>
+<span class="context">    var level = _levels[_game.current_level];</span>
+<span class="context"></span>
+<span class="context">    if (_game.in_transition) {</span>
+<span class="context">        draw_transition_screen();</span>
+<span class="context">    } else if (level.type == "game") {</span>
+<span class="context">        update_monsters();</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">        update_items();</span>
+<span class="context">        update_player();</span>
+<span class="context">        check_collisions();</span>
+<span class="context">        draw();</span>
+<span class="context">    } else if (level.type == "title") {</span>
+<span class="context">        draw_title_screen();</span>
+<span class="context">    }</span>
+<span class="context"></span>
+<span class="context">    requestAnimationFrame(update_world);</span>
+<span class="context">}</span>
+</div>
+</div>
+<p class="alert alert-success"><strong>Congratulations!</strong> You've earned the <span class="badge-gain">Treasure V - Better Potion</span> badge!</p>
+<p class="alert alert-info"><a href="445.html"><span class="goto">GOTO 445</span></a></p>
+</div>
+</body>
+</html>

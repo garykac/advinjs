@@ -1,0 +1,297 @@
+TITLE = Better potions
+ID = 420
+
+B: Rather than have the potion disappear immediately when the player touches it, we'd like to have the player slowly drink from it. 
+
+B: We need a set of potion images that all have a different amount of liquid shown.
+
+BEGIN_IMAGE_TABLE 6
+TABLE_IMAGE images/items/potion-1.png 32x46 potion-1.png
+TABLE_IMAGE images/items/potion-2.png 32x46 potion-2.png
+TABLE_IMAGE images/items/potion-3.png 32x46 potion-3.png
+TABLE_IMAGE images/items/potion-4.png 32x46 potion-4.png
+TABLE_IMAGE images/items/potion-5.png 32x46 potion-5.png
+TABLE_IMAGE images/items/potion-6.png 32x46 potion-6.png
+END_IMAGE_TABLE
+
+BEGIN_IMAGE_TABLE 6
+TABLE_IMAGE images/items/potion-7.png 32x46 potion-7.png
+TABLE_IMAGE images/items/potion-8.png 32x46 potion-8.png
+TABLE_IMAGE images/items/potion-9.png 32x46 potion-9.png
+TABLE_IMAGE images/items/potion-10.png 32x46 potion-10.png
+TABLE_IMAGE images/items/potion-11.png 32x46 potion-11.png
+TABLE_IMAGE images/items/potion-12.png 32x46 potion-12.png
+END_IMAGE_TABLE
+
+BEGIN_IMAGE_TABLE 3
+TABLE_IMAGE images/items/potion-13.png 32x46 potion-13.png
+TABLE_IMAGE images/items/potion-14.png 32x46 potion-14.png
+TABLE_IMAGE images/items/potion-15.png 32x46 potion-15.png
+END_IMAGE_TABLE
+
+BEGIN_COPY_FILE
+COPY_FILE images/items/potion-1.png
+COPY_FILE images/items/potion-2.png
+COPY_FILE images/items/potion-3.png
+COPY_FILE images/items/potion-4.png
+COPY_FILE images/items/potion-5.png
+COPY_FILE images/items/potion-6.png
+COPY_FILE images/items/potion-7.png
+COPY_FILE images/items/potion-8.png
+COPY_FILE images/items/potion-9.png
+COPY_FILE images/items/potion-10.png
+COPY_FILE images/items/potion-11.png
+COPY_FILE images/items/potion-12.png
+COPY_FILE images/items/potion-13.png
+COPY_FILE images/items/potion-14.png
+COPY_FILE images/items/potion-15.png
+END_COPY_FILE
+
+B: Since potions are going to be more complicated than other items, we should add a function specifically for creating them.
+BEGIN_CODE
+.function init_level1() {
+.	...
+.	var item_data = [
+.		// [x, y, width, height, type, image]
+.		[530, 358, 18, 20, "key", "key"],
+-		[465, 270, 16, 23, "potion", "potion"],
+.		[50, 250, 20, 20, "coin", "coin"],
+.		[530, 190, 20, 20, "coin", "coin"],
+.		[230, 120, 20, 20, "coin", "coin"],
+.	];
+.	add_items(level, item_data);
++	add_potion_item(level, 465, 270);
+.	...
+.}
+.
+.function init_level2() {
+.	...
+.	var item_data = [
+.		// [x, y, width, height, type, image]
+.		[80, 272, 18, 20, "key", "key"],
+-		[55, 230, 16, 23, "potion", "potion"],
+.		[20, 280, 20, 20, "coin", "coin"],
+.		[420, 230, 20, 20, "coin", "coin"],
+.		[320, 140, 20, 20, "coin", "coin"],
+.	];
+.	add_items(level, item_data);
++	add_potion_item(level, 55, 230);
+.	...
+.}
+END_CODE
+
+B: For the potion, we'll add a =value= (and a =max_value=) that indicates the current amount of potion remaining. All items will get this new =value= attribute, but it will be set to =0= for all non-potion items.
+
+BEGIN_CODE
+.function add_items(level, item_data) {
+.	...
+.}
++
++function add_potion_item(level, x, y) {
++	var val_images = [
++		// [image, percentage]
++		["potion-1", 0],
++		["potion-2", 3],
++		["potion-3", 10],
++		["potion-4", 20],
++		["potion-5", 30],
++		["potion-6", 40],
++		["potion-7", 50],
++		["potion-8", 60],
++		["potion-9", 70],
++		["potion-10", 79],
++		["potion-11", 86],
++		["potion-12", 91],
++		["potion-13", 94],
++		["potion-14", 97],
++		["potion-15", 100],
++	];
++	var item = create_item(x, y, 16, 23, "potion", val_images);
++	item.value_max = 20;
++	item.value = item.value_max;
++	item.consume_rate = 0.25;
++	item.replenish_rate = 0.01;
++	level.items.push(item);
++}
+END_CODE
+
+BEGIN_CODE
+.function create_item(x, y, width, height, type, image) {
+.	var d = {};
+.	d.x = x;
+.	d.y = y;
+.	d.width = width;
+.	d.height = height;
+.	d.origin_x = width / 2;
+.	d.origin_y = height;
+.	d.type = type;
++	d.value_max = 0;
++	d.value = 0;
+.	d.found = false;
+.
+-	d.img = new Image();
+-	d.img.src = _game.imagedir_items + image + ".png";
++	d.value_images = [];
++	// If the image is specified as an array, then it defines a set of
++	// images that are associated with different values for this item.
++	if (image instanceof Array) {
++		for (var j = 0; j < image.length; j++) {
++			var image_name = image[j][0];
++			var percent = image[j][1];
++			var sprite = {};
++			sprite.img = new Image();
++			sprite.img.src = _game.imagedir_items + image_name + ".png";
++			sprite.percent = percent;
++			d.value_images.push(sprite);
++		}
++	} else {
++		// Single non-animated image.
++		var sprite = {};
++		sprite.img = new Image();
++		sprite.img.src = _game.imagedir_items + image + ".png";
++		sprite.percent = 0;
++		d.value_images.push(sprite);
++	}
+.	return d;
+.}
+END_CODE
+
+B: Update draw items to draw the appropriate image. For potions, this will choose an image based on the percentage of potion remaining.
+
+B: For items that have their =value= and =value_max= equal to =0=, this will select the first image (at index 0).
+
+BEGIN_CODE
+.function draw_items(ctx) {
+.	var level = _levels[_game.current_level];
+.	var items = level.items;
+.	for (var i = 0; i < items.length; i++) {
+.		var t = items[i];
+.		if (!t.found) {
+-			ctx.drawImage(t.img, t.x - t.origin_x, t.y - t.origin_y);
++			var index = 0;
++			for (var ival = 0; ival < t.value_images.length; ival++) {
++				var curr_percent = 100 * t.value / t.value_max;
++				if (t.value_images[ival].percent >= curr_percent) {
++					index = ival;
++					break;
++				}
++			}
++			set_transform(ctx, t);
++			ctx.drawImage(t.value_images[index].img, 0, 0);
++			reset_transform(ctx);
+.		}
+.	}
+.}
+END_CODE
+
+B: We no longer want the potions to disappear immediately when the player touches them, so we should stop setting =found= to =true= for potions.
+
+BEGIN_CODE
+.function check_item_collisions() {
+.	var level = _levels[_game.current_level];
+.	var items = level.items;
+.	for (var i = 0; i < items.length; i++) {
+.		var item = items[i];
+.		if (!item.found) {
+.			if (collide(item, _player)) {
+.				if (item.type == "key") {
+.					level.player_has_key = true;
++					item.found = true;
+.				} else if (item.type == "potion") {
+.					adjust_health(30);
+.				} else if (item.type == "coin") {
+.					_player.coins++;
++					item.found = true;
+.				} else if (item.type == "finish") {
++					item.found = true;
+.					_game.game_over = true;
+.					_game.game_win = true;
+.				}
+-				item.found = true;
+.			}
+.		}
+.	}
+.}
+END_CODE
+
+B: Instead of a single 30 point health boost, the potion will now adjust the player's health by its =consume_rate= as long as the player is touching the potion.
+
+BEGIN_CODE
+.function check_item_collisions() {
+.	var level = _levels[_game.current_level];
+.	var items = level.items;
+.	for (var i = 0; i < items.length; i++) {
+.		var item = items[i];
+.		if (!item.found) {
+.			if (collide(item, _player)) {
+.				if (item.type == "key") {
+.					level.player_has_key = true;
+.					item.found = true;
+.				} else if (item.type == "potion") {
+-					adjust_health(30);
++					if (item.value >= item.consume_rate) {
++						adjust_health(item.consume_rate);
++						item.value -= item.consume_rate;
++					}
+.				} else if (item.type == "coin") {
+.					_player.coins++;
+.					item.found = true;
+.				} else if (item.type == "finish") {
+.					item.found = true;
+.					_game.game_over = true;
+.					_game.game_win = true;
+.				}
+.			}
+.		}
+.	}
+.}
+END_CODE
+
+B: And finally, having an empty potion on the screen is rather boring, so let's have the potion slowly replenish itself over time.
+
+B: We can do this by adding a =update_items()= function.
+
+BEGIN_CODE
+.function update_monsters() {
+.	...
+.}
++
++function update_items() {
++	var items = _levels[_game.current_level].items;
++	for (var i = 0; i < items.length; i++) {
++		var item = items[i];
++		if (item.type == "potion") {
++			item.value += item.replenish_rate;
++			if (item.value > item.value_max) {
++				item.value = item.value_max;
++			}
++		}
++	}
++}
+END_CODE
+
+B: We'll need to call this function from our =update_world()= function.
+
+BEGIN_CODE
+.function update_world() {
+.	var level = _levels[_game.current_level];
+.
+.	if (_game.in_transition) {
+.		draw_transition_screen();
+.	} else if (level.type == "game") {
+.		update_monsters();
++		update_items();
+.		update_player();
+.		check_collisions();
+.		draw();
+.	} else if (level.type == "title") {
+.		draw_title_screen();
+.	}
+.
+.	requestAnimationFrame(update_world);
+.}
+END_CODE
+
+GAIN Treasure V - Better Potion
+
+GOTO 445

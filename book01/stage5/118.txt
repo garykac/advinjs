@@ -1,0 +1,95 @@
+TITLE = Giving direction
+ID = 118
+
+B: and fixup the input:
+
+BEGIN_CODE
+.function check_input() {
+.	// Left arrow or 'a' to move left.
+.	if (_game.keymap[37] || _game.keymap[65]) {
++		_player.dir = -1;
+.		_player.velocity_x -= _player.velocity_x_delta;
+.		if (_player.velocity_x < -_player.velocity_x_max) {
+.			_player.velocity_x = -_player.velocity_x_max;
+.		}
+.	}
+.	// Right arrow or 'd' to move right.
+.	if (_game.keymap[39] || _game.keymap[68]) {
++		_player.dir = 1;
+.		_player.velocity_x += _player.velocity_x_delta;
+.		if (_player.velocity_x > _player.velocity_x_max) {
+.			_player.velocity_x = _player.velocity_x_max;
+.		}
+.	}
+.	...
+.}
+END_CODE
+
+B: fix the player drawing
+
+BEGIN_CODE
+.function draw_player(ctx) {
+.	var sprite = update_player_sprite();
++	set_transform(ctx, _player);
+-	ctx.drawImage(sprite.img, _player.x - _player.origin_x,
+-					_player.y - _player.origin_y);
++	ctx.drawImage(sprite.img, 0, 0);
++	reset_transform(ctx);
+.}
+END_CODE
+
+
+B: and now do the same thing for monsters
+
+BEGIN_CODE
+.function create_monster(x, y, width, height, min_x, max_x, move_x, image) {
+.	...
+.	m.min_x = min_x;
+.	m.max_x = max_x;
+.	m.move_x = move_x;
++	m.dir = (move_x > 0) ? 1 : -1;
+.
+.	m.img = new Image();
+.	...
+.}
+END_CODE
+
+B: and we we need to adjust the code that moves the monsters around.
+
+BEGIN_CODE
+.function update_monsters() {
+.	var level = _levels[_game.current_level];
+.	var monsters = level.monsters;
+.	for (var i = 0; i < monsters.length; i++) {
+.		var m = monsters[i];
+.		m.x += m.move_x;
+.		if (m.x <= m.min_x || m.x >= m.max_x) {
+.			m.move_x *= -1;
++			m.dir *= -1;
+.		}
+.	}
+.}
+END_CODE
+
+B: and the code that deaws the monsters
+
+BEGIN_CODE
+.function draw_monsters(ctx) {
+.	var level = _levels[_game.current_level];
+.	var monsters = level.monsters;
+.	for (var i = 0; i < monsters.length; i++) {
+.		var m = monsters[i];
++		set_transform(ctx, m);
+-		ctx.drawImage(m.img, m.x - m.origin_x, m.y - m.origin_y);
++		ctx.drawImage(m.img, 0, 0);
++		reset_transform(ctx);
+.	}
+.}
+END_CODE
+
+B: ???
+
+
+GAIN Sprite III - Direction
+
+GOTO 100

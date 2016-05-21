@@ -1,0 +1,85 @@
+TITLE = Adding pain
+ID = 370
+
+B: When the player touches the monster and loses health, it would be nice if the player sprite changed to indicate this..
+
+U: I agree. It's always nice to show people in pain.
+
+B: Err. Well, yes... I mean no. We're doing this simply to give the player a visual indication of when they're touching a monster.
+
+U: Of course.
+
+B: So let's add a new player image to show when the player is touching a monster.
+
+BEGIN_IMAGE_TABLE 1
+TABLE_IMAGE images/player/ooo.png 40x48 ooo.png
+END_IMAGE_TABLE
+
+BEGIN_COPY_FILE
+COPY_FILE images/player/ooo.png
+END_COPY_FILE
+
+B: In the code, we need to create a new player sprite and also create a boolean variable to keep track of whether or not the player is currently touching the monster.
+
+BEGIN_CODE_INFO Add new sprite and =is_touching_monster= variable.
+.function init_player() {
+.	...
+.	_player.platform = null;
+.	_player.health_max = 50;
+.	_player.health = _player.health_max;
++	_player.is_touching_monster = false;
+.	_player.coins = 0;
+.	_player.dir = 1;
+.	...
+.	_player.sprite = init_player_sprite("normal", 20, 24);
+.	_player.sprite_sad = init_player_sprite("sad", 30, 17);
++	_player.sprite_ooo = init_player_sprite("ooo", 20, 24);
+.	_player.sprite_happy = init_player_sprite("happy", 20, 24);
+.	update_player_sprite();
+.}
+END_CODE_OK
+
+B: And then we simply select this new sprite whenever the =is_touching_monster= variable is =true=.
+
+BEGIN_CODE_INFO Select the pain sprite when the player is touching a monster.
+.function update_player_sprite() {
+.	var sprite;
+.	if (_player.health <= 0) {
+.		sprite = _player.sprite_sad;
+.	} else if (_game.game_win) {
+.		sprite = _player.sprite_happy;
++	} else if (_player.is_touching_monster) {
++		sprite = _player.sprite_ooo;
+.	} else {
+.		sprite = _player.sprite;
+.	}
+.	...
+.}
+END_CODE_OK
+
+B: And finally, we need to set =is_touching_monster= to =true= whenever the player is touching a monster. That is, whenever we detect a collision between the player and a monster.
+
+BEGIN_CODE_INFO Update =is_touching_monster= based on monster collisions.
+.function check_monster_collisions() {
+.	var level = _levels[_game.current_level];
+.	var monsters = level.monsters;
+.	var damage = 0;
++	_player.is_touching_monster = false;
+.	for (var i = 0; i < monsters.length; i++) {
+.		var m = monsters[i];
+.		if (collide(m, _player)) {
+.			damage++;
++			_player.is_touching_monster = true;
+.		}
+.	}
+.	if (damage != 0) {
+.		adjust_health(-damage);
+.	}
+.}
+END_CODE_OK
+
+B: Run your code now and you should see the player sprite change to the new image whenever the player is touching a monster.
+
+GAIN Fluff I - Ouch
+
+GOTO 390

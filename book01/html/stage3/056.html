@@ -1,0 +1,82 @@
+<html>
+<head>
+<title>056 : Monster collisions</title>
+
+<link rel="stylesheet" href="../css/bootstrap.min.css">
+<link type="text/css" rel="stylesheet" href="../css/style.css" />
+<link href='http://fonts.googleapis.com/css?family=Trade+Winds' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Sacramento' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Piedra' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Aclonica' rel='stylesheet' type='text/css'>
+
+<script type="text/javascript">
+	var _gaq = _gaq || [];
+	_gaq.push(['_setAccount', 'UA-17513364-1']);
+	_gaq.push(['_setDomainName', 'cse4k12.org']);
+	_gaq.push(['_setAllowLinker', true]);
+	_gaq.push(['_trackPageview']);
+
+	(function() {
+		var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+		ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+		var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+	})();
+</script>
+
+</head>
+
+<body>
+<div class="navbar navbar-inverse navbar-static-top" role="navigation"><div class="container"><div class="navbar-header">
+<a class="navbar-brand" href="../index.html"><span class="title1">Adventures in</span> <span class="title2">JavaScript</span></a>
+</div></div></div>
+<div class="container">
+<h1>056 : Monster collisions</h1>
+<div class="name">Balthazar:</div><p class="balthazar">The monster is drawn, but you can just walk right through it. That's no fun.</p>
+<div class="name">Balthazar:</div><p class="balthazar">We can update our collision to support monsters.</p>
+<div class="panel panel-default">
+<div class="panel-code code"><span class="context">function check_platform_collisions() {</span>
+<span class="context">    ...</span>
+<span class="context">}</span>
+<span class="context"></span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">function check_monster_collisions() {</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    var monsters = _game.monsters;</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    for (var i = 0; i < monsters.length; i++) {</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">        var m = monsters[i];</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">        if (collide(m, _player)) {</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">            _game.game_over = true;</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">        }</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    }</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">}</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add"></span>
+<span class="context">function check_goal_collisions() {</span>
+<span class="context">    ...</span>
+<span class="context">}</span>
+</div>
+</div>
+<div class="name">Balthazar:</div><p class="balthazar">and update check_collisions():</p>
+<div class="panel panel-default">
+<div class="panel-code code"><span class="context">function check_collisions() {</span>
+<span class="context">    check_platform_collisions();</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    check_monster_collisions();</span>
+<span class="context">    check_goal_collisions();</span>
+<span class="context">}</span>
+</div>
+</div>
+<div class="name">Balthazar:</div><p class="balthazar">Now monsters are dangerous. If you collide with it the game will end. But you can easily jump over it at this time.</p>
+<div class="name">Balthazar:</div><p class="balthazar">Adding a second monster is as easy as:</p>
+<div class="panel panel-default">
+<div class="panel-code code"><span class="context">function init_game() {</span>
+<span class="context">    ...</span>
+<span class="context">    _game.monsters = [];</span>
+<span class="context">    _game.monsters.push(create_monster(350, 360, 20, 20));</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    _game.monsters.push(create_monster(400, 360, 20, 20));</span>
+<span class="context">    _game.goal = create_goal(500, 360);</span>
+<span class="context">    ...</span>
+<span class="context">}</span>
+</div>
+</div>
+<p class="alert alert-success"><strong>Congratulations!</strong> You've earned the <span class="badge-gain">Monster I - Stationary</span> badge!</p>
+<p class="alert alert-info"><a href="057.html"><span class="goto">GOTO 057</span></a></p>
+</div>
+</body>
+</html>

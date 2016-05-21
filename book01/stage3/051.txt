@@ -1,0 +1,24 @@
+TITLE = Choices III - Monsters or Platforms?
+ID = 051
+
+B: The next tasks we have are:
+
+BEGIN_TASK_LIST
+
+TASK_LIST_ITEM_START
+TASK_LIST_ITEM_DATA Monsters
+TASK_LIST_ITEM_DATA This will add monsters that wander around. The game will end if the player touches any of them.
+TASK_LIST_ITEM_END
+
+TASK_LIST_ITEM_START
+TASK_LIST_ITEM_DATA More platforms
+TASK_LIST_ITEM_DATA One platform is kinda boring. This will add multiple platforms that the player can jump on.
+TASK_LIST_ITEM_END
+
+END_TASK_LIST
+
+B: Which of these 2 tasks would you like to do first?
+
+GOTO 055 IF add monsters first
+
+GOTO 070 IF add more platforms first

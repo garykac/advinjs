@@ -1,0 +1,8 @@
+TITLE = Finish stage 5
+ID = 299
+
+B: Congratulations! You've finished stage 5.
+
+FINISH_STAGE 5
+
+GOTO 300 STAGE 6

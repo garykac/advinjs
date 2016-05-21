@@ -1,0 +1,56 @@
+TITLE = Better side walls
+ID = 074
+
+B: Now that we have properly behaving platforms, we can add side walls on the left and right and remove our earlier code that constrained the player on the screen.
+
+
+BEGIN_CODE
+.function init_game() {
+.	...
+.	_game.platforms = [];
++	// The bottom brick platform along the bottom of the stage.
+.	_game.platforms.push(create_platform(0, 360, _game.width, 40));
++	// The left offstage 'wall' to keep the player on the stage.
++	_game.platforms.push(
++		create_platform(-60, -_game.height, 60, 2 * _game.height));
++	// The right offstage 'wall' to keep the player on the stage.
++	_game.platforms.push(
++		create_platform(_game.width, -_game.height, 60, 2 * _game.height));
+.	_game.platforms.push(create_platform(200, 290, 80, 20));
+.	_game.platforms.push(create_platform(300, 240, 80, 20));
+.	_game.platforms.push(create_platform(400, 170, 80, 20));
+.	_game.platforms.push(create_platform(460, 110, 40, 20));
+.	...
+.}
+END_CODE
+
+B: Pay attention: Note that -_game.height looks a bit weird because of the negative sign next to the underscore in _game.
+
+B: Now, we can remove:
+
+BEGIN_CODE
+.function update_player() {
+.	...	
+.	// Move the player to the new location.
+.	_player.x += _player.velocity_x;
+.	_player.y += _player.velocity_y;
+-
+-	if (_player.x < 0) {
+-		_player.x = 0;
+-	} else if (_player.x > _game.width) {
+-		_player.x = _game.width;
+-	}
+.}
+END_CODE
+
+
+RUN_VERIFY
+
+B: Note that the player now stays completely on the screen since it's colliding with a tall platform just offscreen.
+
+GOTO 089 IF_BADGE Monster II - Roaming
+
+GOTO 061 IF_BADGE Monster I - Stationary
+
+GOTO 055
+

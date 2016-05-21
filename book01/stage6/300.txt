@@ -1,0 +1,173 @@
+TITLE = Title screen
+ID = 300
+
+B: Add a new title screen as the first "level" of the game.
+
+BEGIN_CODE
+.function init_level_defaults(level) {
+.	...
+.}
++
++function init_level0_title() {
++	var level = {};
++	init_level_defaults(level);
++
++	_levels.push(level);
++}
+END_CODE
+
+BEGIN_CODE
+.function init() {
+.	init_game();
+.	init_player();
++	init_level0_title();
+.	init_level1();
+.	init_level2();
+.	init_level3();
+.}
+END_CODE
+
+B: Update the links between levels 1, 2 and 3. The title is level 0.
+
+BEGIN_CODE
+.function init_level1() {
+.	...
+.	add_items(level, item_data);
+.
+-	level.goal = create_goal(500, 360, 1);
++	level.goal = create_goal(500, 360, 2);
+.
+.	_levels.push(level);
+.}
+.
+.function init_level2() {
+.	...
+.	add_items(level, item_data);
+.
+-	level.goal = create_goal(500, 360, 2);
++	level.goal = create_goal(500, 360, 3);
+.
+.	_levels.push(level);
+.}
+END_CODE
+
+B: Add a function to draw the title screen.
+
+BEGIN_CODE
+.function draw_status(ctx) {
+.	...
+.}
++
++function draw_title_screen() {
++	// Check for spacebar press to exit title screen.
++	if (_game.keymap[32]) {
++		start_level(1);
++	}
++
++	update_monsters();
++
++	var canvas = document.getElementById("stage");
++	var ctx = canvas.getContext("2d");
++
++	erase(ctx);
++	ctx.fillStyle = "black";
++	ctx.font = "28px " + _game.font_family;
++	ctx.fillText("The Legend of", 75, 130);
++
++	ctx.font = "64px " + _game.font_family;
++	ctx.fillText("JavaScript", 115, 180);
++	
++	ctx.font = "20px " + _game.font_family;
++	ctx.fillText("PRESS THE SPACE KEY TO START", 90, 350);
++	
++	draw_monsters(ctx);
++}
+END_CODE
+
+B: Add a level =type= to distinguish the regular game levels from the title screen.
+
+B: Normal levels should have =type= of "game".
+
+BEGIN_CODE
+.function init_level_defaults(level) {
++	level.type = "game";
+.	level.player_has_key = false;
+.
+.	level.player_start_x = 0;
+.	level.player_start_y = 0;
+.	...
+.}
+END_CODE
+
+B: The title level should have a =type= of "title".
+
+BEGIN_CODE
+.function init_level0_title() {
+.	var level = {};
+.	init_level_defaults(level);
+.
++	// Override the level defaults.
++	level.type = "title";
++
+.	_levels.push(level);
+.}
+END_CODE
+
+B: Modify the =update_world()= function to handle "game" levels and "title" levels differently.
+
+BEGIN_CODE
+.function update_world() {
++	var level = _levels[_game.current_level];
++
++	if (level.type == "game") {
+>		update_monsters();
+>		update_player();
+>		check_collisions();
+>		draw();
++	} else if (level.type == "title") {
++		draw_title_screen();
++	}
+.
+.	requestAnimationFrame(update_world);
+.}
+END_CODE
+
+B: For the title screen, we can add a animation sequence where a group of monsters are chasing the player.
+
+B: Since all monster images must be located in the =monsters= directory, we'll make a copy of the player image in the monster directory. 
+
+BEGIN_IMAGE_TABLE 1
+TABLE_IMAGE images/monsters/doppleganger.png 40x48 doppleganger.png
+END_IMAGE_TABLE
+
+BEGIN_COPY_FILE
+COPY_FILE images/monsters/doppleganger.png
+END_COPY_FILE
+
+BEGIN_CODE
+.function init_level0_title() {
+.	var level = {};
+.	init_level_defaults(level);
+.
+.	// Override the level defaults.
+.	level.type = "title";
+.	
++	// Create the monsters.
++	var height = 270;
++	var x_min = -280;
++	var x_max = 700;
++	var monster_data = [
++		// [x_start, y, width, height, x_min, x_max, movement, image]
++		[-20, height, 20, 24, x_min, x_max, 1, "doppleganger"],
++		[-205, height, 30, 30, x_min, x_max, 1, "henrietta"],
++		[-235, height, 20, 24, x_min, x_max, 1, "vlad"],
++	];
++	add_monsters(level, monster_data);
++
+.	_levels.push(level);
+.}
+END_CODE
+
+GAIN Transition II - Title
+
+GOTO 310

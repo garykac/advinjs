@@ -1,0 +1,150 @@
+<html>
+<head>
+<title>093 : Connecting the levels</title>
+
+<link rel="stylesheet" href="../css/bootstrap.min.css">
+<link type="text/css" rel="stylesheet" href="../css/style.css" />
+<link href='http://fonts.googleapis.com/css?family=Trade+Winds' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Sacramento' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Piedra' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Aclonica' rel='stylesheet' type='text/css'>
+
+<script type="text/javascript">
+	var _gaq = _gaq || [];
+	_gaq.push(['_setAccount', 'UA-17513364-1']);
+	_gaq.push(['_setDomainName', 'cse4k12.org']);
+	_gaq.push(['_setAllowLinker', true]);
+	_gaq.push(['_trackPageview']);
+
+	(function() {
+		var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+		ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+		var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+	})();
+</script>
+
+</head>
+
+<body>
+<div class="navbar navbar-inverse navbar-static-top" role="navigation"><div class="container"><div class="navbar-header">
+<a class="navbar-brand" href="../index.html"><span class="title1">Adventures in</span> <span class="title2">JavaScript</span></a>
+</div></div></div>
+<div class="container">
+<h1>093 : Connecting the levels</h1>
+<div class="name">Balthazar:</div><p class="balthazar">To connect the levels, we need to modify the goal so that it indicates the next level to go to.</p>
+<div class="name">Balthazar:</div><p class="balthazar">Since we don't have a "game over" level, we'll (temporarily) connect the last level back to the first.</p>
+<div class="name">You:</div><p class="you">doesn't that mean that the game will never yet.</p>
+<div class="name">Balthazar:</div><p class="balthazar">Yes, but it's only temporary. We'll be adding a proper ending later.</p>
+<div class="panel panel-default">
+<div class="panel-code code"><img src="../css/cross.png" width="15" height="15"/><span class="delete">function create_goal(x, y) {</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">function create_goal(x, y, next_level) {</span>
+<span class="context">    var goal = {};</span>
+<span class="context">    goal.x = x;</span>
+<span class="context">    goal.y = y;</span>
+<span class="context">    goal.width = 20;</span>
+<span class="context">    goal.height = 20;</span>
+<span class="context">    goal.origin_x = goal.width / 2;</span>
+<span class="context">    goal.origin_y = goal.height;</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    goal.next_level = next_level;</span>
+<span class="context">    return goal;</span>
+<span class="context">}</span>
+</div>
+</div>
+<div class="name">Balthazar:</div><p class="balthazar">and update all the calls:</p>
+<div class="panel panel-default">
+<div class="panel-code code"><span class="context">function init_level1() {</span>
+<span class="context">    ...</span>
+<span class="context">    add_monsters(level, monster_data);</span>
+<span class="context"></span>
+<img src="../css/cross.png" width="15" height="15"/><span class="delete">    level.goal = create_goal(500, 360);</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    level.goal = create_goal(500, 360, 1);</span>
+<span class="context">    ...</span>
+<span class="context">}</span>
+<span class="context"></span>
+<span class="context">function init_level2() {</span>
+<span class="context">    ...</span>
+<span class="context">    add_default_platforms(level);</span>
+<span class="context"></span>
+<img src="../css/cross.png" width="15" height="15"/><span class="delete">    level.goal = create_goal(500, 360);</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    level.goal = create_goal(500, 360, 2);</span>
+<span class="context">    ...</span>
+<span class="context">}</span>
+<span class="context"></span>
+<span class="context">function init_level3() {</span>
+<span class="context">    ...</span>
+<span class="context">    add_default_platforms(level);</span>
+<span class="context"></span>
+<img src="../css/cross.png" width="15" height="15"/><span class="delete">    level.goal = create_goal(500, 360);</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    level.goal = create_goal(500, 360, 0);</span>
+<span class="context">    ...</span>
+<span class="context">}</span>
+</div>
+</div>
+<div class="name">Balthazar:</div><p class="balthazar">level1 is at index #0 (_level[0]) and its goal points to level2 (@ index #1)</p>
+<div class="name">Balthazar:</div><p class="balthazar">Add start_level:</p>
+<div class="panel panel-default">
+<div class="panel-code code"><span class="context">function create_goal(x, y, next_level) {</span>
+<span class="context">    ...</span>
+<span class="context">}</span>
+<span class="context"></span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">function start_level(level_id) {</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    _game.current_level = level_id;</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add"></span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    var level = _levels[level_id];</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    _player.x = level.player_start_x;</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    _player.y = level.player_start_y;</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    _player.velocity_x = 0;</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    _player.velocity_y = 0;</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">}</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add"></span>
+<span class="context">// Erase the canvas and draw all the objects.</span>
+<span class="context">function draw() {</span>
+<span class="context">    ...</span>
+<span class="context">}</span>
+</div>
+</div>
+<div class="name">Balthazar:</div><p class="balthazar">When we start a level, we move the player to the appropriate starting location and remove any velocity they may have from the previous level.</p>
+<div class="panel panel-default">
+<div class="panel-code code"><span class="context">function check_goal_collisions() {</span>
+<span class="context">    var level = _levels[_game.current_level];</span>
+<span class="context">    var goal = level.goal;</span>
+<span class="context">    if (collide(goal, _player)) {</span>
+<img src="../css/cross.png" width="15" height="15"/><span class="delete">        _game.game_over = true;</span>
+<img src="../css/cross.png" width="15" height="15"/><span class="delete">        _game.game_win = true;</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">        start_level(goal.next_level);</span>
+<span class="context">    }</span>
+<span class="context">}</span>
+</div>
+</div>
+<div class="name">You:</div><p class="you">Wait, now there's no way to win.</p>
+<div class="name">Balthazar:</div><p class="balthazar">We should also call this after we finish initializing so that the game starts at the correct level.</p>
+<div class="panel panel-default">
+<div class="panel-code code"><span class="context">function handle_load(event) {</span>
+<span class="context">    init();</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    start_level(0);</span>
+<span class="context">    requestAnimationFrame(update_world);</span>
+<span class="context">}</span>
+</div>
+</div>
+<div class="name">You:</div><p class="you">don't we already do this in init_game()</p>
+<div class="name">Balthazar:</div><p class="balthazar">Now that we init the player at the start of each level, we no longer need to set x and y in init_player</p>
+<div class="panel panel-default">
+<div class="panel-code code"><span class="context">function init_player() {</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    // Player x,y are initialized by the level.</span>
+<img src="../css/cross.png" width="15" height="15"/><span class="delete">    _player.x = 20;</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    _player.x = 0;</span>
+<img src="../css/cross.png" width="15" height="15"/><span class="delete">    _player.y = 360;</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    _player.y = 0;</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add"></span>
+<span class="context">    _player.width = 20;</span>
+<span class="context">    _player.height = 20;</span>
+<span class="context">    ...</span>
+<span class="context">}</span>
+</div>
+</div>
+<p class="alert alert-success"><strong>Congratulations!</strong> You've earned the <span class="badge-gain">Transition I - Levels</span> badge!</p>
+<p class="run">RUN your code in a browser and verify that it loads without errors.</p>
+<p class="alert alert-info"><a href="098.html"><span class="goto">GOTO 098</span></a></p>
+</div>
+</body>
+</html>

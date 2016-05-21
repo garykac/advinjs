@@ -1,0 +1,75 @@
+TITLE = Adding a goal
+ID = 040
+
+
+BEGIN_CODE
+.function init_game() {
+.	...
+.	// Game state.
+.	_game.platform = create_platform(0, 360, _game.width, 40);
++	_game.goal = create_goal(500, 360);
+.	
+.	// Global world parameters.
+.	...
+.}
+END_CODE
+
+B: Add =create_goal()= after =create_platform()=
+
+BEGIN_CODE
+.function create_platform(x, y, width, height) {
+.	...
+.}
+.
++function create_goal(x, y) {
++	var goal = {};
++	goal.x = x;
++	goal.y = y;
++	goal.width = 20;
++	goal.height = 20;
++	goal.origin_x = goal.width / 2;
++	goal.origin_y = goal.height;
++	return goal;
++}
++
+END_CODE
+
+B: Add =draw_goal()=
+
+BEGIN_CODE
+.function draw_platforms(ctx) {
+.	...
+.}
+.
++function draw_goal(ctx) {
++	var goal = _game.goal;
++	ctx.fillStyle = "green";
++	ctx.fillRect(goal.x - goal.origin_x, goal.y - goal.origin_y,
++					goal.width, goal.height);
++}
++
+.// Draw the player.
+.function draw_player(ctx) {
+.	...
+.}
+END_CODE
+
+B: And update =draw()= to call =draw_goal()=.
+
+BEGIN_CODE
+.function draw() {
+.	var canvas = document.getElementById("stage");
+.	var ctx = canvas.getContext("2d");
+.
+.	erase(ctx);
+.	draw_platforms(ctx);
++	draw_goal(ctx);
+.	draw_player(ctx);
+.}
+END_CODE
+
+RUN_VERIFY
+
+GOTO 043 IF_BADGE Movement III - Gravity
+
+GOTO 041

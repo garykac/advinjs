@@ -1,0 +1,10 @@
+TITLE = Jumping done
+ID = 034
+
+B: Now that you have the player jumping around, you can move on to the next tasks.
+
+GAIN Movement III - Gravity
+
+GOTO 049 IF_BADGE Collision I - Basic
+
+GOTO 040

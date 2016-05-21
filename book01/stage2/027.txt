@@ -1,0 +1,43 @@
+TITLE = Collide with platform
+ID = 027
+
+B: You already added a =collide()= function when you added the goal. You can re-use that function if you make one small change to how you've implemented platforms.
+
+B: The =collide()= function expects each object being checked to have an =origin_x= and =origin_y=. You don't want to change the origin for the platforms, so these values can both be set to =0=.
+
+BEGIN_CODE
+.function create_platform(x, y, width, height) {
+.	var p = {};
+.	p.x = x;
+.	p.y = y;
+.	p.width = width;
+.	p.height = height;
++	p.origin_x = 0;
++	p.origin_y = 0;	
+.	return p;
+.}
+END_CODE
+
+B: With that change in place, you can now add your platform collision checks.
+
+BEGIN_CODE
+.function check_collisions() {
++	check_platform_collisions();
+.	check_goal_collisions();
+.}
+.
++function check_platform_collisions() {
++	if (collide(_game.platform, _player)) {
++		_player.y = _game.platform.y;
++		_player.velocity_y = 0;
++	}
++}
++
+.function check_goal_collisions() {
+.	...
+.}
+END_CODE
+
+RUN_VERIFY
+
+GOTO 028

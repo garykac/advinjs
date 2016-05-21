@@ -1,0 +1,115 @@
+TITLE = Adding Level 3
+ID = 450
+
+B: While you're working on Level 3, it's convenient to have the game temporarily start on level 3 so that you can test the third level without having to play through Level 1 and 2 each time.
+
+BEGIN_CODE
+.function handle_load(event) {
+.	init();
+-	start_level(0);
++	start_level(3);
+.	requestAnimationFrame(update_world);
+.}
+END_CODE
+
+B: We need a new background image.
+
+BEGIN_IMAGE_TABLE 1
+TABLE_IMAGE images/backgrounds/block2.png 40x40 block2.png
+END_IMAGE_TABLE
+
+BEGIN_COPY_FILE
+COPY_FILE images/backgrounds/block2.png
+END_COPY_FILE
+
+B: And the images for the boss.
+
+BEGIN_IMAGE_TABLE 3
+TABLE_IMAGE images/monsters/octoboss1.png 76x48 octoboss1.png
+TABLE_IMAGE images/monsters/octoboss2.png 76x48 octoboss2.png
+TABLE_IMAGE images/monsters/octoboss3.png 76x48 octoboss3.png
+END_IMAGE_TABLE
+
+BEGIN_COPY_FILE
+COPY_FILE images/monsters/octoboss1.png
+COPY_FILE images/monsters/octoboss2.png
+COPY_FILE images/monsters/octoboss3.png
+END_COPY_FILE
+
+BEGIN_CODE
+.function init_level3() {
+.	var level = {};
+.	level.name = "Level 3";
+.	init_level_defaults(level);
+.
+-	level.player_start_x = 20;
++	level.player_start_x = 30;
+-	level.player_start_y = 260;
++	level.player_start_y = 80;
+.	
++	// Create the platforms.
+.	add_default_platforms(level);
++	var platform_data = [
++		// [x, y, width, height, pattern]
++		// Platform above player.
++		[50, 35, 140, 20, "block2"],
++		// Platforms around the left potion.
++		[0, 120, 120, 20, "block2"],
++		[0, 200, 60, 20, "block2"],
++		[0, 140, 20, 60, "block2"],
++		[100, 140, 20, 80, "block2"],
++		// Platforms around the right potion.
++		[180, 120, 120, 20, "block2"],
++		[180, 200, 120, 20, "block2"],
++		[180, 140, 20, 60, "block2"],
++		[280, 180, 20, 20, "block2"],
++		// Platform under hoard of monsters.
++		[0, 260, 300, 20, "block2"],
++		[480, 60, 40, 20, "block2"],
++		[500, 80, 20, 160, "block2"],
++		[300, 280, 200, 20, "block2"],
++		[340, 220, 40, 20, "block2"],
++		[340, 240, 20, 40, "block2"],
++		[380, 160, 20, 40, "block2"],
++		[480, 220, 20, 60, "block2"],
++		[530, 280, 20, 20, "block2"],
++		[0, 320, 250, 10, "dirt"],
++	];
++	add_platforms(level, platform_data);
++
++	// Create the monsters.
++	var monster_data = [
++		// [x, y, width, height, min_x, max_x, move_x, image]
++		[180, 260, 20, 24, 15, 280, -1.0, "vlad"],
++		[120, 260, 30, 30, 15, 280, 0.8, "henrietta"],
++		[20, 260, 28, 26, 15, 280, -0.5, "rufus"],
++		[75, 260, 26, 28, 15, 280, 1.0, "prescott"],
++		[200, 260, 28, 26, 15, 280, 0.5, "rufus"],
++		[250, 260, 20, 24, 15, 280, 1.0, "vlad"],
++		[80, 260, 26, 28, 15, 280, -1.0, "prescott"],
++		[380, 130, 40, 24, 330, 460, 0.5, [["falco1", 10], ["falco2", 10]]],
++		[200, 360, 38, 24, 150, 450, 1.0,
++			[["octoboss1", 10], ["octoboss2", 10], ["octoboss3", 10], ["octoboss2", 10]],
++			],
++	];
++	add_monsters(level, monster_data);
+.
+.	var item_data = [
++		// [x, y, width, height, type, image]
++		[490, 100, 20, 20, "coin", "coin"],
++		[370, 260, 20, 20, "coin", "coin"],
++		[210, 160, 20, 20, "coin", "coin"],
+-		[500, 360, 21, 27, "finish", "gem"],
++		[20, 314, 21, 27, "finish", "gem"],
+.	];
+.	add_items(level, item_data);
++	add_potion_item(level, 30, 200);
++	add_potion_item(level, 230, 200);
+.
+.	_levels.push(level);
+.}
+END_CODE
+
+GAIN Level III
+
+GOTO 470

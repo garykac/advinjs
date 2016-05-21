@@ -1,0 +1,9 @@
+TITLE = Monsters
+ID = 055
+
+GOTO 064 IF_BADGE Platform II - Four Sided
+
+GOTO 063
+
+
+

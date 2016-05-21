@@ -1,0 +1,109 @@
+TITLE = Draw items
+ID = 132
+
+
+B: ???
+
+BEGIN_CODE
+.function init_level1() {
+.	...
+.	add_monsters(level, monster_data);
+.
++	var item_data = [
++		[480, 110, 20, 20, "key"],
++	];
++	add_items(level, item_data);
++
+.	level.goal = create_goal(500, 360, 1);
+.	
+.	_levels.push(level);
+.}
+END_CODE
+
+B: ?
+
+BEGIN_CODE
+.function create_monster(...) {
+.	...
+.}
+.
++// item_data: [x, y, width, height, type]
++function add_items(level, item_data) {
++	for (var i = 0; i < item_data.length; i++) {
++		var d = item_data[i];
++		var item = create_item(d[0], d[1], d[2], d[3], d[4]);
++		level.items.push(item);
++	}
++}
++
++function create_item(x, y, width, height, type) {
++	var d = {};
++	d.x = x;
++	d.y = y;
++	d.width = width;
++	d.height = height;
++	d.origin_x = width / 2;
++	d.origin_y = height;
++	d.type = type;
++	d.found = false;
++	return d;
++}
++
+.function create_goal(x, y, next_level) {
+.	...
+.}
+END_CODE
+
+B: Note that =d.found= is set to =false=. We'll set this to =true= so that we know when the item has been found by the player.
+
+B: Just having the items on the level isn't enough we need to draw and collide with them.
+
+B: Nothing will happen 
+
+RUN_VERIFY
+
+B: Code is the same as before.
+
+
+B: ???
+
+BEGIN_CODE
+.function draw() {
+.	...
+.	erase(ctx);
+.	draw_platforms(ctx);
+.	draw_goal(ctx);
+.	draw_monsters(ctx);
++	draw_items(ctx);
+.	draw_player(ctx);
+.	...
+.}
+END_CODE
+
+B: ???
+
+BEGIN_CODE
+.function draw_monsters(ctx) {
+.	...
+.}
+.
++function draw_items(ctx) {
++	var level = _levels[_game.current_level];
++	var items = level.items;
++	for (var i = 0; i < items.length; i++) {
++		var t = items[i];
++		if (!t.found) {
++			ctx.fillStyle = "magenta";
++			ctx.fillRect(t.x - t.origin_x, t.y - t.origin_y, t.width, t.height);
++		}
++	}
++}
++
+.function draw_goal(ctx) {
+.	...
+.}
+END_CODE
+
+B: ???
+
+GOTO 134

@@ -1,0 +1,164 @@
+<html>
+<head>
+<title>410 : Animating monsters</title>
+
+<link rel="stylesheet" href="../css/bootstrap.min.css">
+<link type="text/css" rel="stylesheet" href="../css/style.css" />
+<link href='http://fonts.googleapis.com/css?family=Trade+Winds' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Sacramento' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Piedra' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Aclonica' rel='stylesheet' type='text/css'>
+
+<script type="text/javascript">
+	var _gaq = _gaq || [];
+	_gaq.push(['_setAccount', 'UA-17513364-1']);
+	_gaq.push(['_setDomainName', 'cse4k12.org']);
+	_gaq.push(['_setAllowLinker', true]);
+	_gaq.push(['_trackPageview']);
+
+	(function() {
+		var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+		ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+		var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+	})();
+</script>
+
+</head>
+
+<body>
+<div class="navbar navbar-inverse navbar-static-top" role="navigation"><div class="container"><div class="navbar-header">
+<a class="navbar-brand" href="../index.html"><span class="title1">Adventures in</span> <span class="title2">JavaScript</span></a>
+</div></div></div>
+<div class="container">
+<h1>410 : Animating monsters</h1>
+<div class="name">Balthazar:</div><p class="balthazar">The flying monster looks odd because the wings are not flapping. To fix this we need to animate the flying monster.</p>
+<div class="name">Balthazar:</div><p class="balthazar">For the animation, we'll need a second image of the monster (with the wings in a down position).</p>
+<div class="row">
+<div class="col-sm-12 col-md-12"><div class="image-table">
+<a href="../images/monsters/falco2.png"><img src="../images/monsters/falco2.png" width="80" height="48" /></a>
+<div class="caption"><p align="center">falco2.png</p></div>
+</div></div>
+</div>
+<div class="alert alert-info"><p>Copy the following files into your project:</p><ul class="list-group">
+<li class="list-group-item"><span class="code-inline">images/monsters/falco2.png</span></li>
+</ul></div>
+<div class="panel panel-default">
+<div class="panel-code code"><span class="context">function init_level2() {</span>
+<span class="context">    ...</span>
+<span class="context">    // Create the monsters.</span>
+<span class="context">    var monster_data = [</span>
+<span class="context">        // [x, y, width, height, min_x, max_x, move_x, image]</span>
+<img src="../css/cross.png" width="15" height="15"/><span class="delete">        [380, 180, 40, 24, 330, 410, 0.5, "falco1"],</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">        [380, 180, 40, 24, 330, 410, 0.5, [["falco1", 10], ["falco2", 10]]],</span>
+<span class="context">        [70, 190, 28, 26, 50, 230, -0.5, "rufus"],</span>
+<span class="context">        [400, 360, 26, 28, 320, 515, 1.0, "prescott"],</span>
+<span class="context">        [100, 360, 20, 24, 30, 270, -1.0, "vlad"],</span>
+<span class="context">    ];</span>
+<span class="context">    add_monsters(level, monster_data);</span>
+<span class="context">    ...</span>
+<span class="context">}</span>
+</div>
+</div>
+<div class="name">Balthazar:</div><p class="balthazar">And modify <span class="code-inline-color">create_monster()</span> to build an array of images for the animation.</p>
+<div class="panel panel-default">
+<div class="panel-code code"><span class="context">function create_monster(x, y, width, height, min_x, max_x, move_x, image) {</span>
+<span class="context">    ...</span>
+<span class="context">    m.min_x = min_x;</span>
+<span class="context">    m.max_x = max_x;</span>
+<span class="context">    m.move_x = move_x;</span>
+<span class="context">    m.dir = (move_x > 0) ? 1 : -1;</span>
+<span class="context"></span>
+<img src="../css/cross.png" width="15" height="15"/><span class="delete">    m.img = new Image();</span>
+<img src="../css/cross.png" width="15" height="15"/><span class="delete">    m.img.src = _game.imagedir_monsters + image + ".png";</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    m.sprite = [];</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    // If the image is specified as an array, then it defines a set of</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    // images that need to be animated.</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    if (image instanceof Array) {</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">        for (var j = 0; j < image.length; j++) {</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">            var image_name = image[j][0];</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">            var delay = image[j][1];</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">            var sprite = {};</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">            sprite.img = new Image();</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">            sprite.img.src = _game.imagedir_monsters + image_name + ".png";</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">            sprite.delay = delay;</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">            m.sprite.push(sprite);</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">        }</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    } else {</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">        // Single non-animated image.</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">        var sprite = {};</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">        sprite.img = new Image();</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">        sprite.img.src = _game.imagedir_monsters + image + ".png";</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">        sprite.delay = 0;</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">        m.sprite.push(sprite);</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    }</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    m.curr_image = 0;</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    m.current_animation_delay = 0;</span>
+<span class="context"></span>
+<span class="context">    return m;</span>
+<span class="context">}</span>
+</div>
+</div>
+<div class="name">Balthazar:</div><p class="balthazar">The <span class="code-inline-color">curr_image</span> variable is the current image being shown, and the <span class="code-inline-color">current_animation_delay</span> variable is the timer that keeps track of when to switch to the next image.</p>
+<div class="panel panel-default">
+<div class="panel-code code"><span class="context">function draw_monsters(ctx) {</span>
+<span class="context">    var level = _levels[_game.current_level];</span>
+<span class="context">    var monsters = level.monsters;</span>
+<span class="context">    for (var i = 0; i < monsters.length; i++) {</span>
+<span class="context">        var m = monsters[i];</span>
+<span class="context">        set_transform(ctx, m);</span>
+<img src="../css/cross.png" width="15" height="15"/><span class="delete">        ctx.drawImage(m.img, 0, 0);</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">        ctx.drawImage(m.sprite[m.curr_image].img, 0, 0);</span>
+<span class="context">        reset_transform(ctx);</span>
+<span class="context">    }</span>
+<span class="context">}</span>
+</div>
+</div>
+<div class="name">Balthazar:</div><p class="balthazar">When we update the monsters, we need to check the animation timer, and switch to the next image in the animation sequence when appropriate.</p>
+<div class="panel panel-default">
+<div class="panel-code code"><span class="context">function update_monsters() {</span>
+<span class="context">    var level = _levels[_game.current_level];</span>
+<span class="context">    var monsters = level.monsters;</span>
+<span class="context">    for (var i = 0; i < monsters.length; i++) {</span>
+<span class="context">        var m = monsters[i];</span>
+<span class="context">        m.x += m.move_x;</span>
+<span class="context">        if (m.x <= m.min_x || m.x >= m.max_x) {</span>
+<span class="context">            m.move_x *= -1;</span>
+<span class="context">            m.dir *= -1;</span>
+<span class="context">        }</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add"></span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">        // Animate the monster.</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">        m.current_animation_delay++;</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">        if (m.current_animation_delay >= m.sprite[m.curr_image].delay) {</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">            m.current_animation_delay = 0;</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">            m.curr_image++;</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">            if (m.curr_image >= m.sprite.length)</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">                m.curr_image = 0;</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">        }</span>
+<span class="context">    }</span>
+<span class="context">}</span>
+</div>
+</div>
+<div class="name">Balthazar:</div><p class="balthazar">And while we're at it, we might as well add the new monster to the title screen animation. Instead of being at the same level as the other monsters, we'll move it up 20 pixels so that it is flying.</p>
+<div class="panel panel-default">
+<div class="panel-code code"><span class="context">function init_level0_title() {</span>
+<span class="context">    ...</span>
+<span class="context">    var monster_data = [</span>
+<span class="context">        // [x_start, y, width, height, x_min, x_max, movement, image]</span>
+<span class="context">        [-20, height, 20, 24, x_min, x_max, 1, "doppleganger"],</span>
+<span class="context">        [-140, height, 28, 26, x_min, x_max, 1, "rufus"],</span>
+<span class="context">        [-170, height, 26, 28, x_min, x_max, 1, "prescott"],</span>
+<span class="context">        [-205, height, 30, 30, x_min, x_max, 1, "henrietta"],</span>
+<span class="context">        [-235, height, 20, 24, x_min, x_max, 1, "vlad"],</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">        [-275, height-20, 40, 24, x_min, x_max, 1, [["falco1", 10], ["falco2", 10]]],</span>
+<span class="context">    ];</span>
+<span class="context">    add_monsters(level, monster_data);</span>
+<span class="context"></span>
+<span class="context">    _levels.push(level);</span>
+<span class="context">}</span>
+</div>
+</div>
+<p class="alert alert-success"><strong>Congratulations!</strong> You've earned the <span class="badge-gain">Monster III - Animate</span> badge!</p>
+<p class="alert alert-info"><a href="420.html"><span class="goto">GOTO 420</span></a></p>
+</div>
+</body>
+</html>

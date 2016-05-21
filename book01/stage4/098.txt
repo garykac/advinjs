@@ -1,0 +1,8 @@
+TITLE = Finish stage 4
+ID = 098
+
+B: Congratulations! You've finished stage 4.
+
+FINISH_STAGE 4
+
+GOTO 099 STAGE 5

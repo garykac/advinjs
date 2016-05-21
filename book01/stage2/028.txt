@@ -1,0 +1,53 @@
+TITLE = No double jumps
+ID = 028
+
+U: Yay! We can jump.
+
+U: well... sort of...
+
+U: If I hold the jump button down, I can fly off the top of the screen.
+
+B: Yes, apparently you can jump while you're in mid-air, which is not quite what we want. How do you think we should fix that?
+
+U: You should only be allowed to jump if you're standing on a platform.
+
+B: So we should add a variable to the player that keeps track of whether-or-not the player is currently on a platform.
+
+BEGIN_CODE_INFO Add a =platform= variable to the player.
+.function init_player() {
+.	...
+.	_player.origin_x = _player.width / 2;
+.	_player.origin_y = _player.height;
+.
++	_player.platform = false;
++	
+.	_player.velocity_x = 0;
+.	_player.velocity_x_delta = 0.8;
+.	...
+.}
+END_CODE_OK
+
+B: And we need to check this variable whenever the player tries to jump.
+
+BEGIN_CODE_INFO Only allow jumps if the player is on a platform.
+.function check_input() {
+.	...
+.	// Up arrow, 'w'  and spacebar to jump.
+.	if (_game.keymap[38] || _game.keymap[87] || _game.keymap[32]) {
++		// Only allow jumps if the player is on a platform.
++		if (_player.platform) {
++			_player.platform = false;
+>			_player.velocity_y = _player.velocity_y_jump;
++		}
+.	}
+.	...
+.}
+END_CODE_OK
+
+U: It doesn't seem to work yet.
+
+B: That's because we're not quite done. We now need to set the =platform= variable when the player is on a platform.
+
+GOTO 033 IF_BADGE Collision I - Basic
+
+GOTO 032

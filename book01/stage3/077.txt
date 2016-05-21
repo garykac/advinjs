@@ -1,0 +1,20 @@
+TITLE = Array of platforms
+ID = 077
+
+B: Just like we did with the monsters, we need to add an array of platforms. Initially, the array will only have a single platform.
+
+BEGIN_CODE
+.function init_game() {
+.	...
+.	// Game state.
+.	_game.game_over = false;
+.	_game.game_win = false;
+-	_game.platform = create_platform(0, 360, _game.width, 40);
++	_game.platforms = [];
++	_game.platforms.push(create_platform(0, 360, _game.width, 40));
+.	_game.monsters = [];
+.	...
+.}
+END_CODE
+
+GOTO 075

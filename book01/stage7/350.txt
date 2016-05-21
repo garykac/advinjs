@@ -1,0 +1,71 @@
+TITLE = Finishing Level 1
+ID = 350
+
+B: We should finish up the first game level so we can start on the next level.
+
+B: We'll need to add two more monsters and some more platforms. We'll also move the goal the items to new locations.
+
+BEGIN_IMAGE_TABLE 2
+TABLE_IMAGE images/monsters/rufus.png 56x52 rufus.png
+TABLE_IMAGE images/monsters/prescott.png 52x56 prescott.png
+END_IMAGE_TABLE
+
+BEGIN_COPY_FILE
+COPY_FILE images/monsters/rufus.png
+COPY_FILE images/monsters/prescott.png
+END_COPY_FILE
+
+BEGIN_CODE
+.function init_level1() {
+.	var level = {};
+.	level.name = "Level 1";
+.	init_level_defaults(level);
+.
+.	level.player_start_x = 20;
+.	level.player_start_y = 260;
+.	
++	// Create the platforms.
+.	add_default_platforms(level);
+.	var platform_data = [
++		// [x, y, width, height, pattern]
+.		[200, 290, 80, 20, "dirt"],
+.		[300, 240, 80, 20, "block"],
+.		[400, 170, 80, 20, "block"],
+.		[460, 110, 40, 20, "dirt"],
++		[300, 70, 120, 20, "block"],
++		[120, 120, 100, 20, "block"],
++		[10, 190, 100, 20, "block"],
++		[420, 270, 100, 20, "block"],
+.	];
+.	add_platforms(level, platform_data);
+.
++	// Create the monsters.
+.	var monster_data = [
++		// [x, y, width, height, min_x, max_x, move_x, image]
+.		[350, 360, 20, 24, 60, 470, -1.0, "vlad"],
+.		[400, 360, 30, 30, 60, 470, 0.8, "henrietta"],
++		[330, 240, 28, 26, 310, 370, -0.5, "rufus"],
++		[130, 120, 26, 28, 130, 210, 1.0, "prescott"],
+.	];
+.	add_monsters(level, monster_data);
+.
++	// Create the items.
+.	var item_data = [
++		// [x, y, width, height, type, image]
+-		[480, 110, 18, 20, "key", "key"],
++		[530, 358, 18, 20, "key", "key"],
+-		[465, 170, 16, 23, "potion", "potion"],
++		[465, 270, 16, 23, "potion", "potion"],
+.	];
+.	add_items(level, item_data);
+.
+-	level.goal = create_goal(500, 360, 2);
++	level.goal = create_goal(35, 190, 2);
+.	
+.	_levels.push(level);
+.}
+END_CODE
+
+GAIN Level I
+
+GOTO 360

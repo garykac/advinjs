@@ -1,0 +1,44 @@
+TITLE = Item collide
+ID = 134
+
+B: To make player collide with item
+
+BEGIN_CODE
+.function check_collisions() {
+.	check_platform_collisions();
+.	check_monster_collisions();
++	check_item_collisions();
+.	check_goal_collisions();
+.}
+END_CODE
+
+B: ???
+
+BEGIN_CODE
+.function check_monster_collisions() {
+.	...
+.}
+.
++function check_item_collisions() {
++	var level = _levels[_game.current_level];
++	var items = level.items;
++	for (var i = 0; i < items.length; i++) {
++		var item = items[i];
++		if (!item.found) {
++			if (collide(item, _player)) {
++				item.found = true;
++			}
++		}
++	}
++}
++
+.function check_goal_collisions() {
+.	...
+.}
+END_CODE
+
+RUN_VERIFY
+
+B: Now the item will disappear once the player touches it.
+
+GOTO 135

@@ -1,0 +1,18 @@
+TITLE = Choices I
+ID = 004
+
+U: So, how can I make the player stick on the platform?
+
+B: Well, there are two things you need to do. You need to move the player down so that it starts on the platform, and you also need to constrain the movement so that the player only moves horizontally (left and right).
+
+U: The player needs to be able to jump, too, right? Jumping is somewhat non-horizontal.
+
+B: A good point. Jumping is a lot more complex so it's something that will need to be added later. The current code handles moving the player up or down a pixel at a time. For jumping, we'll have to completely change that code.
+
+U: {Great.} OK, so which of those two things should I do first?
+
+B: Your choice. Once you finish one, you'll work on the other.
+
+GOTO 005 IF start by moving the player down onto the platform
+
+GOTO 010 IF start by constraining the player to only move horizontally

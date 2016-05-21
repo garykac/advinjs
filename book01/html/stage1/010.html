@@ -1,0 +1,63 @@
+<html>
+<head>
+<title>010 : Horizontal only</title>
+
+<link rel="stylesheet" href="../css/bootstrap.min.css">
+<link type="text/css" rel="stylesheet" href="../css/style.css" />
+<link href='http://fonts.googleapis.com/css?family=Trade+Winds' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Sacramento' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Piedra' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Aclonica' rel='stylesheet' type='text/css'>
+
+<script type="text/javascript">
+	var _gaq = _gaq || [];
+	_gaq.push(['_setAccount', 'UA-17513364-1']);
+	_gaq.push(['_setDomainName', 'cse4k12.org']);
+	_gaq.push(['_setAllowLinker', true]);
+	_gaq.push(['_trackPageview']);
+
+	(function() {
+		var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+		ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+		var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+	})();
+</script>
+
+</head>
+
+<body>
+<div class="navbar navbar-inverse navbar-static-top" role="navigation"><div class="container"><div class="navbar-header">
+<a class="navbar-brand" href="../index.html"><span class="title1">Adventures in</span> <span class="title2">JavaScript</span></a>
+</div></div></div>
+<div class="container">
+<h1>010 : Horizontal only</h1>
+<div class="name">You:</div><p class="you">Alright, let's make the player move left and right.</p>
+<div class="name">Balthazar:</div><p class="balthazar">Good. And how do we do that?</p>
+<div class="name">You:</div><p class="you">By removing the code that handles up and down keys?</p>
+<div class="name">Balthazar:</div><p class="balthazar">And where is that code?</p>
+<div class="name">You:</div><p class="you">It's in the <span class="code-inline-color">check_input()</span> function. We can just remove the parts that deal with the up arrow and down arrow.</p>
+<div class="panel panel-default">
+<div class="panel-code-header">Delete the code that moves the player up and down.</div><div class="panel-code code"><span class="context">function check_input() {</span>
+<span class="context">    ...</span>
+<span class="context">    // Right arrow or 'd' to move right.</span>
+<span class="context">    if (_game.keymap[39] || _game.keymap[68]) {</span>
+<span class="context">        _player.velocity_x = 1;</span>
+<span class="context">    }</span>
+<img src="../css/cross.png" width="15" height="15"/><span class="delete">    // Up arrow or 'w' to move up.</span>
+<img src="../css/cross.png" width="15" height="15"/><span class="delete">    if (_game.keymap[38] || _game.keymap[87]) {</span>
+<img src="../css/cross.png" width="15" height="15"/><span class="delete">        _player.velocity_y = -1;</span>
+<img src="../css/cross.png" width="15" height="15"/><span class="delete">    }</span>
+<img src="../css/cross.png" width="15" height="15"/><span class="delete">    // Down arrow or 's' to move up.</span>
+<img src="../css/cross.png" width="15" height="15"/><span class="delete">    if (_game.keymap[40] || _game.keymap[83]) {</span>
+<img src="../css/cross.png" width="15" height="15"/><span class="delete">        _player.velocity_y = 1;</span>
+<img src="../css/cross.png" width="15" height="15"/><span class="delete">    }</span>
+<span class="context">}</span>
+</div>
+<div class="panel-code-footer">Run your code in a browser and verify that there are no errors.</div></div>
+<div class="name">Balthazar:</div><p class="balthazar">Excellent, try that and verify that is works.</p>
+<p class="alert alert-success"><strong>Congratulations!</strong> You've earned the <span class="badge-gain">Movement I - Horizontal</span> badge!</p>
+<p class="alert alert-info"><a href="015.html"><span class="goto">GOTO 015</span></a> if you already have the <span class="badge-check">Sprite I - Origin</span> badge.</p>
+<p class="alert alert-info"><a href="005.html"><span class="goto">GOTO 005</span></a></p>
+</div>
+</body>
+</html>

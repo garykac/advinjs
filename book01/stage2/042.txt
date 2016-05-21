@@ -1,0 +1,30 @@
+TITLE = Disable input
+ID = 042
+
+U: That's not a very satisfying ending. And the font is kinda ugly there.  
+
+B: Yes, at this point the game is so simple that there is no sense of accomplishment when you finish the game, but we'll be adding more challenges to make it more interesting.
+
+B: As for the font, we'll need to come back and fix that later.
+
+B: But first notice that the player input still works after the game is supposed to be over. We should disable it when the game is over.
+
+B: To do that, simply wrap the =check_input()= call with a =game_over= check. That way the game won't bother checking the player input once the game has ended.
+
+B: When adding the =if= wrapper around =check_input()=, make sure the fix the indentation.
+
+BEGIN_CODE
+.function update_player() {
++	if (!_game.game_over) {
+>		check_input();
++	}
+.
+.	// Apply the global world effects on the player.
+.	_player.velocity_x *= (1.0 - _game.friction);
+.	...
+.}
+END_CODE
+
+GOTO 049 IF_BADGE Movement III - Gravity
+
+GOTO 025

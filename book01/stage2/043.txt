@@ -1,0 +1,61 @@
+TITLE = Collide with goal
+ID = 043
+
+B: We show the goal on the screen, but we want to detect when the player touches the goal and then end the game.
+
+B: The first thing we need is a boolean variable that keeps track of whether or not the game is over. This should be initialized to =false=.
+
+BEGIN_CODE_INFO Add =game_over= variable.
+.function init_game() {
+.	...
+.	// Game state.
++	_game.game_over = false;
+.	_game.platform = create_platform(0, 360, _game.width, 40);
+.	_game.goal = create_goal(500, 360);
+.	
+.	// Global world parameters.
+.	...
+.}
+END_CODE_OK
+
+B: Now that we have this variable, we can set it to =true= when the player touches (collides with) the goal that we just added.
+
+B: We do that by creating a new =check_goal_collisions()= function that checks for collisions between the player and the goal.
+
+B: We're also temporarily adding a "dummy" version of the =collide()= function. This dummy version does nothing except return =false= (meaning no collision found). We'll be creating a proper version of =collide()= once we finish hooking up the goal collision code.
+
+BEGIN_CODE_INFO Create =check_goal_collisions()= function.
+.function check_platform_collisions() {
+.	...
+.}
+.
++function check_goal_collisions() {
++	var goal = _game.goal;
++	if (collide(goal, _player)) {
++		_game.game_over = true;
++	}
++}
++
++// Return true if the 2 objects overlap.
++function collide(obj1, obj2) {
++	return false;
++}
++
+.// This is called ~60 times per second to update the world.
+.function update_world() {
+.	...
+.}
+END_CODE_OK
+
+B: And finally, we can update =check_collisions()= to call this new function and check for goal collisions as well as platform collisions.
+
+BEGIN_CODE_INFO Call =check_goal_collisions()=.
+.function check_collisions() {
+.	check_platform_collisions();
++	check_goal_collisions();
+.}
+END_CODE_OK
+
+B: The only thing missing is a proper =collide()= function. We'll add that now.
+
+GOTO 045

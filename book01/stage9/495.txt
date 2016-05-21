@@ -1,0 +1,23 @@
+TITLE = Finish stage 9
+ID = 495
+
+B: Since we're done debugging Level 3, we can reset the game back to start at the title screen.
+
+BEGIN_CODE
+.function handle_load(event) {
+.	init();
+-	start_level(3);
++	start_level(0);
+.	requestAnimationFrame(update_world);
+.}
+END_CODE
+
+B: Congratulations! You've finished stage 9.
+
+B: This is the last stage so that means that you've finished.
+
+FINISH_STAGE 9
+
+TODO GOTO 500 STAGE 10
+
+GOTO 000 END

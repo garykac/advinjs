@@ -1,0 +1,71 @@
+<html>
+<head>
+<title>136 : Keys for level 2 and 3</title>
+
+<link rel="stylesheet" href="../css/bootstrap.min.css">
+<link type="text/css" rel="stylesheet" href="../css/style.css" />
+<link href='http://fonts.googleapis.com/css?family=Trade+Winds' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Sacramento' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Piedra' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Aclonica' rel='stylesheet' type='text/css'>
+
+<script type="text/javascript">
+	var _gaq = _gaq || [];
+	_gaq.push(['_setAccount', 'UA-17513364-1']);
+	_gaq.push(['_setDomainName', 'cse4k12.org']);
+	_gaq.push(['_setAllowLinker', true]);
+	_gaq.push(['_trackPageview']);
+
+	(function() {
+		var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+		ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+		var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+	})();
+</script>
+
+</head>
+
+<body>
+<div class="navbar navbar-inverse navbar-static-top" role="navigation"><div class="container"><div class="navbar-header">
+<a class="navbar-brand" href="../index.html"><span class="title1">Adventures in</span> <span class="title2">JavaScript</span></a>
+</div></div></div>
+<div class="container">
+<h1>136 : Keys for level 2 and 3</h1>
+<div class="name">Balthazar:</div><p class="balthazar">Note that you the goal doesn't indicate whether or not it is currently locked. We'll update that code once we start adding images.</p>
+<div class="name">Balthazar:</div><p class="balthazar">We can add a key to level 2</p>
+<div class="panel panel-default">
+<div class="panel-code code"><span class="context">function init_level2() {</span>
+<span class="context">    ...</span>
+<span class="context">    add_default_platforms(level);</span>
+<span class="context"></span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    var item_data = [</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">        [250, 360, 20, 20, "key"],</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    ];</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    add_items(level, item_data);</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add"></span>
+<span class="context">    level.goal = create_goal(500, 360, 2);</span>
+<span class="context">    ...</span>
+<span class="context">}</span>
+</div>
+</div>
+<div class="name">Balthazar:</div><p class="balthazar">Rather than add a key to level 3 (which would just allow us to loop back to level 1 in any case), we can add a new item that ends the game when you acquire it.</p>
+<div class="panel panel-default">
+<div class="panel-code code"><span class="context">function init_level3() {</span>
+<span class="context">    ...</span>
+<span class="context">    add_default_platforms(level);</span>
+<span class="context"></span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    var item_data = [</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">        [500, 360, 20, 20, "finish"],</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    ];</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    add_items(level, item_data);</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add"></span>
+<span class="context">    level.goal = create_goal(500, 360, 0);</span>
+<span class="context"></span>
+<span class="context">    _levels.push(level);</span>
+<span class="context">}</span>
+</div>
+</div>
+<p class="alert alert-info"><a href="141.html"><span class="goto">GOTO 141</span></a></p>
+</div>
+</body>
+</html>

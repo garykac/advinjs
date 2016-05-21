@@ -1,0 +1,134 @@
+TITLE = Moving platforms
+ID = 470
+
+B: We need a new platform image.
+
+BEGIN_IMAGE_TABLE 1
+TABLE_IMAGE images/backgrounds/wheel.png 20x20 wheel.png
+END_IMAGE_TABLE
+
+BEGIN_COPY_FILE
+COPY_FILE images/backgrounds/wheel.png
+END_COPY_FILE
+
+BEGIN_CODE
+.function init_level3() {
+.	...
+.	add_default_platforms(level);
+.	var platform_data = [
+.		// [x, y, width, height, pattern]
+.		...
+.	];
+.	add_platforms(level, platform_data);
++	var moving_platform_data = [
++		// [x, y, width, height, pattern, min_x, max_x, move_x]
++		[400, 50, 30, 10, "wheel", 350, 490, -1],
++		[350, 180, 20, 10, "wheel", 300, 480, 0.5],
++	];
++	add_moving_platforms(level, moving_platform_data);
+.
+.	...
+.}
+END_CODE
+
+
+BEGIN_CODE
+.function add_default_platforms(level) {
+.	...
+.}
++
++// platform_data: [x, y, width, height, pattern, min_x, max_x, move_x]
++function add_moving_platforms(level, platform_data) {
++	for (var i = 0; i < platform_data.length; i++) {
++		var p = platform_data[i];
++		var plat = create_platform(p[0], p[1], p[2], p[3], p[4]);
++
++		plat.moving = true;
++		plat.min_x = platform_data[i][5];		
++		plat.max_x = platform_data[i][6];
++		plat.move_x = platform_data[i][7];
++		level.platforms.push(plat);
++	}
++}
+END_CODE
+
+BEGIN_CODE
+.function create_platform(x, y, width, height, pattern) {
+.	...
+.	p.width = width;
+.	p.height = height;
+.	p.origin_x = 0;
+.	p.origin_y = 0;
+.	p.dir = 1;
++	p.moving = false;
+.
+.	...
+.}
+END_CODE
+
+
+BEGIN_CODE
+.function draw_transition_screen() {
+.	...
+.}
++
++function update_platforms() {
++	var platforms = _levels[_game.current_level].platforms;
++	for (var i = 0; i < platforms.length; i++) {
++		var p = platforms[i];
++		if (p.moving) {
++			p.x += p.move_x;
++			if (p.x <= p.min_x || p.x >= p.max_x) {
++				p.move_x *= -1;
++			}
++		}
++	}	
++}
+.
+.function update_monsters() {
+.	...
+.}
+END_CODE
+
+
+BEGIN_CODE
+.function update_world() {
+.	var level = _levels[_game.current_level];
+.
+.	if (_game.in_transition) {
+.		draw_transition_screen();
+.	} else if (level.type == "game") {
+.		update_monsters();
++		update_platforms();
+.		update_items();
+.		update_player();
+.		check_collisions();
+.		draw();
+.	} else if (level.type == "title") {
+.		draw_title_screen();
+.	}
+.	
+.	requestAnimationFrame(update_world);
+.}
+END_CODE
+
+B: If the player is on a moving platform, it needs to move along with the platform.
+
+BEGIN_CODE
+.function update_player() {
+.	...
+.	// Move the player to the new location.
+.	_player.x += _player.velocity_x;
+.	_player.y += _player.velocity_y;
++	
++	// If the player is on a moving platform, then the player should move along
++	// with the platform.
++	if (_player.platform && _player.platform.moving) {
++		_player.x += _player.platform.move_x;
++	}
+.}
+END_CODE
+
+GAIN Platform IV - Moving
+
+GOTO 480

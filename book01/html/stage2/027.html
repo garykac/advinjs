@@ -1,0 +1,72 @@
+<html>
+<head>
+<title>027 : Collide with platform</title>
+
+<link rel="stylesheet" href="../css/bootstrap.min.css">
+<link type="text/css" rel="stylesheet" href="../css/style.css" />
+<link href='http://fonts.googleapis.com/css?family=Trade+Winds' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Sacramento' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Piedra' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Aclonica' rel='stylesheet' type='text/css'>
+
+<script type="text/javascript">
+	var _gaq = _gaq || [];
+	_gaq.push(['_setAccount', 'UA-17513364-1']);
+	_gaq.push(['_setDomainName', 'cse4k12.org']);
+	_gaq.push(['_setAllowLinker', true]);
+	_gaq.push(['_trackPageview']);
+
+	(function() {
+		var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+		ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+		var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+	})();
+</script>
+
+</head>
+
+<body>
+<div class="navbar navbar-inverse navbar-static-top" role="navigation"><div class="container"><div class="navbar-header">
+<a class="navbar-brand" href="../index.html"><span class="title1">Adventures in</span> <span class="title2">JavaScript</span></a>
+</div></div></div>
+<div class="container">
+<h1>027 : Collide with platform</h1>
+<div class="name">Balthazar:</div><p class="balthazar">You already added a <span class="code-inline-color">collide()</span> function when you added the goal. You can re-use that function if you make one small change to how you've implemented platforms.</p>
+<div class="name">Balthazar:</div><p class="balthazar">The <span class="code-inline-color">collide()</span> function expects each object being checked to have an <span class="code-inline-color">origin_x</span> and <span class="code-inline-color">origin_y</span>. You don't want to change the origin for the platforms, so these values can both be set to <span class="code-inline-color">0</span>.</p>
+<div class="panel panel-default">
+<div class="panel-code code"><span class="context">function create_platform(x, y, width, height) {</span>
+<span class="context">    var p = {};</span>
+<span class="context">    p.x = x;</span>
+<span class="context">    p.y = y;</span>
+<span class="context">    p.width = width;</span>
+<span class="context">    p.height = height;</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    p.origin_x = 0;</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    p.origin_y = 0;</span>
+<span class="context">    return p;</span>
+<span class="context">}</span>
+</div>
+</div>
+<div class="name">Balthazar:</div><p class="balthazar">With that change in place, you can now add your platform collision checks.</p>
+<div class="panel panel-default">
+<div class="panel-code code"><span class="context">function check_collisions() {</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    check_platform_collisions();</span>
+<span class="context">    check_goal_collisions();</span>
+<span class="context">}</span>
+<span class="context"></span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">function check_platform_collisions() {</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    if (collide(_game.platform, _player)) {</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">        _player.y = _game.platform.y;</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">        _player.velocity_y = 0;</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    }</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">}</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add"></span>
+<span class="context">function check_goal_collisions() {</span>
+<span class="context">    ...</span>
+<span class="context">}</span>
+</div>
+</div>
+<p class="run">RUN your code in a browser and verify that it loads without errors.</p>
+<p class="alert alert-info"><a href="028.html"><span class="goto">GOTO 028</span></a></p>
+</div>
+</body>
+</html>

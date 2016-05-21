@@ -1,0 +1,129 @@
+<html>
+<head>
+<title>003 : Adding a base platform</title>
+
+<link rel="stylesheet" href="../css/bootstrap.min.css">
+<link type="text/css" rel="stylesheet" href="../css/style.css" />
+<link href='http://fonts.googleapis.com/css?family=Trade+Winds' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Sacramento' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Piedra' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Aclonica' rel='stylesheet' type='text/css'>
+
+<script type="text/javascript">
+	var _gaq = _gaq || [];
+	_gaq.push(['_setAccount', 'UA-17513364-1']);
+	_gaq.push(['_setDomainName', 'cse4k12.org']);
+	_gaq.push(['_setAllowLinker', true]);
+	_gaq.push(['_trackPageview']);
+
+	(function() {
+		var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+		ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+		var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+	})();
+</script>
+
+</head>
+
+<body>
+<div class="navbar navbar-inverse navbar-static-top" role="navigation"><div class="container"><div class="navbar-header">
+<a class="navbar-brand" href="../index.html"><span class="title1">Adventures in</span> <span class="title2">JavaScript</span></a>
+</div></div></div>
+<div class="container">
+<h1>003 : Adding a base platform</h1>
+<div class="name">Balthazar:</div><p class="balthazar">Where do you think you should start?</p>
+<div class="name">You:</div><p class="you">Since it's a platformer, adding platforms seems like an obvious place to start.</p>
+<div class="name">Balthazar:</div><p class="balthazar">How do you think you can do that?</p>
+<div class="name">You:</div><p class="you">By drawing a big rectangle on the screen.</p>
+<div class="name">Balthazar:</div><p class="balthazar">Where?</p>
+<div class="name">You:</div><p class="you">At the bottom.</p>
+<div class="name">Balthazar:</div><p class="balthazar">No, I mean where in the code do you do that?</p>
+<div class="name">You:</div><p class="you">Oh. Probably in the <span class="code-inline-color">draw()</span> function.</p>
+<div class="name">Balthazar:</div><p class="balthazar">Right, but before you draw it you should first create a platform. A platform needs an x, y location and a width and a height. You can write a function called <span class="code-inline-color">create_platform()</span> that takes these parameters and then creates a platform.</p>
+<div class="panel panel-default">
+<div class="panel-code-header">Create the <span class="code-inline">create_platform()</span> function</div><div class="panel-code code"><span class="context">function init_player() {</span>
+<span class="context">    ...</span>
+<span class="context">}</span>
+<span class="context"></span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">function create_platform(x, y, width, height) {</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    var p = {};</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    p.x = x;</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    p.y = y;</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    p.width = width;</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    p.height = height;</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    return p;</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">}</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add"></span>
+<span class="context">// Erase the canvas and draw all the objects.</span>
+<span class="context">function draw() {</span>
+<span class="context">    ...</span>
+<span class="context">}</span>
+</div>
+<div class="panel-code-footer">Run your code in a browser and verify that there are no errors.</div></div>
+<div class="name">Balthazar:</div><p class="balthazar">And now to create a platform, you simply call this function with the appropriate arguments. Your main platform should cover the entire bottom left-to-right and probably be about 40 pixels high.</p>
+<div class="name">You:</div><p class="you">Since our screen size is 550x400, that means that I should place the platform at <span class="code-inline-color">0,360</span> and give it a width and height of <span class="code-inline-color">550</span> and <span class="code-inline-color">40</span>.</p>
+<div class="name">Balthazar:</div><p class="balthazar">Indeed, but instead of hard-coding the width at <span class="code-inline-color">550</span>, you should use <span class="code-inline-color">_game.width</span>, which will always be equal to the width of the screen, even if you decide to resize it later.</p>
+<div class="name">You:</div><p class="you">OK, but why don't I also do that with <span class="code-inline-color">_game.height</span>?</p>
+<div class="name">Balthazar:</div><p class="balthazar">You could, but since you're doing a jumping game, you don't want the platforms to move up or down if the screen resizes. That'll mess up all the jumps and might make the game impossible to win. It's OK if the main platform gets wider, but you don't want it to move up or down.</p>
+<div class="name">You:</div><p class="you">But I could make all the platforms relative to the bottom and then that wouldn't be a problem.</p>
+<div class="name">Balthazar:</div><p class="balthazar">True, but that's a lot of work to support being able to resize your screen.</p>
+<div class="name">You:</div><p class="you">Ah. A lot of work. Gotcha. Let's skip that, then.</p>
+<div class="panel panel-default">
+<div class="panel-code-header">Call <span class="code-inline">create_platform()</span> to create the base platform.</div><div class="panel-code code"><span class="context">function init_game() {</span>
+<span class="context">    ...</span>
+<span class="context">    // The keymap keeps track of which keys are currently being pressed.</span>
+<span class="context">    _game.keymap = {};</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add"></span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    // Game state.</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    _game.platform = create_platform(0, 360, _game.width, 40);</span>
+<span class="context">}</span>
+</div>
+<div class="panel-code-footer">Run your code in a browser and verify that there are no errors.</div></div>
+<div class="name">Balthazar:</div><p class="balthazar">And now we need to...?</p>
+<div class="name">You:</div><p class="you">Draw the platforms... in the <span class="code-inline-color">draw()</span> function.</p>
+<div class="name">Balthazar:</div><p class="balthazar">Good. But rather than adding the drawing code directly to the <span class="code-inline-color">draw()</span> function, you should add a new <span class="code-inline-color">draw_platforms()</span> function and call that from <span class="code-inline-color">draw()</span> &mdash; just like you do for <span class="code-inline-color">draw_player()</span>.</p>
+<div class="name">You:</div><p class="you">You mean "draw platforms" with an 's'? But we're only drawing one platform.</p>
+<div class="name">Balthazar:</div><p class="balthazar">True, but we'll be adding more platforms soon enough, and we might as well give the function its proper name now so that we don't have to rename it later.</p>
+<div class="name">You:</div><p class="you">OK. <span class="thinking">Whatever</span></p>
+<div class="name">Balthazar:</div><p class="balthazar">Add a call to <span class="code-inline-color">draw_platforms()</span> in the <span class="code-inline-color">draw()</span> function. Place it after the <span class="code-inline-color">erase()</span> but before the call to <span class="code-inline-color">draw_player()</span>, that way the player will be drawn in front of the platforms.</p>
+<div class="panel panel-default">
+<div class="panel-code-header">Call <span class="code-inline">draw_platforms()</span> from within <span class="code-inline">draw()</span></div><div class="panel-code code"><span class="context">function draw() {</span>
+<span class="context">    var canvas = document.getElementById("stage");</span>
+<span class="context">    var ctx = canvas.getContext("2d");</span>
+<span class="context"></span>
+<span class="context">    erase(ctx);</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    draw_platforms(ctx);</span>
+<span class="context">    draw_player(ctx);</span>
+<span class="context">}</span>
+</div>
+<div class="panel-code-footer">If you run your code now, you'll see an error because the <span class="code-inline">draw_platforms()</span> function has not yet been defined.</div></div>
+<div class="name">Balthazar:</div><p class="balthazar">And finally you need to create the <span class="code-inline-color">draw_platforms()</span> function that will do the actual drawing. For now, you should just fill a rectangle with an appropriately brownish color like RGB = 153, 102, 51.</p>
+<div class="name">You:</div><p class="you">Can I choose another color?</p>
+<div class="name">Balthazar:</div><p class="balthazar">Any color you like, just replace the red, green and blue components of the <span class="code-inline-color">rgb()</span> with values between 0 and 255 (inclusive).</p>
+<div class="panel panel-default">
+<div class="panel-code-header">Create the <span class="code-inline">draw_platforms()</span> function</div><div class="panel-code code"><span class="context">// Erase the canvas by filling it with white.</span>
+<span class="context">function erase(ctx) {</span>
+<span class="context">    ...</span>
+<span class="context">}</span>
+<span class="context"></span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">// Draw the platforms.</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">function draw_platforms(ctx) {</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    var platform = _game.platform;</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    ctx.fillStyle = "rgb(153, 102, 51)";</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    ctx.fillRect(platform.x, platform.y, platform.width, platform.height);</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">}</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add"></span>
+<span class="context">// Draw the player.</span>
+<span class="context">function draw_player(ctx) {</span>
+<span class="context">    ...</span>
+<span class="context">}</span>
+</div>
+<div class="panel-code-footer">Run your code in a browser and verify that there are no errors.</div></div>
+<div class="name">Balthazar:</div><p class="balthazar">After you've typed in all that code, try it out and see what happens.</p>
+<div class="name">You:</div><p class="you">OK. I've got a giant brown platform along the bottom of the screen, but I can still move the player all around the screen.</p>
+<div class="name">Balthazar:</div><p class="balthazar">That's OK. We'll fix that next.</p>
+<p class="alert alert-success"><strong>Congratulations!</strong> You've earned the <span class="badge-gain">Platform I - Base</span> badge!</p>
+<p class="alert alert-info"><a href="004.html"><span class="goto">GOTO 004</span></a></p>
+</div>
+</body>
+</html>

@@ -1,0 +1,57 @@
+TITLE = Monster collisions
+ID = 056
+
+B: The monster is drawn, but you can just walk right through it. That's no fun.
+
+B: We can update our collision to support monsters.
+
+
+BEGIN_CODE
+.function check_platform_collisions() {	
+.	...
+.}
+.
++function check_monster_collisions() {
++	var monsters = _game.monsters;
++	for (var i = 0; i < monsters.length; i++) {
++		var m = monsters[i];
++		if (collide(m, _player)) {
++			_game.game_over = true;
++		}
++	}
++}
++
+.function check_goal_collisions() {
+.	...
+.}
+END_CODE
+
+B: and update check_collisions():
+
+BEGIN_CODE
+.function check_collisions() {
+.	check_platform_collisions();
++	check_monster_collisions();
+.	check_goal_collisions();
+.}
+END_CODE
+
+B: Now monsters are dangerous. If you collide with it the game will end. But you can easily jump over it at this time.
+
+
+B: Adding a second monster is as easy as:
+
+BEGIN_CODE
+.function init_game() {
+.	...
+.	_game.monsters = [];
+.	_game.monsters.push(create_monster(350, 360, 20, 20));
++	_game.monsters.push(create_monster(400, 360, 20, 20));
+.	_game.goal = create_goal(500, 360);
+.	...
+.}
+END_CODE
+
+GAIN Monster I - Stationary
+
+GOTO 057

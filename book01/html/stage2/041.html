@@ -1,0 +1,107 @@
+<html>
+<head>
+<title>041 : Collide with goal</title>
+
+<link rel="stylesheet" href="../css/bootstrap.min.css">
+<link type="text/css" rel="stylesheet" href="../css/style.css" />
+<link href='http://fonts.googleapis.com/css?family=Trade+Winds' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Sacramento' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Piedra' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Aclonica' rel='stylesheet' type='text/css'>
+
+<script type="text/javascript">
+	var _gaq = _gaq || [];
+	_gaq.push(['_setAccount', 'UA-17513364-1']);
+	_gaq.push(['_setDomainName', 'cse4k12.org']);
+	_gaq.push(['_setAllowLinker', true]);
+	_gaq.push(['_trackPageview']);
+
+	(function() {
+		var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+		ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+		var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+	})();
+</script>
+
+</head>
+
+<body>
+<div class="navbar navbar-inverse navbar-static-top" role="navigation"><div class="container"><div class="navbar-header">
+<a class="navbar-brand" href="../index.html"><span class="title1">Adventures in</span> <span class="title2">JavaScript</span></a>
+</div></div></div>
+<div class="container">
+<h1>041 : Collide with goal</h1>
+<div class="name">Balthazar:</div><p class="balthazar">We show the goal on the screen, but we want to detect when the player touches the goal and then end the game.</p>
+<div class="name">Balthazar:</div><p class="balthazar">The first thing we need is a boolean variable that keeps track of whether or not the game is over. This should be initialized to <span class="code-inline-color">false</span>.</p>
+<div class="panel panel-default">
+<div class="panel-code-header">Add <span class="code-inline">game_over</span> variable.</div><div class="panel-code code"><span class="context">function init_game() {</span>
+<span class="context">    ...</span>
+<span class="context">    // Game state.</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    _game.game_over = false;</span>
+<span class="context">    _game.platform = create_platform(0, 360, _game.width, 40);</span>
+<span class="context">    _game.goal = create_goal(500, 360);</span>
+<span class="context"></span>
+<span class="context">    // Global world parameters.</span>
+<span class="context">    ...</span>
+<span class="context">}</span>
+</div>
+<div class="panel-code-footer">Run your code in a browser and verify that there are no errors.</div></div>
+<div class="name">Balthazar:</div><p class="balthazar">Now that we have this variable, we can set it to <span class="code-inline-color">true</span> when the player touches (collides with) the goal that we just added.</p>
+<div class="name">Balthazar:</div><p class="balthazar">We can add a <span class="code-inline-color">check_goal_collisions()</span> function to detect when the player collides with the goal object. If that happens, we set the <span class="code-inline-color">game_over</span> flag to <span class="code-inline-color">true</span>.</p>
+<div class="name">Balthazar:</div><p class="balthazar">We're also temporarily adding a "dummy" version of the <span class="code-inline-color">collide()</span> function. This dummy version does nothing except return <span class="code-inline-color">false</span> (meaning no collision found). We'll be creating a proper version of <span class="code-inline-color">collide()</span> once we finish hooking up the goal collision code.</p>
+<div class="panel panel-default">
+<div class="panel-code-header">Create the <span class="code-inline">check_goal_collisions()</span> function.</div><div class="panel-code code"><span class="context">function check_input() {</span>
+<span class="context">    ...</span>
+<span class="context">}</span>
+<span class="context"></span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">function check_goal_collisions() {</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    var goal = _game.goal;</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    if (collide(goal, _player)) {</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">        _game.game_over = true;</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    }</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">}</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add"></span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">// Return true if the 2 objects overlap.</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">function collide(obj1, obj2) {</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    return false;</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">}</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add"></span>
+<span class="context">// This is called ~60 times per second to update the world.</span>
+<span class="context">function update_world() {</span>
+<span class="context">    ...</span>
+<span class="context">}</span>
+</div>
+<div class="panel-code-footer">Run your code in a browser and verify that there are no errors.</div></div>
+<div class="name">Balthazar:</div><p class="balthazar">Since we'll be doing a lot more collision detection, we might as well create a <span class="code-inline-color">check_collisions()</span> function that will check for all the collisions that we care about in the game.</p>
+<div class="name">Balthazar:</div><p class="balthazar">Right now, we only have goal collisions, so we only need to call <span class="code-inline-color">check_goal_collisions()</span>. We'll be adding more to this function later.</p>
+<div class="panel panel-default">
+<div class="panel-code code"><span class="context">function check_input() {</span>
+<span class="context">    ...</span>
+<span class="context">}</span>
+<span class="context"></span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">function check_collisions() {</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    check_goal_collisions();</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">}</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add"></span>
+<span class="context">function check_goal_collisions() {</span>
+<span class="context">    ...</span>
+<span class="context">}</span>
+</div>
+</div>
+<div class="name">Balthazar:</div><p class="balthazar">And finally, we need to call our <span class="code-inline-color">check_collisions()</span> function. We need to do that in <span class="code-inline-color">update_world()</span> so that the game checks for collisions whenever anything moves on the screen.</p>
+<div class="panel panel-default">
+<div class="panel-code code"><span class="context">// This is called ~60 times per second to update the world.</span>
+<span class="context">function update_world() {</span>
+<span class="context">    update_player();</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    check_collisions();</span>
+<span class="context">    draw();</span>
+<span class="context"></span>
+<span class="context">    requestAnimationFrame(update_world);</span>
+<span class="context">}</span>
+</div>
+</div>
+<div class="name">Balthazar:</div><p class="balthazar">The only thing missing is a proper <span class="code-inline-color">collide()</span> function. We'll add that now.</p>
+<p class="alert alert-info"><a href="045.html"><span class="goto">GOTO 045</span></a></p>
+</div>
+</body>
+</html>

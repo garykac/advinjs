@@ -1,0 +1,95 @@
+<html>
+<head>
+<title>025 : Jump</title>
+
+<link rel="stylesheet" href="../css/bootstrap.min.css">
+<link type="text/css" rel="stylesheet" href="../css/style.css" />
+<link href='http://fonts.googleapis.com/css?family=Trade+Winds' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Sacramento' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Piedra' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Aclonica' rel='stylesheet' type='text/css'>
+
+<script type="text/javascript">
+	var _gaq = _gaq || [];
+	_gaq.push(['_setAccount', 'UA-17513364-1']);
+	_gaq.push(['_setDomainName', 'cse4k12.org']);
+	_gaq.push(['_setAllowLinker', true]);
+	_gaq.push(['_trackPageview']);
+
+	(function() {
+		var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+		ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+		var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+	})();
+</script>
+
+</head>
+
+<body>
+<div class="navbar navbar-inverse navbar-static-top" role="navigation"><div class="container"><div class="navbar-header">
+<a class="navbar-brand" href="../index.html"><span class="title1">Adventures in</span> <span class="title2">JavaScript</span></a>
+</div></div></div>
+<div class="container">
+<h1>025 : Jump</h1>
+<div class="name">Balthazar:</div><p class="balthazar">First define how much gravity there should be in this world:</p>
+<div class="panel panel-default">
+<div class="panel-code-header">Define a gravity variable.</div><div class="panel-code code"><span class="context">function init_game() {</span>
+<span class="context">    ...</span>
+<span class="context">    // Global world parameters.</span>
+<span class="context">    _game.friction = 0.15;</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    _game.gravity = 0.5;</span>
+<span class="context">}</span>
+</div>
+<div class="panel-code-footer">Run your code in a browser and verify that there are no errors.</div></div>
+<div class="name">Balthazar:</div><p class="balthazar">We need to set the initial jump velocity and the max allowed velocity for the player</p>
+<div class="panel panel-default">
+<div class="panel-code-header">Define the initial jump velocity.</div><div class="panel-code code"><span class="context">function init_player() {</span>
+<span class="context">    ...</span>
+<span class="context">    _player.velocity_x = 0;</span>
+<span class="context">    _player.velocity_x_delta = 0.8;</span>
+<span class="context">    _player.velocity_x_max = 3.5;</span>
+<span class="context">    _player.velocity_y = 0;</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    _player.velocity_y_jump = -10;</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    _player.velocity_y_max = 10;</span>
+<span class="context">}</span>
+</div>
+<div class="panel-code-footer">Run your code in a browser and verify that there are no errors.</div></div>
+<div class="name">Balthazar:</div><p class="balthazar">We need to apply gravity to the player (just like we did with friction).</p>
+<div class="panel panel-default">
+<div class="panel-code-header">Update the player y-velocity to account for gravity.</div><div class="panel-code code"><span class="context">function update_player() {</span>
+<span class="context">    ...</span>
+<span class="context">    // Apply the global world effects on the player.</span>
+<span class="context">    _player.velocity_x *= (1.0 - _game.friction);</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    _player.velocity_y += _game.gravity;</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    if (_player.velocity_y > _player.velocity_y_max)</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">        _player.velocity_y = _player.velocity_y_max;</span>
+<span class="context">    ...</span>
+<span class="context">}</span>
+</div>
+<div class="panel-code-footer">Run your code in a browser and verify that there are no errors.</div></div>
+<div class="name">Balthazar:</div><p class="balthazar">and finally check for the jump key to initiate the jump. In this case, Up arrow, 'w' and spacebar:</p>
+<div class="panel panel-default">
+<div class="panel-code-header">Add support for the jump keys.</div><div class="panel-code code"><span class="context">function check_input() {</span>
+<span class="context">    ...</span>
+<span class="context">    // Right arrow or 'd' to move right.</span>
+<span class="context">    if (_game.keymap[39] || _game.keymap[68]) {</span>
+<span class="context">        _player.velocity_x += _player.velocity_x_delta;</span>
+<span class="context">        if (_player.velocity_x > _player.velocity_x_max) {</span>
+<span class="context">            _player.velocity_x = _player.velocity_x_max;</span>
+<span class="context">        }</span>
+<span class="context">    }</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    // Up arrow, 'w'  and spacebar to jump.</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    if (_game.keymap[38] || _game.keymap[87] || _game.keymap[32]) {</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">        _player.velocity_y = _player.velocity_y_jump;</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    }</span>
+<span class="context">}</span>
+</div>
+<div class="panel-code-footer">Run your code in a browser and verify that there are no errors.</div></div>
+<div class="name">Balthazar:</div><p class="balthazar">Go ahead and run your code now.</p>
+<div class="name">You:</div><p class="you">The player fall off the bottom of the screen!</p>
+<div class="name">Balthazar:</div><p class="balthazar">That's because gravity is pulling the player down - that't what gravity does.</p>
+<div class="name">You:</div><p class="you">How are we going to fix it?</p>
+<p class="alert alert-info"><a href="029.html"><span class="goto">GOTO 029</span></a></p>
+</div>
+</body>
+</html>

@@ -1,0 +1,33 @@
+TITLE = Basic collision
+ID = 045
+
+BEGIN_CODE
+.// Return true if the 2 objects overlap.
+.function collide(obj1, obj2) {
++	if ((obj1.x - obj1.origin_x + obj1.width) <= (obj2.x - obj2.origin_x))
++		return false;
++	if ((obj1.y - obj1.origin_y + obj1.height) <= (obj2.y - obj2.origin_y))
++		return false;
++	if ((obj2.x - obj2.origin_x + obj2.width) <= (obj1.x - obj1.origin_x))
++		return false;
++	if ((obj2.y - obj2.origin_y + obj2.height) <= (obj1.y - obj1.origin_y))
++		return false;
++	
+-	return false;
++	return true;
+.}
+END_CODE
+
+B: And now if you run your code it will detect when the player touches the goal.
+
+U: It's not working - I can walk over to the goal and the game doesn't end.
+
+B: Actually, it is working. You just can't tell that it's working. When the player touches the goal, the boolean variable =game_over= is set to =true=. The problem is that we don't currently do anything special when the game is over.
+
+U: We should fix that.
+
+B: And that's just what we'll do next.
+
+GOTO 046 IF_BADGE Movement III - Gravity
+
+GOTO 044

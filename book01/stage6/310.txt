@@ -1,0 +1,243 @@
+TITLE = Timed transitions
+ID = 310
+
+B: We need to add a delay at the start and end of each level. Since all levels should have the same delays, we can set these up in =init_level_defaults()=.
+
+BEGIN_CODE
+.function init_level_defaults(level) {
+.	level.type = "game";
++	level.delay_start = 120;
++	level.delay_end = 120;
++	level.complete = false;
+.	level.player_has_key = false;
+.
+.	level.player_start_x = 0;
+.	level.player_start_y = 0;
+.	...
+.}
+END_CODE
+
+B: The title screen shouldn't have any delays. So we need to override the defaults in the =init_level0_title()= function.
+
+BEGIN_CODE
+.function init_level0_title() {
+.	var level = {};
+.	init_level_defaults(level);
+.
+.	// Override the level defaults.
+.	level.type = "title";
++	level.delay_start = 0;
++	level.delay_end = 0;
+.	...
+.}
+END_CODE
+
+
+BEGIN_CODE
+.function init_game() {
+.	...
+.	// Game state.
+.	_game.game_over = false;
+.	_game.game_win = false;
+.	_game.current_level = 0;
++	_game.next_level = 1;
++	_game.in_transition = false;
++	_game.reset_health = false;
+.	_game.player_lives = 3;
+.	...
+.}
+END_CODE
+
+BEGIN_CODE
+.function start_level(level_id) {
+.	_game.current_level = level_id;
+.
+.	var level = _levels[level_id];
+.	_player.x = level.player_start_x;
+.	_player.y = level.player_start_y;
+.	_player.velocity_x = 0;
+.	_player.velocity_y = 0;
++	if (_game.reset_health) {
++		_player.health = _player.health_max;
++		_game.reset_health = false;
++	}
++	level.complete = false;
++
++	_game.delay = level.delay_start;
++	_game.in_transition = (_game.delay != 0);
++	_game.transition_type = "level-start";
+.}
+END_CODE
+
+
+BEGIN_CODE
+.function start_level(level_id) {
+.	...
+.}
++
++function complete_level(next_level) {
++	var level = _levels[_game.current_level];
++
++	if (level.complete)
++		return;
++		
++	level.complete = true;
++	_game.next_level = next_level;
++
++	_game.delay = level.delay_end;
++	_game.in_transition = (_game.delay != 0);
++	_game.transition_type = "level-end";
++}
+END_CODE
+
+
+
+BEGIN_CODE
+.function lose_life() {
+.	_game.player_lives--;
+.	if (_game.player_lives > 0) {
+-		_player.health = _player.health_max;
++		_game.reset_health = true;
++		_game.delay = _levels[_game.current_level].delay_end;
++		_game.in_transition = (_game.delay != 0);
++		_game.transition_type = "lose-life";
++
++		// Player needs to restart the current level.
++		_game.next_level = _game.current_level;
+.	} else {
+.		_game.game_over = true;
+.	}
+.}
+END_CODE
+
+BEGIN_CODE
+.function update_player_sprite() {
+.	var sprite;
+-	if (_game.game_over && !_game.game_win) {
++	if (_player.health <= 0) {
+.		sprite = _player.sprite_sad;
+.	} else if (_game.game_win) {
+.		sprite = _player.sprite_happy;
+.	} else {
+.		sprite = _player.sprite;
+.	}
+.	...
+.}
+END_CODE
+
+B: If we're in the middle of a transition, we should draw the current game level dimmed out and we should ignore user input.
+
+B: We need to stay in this transition state while a timer counts down. When the timer reaches 0, we'll start the next level.
+
+BEGIN_CODE
+.function draw_title_screen() {
+.	...
+.}
++
++function draw_transition_screen() {
++	var level = _levels[_game.current_level];
++	var type = _game.transition_type;
++	
++	// Countdown timer.
++	_game.delay--;
++	if (_game.delay <= 0) {
++		_game.in_transition = false;
++		if (type == "level-end" || type == "lose-life") {
++			start_level(_game.next_level);
++		}
++	}
++	
++	if (type == "level-end" || type == "lose-life") {
++		// Keep moving the player so that any jumps in-progress are completed.
++		update_player();
++		check_collisions();
++	}
++	
++	draw();
++
++	if (type == "lose-life")
++		return;
++		
++	var canvas = document.getElementById("stage");
++	var ctx = canvas.getContext("2d");
++
++	// Dim the stage by drawing a transparent black rectangle over it.
++	ctx.fillStyle = "rgba(0, 0, 0, 0.5)";
++	ctx.fillRect(0, 0, _game.width, _game.height);
++
++	ctx.fillStyle = "white";
++	ctx.font = "64px Helvetica";
++	ctx.fillText(level.name, 160, 180);
++	
++	ctx.fillStyle = "white";
++	ctx.font = "48px Helvetica";
++	if (type == "level-end") {
++		ctx.fillText("Complete!", 150, 250);	
++	} else {
++		ctx.fillText("Get Ready!", 140, 250);	
++	}
++}
+END_CODE
+
+B: Instead of immediately starting the next level, we'll mark the current level as complete and transition to the next level.
+BEGIN_CODE
+.function check_goal_collisions() {
+.	var level = _levels[_game.current_level];
+.	var goal = level.goal;
+.	if (goal) {
+.		if (collide(goal, _player) && level.player_has_key) {
+-			start_level(goal.next_level);
++			complete_level(goal.next_level);
+.		}
+.	}
+.}
+END_CODE
+
+
+BEGIN_CODE
+.function update_world() {
+.	var level = _levels[_game.current_level];
+.
++	if (_game.in_transition) {
++		draw_transition_screen();
+-	if (level.type == "game") {
++	} else if (level.type == "game") {
+.		update_monsters();
+.		update_player();
+.		check_collisions();
+.		draw();
+.	} else if (level.type == "title") {
+.		draw_title_screen();
+.	}
+.
+.	requestAnimationFrame(update_world);
+.}
+END_CODE
+
+B: The player can still move around after the level has ended. THey can also collide with monsters and lose health. The keyboard input and monster collision checks should be disabled while in the transition.
+
+BEGIN_CODE
+.function check_collisions() {
+.	check_platform_collisions();
++	if (!_game.game_over && !_game.in_transition) {
+>		check_monster_collisions();
++	}
+.	check_item_collisions();
+.	check_goal_collisions();
+.}
+END_CODE
+
+
+BEGIN_CODE
+.function update_player() {
+-	if (!_game.game_over) {
++	if (!_game.game_over && !_game.in_transition) {
+.		check_input();
+.	}
+.	...
+.}
+END_CODE
+
+GAIN Transition III - Timer
+
+GOTO 340

@@ -1,0 +1,97 @@
+<html>
+<head>
+<title>075 : More platforms</title>
+
+<link rel="stylesheet" href="../css/bootstrap.min.css">
+<link type="text/css" rel="stylesheet" href="../css/style.css" />
+<link href='http://fonts.googleapis.com/css?family=Trade+Winds' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Sacramento' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Piedra' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Aclonica' rel='stylesheet' type='text/css'>
+
+<script type="text/javascript">
+	var _gaq = _gaq || [];
+	_gaq.push(['_setAccount', 'UA-17513364-1']);
+	_gaq.push(['_setDomainName', 'cse4k12.org']);
+	_gaq.push(['_setAllowLinker', true]);
+	_gaq.push(['_trackPageview']);
+
+	(function() {
+		var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+		ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+		var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+	})();
+</script>
+
+</head>
+
+<body>
+<div class="navbar navbar-inverse navbar-static-top" role="navigation"><div class="container"><div class="navbar-header">
+<a class="navbar-brand" href="../index.html"><span class="title1">Adventures in</span> <span class="title2">JavaScript</span></a>
+</div></div></div>
+<div class="container">
+<h1>075 : More platforms</h1>
+<div class="panel panel-default">
+<div class="panel-code code"><span class="context">function draw_platforms(ctx) {</span>
+<img src="../css/cross.png" width="15" height="15"/><span class="delete">    var platform = _game.platform;</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    var platform = _game.platforms[0];</span>
+<span class="context">    ctx.fillStyle = "rgb(153, 102, 51)";</span>
+<span class="context">    ctx.fillRect(platform.x, platform.y, platform.width, platform.height);</span>
+<span class="context">}</span>
+</div>
+</div>
+<div class="panel panel-default">
+<div class="panel-code code"><span class="context">function check_platform_collisions() {</span>
+<span class="context">    _player.platform = null;</span>
+<img src="../css/cross.png" width="15" height="15"/><span class="delete">    if (collide(_game.platform, _player)) {</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    if (collide(_game.platforms[0], _player)) {</span>
+<img src="../css/cross.png" width="15" height="15"/><span class="delete">        _player.platform = _game.platform;</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">        _player.platform = _game.platforms[0];</span>
+<img src="../css/cross.png" width="15" height="15"/><span class="delete">        _player.y = _game.platform.y;</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">        _player.y = _game.platforms[0].y;</span>
+<span class="context">        _player.velocity_y = 0;</span>
+<span class="context">    }</span>
+<span class="context">}</span>
+</div>
+</div>
+<div class="name">Balthazar:</div><p class="balthazar">???</p>
+<div class="name">Balthazar:</div><p class="balthazar">Run. it should be the same.</p>
+<div class="name">Balthazar:</div><p class="balthazar">Note that draw_ and check_collision only check the first (the 0th) element) of the array.</p>
+<div class="name">Balthazar:</div><p class="balthazar">We can add another platform to the array, but it won't work until we iterate through all the elements of the array. WE do that with a for loop.</p>
+<div class="panel panel-default">
+<div class="panel-code code"><span class="context">function draw_platforms(ctx) {</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    var platforms = _game.platforms;</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    for (var i = 0; i < platforms.length; i++) {</span>
+<img src="../css/cross.png" width="15" height="15"/><span class="delete">        var platform = _game.platforms[0];</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">        var platform = platforms[i];</span>
+<span class="indent">        ctx.fillStyle = "rgb(153, 102, 51)";</span>
+<span class="indent">        ctx.fillRect(platform.x, platform.y, platform.width, platform.height);</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    }</span>
+<span class="context">}</span>
+</div>
+</div>
+<div class="name">Balthazar:</div><p class="balthazar">_game.platforms.length is the number of elements in the array.</p>
+<div class="name">Balthazar:</div><p class="balthazar">Note that _game.platforms[0] is changed to _game.platforms[i].</p>
+<div class="panel panel-default">
+<div class="panel-code code"><span class="context">function check_platform_collisions() {</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    var platforms = _game.platforms;</span>
+<span class="context">    _player.platform = null;</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    for (var i = 0; i < platforms.length; i++) {</span>
+<img src="../css/cross.png" width="15" height="15"/><span class="delete">        if (collide(_game.platforms[0], _player)) {</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">        if (collide(platforms[i], _player)) {</span>
+<img src="../css/cross.png" width="15" height="15"/><span class="delete">            _player.platform = _game.platforms[0];</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">            _player.platform = platforms[i];</span>
+<img src="../css/cross.png" width="15" height="15"/><span class="delete">            _player.y = _game.platforms[0].y;</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">            _player.y = platforms[i].y;</span>
+<span class="indent">            _player.velocity_y = 0;</span>
+<span class="indent">        }</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    }</span>
+<span class="context">}</span>
+</div>
+</div>
+<p class="run">RUN your code in a browser and verify that it loads without errors.</p>
+<p class="alert alert-info"><a href="079.html"><span class="goto">GOTO 079</span></a> if you already have the <span class="badge-check">Monster I - Stationary</span> badge.</p>
+<p class="alert alert-info"><a href="071.html"><span class="goto">GOTO 071</span></a></p>
+</div>
+</body>
+</html>

@@ -1,0 +1,6 @@
+TITLE = Finish stage 2
+ID = 049
+
+FINISH_STAGE 2
+
+GOTO 050 STAGE 3

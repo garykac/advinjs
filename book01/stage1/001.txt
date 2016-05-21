@@ -1,0 +1,54 @@
+TITLE = Before you begin...
+ID = 001
+
+ADMIN Before getting started, you will need to prepare the following things:
+
+BEGIN_TASK_LIST
+
+TASK_LIST_ITEM_START
+TASK_LIST_ITEM_DATA First, make sure you have a capable <a href="http://en.wikipedia.org/wiki/Text_editor">text editor</a> installed on your computer to work on your project.
+TASK_LIST_ITEM_DATA If you don't already have one, Wikipedia has a <a href="http://en.wikipedia.org/wiki/List_of_text_editors">large list of text editors</a> to choose from.
+TASK_LIST_ITEM_DATA For Windows, I recommend <a href="http://www.notepad-plus-plus.org/">Notepad++</a>. For Mac, I recommend <a href="http://www.barebones.com/products/textwrangler/">TextWrangler</a>.
+TASK_LIST_ITEM_END
+
+
+TASK_LIST_ITEM_START
+TASK_LIST_ITEM_DATA Create a local project directory for all the project files and call it =advinjs= (or choose some other name that you will remember).
+TASK_LIST_ITEM_END
+
+TASK_LIST_ITEM_START
+TASK_LIST_ITEM_DATA Get a copy of the <a href="../baseline.html">baseline project files</a>.
+TASK_LIST_ITEM_DATA Copy them into a local directory called =baseline= in your project directory (e.g.: =advinjs/baseline=).
+TASK_LIST_ITEM_DATA These files comprise the starting point for your project.
+TASK_LIST_ITEM_END
+
+TASK_LIST_ITEM_START
+TASK_LIST_ITEM_DATA Get a copy of the <a href="../images.html">sample bitmap files</a>.
+TASK_LIST_ITEM_DATA Copy them into a local directory called =images= in your project directory (e.g.: =advinjs/images=).
+TASK_LIST_ITEM_DATA You will copy images from this directory into your project as needed during the adventure.
+TASK_LIST_ITEM_END
+
+TASK_LIST_ITEM Get a copy of the <a href="../docs/character-sheet.pdf">character tracking sheet</a>. This is where you will keep track of the badges that you earn.
+
+TASK_LIST_ITEM Get a copy of the <a href="../docs/map-5.pdf">Stage 5 challenge map</a>. You won't need this until you get to stage 5, but this map is to help you track your progress through this part of the adventure.
+
+TASK_LIST_ITEM_START
+TASK_LIST_ITEM_DATA And finally, before starting, make a copy of your entire =advinjs/baseline= directory and call it =advinjs/game=.
+TASK_LIST_ITEM_DATA This is the directory where you will be doing all of your work.
+TASK_LIST_ITEM_END
+
+ADMIN At this point, your project directory should look as follows:
+
+HTML <table>
+HTML <tr>
+HTML <td><span class="code-inline-color">advinjs/</span></td><td><span class="code-inline-color">baseline/</span></td><td class="small-comment">This is the baseline project.</td>
+HTML </tr><tr>
+HTML <td></td><td><span class="code-inline-color">images/</span></td><td class="small-comment">These are the images that you will copy into your project as needed.</td>
+HTML </tr><tr>
+HTML <td></td><td><span class="code-inline-color">game/</span></td><td class="small-comment">This is a copy of the <span class="code-inline">baseline</span> directory. You'll be doing all your work in this directory.</td>
+HTML </tr>
+HTML </table>
+
+ADMIN Once you've verified that your project has all the files in the correct place, and you have your character tracking sheet, you can open up =game/script.js= in your text editor and start your adventure...
+
+GOTO 003

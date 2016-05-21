@@ -1,0 +1,65 @@
+TITLE = Better collisions
+ID = 072
+
+B: Update collide():
+
+TODO describe how this works!
+
+TODO describe how collision detection works
+
+BEGIN_CODE
+-// Return true if the 2 objects overlap.
++// If the 2 objects overlap, return a [dx, dy, dir] array containing the x,y
++// overlap and the direction of the collision (relative to obj1).
++// Return null if they don't overlap.
+.function collide(obj1, obj2) {
+-	if ((obj1.x - obj1.origin_x + obj1.width) <= (obj2.x - obj2.origin_x))
+-		return false;
+-	if ((obj1.y - obj1.origin_y + obj1.height) <= (obj2.y - obj2.origin_y))
+-		return false;
+-	if ((obj2.x - obj2.origin_x + obj2.width) <= (obj1.x - obj1.origin_x))
+-		return false;
+-	if ((obj2.y - obj2.origin_y + obj2.height) <= (obj1.y - obj1.origin_y))
+-		return false;
+-	
+-	return true;
++	var o1_center_x = obj1.x - obj1.origin_x + (obj1.width / 2);
++	var o1_center_y = obj1.y - obj1.origin_y + (obj1.height / 2);
++
++	var o2_center_x = obj2.x - obj2.origin_x + (obj2.width / 2);
++	var o2_center_y = obj2.y - obj2.origin_y + (obj2.height / 2);
++
++	var dx = o1_center_x - o2_center_x;
++	var dy = o1_center_y - o2_center_y;
++	
++	var half_width = (obj1.width + obj2.width) / 2;
++	var half_height = (obj1.height + obj2.height) / 2;
++	
++	// No overlap.
++	if (half_width <= Math.abs(dx) || half_height <= Math.abs(dy))
++		return null;
++
++	var overlap_x = half_width - Math.abs(dx);
++	var overlap_y = half_height - Math.abs(dy);
++	
++	if (overlap_x >= overlap_y) {
++		if (dy > 0)
++			return [0, -overlap_y, "top"];
++		else
++			return [0, overlap_y, "bottom"];
++	} else {
++		if (dx > 0)
++			return [-overlap_x, 0, "left"];
++		else
++			return [overlap_x, 0, "right"];
++	}
+.}
+END_CODE
+
+B: It now returns an array instead of true/false. Fortunately, JavaScript considers a null array to be false and any valid array to be true.
+
+B: run the code now and everything should still work like before, but now we have the information we need to make the platforms behave properly.
+
+GAIN Collision II - Advanced
+
+GOTO 073

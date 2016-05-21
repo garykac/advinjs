@@ -1,0 +1,32 @@
+TITLE = Even more platforms
+ID = 078
+
+B: Try it out to see how it works.
+
+B: When you land on the top it works well, but when you hit the bottom or sides, it acts a bit weird. You always jump to the top of the platform.
+
+B: Indeed, all collisions with the platforms are currently assumed to be at the top.
+
+B: To fix this, we need to do a better job with our collision detection. In addition to answering the question "did object A collide with object B", we also need to know if object B (the player) collided with the top, bottom, left or right of object A (the platform).
+
+B: Not surprisingly, this is a bit more complicated than the simple collision detection we did earlier.
+
+B: But before doing that add a few more platforms:
+
+BEGIN_CODE
+.function init_game() {
+.	...
+.	_game.platforms = [];
+.	_game.platforms.push(create_platform(0, 360, _game.width, 40));
+.	_game.platforms.push(create_platform(200, 290, 80, 20));
++	_game.platforms.push(create_platform(300, 240, 80, 20));
++	_game.platforms.push(create_platform(400, 170, 80, 20));
++	_game.platforms.push(create_platform(460, 110, 40, 20));
+.	...
+.}
+END_CODE
+
+B: ???
+
+GOTO 072
+

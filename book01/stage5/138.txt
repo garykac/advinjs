@@ -1,0 +1,45 @@
+TITLE = Let the game finish
+ID = 138
+
+
+B: Now that we have a 'finish' gem, we should remove the goal from level 3.
+
+BEGIN_CODE
+.function init_level3() {
+.	...
+.	add_items(level, item_data);
+.
+-	level.goal = create_goal(500, 360, 0);
+-
+.	_levels.push(level);
+.}
+END_CODE
+
+B: ???
+
+BEGIN_CODE
+.function check_item_collisions() {
+.	var level = _levels[_game.current_level];
+.	var items = level.items;
+.	for (var i = 0; i < items.length; i++) {
+.		var item = items[i];
+.		if (!item.found) {
+.			if (collide(item, _player)) {
+.				if (item.type == "key") {
+.					level.player_has_key = true;
++				} else if (item.type == "finish") {
++					_game.game_over = true;
++					_game.game_win = true;
+.				}
+.				item.found = true;
+.			}
+.		}
+.	}
+.}
+END_CODE
+
+GAIN Treasure II - Finish
+
+B: ???
+
+GOTO 100

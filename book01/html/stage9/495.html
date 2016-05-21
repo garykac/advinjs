@@ -1,0 +1,55 @@
+<html>
+<head>
+<title>495 : Finish stage 9</title>
+
+<link rel="stylesheet" href="../css/bootstrap.min.css">
+<link type="text/css" rel="stylesheet" href="../css/style.css" />
+<link href='http://fonts.googleapis.com/css?family=Trade+Winds' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Sacramento' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Piedra' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Aclonica' rel='stylesheet' type='text/css'>
+
+<script type="text/javascript">
+	var _gaq = _gaq || [];
+	_gaq.push(['_setAccount', 'UA-17513364-1']);
+	_gaq.push(['_setDomainName', 'cse4k12.org']);
+	_gaq.push(['_setAllowLinker', true]);
+	_gaq.push(['_trackPageview']);
+
+	(function() {
+		var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+		ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+		var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+	})();
+</script>
+
+</head>
+
+<body>
+<div class="navbar navbar-inverse navbar-static-top" role="navigation"><div class="container"><div class="navbar-header">
+<a class="navbar-brand" href="../index.html"><span class="title1">Adventures in</span> <span class="title2">JavaScript</span></a>
+</div></div></div>
+<div class="container">
+<h1>495 : Finish stage 9</h1>
+<div class="name">Balthazar:</div><p class="balthazar">Since we're done debugging Level 3, we can reset the game back to start at the title screen.</p>
+<div class="panel panel-default">
+<div class="panel-code code"><span class="context">function handle_load(event) {</span>
+<span class="context">    init();</span>
+<img src="../css/cross.png" width="15" height="15"/><span class="delete">    start_level(3);</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    start_level(0);</span>
+<span class="context">    requestAnimationFrame(update_world);</span>
+<span class="context">}</span>
+</div>
+</div>
+<div class="name">Balthazar:</div><p class="balthazar">Congratulations! You've finished stage 9.</p>
+<div class="name">Balthazar:</div><p class="balthazar">This is the last stage so that means that you've finished.</p>
+<p class="alert alert-success"><strong>Congratulations!</strong> You've have finished <span class="stage">Stage 9</span> and your character has gained a level.</p>
+<ul class="list-group">
+<li class="list-group-item">
+<p>Before proceeding to the next stage, make a backup of your current <span class="code-inline-color">game</span> directory by copying it into a new directory called <span class="code-inline-color">stage9</span>.</p><p>Continue working in your <span class="code-inline-color">game</span> directory.</p></li>
+</ul>
+<!-- TODO: GOTO 500 STAGE 10 -->
+<p class="alert alert-info">End of Game.</p>
+</div>
+</body>
+</html>

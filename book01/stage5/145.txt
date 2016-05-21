@@ -1,0 +1,53 @@
+TITLE = Adding potions
+ID = 145
+
+B: fdsaf
+
+B: Copy the =potion.png= image into your =images/items= directory.
+
+BEGIN_IMAGE_TABLE 1
+TABLE_IMAGE images/items/potion.png 32x46 potion.png
+END_IMAGE_TABLE
+
+BEGIN_COPY_FILE
+COPY_FILE images/items/potion.png
+END_COPY_FILE
+
+BEGIN_CODE
+.function init_level1() {
+.	...
+.	var item_data = [
+.		[480, 110, 18, 20, "key", "key"],
++		[465, 170, 16, 23, "potion", "potion"],
+.	];
+.	add_items(level, item_data);
+.	...
+.}
+END_CODE
+
+BEGIN_CODE
+.function check_item_collisions() {
+.	var level = _levels[_game.current_level];
+.	var items = level.items;
+.	for (var i = 0; i < items.length; i++) {
+.		var item = items[i];
+.		if (!item.found) {
+.			if (collide(item, _player)) {
+.				if (item.type == "key") {
+.					level.player_has_key = true;
++				} else if (item.type == "potion") {
++					adjust_health(30);
+.				} else if (item.type == "finish") {
+.					_game.game_over = true;
+.					_game.game_win = true;
+.				}
+.				item.found = true;
+.			}
+.		}
+.	}
+.}
+END_CODE
+
+GAIN Treasure III - Potion
+
+GOTO 100

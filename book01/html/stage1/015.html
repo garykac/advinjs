@@ -1,0 +1,103 @@
+<html>
+<head>
+<title>015 : Slowing down</title>
+
+<link rel="stylesheet" href="../css/bootstrap.min.css">
+<link type="text/css" rel="stylesheet" href="../css/style.css" />
+<link href='http://fonts.googleapis.com/css?family=Trade+Winds' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Sacramento' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Piedra' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Aclonica' rel='stylesheet' type='text/css'>
+
+<script type="text/javascript">
+	var _gaq = _gaq || [];
+	_gaq.push(['_setAccount', 'UA-17513364-1']);
+	_gaq.push(['_setDomainName', 'cse4k12.org']);
+	_gaq.push(['_setAllowLinker', true]);
+	_gaq.push(['_trackPageview']);
+
+	(function() {
+		var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+		ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+		var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+	})();
+</script>
+
+</head>
+
+<body>
+<div class="navbar navbar-inverse navbar-static-top" role="navigation"><div class="container"><div class="navbar-header">
+<a class="navbar-brand" href="../index.html"><span class="title1">Adventures in</span> <span class="title2">JavaScript</span></a>
+</div></div></div>
+<div class="container">
+<h1>015 : Slowing down</h1>
+<div class="name">Balthazar:</div><p class="balthazar">Now that you have the player constrained to move on the main platform, you can start working on the rest of the game.</p>
+<div class="name">Balthazar:</div><p class="balthazar">Did we come up with a list of things to do?</p>
+<div class="name">You:</div><p class="you">Well, we had Platforms, Jumping, Monsters, ...</p>
+<div class="name">Balthazar:</div><p class="balthazar">Oh wait, I just remembered, we should fix the player movement so that player can build up speed and come sliding to a stop.</p>
+<div class="name">You:</div><p class="you">Why do we need that?</p>
+<div class="name">Balthazar:</div><p class="balthazar">We don't **need** it, but it makes the game far more satisfying to play than simply moving one or two pixels at a time.</p>
+<div class="name">You:</div><p class="you">It sounds like it's going to be hard.</p>
+<div class="name">Balthazar:</div><p class="balthazar">Actually, it's not. We already have a velocity. We just need to add a maximum velocity and then add some friction.</p>
+<div class="name">You:</div><p class="you">Friction?</p>
+<div class="name">Balthazar:</div><p class="balthazar">Yes, that will slow the player down to a stop, but it will be a smooth stop rather than an abrupt one. You should define a global friction value in <span class="code-inline-color">init_game()</span>.</p>
+<div class="panel panel-default">
+<div class="panel-code-header">Define a global friction variable.</div><div class="panel-code code"><span class="context">function init_game() {</span>
+<span class="context">    ...</span>
+<span class="context">    // The keymap keeps track of which keys are currently being pressed.</span>
+<span class="context">    _game.keymap = {};</span>
+<span class="context"></span>
+<span class="context">    // Game state.</span>
+<span class="context">    _game.platform = create_platform(0, 360, _game.width, 40);</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add"></span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    // Global world parameters.</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    _game.friction = 0.15;</span>
+<span class="context">}</span>
+</div>
+<div class="panel-code-footer">Run your code in a browser and verify that there are no errors.</div></div>
+<div class="name">Balthazar:</div><p class="balthazar">You'll also want to define the amount that the velocity increases while the player hold down movement keys. This can be stored in <span class="code-inline-color">velocity_x_delta</span>.</p>
+<div class="name">Balthazar:</div><p class="balthazar">And you'll also need a maximum velocity to prevent the player from going too fast.</p>
+<div class="panel panel-default">
+<div class="panel-code-header">Define how fast the player's velocity should increase.</div><div class="panel-code code"><span class="context">function init_player() {</span>
+<span class="context">    ...</span>
+<span class="context">    _player.velocity_x = 0;</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    _player.velocity_x_delta = 0.8;</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    _player.velocity_x_max = 3.5;</span>
+<span class="context">    _player.velocity_y = 0;</span>
+<span class="context">}</span>
+</div>
+<div class="panel-code-footer">Run your code in a browser and verify that there are no errors.</div></div>
+<div class="name">Balthazar:</div><p class="balthazar">Now you can simply add the player's <span class="code-inline-color">velocity_x_delta</span> the current velocity as long as they're holding a movement key, but you'll need to clamp the velocity so that it doesn't get larger than <span class="code-inline-color">velocity_x_max</span>.</p>
+<div class="name">You:</div><p class="you">Previously, I had <span class="code-inline-color">-1</span> when the player was moving left. Do I need to subtract from the velocity when moving left and add when moving right?</p>
+<div class="name">Balthazar:</div><p class="balthazar">Yes. And you need to make sure you don't go less than -<span class="code-inline-color">velocity_x_max</span> when going left, or greater than +<span class="code-inline-color">velocity_x_max</span> when going right.</p>
+<div class="panel panel-default">
+<div class="panel-code-header">Update the player's velocity using the new variables.</div><div class="panel-code code"><span class="context">function check_input() {</span>
+<img src="../css/cross.png" width="15" height="15"/><span class="delete">    _player.velocity_x = 0;</span>
+<img src="../css/cross.png" width="15" height="15"/><span class="delete">    _player.velocity_y = 0;</span>
+<img src="../css/cross.png" width="15" height="15"/><span class="delete"></span>
+<span class="context">    // Left arrow or 'a' to move left.</span>
+<span class="context">    if (_game.keymap[37] || _game.keymap[65]) {</span>
+<img src="../css/cross.png" width="15" height="15"/><span class="delete">        _player.velocity_x = -1;</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">        _player.velocity_x -= _player.velocity_x_delta;</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">        if (_player.velocity_x < -_player.velocity_x_max) {</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">            _player.velocity_x = -_player.velocity_x_max;</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">        }</span>
+<span class="context">    }</span>
+<span class="context">    // Right arrow or 'd' to move right.</span>
+<span class="context">    if (_game.keymap[39] || _game.keymap[68]) {</span>
+<img src="../css/cross.png" width="15" height="15"/><span class="delete">        _player.velocity_x = 1;</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">        _player.velocity_x += _player.velocity_x_delta;</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">        if (_player.velocity_x > _player.velocity_x_max) {</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">            _player.velocity_x = _player.velocity_x_max;</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">        }</span>
+<span class="context">    }</span>
+<span class="context">}</span>
+</div>
+<div class="panel-code-footer">Run your code in a browser and verify that there are no errors.</div></div>
+<div class="name">Balthazar:</div><p class="balthazar">Even though the friction support is not yet complete, you should run the code now to see what happens.</p>
+<div class="name">You:</div><p class="you">Yargh! The player keeps moving and it's hard to make it stop.</p>
+<div class="name">Balthazar:</div><p class="balthazar">Hmm.. we should probably fix that.</p>
+<p class="alert alert-info"><a href="017.html"><span class="goto">GOTO 017</span></a></p>
+</div>
+</body>
+</html>

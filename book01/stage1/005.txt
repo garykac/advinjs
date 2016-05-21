@@ -1,0 +1,31 @@
+TITLE = Player meets platform
+ID = 005
+
+U: OK, so let's move the player down onto the platform.
+
+B: Do you have an idea on how to do that?
+
+U: Well, I already set the =_player.x= and =_player.y= value to =0= in =init_player()=. I can just change those values can't I?
+
+B: Correct. What should you change them to?
+
+U: I can leave the =x= value as =0=, but I need to change the =y= value to the top of the platform, which is =360=, right?
+
+BEGIN_CODE_INFO Move the player's starting y-position down to the platform.
+.function init_player() {
+.	_player.x = 0;
+-	_player.y = 0;
++	_player.y = 360;
+.	_player.width = 20;
+.	_player.height = 20;
+.	...
+.}
+END_CODE_OK
+
+B: Let's try that and see what happens.
+
+U: Uh-oh, that doesn't sound promising.
+
+U: Hey, the player is drawn under the platform. That's not right!
+
+GOTO 006

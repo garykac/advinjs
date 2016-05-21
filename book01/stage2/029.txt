@@ -1,0 +1,10 @@
+TITLE = Falling off the bottom
+ID = 029
+
+B: The way to fix it is to have the player land on the ground (in our case, on the platform).
+
+B: To do that, you need to add some simple collision detection with the platform.
+
+GOTO 027 IF_BADGE Collision I - Basic
+
+GOTO 026

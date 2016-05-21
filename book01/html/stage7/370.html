@@ -1,0 +1,109 @@
+<html>
+<head>
+<title>370 : Adding pain</title>
+
+<link rel="stylesheet" href="../css/bootstrap.min.css">
+<link type="text/css" rel="stylesheet" href="../css/style.css" />
+<link href='http://fonts.googleapis.com/css?family=Trade+Winds' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Sacramento' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Piedra' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Aclonica' rel='stylesheet' type='text/css'>
+
+<script type="text/javascript">
+	var _gaq = _gaq || [];
+	_gaq.push(['_setAccount', 'UA-17513364-1']);
+	_gaq.push(['_setDomainName', 'cse4k12.org']);
+	_gaq.push(['_setAllowLinker', true]);
+	_gaq.push(['_trackPageview']);
+
+	(function() {
+		var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+		ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+		var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+	})();
+</script>
+
+</head>
+
+<body>
+<div class="navbar navbar-inverse navbar-static-top" role="navigation"><div class="container"><div class="navbar-header">
+<a class="navbar-brand" href="../index.html"><span class="title1">Adventures in</span> <span class="title2">JavaScript</span></a>
+</div></div></div>
+<div class="container">
+<h1>370 : Adding pain</h1>
+<div class="name">Balthazar:</div><p class="balthazar">When the player touches the monster and loses health, it would be nice if the player sprite changed to indicate this..</p>
+<div class="name">You:</div><p class="you">I agree. It's always nice to show people in pain.</p>
+<div class="name">Balthazar:</div><p class="balthazar">Err. Well, yes... I mean no. We're doing this simply to give the player a visual indication of when they're touching a monster.</p>
+<div class="name">You:</div><p class="you">Of course.</p>
+<div class="name">Balthazar:</div><p class="balthazar">So let's add a new player image to show when the player is touching a monster.</p>
+<div class="row">
+<div class="col-sm-12 col-md-12"><div class="image-table">
+<a href="../images/player/ooo.png"><img src="../images/player/ooo.png" width="40" height="48" /></a>
+<div class="caption"><p align="center">ooo.png</p></div>
+</div></div>
+</div>
+<div class="alert alert-info"><p>Copy the following files into your project:</p><ul class="list-group">
+<li class="list-group-item"><span class="code-inline">images/player/ooo.png</span></li>
+</ul></div>
+<div class="name">Balthazar:</div><p class="balthazar">In the code, we need to create a new player sprite and also create a boolean variable to keep track of whether or not the player is currently touching the monster.</p>
+<div class="panel panel-default">
+<div class="panel-code-header">Add new sprite and <span class="code-inline">is_touching_monster</span> variable.</div><div class="panel-code code"><span class="context">function init_player() {</span>
+<span class="context">    ...</span>
+<span class="context">    _player.platform = null;</span>
+<span class="context">    _player.health_max = 50;</span>
+<span class="context">    _player.health = _player.health_max;</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    _player.is_touching_monster = false;</span>
+<span class="context">    _player.coins = 0;</span>
+<span class="context">    _player.dir = 1;</span>
+<span class="context">    ...</span>
+<span class="context">    _player.sprite = init_player_sprite("normal", 20, 24);</span>
+<span class="context">    _player.sprite_sad = init_player_sprite("sad", 30, 17);</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    _player.sprite_ooo = init_player_sprite("ooo", 20, 24);</span>
+<span class="context">    _player.sprite_happy = init_player_sprite("happy", 20, 24);</span>
+<span class="context">    update_player_sprite();</span>
+<span class="context">}</span>
+</div>
+<div class="panel-code-footer">Run your code in a browser and verify that there are no errors.</div></div>
+<div class="name">Balthazar:</div><p class="balthazar">And then we simply select this new sprite whenever the <span class="code-inline-color">is_touching_monster</span> variable is <span class="code-inline-color">true</span>.</p>
+<div class="panel panel-default">
+<div class="panel-code-header">Select the pain sprite when the player is touching a monster.</div><div class="panel-code code"><span class="context">function update_player_sprite() {</span>
+<span class="context">    var sprite;</span>
+<span class="context">    if (_player.health <= 0) {</span>
+<span class="context">        sprite = _player.sprite_sad;</span>
+<span class="context">    } else if (_game.game_win) {</span>
+<span class="context">        sprite = _player.sprite_happy;</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    } else if (_player.is_touching_monster) {</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">        sprite = _player.sprite_ooo;</span>
+<span class="context">    } else {</span>
+<span class="context">        sprite = _player.sprite;</span>
+<span class="context">    }</span>
+<span class="context">    ...</span>
+<span class="context">}</span>
+</div>
+<div class="panel-code-footer">Run your code in a browser and verify that there are no errors.</div></div>
+<div class="name">Balthazar:</div><p class="balthazar">And finally, we need to set <span class="code-inline-color">is_touching_monster</span> to <span class="code-inline-color">true</span> whenever the player is touching a monster. That is, whenever we detect a collision between the player and a monster.</p>
+<div class="panel panel-default">
+<div class="panel-code-header">Update <span class="code-inline">is_touching_monster</span> based on monster collisions.</div><div class="panel-code code"><span class="context">function check_monster_collisions() {</span>
+<span class="context">    var level = _levels[_game.current_level];</span>
+<span class="context">    var monsters = level.monsters;</span>
+<span class="context">    var damage = 0;</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    _player.is_touching_monster = false;</span>
+<span class="context">    for (var i = 0; i < monsters.length; i++) {</span>
+<span class="context">        var m = monsters[i];</span>
+<span class="context">        if (collide(m, _player)) {</span>
+<span class="context">            damage++;</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">            _player.is_touching_monster = true;</span>
+<span class="context">        }</span>
+<span class="context">    }</span>
+<span class="context">    if (damage != 0) {</span>
+<span class="context">        adjust_health(-damage);</span>
+<span class="context">    }</span>
+<span class="context">}</span>
+</div>
+<div class="panel-code-footer">Run your code in a browser and verify that there are no errors.</div></div>
+<div class="name">Balthazar:</div><p class="balthazar">Run your code now and you should see the player sprite change to the new image whenever the player is touching a monster.</p>
+<p class="alert alert-success"><strong>Congratulations!</strong> You've earned the <span class="badge-gain">Fluff I - Ouch</span> badge!</p>
+<p class="alert alert-info"><a href="390.html"><span class="goto">GOTO 390</span></a></p>
+</div>
+</body>
+</html>

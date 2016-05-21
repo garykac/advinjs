@@ -1,0 +1,211 @@
+<html>
+<head>
+<title>480 : Monster projectiles</title>
+
+<link rel="stylesheet" href="../css/bootstrap.min.css">
+<link type="text/css" rel="stylesheet" href="../css/style.css" />
+<link href='http://fonts.googleapis.com/css?family=Trade+Winds' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Sacramento' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Piedra' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Aclonica' rel='stylesheet' type='text/css'>
+
+<script type="text/javascript">
+	var _gaq = _gaq || [];
+	_gaq.push(['_setAccount', 'UA-17513364-1']);
+	_gaq.push(['_setDomainName', 'cse4k12.org']);
+	_gaq.push(['_setAllowLinker', true]);
+	_gaq.push(['_trackPageview']);
+
+	(function() {
+		var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+		ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+		var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+	})();
+</script>
+
+</head>
+
+<body>
+<div class="navbar navbar-inverse navbar-static-top" role="navigation"><div class="container"><div class="navbar-header">
+<a class="navbar-brand" href="../index.html"><span class="title1">Adventures in</span> <span class="title2">JavaScript</span></a>
+</div></div></div>
+<div class="container">
+<h1>480 : Monster projectiles</h1>
+<div class="name">Balthazar:</div><p class="balthazar">Images we need for the projectile.</p>
+<div class="row">
+<div class="col-sm-6 col-md-6"><div class="image-table">
+<a href="../images/monsters/ball-left.png"><img src="../images/monsters/ball-left.png" width="20" height="10" /></a>
+<div class="caption"><p align="center">ball-left.png</p></div>
+</div></div>
+<div class="col-sm-6 col-md-6"><div class="image-table">
+<a href="../images/monsters/ball-right.png"><img src="../images/monsters/ball-right.png" width="20" height="10" /></a>
+<div class="caption"><p align="center">ball-right.png</p></div>
+</div></div>
+</div>
+<div class="alert alert-info"><p>Copy the following files into your project:</p><ul class="list-group">
+<li class="list-group-item"><span class="code-inline">images/monsters/ball-left.png</span></li>
+<li class="list-group-item"><span class="code-inline">images/monsters/ball-right.png</span></li>
+</ul></div>
+<div class="name">Balthazar:</div><p class="balthazar">And the we need to add the projectile info to the monster. We create a new <span class="code-inline-color">add_projectile_monster()</span> function so that we don't have to add empty projectiles to all the other monsters.</p>
+<div class="panel panel-default">
+<div class="panel-code code"><span class="context">function init_level3() {</span>
+<span class="context">    ...</span>
+<span class="context">    // Create the monsters.</span>
+<span class="context">    var monster_data = [</span>
+<span class="context">        // [x, y, width, height, min_x, max_x, move_x, image]</span>
+<span class="context">        ...</span>
+<span class="context">        [250, 260, 20, 24, 15, 280, 1.0, "vlad"],</span>
+<span class="context">        [80, 260, 26, 28, 15, 280, -1.0, "prescott"],</span>
+<span class="context">        [380, 130, 40, 24, 330, 460, 0.5, [["falco1", 10], ["falco2", 10]]],</span>
+<img src="../css/cross.png" width="15" height="15"/><span class="delete">        [200, 360, 38, 24, 150, 450, 1.0,</span>
+<img src="../css/cross.png" width="15" height="15"/><span class="delete">            [["octoboss1", 10], ["octoboss2", 10], ["octoboss3", 10], ["octoboss2", 10]],</span>
+<img src="../css/cross.png" width="15" height="15"/><span class="delete">            ],</span>
+<span class="context">    ];</span>
+<span class="context">    add_monsters(level, monster_data);</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    var projectile_monster_data = [</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">        // [x_start, y, width, height, min_x, max_x, move_x, image, projectile-info]</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">        [200, 360, 38, 24, 150, 450, 1.0,</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">            [["octoboss1", 10], ["octoboss2", 10], ["octoboss3", 10], ["octoboss2", 10]],</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">            [["ball-right", 2], ["ball-left", -2]]],</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    ];</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    add_projectile_monsters(level, projectile_monster_data);</span>
+<span class="context">    ...</span>
+<span class="context">}</span>
+</div>
+</div>
+<div class="name">Balthazar:</div><p class="balthazar">And we have to define <span class="code-inline-color">add_projectile_monster()</span>.</p>
+<div class="panel panel-default">
+<div class="panel-code code"><span class="context">function add_monsters(level, monster_data) {</span>
+<span class="context">    ...</span>
+<span class="context">}</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add"></span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">// monster_data: [x, y, width, height, min_x, max_x, move_x, image, projectile-info]</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">function add_projectile_monsters(level, monster_data) {</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    for (var im = 0; im < monster_data.length; im++) {</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">        var m = monster_data[im];</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">        var monst = create_monster(m[0], m[1], m[2], m[3], m[4], m[5], m[6], m[7]);</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">        var projectiles = m[8];</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">        for (var ip = 0; ip < projectiles.length; ip++) {</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">            // projectile-info: [image-name speed]</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">            var p = {};</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">            p.active = false;</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">            p.x = 0;</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">            p.y = 0;</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">            p.origin_x = 0;</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">            p.origin_y = 0;</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">            p.width = 5;</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">            p.height = 5;</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">            p.img = new Image();</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">            p.img.src = _game.imagedir_monsters + projectiles[ip][0] + ".png";</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">            p.speed = projectiles[ip][1];</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">            monst.projectiles.push(p);</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">        }</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">        level.monsters.push(monst);</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    }</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">}</span>
+</div>
+</div>
+<div class="name">Balthazar:</div><p class="balthazar">By default, monsters don't have projectiles, so <span class="code-inline-color">create_monster()</span> can initialize the <span class="code-inline-color">projectiles</span> array to be empty.</p>
+<div class="panel panel-default">
+<div class="panel-code code"><span class="context">function create_monster(x, y, width, height, min_x, max_x, move_x, image) {</span>
+<span class="context">    ...</span>
+<span class="context">    m.min_x = min_x;</span>
+<span class="context">    m.max_x = max_x;</span>
+<span class="context">    m.move_x = move_x;</span>
+<span class="context">    m.dir = (move_x > 0) ? 1 : -1;</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    m.projectiles = [];</span>
+<span class="context"></span>
+<span class="context">    m.sprite = [];</span>
+<span class="context">    ...</span>
+<span class="context">}</span>
+</div>
+</div>
+<div class="name">Balthazar:</div><p class="balthazar">We need to draw the projectiles. We can do that at the same time we're drawing the monsters.</p>
+<div class="panel panel-default">
+<div class="panel-code code"><span class="context">function draw_monsters(ctx) {</span>
+<span class="context">    var level = _levels[_game.current_level];</span>
+<span class="context">    var monsters = level.monsters;</span>
+<span class="context">    for (var i = 0; i < monsters.length; i++) {</span>
+<span class="context">        var m = monsters[i];</span>
+<span class="context">        set_transform(ctx, m);</span>
+<span class="context">        ctx.drawImage(m.sprite[m.curr_image].img, 0, 0);</span>
+<span class="context">        reset_transform(ctx);</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add"></span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">        // Draw this monster's projectiles.</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">        for (var ip = 0; ip < m.projectiles.length; ip++) {</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">            var p = m.projectiles[ip];</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">            if (p.active) {</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">                ctx.drawImage(p.img, p.x, p.y);</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">            }</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">        }</span>
+<span class="context">    }</span>
+<span class="context">}</span>
+</div>
+</div>
+<div class="name">Balthazar:</div><p class="balthazar">Whenever we update the monster, we'll update any projectiles as well.</p>
+<div class="panel panel-default">
+<div class="panel-code code"><span class="context">function update_monsters() {</span>
+<span class="context">    var level = _levels[_game.current_level];</span>
+<span class="context">    var monsters = level.monsters;</span>
+<span class="context">    for (var i = 0; i < monsters.length; i++) {</span>
+<span class="context">        ...</span>
+<span class="context"></span>
+<span class="context">        // Animate the monster.</span>
+<span class="context">        m.current_animation_delay++;</span>
+<span class="context">        if (m.current_animation_delay >= m.sprite[m.curr_image].delay) {</span>
+<span class="context">            m.current_animation_delay = 0;</span>
+<span class="context">            m.curr_image++;</span>
+<span class="context">            if (m.curr_image >= m.sprite.length)</span>
+<span class="context">                m.curr_image = 0;</span>
+<span class="context">        }</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add"></span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">        // Move any monster projectiles.</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">        for (var ip = 0; ip < m.projectiles.length; ip++) {</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">            var p = m.projectiles[ip];</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">            if (!p.active) {</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">                p.x = m.x + 4 * p.speed;</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">                p.y = m.y - m.height/2;</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">                p.active = true;</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">            }</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">            p.x += p.speed;</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">            if ((p.x + p.width) < 0 || p.x > _game.width)</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">                p.active = false;</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">        }</span>
+<span class="context">    }</span>
+<span class="context">}</span>
+</div>
+</div>
+<div class="name">Balthazar:</div><p class="balthazar">And finally, we can handle projectile collisions when we're checking monster collisions.</p>
+<div class="panel panel-default">
+<div class="panel-code code"><span class="context">function check_monster_collisions() {</span>
+<span class="context">    var level = _levels[_game.current_level];</span>
+<span class="context">    var monsters = level.monsters;</span>
+<span class="context">    var damage = 0;</span>
+<span class="context">    _player.is_touching_monster = false;</span>
+<span class="context">    for (var i = 0; i < monsters.length; i++) {</span>
+<span class="context">        var m = monsters[i];</span>
+<span class="context">        if (collide(m, _player)) {</span>
+<span class="context">            damage++;</span>
+<span class="context">            _player.is_touching_monster = true;</span>
+<span class="context">        }</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add"></span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">        // Collision with monster projectiles.</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">        for (var ip = 0; ip < m.projectiles.length; ip++) {</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">            var p = m.projectiles[ip];</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">            if (p.active && collide(p, _player)) {</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">                damage += 5;</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">                p.active = false;</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">            }</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">        }</span>
+<span class="context">    }</span>
+<span class="context">    if (damage != 0) {</span>
+<span class="context">        adjust_health(-damage);</span>
+<span class="context">    }</span>
+<span class="context">}</span>
+</div>
+</div>
+<p class="alert alert-success"><strong>Congratulations!</strong> You've earned the <span class="badge-gain">Monster IV - Projectile</span> badge!</p>
+<p class="alert alert-info"><a href="485.html"><span class="goto">GOTO 485</span></a></p>
+</div>
+</body>
+</html>

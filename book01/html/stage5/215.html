@@ -1,0 +1,162 @@
+<html>
+<head>
+<title>215 : Platform bitmaps</title>
+
+<link rel="stylesheet" href="../css/bootstrap.min.css">
+<link type="text/css" rel="stylesheet" href="../css/style.css" />
+<link href='http://fonts.googleapis.com/css?family=Trade+Winds' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Sacramento' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Piedra' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Aclonica' rel='stylesheet' type='text/css'>
+
+<script type="text/javascript">
+	var _gaq = _gaq || [];
+	_gaq.push(['_setAccount', 'UA-17513364-1']);
+	_gaq.push(['_setDomainName', 'cse4k12.org']);
+	_gaq.push(['_setAllowLinker', true]);
+	_gaq.push(['_trackPageview']);
+
+	(function() {
+		var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+		ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+		var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+	})();
+</script>
+
+</head>
+
+<body>
+<div class="navbar navbar-inverse navbar-static-top" role="navigation"><div class="container"><div class="navbar-header">
+<a class="navbar-brand" href="../index.html"><span class="title1">Adventures in</span> <span class="title2">JavaScript</span></a>
+</div></div></div>
+<div class="container">
+<h1>215 : Platform bitmaps</h1>
+<div class="name">Balthazar:</div><p class="balthazar">Use bitmap images for the platforms</p>
+<div class="name">Balthazar:</div><p class="balthazar">Create the images/backgrounds directory.</p>
+<div class="alert alert-info"><p>Create the following directory in your project:</p><ul class="list-group"><li class="list-group-item"><span class="code-inline">images/backgrounds</span></li></ul></div>
+<div class="name">Balthazar:</div><p class="balthazar">Copy 3 background images into your backgrounds directory: <span class="code-inline-color">block.png</span>, <span class="code-inline-color">brick.png</span> and <span class="code-inline-color">dirt.png</span>.</p>
+<div class="row">
+<div class="col-sm-6 col-md-4"><div class="image-table">
+<a href="../images/backgrounds/block.png"><img src="../images/backgrounds/block.png" width="40" height="40" /></a>
+<div class="caption"><p align="center">block.png</p></div>
+</div></div>
+<div class="col-sm-6 col-md-4"><div class="image-table">
+<a href="../images/backgrounds/brick.png"><img src="../images/backgrounds/brick.png" width="18" height="16" /></a>
+<div class="caption"><p align="center">brick.png</p></div>
+</div></div>
+<div class="col-sm-6 col-md-4"><div class="image-table">
+<a href="../images/backgrounds/dirt.png"><img src="../images/backgrounds/dirt.png" width="80" height="40" /></a>
+<div class="caption"><p align="center">dirt.png</p></div>
+</div></div>
+</div>
+<div class="alert alert-info"><p>Copy the following files into your project:</p><ul class="list-group">
+<li class="list-group-item"><span class="code-inline">images/backgrounds/block.png</span></li>
+<li class="list-group-item"><span class="code-inline">images/backgrounds/brick.png</span></li>
+<li class="list-group-item"><span class="code-inline">images/backgrounds/dirt.png</span></li>
+</ul></div>
+<!-- TODO: Merge following with 111 -->
+<div class="panel panel-default">
+<div class="panel-code code"><span class="context">function init_level1() {</span>
+<span class="context">    ...</span>
+<span class="context">    add_default_platforms(level);</span>
+<span class="context">    var platform_data = [</span>
+<img src="../css/cross.png" width="15" height="15"/><span class="delete">        [200, 290, 80, 20],</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">        [200, 290, 80, 20, "dirt"],</span>
+<img src="../css/cross.png" width="15" height="15"/><span class="delete">        [300, 240, 80, 20],</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">        [300, 240, 80, 20, "block"],</span>
+<img src="../css/cross.png" width="15" height="15"/><span class="delete">        [400, 170, 80, 20],</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">        [400, 170, 80, 20, "block"],</span>
+<img src="../css/cross.png" width="15" height="15"/><span class="delete">        [460, 110, 40, 20],</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">        [460, 110, 40, 20, "dirt"],</span>
+<span class="context">    ];</span>
+<span class="context">    add_platforms(level, platform_data);</span>
+<span class="context">    ...</span>
+<span class="context">}</span>
+</div>
+</div>
+<div class="name">Balthazar:</div><p class="balthazar">The default platforms need to be updated as well</p>
+<div class="panel panel-default">
+<div class="panel-code code"><span class="context">function add_default_platforms(level) {</span>
+<span class="context">    var platform_data = [</span>
+<span class="context">        // The bottom brick platform along the bottom of the stage.</span>
+<img src="../css/cross.png" width="15" height="15"/><span class="delete">        [0, 360, _game.width, 40],</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">        [0, 360, _game.width, 40, "brick"],</span>
+<span class="context">        // The left offstage 'wall' to keep the player on the stage.</span>
+<img src="../css/cross.png" width="15" height="15"/><span class="delete">        [-60, -_game.height, 60, 2*_game.height],</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">        [-60, -_game.height, 60, 2*_game.height, "#000000"],</span>
+<span class="context">        // The right offstage 'wall' to keep the player on the stage.</span>
+<img src="../css/cross.png" width="15" height="15"/><span class="delete">        [_game.width, -_game.height, 60, 2*_game.height],</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">        [_game.width, -_game.height, 60, 2*_game.height, "#000000"],</span>
+<span class="context">    ];</span>
+<span class="context">    add_platforms(level, platform_data);</span>
+<span class="context">}</span>
+</div>
+</div>
+<div class="panel panel-default">
+<div class="panel-code code"><img src="../css/cross.png" width="15" height="15"/><span class="delete">// platform_data: [x, y, width, height]</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">// platform_data: [x, y, width, height, pattern]</span>
+<span class="context">function add_platforms(level, platform_data) {</span>
+<span class="context">    for (var i = 0; i < platform_data.length; i++) {</span>
+<span class="context">        var p = platform_data[i];</span>
+<img src="../css/cross.png" width="15" height="15"/><span class="delete">        var plat = create_platform(p[0], p[1], p[2], p[3]);</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">        var plat = create_platform(p[0], p[1], p[2], p[3], p[4]);</span>
+<span class="context">        level.platforms.push(plat);</span>
+<span class="context">    }</span>
+<span class="context">}</span>
+</div>
+</div>
+<div class="panel panel-default">
+<div class="panel-code code"><img src="../css/cross.png" width="15" height="15"/><span class="delete">function create_platform(x, y, width, height) {</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">function create_platform(x, y, width, height, pattern) {</span>
+<span class="context">    var p = {};</span>
+<span class="context">    p.x = x;</span>
+<span class="context">    p.y = y;</span>
+<span class="context">    p.width = width;</span>
+<span class="context">    p.height = height;</span>
+<span class="context">    p.origin_x = 0;</span>
+<span class="context">    p.origin_y = 0;</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    p.dir = 1;</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add"></span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    // If pattern begins with '#' then it's really a background color.</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    if (pattern.charAt(0) == '#') {</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">        p.background_color = pattern;</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    } else {</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">        p.pattern = new Image();</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">        p.pattern.src = _game.imagedir_backgrounds + pattern + ".png";</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    }</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add"></span>
+<span class="context">    return p;</span>
+<span class="context">}</span>
+</div>
+</div>
+<!-- TODO: Merge following with 163 -->
+<div class="panel panel-default">
+<div class="panel-code code"><span class="context">function draw_platforms(ctx) {</span>
+<span class="context">    var level = _levels[_game.current_level];</span>
+<span class="context">    var platforms = level.platforms;</span>
+<span class="context">    for (var i = 0; i < platforms.length; i++) {</span>
+<span class="context">        var platform = platforms[i];</span>
+<img src="../css/cross.png" width="15" height="15"/><span class="delete">        ctx.fillStyle = "rgb(153, 102, 51)";</span>
+<img src="../css/cross.png" width="15" height="15"/><span class="delete">        ctx.fillRect(platform.x, platform.y, platform.width, platform.height);</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add"></span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">        set_transform(ctx, platform);</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">        if (platform.background_color) {</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">            ctx.fillStyle = platform.background_color;</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">            ctx.fillRect(0, 0, platform.width, platform.height);</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">            ctx.strokeStyle = "rgba(0,0,0,0.5)";</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">            ctx.strokeRect(0, 0, platform.width, platform.height);</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">        } else {</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">            var pat = ctx.createPattern(platform.pattern, "repeat");</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">            ctx.fillStyle = pat;</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">            ctx.fillRect(0, 0, platform.width, platform.height);</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">        }</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">        reset_transform(ctx);</span>
+<span class="context">    }</span>
+<span class="context">}</span>
+</div>
+</div>
+<p class="alert alert-success"><strong>Congratulations!</strong> You've earned the <span class="badge-gain">Platform III - Pattern</span> badge!</p>
+<p class="alert alert-info"><a href="230.html"><span class="goto">GOTO 230</span></a></p>
+</div>
+</body>
+</html>

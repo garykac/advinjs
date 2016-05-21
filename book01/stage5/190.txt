@@ -1,0 +1,53 @@
+TITLE = Lose a life
+ID = 190
+
+
+B: give the player 3 lives
+
+BEGIN_CODE
+.function init_game() {
+.	...
+.	// Game state.
+.	_game.game_over = false;
+.	_game.game_win = false;
+.	_game.current_level = 0;
++	_game.player_lives = 3;
+.	...
+.}
+END_CODE
+
+B: ???
+
+
+BEGIN_CODE
+.function start_level(level_id) {
+.	...
+.}
+.
++function lose_life() {
++	_game.player_lives--;
++	if (_game.player_lives > 0) {
++		_player.health = _player.health_max;
++	} else {
++		_game.game_over = true;
++	}
++}
++
+.function adjust_health(amount) {
+.	_player.health += amount;
+.	if (_player.health <= 0) {
+.		_player.health = 0;
+-		_game.game_over = true;
++		lose_life();
+.	}
+.	if (_player.health > _player.health_max) {
+.		_player.health = _player.health_max;
+.	}
+.}
+END_CODE
+
+GAIN Vitality II - Reincarnation
+
+GOTO 192 IF_BADGE Treasure I - Key; Sprite II - Image
+
+GOTO 100

@@ -1,0 +1,137 @@
+TITLE = Draw items
+ID = 133
+
+
+B: draw key image
+
+B: Create the images/player directory.
+
+CREATE_DIR images/items
+
+B: Copy 1 image: =key.png=
+
+BEGIN_IMAGE_TABLE 1
+TABLE_IMAGE images/items/key.png 36x40 key.png
+END_IMAGE_TABLE
+
+BEGIN_COPY_FILE
+COPY_FILE images/items/key.png
+END_COPY_FILE
+
+
+BEGIN_CODE
+.function init_game() {
+.	...
+.	_game.imagedir_monsters = _game.imagedir + "monsters/";
++	_game.imagedir_items = _game.imagedir + "items/";
+.	...
+.}
+END_CODE
+
+B: ???
+
+BEGIN_CODE
+.function init_level1() {
+.	...
+.	add_monsters(level, monster_data);
+.
++	var item_data = [
++		[480, 110, 18, 20, "key", "key"],
++	];
++	add_items(level, item_data);
++
+.	level.goal = create_goal(500, 360, 1);
+.	
+.	_levels.push(level);
+.}
+END_CODE
+
+B: ???
+
+BEGIN_CODE
+.function create_monster(x, y, width, height, min_x, max_x, move_x, image) {
+.	...
+.}
+.
++// item_data: [x, y, width, height, type, image]
++function add_items(level, item_data) {
++	for (var i = 0; i < item_data.length; i++) {
++		var d = item_data[i];
++		var item = create_item(d[0], d[1], d[2], d[3], d[4], d[5]);
++		level.items.push(item);
++	}
++}
++
++function create_item(x, y, width, height, type, image) {
++	var d = {};
++	d.x = x;
++	d.y = y;
++	d.width = width;
++	d.height = height;
++	d.origin_x = width / 2;
++	d.origin_y = height;
++	d.type = type;
++	d.found = false;
++
++	d.img = new Image();
++	d.img.src = _game.imagedir_items + image + ".png";
++	return d;
++}
++
+.function create_goal(x, y, next_level) {
+.	...
+.}
+END_CODE
+
+B: Note that d.found is set to false. We'll set this to true so that we know when the item has been found by the player.
+
+B: Just having the items on the level isn't enough we need to draw and collide with them.
+
+RUN_VERIFY
+
+B: code is the same as before. now we'll draw the items
+
+BEGIN_CODE
+.function draw() {
+.	...
+.	erase(ctx);
+.	draw_platforms(ctx);
+.	draw_goal(ctx);
+.	draw_monsters(ctx);
++	draw_items(ctx);
+.	draw_player(ctx);
+.	...
+.}
+END_CODE
+
+B: ???
+
+BEGIN_CODE
+.function draw_monsters(ctx) {
+.	...
+.}
+.
++function draw_items(ctx) {
++	var level = _levels[_game.current_level];
++	var items = level.items;
++	for (var i = 0; i < items.length; i++) {
++		var t = items[i];
++		if (!t.found) {
++			ctx.drawImage(t.img, t.x - t.origin_x, t.y - t.origin_y);
++		}
++	}
++}
++
+.function draw_goal(ctx) {
+.	...
+.}
+END_CODE
+
+B: ???
+
+
+B: Note: if status bar, then draw there as well
+
+GOTO 184 IF_BADGE Vitality I - Health
+
+GOTO 134

@@ -1,0 +1,8 @@
+TITLE = Experimenting with width and height
+ID = 007
+
+B: Change the player's =width= and =height= and notice how it always rests properly on the platform. If we had just subtracted =20=, then changing the player's height would have resulted in the player overlapping the platform, or floating in the air above the platform.
+
+U: OK. I'm slightly happier about the change now.
+
+GOTO 008

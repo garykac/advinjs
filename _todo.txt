@@ -1,0 +1,66 @@
+TODO
+
+Fixup char sheet with updated badge names
+	Transition I - Levels (and II and III got renumbered)
+	remove set_transform_xy
+
+better description text for adding image files
+
+Add info about what to expect before the GOTO
+
+Add 'Challenge' Badge and re-use nodes in stage5
+
+
+Review text
+Remove all '???' placeholders
+
+Add backtracking information
+	
+Bugs from class:
+Note when it's OK to run and check the code
+	Add error messages
+063 create_monster doesn't exist yet (?)
+when game_win is added, give more context so it isn't added to monster collide
+028 mention only jump once
+043 mention that collide is not implemented yet
+
+check for links that are never used
+
+===================================
+
+DONE:
+Double check all text GOTO links match the diagram
+Write intro page
+Zip up initial starting files
+Zip up images
+Create character sheet
+Create map for stage5
+Push live to web
+Make images and starting files available on web
+Create script to auto walk down all paths
+Remove all garbage placeholders
+078 has garbage placeholder text
+46-43-45-44-42-49-50-51-70-76-75
+	expected: if (collide(_game.platform[0]...
+	actual: if (_player.y > _game.platform
+Add analytics
+Make sure each node has a title
+verify that badges are only referenced in their stage
+Organize 'Easy' path for stage5
+Write script to verify node transitions
+Remove origin_x from the initial create_platform (#003)
+	Moved into stage2 027 and 046
+Draw monsters in front of goal.
+Fix jumping so that player cannot jump after falling off platform
+Add dir to platform and re-use the set_transform() function
+	remove set_transform_xy
+028 show the curly brace explictly. multiple students had errors with misaligned {}
+	problem actually in 025 - added more context immediately above insert
+add velocity_max for gravity
+choice phrasing: wanted to do both, need to make it clear that both will be done.
+Add code for level transitions
+Finish level 1
+Add badges to new stages
+use platform_data, monster_data and item_data in init_stageX()
+change comment for erase():
+	// Erase the stage by   -> Erase the canvas

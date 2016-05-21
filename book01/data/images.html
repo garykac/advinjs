@@ -1,0 +1,178 @@
+<html>
+<head>
+<title>Adventures in JavaScript</title>
+
+<link rel="stylesheet" href="css/bootstrap.min.css">
+<link type="text/css" rel="stylesheet" href="css/style.css" />
+<link href='http://fonts.googleapis.com/css?family=Sacramento' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Trade+Winds' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Sigmar+One' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Aclonica' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Shanti' rel='stylesheet' type='text/css'>
+
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-17513364-1']);
+  _gaq.push(['_setDomainName', 'cse4k12.org']);
+  _gaq.push(['_setAllowLinker', true]);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+</head>
+
+<body>
+<div class="navbar navbar-inverse navbar-fixed-top" role="navigation"><div class="container"><div class="navbar-header">
+<a class="navbar-brand" href="../index.html"><span class="navbar-title1">Adventures in</span> <span class="navbar-title2">JavaScript</span></a>
+</div></div></div>
+<div class="container">
+<h1>Adventures in JavaScript <span class="navbar-title2">beta</span></h1>
+
+<h2>Bitmap images for the game</h2>
+<p class="info">
+While you can technically use any images for your game, these ones are the
+proper size and shape to match the code that we're going to write.
+</p>
+
+<p class="info">
+While it's perfectly proper to simply use these images while you're working
+on your project, it is expected that you will expand this game with your own
+images at some point.
+</p>
+
+<p class="info">
+You can download the images individually, or
+<a href="images.zip">download a <code>.zip</code> file</a> that
+contains all of them.
+</p>
+
+<h3>Player images</h3>
+<p class="info">
+These files should be placed in the <code>images/player/</code> directory.
+</p>
+<table class="image-table">
+<tr>
+	<td><img src="images/player/normal.png" width="40" height="48"/></td>
+	<td><img src="images/player/happy.png" width="40" height="48"/></td>
+	<td><img src="images/player/ooo.png" width="40" height="48"/></td>
+	<td><img src="images/player/sad.png" width="60" height="34"/></td>
+	<td><img src="images/player/glasses.png" width="40" height="48"/></td>
+	<td><img src="images/player/icon.png" width="28" height="34"/></td>
+</tr>
+<tr>
+	<td><code>normal.png</code></td>
+	<td><code>happy.png</code></td>
+	<td><code>ooo.png</code></td>
+	<td><code>sad.png</code></td>
+	<td><code>glasses.png</code></td>
+	<td><code>icon.png</code></td>
+</tr>
+</table>
+
+<h3>Monster images</h3>
+<p class="info">
+These files should be placed in the <code>images/monsters/</code> directory.
+</p>
+<table class="image-table">
+<tr>
+	<td><img src="images/monsters/vlad.png" width="40" height="48"/></td>
+	<td><img src="images/monsters/henrietta.png" width="60" height="60"/></td>
+	<td><img src="images/monsters/rufus.png" width="56" height="52"/></td>
+	<td><img src="images/monsters/prescott.png" width="52" height="56"/></td>
+</tr>
+<tr>
+	<td><code>vlad.png</code></td>
+	<td><code>henrietta.png</code></td>
+	<td><code>rufus.png</code></td>
+	<td><code>prescott.png</code></td>
+</tr>
+</table>
+
+<p></p>
+
+<table class="image-table">
+<tr>
+	<td><img src="images/monsters/falco1.png" width="80" height="48"/></td>
+	<td><img src="images/monsters/falco2.png" width="80" height="48"/></td>
+</tr>
+<tr>
+	<td><code>falco1.png</code></td>
+	<td><code>falco2.png</code></td>
+</tr>
+</table>
+
+<p></p>
+
+<table class="image-table">
+<tr>
+	<td><img src="images/monsters/octoboss1.png" width="76" height="48"/></td>
+	<td><img src="images/monsters/octoboss2.png" width="76" height="48"/></td>
+	<td><img src="images/monsters/octoboss3.png" width="76" height="48"/></td>
+</tr>
+<tr>
+	<td><code>octoboss1.png</code></td>
+	<td><code>octoboss2.png</code></td>
+	<td><code>octoboss3.png</code></td>
+</tr>
+</table>
+
+<h3>Item images</h3>
+<p class="info">
+These files should be placed in the <code>images/items/</code> directory.
+</p>
+<table class="image-table">
+<tr>
+	<td><img src="images/items/key.png" width="36" height="40"/></td>
+	<td><img src="images/items/gem.png" width="42" height="54"/></td>
+	<td><img src="images/items/potion.png" width="32" height="46"/></td>
+</tr>
+<tr>
+	<td><code>key.png</code></td>
+	<td><code>gem.png</code></td>
+	<td><code>potion.png</code></td>
+</tr>
+</table>
+
+<h3>Background images</h3>
+<p class="info">
+These files should be placed in the <code>images/backgrounds/</code> directory.
+</p>
+<table class="image-table">
+<tr>
+	<td><img src="images/backgrounds/block.png" width="40" height="40"/></td>
+	<td><img src="images/backgrounds/block-red.png" width="40" height="40"/></td>
+	<td><img src="images/backgrounds/brick.png" width="18" height="16"/></td>
+	<td><img src="images/backgrounds/candycane.png" width="40" height="40"/></td>
+	<td><img src="images/backgrounds/dirt.png" width="80" height="40"/></td>
+</tr>
+<tr>
+	<td><code>block.png</code></td>
+	<td><code>block-red.png</code></td>
+	<td><code>brick.png</code></td>
+	<td><code>candycane.png</code></td>
+	<td><code>dirt.png</code></td>
+</tr>
+</table>
+
+<p></p>
+
+<table class="image-table">
+<tr>
+	<td><img src="images/backgrounds/gate-closed.png" width="60" height="80"/></td>
+	<td><img src="images/backgrounds/gate-open.png" width="60" height="80"/></td>
+</tr>
+<tr>
+	<td><code>gate-closed.png</code></td>
+	<td><code>gate-open.png</code></td>
+</tr>
+</table>
+
+
+</div>
+</body>
+</html>

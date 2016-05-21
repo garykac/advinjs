@@ -1,0 +1,56 @@
+<html>
+<head>
+<title>005 : Player meets platform</title>
+
+<link rel="stylesheet" href="../css/bootstrap.min.css">
+<link type="text/css" rel="stylesheet" href="../css/style.css" />
+<link href='http://fonts.googleapis.com/css?family=Trade+Winds' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Sacramento' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Piedra' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Aclonica' rel='stylesheet' type='text/css'>
+
+<script type="text/javascript">
+	var _gaq = _gaq || [];
+	_gaq.push(['_setAccount', 'UA-17513364-1']);
+	_gaq.push(['_setDomainName', 'cse4k12.org']);
+	_gaq.push(['_setAllowLinker', true]);
+	_gaq.push(['_trackPageview']);
+
+	(function() {
+		var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+		ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+		var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+	})();
+</script>
+
+</head>
+
+<body>
+<div class="navbar navbar-inverse navbar-static-top" role="navigation"><div class="container"><div class="navbar-header">
+<a class="navbar-brand" href="../index.html"><span class="title1">Adventures in</span> <span class="title2">JavaScript</span></a>
+</div></div></div>
+<div class="container">
+<h1>005 : Player meets platform</h1>
+<div class="name">You:</div><p class="you">OK, so let's move the player down onto the platform.</p>
+<div class="name">Balthazar:</div><p class="balthazar">Do you have an idea on how to do that?</p>
+<div class="name">You:</div><p class="you">Well, I already set the <span class="code-inline-color">_player.x</span> and <span class="code-inline-color">_player.y</span> value to <span class="code-inline-color">0</span> in <span class="code-inline-color">init_player()</span>. I can just change those values can't I?</p>
+<div class="name">Balthazar:</div><p class="balthazar">Correct. What should you change them to?</p>
+<div class="name">You:</div><p class="you">I can leave the <span class="code-inline-color">x</span> value as <span class="code-inline-color">0</span>, but I need to change the <span class="code-inline-color">y</span> value to the top of the platform, which is <span class="code-inline-color">360</span>, right?</p>
+<div class="panel panel-default">
+<div class="panel-code-header">Move the player's starting y-position down to the platform.</div><div class="panel-code code"><span class="context">function init_player() {</span>
+<span class="context">    _player.x = 0;</span>
+<img src="../css/cross.png" width="15" height="15"/><span class="delete">    _player.y = 0;</span>
+<img src="../css/plus.png" width="15" height="15"/><span class="add">    _player.y = 360;</span>
+<span class="context">    _player.width = 20;</span>
+<span class="context">    _player.height = 20;</span>
+<span class="context">    ...</span>
+<span class="context">}</span>
+</div>
+<div class="panel-code-footer">Run your code in a browser and verify that there are no errors.</div></div>
+<div class="name">Balthazar:</div><p class="balthazar">Let's try that and see what happens.</p>
+<div class="name">You:</div><p class="you">Uh-oh, that doesn't sound promising.</p>
+<div class="name">You:</div><p class="you">Hey, the player is drawn under the platform. That's not right!</p>
+<p class="alert alert-info"><a href="006.html"><span class="goto">GOTO 006</span></a></p>
+</div>
+</body>
+</html>

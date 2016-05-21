@@ -1,0 +1,50 @@
+TITLE = Adding protective eyewear
+ID = 485
+
+B: Since this level has the player go behind the health meter, we can change the player sprite to be wearing sunglasses when it goes behind the meter.
+
+BEGIN_IMAGE_TABLE 1
+TABLE_IMAGE images/player/glasses.png 40x48 glasses.png
+END_IMAGE_TABLE
+
+BEGIN_COPY_FILE
+COPY_FILE images/player/glasses.png
+END_COPY_FILE
+
+B: And the we need to add the projectile info to the monster. We create a new =add_projectile_monster()= function so that we don't have to add empty projectiles to all the other monsters.
+
+BEGIN_CODE
+.function init_player() {
+.	...
+.	_player.sprite = init_player_sprite("normal", 20, 24);
+.	_player.sprite_sad = init_player_sprite("sad", 30, 17);
+.	_player.sprite_ooo = init_player_sprite("ooo", 20, 24);
+.	_player.sprite_happy = init_player_sprite("happy", 20, 24);
++	_player.sprite_glasses = init_player_sprite("glasses", 20, 24);	
+.	update_player_sprite();
+.}
+END_CODE
+
+BEGIN_CODE
+.function update_player_sprite() {
+.	var sprite;
+.	if (_player.health <= 0) {
+.		sprite = _player.sprite_sad;
++	} else if (_player.x <= (_game.meter_x + _game.meter_width)
++				&& _player.y <= (_game.meter_y + _game.meter_height + 20)) {
++		sprite = _player.sprite_glasses;
+.	} else if (_game.game_win) {
+.		sprite = _player.sprite_happy;
+.	} else if (_player.is_touching_monster) {
+.		sprite = _player.sprite_ooo;
+.	} else {
+.		sprite = _player.sprite;
+.	}
+.	...
+.}
+END_CODE
+
+GAIN Fluff II - Glasses
+
+GOTO 490
+

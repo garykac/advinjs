@@ -1,0 +1,11 @@
+TITLE = Arrays
+ID = 050
+
+B: Before we can go further, we need to talk about arrays.
+
+ADMIN Add section about arrays
+
+TODO info about arrays
+
+GOTO 051
+

@@ -1,0 +1,75 @@
+TITLE = More platforms
+ID = 075
+
+
+BEGIN_CODE
+.function draw_platforms(ctx) {
+-	var platform = _game.platform;
++	var platform = _game.platforms[0];
+.	ctx.fillStyle = "rgb(153, 102, 51)";
+.	ctx.fillRect(platform.x, platform.y, platform.width, platform.height);
+.}
+END_CODE
+
+BEGIN_CODE
+.function check_platform_collisions() {
+.	_player.platform = null;
+-	if (collide(_game.platform, _player)) {
++	if (collide(_game.platforms[0], _player)) {
+-		_player.platform = _game.platform;
++		_player.platform = _game.platforms[0];
+-		_player.y = _game.platform.y;
++		_player.y = _game.platforms[0].y;
+.		_player.velocity_y = 0;
+.	}
+.}
+END_CODE
+
+B: ???
+
+B: Run. it should be the same.
+B: Note that draw_ and check_collision only check the first (the 0th) element) of the array.
+
+B: We can add another platform to the array, but it won't work until we iterate through all the elements of the array. WE do that with a for loop.
+
+BEGIN_CODE
+.function draw_platforms(ctx) {
++	var platforms = _game.platforms;
++	for (var i = 0; i < platforms.length; i++) {
+-		var platform = _game.platforms[0];
++		var platform = platforms[i];
+>		ctx.fillStyle = "rgb(153, 102, 51)";
+>		ctx.fillRect(platform.x, platform.y, platform.width, platform.height);
++	}
+.}
+END_CODE
+
+B: _game.platforms.length is the number of elements in the array.
+B: Note that _game.platforms[0] is changed to _game.platforms[i].
+
+
+BEGIN_CODE
+.function check_platform_collisions() {
++	var platforms = _game.platforms;
+.	_player.platform = null;
++	for (var i = 0; i < platforms.length; i++) {
+-		if (collide(_game.platforms[0], _player)) {
++		if (collide(platforms[i], _player)) {
+-			_player.platform = _game.platforms[0];
++			_player.platform = platforms[i];
+-			_player.y = _game.platforms[0].y;
++			_player.y = platforms[i].y;
+>			_player.velocity_y = 0;
+>		}
++	}
+.}
+END_CODE
+
+
+RUN_VERIFY
+
+
+GOTO 079 IF_BADGE Monster I - Stationary
+
+GOTO 071
+	

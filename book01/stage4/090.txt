@@ -1,0 +1,211 @@
+TITLE = Multiple levels
+ID = 090
+
+B: Multiple levels
+
+B: init_game is getting to be kindofa mess. We should clean that up. and add multiple levels since we're going to need then.
+
+U: but we haven't finished the first level yet.
+
+
+
+B: Let's add a new _levels global variable.
+
+BEGIN_CODE
+.// Global variables.
+.var _game = {};
+.var _player = {};
++var _levels = [];
+END_CODE
+
+B: Note the square brackets since _levels is an array.
+
+B: And copy over the platforms, monsters and goal into a new function called init_level1()
+
+BEGIN_CODE
+.function init_game() {
+.	...
+.	// Game state.
+.	_game.game_over = false;
+.	_game.game_win = false;
+-	_game.platforms = [];
+-	// The bottom brick platform along the bottom of the stage.
+-	_game.platforms.push(create_platform(0, 360, _game.width, 40));
+-	// The left offstage 'wall' to keep the player on the stage.
+-	_game.platforms.push(
+-		create_platform(-60, -_game.height, 60, 2 * _game.height));
+-	// The right offstage 'wall' to keep the player on the stage.
+-	_game.platforms.push(
+-		create_platform(_game.width, -_game.height, 60, 2 * _game.height));
+-	_game.platforms.push(create_platform(200, 290, 80, 20));
+-	_game.platforms.push(create_platform(300, 240, 80, 20));
+-	_game.platforms.push(create_platform(400, 170, 80, 20));
+-	_game.platforms.push(create_platform(460, 110, 40, 20));
+-	_game.monsters = [];
+-	_game.monsters.push(create_monster(350, 360, 20, 20, 60, 470, -1.0));
+-	_game.monsters.push(create_monster(400, 360, 20, 20, 60, 470, 0.8));
+-	_game.goal = create_goal(500, 360);
+.	...
+.}
+END_CODE
+
+B: Note: If you cut and paste, be sure the change all the _game to level.
+
+BEGIN_CODE
+.function init_player() {
+.	...
+.}
+.
++function init_level1() {
++	var level = {};
++
++	level.platforms = [];
++	// The bottom brick platform along the bottom of the stage.
++	level.platforms.push(create_platform(0, 360, _game.width, 40));
++	// The left offstage 'wall' to keep the player on the stage.
++	level.platforms.push(
++		create_platform(-60, -_game.height, 60, 2 * _game.height));
++	// The right offstage 'wall' to keep the player on the stage.
++	level.platforms.push(
++		create_platform(_game.width, -_game.height, 60, 2 * _game.height));
++	level.platforms.push(create_platform(200, 290, 80, 20));
++	level.platforms.push(create_platform(300, 240, 80, 20));
++	level.platforms.push(create_platform(400, 170, 80, 20));
++	level.platforms.push(create_platform(460, 110, 40, 20));
++
++	level.monsters = [];
++	level.monsters.push(create_monster(350, 360, 20, 20, 60, 470, -1.0));
++	level.monsters.push(create_monster(400, 360, 20, 20, 60, 470, 0.8));
++
++	level.goal = create_goal(500, 360);
++	
++	_levels.push(level);
++}
++
+.function create_platform(x, y, width, height) {
+.	...
+.}
+END_CODE
+
+B: And call this new function from init():
+
+BEGIN_CODE
+.function init() {
+.	init_game();
+.	init_player();
++	init_level1();
+.}
+END_CODE
+
+B: Since we're creating an array of levels, we need to keep track of the current level.
+
+BEGIN_CODE
+.function init_game() {
+.	...
+.	// Game state.
+.	_game.game_over = false;
+.	_game.game_win = false;
++	_game.current_level = 0;
+.	...
+.}
+END_CODE
+
+B: We need to 
+
+B: Now we need to fix up all the references to _game.platform, _game.monsters and _game.goal
+
+BEGIN_CODE
+.function draw_platforms(ctx) {
++	var level = _levels[_game.current_level];
+-	var platforms = _game.platforms;
++	var platforms = level.platforms;
+.	for (var i = 0; i < platforms.length; i++) {
+.		var platform = platforms[i];
+.		ctx.fillStyle = "rgb(153, 102, 51)";
+.		ctx.fillRect(platform.x, platform.y, platform.width, platform.height);
+.	}
+.}
+.
+.function draw_monsters(ctx) {
++	var level = _levels[_game.current_level];
+-	var monsters = _game.monsters;
++	var monsters = level.monsters;
+.	for (var i = 0; i < monsters.length; i++) {
+.		var m = monsters[i];
+.		ctx.fillStyle = "#800000";
+.		ctx.fillRect(m.x - m.origin_x, m.y - m.origin_y, m.width, m.height);
+.	}
+.}
+.
+.function draw_goal(ctx) {
++	var level = _levels[_game.current_level];
+-	var goal = _game.goal;
++	var goal = level.goal;
+.	ctx.fillStyle = "green";
+.	ctx.fillRect(goal.x - goal.origin_x, goal.y - goal.origin_y,
+.					goal.width, goal.height);
+.}
+END_CODE
+
+B: Fixup update_monsters
+
+BEGIN_CODE
+.function update_monsters() {
++	var level = _levels[_game.current_level];
+-	var monsters = _game.monsters;
++	var monsters = level.monsters;
+.	for (var i = 0; i < monsters.length; i++) {
+.		var m = monsters[i];
+.		m.x += m.move_x;
+.		if (m.x <= m.min_x || m.x >= m.max_x) {
+.			m.move_x *= -1;
+.		}
+.	}
+.}
+END_CODE
+
+B: And fix up the collisions as well
+
+BEGIN_CODE
+.function check_platform_collisions() {
++	var level = _levels[_game.current_level];
+-	var platforms = _game.platforms;
++	var platforms = level.platforms;
+.	_player.platform = null;
+.	for (var i = 0; i < platforms.length; i++) {
+.		var overlap = collide(platforms[i], _player);
+.		if (overlap) {
+.			...
+.		}
+.	}
+.}
+.
+.function check_monster_collisions() {
++	var level = _levels[_game.current_level];
+-	var monsters = _game.monsters;
++	var monsters = level.monsters;
+.	for (var i = 0; i < monsters.length; i++) {
+.		var m = monsters[i];
+.		if (collide(m, _player)) {
+.			_game.game_over = true;
+.		}
+.	}
+.}
+.
+.function check_goal_collisions() {
++	var level = _levels[_game.current_level];
+-	var goal = _game.goal;
++	var goal = level.goal;
+.	if (collide(goal, _player)) {
+.		_game.game_over = true;
+.		_game.game_win = true;
+.	}
+.}
+END_CODE
+
+
+RUN_VERIFY
+
+B: Nothing should have changed.
+
+GOTO 091

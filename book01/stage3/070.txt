@@ -1,0 +1,64 @@
+TITLE = Adding more platforms
+ID = 070
+
+B: Before we can add more platforms, we'll first need to fixup the =_player.platform= variable.
+
+B: Once we start adding more platforms, storing a boolean (=true= or =false=) value in the =_player.platform= variable won't be good enough - we'll want to know **which** platform the player is standing on.
+
+B: We can update =_player.platform= by initializing it to =null= (instead of =false=) and setting it to the platform (instead of =true=) when the player collides with a platform.
+
+B: The =null= value simply means that there is no object stored in the variable - in our case, it means that there is no platform associated with the player.
+
+BEGIN_CODE_INFO Initializing the =platform= variable to =null=.
+.function init_player() {
+.	...
+.	_player.origin_x = _player.width / 2;
+.	_player.origin_y = _player.height;
+.
+-	_player.platform = false;
++	_player.platform = null;
+.
+.	_player.velocity_x = 0;
+.	_player.velocity_x_delta = 0.8;
+.	...
+.}
+END_CODE_OK
+
+B: Fortunately we can still use =_player.platform= in the =if= statement in =check_input()= because (in JavaScript) a =null= value will be interpreted as =false=. Any non-=null= value will be interpreted as =true=.
+
+BEGIN_CODE_INFO Updating =platform= to =null=.
+.function check_input() {
+.	...
+.	// Up arrow, 'w'  and spacebar to jump.
+.	if (_game.keymap[38] || _game.keymap[87] || _game.keymap[32]) {
+.		// Only allow jumps if the player is on a platform.
+.		if (_player.platform) {
+-			_player.platform = false;
++			_player.platform = null;
+.			_player.velocity_y = _player.velocity_y_jump;
+.		}
+.	}
+.	...
+.}
+END_CODE_OK
+
+B: The last place to fixup is the =check_platform_collisions()= function.
+
+BEGIN_CODE
+.function check_platform_collisions() {
+-	_player.platform = false;
++	_player.platform = null;
+.	if (collide(_game.platform, _player)) {
+-		_player.platform = true;
++		_player.platform = _game.platform;
+.		_player.y = _game.platform.y;
+.		_player.velocity_y = 0;
+.	}
+.}
+END_CODE
+
+B: Now that the =_player.platform= variable has been updated, we can start adding more platforms.
+
+GOTO 077 IF_BADGE Monster I - Stationary
+
+GOTO 076

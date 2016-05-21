@@ -1,0 +1,133 @@
+TITLE = Connecting the levels
+ID = 093
+
+B: To connect the levels, we need to modify the goal so that it indicates the next level to go to.
+
+B: Since we don't have a "game over" level, we'll (temporarily) connect the last level back to the first.
+
+U: doesn't that mean that the game will never yet.
+
+B: Yes, but it's only temporary. We'll be adding a proper ending later.
+
+BEGIN_CODE
+-function create_goal(x, y) {
++function create_goal(x, y, next_level) {
+.	var goal = {};
+.	goal.x = x;
+.	goal.y = y;
+.	goal.width = 20;
+.	goal.height = 20;
+.	goal.origin_x = goal.width / 2;
+.	goal.origin_y = goal.height;
++	goal.next_level = next_level;
+.	return goal;
+.}
+END_CODE
+
+B: and update all the calls:
+
+BEGIN_CODE
+.function init_level1() {
+.	...
+.	add_monsters(level, monster_data);
+.
+-	level.goal = create_goal(500, 360);
++	level.goal = create_goal(500, 360, 1);
+.	...
+.}
+.
+.function init_level2() {
+.	...
+.	add_default_platforms(level);
+.
+-	level.goal = create_goal(500, 360);
++	level.goal = create_goal(500, 360, 2);
+.	...
+.}
+.
+.function init_level3() {
+.	...
+.	add_default_platforms(level);
+.
+-	level.goal = create_goal(500, 360);
++	level.goal = create_goal(500, 360, 0);
+.	...
+.}
+END_CODE
+
+B: level1 is at index #0 (_level[0]) and its goal points to level2 (@ index #1)
+
+
+B: Add start_level:
+
+BEGIN_CODE
+.function create_goal(x, y, next_level) {
+.	...
+.}
+.
++function start_level(level_id) {
++	_game.current_level = level_id;
++
++	var level = _levels[level_id];
++	_player.x = level.player_start_x;
++	_player.y = level.player_start_y;
++	_player.velocity_x = 0;
++	_player.velocity_y = 0;
++}
++
+.// Erase the canvas and draw all the objects.
+.function draw() {
+.	...
+.}
+END_CODE
+
+B: When we start a level, we move the player to the appropriate starting location and remove any velocity they may have from the previous level.
+
+BEGIN_CODE
+.function check_goal_collisions() {
+.	var level = _levels[_game.current_level];
+.	var goal = level.goal;
+.	if (collide(goal, _player)) {
+-		_game.game_over = true;
+-		_game.game_win = true;
++		start_level(goal.next_level);
+.	}
+.}
+END_CODE
+
+U: Wait, now there's no way to win.
+
+B: We should also call this after we finish initializing so that the game starts at the correct level.
+
+BEGIN_CODE
+.function handle_load(event) {
+.	init();
++	start_level(0);
+.	requestAnimationFrame(update_world);
+.}
+END_CODE
+
+U: don't we already do this in init_game()
+
+
+B: Now that we init the player at the start of each level, we no longer need to set x and y in init_player
+
+BEGIN_CODE
+.function init_player() {
++	// Player x,y are initialized by the level.
+-	_player.x = 20;
++	_player.x = 0;
+-	_player.y = 360;
++	_player.y = 0;
++
+.	_player.width = 20;
+.	_player.height = 20;
+.	...
+.}
+END_CODE
+
+GAIN Transition I - Levels
+
+RUN_VERIFY
+
+GOTO 098
