@@ -195,7 +195,7 @@ _functions = [
 
 def init_globals():
 	global _badge_name2id
-	
+
 	for id, name in _badge_id2name.items():
 		_badge_name2id[name] = id
 
@@ -208,32 +208,32 @@ def error(msg):
 class StageGenerator(object):
 	def __init__(self, stage_id, options):
 		self.options = options
-		
+
 		self.id = stage_id
 		self.stage_name = _stages[stage_id][0]
-		
+
 		# The base node (from the previous stage) that we need
 		# to copy as a baseline for the start node.
 		self.source_node = _stages[stage_id-1][2]
-		
+
 		# The first node in this stage.
 		self.start_node = _stages[stage_id][1]
-		
+
 		# The final node in this stage.
 		self.end_node = _stages[stage_id][2]
-		
+
 		# The first node in the next stage.
 		# We need to verify that the final node links here.
 		self.next_stage_node = _stages[stage_id+1][1]
 
 		# List of badges that are allowed in this stage.
 		self.stage_badges = _stages[stage_id][3]
-		
+
 		# List of nodes to process.
 		self.nodelist = [self.start_node]
 
 		# Set of nodes in this stage.
-		self.nodes = set([])		
+		self.nodes = set([])
 
 		# Set of badges that are granted in this node.
 		self.node_badges = {}
@@ -243,18 +243,18 @@ class StageGenerator(object):
 
 		# The title for each node.
 		self.titles = {}
-		
+
 		self.paths = []
-		
+
 		self.path_checks = []
-		
+
 	def log_node(self, node, msg):
 		if self.options['trace'] in node:
 			print msg
 
 	def process(self):
 		print 'Processing stage%d' % self.id
-		
+
 		while self.nodelist:
 			curr = self.nodelist.pop(0)
 			if curr != self.end_node:
@@ -262,21 +262,21 @@ class StageGenerator(object):
 		self.calc_links(self.end_node, True)
 
 		errors = 0
-		
+
 		if  self.options['html']:
 			make_dir(os.path.join('html', self.stage_name))
 			for n in sorted(self.nodes):
 				errors += self.process_node_html(n)
 		if self.options['pathcheck']:
 			errors += self.verify_paths()
-		
+
 		#for t in sorted(self.titles.keys()):
 		#	print t, self.titles[t]
-		
+
 		return errors
 
 	# Calculating links
-	
+
 	def check_badge(self, badge):
 		badge_id = _badge_name2id[badge]
 		if not badge_id in self.stage_badges:
@@ -309,7 +309,7 @@ class StageGenerator(object):
 		if not link_tgt in self.nodes:
 			self.nodelist.append(link[1])
 			self.nodes.add(link_tgt)
-	
+
 	def calc_links(self, node, final):
 		found_finish = False
 		found_stage_link = False
@@ -317,7 +317,7 @@ class StageGenerator(object):
 		self.log_node([node], 'calc_links for %s' % node)
 		if self.options['verbose']:
 			print 'calc_links for %s' % node
-		
+
 		f = open(os.path.join(self.stage_name, node + '.txt'), 'r')
 		if not node in self.links:
 			self.links[node] = []
@@ -346,7 +346,7 @@ class StageGenerator(object):
 				if line[0:12] == 'FINISH_STAGE':
 					found_finish = True
 				continue
-				
+
 			if line[0:4] == 'GAIN':
 				m = re.match(r'GAIN (.+)', line)
 				if m:
@@ -398,7 +398,7 @@ class StageGenerator(object):
 				error('No links found for %s' % node)
 
 	# Processing nodes
-	
+
 	def process_node_html(self, node):
 		if self.options['verbose']:
 			print 'html', node
@@ -419,10 +419,10 @@ class StageGenerator(object):
 		if not success:
 			print '%s' % node
 			print 'Parse failure'
-			errors += 1	
+			errors += 1
 			sys.exit(0)
 		parser.export_html()
-		
+
 		return errors
 
 	def process_node_path(self, stage_src, src, stage_dst, dst, node_path):
@@ -430,9 +430,9 @@ class StageGenerator(object):
 			print 'path %s -> %s' % (src, dst)
 		#print node_path
 		errors = 0
-	
+
 		copy_snapshot_dir(stage_src, src, stage_dst, dst)
-	
+
 		node = dst[0:3]
 		file = node + '.txt'
 		options = {
@@ -462,9 +462,9 @@ class StageGenerator(object):
 			errors += 1
 			sys.exit(0)
 		return errors
-	
+
 	# Verify paths
-	
+
 	def verify_paths(self):
 		errors = 0
 		self.calc_path_checks()
@@ -474,7 +474,7 @@ class StageGenerator(object):
 			check = path[0]
 			src = path[1]
 			tgt = path[2]
-		
+
 			if check == 'TRANS':
 				node_path = path[3]
 				self.process_node_path(self.stage_name, src, self.stage_name, tgt, node_path)
@@ -488,7 +488,7 @@ class StageGenerator(object):
 			else:
 				error('Unknown check: %s' % check)
 		return errors
-	
+
 	def calc_badge_code(self, badges):
 		return ''.join([_badge_name2id[x] for x in badges])
 
@@ -521,7 +521,7 @@ class StageGenerator(object):
 			node_id = node[0:3]
 			node_code = node_id + self.calc_badge_code(badges)
 			self.log_node([node], 'Processing %s' % node_code)
-		
+
 			if node_id == end:
 				self.log_node([node], 'adding %s to list of end nodes' % node_code)
 				if not node_code in end_nodes:
@@ -529,11 +529,11 @@ class StageGenerator(object):
 				# Make sure all the badges have been obtained.
 				for b in self.stage_badges:
 					if not _badge_id2name[b] in badges and not b in _optional_badges:
-						error('End of %s without obtaining badge: %s' % (self.stage_name, _badge_id2name[b]))							
+						error('End of %s without obtaining badge: %s' % (self.stage_name, _badge_id2name[b]))
 				continue
 			links = self.links[node_id]
 
-			# Update badges for this node.	
+			# Update badges for this node.
 			if node_id in self.node_badges:
 				new_badges = self.node_badges[node_id]
 				for new_badge in new_badges:
@@ -541,7 +541,7 @@ class StageGenerator(object):
 						error('Node %s already has %s' % (node_code, new_badge))
 					self.log_node([node], 'Node %s contains badge %s' % (node_id, new_badge))
 					badges.append(new_badge)
-		
+
 			if node_code in done_nodes:
 				self.log_node([node], 'skipping %s because its done already' % node_code)
 				continue
@@ -601,12 +601,12 @@ class StageGenerator(object):
 				self.path_checks.append(['EQ', end_nodes[0], end_nodes[i]])
 		if end_nodes[0][0] != end_nodes[0][0][0:3]:
 			self.path_checks.append(['COPY', end_nodes[0][0], end_nodes[0][0][0:3]])
-	
+
 	def check_equal(self, path1, path2):
 		#print '%s == %s' % (filename1, filename2)
 
 		errors = 0
-		
+
 		filename1 = path1[0]
 		path_so_far1 = path1[1]
 		filename2 = path2[0]
@@ -699,7 +699,7 @@ def copy_core_html_files(options):
 			['zip', '-r', '../html/images.zip', 'images',
 				'-i', '*.png'],
 			cwd = 'data')
-	
+
 	errors = 0
 	errors += process_core_html('index', options)
 	errors += process_core_html('baseline', options)
@@ -731,10 +731,10 @@ def process_core_html(name, script_options):
 	if not success:
 		print '%s' % file
 		print 'Parse failure'
-		errors += 1	
+		errors += 1
 	else:
 		parser.export_html()
-	
+
 	return errors
 
 def usage():
@@ -753,7 +753,7 @@ def usage():
 def main():
 	print "Adventures in JavaScript"
 	print "Build script", _version
-	
+
 	try:
 		opts, args = getopt.getopt(sys.argv[1:],
 			'hpcs:t:v',
@@ -767,7 +767,7 @@ def main():
 		'trace': '',
 		'verbose': False,
 	}
-	
+
 	clean = False
 	all_stages = False
 	stage = 1
@@ -788,7 +788,7 @@ def main():
 		elif opt in ('-v', '--verbose'):
 			options['verbose'] = True
 
-	stages = []	
+	stages = []
 	if all_stages:
 		stages = range(1, len(_stages)-1)
 	else:
@@ -817,7 +817,7 @@ def main():
 	for s in stages:
 		sg = StageGenerator(s, options)
 		errors += sg.process()
-	
+
 	print 'Errors:', errors
 
 if __name__ == '__main__':
