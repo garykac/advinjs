@@ -265,10 +265,12 @@ class StageGenerator(object):
 		errors = 0
 
 		if self.options['html']:
+			print 'Generating HTML pages'
 			make_dir(os.path.join('html', self.stage_name))
 			for n in sorted(self.nodes):
 				errors += self.process_node_html(n)
 		if self.options['pathcheck']:
+			print 'Verifying paths'
 			errors += self.verify_paths()
 
 		#for t in sorted(self.titles.keys()):
@@ -692,10 +694,13 @@ def copy_core_html_files(options):
 	distutils.dir_util.copy_tree('data/prototype', 'html/prototype')
 	distutils.dir_util.copy_tree('data/screenshots', 'html/screenshots')
 
+	# TODO: only regenerate the zip files if the contents have changed.
+	# Otherwise a "new" zip file (with a new timestamp) will be created.
+	print 'Creating baseline.zip'
 	subprocess.call(
-			['zip', '-r', '../html/baseline.zip', 'baseline',
-				'-i', 'game.html', 'style.css', 'script.js'],
+			['zip', '-r', '../html/baseline.zip', 'baseline'],
 			cwd = 'data')
+	print 'Creating images.zip'
 	subprocess.call(
 			['zip', '-r', '../html/images.zip', 'images',
 				'-i', '*.png'],
@@ -800,10 +805,12 @@ def main():
 	if clean:
 		if all_stages:
 			if options['pathcheck']:
+				print 'Creating core snapshot files'
 				rm_dir('snapshots')
 				make_dir('snapshots')
 				copy_core_snapshot_files()
 			if options['html']:
+				print 'Creating core HTML files'
 				rm_dir('html')
 				make_dir('html')
 				copy_core_html_files(options)
