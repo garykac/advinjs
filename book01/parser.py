@@ -7,22 +7,22 @@ from parse_code import Parse_Code
 
 class Parser(object):
 	def __init__(self, options):
-		
+
 		self.data = []
-		
+
 		# A stack of parse modes.
 		self.parse_mode = ['top']
-		
+
 		self.stage = ''
 		self.name = ''
 		self.nodename = ''
 		self.images = {}
-		
+
 		self.in_copy_file = False
-		
+
 		self.current_file = ''
 		self.current_line = 0
-		
+
 		self.options = {
 			'debug': False,
 			'verify': False,
@@ -33,7 +33,7 @@ class Parser(object):
 		self.parsers = [
 			self.parse_code,
 		]
-		
+
 		self.mode_parser = {
 			'code': self.parse_code,
 		}
@@ -42,6 +42,7 @@ class Parser(object):
 		self.stage = stage
 		self.name = dst
 		self.nodename = node
+		#print node, dst
 		self.images = images
 		filename = os.path.join(stage, file)
 		if not os.path.isfile(filename):
@@ -80,8 +81,8 @@ class Parser(object):
 
 	def export_html(self):
 		self.print_html()
-		
-		
+
+
 	# ---------------
 	# Parsing helpers
 	# These are used by the other parsers.
@@ -91,7 +92,7 @@ class Parser(object):
 		"""Report a syntax or other user error."""
 		print 'Error %s(%d): %s' % (self.current_file, self.current_line, msg)
 		sys.exit(1)
-	
+
 	def warning(self, msg):
 		"""Report a warning."""
 		print 'Warning %s(%d): %s' % (self.current_file, self.current_line, msg)
@@ -99,20 +100,20 @@ class Parser(object):
 	def current_mode(self):
 		"""Return the string containing the current parsing mode."""
 		return self.parse_mode[-1]
-	
+
 	def enter_mode(self, new_mode):
 		"""Switch to the specified parsing mode."""
 		self.parse_mode.append(new_mode)
-	
+
 	def exit_mode(self, curr_mode):
 		"""Exit the current parsing mode."""
 		m = self.parse_mode.pop()
 		if m != curr_mode:
 			self.internal_error('Exiting wrong mode: %s (expected: %s)' % (m, curr_mode))
-	
+
 	def add_data(self, type, data):
 		self.data.append([type, data])
-	
+
 	def expand_text_type(self, text, start_char, end_char, span_class):
 		done = False
 		curr_text = text
@@ -127,7 +128,7 @@ class Parser(object):
 				done = True
 		new_text += curr_text
 		return new_text
-		
+
 	def expand_text(self, text, color):
 		text = self.expand_text_type(text, r'\{', r'\}', 'thinking');
 		text = text.replace('a href=', 'a href!!!');
@@ -152,16 +153,16 @@ class Parser(object):
 			self.image_table_class = 'col-sm-6 col-md-2'
 		else:
 			self.error('Invalid table column: %s' % cols)
-			
+
 	# ----------------
 	# Internal parsing
 	# ----------------
-	
+
 	def parse_input(self):
 		self.current_line = 0
 		for line in self.fileobj:
 			self.current_line += 1
-			
+
 			# Strip whitespace and comments.
 			comment = line.find('//')
 			if comment == 0:
@@ -176,7 +177,7 @@ class Parser(object):
 	def parse_line(self, line):
 		if len(line) == 0:
 			return True
-			
+
 		mode = self.current_mode()
 		if mode == 'top':
 			if not self.parse_toplevel(line):
@@ -189,9 +190,9 @@ class Parser(object):
 				return False
 		else:
 			self.error_internal('Bad parsing mode: %s' % mode)
-			return False				
+			return False
 		return True
-	
+
 	def parse_toplevel(self, line):
 		if re.match(r'TITLE = ', line):
 			self.title = line[8:]
@@ -216,7 +217,7 @@ class Parser(object):
 			return True
 		if re.match(r'TODO ', line):
 			self.add_data('TODO', line[5:])
-			print line
+			print self.name, line
 			return True
 		if re.match(r'FIGURE ', line):
 			self.add_data('FIGURE', line[7:])
@@ -343,13 +344,13 @@ class Parser(object):
 			if re.match(r'PRE_FILE ', line):
 				self.add_data('PRE_FILE', line[9:])
 				return True
-		
+
 		parser = None
 		for p in self.parsers:
 			if p.match_toplevel(line):
 				parser = p
 				break
-		
+
 		if parser is not None:
 			return parser.start_parse_mode()
 
@@ -358,18 +359,18 @@ class Parser(object):
 	# -----------
 	# HTML output
 	# -----------
-	
+
 	def print_html(self):
 		out_file = os.path.join('html', self.stage, self.nodename + '.html')
 		try:
 			fout = open(out_file, 'w')
 		except IOError as e:
 			self.error('Unable to open "%s" for writing: %s' % (out_file, e))
-		
+
 		self.print_html_header(fout)
 		if self.stage != '':
 			fout.write('<h1>%s : %s</h1>\n' % (self.id, self.title))
-				
+
 		for d in self.data:
 			if d[0] == 'B':
 				fout.write('<div class="name">Balthazar:</div><p class="balthazar">%s</p>\n' % self.expand_text(d[1], True))
@@ -551,12 +552,12 @@ class Parser(object):
 					if not file in self.images:
 						self.error('Unknown image file: "%s"' % file)
 					(w, h) = self.images[file].split('x')
-					print w, h
-					print int(w), int(h)
-					print int(w) * 2, int(h) *2
+					#print w, h
+					#print int(w), int(h)
+					#print int(w) * 2, int(h) *2
 					if (int(w) * 2) != int(width) or (int(h) * 2) != int(height):
 						self.error('Bad image size: %s x %s' % (width, height))
-					
+
 					fout.write('<div class="%s"><div class="image-table">\n' % self.image_table_class)
 					fout.write('<a href="../%s"><img src="../%s" width="%s" height="%s" /></a>\n' % (file, file, width, height))
 					fout.write('<div class="caption"><p align="center">%s</p></div>\n' % caption)
@@ -590,7 +591,7 @@ class Parser(object):
 				fout.write('<p class="byline">%s</p>\n' % d[1])
 			elif d[0] == 'INFO':
 				fout.write('<p class="info">%s</p>\n' % self.expand_text(d[1], True))
-	
+
 			elif d[0] == 'BEGIN_SCREENSHOT_TABLE':
 				fout.write('<div class="row">\n')
 				self.set_table_columns('4')
@@ -609,7 +610,7 @@ class Parser(object):
 				self.error('Unknown format: SCREENSHOT_TABLE_IMAGE "%s"' % d[1])
 			elif d[0] == 'END_SCREENSHOT_TABLE':
 				fout.write('</div>\n')
-	
+
 			elif d[0] == 'BEGIN_MAIN_TABLE':
 				fout.write('<table class="image-table"><tr>\n')
 				self.captions = []
@@ -652,7 +653,7 @@ class Parser(object):
 
 		self.print_html_footer(fout)
 		fout.close()
-		
+
 	def print_html_header(self, fout):
 		fout.write('<html>\n')
 		fout.write('<head>\n')
@@ -708,4 +709,3 @@ class Parser(object):
 		fout.write('</div>\n')
 		fout.write('</body>\n')
 		fout.write('</html>\n')
-		

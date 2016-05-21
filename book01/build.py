@@ -15,6 +15,7 @@ from parser import Parser
 _version = '0.1'
 
 _stages = [
+	# [stage-name, start-node, end-node, [badges]],
 	['',		'000', '000', []],
 	['stage1',	'001', '018', ['m1', 'm2', 'p1', 's1']],
 	['stage2',	'020', '049', ['c1', 'm3']],
@@ -263,7 +264,7 @@ class StageGenerator(object):
 
 		errors = 0
 
-		if  self.options['html']:
+		if self.options['html']:
 			make_dir(os.path.join('html', self.stage_name))
 			for n in sorted(self.nodes):
 				errors += self.process_node_html(n)
@@ -596,6 +597,8 @@ class StageGenerator(object):
 					print link
 					error('not processing')
 
+		# If there are multiple paths to the stage's end node, make sure that
+		# the generated code is identical.
 		if len(end_nodes) > 1:
 			for i in range(1, len(end_nodes)):
 				self.path_checks.append(['EQ', end_nodes[0], end_nodes[i]])
@@ -603,8 +606,6 @@ class StageGenerator(object):
 			self.path_checks.append(['COPY', end_nodes[0][0], end_nodes[0][0][0:3]])
 
 	def check_equal(self, path1, path2):
-		#print '%s == %s' % (filename1, filename2)
-
 		errors = 0
 
 		filename1 = path1[0]
@@ -612,7 +613,7 @@ class StageGenerator(object):
 		filename2 = path2[0]
 		path_so_far2 = path2[1]
 
-		print '%s == %s' % (filename1, filename2)
+		#print '%s == %s' % (filename1, filename2)
 
 		file1 = os.path.join('snapshots', self.stage_name, filename1, 'script.js')
 		file2 = os.path.join('snapshots', self.stage_name, filename2, 'script.js')
