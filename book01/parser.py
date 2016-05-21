@@ -217,7 +217,7 @@ class Parser(object):
 			return True
 		if re.match(r'TODO ', line):
 			self.add_data('TODO', line[5:])
-			print self.name, line
+			print self.nodename, line
 			return True
 		if re.match(r'FIGURE ', line):
 			self.add_data('FIGURE', line[7:])
