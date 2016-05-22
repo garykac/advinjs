@@ -1,9 +1,9 @@
 # Adventures in JavaScript
 # Build script
 
+import argparse
 import distutils.core
 import filecmp
-import getopt
 import os
 import re
 import shutil
@@ -252,7 +252,7 @@ class StageGenerator(object):
 		self.path_checks = []
 
 	def log_node(self, node, msg):
-		if self.options['trace'] in node:
+		if self.options.trace in node:
 			print msg
 
 	def process(self):
@@ -266,11 +266,11 @@ class StageGenerator(object):
 
 		errors = 0
 
-		if self.options['html']:
+		if self.options.html:
 			make_dir(os.path.join(_book, self.stage_name))
 			for n in sorted(self.nodes):
 				errors += self.process_node_create_html(_book, self.stage_name, n)
-		if self.options['pathcheck']:
+		if self.options.pathcheck:
 			errors += self.verify_paths(_book)
 
 		#for t in sorted(self.titles.keys()):
@@ -318,7 +318,7 @@ class StageGenerator(object):
 		found_stage_link = False
 
 		self.log_node([node], 'calc_links for %s' % node)
-		if self.options['verbose']:
+		if self.options.verbose:
 			print 'calc_links for %s' % node
 
 		filename = os.path.join('src', _book, self.stage_name, node + '.txt')
@@ -406,7 +406,7 @@ class StageGenerator(object):
 	# Processing nodes
 
 	def process_node_create_html(self, book, stage, nodeid):
-		if self.options['verbose']:
+		if self.options.verbose:
 			print 'html', node
 		errors = 0
 		infile = os.path.join('src', book, stage, nodeid + '.txt')
@@ -455,7 +455,7 @@ class StageGenerator(object):
 		return errors
 
 	def process_node_path(self, book, stage_src, src, stage_dst, dst, node_path):
-		if self.options['verbose']:
+		if self.options.verbose:
 			print 'path %s -> %s' % (src, dst)
 		#print node_path
 
@@ -686,7 +686,7 @@ def copy_core_snapshot_files():
 	distutils.dir_util.copy_tree('baseline', 'snapshots/book01/000')
 
 def create_main_html_files(options):
-	if options['clean']:
+	if options.clean:
 		print 'Creating baseline.zip'
 		subprocess.call(['zip', '-r', 'baseline.zip', 'baseline'])
 
@@ -699,7 +699,7 @@ def create_main_html_files(options):
 		error('Error processing core html files')
 
 def create_book_files(book, options):
-	if options['clean']:
+	if options.clean:
 		print 'Creating images.zip'
 		subprocess.call(
 				['zip', '-r', 'images.zip', 'images',
@@ -717,7 +717,7 @@ def process_html(infile, outfile, options):
 	errors = 0
 	name = os.path.splitext(os.path.basename(infile))[0]
 	success = True
-	if options['verbose']:
+	if options.verbose:
 		print '  %s -> html' % infile
 	try:
 		parser = Parser()
@@ -737,91 +737,66 @@ def process_html(infile, outfile, options):
 
 	return errors
 
-def usage():
-	print 'Usage: %s <options>' % sys.argv[0]
-	print "where <options> are:"
-	print "  --html"
-	print "  --pathcheck"
-	print "  --clean"
-	print "  --stage <stage-id>"
-	print "  --trace <node-id>"
-	print "  --verbose"
-	print "and <stage-id> is '1', '2', ...  or 'all'"
-	print "and <node-id> is the 3-digit node number"
-	sys.exit(2)
-
 def main():
 	print "Adventures in JavaScript"
 	print "Build script", _version
 
-	try:
-		opts, args = getopt.getopt(sys.argv[1:],
-			'hpcs:t:v',
-			['html', 'pathcheck', 'clean', 'stage=', 'trace=', 'verbose'])
-	except getopt.GetoptError:
-		usage()
+	argparser = argparse.ArgumentParser(
+		description='Build and verify script for Adventures in JavasSript')
+	argparser.add_argument('--stage',
+		help = 'The stage id to process. Use "all" for all stages.')
+	argparser.add_argument('--clean', required=False, action='store_true',
+		help = 'True to delete previous files before beginning.')
+	argparser.add_argument('--verbose', required=False, action='store_true',
+		help = 'True to print verbose output during processing.')
+	argparser.add_argument('--html', required=False, action='store_true',
+		help = 'True to generate html files.')
+	argparser.add_argument('--pathcheck', required=False, action='store_true',
+		help = 'True to verify paths between nodes are valid.')
+	argparser.add_argument('--trace',
+		help = 'Print additional debug trace info for this node.')
+	argparser.set_defaults(clean=False, verbose=False, html=False, pathcheck=False)
+	args = argparser.parse_args()
 
-	options = {
-		'html': False,
-		'pathcheck': False,
-		'trace': '',
-		'verbose': False,
-		'clean': False,
-	}
-
-	all_stages = False
-	stage = 1
-	for opt, arg in opts:
-		if opt in ('-h', '--html'):
-			options['html'] = True
-		elif opt in ('-o', '--pathcheck'):
-			options['pathcheck'] = True
-		elif opt in ('-c', '--clean'):
-			options['clean'] = True
-		elif opt in ('-s', '--stage'):
-			if arg == 'all':
-				all_stages = True
-			else:
-				stage = int(arg)
-		elif opt in ('-t', '--trace'):
-			options['trace'] = True
-		elif opt in ('-v', '--verbose'):
-			options['verbose'] = True
-
+	stage = 0
 	stages = []
-	if all_stages:
+	if args.stage == 'all':
 		stages = range(1, len(_stages)-1)
 	else:
+		stage = int(args.stage)
 		if stage <= 0 or stage >= len(_stages)-1:
 			error('Invalid stage %s' % stage)
 		stages.append(stage)
 
-	if options['clean']:
-		if all_stages:
-			if options['pathcheck']:
+	if args.clean:
+		if args.stage == 'all':
+			if args.pathcheck:
 				print 'Creating core snapshot files'
 				rm_dir('snapshots')
 				make_dir('snapshots')
 		else:
-			if options['pathcheck']:
+			if args.pathcheck:
 				rm_dir(os.path.join('snapshots', _book, _stages[stage][0]))
-			if options['html']:
+			if args.html:
 				rm_dir(os.path.join(_book, _stages[stage][0]))
 
-	if options['pathcheck']:
+	if args.pathcheck:
 		copy_core_snapshot_files()
-	if options['html']:
+	if args.html:
 		print 'Creating core HTML files'
-		create_main_html_files(options)
-		create_book_files(_book, options)
+		create_main_html_files(args)
+		create_book_files(_book, args)
 
 	errors = 0
 	init_globals()
 	for s in stages:
-		sg = StageGenerator(s, options)
+		sg = StageGenerator(s, args)
 		errors += sg.process()
 
-	print 'Errors:', errors
+	if errors == 0:
+		print 'Success!'
+	else:
+		print 'Errors:', errors
 
 if __name__ == '__main__':
 	main()
