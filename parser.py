@@ -433,7 +433,7 @@ class Parser(object):
 					reason = m.group(2)
 					target_link = target
 					if self.stage == None:
-						target_link = 'stage1/' + target
+						target_link = 'book01/stage1/' + target
 					fout.write('<p class="alert alert-info"><a href="%s.html"><span class="goto">GOTO %s</span></a> if you want to %s</p>\n' % (target_link, target, reason))
 					continue
 				m = re.match(r'(\d\d\d) IF_WANT_BADGE (.+)', d[1])

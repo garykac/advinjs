@@ -267,7 +267,6 @@ class StageGenerator(object):
 		errors = 0
 
 		if self.options['html']:
-			print 'Generating HTML pages'
 			make_dir(os.path.join(_book, self.stage_name))
 			for n in sorted(self.nodes):
 				errors += self.process_node_create_html(_book, self.stage_name, n)
@@ -684,8 +683,9 @@ def copy_core_snapshot_files():
 	distutils.dir_util.copy_tree('baseline', 'snapshots/book01/000')
 
 def create_main_html_files(options):
-	print 'Creating baseline.zip'
-	subprocess.call(['zip', '-r', 'baseline.zip', 'baseline'])
+	if options['clean']:
+		print 'Creating baseline.zip'
+		subprocess.call(['zip', '-r', 'baseline.zip', 'baseline'])
 
 	errors = 0
 	errors += process_html('src/index.txt', 'index.html', options)
@@ -696,11 +696,12 @@ def create_main_html_files(options):
 		error('Error processing core html files')
 
 def create_book_files(book, options):
-	print 'Creating images.zip'
-	subprocess.call(
-			['zip', '-r', 'images.zip', 'images',
-				'-i', '*.png'],
-			cwd = book)
+	if options['clean']:
+		print 'Creating images.zip'
+		subprocess.call(
+				['zip', '-r', 'images.zip', 'images',
+					'-i', '*.png'],
+				cwd = book)
 
 	errors = process_html('src/%s/images.txt' % book, '%s/images.html' % book, options)
 	if errors != 0:
@@ -762,9 +763,9 @@ def main():
 		'pathcheck': False,
 		'trace': '',
 		'verbose': False,
+		'clean': False,
 	}
 
-	clean = False
 	all_stages = False
 	stage = 1
 	for opt, arg in opts:
@@ -773,7 +774,7 @@ def main():
 		elif opt in ('-o', '--pathcheck'):
 			options['pathcheck'] = True
 		elif opt in ('-c', '--clean'):
-			clean = True
+			options['clean'] = True
 		elif opt in ('-s', '--stage'):
 			if arg == 'all':
 				all_stages = True
@@ -792,23 +793,23 @@ def main():
 			error('Invalid stage %s' % stage)
 		stages.append(stage)
 
-	if clean:
+	if options['clean']:
 		if all_stages:
 			if options['pathcheck']:
 				print 'Creating core snapshot files'
 				rm_dir('snapshots')
 				make_dir('snapshots')
 				copy_core_snapshot_files()
-			if options['html']:
-				print 'Creating core HTML files'
-				create_main_html_files(options)
 		else:
 			if options['pathcheck']:
 				rm_dir(os.path.join('snapshots', _book, _stages[stage][0]))
 			if options['html']:
 				rm_dir(os.path.join(_book, _stages[stage][0]))
 
-	create_book_files(_book, options)
+	if options['html']:
+		print 'Creating core HTML files'
+		create_main_html_files(options)
+		create_book_files(_book, options)
 
 	errors = 0
 	init_globals()
