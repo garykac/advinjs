@@ -13,7 +13,7 @@ class Parser(object):
 		# A stack of parse modes.
 		self.parse_mode = ['top']
 
-		self.stage = ''
+		self.stage = None
 
 		# The full id of the node, with any badge annotations appended to the
 		# base node name.
@@ -280,7 +280,7 @@ class Parser(object):
 			self.add_data('TASK_LIST_ITEM_END', '')
 			return True
 
-		if self.stage == '':
+		if self.stage == None:
 			if re.match(r'H1 ', line):
 				self.add_data('H1', line[3:])
 				return True
@@ -350,15 +350,13 @@ class Parser(object):
 	# -----------
 
 	def print_html(self, outfile):
-		if outfile == None:
-			outfile = os.path.join('html', self.stage, self.nodeid + '.html')
 		try:
 			fout = open(outfile, 'w')
 		except IOError as e:
 			self.error('Unable to open "%s" for writing: %s' % (outfile, e))
 
 		self.print_html_header(fout)
-		if self.stage != '':
+		if self.stage != None:
 			fout.write('<h1>%s : %s</h1>\n' % (self.id, self.title))
 
 		for d in self.data:
@@ -434,7 +432,7 @@ class Parser(object):
 					target = m.group(1)
 					reason = m.group(2)
 					target_link = target
-					if self.stage == '':
+					if self.stage == None:
 						target_link = 'stage1/' + target
 					fout.write('<p class="alert alert-info"><a href="%s.html"><span class="goto">GOTO %s</span></a> if you want to %s</p>\n' % (target_link, target, reason))
 					continue
@@ -475,7 +473,7 @@ class Parser(object):
 					if len(extra) != 0:
 						self.error('Unknown format: GOTO "%s"' % d[1])
 					target_link = target
-					if self.stage == '':
+					if self.stage == None:
 						target_link = 'stage1/' + target
 					fout.write('<p class="alert alert-info"><a href="%s.html"><span class="goto">GOTO %s</span></a></p>\n' % (target_link, target))
 					continue
@@ -649,7 +647,7 @@ class Parser(object):
 	def print_html_header(self, fout):
 		fout.write('<html>\n')
 		fout.write('<head>\n')
-		if self.stage == '':
+		if self.stage == None:
 			fout.write('<title>%s</title>\n' % (self.title))
 		else:
 			fout.write('<title>%s : %s</title>\n' % (self.id, self.title))

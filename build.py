@@ -802,13 +802,13 @@ def main():
 			if options['html']:
 				print 'Creating core HTML files'
 				create_main_html_files(options)
-		#else:
-		#	if options['pathcheck']:
-		#		rm_dir(os.path.join('snapshots', _stages[stage][0]))
-		#	if options['html']:
-		#		rm_dir(os.path.join('html', _stages[stage][0]))
+		else:
+			if options['pathcheck']:
+				rm_dir(os.path.join('snapshots', _book, _stages[stage][0]))
+			if options['html']:
+				rm_dir(os.path.join(_book, _stages[stage][0]))
 
-	#create_book_files(_book, options)
+	create_book_files(_book, options)
 
 	errors = 0
 	init_globals()
