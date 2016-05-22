@@ -273,7 +273,7 @@ class StageGenerator(object):
 				errors += self.process_node_create_html(_book, self.stage_name, n)
 		if self.options['pathcheck']:
 			print 'Verifying paths'
-			errors += self.verify_paths()
+			errors += self.verify_paths(_book)
 
 		#for t in sorted(self.titles.keys()):
 		#	print t, self.titles[t]
@@ -430,13 +430,13 @@ class StageGenerator(object):
 
 		return errors
 
-	def process_node_path(self, stage_src, src, stage_dst, dst, node_path):
+	def process_node_path(self, book, stage_src, src, stage_dst, dst, node_path):
 		if self.options['verbose']:
 			print 'path %s -> %s' % (src, dst)
 		#print node_path
 		errors = 0
 
-		copy_snapshot_dir(stage_src, src, stage_dst, dst)
+		copy_snapshot_dir(book, stage_src, src, stage_dst, dst)
 
 		node = dst[0:3]
 		file = node + '.txt'
@@ -465,7 +465,7 @@ class StageGenerator(object):
 
 	# Verify paths
 
-	def verify_paths(self):
+	def verify_paths(self, book):
 		errors = 0
 		self.calc_path_checks()
 
@@ -477,14 +477,14 @@ class StageGenerator(object):
 
 			if check == 'TRANS':
 				node_path = path[3]
-				self.process_node_path(self.stage_name, src, self.stage_name, tgt, node_path)
+				self.process_node_path(book, self.stage_name, src, self.stage_name, tgt, node_path)
 			elif check == 'TRANS_BASE':
 				node_path = path[3]
-				self.process_node_path(_stages[self.id-1][0], src, self.stage_name, tgt, node_path)
+				self.process_node_path(book, _stages[self.id-1][0], src, self.stage_name, tgt, node_path)
 			elif check == 'EQ':
 				errors += self.check_equal(src, tgt)
 			elif check == 'COPY':
-				copy_snapshot_dir(self.stage_name, src, self.stage_name, tgt)
+				copy_snapshot_dir(book, self.stage_name, src, self.stage_name, tgt)
 			else:
 				error('Unknown check: %s' % check)
 		return errors
@@ -673,15 +673,15 @@ def rm_dir(dir):
 	if os.path.exists(dir):
 		shutil.rmtree(dir)
 
-def copy_snapshot_dir(stage_src, src, stage_dst, dst):
-	snapshot_src = os.path.join('snapshots', stage_src, src)
-	snapshot_dst = os.path.join('snapshots', stage_dst, dst)
+def copy_snapshot_dir(book, stage_src, src, stage_dst, dst):
+	snapshot_src = os.path.join('snapshots', book, stage_src, src)
+	snapshot_dst = os.path.join('snapshots', book, stage_dst, dst)
 
 	# Copy from dir so we can update it
 	distutils.dir_util.copy_tree(snapshot_src, snapshot_dst)
 
 def copy_core_snapshot_files():
-	distutils.dir_util.copy_tree('data/baseline', 'snapshots/000')
+	distutils.dir_util.copy_tree('baseline', 'snapshots/book01/000')
 
 def create_main_html_files(options):
 	print 'Creating baseline.zip'
@@ -796,13 +796,11 @@ def main():
 		if all_stages:
 			if options['pathcheck']:
 				print 'Creating core snapshot files'
-				#rm_dir('snapshots')
-				#make_dir('snapshots')
-				#copy_core_snapshot_files()
+				rm_dir('snapshots')
+				make_dir('snapshots')
+				copy_core_snapshot_files()
 			if options['html']:
 				print 'Creating core HTML files'
-				#rm_dir('html')
-				#make_dir('html')
 				create_main_html_files(options)
 		#else:
 		#	if options['pathcheck']:
