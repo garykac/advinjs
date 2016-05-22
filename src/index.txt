@@ -11,10 +11,10 @@ H2 About
 INFO <strong>Adventures in JavaScript</strong> is a "branching path book" that shows you how to write a canvas-based JavaScript game (a classic platform-jumping game) during the course of the adventure.
 
 BEGIN_SCREENSHOT_TABLE
-SCREENSHOT_TABLE_IMAGE screenshots/level0-title.png 206x150 Title screen
-SCREENSHOT_TABLE_IMAGE screenshots/level1.png 206x150 Level 1
-SCREENSHOT_TABLE_IMAGE screenshots/level2.png 206x150 Level 2
-SCREENSHOT_TABLE_IMAGE screenshots/level3.png 206x150 Level 3
+SCREENSHOT_TABLE_IMAGE book01/screenshots/level0-title.png 206x150 Title screen
+SCREENSHOT_TABLE_IMAGE book01/screenshots/level1.png 206x150 Level 1
+SCREENSHOT_TABLE_IMAGE book01/screenshots/level2.png 206x150 Level 2
+SCREENSHOT_TABLE_IMAGE book01/screenshots/level3.png 206x150 Level 3
 END_SCREENSHOT_TABLE
 
 INFO Unlike most branching path books, there are no wrong paths in this book. The choices merely determine the order in which you perform the various tasks necessary for the game. Two adventurers who choose different paths through this book will still end up in the same place at the end - they will both have created the same sample game.

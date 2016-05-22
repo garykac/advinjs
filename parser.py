@@ -45,6 +45,7 @@ class Parser(object):
 		#print node, dst
 		self.images = images
 		filename = os.path.join(stage, file)
+		self.dir_depth = 1
 		if not os.path.isfile(filename):
 			self.error('File "%s" doesn\'t exist' % filename)
 
@@ -64,6 +65,8 @@ class Parser(object):
 		self.name = name
 		self.nodename = name
 		self.images = images
+		self.dir_depth = len(infile.split('/')) - 2
+
 		if not os.path.isfile(infile):
 			self.error('File "%s" doesn\'t exist' % infile)
 
@@ -602,6 +605,8 @@ class Parser(object):
 					width = m.group(2)
 					height = m.group(3)
 					caption = m.group(4)
+					if not os.path.exists(file):
+						self.error('Screenshot image does not exist: %s' % file)
 					fout.write('<div class="%s"><div class="image-table">\n' % self.image_table_class)
 					fout.write('<a href="%s"><img class="screenshot" src="%s" width="%s" height="%s" /></a>\n' % (file, file, width, height))
 					fout.write('<div class="caption"><p align="center">%s</p></div>\n' % caption)
@@ -663,12 +668,8 @@ class Parser(object):
 			fout.write('<title>%s : %s</title>\n' % (self.id, self.title))
 		fout.write('\n')
 
-		if self.stage == '':
-			fout.write('<link rel="stylesheet" href="css/bootstrap.min.css">\n')
-			fout.write('<link type="text/css" rel="stylesheet" href="css/style.css" />\n')
-		else:
-			fout.write('<link rel="stylesheet" href="../css/bootstrap.min.css">\n')
-			fout.write('<link type="text/css" rel="stylesheet" href="../css/style.css" />\n')
+		fout.write('<link rel="stylesheet" href="%scss/bootstrap.min.css">\n' % ('../' * self.dir_depth))
+		fout.write('<link type="text/css" rel="stylesheet" href="%scss/style.css" />\n' % ('../' * self.dir_depth))
 
 		# Used for title and navbar: Trade Winds is for Adventure and Sacramento is the script font.
 		fout.write("<link href='http://fonts.googleapis.com/css?family=Trade+Winds' rel='stylesheet' type='text/css'>\n")

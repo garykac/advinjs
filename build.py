@@ -680,6 +680,9 @@ def copy_core_snapshot_files():
 	distutils.dir_util.copy_tree('data/baseline', 'snapshots/000')
 
 def create_main_html_files(options):
+	print 'Creating baseline.zip'
+	subprocess.call(['zip', '-r', 'baseline.zip', 'baseline'])
+
 	errors = 0
 	errors += process_html('src/index.txt', 'index.html', options)
 	errors += process_html('src/baseline.txt', 'baseline.html', options)
@@ -688,19 +691,14 @@ def create_main_html_files(options):
 	if errors != 0:
 		error('Error processing core html files')
 
-def create_stage_files(options):
-	print 'Creating baseline.zip'
-	subprocess.call(
-			['zip', '-r', '../html/baseline.zip', 'baseline'],
-			cwd = 'data')
-
+def create_book_files(book, options):
 	print 'Creating images.zip'
 	subprocess.call(
-			['zip', '-r', '../html/images.zip', 'images',
+			['zip', '-r', 'images.zip', 'images',
 				'-i', '*.png'],
-			cwd = 'data')
+			cwd = book)
 
-	errors = process_html('images', options)
+	errors = process_html('src/%s/images.txt' % book, '%s/images.html' % book, options)
 	if errors != 0:
 		error('Error processing core html files')
 
@@ -808,10 +806,11 @@ def main():
 		#	if options['html']:
 		#		rm_dir(os.path.join('html', _stages[stage][0]))
 
+	create_book_files(_book, options)
+
 	errors = 0
 	init_globals()
 	for s in stages:
-		#create_stage_files(options)
 		sg = StageGenerator(s, options)
 		#errors += sg.process()
 
