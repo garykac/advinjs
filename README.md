@@ -4,6 +4,6 @@
 write a canvas-based JavaScript game (a classic platform-jumping game)
 during the course of the adventure.
 
-[Click here to begin](http://garykac.github.io/advinjs/book01/html/index.html)
+[Click here to begin](http://garykac.github.io/advinjs/index.html)
 
-![](http://garykac.github.io/advinjs/book01/html/screenshots/level0-title.png)
+![](http://garykac.github.io/advinjs/book01/screenshots/level0-title.png)
