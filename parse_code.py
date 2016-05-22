@@ -3,22 +3,22 @@ import re
 import shutil
 
 class Parse_Code(object):
-	def __init__(self, parser, modename, options):
+	def __init__(self, parser, modename, verify, options):
 		self.parser = parser
 		self.modename = modename
 		self.options = options
 
 		self.begin_code = 'BEGIN_CODE'
 		self.begin_code_info = ''
-		
-		self.debug = options['debug']
-		self.verify = options['verify']
-		
+
+		self.debug = options.debug
+		self.verify = verify
+
 		self.prefix = set(['.', '+', '>', '-'])
 		self.lines = []
 
 	def match_toplevel(self, line):
-		p = self.parser		
+		p = self.parser
 		if re.match('BEGIN_CODE', line):
 			self.begin_code = 'BEGIN_CODE'
 			self.begin_code_info = ''
@@ -31,7 +31,7 @@ class Parse_Code(object):
 		return False
 
 	def start_parse_mode(self):
-		p = self.parser		
+		p = self.parser
 		p.enter_mode(self.modename)
 		self.lines = []
 		return True
@@ -49,7 +49,7 @@ class Parse_Code(object):
 				end_code_info = line[15:]
 			elif line != 'END_CODE':
 				p.error('Unrecognized END_CODE line: %s' % line)
-			
+
 		if end_code != '':
 			if self.verify:
 				self.process_code()
@@ -58,7 +58,7 @@ class Parse_Code(object):
 			p.add_data(end_code, end_code_info)
 			p.exit_mode(self.modename)
 			return True
-		
+
 		first = line[0]
 		if not first in self.prefix:
 			p.error('Unexpected code: %s' % line)
@@ -66,7 +66,7 @@ class Parse_Code(object):
 		return True
 
 	## Private
-	
+
 	def function_signature_match(self, line, line_pattern):
 		m1 = re.match(r'function (.+)\(.*\) {', line)
 		m2 = re.match(r'function (.+)\(\.\.\.\) {', line_pattern)
@@ -75,11 +75,11 @@ class Parse_Code(object):
 				print m1.group(1)
 			return m1.group(1) == m2.group(1)
 		return False
-	
+
 	def process_code(self):
 		p = self.parser
 
-		source_file = os.path.join('snapshots', p.stage, p.name, 'script.js')
+		source_file = os.path.join('snapshots', p.book, p.stage, p.fullnodeid, 'script.js')
 		if not os.path.isfile(source_file):
 			p.error('File "%s" doesn\'t exist' % source_file)
 		try:
@@ -87,7 +87,7 @@ class Parse_Code(object):
 		except IOError as e:
 			p.error('Unable to open "%s": %s' % (fin, e))
 
-		dst_file = os.path.join('snapshots', p.stage, p.name, 'script2.js')
+		dst_file = os.path.join('snapshots', p.book, p.stage, p.fullnodeid, 'script2.js')
 		try:
 			fout = open(dst_file, 'w')
 		except IOError as e:
@@ -96,7 +96,7 @@ class Parse_Code(object):
 		first_mode = self.lines[0][0]
 		if first_mode != '.' and first_mode != '-':
 			p.error('First line mode must be . or -: %s' % first_mode)
-			
+
 		match_index = 0;
 		match_mode = 'search'
 		for line in fin:
@@ -104,7 +104,7 @@ class Parse_Code(object):
 
 			if match_index >= len(self.lines):
 				match_mode = 'done'
-			
+
 			if match_mode == 'done':
 				fout.write('%s\n' % line)
 			else:
@@ -199,17 +199,17 @@ class Parse_Code(object):
 						match_index += 1
 					if write_line:
 						fout.write('%s\n' % line)
-					
-		
+
+
 		fin.close()
 		fout.close()
-		
+
 		if self.debug:
 			print 'completed match'
 
 		if match_mode != 'done':
 			print self.lines
 			p.error('Failed to match')
-				
+
 		# Replace original file with new one.
 		shutil.move(dst_file, source_file)

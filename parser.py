@@ -6,12 +6,14 @@ import sys
 from parse_code import Parse_Code
 
 class Parser(object):
-	def __init__(self):
+	def __init__(self, options, verify_code=False):
 
 		self.data = []
 
 		# A stack of parse modes.
 		self.parse_mode = ['top']
+
+		self.book = None
 
 		self.stage = None
 
@@ -29,12 +31,8 @@ class Parser(object):
 		self.current_file = ''
 		self.current_line = 0
 
-		self.options = {
-			'debug': True,
-			'verify': False,
-		}
 		# Top-level parsers.
-		self.parse_code = Parse_Code(self, 'code', self.options)
+		self.parse_code = Parse_Code(self, 'code', verify_code, options)
 
 		self.parsers = [
 			self.parse_code,
@@ -244,6 +242,7 @@ class Parser(object):
 			path = line[10:]
 			self.add_data('COPY_FILE', path)
 			src = os.path.join(self.book, path)
+			print self.nodeid, 'copy'
 			#dst = os.path.join('snapshots', self.stage, self.fullnodeid, path)
 			#dir = os.path.dirname(dst)
 			#if not os.path.exists(dir):

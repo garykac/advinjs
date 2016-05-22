@@ -412,7 +412,7 @@ class StageGenerator(object):
 		infile = os.path.join('src', book, stage, nodeid + '.txt')
 		success = True
 		try:
-			parser = Parser()
+			parser = Parser(self.options)
 			if not parser.parse(infile, nodeid, _images, book=book, stage=stage, todo=True):
 				success = False
 		except Exception as e:
@@ -467,7 +467,7 @@ class StageGenerator(object):
 		success = True
 
 		try:
-			parser = Parser()
+			parser = Parser(self.options, verify_code=True)
 			if not parser.parse(infile, nodeid, _images, book=book, stage=stage_dst, fullnodeid=dst):
 				success = False
 		except:
@@ -720,7 +720,7 @@ def process_html(infile, outfile, options):
 	if options.verbose:
 		print '  %s -> html' % infile
 	try:
-		parser = Parser()
+		parser = Parser(options)
 		if not parser.parse(infile, name, _images):
 			print 'Failure during parse_main'
 			success = False
@@ -753,6 +753,10 @@ def main():
 		help = 'True to generate html files.')
 	argparser.add_argument('--pathcheck', required=False, action='store_true',
 		help = 'True to verify paths between nodes are valid.')
+	argparser.add_argument('--fullsnapshot', required=False, action='store_true',
+		help = 'True to record a full snapshot (including file copies) during pathcheck.')
+	argparser.add_argument('--debug',
+		help = 'Print additional debug info.')
 	argparser.add_argument('--trace',
 		help = 'Print additional debug trace info for this node.')
 	argparser.set_defaults(clean=False, verbose=False, html=False, pathcheck=False)
