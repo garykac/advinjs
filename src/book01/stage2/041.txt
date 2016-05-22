@@ -12,7 +12,7 @@ BEGIN_CODE_INFO Add =game_over= variable.
 +	_game.game_over = false;
 .	_game.platform = create_platform(0, 360, _game.width, 40);
 .	_game.goal = create_goal(500, 360);
-.	
+.
 .	// Global world parameters.
 .	...
 .}
@@ -22,7 +22,7 @@ B: Now that we have this variable, we can set it to =true= when the player touch
 
 B: We can add a =check_goal_collisions()= function to detect when the player collides with the goal object. If that happens, we set the =game_over= flag to =true=.
 
-B: We're also temporarily adding a "dummy" version of the =collide()= function. This dummy version does nothing except return =false= (meaning no collision found). We'll be creating a proper version of =collide()= once we finish hooking up the goal collision code.
+B: We're also temporarily adding a "dummy" version of the =collide()= function. This dummy version does nothing except return =false= (meaning no collision found). We'll be creating a proper version of =collide()= once we finish hooking up the goal collision code. We'll add a "NYI" comment to indicate that it's "Not Yet Implemented".
 
 BEGIN_CODE_INFO Create the =check_goal_collisions()= function.
 .function check_input() {
@@ -38,6 +38,7 @@ BEGIN_CODE_INFO Create the =check_goal_collisions()= function.
 +
 +// Return true if the 2 objects overlap.
 +function collide(obj1, obj2) {
++	// NYI
 +	return false;
 +}
 +
@@ -73,7 +74,7 @@ BEGIN_CODE
 .	update_player();
 +	check_collisions();
 .	draw();
-.	
+.
 .	requestAnimationFrame(update_world);
 .}
 END_CODE

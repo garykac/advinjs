@@ -6,6 +6,7 @@ TODO text
 BEGIN_CODE
 .// Return true if the 2 objects overlap.
 .function collide(obj1, obj2) {
+-	// NYI
 +	if ((obj1.x - obj1.origin_x + obj1.width) <= (obj2.x - obj2.origin_x))
 +		return false;
 +	if ((obj1.y - obj1.origin_y + obj1.height) <= (obj2.y - obj2.origin_y))

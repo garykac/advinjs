@@ -27,7 +27,6 @@ Note when it's OK to run and check the code
 	Add error messages
 when game_win is added, give more context so it isn't added to monster collide
 028 mention only jump once
-043 mention that collide is not implemented yet
 
 check for links that are never used
 
