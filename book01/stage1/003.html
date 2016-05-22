@@ -2,8 +2,8 @@
 <head>
 <title>003 : Adding a base platform</title>
 
-<link rel="stylesheet" href="../css/bootstrap.min.css">
-<link type="text/css" rel="stylesheet" href="../css/style.css" />
+<link rel="stylesheet" href="../../css/bootstrap.min.css">
+<link type="text/css" rel="stylesheet" href="../../css/style.css" />
 <link href='http://fonts.googleapis.com/css?family=Trade+Winds' rel='stylesheet' type='text/css'>
 <link href='http://fonts.googleapis.com/css?family=Sacramento' rel='stylesheet' type='text/css'>
 <link href='http://fonts.googleapis.com/css?family=Piedra' rel='stylesheet' type='text/css'>
@@ -45,15 +45,15 @@
 <span class="context">    ...</span>
 <span class="context">}</span>
 <span class="context"></span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add">function create_platform(x, y, width, height) {</span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add">    var p = {};</span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add">    p.x = x;</span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add">    p.y = y;</span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add">    p.width = width;</span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add">    p.height = height;</span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add">    return p;</span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add">}</span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add"></span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">function create_platform(x, y, width, height) {</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">    var p = {};</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">    p.x = x;</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">    p.y = y;</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">    p.width = width;</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">    p.height = height;</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">    return p;</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">}</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add"></span>
 <span class="context">// Erase the canvas and draw all the objects.</span>
 <span class="context">function draw() {</span>
 <span class="context">    ...</span>
@@ -73,9 +73,9 @@
 <span class="context">    ...</span>
 <span class="context">    // The keymap keeps track of which keys are currently being pressed.</span>
 <span class="context">    _game.keymap = {};</span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add"></span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add">    // Game state.</span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add">    _game.platform = create_platform(0, 360, _game.width, 40);</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add"></span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">    // Game state.</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">    _game.platform = create_platform(0, 360, _game.width, 40);</span>
 <span class="context">}</span>
 </div>
 <div class="panel-code-footer">Run your code in a browser and verify that there are no errors.</div></div>
@@ -92,7 +92,7 @@
 <span class="context">    var ctx = canvas.getContext("2d");</span>
 <span class="context"></span>
 <span class="context">    erase(ctx);</span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add">    draw_platforms(ctx);</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">    draw_platforms(ctx);</span>
 <span class="context">    draw_player(ctx);</span>
 <span class="context">}</span>
 </div>
@@ -106,13 +106,13 @@
 <span class="context">    ...</span>
 <span class="context">}</span>
 <span class="context"></span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add">// Draw the platforms.</span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add">function draw_platforms(ctx) {</span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add">    var platform = _game.platform;</span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add">    ctx.fillStyle = "rgb(153, 102, 51)";</span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add">    ctx.fillRect(platform.x, platform.y, platform.width, platform.height);</span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add">}</span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add"></span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">// Draw the platforms.</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">function draw_platforms(ctx) {</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">    var platform = _game.platform;</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">    ctx.fillStyle = "rgb(153, 102, 51)";</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">    ctx.fillRect(platform.x, platform.y, platform.width, platform.height);</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">}</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add"></span>
 <span class="context">// Draw the player.</span>
 <span class="context">function draw_player(ctx) {</span>
 <span class="context">    ...</span>

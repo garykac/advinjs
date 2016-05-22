@@ -2,8 +2,8 @@
 <head>
 <title>370 : Adding pain</title>
 
-<link rel="stylesheet" href="../css/bootstrap.min.css">
-<link type="text/css" rel="stylesheet" href="../css/style.css" />
+<link rel="stylesheet" href="../../css/bootstrap.min.css">
+<link type="text/css" rel="stylesheet" href="../../css/style.css" />
 <link href='http://fonts.googleapis.com/css?family=Trade+Winds' rel='stylesheet' type='text/css'>
 <link href='http://fonts.googleapis.com/css?family=Sacramento' rel='stylesheet' type='text/css'>
 <link href='http://fonts.googleapis.com/css?family=Piedra' rel='stylesheet' type='text/css'>
@@ -52,13 +52,13 @@
 <span class="context">    _player.platform = null;</span>
 <span class="context">    _player.health_max = 50;</span>
 <span class="context">    _player.health = _player.health_max;</span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add">    _player.is_touching_monster = false;</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">    _player.is_touching_monster = false;</span>
 <span class="context">    _player.coins = 0;</span>
 <span class="context">    _player.dir = 1;</span>
 <span class="context">    ...</span>
 <span class="context">    _player.sprite = init_player_sprite("normal", 20, 24);</span>
 <span class="context">    _player.sprite_sad = init_player_sprite("sad", 30, 17);</span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add">    _player.sprite_ooo = init_player_sprite("ooo", 20, 24);</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">    _player.sprite_ooo = init_player_sprite("ooo", 20, 24);</span>
 <span class="context">    _player.sprite_happy = init_player_sprite("happy", 20, 24);</span>
 <span class="context">    update_player_sprite();</span>
 <span class="context">}</span>
@@ -72,8 +72,8 @@
 <span class="context">        sprite = _player.sprite_sad;</span>
 <span class="context">    } else if (_game.game_win) {</span>
 <span class="context">        sprite = _player.sprite_happy;</span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add">    } else if (_player.is_touching_monster) {</span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add">        sprite = _player.sprite_ooo;</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">    } else if (_player.is_touching_monster) {</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">        sprite = _player.sprite_ooo;</span>
 <span class="context">    } else {</span>
 <span class="context">        sprite = _player.sprite;</span>
 <span class="context">    }</span>
@@ -87,12 +87,12 @@
 <span class="context">    var level = _levels[_game.current_level];</span>
 <span class="context">    var monsters = level.monsters;</span>
 <span class="context">    var damage = 0;</span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add">    _player.is_touching_monster = false;</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">    _player.is_touching_monster = false;</span>
 <span class="context">    for (var i = 0; i < monsters.length; i++) {</span>
 <span class="context">        var m = monsters[i];</span>
 <span class="context">        if (collide(m, _player)) {</span>
 <span class="context">            damage++;</span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add">            _player.is_touching_monster = true;</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">            _player.is_touching_monster = true;</span>
 <span class="context">        }</span>
 <span class="context">    }</span>
 <span class="context">    if (damage != 0) {</span>

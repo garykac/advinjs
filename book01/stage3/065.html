@@ -2,8 +2,8 @@
 <head>
 <title>065 : Finish monster init</title>
 
-<link rel="stylesheet" href="../css/bootstrap.min.css">
-<link type="text/css" rel="stylesheet" href="../css/style.css" />
+<link rel="stylesheet" href="../../css/bootstrap.min.css">
+<link type="text/css" rel="stylesheet" href="../../css/style.css" />
 <link href='http://fonts.googleapis.com/css?family=Trade+Winds' rel='stylesheet' type='text/css'>
 <link href='http://fonts.googleapis.com/css?family=Sacramento' rel='stylesheet' type='text/css'>
 <link href='http://fonts.googleapis.com/css?family=Piedra' rel='stylesheet' type='text/css'>
@@ -37,17 +37,17 @@
 <span class="context">    ...</span>
 <span class="context">}</span>
 <span class="context"></span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add">function create_monster(x, y, width, height) {</span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add">    var m = {};</span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add">    m.x = x;</span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add">    m.y = y;</span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add">    m.width = width;</span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add">    m.height = height;</span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add">    m.origin_x = m.width / 2;</span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add">    m.origin_y = m.height;</span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add">    return m;</span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add">}</span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add"></span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">function create_monster(x, y, width, height) {</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">    var m = {};</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">    m.x = x;</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">    m.y = y;</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">    m.width = width;</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">    m.height = height;</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">    m.origin_x = m.width / 2;</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">    m.origin_y = m.height;</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">    return m;</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">}</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add"></span>
 <span class="context">function create_goal(x, y) {</span>
 <span class="context">    ...</span>
 <span class="context">}</span>
@@ -59,15 +59,15 @@
 <span class="context">    ...</span>
 <span class="context">}</span>
 <span class="context"></span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add">function draw_monsters(ctx) {</span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add">    var monsters = _game.monsters;</span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add">    for (var i = 0; i < monsters.length; i++) {</span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add">        var m = monsters[i];</span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add">        ctx.fillStyle = "#800000";</span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add">        ctx.fillRect(m.x - m.origin_x, m.y - m.origin_y, m.width, m.height);</span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add">    }</span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add">}</span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add"></span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">function draw_monsters(ctx) {</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">    var monsters = _game.monsters;</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">    for (var i = 0; i < monsters.length; i++) {</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">        var m = monsters[i];</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">        ctx.fillStyle = "#800000";</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">        ctx.fillRect(m.x - m.origin_x, m.y - m.origin_y, m.width, m.height);</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">    }</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">}</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add"></span>
 <span class="context">function draw_goal(ctx) {</span>
 <span class="context">    ...</span>
 <span class="context">}</span>
@@ -80,7 +80,7 @@
 <span class="context">    erase(ctx);</span>
 <span class="context">    draw_platforms(ctx);</span>
 <span class="context">    draw_goal(ctx);</span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add">    draw_monsters(ctx);</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">    draw_monsters(ctx);</span>
 <span class="context">    draw_player(ctx);</span>
 <span class="context">    ...</span>
 <span class="context">}</span>

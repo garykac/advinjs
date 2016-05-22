@@ -2,8 +2,8 @@
 <head>
 <title>215 : Platform bitmaps</title>
 
-<link rel="stylesheet" href="../css/bootstrap.min.css">
-<link type="text/css" rel="stylesheet" href="../css/style.css" />
+<link rel="stylesheet" href="../../css/bootstrap.min.css">
+<link type="text/css" rel="stylesheet" href="../../css/style.css" />
 <link href='http://fonts.googleapis.com/css?family=Trade+Winds' rel='stylesheet' type='text/css'>
 <link href='http://fonts.googleapis.com/css?family=Sacramento' rel='stylesheet' type='text/css'>
 <link href='http://fonts.googleapis.com/css?family=Piedra' rel='stylesheet' type='text/css'>
@@ -60,14 +60,14 @@
 <span class="context">    ...</span>
 <span class="context">    add_default_platforms(level);</span>
 <span class="context">    var platform_data = [</span>
-<img src="../css/cross.png" width="15" height="15"/><span class="delete">        [200, 290, 80, 20],</span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add">        [200, 290, 80, 20, "dirt"],</span>
-<img src="../css/cross.png" width="15" height="15"/><span class="delete">        [300, 240, 80, 20],</span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add">        [300, 240, 80, 20, "block"],</span>
-<img src="../css/cross.png" width="15" height="15"/><span class="delete">        [400, 170, 80, 20],</span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add">        [400, 170, 80, 20, "block"],</span>
-<img src="../css/cross.png" width="15" height="15"/><span class="delete">        [460, 110, 40, 20],</span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add">        [460, 110, 40, 20, "dirt"],</span>
+<img src="../../css/cross.png" width="15" height="15"/><span class="delete">        [200, 290, 80, 20],</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">        [200, 290, 80, 20, "dirt"],</span>
+<img src="../../css/cross.png" width="15" height="15"/><span class="delete">        [300, 240, 80, 20],</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">        [300, 240, 80, 20, "block"],</span>
+<img src="../../css/cross.png" width="15" height="15"/><span class="delete">        [400, 170, 80, 20],</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">        [400, 170, 80, 20, "block"],</span>
+<img src="../../css/cross.png" width="15" height="15"/><span class="delete">        [460, 110, 40, 20],</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">        [460, 110, 40, 20, "dirt"],</span>
 <span class="context">    ];</span>
 <span class="context">    add_platforms(level, platform_data);</span>
 <span class="context">    ...</span>
@@ -79,35 +79,35 @@
 <div class="panel-code code"><span class="context">function add_default_platforms(level) {</span>
 <span class="context">    var platform_data = [</span>
 <span class="context">        // The bottom brick platform along the bottom of the stage.</span>
-<img src="../css/cross.png" width="15" height="15"/><span class="delete">        [0, 360, _game.width, 40],</span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add">        [0, 360, _game.width, 40, "brick"],</span>
+<img src="../../css/cross.png" width="15" height="15"/><span class="delete">        [0, 360, _game.width, 40],</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">        [0, 360, _game.width, 40, "brick"],</span>
 <span class="context">        // The left offstage 'wall' to keep the player on the stage.</span>
-<img src="../css/cross.png" width="15" height="15"/><span class="delete">        [-60, -_game.height, 60, 2*_game.height],</span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add">        [-60, -_game.height, 60, 2*_game.height, "#000000"],</span>
+<img src="../../css/cross.png" width="15" height="15"/><span class="delete">        [-60, -_game.height, 60, 2*_game.height],</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">        [-60, -_game.height, 60, 2*_game.height, "#000000"],</span>
 <span class="context">        // The right offstage 'wall' to keep the player on the stage.</span>
-<img src="../css/cross.png" width="15" height="15"/><span class="delete">        [_game.width, -_game.height, 60, 2*_game.height],</span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add">        [_game.width, -_game.height, 60, 2*_game.height, "#000000"],</span>
+<img src="../../css/cross.png" width="15" height="15"/><span class="delete">        [_game.width, -_game.height, 60, 2*_game.height],</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">        [_game.width, -_game.height, 60, 2*_game.height, "#000000"],</span>
 <span class="context">    ];</span>
 <span class="context">    add_platforms(level, platform_data);</span>
 <span class="context">}</span>
 </div>
 </div>
 <div class="panel panel-default">
-<div class="panel-code code"><img src="../css/cross.png" width="15" height="15"/><span class="delete">// platform_data: [x, y, width, height]</span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add">// platform_data: [x, y, width, height, pattern]</span>
+<div class="panel-code code"><img src="../../css/cross.png" width="15" height="15"/><span class="delete">// platform_data: [x, y, width, height]</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">// platform_data: [x, y, width, height, pattern]</span>
 <span class="context">function add_platforms(level, platform_data) {</span>
 <span class="context">    for (var i = 0; i < platform_data.length; i++) {</span>
 <span class="context">        var p = platform_data[i];</span>
-<img src="../css/cross.png" width="15" height="15"/><span class="delete">        var plat = create_platform(p[0], p[1], p[2], p[3]);</span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add">        var plat = create_platform(p[0], p[1], p[2], p[3], p[4]);</span>
+<img src="../../css/cross.png" width="15" height="15"/><span class="delete">        var plat = create_platform(p[0], p[1], p[2], p[3]);</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">        var plat = create_platform(p[0], p[1], p[2], p[3], p[4]);</span>
 <span class="context">        level.platforms.push(plat);</span>
 <span class="context">    }</span>
 <span class="context">}</span>
 </div>
 </div>
 <div class="panel panel-default">
-<div class="panel-code code"><img src="../css/cross.png" width="15" height="15"/><span class="delete">function create_platform(x, y, width, height) {</span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add">function create_platform(x, y, width, height, pattern) {</span>
+<div class="panel-code code"><img src="../../css/cross.png" width="15" height="15"/><span class="delete">function create_platform(x, y, width, height) {</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">function create_platform(x, y, width, height, pattern) {</span>
 <span class="context">    var p = {};</span>
 <span class="context">    p.x = x;</span>
 <span class="context">    p.y = y;</span>
@@ -115,16 +115,16 @@
 <span class="context">    p.height = height;</span>
 <span class="context">    p.origin_x = 0;</span>
 <span class="context">    p.origin_y = 0;</span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add">    p.dir = 1;</span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add"></span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add">    // If pattern begins with '#' then it's really a background color.</span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add">    if (pattern.charAt(0) == '#') {</span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add">        p.background_color = pattern;</span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add">    } else {</span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add">        p.pattern = new Image();</span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add">        p.pattern.src = _game.imagedir_backgrounds + pattern + ".png";</span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add">    }</span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add"></span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">    p.dir = 1;</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add"></span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">    // If pattern begins with '#' then it's really a background color.</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">    if (pattern.charAt(0) == '#') {</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">        p.background_color = pattern;</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">    } else {</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">        p.pattern = new Image();</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">        p.pattern.src = _game.imagedir_backgrounds + pattern + ".png";</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">    }</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add"></span>
 <span class="context">    return p;</span>
 <span class="context">}</span>
 </div>
@@ -136,21 +136,21 @@
 <span class="context">    var platforms = level.platforms;</span>
 <span class="context">    for (var i = 0; i < platforms.length; i++) {</span>
 <span class="context">        var platform = platforms[i];</span>
-<img src="../css/cross.png" width="15" height="15"/><span class="delete">        ctx.fillStyle = "rgb(153, 102, 51)";</span>
-<img src="../css/cross.png" width="15" height="15"/><span class="delete">        ctx.fillRect(platform.x, platform.y, platform.width, platform.height);</span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add"></span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add">        set_transform(ctx, platform);</span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add">        if (platform.background_color) {</span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add">            ctx.fillStyle = platform.background_color;</span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add">            ctx.fillRect(0, 0, platform.width, platform.height);</span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add">            ctx.strokeStyle = "rgba(0,0,0,0.5)";</span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add">            ctx.strokeRect(0, 0, platform.width, platform.height);</span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add">        } else {</span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add">            var pat = ctx.createPattern(platform.pattern, "repeat");</span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add">            ctx.fillStyle = pat;</span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add">            ctx.fillRect(0, 0, platform.width, platform.height);</span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add">        }</span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add">        reset_transform(ctx);</span>
+<img src="../../css/cross.png" width="15" height="15"/><span class="delete">        ctx.fillStyle = "rgb(153, 102, 51)";</span>
+<img src="../../css/cross.png" width="15" height="15"/><span class="delete">        ctx.fillRect(platform.x, platform.y, platform.width, platform.height);</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add"></span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">        set_transform(ctx, platform);</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">        if (platform.background_color) {</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">            ctx.fillStyle = platform.background_color;</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">            ctx.fillRect(0, 0, platform.width, platform.height);</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">            ctx.strokeStyle = "rgba(0,0,0,0.5)";</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">            ctx.strokeRect(0, 0, platform.width, platform.height);</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">        } else {</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">            var pat = ctx.createPattern(platform.pattern, "repeat");</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">            ctx.fillStyle = pat;</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">            ctx.fillRect(0, 0, platform.width, platform.height);</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">        }</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">        reset_transform(ctx);</span>
 <span class="context">    }</span>
 <span class="context">}</span>
 </div>

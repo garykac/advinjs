@@ -2,8 +2,8 @@
 <head>
 <title>046 : Use collide for jumps</title>
 
-<link rel="stylesheet" href="../css/bootstrap.min.css">
-<link type="text/css" rel="stylesheet" href="../css/style.css" />
+<link rel="stylesheet" href="../../css/bootstrap.min.css">
+<link type="text/css" rel="stylesheet" href="../../css/style.css" />
 <link href='http://fonts.googleapis.com/css?family=Trade+Winds' rel='stylesheet' type='text/css'>
 <link href='http://fonts.googleapis.com/css?family=Sacramento' rel='stylesheet' type='text/css'>
 <link href='http://fonts.googleapis.com/css?family=Piedra' rel='stylesheet' type='text/css'>
@@ -40,8 +40,8 @@
 <span class="context">    p.y = y;</span>
 <span class="context">    p.width = width;</span>
 <span class="context">    p.height = height;</span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add">    p.origin_x = 0;</span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add">    p.origin_y = 0;</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">    p.origin_x = 0;</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">    p.origin_y = 0;</span>
 <span class="context">    return p;</span>
 <span class="context">}</span>
 </div>
@@ -50,8 +50,8 @@
 <div class="panel panel-default">
 <div class="panel-code code"><span class="context">function check_platform_collisions() {</span>
 <span class="context">    _player.platform = false;</span>
-<img src="../css/cross.png" width="15" height="15"/><span class="delete">    if (_player.y > _game.platform.y) {</span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add">    if (collide(_game.platform, _player)) {</span>
+<img src="../../css/cross.png" width="15" height="15"/><span class="delete">    if (_player.y > _game.platform.y) {</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">    if (collide(_game.platform, _player)) {</span>
 <span class="context">        _player.platform = true;</span>
 <span class="context">        _player.y = _game.platform.y;</span>
 <span class="context">        _player.velocity_y = 0;</span>

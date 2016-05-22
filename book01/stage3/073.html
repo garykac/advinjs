@@ -2,8 +2,8 @@
 <head>
 <title>073 : Fixing the platforms</title>
 
-<link rel="stylesheet" href="../css/bootstrap.min.css">
-<link type="text/css" rel="stylesheet" href="../css/style.css" />
+<link rel="stylesheet" href="../../css/bootstrap.min.css">
+<link type="text/css" rel="stylesheet" href="../../css/style.css" />
 <link href='http://fonts.googleapis.com/css?family=Trade+Winds' rel='stylesheet' type='text/css'>
 <link href='http://fonts.googleapis.com/css?family=Sacramento' rel='stylesheet' type='text/css'>
 <link href='http://fonts.googleapis.com/css?family=Piedra' rel='stylesheet' type='text/css'>
@@ -38,28 +38,28 @@
 <span class="context">    var platforms = _game.platforms;</span>
 <span class="context">    _player.platform = null;</span>
 <span class="context">    for (var i = 0; i < platforms.length; i++) {</span>
-<img src="../css/cross.png" width="15" height="15"/><span class="delete">        if (collide(platforms[i], _player)) {</span>
-<img src="../css/cross.png" width="15" height="15"/><span class="delete">            _player.platform = platforms[i];</span>
-<img src="../css/cross.png" width="15" height="15"/><span class="delete">            _player.y = platforms[i].y;</span>
-<img src="../css/cross.png" width="15" height="15"/><span class="delete">            _player.velocity_y = 0;</span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add">        var overlap = collide(platforms[i], _player);</span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add">        if (overlap) {</span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add">            // Adjust player location so it no longer overlaps with platform.</span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add">            _player.x += overlap[0];</span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add">            _player.y += overlap[1];</span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add"></span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add">            var dir = overlap[2];</span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add">            if (dir == "left" || dir == "right") {</span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add">                // Smack into left/right side of platform.</span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add">                _player.velocity_x = 0;</span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add">            } else if (dir == "top") {</span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add">                // Land on top of platform.</span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add">                _player.platform = platforms[i];</span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add">                _player.velocity_y = 0;</span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add">            } else {</span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add">                // Bounce off bottom of platform.</span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add">                _player.velocity_y *= -1;</span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add">            }</span>
+<img src="../../css/cross.png" width="15" height="15"/><span class="delete">        if (collide(platforms[i], _player)) {</span>
+<img src="../../css/cross.png" width="15" height="15"/><span class="delete">            _player.platform = platforms[i];</span>
+<img src="../../css/cross.png" width="15" height="15"/><span class="delete">            _player.y = platforms[i].y;</span>
+<img src="../../css/cross.png" width="15" height="15"/><span class="delete">            _player.velocity_y = 0;</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">        var overlap = collide(platforms[i], _player);</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">        if (overlap) {</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">            // Adjust player location so it no longer overlaps with platform.</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">            _player.x += overlap[0];</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">            _player.y += overlap[1];</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add"></span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">            var dir = overlap[2];</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">            if (dir == "left" || dir == "right") {</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">                // Smack into left/right side of platform.</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">                _player.velocity_x = 0;</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">            } else if (dir == "top") {</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">                // Land on top of platform.</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">                _player.platform = platforms[i];</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">                _player.velocity_y = 0;</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">            } else {</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">                // Bounce off bottom of platform.</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">                _player.velocity_y *= -1;</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">            }</span>
 <span class="context">        }</span>
 <span class="context">    }</span>
 <span class="context">}</span>

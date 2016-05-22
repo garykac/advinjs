@@ -2,8 +2,8 @@
 <head>
 <title>135 : Key</title>
 
-<link rel="stylesheet" href="../css/bootstrap.min.css">
-<link type="text/css" rel="stylesheet" href="../css/style.css" />
+<link rel="stylesheet" href="../../css/bootstrap.min.css">
+<link type="text/css" rel="stylesheet" href="../../css/style.css" />
 <link href='http://fonts.googleapis.com/css?family=Trade+Winds' rel='stylesheet' type='text/css'>
 <link href='http://fonts.googleapis.com/css?family=Sacramento' rel='stylesheet' type='text/css'>
 <link href='http://fonts.googleapis.com/css?family=Piedra' rel='stylesheet' type='text/css'>
@@ -36,8 +36,8 @@
 <div class="name">Balthazar:</div><p class="balthazar">We have one key on each level that is used to unlock the goal. If the play does not have the key, they will not be able to enter the goal.</p>
 <div class="panel panel-default">
 <div class="panel-code code"><span class="context">function init_level_defaults(level) {</span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add">    level.player_has_key = false;</span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add"></span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">    level.player_has_key = false;</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add"></span>
 <span class="context">    level.player_start_x = 0;</span>
 <span class="context">    level.player_start_y = 0;</span>
 <span class="context"></span>
@@ -56,9 +56,9 @@
 <span class="context">        var item = items[i];</span>
 <span class="context">        if (!item.found) {</span>
 <span class="context">            if (collide(item, _player)) {</span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add">                if (item.type == "key") {</span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add">                    level.player_has_key = true;</span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add">                }</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">                if (item.type == "key") {</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">                    level.player_has_key = true;</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">                }</span>
 <span class="context">                item.found = true;</span>
 <span class="context">            }</span>
 <span class="context">        }</span>
@@ -71,8 +71,8 @@
 <div class="panel-code code"><span class="context">function check_goal_collisions() {</span>
 <span class="context">    var level = _levels[_game.current_level];</span>
 <span class="context">    var goal = level.goal;</span>
-<img src="../css/cross.png" width="15" height="15"/><span class="delete">    if (collide(goal, _player)) {</span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add">    if (collide(goal, _player) && level.player_has_key) {</span>
+<img src="../../css/cross.png" width="15" height="15"/><span class="delete">    if (collide(goal, _player)) {</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">    if (collide(goal, _player) && level.player_has_key) {</span>
 <span class="context">        start_level(goal.next_level);</span>
 <span class="context">    }</span>
 <span class="context">}</span>

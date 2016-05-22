@@ -2,8 +2,8 @@
 <head>
 <title>141 : If goal</title>
 
-<link rel="stylesheet" href="../css/bootstrap.min.css">
-<link type="text/css" rel="stylesheet" href="../css/style.css" />
+<link rel="stylesheet" href="../../css/bootstrap.min.css">
+<link type="text/css" rel="stylesheet" href="../../css/style.css" />
 <link href='http://fonts.googleapis.com/css?family=Trade+Winds' rel='stylesheet' type='text/css'>
 <link href='http://fonts.googleapis.com/css?family=Sacramento' rel='stylesheet' type='text/css'>
 <link href='http://fonts.googleapis.com/css?family=Piedra' rel='stylesheet' type='text/css'>
@@ -37,11 +37,11 @@
 <div class="panel-code code"><span class="context">function draw_goal(ctx) {</span>
 <span class="context">    var level = _levels[_game.current_level];</span>
 <span class="context">    var goal = level.goal;</span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add">    if (goal) {</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">    if (goal) {</span>
 <span class="indent">        ctx.fillStyle = "green";</span>
 <span class="indent">        ctx.fillRect(goal.x - goal.origin_x, goal.y - goal.origin_y,</span>
 <span class="indent">                        goal.width, goal.height);</span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add">    }</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">    }</span>
 <span class="context">}</span>
 </div>
 </div>
@@ -49,11 +49,11 @@
 <div class="panel-code code"><span class="context">function check_goal_collisions() {</span>
 <span class="context">    var level = _levels[_game.current_level];</span>
 <span class="context">    var goal = level.goal;</span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add">    if (goal) {</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">    if (goal) {</span>
 <span class="indent">        if (collide(goal, _player) && level.player_has_key) {</span>
 <span class="indent">            start_level(goal.next_level);</span>
 <span class="indent">        }</span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add">    }</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">    }</span>
 <span class="context">}</span>
 </div>
 </div>

@@ -2,8 +2,8 @@
 <head>
 <title>025 : Jump</title>
 
-<link rel="stylesheet" href="../css/bootstrap.min.css">
-<link type="text/css" rel="stylesheet" href="../css/style.css" />
+<link rel="stylesheet" href="../../css/bootstrap.min.css">
+<link type="text/css" rel="stylesheet" href="../../css/style.css" />
 <link href='http://fonts.googleapis.com/css?family=Trade+Winds' rel='stylesheet' type='text/css'>
 <link href='http://fonts.googleapis.com/css?family=Sacramento' rel='stylesheet' type='text/css'>
 <link href='http://fonts.googleapis.com/css?family=Piedra' rel='stylesheet' type='text/css'>
@@ -37,7 +37,7 @@
 <span class="context">    ...</span>
 <span class="context">    // Global world parameters.</span>
 <span class="context">    _game.friction = 0.15;</span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add">    _game.gravity = 0.5;</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">    _game.gravity = 0.5;</span>
 <span class="context">}</span>
 </div>
 <div class="panel-code-footer">Run your code in a browser and verify that there are no errors.</div></div>
@@ -49,8 +49,8 @@
 <span class="context">    _player.velocity_x_delta = 0.8;</span>
 <span class="context">    _player.velocity_x_max = 3.5;</span>
 <span class="context">    _player.velocity_y = 0;</span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add">    _player.velocity_y_jump = -10;</span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add">    _player.velocity_y_max = 10;</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">    _player.velocity_y_jump = -10;</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">    _player.velocity_y_max = 10;</span>
 <span class="context">}</span>
 </div>
 <div class="panel-code-footer">Run your code in a browser and verify that there are no errors.</div></div>
@@ -60,9 +60,9 @@
 <span class="context">    ...</span>
 <span class="context">    // Apply the global world effects on the player.</span>
 <span class="context">    _player.velocity_x *= (1.0 - _game.friction);</span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add">    _player.velocity_y += _game.gravity;</span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add">    if (_player.velocity_y > _player.velocity_y_max)</span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add">        _player.velocity_y = _player.velocity_y_max;</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">    _player.velocity_y += _game.gravity;</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">    if (_player.velocity_y > _player.velocity_y_max)</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">        _player.velocity_y = _player.velocity_y_max;</span>
 <span class="context">    ...</span>
 <span class="context">}</span>
 </div>
@@ -78,10 +78,10 @@
 <span class="context">            _player.velocity_x = _player.velocity_x_max;</span>
 <span class="context">        }</span>
 <span class="context">    }</span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add">    // Up arrow, 'w'  and spacebar to jump.</span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add">    if (_game.keymap[38] || _game.keymap[87] || _game.keymap[32]) {</span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add">        _player.velocity_y = _player.velocity_y_jump;</span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add">    }</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">    // Up arrow, 'w'  and spacebar to jump.</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">    if (_game.keymap[38] || _game.keymap[87] || _game.keymap[32]) {</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">        _player.velocity_y = _player.velocity_y_jump;</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">    }</span>
 <span class="context">}</span>
 </div>
 <div class="panel-code-footer">Run your code in a browser and verify that there are no errors.</div></div>

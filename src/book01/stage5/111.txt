@@ -101,7 +101,7 @@ BEGIN_CODE
 .	p.width = width;
 .	p.height = height;
 .	p.origin_x = 0;
-.	p.origin_y = 0;	
+.	p.origin_y = 0;
 +
 +	// If pattern begins with '#' then it's really a background color.
 +	if (pattern.charAt(0) == '#') {
@@ -110,11 +110,10 @@ BEGIN_CODE
 +		p.pattern = new Image();
 +		p.pattern.src = _game.imagedir_backgrounds + pattern + ".png";
 +	}
-+	
++
 .	return p;
 .}
 END_CODE
 
 
 GOTO 163
-

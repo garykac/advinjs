@@ -2,8 +2,8 @@
 <head>
 <title>028 : No double jumps</title>
 
-<link rel="stylesheet" href="../css/bootstrap.min.css">
-<link type="text/css" rel="stylesheet" href="../css/style.css" />
+<link rel="stylesheet" href="../../css/bootstrap.min.css">
+<link type="text/css" rel="stylesheet" href="../../css/style.css" />
 <link href='http://fonts.googleapis.com/css?family=Trade+Winds' rel='stylesheet' type='text/css'>
 <link href='http://fonts.googleapis.com/css?family=Sacramento' rel='stylesheet' type='text/css'>
 <link href='http://fonts.googleapis.com/css?family=Piedra' rel='stylesheet' type='text/css'>
@@ -43,8 +43,8 @@
 <span class="context">    _player.origin_x = _player.width / 2;</span>
 <span class="context">    _player.origin_y = _player.height;</span>
 <span class="context"></span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add">    _player.platform = false;</span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add"></span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">    _player.platform = false;</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add"></span>
 <span class="context">    _player.velocity_x = 0;</span>
 <span class="context">    _player.velocity_x_delta = 0.8;</span>
 <span class="context">    ...</span>
@@ -57,11 +57,11 @@
 <span class="context">    ...</span>
 <span class="context">    // Up arrow, 'w'  and spacebar to jump.</span>
 <span class="context">    if (_game.keymap[38] || _game.keymap[87] || _game.keymap[32]) {</span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add">        // Only allow jumps if the player is on a platform.</span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add">        if (_player.platform) {</span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add">            _player.platform = false;</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">        // Only allow jumps if the player is on a platform.</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">        if (_player.platform) {</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">            _player.platform = false;</span>
 <span class="indent">            _player.velocity_y = _player.velocity_y_jump;</span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add">        }</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">        }</span>
 <span class="context">    }</span>
 <span class="context">    ...</span>
 <span class="context">}</span>

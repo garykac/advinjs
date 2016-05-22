@@ -2,8 +2,8 @@
 <head>
 <title>121 : Monster bitaps</title>
 
-<link rel="stylesheet" href="../css/bootstrap.min.css">
-<link type="text/css" rel="stylesheet" href="../css/style.css" />
+<link rel="stylesheet" href="../../css/bootstrap.min.css">
+<link type="text/css" rel="stylesheet" href="../../css/style.css" />
 <link href='http://fonts.googleapis.com/css?family=Trade+Winds' rel='stylesheet' type='text/css'>
 <link href='http://fonts.googleapis.com/css?family=Sacramento' rel='stylesheet' type='text/css'>
 <link href='http://fonts.googleapis.com/css?family=Piedra' rel='stylesheet' type='text/css'>
@@ -54,7 +54,7 @@
 <span class="context">    ...</span>
 <span class="context">    _game.imagedir = "images/";</span>
 <span class="context">    _game.imagedir_player = _game.imagedir + "player/";</span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add">    _game.imagedir_monsters = _game.imagedir + "monsters/";</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">    _game.imagedir_monsters = _game.imagedir + "monsters/";</span>
 <span class="context">    ...</span>
 <span class="context">}</span>
 </div>
@@ -64,10 +64,10 @@
 <div class="panel-code code"><span class="context">function init_level1() {</span>
 <span class="context">    ...</span>
 <span class="context">    var monster_data = [</span>
-<img src="../css/cross.png" width="15" height="15"/><span class="delete">        [350, 360, 20, 20, 60, 470, -1.0],</span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add">        [350, 360, 20, 24, 60, 470, -1.0, "vlad"],</span>
-<img src="../css/cross.png" width="15" height="15"/><span class="delete">        [400, 360, 20, 20, 60, 470, 0.8],</span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add">        [400, 360, 30, 30, 60, 470, 0.8, "henrietta"],</span>
+<img src="../../css/cross.png" width="15" height="15"/><span class="delete">        [350, 360, 20, 20, 60, 470, -1.0],</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">        [350, 360, 20, 24, 60, 470, -1.0, "vlad"],</span>
+<img src="../../css/cross.png" width="15" height="15"/><span class="delete">        [400, 360, 20, 20, 60, 470, 0.8],</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">        [400, 360, 30, 30, 60, 470, 0.8, "henrietta"],</span>
 <span class="context">    ];</span>
 <span class="context">    add_monsters(level, monster_data);</span>
 <span class="context">    ...</span>
@@ -76,13 +76,13 @@
 </div>
 <div class="name">Balthazar:</div><p class="balthazar">don't forget to update the width and height of each monster. vlad is 20x24 and henrietta is 30x30</p>
 <div class="panel panel-default">
-<div class="panel-code code"><img src="../css/cross.png" width="15" height="15"/><span class="delete">// monster_data: [x, y, width, height, min_x, max_x, move_x]</span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add">// monster_data: [x, y, width, height, min_x, max_x, move_x, image]</span>
+<div class="panel-code code"><img src="../../css/cross.png" width="15" height="15"/><span class="delete">// monster_data: [x, y, width, height, min_x, max_x, move_x]</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">// monster_data: [x, y, width, height, min_x, max_x, move_x, image]</span>
 <span class="context">function add_monsters(level, monster_data) {</span>
 <span class="context">    for (var i = 0; i < monster_data.length; i++) {</span>
 <span class="context">        var m = monster_data[i];</span>
-<img src="../css/cross.png" width="15" height="15"/><span class="delete">        var monst = create_monster(m[0], m[1], m[2], m[3], m[4], m[5], m[6]);</span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add">        var monst = create_monster(m[0], m[1], m[2], m[3], m[4], m[5], m[6], m[7]);</span>
+<img src="../../css/cross.png" width="15" height="15"/><span class="delete">        var monst = create_monster(m[0], m[1], m[2], m[3], m[4], m[5], m[6]);</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">        var monst = create_monster(m[0], m[1], m[2], m[3], m[4], m[5], m[6], m[7]);</span>
 <span class="context">        level.monsters.push(monst);</span>
 <span class="context">    }</span>
 <span class="context">}</span>
@@ -90,8 +90,8 @@
 </div>
 <div class="name">Balthazar:</div><p class="balthazar">and finally create_monsters needs to</p>
 <div class="panel panel-default">
-<div class="panel-code code"><img src="../css/cross.png" width="15" height="15"/><span class="delete">function create_monster(x, y, width, height, min_x, max_x, move_x) {</span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add">function create_monster(x, y, width, height, min_x, max_x, move_x, image) {</span>
+<div class="panel-code code"><img src="../../css/cross.png" width="15" height="15"/><span class="delete">function create_monster(x, y, width, height, min_x, max_x, move_x) {</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">function create_monster(x, y, width, height, min_x, max_x, move_x, image) {</span>
 <span class="context">    var m = {};</span>
 <span class="context">    m.x = x;</span>
 <span class="context">    m.y = y;</span>
@@ -102,10 +102,10 @@
 <span class="context">    m.min_x = min_x;</span>
 <span class="context">    m.max_x = max_x;</span>
 <span class="context">    m.move_x = move_x;</span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add"></span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add">    m.img = new Image();</span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add">    m.img.src = _game.imagedir_monsters + image + ".png";</span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add"></span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add"></span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">    m.img = new Image();</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">    m.img.src = _game.imagedir_monsters + image + ".png";</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add"></span>
 <span class="context">    return m;</span>
 <span class="context">}</span>
 </div>
@@ -117,9 +117,9 @@
 <span class="context">    var monsters = level.monsters;</span>
 <span class="context">    for (var i = 0; i < monsters.length; i++) {</span>
 <span class="context">        var m = monsters[i];</span>
-<img src="../css/cross.png" width="15" height="15"/><span class="delete">        ctx.fillStyle = "#800000";</span>
-<img src="../css/cross.png" width="15" height="15"/><span class="delete">        ctx.fillRect(m.x - m.origin_x, m.y - m.origin_y, m.width, m.height);</span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add">        ctx.drawImage(m.img, m.x - m.origin_x, m.y - m.origin_y);</span>
+<img src="../../css/cross.png" width="15" height="15"/><span class="delete">        ctx.fillStyle = "#800000";</span>
+<img src="../../css/cross.png" width="15" height="15"/><span class="delete">        ctx.fillRect(m.x - m.origin_x, m.y - m.origin_y, m.width, m.height);</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">        ctx.drawImage(m.img, m.x - m.origin_x, m.y - m.origin_y);</span>
 <span class="context">    }</span>
 <span class="context">}</span>
 </div>

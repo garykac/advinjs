@@ -2,8 +2,8 @@
 <head>
 <title>360 : Adding coins</title>
 
-<link rel="stylesheet" href="../css/bootstrap.min.css">
-<link type="text/css" rel="stylesheet" href="../css/style.css" />
+<link rel="stylesheet" href="../../css/bootstrap.min.css">
+<link type="text/css" rel="stylesheet" href="../../css/style.css" />
 <link href='http://fonts.googleapis.com/css?family=Trade+Winds' rel='stylesheet' type='text/css'>
 <link href='http://fonts.googleapis.com/css?family=Sacramento' rel='stylesheet' type='text/css'>
 <link href='http://fonts.googleapis.com/css?family=Piedra' rel='stylesheet' type='text/css'>
@@ -49,7 +49,7 @@
 <span class="context">    _player.platform = null;</span>
 <span class="context">    _player.health_max = 50;</span>
 <span class="context">    _player.health = _player.health_max;</span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add">    _player.coins = 0;</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">    _player.coins = 0;</span>
 <span class="context">    _player.dir = 1;</span>
 <span class="context">    ...</span>
 <span class="context">}</span>
@@ -64,9 +64,9 @@
 <span class="context">        // [x, y, width, height, type, image]</span>
 <span class="context">        [530, 358, 18, 20, "key", "key"],</span>
 <span class="context">        [465, 270, 16, 23, "potion", "potion"],</span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add">        [50, 250, 20, 20, "coin", "coin"],</span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add">        [530, 190, 20, 20, "coin", "coin"],</span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add">        [230, 120, 20, 20, "coin", "coin"],</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">        [50, 250, 20, 20, "coin", "coin"],</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">        [530, 190, 20, 20, "coin", "coin"],</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">        [230, 120, 20, 20, "coin", "coin"],</span>
 <span class="context">    ];</span>
 <span class="context">    add_items(level, item_data);</span>
 <span class="context">    ...</span>
@@ -86,8 +86,8 @@
 <span class="context">                    level.player_has_key = true;</span>
 <span class="context">                } else if (item.type == "potion") {</span>
 <span class="context">                    adjust_health(30);</span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add">                } else if (item.type == "coin") {</span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add">                    _player.coins++;</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">                } else if (item.type == "coin") {</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">                    _player.coins++;</span>
 <span class="context">                } else if (item.type == "finish") {</span>
 <span class="context">                    _game.game_over = true;</span>
 <span class="context">                    _game.game_win = true;</span>
@@ -106,8 +106,8 @@
 <span class="context">    // Status images</span>
 <span class="context">    _game.img_key = new Image();</span>
 <span class="context">    _game.img_key.src = _game.imagedir_items + "key.png";</span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add">    _game.img_coin = new Image();</span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add">    _game.img_coin.src = _game.imagedir_items + "coin.png";</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">    _game.img_coin = new Image();</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">    _game.img_coin.src = _game.imagedir_items + "coin.png";</span>
 <span class="context">    _game.img_player = new Image();</span>
 <span class="context">    _game.img_player.src = _game.imagedir_player + "icon.png";</span>
 <span class="context">}</span>
@@ -123,15 +123,15 @@
 <span class="context">        ctx.drawImage(_game.img_key, _game.meter_width + 15, 11);</span>
 <span class="context">    }</span>
 <span class="context"></span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add">    ctx.drawImage(_game.img_coin, _game.width - 58, 11);</span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add">    ctx.fillStyle = "#606060";</span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add">    ctx.font = "16px Helvetica";</span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add">    ctx.fillText("x" + _player.coins, _game.width - 37, 26);</span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add"></span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">    ctx.drawImage(_game.img_coin, _game.width - 58, 11);</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">    ctx.fillStyle = "#606060";</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">    ctx.font = "16px Helvetica";</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">    ctx.fillText("x" + _player.coins, _game.width - 37, 26);</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add"></span>
 <span class="context">    // Draw player icons to indicate how many extra lives remain.</span>
 <span class="context">    for (var i = 0; i < _game.player_lives-1; i++) {</span>
-<img src="../css/cross.png" width="15" height="15"/><span class="delete">        ctx.drawImage(_game.img_player, _game.width - 30 - (i * 20), 12);</span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add">        ctx.drawImage(_game.img_player, _game.width - 80 - (i * 20), 12);</span>
+<img src="../../css/cross.png" width="15" height="15"/><span class="delete">        ctx.drawImage(_game.img_player, _game.width - 30 - (i * 20), 12);</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">        ctx.drawImage(_game.img_player, _game.width - 80 - (i * 20), 12);</span>
 <span class="context">    }</span>
 <span class="context">}</span>
 </div>

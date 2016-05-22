@@ -1,9 +1,9 @@
 <html>
 <head>
-<title>016 : Adding transforms</title>
+<title>116 : Adding transforms</title>
 
-<link rel="stylesheet" href="../css/bootstrap.min.css">
-<link type="text/css" rel="stylesheet" href="../css/style.css" />
+<link rel="stylesheet" href="../../css/bootstrap.min.css">
+<link type="text/css" rel="stylesheet" href="../../css/style.css" />
 <link href='http://fonts.googleapis.com/css?family=Trade+Winds' rel='stylesheet' type='text/css'>
 <link href='http://fonts.googleapis.com/css?family=Sacramento' rel='stylesheet' type='text/css'>
 <link href='http://fonts.googleapis.com/css?family=Piedra' rel='stylesheet' type='text/css'>
@@ -30,34 +30,34 @@
 <a class="navbar-brand" href="../index.html"><span class="title1">Adventures in</span> <span class="title2">JavaScript</span></a>
 </div></div></div>
 <div class="container">
-<h1>016 : Adding transforms</h1>
+<h1>116 : Adding transforms</h1>
 <div class="name">Balthazar:</div><p class="balthazar">Put these before the draw() function:</p>
 <div class="panel panel-default">
 <div class="panel-code code"><span class="context">function start_level(level_id) {</span>
 <span class="context">    ...</span>
 <span class="context">}</span>
 <span class="context"></span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add">function set_transform(ctx, obj) {</span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add">    var x = obj.x - obj.origin_x;</span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add">    var y = obj.y - obj.origin_y;</span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add"></span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add">    // Adjust origin if we're facing left.</span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add">    if (obj.dir < 0)</span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add">        x += obj.width;</span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add"></span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add">    // Translate origin to (x,y).</span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add">    ctx.setTransform(1, 0, 0, 1, x, y);</span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add"></span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add">    // Flip the image if we're facing left.</span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add">    if (obj.dir < 0)</span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add">        ctx.scale(-1, 1);</span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add">}</span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add"></span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add">function reset_transform(ctx) {</span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add">    // Reset transform to the identity matrix.</span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add">    ctx.setTransform(1, 0, 0, 1, 0, 0);</span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add">}</span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add"></span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">function set_transform(ctx, obj) {</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">    var x = obj.x - obj.origin_x;</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">    var y = obj.y - obj.origin_y;</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add"></span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">    // Adjust origin if we're facing left.</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">    if (obj.dir < 0)</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">        x += obj.width;</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add"></span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">    // Translate origin to (x,y).</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">    ctx.setTransform(1, 0, 0, 1, x, y);</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add"></span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">    // Flip the image if we're facing left.</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">    if (obj.dir < 0)</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">        ctx.scale(-1, 1);</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">}</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add"></span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">function reset_transform(ctx) {</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">    // Reset transform to the identity matrix.</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">    ctx.setTransform(1, 0, 0, 1, 0, 0);</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">}</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add"></span>
 </div>
 </div>
 <div class="name">Balthazar:</div><p class="balthazar">keep track of the current direction for players and monsters</p>
@@ -65,7 +65,7 @@
 <div class="panel-code code"><span class="context">function init_player() {</span>
 <span class="context">    ...</span>
 <span class="context">    _player.platform = null;</span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add">    _player.dir = 1;</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">    _player.dir = 1;</span>
 <span class="context">    ...</span>
 <span class="context">}</span>
 </div>

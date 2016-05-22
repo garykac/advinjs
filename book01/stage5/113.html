@@ -2,8 +2,8 @@
 <head>
 <title>113 : Unlocked goal image</title>
 
-<link rel="stylesheet" href="../css/bootstrap.min.css">
-<link type="text/css" rel="stylesheet" href="../css/style.css" />
+<link rel="stylesheet" href="../../css/bootstrap.min.css">
+<link type="text/css" rel="stylesheet" href="../../css/style.css" />
 <link href='http://fonts.googleapis.com/css?family=Trade+Winds' rel='stylesheet' type='text/css'>
 <link href='http://fonts.googleapis.com/css?family=Sacramento' rel='stylesheet' type='text/css'>
 <link href='http://fonts.googleapis.com/css?family=Piedra' rel='stylesheet' type='text/css'>
@@ -53,17 +53,17 @@
 <span class="context">    var goal = {};</span>
 <span class="context">    goal.x = x;</span>
 <span class="context">    goal.y = y;</span>
-<img src="../css/cross.png" width="15" height="15"/><span class="delete">    goal.width = 20;</span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add">    goal.width = 30;</span>
-<img src="../css/cross.png" width="15" height="15"/><span class="delete">    goal.height = 20;</span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add">    goal.height = 40;</span>
+<img src="../../css/cross.png" width="15" height="15"/><span class="delete">    goal.width = 20;</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">    goal.width = 30;</span>
+<img src="../../css/cross.png" width="15" height="15"/><span class="delete">    goal.height = 20;</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">    goal.height = 40;</span>
 <span class="context">    goal.origin_x = goal.width / 2;</span>
 <span class="context">    goal.origin_y = goal.height;</span>
 <span class="context">    goal.next_level = next_level;</span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add">    goal.img_open = new Image();</span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add">    goal.img_open.src = _game.imagedir_backgrounds + "gate-open.png";</span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add">    goal.img_closed = new Image();</span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add">    goal.img_closed.src = _game.imagedir_backgrounds + "gate-closed.png";</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">    goal.img_open = new Image();</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">    goal.img_open.src = _game.imagedir_backgrounds + "gate-open.png";</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">    goal.img_closed = new Image();</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">    goal.img_closed.src = _game.imagedir_backgrounds + "gate-closed.png";</span>
 <span class="context">    return goal;</span>
 <span class="context">}</span>
 </div>
@@ -73,16 +73,16 @@
 <div class="panel-code code"><span class="context">function draw_goal(ctx) {</span>
 <span class="context">    var level = _levels[_game.current_level];</span>
 <span class="context">    var goal = level.goal;</span>
-<img src="../css/cross.png" width="15" height="15"/><span class="delete">    ctx.fillStyle = "green";</span>
-<img src="../css/cross.png" width="15" height="15"/><span class="delete">    ctx.fillRect(goal.x - goal.origin_x, goal.y - goal.origin_y,</span>
-<img src="../css/cross.png" width="15" height="15"/><span class="delete">                    goal.width, goal.height);</span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add">    var image = goal.img_closed;</span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add">    if (level.player_has_key) {</span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add">        image = goal.img_open;</span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add">    }</span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add">    set_transform(ctx, goal);</span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add">    ctx.drawImage(image, 0, 0);</span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add">    reset_transform(ctx);</span>
+<img src="../../css/cross.png" width="15" height="15"/><span class="delete">    ctx.fillStyle = "green";</span>
+<img src="../../css/cross.png" width="15" height="15"/><span class="delete">    ctx.fillRect(goal.x - goal.origin_x, goal.y - goal.origin_y,</span>
+<img src="../../css/cross.png" width="15" height="15"/><span class="delete">                    goal.width, goal.height);</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">    var image = goal.img_closed;</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">    if (level.player_has_key) {</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">        image = goal.img_open;</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">    }</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">    set_transform(ctx, goal);</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">    ctx.drawImage(image, 0, 0);</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">    reset_transform(ctx);</span>
 <span class="context">}</span>
 </div>
 </div>

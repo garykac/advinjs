@@ -14,8 +14,14 @@ class Parser(object):
 		self.parse_mode = ['top']
 
 		self.stage = ''
-		self.name = ''
-		self.nodename = ''
+
+		# The full id of the node, with any badge annotations appended to the
+		# base node name.
+		self.fullnodeid = ''
+
+		# The simple node id (just the number).
+		self.nodeid = ''
+
 		self.images = {}
 
 		self.in_copy_file = False
@@ -24,7 +30,7 @@ class Parser(object):
 		self.current_line = 0
 
 		self.options = {
-			'debug': False,
+			'debug': True,
 			'verify': False,
 		}
 		# Top-level parsers.
@@ -38,33 +44,14 @@ class Parser(object):
 			'code': self.parse_code,
 		}
 
-	def parse(self, stage, file, node, dst, images):
+	def parse(self, infile, nodeid, images, book=None, stage=None, fullnodeid=None):
+		self.nodeid = nodeid
+		self.images = images
+		self.book = book
 		self.stage = stage
-		self.name = dst
-		self.nodename = node
-		#print node, dst
-		self.images = images
-		filename = os.path.join(stage, file)
-		self.dir_depth = 1
-		if not os.path.isfile(filename):
-			self.error('File "%s" doesn\'t exist' % filename)
-
-		try:
-			self.fileobj = open(filename, 'r')
-		except IOError as e:
-			self.error('Unable to open "%s": %s' % (filename, e))
-
-		self.current_file = filename
-		success = self.parse_input()
-
-		self.fileobj.close()
-		return success
-
-	def parse_main(self, infile, name, images):
-		self.stage = ''
-		self.name = name
-		self.nodename = name
-		self.images = images
+		self.fullnodeid = fullnodeid
+		if self.fullnodeid == None:
+			self.fullnodeid = nodeid
 		self.dir_depth = len(infile.split('/')) - 2
 
 		if not os.path.isfile(infile):
@@ -219,7 +206,7 @@ class Parser(object):
 			return True
 		if re.match(r'TODO ', line):
 			self.add_data('TODO', line[5:])
-			print self.nodename, line
+			print self.nodeid, line
 			return True
 		if re.match(r'FIGURE ', line):
 			self.add_data('FIGURE', line[7:])
@@ -254,14 +241,14 @@ class Parser(object):
 				self.error('COPY_FILE outside of BEGIN/END')
 			path = line[10:]
 			self.add_data('COPY_FILE', path)
-			src = os.path.join('data', path)
-			dst = os.path.join('snapshots', self.stage, self.name, path)
-			dir = os.path.dirname(dst)
-			if not os.path.exists(dir):
-				os.makedirs(dir)
+			src = os.path.join(self.book, path)
+			#dst = os.path.join('snapshots', self.stage, self.fullnodeid, path)
+			#dir = os.path.dirname(dst)
+			#if not os.path.exists(dir):
+			#	os.makedirs(dir)
 			if not os.path.exists(src):
 				self.error('Unable to find: %s' % src)
-			shutil.copy(src, dst)
+			#shutil.copy(src, dst)
 			return True
 
 		if re.match(r'BEGIN_IMAGE_TABLE ', line):
@@ -364,7 +351,7 @@ class Parser(object):
 
 	def print_html(self, outfile):
 		if outfile == None:
-			outfile = os.path.join('html', self.stage, self.nodename + '.html')
+			outfile = os.path.join('html', self.stage, self.nodeid + '.html')
 		try:
 			fout = open(outfile, 'w')
 		except IOError as e:
@@ -385,9 +372,7 @@ class Parser(object):
 				fout.write('<div class="panel panel-default">\n')
 				fout.write('<div class="panel-code-header">%s</div>' % self.expand_text(d[1], False))
 			elif d[0] == 'CODE':
-				css_path = '../css'
-				if self.stage == '':
-					css_path = 'css'
+				css_path = ('../' * self.dir_depth) + 'css'
 				fout.write('<div class="panel-code code">')
 				for line in d[1]:
 					type = line[0]
@@ -552,6 +537,8 @@ class Parser(object):
 					width = m.group(2)
 					height = m.group(3)
 					caption = m.group(4)
+					if not os.path.exists(os.path.join(self.book, file)):
+						self.error('Table image does not exist: %s' % file)
 					if not file in self.images:
 						self.error('Unknown image file: "%s"' % file)
 					(w, h) = self.images[file].split('x')

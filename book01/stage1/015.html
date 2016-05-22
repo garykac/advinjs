@@ -2,8 +2,8 @@
 <head>
 <title>015 : Slowing down</title>
 
-<link rel="stylesheet" href="../css/bootstrap.min.css">
-<link type="text/css" rel="stylesheet" href="../css/style.css" />
+<link rel="stylesheet" href="../../css/bootstrap.min.css">
+<link type="text/css" rel="stylesheet" href="../../css/style.css" />
 <link href='http://fonts.googleapis.com/css?family=Trade+Winds' rel='stylesheet' type='text/css'>
 <link href='http://fonts.googleapis.com/css?family=Sacramento' rel='stylesheet' type='text/css'>
 <link href='http://fonts.googleapis.com/css?family=Piedra' rel='stylesheet' type='text/css'>
@@ -49,9 +49,9 @@
 <span class="context"></span>
 <span class="context">    // Game state.</span>
 <span class="context">    _game.platform = create_platform(0, 360, _game.width, 40);</span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add"></span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add">    // Global world parameters.</span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add">    _game.friction = 0.15;</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add"></span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">    // Global world parameters.</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">    _game.friction = 0.15;</span>
 <span class="context">}</span>
 </div>
 <div class="panel-code-footer">Run your code in a browser and verify that there are no errors.</div></div>
@@ -61,8 +61,8 @@
 <div class="panel-code-header">Define how fast the player's velocity should increase.</div><div class="panel-code code"><span class="context">function init_player() {</span>
 <span class="context">    ...</span>
 <span class="context">    _player.velocity_x = 0;</span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add">    _player.velocity_x_delta = 0.8;</span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add">    _player.velocity_x_max = 3.5;</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">    _player.velocity_x_delta = 0.8;</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">    _player.velocity_x_max = 3.5;</span>
 <span class="context">    _player.velocity_y = 0;</span>
 <span class="context">}</span>
 </div>
@@ -72,24 +72,24 @@
 <div class="name">Balthazar:</div><p class="balthazar">Yes. And you need to make sure you don't go less than -<span class="code-inline-color">velocity_x_max</span> when going left, or greater than +<span class="code-inline-color">velocity_x_max</span> when going right.</p>
 <div class="panel panel-default">
 <div class="panel-code-header">Update the player's velocity using the new variables.</div><div class="panel-code code"><span class="context">function check_input() {</span>
-<img src="../css/cross.png" width="15" height="15"/><span class="delete">    _player.velocity_x = 0;</span>
-<img src="../css/cross.png" width="15" height="15"/><span class="delete">    _player.velocity_y = 0;</span>
-<img src="../css/cross.png" width="15" height="15"/><span class="delete"></span>
+<img src="../../css/cross.png" width="15" height="15"/><span class="delete">    _player.velocity_x = 0;</span>
+<img src="../../css/cross.png" width="15" height="15"/><span class="delete">    _player.velocity_y = 0;</span>
+<img src="../../css/cross.png" width="15" height="15"/><span class="delete"></span>
 <span class="context">    // Left arrow or 'a' to move left.</span>
 <span class="context">    if (_game.keymap[37] || _game.keymap[65]) {</span>
-<img src="../css/cross.png" width="15" height="15"/><span class="delete">        _player.velocity_x = -1;</span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add">        _player.velocity_x -= _player.velocity_x_delta;</span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add">        if (_player.velocity_x < -_player.velocity_x_max) {</span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add">            _player.velocity_x = -_player.velocity_x_max;</span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add">        }</span>
+<img src="../../css/cross.png" width="15" height="15"/><span class="delete">        _player.velocity_x = -1;</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">        _player.velocity_x -= _player.velocity_x_delta;</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">        if (_player.velocity_x < -_player.velocity_x_max) {</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">            _player.velocity_x = -_player.velocity_x_max;</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">        }</span>
 <span class="context">    }</span>
 <span class="context">    // Right arrow or 'd' to move right.</span>
 <span class="context">    if (_game.keymap[39] || _game.keymap[68]) {</span>
-<img src="../css/cross.png" width="15" height="15"/><span class="delete">        _player.velocity_x = 1;</span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add">        _player.velocity_x += _player.velocity_x_delta;</span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add">        if (_player.velocity_x > _player.velocity_x_max) {</span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add">            _player.velocity_x = _player.velocity_x_max;</span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add">        }</span>
+<img src="../../css/cross.png" width="15" height="15"/><span class="delete">        _player.velocity_x = 1;</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">        _player.velocity_x += _player.velocity_x_delta;</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">        if (_player.velocity_x > _player.velocity_x_max) {</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">            _player.velocity_x = _player.velocity_x_max;</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">        }</span>
 <span class="context">    }</span>
 <span class="context">}</span>
 </div>

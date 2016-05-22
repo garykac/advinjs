@@ -2,8 +2,8 @@
 <head>
 <title>350 : Finishing Level 1</title>
 
-<link rel="stylesheet" href="../css/bootstrap.min.css">
-<link type="text/css" rel="stylesheet" href="../css/style.css" />
+<link rel="stylesheet" href="../../css/bootstrap.min.css">
+<link type="text/css" rel="stylesheet" href="../../css/style.css" />
 <link href='http://fonts.googleapis.com/css?family=Trade+Winds' rel='stylesheet' type='text/css'>
 <link href='http://fonts.googleapis.com/css?family=Sacramento' rel='stylesheet' type='text/css'>
 <link href='http://fonts.googleapis.com/css?family=Piedra' rel='stylesheet' type='text/css'>
@@ -56,43 +56,43 @@
 <span class="context">    level.player_start_x = 20;</span>
 <span class="context">    level.player_start_y = 260;</span>
 <span class="context"></span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add">    // Create the platforms.</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">    // Create the platforms.</span>
 <span class="context">    add_default_platforms(level);</span>
 <span class="context">    var platform_data = [</span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add">        // [x, y, width, height, pattern]</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">        // [x, y, width, height, pattern]</span>
 <span class="context">        [200, 290, 80, 20, "dirt"],</span>
 <span class="context">        [300, 240, 80, 20, "block"],</span>
 <span class="context">        [400, 170, 80, 20, "block"],</span>
 <span class="context">        [460, 110, 40, 20, "dirt"],</span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add">        [300, 70, 120, 20, "block"],</span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add">        [120, 120, 100, 20, "block"],</span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add">        [10, 190, 100, 20, "block"],</span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add">        [420, 270, 100, 20, "block"],</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">        [300, 70, 120, 20, "block"],</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">        [120, 120, 100, 20, "block"],</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">        [10, 190, 100, 20, "block"],</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">        [420, 270, 100, 20, "block"],</span>
 <span class="context">    ];</span>
 <span class="context">    add_platforms(level, platform_data);</span>
 <span class="context"></span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add">    // Create the monsters.</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">    // Create the monsters.</span>
 <span class="context">    var monster_data = [</span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add">        // [x, y, width, height, min_x, max_x, move_x, image]</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">        // [x, y, width, height, min_x, max_x, move_x, image]</span>
 <span class="context">        [350, 360, 20, 24, 60, 470, -1.0, "vlad"],</span>
 <span class="context">        [400, 360, 30, 30, 60, 470, 0.8, "henrietta"],</span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add">        [330, 240, 28, 26, 310, 370, -0.5, "rufus"],</span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add">        [130, 120, 26, 28, 130, 210, 1.0, "prescott"],</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">        [330, 240, 28, 26, 310, 370, -0.5, "rufus"],</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">        [130, 120, 26, 28, 130, 210, 1.0, "prescott"],</span>
 <span class="context">    ];</span>
 <span class="context">    add_monsters(level, monster_data);</span>
 <span class="context"></span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add">    // Create the items.</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">    // Create the items.</span>
 <span class="context">    var item_data = [</span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add">        // [x, y, width, height, type, image]</span>
-<img src="../css/cross.png" width="15" height="15"/><span class="delete">        [480, 110, 18, 20, "key", "key"],</span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add">        [530, 358, 18, 20, "key", "key"],</span>
-<img src="../css/cross.png" width="15" height="15"/><span class="delete">        [465, 170, 16, 23, "potion", "potion"],</span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add">        [465, 270, 16, 23, "potion", "potion"],</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">        // [x, y, width, height, type, image]</span>
+<img src="../../css/cross.png" width="15" height="15"/><span class="delete">        [480, 110, 18, 20, "key", "key"],</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">        [530, 358, 18, 20, "key", "key"],</span>
+<img src="../../css/cross.png" width="15" height="15"/><span class="delete">        [465, 170, 16, 23, "potion", "potion"],</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">        [465, 270, 16, 23, "potion", "potion"],</span>
 <span class="context">    ];</span>
 <span class="context">    add_items(level, item_data);</span>
 <span class="context"></span>
-<img src="../css/cross.png" width="15" height="15"/><span class="delete">    level.goal = create_goal(500, 360, 2);</span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add">    level.goal = create_goal(35, 190, 2);</span>
+<img src="../../css/cross.png" width="15" height="15"/><span class="delete">    level.goal = create_goal(500, 360, 2);</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">    level.goal = create_goal(35, 190, 2);</span>
 <span class="context"></span>
 <span class="context">    _levels.push(level);</span>
 <span class="context">}</span>

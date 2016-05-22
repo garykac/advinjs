@@ -2,8 +2,8 @@
 <head>
 <title>056 : Monster collisions</title>
 
-<link rel="stylesheet" href="../css/bootstrap.min.css">
-<link type="text/css" rel="stylesheet" href="../css/style.css" />
+<link rel="stylesheet" href="../../css/bootstrap.min.css">
+<link type="text/css" rel="stylesheet" href="../../css/style.css" />
 <link href='http://fonts.googleapis.com/css?family=Trade+Winds' rel='stylesheet' type='text/css'>
 <link href='http://fonts.googleapis.com/css?family=Sacramento' rel='stylesheet' type='text/css'>
 <link href='http://fonts.googleapis.com/css?family=Piedra' rel='stylesheet' type='text/css'>
@@ -38,16 +38,16 @@
 <span class="context">    ...</span>
 <span class="context">}</span>
 <span class="context"></span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add">function check_monster_collisions() {</span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add">    var monsters = _game.monsters;</span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add">    for (var i = 0; i < monsters.length; i++) {</span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add">        var m = monsters[i];</span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add">        if (collide(m, _player)) {</span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add">            _game.game_over = true;</span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add">        }</span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add">    }</span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add">}</span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add"></span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">function check_monster_collisions() {</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">    var monsters = _game.monsters;</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">    for (var i = 0; i < monsters.length; i++) {</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">        var m = monsters[i];</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">        if (collide(m, _player)) {</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">            _game.game_over = true;</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">        }</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">    }</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">}</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add"></span>
 <span class="context">function check_goal_collisions() {</span>
 <span class="context">    ...</span>
 <span class="context">}</span>
@@ -57,7 +57,7 @@
 <div class="panel panel-default">
 <div class="panel-code code"><span class="context">function check_collisions() {</span>
 <span class="context">    check_platform_collisions();</span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add">    check_monster_collisions();</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">    check_monster_collisions();</span>
 <span class="context">    check_goal_collisions();</span>
 <span class="context">}</span>
 </div>
@@ -69,7 +69,7 @@
 <span class="context">    ...</span>
 <span class="context">    _game.monsters = [];</span>
 <span class="context">    _game.monsters.push(create_monster(350, 360, 20, 20));</span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add">    _game.monsters.push(create_monster(400, 360, 20, 20));</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">    _game.monsters.push(create_monster(400, 360, 20, 20));</span>
 <span class="context">    _game.goal = create_goal(500, 360);</span>
 <span class="context">    ...</span>
 <span class="context">}</span>

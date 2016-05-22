@@ -2,8 +2,8 @@
 <head>
 <title>190 : Lose a life</title>
 
-<link rel="stylesheet" href="../css/bootstrap.min.css">
-<link type="text/css" rel="stylesheet" href="../css/style.css" />
+<link rel="stylesheet" href="../../css/bootstrap.min.css">
+<link type="text/css" rel="stylesheet" href="../../css/style.css" />
 <link href='http://fonts.googleapis.com/css?family=Trade+Winds' rel='stylesheet' type='text/css'>
 <link href='http://fonts.googleapis.com/css?family=Sacramento' rel='stylesheet' type='text/css'>
 <link href='http://fonts.googleapis.com/css?family=Piedra' rel='stylesheet' type='text/css'>
@@ -39,7 +39,7 @@
 <span class="context">    _game.game_over = false;</span>
 <span class="context">    _game.game_win = false;</span>
 <span class="context">    _game.current_level = 0;</span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add">    _game.player_lives = 3;</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">    _game.player_lives = 3;</span>
 <span class="context">    ...</span>
 <span class="context">}</span>
 </div>
@@ -50,21 +50,21 @@
 <span class="context">    ...</span>
 <span class="context">}</span>
 <span class="context"></span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add">function lose_life() {</span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add">    _game.player_lives--;</span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add">    if (_game.player_lives > 0) {</span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add">        _player.health = _player.health_max;</span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add">    } else {</span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add">        _game.game_over = true;</span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add">    }</span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add">}</span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add"></span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">function lose_life() {</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">    _game.player_lives--;</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">    if (_game.player_lives > 0) {</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">        _player.health = _player.health_max;</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">    } else {</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">        _game.game_over = true;</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">    }</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">}</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add"></span>
 <span class="context">function adjust_health(amount) {</span>
 <span class="context">    _player.health += amount;</span>
 <span class="context">    if (_player.health <= 0) {</span>
 <span class="context">        _player.health = 0;</span>
-<img src="../css/cross.png" width="15" height="15"/><span class="delete">        _game.game_over = true;</span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add">        lose_life();</span>
+<img src="../../css/cross.png" width="15" height="15"/><span class="delete">        _game.game_over = true;</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">        lose_life();</span>
 <span class="context">    }</span>
 <span class="context">    if (_player.health > _player.health_max) {</span>
 <span class="context">        _player.health = _player.health_max;</span>

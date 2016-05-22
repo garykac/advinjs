@@ -2,8 +2,8 @@
 <head>
 <title>180 : Player health</title>
 
-<link rel="stylesheet" href="../css/bootstrap.min.css">
-<link type="text/css" rel="stylesheet" href="../css/style.css" />
+<link rel="stylesheet" href="../../css/bootstrap.min.css">
+<link type="text/css" rel="stylesheet" href="../../css/style.css" />
 <link href='http://fonts.googleapis.com/css?family=Trade+Winds' rel='stylesheet' type='text/css'>
 <link href='http://fonts.googleapis.com/css?family=Sacramento' rel='stylesheet' type='text/css'>
 <link href='http://fonts.googleapis.com/css?family=Piedra' rel='stylesheet' type='text/css'>
@@ -37,8 +37,8 @@
 <div class="panel-code code"><span class="context">function init_player() {</span>
 <span class="context">    ...</span>
 <span class="context">    _player.platform = null;</span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add">    _player.health_max = 50;</span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add">    _player.health = _player.health_max;</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">    _player.health_max = 50;</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">    _player.health = _player.health_max;</span>
 <span class="context">    ...</span>
 <span class="context">}</span>
 </div>
@@ -49,17 +49,17 @@
 <span class="context">    ...</span>
 <span class="context">}</span>
 <span class="context"></span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add">function adjust_health(amount) {</span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add">    _player.health += amount;</span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add">    if (_player.health <= 0) {</span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add">        _player.health = 0;</span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add">        _game.game_over = true;</span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add">    }</span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add">    if (_player.health > _player.health_max) {</span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add">        _player.health = _player.health_max;</span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add">    }</span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add">}</span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add"></span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">function adjust_health(amount) {</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">    _player.health += amount;</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">    if (_player.health <= 0) {</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">        _player.health = 0;</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">        _game.game_over = true;</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">    }</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">    if (_player.health > _player.health_max) {</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">        _player.health = _player.health_max;</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">    }</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">}</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add"></span>
 </div>
 </div>
 <div class="name">Balthazar:</div><p class="balthazar">???</p>
@@ -67,17 +67,17 @@
 <div class="panel-code code"><span class="context">function check_monster_collisions() {</span>
 <span class="context">    var level = _levels[_game.current_level];</span>
 <span class="context">    var monsters = level.monsters;</span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add">    var damage = 0;</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">    var damage = 0;</span>
 <span class="context">    for (var i = 0; i < monsters.length; i++) {</span>
 <span class="context">        var m = monsters[i];</span>
 <span class="context">        if (collide(m, _player)) {</span>
-<img src="../css/cross.png" width="15" height="15"/><span class="delete">            _game.game_over = true;</span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add">            damage++;</span>
+<img src="../../css/cross.png" width="15" height="15"/><span class="delete">            _game.game_over = true;</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">            damage++;</span>
 <span class="context">        }</span>
 <span class="context">    }</span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add">    if (damage != 0) {</span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add">        adjust_health(-damage);</span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add">    }</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">    if (damage != 0) {</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">        adjust_health(-damage);</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">    }</span>
 <span class="context">}</span>
 </div>
 </div>

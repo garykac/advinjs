@@ -2,8 +2,8 @@
 <head>
 <title>120 : Player bitmaps</title>
 
-<link rel="stylesheet" href="../css/bootstrap.min.css">
-<link type="text/css" rel="stylesheet" href="../css/style.css" />
+<link rel="stylesheet" href="../../css/bootstrap.min.css">
+<link type="text/css" rel="stylesheet" href="../../css/style.css" />
 <link href='http://fonts.googleapis.com/css?family=Trade+Winds' rel='stylesheet' type='text/css'>
 <link href='http://fonts.googleapis.com/css?family=Sacramento' rel='stylesheet' type='text/css'>
 <link href='http://fonts.googleapis.com/css?family=Piedra' rel='stylesheet' type='text/css'>
@@ -60,9 +60,9 @@
 <span class="context">    // The keymap keeps track of which keys are currently being pressed.</span>
 <span class="context">    _game.keymap = {};</span>
 <span class="context"></span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add">    _game.imagedir = "images/";</span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add">    _game.imagedir_player = _game.imagedir + "player/";</span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add"></span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">    _game.imagedir = "images/";</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">    _game.imagedir_player = _game.imagedir + "player/";</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add"></span>
 <span class="context">    // Game state.</span>
 <span class="context">    _game.game_over = false;</span>
 <span class="context">    ...</span>
@@ -76,23 +76,23 @@
 <span class="context">    _player.velocity_y = 0;</span>
 <span class="context">    _player.velocity_y_jump = -10;</span>
 <span class="context">    _player.velocity_y_max = 10;</span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add"></span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add">    _player.sprite = init_player_sprite("normal", 20, 24);</span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add">    _player.sprite_sad = init_player_sprite("sad", 30, 17);</span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add">    _player.sprite_happy = init_player_sprite("happy", 20, 24);</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add"></span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">    _player.sprite = init_player_sprite("normal", 20, 24);</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">    _player.sprite_sad = init_player_sprite("sad", 30, 17);</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">    _player.sprite_happy = init_player_sprite("happy", 20, 24);</span>
 <span class="context">}</span>
 <span class="context"></span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add">function init_player_sprite(name, width, height, origin_x, origin_y) {</span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add">    var sprite = {};</span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add">    sprite.width = width;</span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add">    sprite.height = height;</span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add">    sprite.origin_x = width / 2;</span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add">    sprite.origin_y = height;</span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add">    sprite.img = new Image();</span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add">    sprite.img.src = _game.imagedir_player + name + ".png";</span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add">    return sprite;</span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add">}</span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add"></span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">function init_player_sprite(name, width, height, origin_x, origin_y) {</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">    var sprite = {};</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">    sprite.width = width;</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">    sprite.height = height;</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">    sprite.origin_x = width / 2;</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">    sprite.origin_y = height;</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">    sprite.img = new Image();</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">    sprite.img.src = _game.imagedir_player + name + ".png";</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">    return sprite;</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">}</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add"></span>
 <span class="context">function init_level_defaults(level) {</span>
 <span class="context">    ...</span>
 <span class="context">}</span>
@@ -104,25 +104,25 @@
 <span class="context">    ...</span>
 <span class="context">}</span>
 <span class="context"></span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add">function update_player_sprite() {</span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add">    var sprite;</span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add">    if (_game.game_over && !_game.game_win) {</span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add">        sprite = _player.sprite_sad;</span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add">    } else if (_game.game_win) {</span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add">        sprite = _player.sprite_happy;</span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add">    } else {</span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add">        sprite = _player.sprite;</span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add">    }</span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add"></span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add">    // Update the player width, height and origin based on the current sprite.</span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add">    _player.width = sprite.width;</span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add">    _player.height = sprite.height;</span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add">    _player.origin_x = sprite.origin_x;</span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add">    _player.origin_y = sprite.origin_y;</span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add"></span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add">    return sprite;</span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add">}</span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add"></span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">function update_player_sprite() {</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">    var sprite;</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">    if (_game.game_over && !_game.game_win) {</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">        sprite = _player.sprite_sad;</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">    } else if (_game.game_win) {</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">        sprite = _player.sprite_happy;</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">    } else {</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">        sprite = _player.sprite;</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">    }</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add"></span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">    // Update the player width, height and origin based on the current sprite.</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">    _player.width = sprite.width;</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">    _player.height = sprite.height;</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">    _player.origin_x = sprite.origin_x;</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">    _player.origin_y = sprite.origin_y;</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add"></span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">    return sprite;</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">}</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add"></span>
 <span class="context">function init_level_defaults(level) {</span>
 <span class="context">    ...</span>
 <span class="context">}</span>
@@ -135,19 +135,19 @@
 <span class="context">    _player.sprite = init_player_sprite("normal", 20, 24);</span>
 <span class="context">    _player.sprite_sad = init_player_sprite("sad", 30, 17);</span>
 <span class="context">    _player.sprite_happy = init_player_sprite("happy", 20, 24);</span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add">    update_player_sprite();</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">    update_player_sprite();</span>
 <span class="context">}</span>
 </div>
 </div>
 <div class="name">Balthazar:</div><p class="balthazar">And we also need to update <span class="code-inline-color">draw_player()</span> to use <span class="code-inline-color">update_player_sprite()</span> just before we draw the player.</p>
 <div class="panel panel-default">
 <div class="panel-code code"><span class="context">function draw_player(ctx) {</span>
-<img src="../css/cross.png" width="15" height="15"/><span class="delete">    ctx.fillStyle = "blue";</span>
-<img src="../css/cross.png" width="15" height="15"/><span class="delete">    ctx.fillRect(_player.x - _player.origin_x, _player.y - _player.origin_y,</span>
-<img src="../css/cross.png" width="15" height="15"/><span class="delete">                    _player.width, _player.height);</span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add">    var sprite = update_player_sprite();</span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add">    ctx.drawImage(sprite.img, _player.x - _player.origin_x,</span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add">                    _player.y - _player.origin_y);</span>
+<img src="../../css/cross.png" width="15" height="15"/><span class="delete">    ctx.fillStyle = "blue";</span>
+<img src="../../css/cross.png" width="15" height="15"/><span class="delete">    ctx.fillRect(_player.x - _player.origin_x, _player.y - _player.origin_y,</span>
+<img src="../../css/cross.png" width="15" height="15"/><span class="delete">                    _player.width, _player.height);</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">    var sprite = update_player_sprite();</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">    ctx.drawImage(sprite.img, _player.x - _player.origin_x,</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">                    _player.y - _player.origin_y);</span>
 <span class="context">}</span>
 </div>
 </div>
@@ -158,15 +158,15 @@
 <span class="context">    _player.x = 0;</span>
 <span class="context">    _player.y = 0;</span>
 <span class="context"></span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add">    // Player width, height and origin are initialized by the current sprite.</span>
-<img src="../css/cross.png" width="15" height="15"/><span class="delete">    _player.width = 20;</span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add">    _player.width = 0;</span>
-<img src="../css/cross.png" width="15" height="15"/><span class="delete">    _player.height = 20;</span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add">    _player.height = 0;</span>
-<img src="../css/cross.png" width="15" height="15"/><span class="delete">    _player.origin_x = _player.width / 2;</span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add">    _player.origin_x = 0;</span>
-<img src="../css/cross.png" width="15" height="15"/><span class="delete">    _player.origin_y = _player.height;</span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add">    _player.origin_y = 0;</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">    // Player width, height and origin are initialized by the current sprite.</span>
+<img src="../../css/cross.png" width="15" height="15"/><span class="delete">    _player.width = 20;</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">    _player.width = 0;</span>
+<img src="../../css/cross.png" width="15" height="15"/><span class="delete">    _player.height = 20;</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">    _player.height = 0;</span>
+<img src="../../css/cross.png" width="15" height="15"/><span class="delete">    _player.origin_x = _player.width / 2;</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">    _player.origin_x = 0;</span>
+<img src="../../css/cross.png" width="15" height="15"/><span class="delete">    _player.origin_y = _player.height;</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">    _player.origin_y = 0;</span>
 <span class="context"></span>
 <span class="context">    ...</span>
 <span class="context">}</span>

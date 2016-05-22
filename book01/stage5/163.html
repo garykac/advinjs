@@ -2,8 +2,8 @@
 <head>
 <title>163 : Platform patterns</title>
 
-<link rel="stylesheet" href="../css/bootstrap.min.css">
-<link type="text/css" rel="stylesheet" href="../css/style.css" />
+<link rel="stylesheet" href="../../css/bootstrap.min.css">
+<link type="text/css" rel="stylesheet" href="../../css/style.css" />
 <link href='http://fonts.googleapis.com/css?family=Trade+Winds' rel='stylesheet' type='text/css'>
 <link href='http://fonts.googleapis.com/css?family=Sacramento' rel='stylesheet' type='text/css'>
 <link href='http://fonts.googleapis.com/css?family=Piedra' rel='stylesheet' type='text/css'>
@@ -39,7 +39,7 @@
 <span class="context">    p.height = height;</span>
 <span class="context">    p.origin_x = 0;</span>
 <span class="context">    p.origin_y = 0;</span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add">    p.dir = 1;</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">    p.dir = 1;</span>
 <span class="context">    ...</span>
 <span class="context">}</span>
 </div>
@@ -50,21 +50,21 @@
 <span class="context">    var platforms = level.platforms;</span>
 <span class="context">    for (var i = 0; i < platforms.length; i++) {</span>
 <span class="context">        var platform = platforms[i];</span>
-<img src="../css/cross.png" width="15" height="15"/><span class="delete">        ctx.fillStyle = "rgb(153, 102, 51)";</span>
-<img src="../css/cross.png" width="15" height="15"/><span class="delete">        ctx.fillRect(platform.x, platform.y, platform.width, platform.height);</span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add"></span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add">        set_transform(ctx, platform);</span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add">        if (platform.background_color) {</span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add">            ctx.fillStyle = platform.background_color;</span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add">            ctx.fillRect(0, 0, platform.width, platform.height);</span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add">            ctx.strokeStyle = "rgba(0,0,0,0.5)";</span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add">            ctx.strokeRect(0, 0, platform.width, platform.height);</span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add">        } else {</span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add">            var pat = ctx.createPattern(platform.pattern, "repeat");</span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add">            ctx.fillStyle = pat;</span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add">            ctx.fillRect(0, 0, platform.width, platform.height);</span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add">        }</span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add">        reset_transform(ctx);</span>
+<img src="../../css/cross.png" width="15" height="15"/><span class="delete">        ctx.fillStyle = "rgb(153, 102, 51)";</span>
+<img src="../../css/cross.png" width="15" height="15"/><span class="delete">        ctx.fillRect(platform.x, platform.y, platform.width, platform.height);</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add"></span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">        set_transform(ctx, platform);</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">        if (platform.background_color) {</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">            ctx.fillStyle = platform.background_color;</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">            ctx.fillRect(0, 0, platform.width, platform.height);</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">            ctx.strokeStyle = "rgba(0,0,0,0.5)";</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">            ctx.strokeRect(0, 0, platform.width, platform.height);</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">        } else {</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">            var pat = ctx.createPattern(platform.pattern, "repeat");</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">            ctx.fillStyle = pat;</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">            ctx.fillRect(0, 0, platform.width, platform.height);</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">        }</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">        reset_transform(ctx);</span>
 <span class="context">    }</span>
 <span class="context">}</span>
 </div>

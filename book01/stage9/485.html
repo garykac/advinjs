@@ -2,8 +2,8 @@
 <head>
 <title>485 : Adding protective eyewear</title>
 
-<link rel="stylesheet" href="../css/bootstrap.min.css">
-<link type="text/css" rel="stylesheet" href="../css/style.css" />
+<link rel="stylesheet" href="../../css/bootstrap.min.css">
+<link type="text/css" rel="stylesheet" href="../../css/style.css" />
 <link href='http://fonts.googleapis.com/css?family=Trade+Winds' rel='stylesheet' type='text/css'>
 <link href='http://fonts.googleapis.com/css?family=Sacramento' rel='stylesheet' type='text/css'>
 <link href='http://fonts.googleapis.com/css?family=Piedra' rel='stylesheet' type='text/css'>
@@ -49,7 +49,7 @@
 <span class="context">    _player.sprite_sad = init_player_sprite("sad", 30, 17);</span>
 <span class="context">    _player.sprite_ooo = init_player_sprite("ooo", 20, 24);</span>
 <span class="context">    _player.sprite_happy = init_player_sprite("happy", 20, 24);</span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add">    _player.sprite_glasses = init_player_sprite("glasses", 20, 24);</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">    _player.sprite_glasses = init_player_sprite("glasses", 20, 24);</span>
 <span class="context">    update_player_sprite();</span>
 <span class="context">}</span>
 </div>
@@ -59,9 +59,9 @@
 <span class="context">    var sprite;</span>
 <span class="context">    if (_player.health <= 0) {</span>
 <span class="context">        sprite = _player.sprite_sad;</span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add">    } else if (_player.x <= (_game.meter_x + _game.meter_width)</span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add">                && _player.y <= (_game.meter_y + _game.meter_height + 20)) {</span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add">        sprite = _player.sprite_glasses;</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">    } else if (_player.x <= (_game.meter_x + _game.meter_width)</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">                && _player.y <= (_game.meter_y + _game.meter_height + 20)) {</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">        sprite = _player.sprite_glasses;</span>
 <span class="context">    } else if (_game.game_win) {</span>
 <span class="context">        sprite = _player.sprite_happy;</span>
 <span class="context">    } else if (_player.is_touching_monster) {</span>

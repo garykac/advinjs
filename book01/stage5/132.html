@@ -2,8 +2,8 @@
 <head>
 <title>132 : Draw items</title>
 
-<link rel="stylesheet" href="../css/bootstrap.min.css">
-<link type="text/css" rel="stylesheet" href="../css/style.css" />
+<link rel="stylesheet" href="../../css/bootstrap.min.css">
+<link type="text/css" rel="stylesheet" href="../../css/style.css" />
 <link href='http://fonts.googleapis.com/css?family=Trade+Winds' rel='stylesheet' type='text/css'>
 <link href='http://fonts.googleapis.com/css?family=Sacramento' rel='stylesheet' type='text/css'>
 <link href='http://fonts.googleapis.com/css?family=Piedra' rel='stylesheet' type='text/css'>
@@ -37,11 +37,11 @@
 <span class="context">    ...</span>
 <span class="context">    add_monsters(level, monster_data);</span>
 <span class="context"></span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add">    var item_data = [</span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add">        [480, 110, 20, 20, "key"],</span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add">    ];</span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add">    add_items(level, item_data);</span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add"></span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">    var item_data = [</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">        [480, 110, 20, 20, "key"],</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">    ];</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">    add_items(level, item_data);</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add"></span>
 <span class="context">    level.goal = create_goal(500, 360, 1);</span>
 <span class="context"></span>
 <span class="context">    _levels.push(level);</span>
@@ -54,28 +54,28 @@
 <span class="context">    ...</span>
 <span class="context">}</span>
 <span class="context"></span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add">// item_data: [x, y, width, height, type]</span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add">function add_items(level, item_data) {</span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add">    for (var i = 0; i < item_data.length; i++) {</span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add">        var d = item_data[i];</span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add">        var item = create_item(d[0], d[1], d[2], d[3], d[4]);</span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add">        level.items.push(item);</span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add">    }</span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add">}</span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add"></span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add">function create_item(x, y, width, height, type) {</span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add">    var d = {};</span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add">    d.x = x;</span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add">    d.y = y;</span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add">    d.width = width;</span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add">    d.height = height;</span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add">    d.origin_x = width / 2;</span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add">    d.origin_y = height;</span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add">    d.type = type;</span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add">    d.found = false;</span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add">    return d;</span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add">}</span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add"></span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">// item_data: [x, y, width, height, type]</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">function add_items(level, item_data) {</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">    for (var i = 0; i < item_data.length; i++) {</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">        var d = item_data[i];</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">        var item = create_item(d[0], d[1], d[2], d[3], d[4]);</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">        level.items.push(item);</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">    }</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">}</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add"></span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">function create_item(x, y, width, height, type) {</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">    var d = {};</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">    d.x = x;</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">    d.y = y;</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">    d.width = width;</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">    d.height = height;</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">    d.origin_x = width / 2;</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">    d.origin_y = height;</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">    d.type = type;</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">    d.found = false;</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">    return d;</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">}</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add"></span>
 <span class="context">function create_goal(x, y, next_level) {</span>
 <span class="context">    ...</span>
 <span class="context">}</span>
@@ -94,7 +94,7 @@
 <span class="context">    draw_platforms(ctx);</span>
 <span class="context">    draw_goal(ctx);</span>
 <span class="context">    draw_monsters(ctx);</span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add">    draw_items(ctx);</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">    draw_items(ctx);</span>
 <span class="context">    draw_player(ctx);</span>
 <span class="context">    ...</span>
 <span class="context">}</span>
@@ -106,18 +106,18 @@
 <span class="context">    ...</span>
 <span class="context">}</span>
 <span class="context"></span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add">function draw_items(ctx) {</span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add">    var level = _levels[_game.current_level];</span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add">    var items = level.items;</span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add">    for (var i = 0; i < items.length; i++) {</span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add">        var t = items[i];</span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add">        if (!t.found) {</span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add">            ctx.fillStyle = "magenta";</span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add">            ctx.fillRect(t.x - t.origin_x, t.y - t.origin_y, t.width, t.height);</span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add">        }</span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add">    }</span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add">}</span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add"></span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">function draw_items(ctx) {</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">    var level = _levels[_game.current_level];</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">    var items = level.items;</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">    for (var i = 0; i < items.length; i++) {</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">        var t = items[i];</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">        if (!t.found) {</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">            ctx.fillStyle = "magenta";</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">            ctx.fillRect(t.x - t.origin_x, t.y - t.origin_y, t.width, t.height);</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">        }</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">    }</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">}</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add"></span>
 <span class="context">function draw_goal(ctx) {</span>
 <span class="context">    ...</span>
 <span class="context">}</span>

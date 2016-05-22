@@ -268,9 +268,9 @@ class StageGenerator(object):
 
 		if self.options['html']:
 			print 'Generating HTML pages'
-			make_dir(os.path.join('html', self.stage_name))
+			make_dir(os.path.join(_book, self.stage_name))
 			for n in sorted(self.nodes):
-				errors += self.process_node_html(n)
+				errors += self.process_node_create_html(n)
 		if self.options['pathcheck']:
 			print 'Verifying paths'
 			errors += self.verify_paths()
@@ -323,7 +323,10 @@ class StageGenerator(object):
 		if self.options['verbose']:
 			print 'calc_links for %s' % node
 
-		f = open(os.path.join(self.stage_name, node + '.txt'), 'r')
+		filename = os.path.join('src', _book, self.stage_name, node + '.txt')
+		if not os.path.exists(filename):
+			error('Unable to find node: %s' % filename)
+		f = open(filename, 'r')
 		if not node in self.links:
 			self.links[node] = []
 		for line in f:
@@ -404,17 +407,18 @@ class StageGenerator(object):
 
 	# Processing nodes
 
-	def process_node_html(self, node):
+	def process_node_create_html(self, node):
 		if self.options['verbose']:
 			print 'html', node
 		errors = 0
-		file = node + '.txt'
+		infile = os.path.join('src', _book, self.stage_name, node + '.txt')
 		success = True
 		try:
 			parser = Parser()
-			if not parser.parse(self.stage_name, file, node, node, _images):
+			if not parser.parse(infile, node, _images, book=_book, stage=self.stage_name):
 				success = False
-		except:
+		except Exception as e:
+			print 'Exception:', e
 			success = False
 
 		if not success:
@@ -422,7 +426,7 @@ class StageGenerator(object):
 			print 'Parse failure'
 			errors += 1
 			sys.exit(0)
-		parser.export_html()
+		parser.export_html(os.path.join(_book, self.stage_name, node + '.html'))
 
 		return errors
 
@@ -713,7 +717,7 @@ def process_html(infile, outfile, options):
 		print '  %s -> html' % infile
 	try:
 		parser = Parser()
-		if not parser.parse_main(infile, name, _images):
+		if not parser.parse(infile, name, _images):
 			print 'Failure during parse_main'
 			success = False
 	except:
@@ -806,13 +810,13 @@ def main():
 		#	if options['html']:
 		#		rm_dir(os.path.join('html', _stages[stage][0]))
 
-	create_book_files(_book, options)
+	#create_book_files(_book, options)
 
 	errors = 0
 	init_globals()
 	for s in stages:
 		sg = StageGenerator(s, options)
-		#errors += sg.process()
+		errors += sg.process()
 
 	print 'Errors:', errors
 

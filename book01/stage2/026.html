@@ -2,8 +2,8 @@
 <head>
 <title>026 : Collide with platform</title>
 
-<link rel="stylesheet" href="../css/bootstrap.min.css">
-<link type="text/css" rel="stylesheet" href="../css/style.css" />
+<link rel="stylesheet" href="../../css/bootstrap.min.css">
+<link type="text/css" rel="stylesheet" href="../../css/style.css" />
 <link href='http://fonts.googleapis.com/css?family=Trade+Winds' rel='stylesheet' type='text/css'>
 <link href='http://fonts.googleapis.com/css?family=Sacramento' rel='stylesheet' type='text/css'>
 <link href='http://fonts.googleapis.com/css?family=Piedra' rel='stylesheet' type='text/css'>
@@ -39,13 +39,13 @@
 <span class="context">    ...</span>
 <span class="context">}</span>
 <span class="context"></span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add">function check_platform_collisions() {</span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add">    if (_player.y > _game.platform.y) {</span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add">        _player.y = _game.platform.y;</span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add">        _player.velocity_y = 0;</span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add">    }</span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add">}</span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add"></span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">function check_platform_collisions() {</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">    if (_player.y > _game.platform.y) {</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">        _player.y = _game.platform.y;</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">        _player.velocity_y = 0;</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">    }</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">}</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add"></span>
 <span class="context">// This is called ~60 times per second to update the world.</span>
 <span class="context">function update_world() {</span>
 <span class="context">    ...</span>
@@ -59,10 +59,10 @@
 <span class="context">    ...</span>
 <span class="context">}</span>
 <span class="context"></span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add">function check_collisions() {</span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add">    check_platform_collisions();</span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add">}</span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add"></span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">function check_collisions() {</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">    check_platform_collisions();</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">}</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add"></span>
 <span class="context">function check_platform_collisions() {</span>
 <span class="context">    ...</span>
 <span class="context">}</span>
@@ -73,7 +73,7 @@
 <div class="panel-code-header">Add a call to <span class="code-inline">check_collision()</span> in <span class="code-inline">update_world()</span>.</div><div class="panel-code code"><span class="context">// This is called ~60 times per second to update the world.</span>
 <span class="context">function update_world() {</span>
 <span class="context">    update_player();</span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add">    check_collisions();</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">    check_collisions();</span>
 <span class="context">    draw();</span>
 <span class="context"></span>
 <span class="context">    requestAnimationFrame(update_world);</span>

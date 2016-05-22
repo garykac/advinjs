@@ -2,8 +2,8 @@
 <head>
 <title>074 : Better side walls</title>
 
-<link rel="stylesheet" href="../css/bootstrap.min.css">
-<link type="text/css" rel="stylesheet" href="../css/style.css" />
+<link rel="stylesheet" href="../../css/bootstrap.min.css">
+<link type="text/css" rel="stylesheet" href="../../css/style.css" />
 <link href='http://fonts.googleapis.com/css?family=Trade+Winds' rel='stylesheet' type='text/css'>
 <link href='http://fonts.googleapis.com/css?family=Sacramento' rel='stylesheet' type='text/css'>
 <link href='http://fonts.googleapis.com/css?family=Piedra' rel='stylesheet' type='text/css'>
@@ -36,14 +36,14 @@
 <div class="panel-code code"><span class="context">function init_game() {</span>
 <span class="context">    ...</span>
 <span class="context">    _game.platforms = [];</span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add">    // The bottom brick platform along the bottom of the stage.</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">    // The bottom brick platform along the bottom of the stage.</span>
 <span class="context">    _game.platforms.push(create_platform(0, 360, _game.width, 40));</span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add">    // The left offstage 'wall' to keep the player on the stage.</span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add">    _game.platforms.push(</span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add">        create_platform(-60, -_game.height, 60, 2 * _game.height));</span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add">    // The right offstage 'wall' to keep the player on the stage.</span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add">    _game.platforms.push(</span>
-<img src="../css/plus.png" width="15" height="15"/><span class="add">        create_platform(_game.width, -_game.height, 60, 2 * _game.height));</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">    // The left offstage 'wall' to keep the player on the stage.</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">    _game.platforms.push(</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">        create_platform(-60, -_game.height, 60, 2 * _game.height));</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">    // The right offstage 'wall' to keep the player on the stage.</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">    _game.platforms.push(</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">        create_platform(_game.width, -_game.height, 60, 2 * _game.height));</span>
 <span class="context">    _game.platforms.push(create_platform(200, 290, 80, 20));</span>
 <span class="context">    _game.platforms.push(create_platform(300, 240, 80, 20));</span>
 <span class="context">    _game.platforms.push(create_platform(400, 170, 80, 20));</span>
@@ -60,12 +60,12 @@
 <span class="context">    // Move the player to the new location.</span>
 <span class="context">    _player.x += _player.velocity_x;</span>
 <span class="context">    _player.y += _player.velocity_y;</span>
-<img src="../css/cross.png" width="15" height="15"/><span class="delete"></span>
-<img src="../css/cross.png" width="15" height="15"/><span class="delete">    if (_player.x < 0) {</span>
-<img src="../css/cross.png" width="15" height="15"/><span class="delete">        _player.x = 0;</span>
-<img src="../css/cross.png" width="15" height="15"/><span class="delete">    } else if (_player.x > _game.width) {</span>
-<img src="../css/cross.png" width="15" height="15"/><span class="delete">        _player.x = _game.width;</span>
-<img src="../css/cross.png" width="15" height="15"/><span class="delete">    }</span>
+<img src="../../css/cross.png" width="15" height="15"/><span class="delete"></span>
+<img src="../../css/cross.png" width="15" height="15"/><span class="delete">    if (_player.x < 0) {</span>
+<img src="../../css/cross.png" width="15" height="15"/><span class="delete">        _player.x = 0;</span>
+<img src="../../css/cross.png" width="15" height="15"/><span class="delete">    } else if (_player.x > _game.width) {</span>
+<img src="../../css/cross.png" width="15" height="15"/><span class="delete">        _player.x = _game.width;</span>
+<img src="../../css/cross.png" width="15" height="15"/><span class="delete">    }</span>
 <span class="context">}</span>
 </div>
 </div>
