@@ -12,7 +12,7 @@ BEGIN_CODE
 .}
 END_CODE
 
-B: ???
+TODO text
 
 BEGIN_CODE
 .function check_monster_collisions() {

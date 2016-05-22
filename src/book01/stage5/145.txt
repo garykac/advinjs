@@ -1,7 +1,7 @@
 TITLE = Adding potions
 ID = 145
 
-B: fdsaf
+TODO text
 
 B: Copy the =potion.png= image into your =images/items= directory.
 

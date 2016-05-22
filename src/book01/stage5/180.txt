@@ -3,9 +3,7 @@ ID = 180
 
 B: Add player health  (this adds status bar)
 
-
-
-B: fdafdsa
+TODO text
 
 BEGIN_CODE
 .function init_player() {
@@ -17,7 +15,7 @@ BEGIN_CODE
 .}
 END_CODE
 
-B: fdafdasfad
+TODO text
 
 BEGIN_CODE
 .function start_level(level_id) {
@@ -38,7 +36,7 @@ BEGIN_CODE
 END_CODE
 
 
-B: ???
+TODO text
 
 
 BEGIN_CODE
@@ -59,7 +57,7 @@ BEGIN_CODE
 .}
 END_CODE
 
-B: ???
+TODO text
 
 B: you have health, but you can't see how much.
 

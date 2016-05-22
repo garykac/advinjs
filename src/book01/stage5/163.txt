@@ -41,7 +41,7 @@ BEGIN_CODE
 .}
 END_CODE
 
-B: ???
+TODO text
 
 GAIN Platform III - Pattern
 

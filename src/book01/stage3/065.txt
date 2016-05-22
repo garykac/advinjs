@@ -1,7 +1,7 @@
 TITLE = Finish monster init
 ID = 065
 
-B: ???
+TODO text
 
 BEGIN_CODE
 .function draw_platforms(ctx) {
@@ -36,7 +36,6 @@ BEGIN_CODE
 .}
 END_CODE
 
-B: ???
-
+TODO text
 
 GOTO 056

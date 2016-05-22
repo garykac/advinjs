@@ -28,7 +28,7 @@ BEGIN_CODE
 .}
 END_CODE
 
-B: ???
+TODO text
 
 BEGIN_CODE
 .function init_level1() {
@@ -138,7 +138,7 @@ BEGIN_CODE
 .}
 END_CODE
 
-B: ???
+TODO text
 
 BEGIN_CODE
 .function init_level1() {
@@ -193,7 +193,7 @@ BEGIN_CODE
 .}
 END_CODE
 
-B: ???
+TODO text
 
 BEGIN_CODE
 .function init_level1() {

@@ -1,7 +1,7 @@
 TITLE = Player life status
 ID = 192
 
-B: dsad
+TODO text
 
 B: Copy the player icon file into the =images/player= directory.
 
@@ -34,13 +34,13 @@ BEGIN_CODE
 .
 .	ctx.strokeStyle = "black";
 .	ctx.strokeRect(_game.meter_x, _game.meter_y, _game.meter_width, _game.meter_height);
-.	
+.
 .	// If the player has the key, draw it in the status area.
 .	var level = _levels[_game.current_level];
 .	if (level.player_has_key) {
 .		ctx.drawImage(_game.img_key, _game.meter_width + 15, 11);
 .	}
-+	
++
 +	// Draw player icons to indicate how many extra lives remain.
 +	for (var i = 0; i < _game.player_lives-1; i++) {
 +		ctx.drawImage(_game.img_player, _game.width - 30 - (i * 20), 12);
@@ -48,7 +48,7 @@ BEGIN_CODE
 .}
 END_CODE
 
-B: ???
+TODO text
 
 GOTO 134 IF_NOT_BADGE Treasure I - Key
 

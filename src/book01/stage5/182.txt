@@ -1,7 +1,7 @@
 TITLE = Health meter
 ID = 182
 
-B: ???
+TODO text
 
 BEGIN_CODE
 .function init_game() {
@@ -18,7 +18,7 @@ BEGIN_CODE
 .}
 END_CODE
 
-B: ???
+TODO text
 
 BEGIN_CODE
 .function draw_player(ctx) {
@@ -48,7 +48,7 @@ BEGIN_CODE
 END_CODE
 
 GAIN Vitality I - Health
- 
+
 GOTO 184 IF_BADGE Treasure I - Key; Sprite II - Image
 
 GOTO 100

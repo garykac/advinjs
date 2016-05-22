@@ -28,7 +28,7 @@ BEGIN_CODE
 .}
 END_CODE
 
-B: ???
+TODO text
 
 BEGIN_CODE
 .function init_level1() {
@@ -41,12 +41,12 @@ BEGIN_CODE
 +	add_items(level, item_data);
 +
 .	level.goal = create_goal(500, 360, 1);
-.	
+.
 .	_levels.push(level);
 .}
 END_CODE
 
-B: ???
+TODO text
 
 BEGIN_CODE
 .function create_monster(x, y, width, height, min_x, max_x, move_x, image) {
@@ -104,7 +104,7 @@ BEGIN_CODE
 .}
 END_CODE
 
-B: ???
+TODO text
 
 BEGIN_CODE
 .function draw_monsters(ctx) {
@@ -127,7 +127,7 @@ BEGIN_CODE
 .}
 END_CODE
 
-B: ???
+TODO text
 
 
 B: Note: if status bar, then draw there as well

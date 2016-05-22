@@ -20,7 +20,7 @@ BEGIN_CODE
 .}
 END_CODE
 
-B: fdasfdsa
+TODO text
 
 BEGIN_CODE
 .function check_item_collisions() {

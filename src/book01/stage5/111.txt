@@ -21,7 +21,7 @@ COPY_FILE images/backgrounds/brick.png
 COPY_FILE images/backgrounds/dirt.png
 END_COPY_FILE
 
-B: ???
+TODO text
 
 BEGIN_CODE
 .function init_game() {
@@ -34,7 +34,7 @@ BEGIN_CODE
 .}
 END_CODE
 
-B: ???
+TODO text
 
 
 BEGIN_CODE
@@ -75,7 +75,7 @@ BEGIN_CODE
 .}
 END_CODE
 
-B: ???
+TODO text
 
 BEGIN_CODE
 -// platform_data: [x, y, width, height]
@@ -90,7 +90,7 @@ BEGIN_CODE
 .}
 END_CODE
 
-B: ???
+TODO text
 
 BEGIN_CODE
 -function create_platform(x, y, width, height) {

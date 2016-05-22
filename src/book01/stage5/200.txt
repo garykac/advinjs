@@ -41,7 +41,7 @@ BEGIN_CODE
 .}
 END_CODE
 
-B: ???
+TODO text
 
 BEGIN_CODE
 .function init_player() {
@@ -65,7 +65,7 @@ BEGIN_CODE
 END_CODE
 
 
-B: ???
+TODO text
 
 BEGIN_CODE
 .function init_player() {
@@ -142,7 +142,7 @@ BEGIN_CODE
 +}
 END_CODE
 
-B: ???
+TODO text
 
 
 BEGIN_CODE
@@ -167,7 +167,7 @@ BEGIN_CODE
 .}
 END_CODE
 
-B: ???
+TODO text
 
 BEGIN_CODE
 .function draw_player(ctx) {
@@ -181,6 +181,6 @@ BEGIN_CODE
 .}
 END_CODE
 
-B: ???
+TODO text
 
 GOTO 210

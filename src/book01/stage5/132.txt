@@ -2,7 +2,7 @@ TITLE = Draw items
 ID = 132
 
 
-B: ???
+TODO text
 
 BEGIN_CODE
 .function init_level1() {
@@ -15,12 +15,12 @@ BEGIN_CODE
 +	add_items(level, item_data);
 +
 .	level.goal = create_goal(500, 360, 1);
-.	
+.
 .	_levels.push(level);
 .}
 END_CODE
 
-B: ?
+TODO text
 
 BEGIN_CODE
 .function create_monster(...) {
@@ -58,14 +58,14 @@ B: Note that =d.found= is set to =false=. We'll set this to =true= so that we kn
 
 B: Just having the items on the level isn't enough we need to draw and collide with them.
 
-B: Nothing will happen 
+B: Nothing will happen
 
 RUN_VERIFY
 
 B: Code is the same as before.
 
 
-B: ???
+TODO text
 
 BEGIN_CODE
 .function draw() {
@@ -80,7 +80,7 @@ BEGIN_CODE
 .}
 END_CODE
 
-B: ???
+TODO text
 
 BEGIN_CODE
 .function draw_monsters(ctx) {
@@ -104,6 +104,6 @@ BEGIN_CODE
 .}
 END_CODE
 
-B: ???
+TODO text
 
 GOTO 134

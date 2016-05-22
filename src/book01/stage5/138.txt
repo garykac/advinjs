@@ -15,7 +15,7 @@ BEGIN_CODE
 .}
 END_CODE
 
-B: ???
+TODO text
 
 BEGIN_CODE
 .function check_item_collisions() {
@@ -40,6 +40,6 @@ END_CODE
 
 GAIN Treasure II - Finish
 
-B: ???
+TODO text
 
 GOTO 100

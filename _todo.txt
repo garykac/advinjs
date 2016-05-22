@@ -13,7 +13,6 @@ Add 'Challenge' Badge and re-use nodes in stage5
 game.font_family is never set, even though it is used in stage 6
 
 Review text
-Remove all '???' placeholders
 
 Add backtracking information
 

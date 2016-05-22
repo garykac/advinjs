@@ -60,7 +60,7 @@ BEGIN_CODE
 .}
 END_CODE
 
-B: and finally create_monsters needs to 
+B: and finally =create_monster()= needs to be updated
 
 BEGIN_CODE
 -function create_monster(x, y, width, height, min_x, max_x, move_x) {
@@ -78,12 +78,12 @@ BEGIN_CODE
 +
 +	m.img = new Image();
 +	m.img.src = _game.imagedir_monsters + image + ".png";
-+	
++
 .	return m;
 .}
 END_CODE
 
-B: ??
+TODO text
 
 BEGIN_CODE
 .function draw_monsters(ctx) {

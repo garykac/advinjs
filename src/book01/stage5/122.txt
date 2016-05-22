@@ -21,7 +21,7 @@ COPY_FILE images/items/gem.png
 END_COPY_FILE
 
 
-B: ???
+TODO text
 
 BEGIN_CODE
 .function init_game() {
@@ -70,7 +70,7 @@ BEGIN_CODE
 .}
 END_CODE
 
-B: ???
+TODO text
 
 BEGIN_CODE
 -// item_data: [x, y, width, height, type]
@@ -102,7 +102,7 @@ BEGIN_CODE
 .}
 END_CODE
 
-B: ???
+TODO text
 
 RUN_VERIFY
 
@@ -123,7 +123,7 @@ BEGIN_CODE
 .}
 END_CODE
 
-B: ???
+TODO text
 
 GOTO 184 IF_BADGE Vitality I - Health
 

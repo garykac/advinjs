@@ -87,7 +87,7 @@ BEGIN_CODE
 .}
 END_CODE
 
-B: ???
+TODO text
 
 
 GAIN Sprite III - Direction

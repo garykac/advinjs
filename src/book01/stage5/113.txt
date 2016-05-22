@@ -37,7 +37,7 @@ BEGIN_CODE
 .}
 END_CODE
 
-B: ???
+TODO text
 
 BEGIN_CODE
 .function draw_goal(ctx) {
@@ -56,6 +56,6 @@ BEGIN_CODE
 .}
 END_CODE
 
-B: ???
+TODO text
 
 GOTO 142
