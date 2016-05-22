@@ -56,7 +56,7 @@ INFO See the <a href="howtoplay.html">How to play</a> page.
 
 H2 Current status
 
-INFO The game is now 100% complete, but the text is still a painfully early draft. There are many placeholders where a section needs to be expanded with more information.
+INFO The programming part of the game is now 100% complete, but the descriptive text and explanations are not complete. There are many placeholders where a section needs to be expanded with more information.
 
 INFO However, all of the programming parts are in working order. The build process for this project walks through every possible pathway in the adventure and performs the code edits to ensure that everything works as intended. At the end of each stage, a check is made to verify that every pathway through that stage produces the exact same code.
 

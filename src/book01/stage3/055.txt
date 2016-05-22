@@ -1,6 +1,8 @@
 TITLE = Monsters
 ID = 055
 
+TODO general text about adding monsters
+
 GOTO 064 IF_BADGE Platform II - Four Sided
 
 GOTO 063

@@ -1,6 +1,8 @@
 TITLE = Basic collision
 ID = 045
 
+TODO text
+
 BEGIN_CODE
 .// Return true if the 2 objects overlap.
 .function collide(obj1, obj2) {
@@ -12,7 +14,7 @@ BEGIN_CODE
 +		return false;
 +	if ((obj2.y - obj2.origin_y + obj2.height) <= (obj1.y - obj1.origin_y))
 +		return false;
-+	
++
 -	return false;
 +	return true;
 .}

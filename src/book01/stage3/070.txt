@@ -3,7 +3,9 @@ ID = 070
 
 B: Before we can add more platforms, we'll first need to fixup the =_player.platform= variable.
 
-B: Once we start adding more platforms, storing a boolean (=true= or =false=) value in the =_player.platform= variable won't be good enough - we'll want to know **which** platform the player is standing on.
+U: Why? What's wrong with it?
+
+B: Well, when we only had a single platform along the bottom of the screen, a simple boolean (=true= or =false=) value was good enough. But now that we're adding more platforms, we'll want to know **which** platform the player is standing on.
 
 B: We can update =_player.platform= by initializing it to =null= (instead of =false=) and setting it to the platform (instead of =true=) when the player collides with a platform.
 

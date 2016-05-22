@@ -1,9 +1,11 @@
 TITLE = Finish stage 1
 ID = 018
 
-U: I notie that the player can still go off the left/right side of the screen.
+U: I notice that the player can still go off the left/right side of the screen.
 
 B: Hmm... you can put a temporary fix in =update_player()= to keep the player on the screen, but there's a proper fix that you'll be doing later.
+
+U: What's the temporary fix?
 
 BEGIN_CODE_INFO Add temporary fix to keep the player on the screen
 .function update_player() {

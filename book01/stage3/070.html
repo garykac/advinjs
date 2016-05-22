@@ -32,7 +32,8 @@
 <div class="container">
 <h1>070 : Adding more platforms</h1>
 <div class="name">Balthazar:</div><p class="balthazar">Before we can add more platforms, we'll first need to fixup the <span class="code-inline-color">_player.platform</span> variable.</p>
-<div class="name">Balthazar:</div><p class="balthazar">Once we start adding more platforms, storing a boolean (<span class="code-inline-color">true</span> or <span class="code-inline-color">false</span>) value in the <span class="code-inline-color">_player.platform</span> variable won't be good enough - we'll want to know **which** platform the player is standing on.</p>
+<div class="name">You:</div><p class="you">Why? What's wrong with it?</p>
+<div class="name">Balthazar:</div><p class="balthazar">Well, when we only had a single platform along the bottom of the screen, a simple boolean (<span class="code-inline-color">true</span> or <span class="code-inline-color">false</span>) value was good enough. But now that we're adding more platforms, we'll want to know **which** platform the player is standing on.</p>
 <div class="name">Balthazar:</div><p class="balthazar">We can update <span class="code-inline-color">_player.platform</span> by initializing it to <span class="code-inline-color">null</span> (instead of <span class="code-inline-color">false</span>) and setting it to the platform (instead of <span class="code-inline-color">true</span>) when the player collides with a platform.</p>
 <div class="name">Balthazar:</div><p class="balthazar">The <span class="code-inline-color">null</span> value simply means that there is no object stored in the variable - in our case, it means that there is no platform associated with the player.</p>
 <div class="panel panel-default">

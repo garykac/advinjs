@@ -1,6 +1,7 @@
 TITLE = More platforms
 ID = 075
 
+TODO text
 
 BEGIN_CODE
 .function draw_platforms(ctx) {
@@ -72,4 +73,3 @@ RUN_VERIFY
 GOTO 079 IF_BADGE Monster I - Stationary
 
 GOTO 071
-	

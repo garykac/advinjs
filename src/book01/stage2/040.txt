@@ -1,6 +1,7 @@
 TITLE = Adding a goal
 ID = 040
 
+TODO Needs text
 
 BEGIN_CODE
 .function init_game() {
@@ -8,7 +9,7 @@ BEGIN_CODE
 .	// Game state.
 .	_game.platform = create_platform(0, 360, _game.width, 40);
 +	_game.goal = create_goal(500, 360);
-.	
+.
 .	// Global world parameters.
 .	...
 .}

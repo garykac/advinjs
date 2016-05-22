@@ -17,6 +17,8 @@ Remove all '???' placeholders
 
 Add backtracking information
 
+The potion.png file can be deleted once the code switches to use potion1...16.png
+
 Bugs from class:
 Note when it's OK to run and check the code
 	Add error messages
