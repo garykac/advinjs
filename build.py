@@ -270,7 +270,7 @@ class StageGenerator(object):
 			print 'Generating HTML pages'
 			make_dir(os.path.join(_book, self.stage_name))
 			for n in sorted(self.nodes):
-				errors += self.process_node_create_html(n)
+				errors += self.process_node_create_html(_book, self.stage_name, n)
 		if self.options['pathcheck']:
 			print 'Verifying paths'
 			errors += self.verify_paths()
@@ -407,15 +407,15 @@ class StageGenerator(object):
 
 	# Processing nodes
 
-	def process_node_create_html(self, node):
+	def process_node_create_html(self, book, stage, node):
 		if self.options['verbose']:
 			print 'html', node
 		errors = 0
-		infile = os.path.join('src', _book, self.stage_name, node + '.txt')
+		infile = os.path.join('src', book, stage, node + '.txt')
 		success = True
 		try:
 			parser = Parser()
-			if not parser.parse(infile, node, _images, book=_book, stage=self.stage_name):
+			if not parser.parse(infile, node, _images, book=book, stage=stage):
 				success = False
 		except Exception as e:
 			print 'Exception:', e
@@ -426,7 +426,7 @@ class StageGenerator(object):
 			print 'Parse failure'
 			errors += 1
 			sys.exit(0)
-		parser.export_html(os.path.join(_book, self.stage_name, node + '.html'))
+		parser.export_html(os.path.join(book, stage, node + '.html'))
 
 		return errors
 
