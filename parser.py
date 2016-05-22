@@ -6,7 +6,7 @@ import sys
 from parse_code import Parse_Code
 
 class Parser(object):
-	def __init__(self, options):
+	def __init__(self):
 
 		self.data = []
 
@@ -28,7 +28,7 @@ class Parser(object):
 			'verify': False,
 		}
 		# Top-level parsers.
-		self.parse_code = Parse_Code(self, 'code', options)
+		self.parse_code = Parse_Code(self, 'code', self.options)
 
 		self.parsers = [
 			self.parse_code,
@@ -59,28 +59,27 @@ class Parser(object):
 		self.fileobj.close()
 		return success
 
-	def parse_main(self, file, name, images):
+	def parse_main(self, infile, name, images):
 		self.stage = ''
 		self.name = name
 		self.nodename = name
 		self.images = images
-		filename = os.path.join('main', file)
-		if not os.path.isfile(filename):
-			self.error('File "%s" doesn\'t exist' % filename)
+		if not os.path.isfile(infile):
+			self.error('File "%s" doesn\'t exist' % infile)
 
 		try:
-			self.fileobj = open(filename, 'r')
+			self.fileobj = open(infile, 'r')
 		except IOError as e:
-			self.error('Unable to open "%s": %s' % (filename, e))
+			self.error('Unable to open "%s": %s' % (infile, e))
 
-		self.current_file = filename
+		self.current_file = infile
 		success = self.parse_input()
 
 		self.fileobj.close()
 		return success
 
-	def export_html(self):
-		self.print_html()
+	def export_html(self, outfile):
+		self.print_html(outfile)
 
 
 	# ---------------
@@ -360,12 +359,13 @@ class Parser(object):
 	# HTML output
 	# -----------
 
-	def print_html(self):
-		out_file = os.path.join('html', self.stage, self.nodename + '.html')
+	def print_html(self, outfile):
+		if outfile == None:
+			outfile = os.path.join('html', self.stage, self.nodename + '.html')
 		try:
-			fout = open(out_file, 'w')
+			fout = open(outfile, 'w')
 		except IOError as e:
-			self.error('Unable to open "%s" for writing: %s' % (out_file, e))
+			self.error('Unable to open "%s" for writing: %s' % (outfile, e))
 
 		self.print_html_header(fout)
 		if self.stage != '':

@@ -14,6 +14,8 @@ from parser import Parser
 
 _version = '0.1'
 
+_book = 'book01'
+
 _stages = [
 	# [stage-name, start-node, end-node, [badges]],
 	['',		'000', '000', []],
@@ -407,13 +409,9 @@ class StageGenerator(object):
 			print 'html', node
 		errors = 0
 		file = node + '.txt'
-		options = {
-			'debug': False,
-			'verify': False,
-		}
 		success = True
 		try:
-			parser = Parser(options)
+			parser = Parser()
 			if not parser.parse(self.stage_name, file, node, node, _images):
 				success = False
 		except:
@@ -438,14 +436,9 @@ class StageGenerator(object):
 
 		node = dst[0:3]
 		file = node + '.txt'
-		options = {
-			'debug': False,
-			'verify': True,
-		}
-
 		success = True
 		try:
-			parser = Parser(options)
+			parser = Parser()
 			if not parser.parse(self.stage_name, file, node, dst, _images):
 				success = False
 		except:
@@ -686,48 +679,43 @@ def copy_snapshot_dir(stage_src, src, stage_dst, dst):
 def copy_core_snapshot_files():
 	distutils.dir_util.copy_tree('data/baseline', 'snapshots/000')
 
-def copy_core_html_files(options):
-	distutils.dir_util.copy_tree('data/css', 'html/css')
-	distutils.dir_util.copy_tree('data/docs', 'html/docs')
-	distutils.dir_util.copy_tree('data/figures', 'html/figures')
-	distutils.dir_util.copy_tree('data/images', 'html/images')
-	distutils.dir_util.copy_tree('data/prototype', 'html/prototype')
-	distutils.dir_util.copy_tree('data/screenshots', 'html/screenshots')
+def create_main_html_files(options):
+	errors = 0
+	errors += process_html('src/index.txt', 'index.html', options)
+	errors += process_html('src/baseline.txt', 'baseline.html', options)
+	errors += process_html('src/howtoplay.txt', 'howtoplay.html', options)
 
-	# TODO: only regenerate the zip files if the contents have changed.
-	# Otherwise a "new" zip file (with a new timestamp) will be created.
+	if errors != 0:
+		error('Error processing core html files')
+
+def create_stage_files(options):
 	print 'Creating baseline.zip'
 	subprocess.call(
 			['zip', '-r', '../html/baseline.zip', 'baseline'],
 			cwd = 'data')
+
 	print 'Creating images.zip'
 	subprocess.call(
 			['zip', '-r', '../html/images.zip', 'images',
 				'-i', '*.png'],
 			cwd = 'data')
 
-	errors = 0
-	errors += process_core_html('index', options)
-	errors += process_core_html('baseline', options)
-	errors += process_core_html('changes', options)
-	errors += process_core_html('howtoplay', options)
-	errors += process_core_html('images', options)
+	errors = process_html('images', options)
 	if errors != 0:
 		error('Error processing core html files')
 
-def process_core_html(name, script_options):
-	if script_options['verbose']:
-		print 'html', name
+def process_html(infile, outfile, options):
+	"""
+	Process simple (non-node) src file and generate an HTML file.
+	"""
 	errors = 0
-	file = name + '.txt'
-	parser_options = {
-		'debug': False,
-		'verify': False,
-	}
+	name = os.path.splitext(os.path.basename(infile))[0]
 	success = True
+	if options['verbose']:
+		print '  %s -> html' % infile
 	try:
-		parser = Parser(parser_options)
-		if not parser.parse_main(file, name, _images):
+		parser = Parser()
+		if not parser.parse_main(infile, name, _images):
 			print 'Failure during parse_main'
 			success = False
 	except:
@@ -739,7 +727,7 @@ def process_core_html(name, script_options):
 		print 'Parse failure'
 		errors += 1
 	else:
-		parser.export_html()
+		parser.export_html(outfile)
 
 	return errors
 
@@ -806,25 +794,26 @@ def main():
 		if all_stages:
 			if options['pathcheck']:
 				print 'Creating core snapshot files'
-				rm_dir('snapshots')
-				make_dir('snapshots')
-				copy_core_snapshot_files()
+				#rm_dir('snapshots')
+				#make_dir('snapshots')
+				#copy_core_snapshot_files()
 			if options['html']:
 				print 'Creating core HTML files'
-				rm_dir('html')
-				make_dir('html')
-				copy_core_html_files(options)
-		else:
-			if options['pathcheck']:
-				rm_dir(os.path.join('snapshots', _stages[stage][0]))
-			if options['html']:
-				rm_dir(os.path.join('html', _stages[stage][0]))
+				#rm_dir('html')
+				#make_dir('html')
+				create_main_html_files(options)
+		#else:
+		#	if options['pathcheck']:
+		#		rm_dir(os.path.join('snapshots', _stages[stage][0]))
+		#	if options['html']:
+		#		rm_dir(os.path.join('html', _stages[stage][0]))
 
 	errors = 0
 	init_globals()
 	for s in stages:
+		#create_stage_files(options)
 		sg = StageGenerator(s, options)
-		errors += sg.process()
+		#errors += sg.process()
 
 	print 'Errors:', errors
 

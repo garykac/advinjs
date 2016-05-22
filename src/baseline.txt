@@ -10,12 +10,12 @@ INFO You can copy-n-paste the file content individually from this page, or <a hr
 
 INFO =main.html=
 
-PRE_FILE data/baseline/game.html
+PRE_FILE baseline/game.html
 
 INFO =style.css=
 
-PRE_FILE data/baseline/style.css
+PRE_FILE baseline/style.css
 
 INFO =script.js=
 
-PRE_FILE data/baseline/script.js
+PRE_FILE baseline/script.js
