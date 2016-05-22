@@ -753,8 +753,6 @@ def main():
 		help = 'True to generate html files.')
 	argparser.add_argument('--pathcheck', required=False, action='store_true',
 		help = 'True to verify paths between nodes are valid.')
-	argparser.add_argument('--fullsnapshot', required=False, action='store_true',
-		help = 'True to record a full snapshot (including file copies) during pathcheck.')
 	argparser.add_argument('--debug',
 		help = 'Print additional debug info.')
 	argparser.add_argument('--trace',
