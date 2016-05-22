@@ -242,14 +242,13 @@ class Parser(object):
 			path = line[10:]
 			self.add_data('COPY_FILE', path)
 			src = os.path.join(self.book, path)
-			print self.nodeid, 'copy'
-			#dst = os.path.join('snapshots', self.stage, self.fullnodeid, path)
-			#dir = os.path.dirname(dst)
-			#if not os.path.exists(dir):
-			#	os.makedirs(dir)
+			dst = os.path.join('snapshots', self.book, self.stage, self.fullnodeid, path)
+			dir = os.path.dirname(dst)
+			if not os.path.exists(dir):
+				os.makedirs(dir)
 			if not os.path.exists(src):
 				self.error('Unable to find: %s' % src)
-			#shutil.copy(src, dst)
+			shutil.copy(src, dst)
 			return True
 
 		if re.match(r'BEGIN_IMAGE_TABLE ', line):

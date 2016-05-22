@@ -10,12 +10,13 @@ Add info about what to expect before the GOTO
 
 Add 'Challenge' Badge and re-use nodes in stage5
 
+game.font_family is never set, even though it is used in stage 6
 
 Review text
 Remove all '???' placeholders
 
 Add backtracking information
-	
+
 Bugs from class:
 Note when it's OK to run and check the code
 	Add error messages
