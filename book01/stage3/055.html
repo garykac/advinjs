@@ -32,6 +32,28 @@
 <div class="container">
 <h1>055 : Monsters</h1>
 <!-- TODO: general text about adding monsters -->
+<div class="name">Balthazar:</div><p class="balthazar">To add monsters:</p>
+<div class="panel panel-default">
+<div class="panel-code code"><span class="context">function create_platform(x, y, width, height) {</span>
+<span class="context">    ...</span>
+<span class="context">}</span>
+<span class="context"></span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">function create_monster(x, y, width, height) {</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">    var m = {};</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">    m.x = x;</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">    m.y = y;</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">    m.width = width;</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">    m.height = height;</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">    m.origin_x = m.width / 2;</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">    m.origin_y = m.height;</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">    return m;</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">}</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add"></span>
+<span class="context">function create_goal(x, y) {</span>
+<span class="context">    ...</span>
+<span class="context">}</span>
+</div>
+</div>
 <p class="alert alert-info"><a href="064.html"><span class="goto">GOTO 064</span></a> if you already have the <span class="badge-check">Platform II - Four Sided</span> badge.</p>
 <p class="alert alert-info"><a href="063.html"><span class="goto">GOTO 063</span></a></p>
 </div>

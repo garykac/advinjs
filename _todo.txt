@@ -19,10 +19,12 @@ Add backtracking information
 
 The potion.png file can be deleted once the code switches to use potion1...16.png
 
+Pass badges as URL params so that we can provide link to what the student's
+code should look like at each node.
+
 Bugs from class:
 Note when it's OK to run and check the code
 	Add error messages
-063 create_monster doesn't exist yet (?)
 when game_win is added, give more context so it isn't added to monster collide
 028 mention only jump once
 043 mention that collide is not implemented yet

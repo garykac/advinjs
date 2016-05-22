@@ -1,29 +1,6 @@
 TITLE = Finish monster init
 ID = 065
 
-B: To add monsters:
-
-BEGIN_CODE
-.function create_platform(x, y, width, height) {
-.	...
-.}
-.
-+function create_monster(x, y, width, height) {
-+	var m = {};
-+	m.x = x;
-+	m.y = y;
-+	m.width = width;
-+	m.height = height;
-+	m.origin_x = m.width / 2;
-+	m.origin_y = m.height;
-+	return m;
-+}
-+
-.function create_goal(x, y) {
-.	...
-.}
-END_CODE
-
 B: ???
 
 BEGIN_CODE
