@@ -44,7 +44,7 @@ class Parser(object):
 			'code': self.parse_code,
 		}
 
-	def parse(self, infile, nodeid, images, book=None, stage=None, fullnodeid=None):
+	def parse(self, infile, nodeid, images, book=None, stage=None, fullnodeid=None, todo=False):
 		self.nodeid = nodeid
 		self.images = images
 		self.book = book
@@ -52,6 +52,7 @@ class Parser(object):
 		self.fullnodeid = fullnodeid
 		if self.fullnodeid == None:
 			self.fullnodeid = nodeid
+		self.show_todo = todo
 		self.dir_depth = len(infile.split('/')) - 2
 
 		if not os.path.isfile(infile):
@@ -206,7 +207,8 @@ class Parser(object):
 			return True
 		if re.match(r'TODO ', line):
 			self.add_data('TODO', line[5:])
-			print self.nodeid, line
+			if self.show_todo:
+				print self.nodeid, line
 			return True
 		if re.match(r'FIGURE ', line):
 			self.add_data('FIGURE', line[7:])
@@ -474,7 +476,7 @@ class Parser(object):
 						self.error('Unknown format: GOTO "%s"' % d[1])
 					target_link = target
 					if self.stage == None:
-						target_link = 'stage1/' + target
+						target_link = 'book01/stage1/' + target
 					fout.write('<p class="alert alert-info"><a href="%s.html"><span class="goto">GOTO %s</span></a></p>\n' % (target_link, target))
 					continue
 				self.error('Unknown format: GOTO "%s"' % d[1])

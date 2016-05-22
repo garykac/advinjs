@@ -271,7 +271,6 @@ class StageGenerator(object):
 			for n in sorted(self.nodes):
 				errors += self.process_node_create_html(_book, self.stage_name, n)
 		if self.options['pathcheck']:
-			print 'Verifying paths'
 			errors += self.verify_paths(_book)
 
 		#for t in sorted(self.titles.keys()):
@@ -406,15 +405,15 @@ class StageGenerator(object):
 
 	# Processing nodes
 
-	def process_node_create_html(self, book, stage, node):
+	def process_node_create_html(self, book, stage, nodeid):
 		if self.options['verbose']:
 			print 'html', node
 		errors = 0
-		infile = os.path.join('src', book, stage, node + '.txt')
+		infile = os.path.join('src', book, stage, nodeid + '.txt')
 		success = True
 		try:
 			parser = Parser()
-			if not parser.parse(infile, node, _images, book=book, stage=stage):
+			if not parser.parse(infile, nodeid, _images, book=book, stage=stage, todo=True):
 				success = False
 		except Exception as e:
 			print 'Exception:', e
@@ -425,41 +424,8 @@ class StageGenerator(object):
 			print 'Parse failure'
 			errors += 1
 			sys.exit(0)
-		parser.export_html(os.path.join(book, stage, node + '.html'))
+		parser.export_html(os.path.join(book, stage, nodeid + '.html'))
 
-		return errors
-
-	def process_node_path(self, book, stage_src, src, stage_dst, dst, node_path):
-		if self.options['verbose']:
-			print 'path %s -> %s' % (src, dst)
-		#print node_path
-		errors = 0
-
-		copy_snapshot_dir(book, stage_src, src, stage_dst, dst)
-
-		node = dst[0:3]
-		file = node + '.txt'
-		success = True
-		try:
-			parser = Parser()
-			if not parser.parse(self.stage_name, file, node, dst, _images):
-				success = False
-		except:
-			success = False
-
-		if not success:
-			print '%s -> %s' % (src, dst)
-			print node_path
-			print 'Parse failure'
-			errors += 1
-			sys.exit(0)
-
-		if not self.check_function_order(dst):
-			print '%s -> %s' % (src, dst)
-			print node_path
-			print 'Function order fail'
-			errors += 1
-			sys.exit(0)
 		return errors
 
 	# Verify paths
@@ -481,11 +447,45 @@ class StageGenerator(object):
 				node_path = path[3]
 				self.process_node_path(book, _stages[self.id-1][0], src, self.stage_name, tgt, node_path)
 			elif check == 'EQ':
-				errors += self.check_equal(src, tgt)
+				errors += self.check_equal(book, self.stage_name, src, tgt)
 			elif check == 'COPY':
 				copy_snapshot_dir(book, self.stage_name, src, self.stage_name, tgt)
 			else:
 				error('Unknown check: %s' % check)
+		return errors
+
+	def process_node_path(self, book, stage_src, src, stage_dst, dst, node_path):
+		if self.options['verbose']:
+			print 'path %s -> %s' % (src, dst)
+		#print node_path
+
+		copy_snapshot_dir(book, stage_src, src, stage_dst, dst)
+
+		errors = 0
+		nodeid = dst[0:3]
+		infile = os.path.join('src', book, stage_dst, nodeid + '.txt')
+		success = True
+
+		try:
+			parser = Parser()
+			if not parser.parse(infile, nodeid, _images, book=book, stage=stage_dst, fullnodeid=dst):
+				success = False
+		except:
+			success = False
+
+		if not success:
+			print '%s -> %s' % (src, dst)
+			print node_path
+			print 'Parse failure'
+			errors += 1
+			sys.exit(0)
+
+		if not self.check_function_order(book, self.stage_name, dst):
+			print '%s -> %s' % (src, dst)
+			print node_path
+			print 'Function order fail'
+			errors += 1
+			sys.exit(0)
 		return errors
 
 	def calc_badge_code(self, badges):
@@ -603,7 +603,7 @@ class StageGenerator(object):
 		if end_nodes[0][0] != end_nodes[0][0][0:3]:
 			self.path_checks.append(['COPY', end_nodes[0][0], end_nodes[0][0][0:3]])
 
-	def check_equal(self, path1, path2):
+	def check_equal(self, book, stage, path1, path2):
 		errors = 0
 
 		filename1 = path1[0]
@@ -613,8 +613,8 @@ class StageGenerator(object):
 
 		#print '%s == %s' % (filename1, filename2)
 
-		file1 = os.path.join('snapshots', self.stage_name, filename1, 'script.js')
-		file2 = os.path.join('snapshots', self.stage_name, filename2, 'script.js')
+		file1 = os.path.join('snapshots', book, stage, filename1, 'script.js')
+		file2 = os.path.join('snapshots', book, stage, filename2, 'script.js')
 
 		with open(file1) as f1:
 			lines1 = f1.readlines()
@@ -649,9 +649,9 @@ class StageGenerator(object):
 		return errors
 
 	# Verify that the functions occur in the correct order
-	def check_function_order(self, dst):
+	def check_function_order(self, book, stage, node):
 		findex = 0
-		f = open(os.path.join('snapshots', self.stage_name, dst, 'script.js'), 'r')
+		f = open(os.path.join('snapshots', book, stage, node, 'script.js'), 'r')
 		for line in f:
 			m = re.match(r'function (.+)\(', line)
 			if m:
@@ -673,10 +673,13 @@ def rm_dir(dir):
 		shutil.rmtree(dir)
 
 def copy_snapshot_dir(book, stage_src, src, stage_dst, dst):
+	"""
+	Copy snapshot dir from previous node so we can update it.
+	"""
+	make_dir(os.path.join('snapshots', book, stage_dst))
 	snapshot_src = os.path.join('snapshots', book, stage_src, src)
 	snapshot_dst = os.path.join('snapshots', book, stage_dst, dst)
 
-	# Copy from dir so we can update it
 	distutils.dir_util.copy_tree(snapshot_src, snapshot_dst)
 
 def copy_core_snapshot_files():
@@ -799,13 +802,14 @@ def main():
 				print 'Creating core snapshot files'
 				rm_dir('snapshots')
 				make_dir('snapshots')
-				copy_core_snapshot_files()
 		else:
 			if options['pathcheck']:
 				rm_dir(os.path.join('snapshots', _book, _stages[stage][0]))
 			if options['html']:
 				rm_dir(os.path.join(_book, _stages[stage][0]))
 
+	if options['pathcheck']:
+		copy_core_snapshot_files()
 	if options['html']:
 		print 'Creating core HTML files'
 		create_main_html_files(options)
