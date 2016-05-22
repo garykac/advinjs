@@ -17,7 +17,7 @@ TASK_LIST_ITEM_DATA Create a local project directory for all the project files a
 TASK_LIST_ITEM_END
 
 TASK_LIST_ITEM_START
-TASK_LIST_ITEM_DATA Get a copy of the <a href="../baseline.html">baseline project files</a>.
+TASK_LIST_ITEM_DATA Get a copy of the <a href="../../baseline.html">baseline project files</a>.
 TASK_LIST_ITEM_DATA Copy them into a local directory called =baseline= in your project directory (e.g.: =advinjs/baseline=).
 TASK_LIST_ITEM_DATA These files comprise the starting point for your project.
 TASK_LIST_ITEM_END

@@ -41,6 +41,8 @@ END_CODE
 
 H3 Deleting lines
 
+INFO Lines that you need to delete are marked with a red 'x'. As with adding lines, context is provided so that you see exactly which line should be deleted.
+
 BEGIN_CODE
 .function check_input() {
 .	...

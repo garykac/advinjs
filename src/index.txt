@@ -43,9 +43,9 @@ BEGIN_LIST
 LIST_ITEM A <strong>web browser</strong>. Something modern.
 LIST_ITEM A <strong>text editor</strong>. Modern or otherwise.
 LIST_ITEM A copy of the <a href="baseline.html"><strong>baseline project</strong></a>.
-LIST_ITEM The <a href="images.html"><strong>sample images</strong></a>.
-LIST_ITEM A <a href="docs/character-sheet.pdf"><strong>character sheet</strong></a> to track your progress<sup><a href="#dw">&dagger;</a></sup>.
-LIST_ITEM A <a href="docs/map-5.pdf"><strong>map for Stage 5</strong></a> (assuming you accept the challenge token).
+LIST_ITEM The <a href="book01/images.html"><strong>sample images</strong></a>.
+LIST_ITEM A <a href="book01/docs/character-sheet.pdf"><strong>character sheet</strong></a> to track your progress<sup><a href="#dw">&dagger;</a></sup>.
+LIST_ITEM A <a href="book01/docs/map-5.pdf"><strong>map for Stage 5</strong></a> (assuming you accept the challenge token).
 END_LIST
 
 INFO If you plan on making your own images (and you should!) you may also want to track down an image editor. Nothing fancy is needed and there are a lot of "icon editors" that are perfect for drawing the small sprite images used in these sort of games.
@@ -60,12 +60,12 @@ INFO The game is now 100% complete, but the text is still a painfully early draf
 
 INFO However, all of the programming parts are in working order. The build process for this project walks through every possible pathway in the adventure and performs the code edits to ensure that everything works as intended. At the end of each stage, a check is made to verify that every pathway through that stage produces the exact same code.
 
-INFO Be aware that, while the code parts that are done are reasonably stable, this project is still in beta, so some tweaks to the code may take place. This would only cause problems if you were part-way through the adventure when these changes were made. Whenever changes like this are made, they will be noted in a <a href="changes.html">changelog</a>.
+INFO Be aware that, while the code parts that are done are reasonably stable, this project is still in beta, so some tweaks to the code may take place.
 
 H2 Development info
 
-INFO To get an idea of how the final game plays, you can take a look at a <a href="prototype/game.html">prototype of the finished game</a>. The code in the final version will be slightly different as the code gets chopped up into bite-sized pieces, but the overall gameplay will be basically the same.
+INFO To get an idea of how the final game plays, you can take a look at a <a href="book01/prototype/game.html">prototype of the finished game</a>. The code in the final version will be slightly different as the code gets chopped up into bite-sized pieces, but the overall gameplay will be basically the same.
 
-INFO For those who are curious, there are 2 development maps (one for <a href="docs/devmap-1-4.pdf">stages 1-4</a> and one for <a href="docs/devmap-5.pdf">stage 5</a>) that show the overall structure of the game. These maps are not needed while playing.
+INFO For those who are curious, there are 2 development maps (one for <a href="book01/docs/devmap-1-4.pdf">stages 1-4</a> and one for <a href="book01/docs/devmap-5.pdf">stage 5</a>) that show the overall structure of the game. These maps are not needed while playing.
 
 FOOTNOTE <a name="dw">&dagger;</a> - Character sheet based on <strong><a href="http://dungeon-world.com">Dungeon World</a></strong> by Sage LaTorra and Adam Koebel.
