@@ -1,0 +1,554 @@
+099 -> 100
+099 -> 200
+
+// Easy
+200 -> 210
+210 -> 215
+215 -> 230
+230 -> 260
+260 -> 299
+
+// Challenging
+// (a) Sprite II - Image
+// (b) Sprite III - Direction -- requires (a)
+// (c) Platform III - Pattern -- requires (ab)
+// (d) Treasure I - Key and Treasure II - Finish
+// (e) Treasure III - Potion -- requires (adf)
+// (f) Vitality I - Health
+// (g) Vitality II - Reincarnation -- requires (f)
+
+
+// Images
+// (a)
+100 -> 110_a
+110_a -> 120_a
+120_a -> 121_a
+121_a -> 100a
+// (a) -> (b)
+100a -> 110a_b
+110a_b -> 115a_b
+115a_b -> 116a_b
+116a_b -> 118a_b
+118a_b -> 100ab
+// (ab) -> (c)
+100ab -> 110ab_c
+110ab_c -> 111ab_c
+111ab_c -> 161ab_c
+161ab_c -> 163ab_c
+163ab_c -> 100abc
+
+// Items
+// (d)
+100 -> 130_d
+130_d -> 131_d
+131_d -> 132_d
+132_d -> 134_d
+134_d -> 135_d
+135_d -> 136_d
+136_d -> 141_d
+141_d -> 138_d
+138_d -> 100d
+// (e) requires (adf)
+
+// Vitality
+// (f)
+100 -> 170_f
+170_f -> 180_f
+180_f -> 182_f
+182_f -> 100f
+// (f) -> (g)
+100f -> 170f_g
+170f_g -> 190f_g
+190f_g -> 100fg
+
+
+// Images -> Items
+// (a) -> (d)
+100a -> 130a_d
+130a_d -> 131a_d
+131a_d -> 133a_d
+133a_d -> 134a_d
+134a_d -> 135a_d
+135a_d -> 137a_d
+137a_d -> 141a_d
+141a_d -> 138a_d
+138a_d -> 100ad
+// (ab) -> (d)
+100ab -> 130ab_d
+130ab_d -> 131ab_d
+131ab_d -> 133ab_d
+133ab_d -> 134ab_d
+134ab_d -> 135ab_d
+135ab_d -> 137ab_d
+137ab_d -> 141ab_d
+141ab_d -> 138ab_d
+138ab_d -> 100abd
+// (abc) -> (d)
+100abc -> 130abc_d
+130abc_d -> 131abc_d
+131abc_d -> 133abc_d
+133abc_d -> 134abc_d
+134abc_d -> 135abc_d
+135abc_d -> 137abc_d
+137abc_d -> 113abc_d
+113abc_d -> 142abc_d
+142abc_d -> 138abc_d
+138abc_d -> 100abcd
+// (abd) -> (c)
+100abd -> 110abd_c
+110abd_c -> 111abd_c
+111abd_c -> 161abd_c
+161abd_c -> 163abd_c
+163abd_c -> 114abd_c
+114abd_c -> 100abdc
+
+// Images -> Items -> Vitality
+// (abd) -> (f)
+100abd -> 170abd_f
+170abd_f -> 180abd_f
+180abd_f -> 182abd_f
+182abd_f -> 184abd_f
+184abd_f -> 100abdf
+// (abcd) -> (f)
+100abcd -> 170abcd_f
+170abcd_f -> 180abcd_f
+180abcd_f -> 182abcd_f
+182abcd_f -> 184abcd_f
+184abcd_f -> 100abcdf
+//  (abcdf) -> (e)
+100abcdf -> 130abcdf_e
+130abcdf_e -> 145abcdf_e
+145abcdf_e -> 100abcdfe
+//  (abcdf) -> (g)
+100abcdf -> 170abcdf_g
+170abcdf_g -> 190abcdf_g
+190abcdf_g -> 192abcdf_g
+192abcdf_g -> 100abcdfg
+// (abcdfe) -> (g)
+100abcdfe -> 170abcdfe_g
+170abcdfe_g -> 190abcdfe_g
+190abcdfe_g -> 192abcdfe_g
+192abcdfe_g -> 100abcdfeg
+// (abcdfg) -> (e)
+100abcdfg -> 130abcdfg_e
+130abcdfg_e -> 145abcdfg_e
+145abcdfg_e -> 100abcdfge
+
+// Images -> Vitality
+// (a) -> (f)
+100a -> 170a_f
+170a_f -> 180a_f
+180a_f -> 182a_f
+182a_f -> 100af
+// (af) -> (g)
+100af -> 170af_g
+170af_g -> 190af_g
+190af_g -> 100afg
+// (abc) -> (f)
+100abc -> 170abc_f
+170abc_f -> 180abc_f
+180abc_f -> 182abc_f
+182abc_f -> 100abcf
+// (abcf) -> (g)
+100abcf -> 170abcf_g
+170abcf_g -> 190abcf_g
+190abcf_g -> 100abcfg
+
+// Images -> Vitality -> Items
+// (af) -> (d)
+100af -> 130af_d
+130af_d -> 131af_d
+131af_d -> 133af_d
+133af_d -> 184af_d
+184af_d -> 134af_d
+134af_d -> 135af_d
+135af_d -> 137af_d
+137af_d -> 141af_d
+141af_d -> 138af_d
+138af_d -> 100afd
+// (afg) -> (d)
+100afg -> 130afg_d
+130afg_d -> 131afg_d
+131afg_d -> 133afg_d
+133afg_d -> 184afg_d
+184afg_d -> 192afg_d
+192afg_d -> 134afg_d
+134afg_d -> 135afg_d
+135afg_d -> 137afg_d
+137afg_d -> 141afg_d
+141afg_d -> 138afg_d
+138afg_d -> 100afgd
+// (abcfg) -> (d)
+100abcfg -> 130abcfg_d
+130abcfg_d -> 131abcfg_d
+131abcfg_d -> 133abcfg_d
+133abcfg_d -> 184abcfg_d
+184abcfg_d -> 192abcfg_d
+192abcfg_d -> 134abcfg_d
+134abcfg_d -> 135abcfg_d
+135abcfg_d -> 137abcfg_d
+137abcfg_d -> 113abcfg_d
+113abcfg_d -> 142abcfg_d
+142abcfg_d -> 138abcfg_d
+138abcfg_d -> 100abcfgd
+// (abcfgd) -> (e)
+100abcfgd -> 130abcfgd_e
+130abcfgd_e -> 145abcfgd_e
+145abcfgd_e -> 100abcfgde
+
+// Items -> Images
+// (d) -> (a)
+100d -> 110d_a
+110d_a -> 120d_a
+120d_a -> 121d_a
+121d_a -> 122d_a
+122d_a -> 100da
+// (da) -> (b)
+100da -> 110da_b
+110da_b -> 115da_b
+115da_b -> 116da_b
+116da_b -> 118da_b
+118da_b -> 100dab
+// (dab) -> (c)
+100dab -> 110dab_c
+110dab_c -> 111dab_c
+111dab_c -> 161dab_c
+161dab_c -> 163dab_c
+163dab_c -> 114dab_c
+114dab_c -> 100dabc
+
+// Items -> Images -> Vitality
+// (da) -> (f)
+100da -> 170da_f
+170da_f -> 180da_f
+180da_f -> 182da_f
+182da_f -> 184da_f
+184da_f -> 100daf
+// (daf) -> (g)
+100daf -> 170daf_g
+170daf_g -> 190daf_g
+190daf_g -> 192daf_g
+192daf_g -> 100dafg
+// (daf) -> (e)
+100daf -> 130daf_e
+130daf_e -> 145daf_e
+145daf_e -> 100dafe
+// (dabc) -> (f)
+100dabc -> 170dabc_f
+170dabc_f -> 180dabc_f
+180dabc_f -> 182dabc_f
+182dabc_f -> 184dabc_f
+184dabc_f -> 100dabcf
+// (dabcf) -> (g)
+100dabcf -> 170dabcf_g
+170dabcf_g -> 190dabcf_g
+190dabcf_g -> 192dabcf_g
+192dabcf_g -> 100dabcfg
+// (dabcf) -> (e)
+100dabcf -> 130dabcf_e
+130dabcf_e -> 145dabcf_e
+145dabcf_e -> 100dabcfe
+// (dabcfg) -> (e)
+100dabcfg -> 130dabcfg_e
+130dabcfg_e -> 145dabcfg_e
+145dabcfg_e -> 100dabcfge
+// (dabcfe) -> (g)
+100dabcfe -> 170dabcfe_g
+170dabcfe_g -> 190dabcfe_g
+190dabcfe_g -> 192dabcfe_g
+192dabcfe_g -> 100dabcfeg
+
+// Items -> Vitality
+// (d) -> (f)
+100d -> 170d_f
+170d_f -> 180d_f
+180d_f -> 182d_f
+182d_f -> 100df
+// (df) -> (g)
+100df -> 170df_g
+170df_g -> 190df_g
+190df_g -> 100dfg
+
+// Items -> Vitality -> Images
+// (dfg) -> (a)
+100dfg -> 110dfg_a
+110dfg_a -> 120dfg_a
+120dfg_a -> 121dfg_a
+121dfg_a -> 122dfg_a
+122dfg_a -> 184dfg_a
+184dfg_a -> 192dfg_a
+192dfg_a -> 100dfga
+// (dfga) -> (e)
+100dfga -> 130dfga_e
+130dfga_e -> 145dfga_e
+145dfga_e -> 100dfgae
+// (dfga) -> (b)
+100dfga -> 110dfga_b
+110dfga_b -> 115dfga_b
+115dfga_b -> 117dfga_b
+117dfga_b -> 118dfga_b
+118dfga_b -> 100dfgab
+// (dfgae) -> (b)
+100dfgae -> 110dfgae_b
+110dfgae_b -> 115dfgae_b
+115dfgae_b -> 117dfgae_b
+117dfgae_b -> 118dfgae_b
+118dfgae_b -> 100dfgaeb
+// (dfgab) -> (e)
+100dfgab -> 130dfgab_e
+130dfgab_e -> 145dfgab_e
+145dfgab_e -> 100dfgabe
+// (dfgab) -> (c)
+100dfgab -> 110dfgab_c
+110dfgab_c -> 111dfgab_c
+111dfgab_c -> 162dfgab_c
+162dfgab_c -> 163dfgab_c
+163dfgab_c -> 114dfgab_c
+114dfgab_c -> 100dfgabc
+// (dfgaeb) -> (c)
+100dfgaeb -> 110dfgaeb_c
+110dfgaeb_c -> 111dfgaeb_c
+111dfgaeb_c -> 162dfgaeb_c
+162dfgaeb_c -> 163dfgaeb_c
+163dfgaeb_c -> 114dfgaeb_c
+114dfgaeb_c -> 100dfgaebc
+// (dfgabe) -> (c)
+100dfgabe -> 110dfgabe_c
+110dfgabe_c -> 111dfgabe_c
+111dfgabe_c -> 162dfgabe_c
+162dfgabe_c -> 163dfgabe_c
+163dfgabe_c -> 114dfgabe_c
+114dfgabe_c -> 100dfgabec
+// (dfgabc) -> (e)
+100dfgabc -> 130dfgabc_e
+130dfgabc_e -> 145dfgabc_e
+145dfgabc_e -> 100dfgabce
+
+// Vitality -> Items
+// (f) -> (d)
+100f -> 130f_d
+130f_d -> 131f_d
+131f_d -> 132f_d
+132f_d -> 134f_d
+134f_d -> 135f_d
+135f_d -> 136f_d
+136f_d -> 141f_d
+141f_d -> 138f_d
+138f_d -> 100fd
+// (fg) -> (d)
+100fg -> 130fg_d
+130fg_d -> 131fg_d
+131fg_d -> 132fg_d
+132fg_d -> 134fg_d
+134fg_d -> 135fg_d
+135fg_d -> 136fg_d
+136fg_d -> 141fg_d
+141fg_d -> 138fg_d
+138fg_d -> 100fgd
+
+// Vitality -> Items -> Images
+// (fd) -> (a)
+100fd -> 110fd_a
+110fd_a -> 120fd_a
+120fd_a -> 121fd_a
+121fd_a -> 122fd_a
+122fd_a -> 184fd_a
+184fd_a -> 100fda
+// (fgd) -> (a)
+100fgd -> 110fgd_a
+110fgd_a -> 120fgd_a
+120fgd_a -> 121fgd_a
+121fgd_a -> 122fgd_a
+122fgd_a -> 184fgd_a
+184fgd_a -> 192fgd_a
+192fgd_a -> 100fgda
+// (fgda) -> (e)
+100fgda -> 130fgda_e
+130fgda_e -> 145fgda_e
+145fgda_e -> 100fgdae
+// (fgdae) -> (b)
+100fgdae -> 110fgdae_b
+110fgdae_b -> 115fgdae_b
+115fgdae_b -> 117fgdae_b
+117fgdae_b -> 118fgdae_b
+118fgdae_b -> 100fgdaeb
+// (fgdaeb) -> (c)
+100fgdaeb -> 110fgdaeb_c
+110fgdaeb_c -> 111fgdaeb_c
+111fgdaeb_c -> 162fgdaeb_c
+162fgdaeb_c -> 163fgdaeb_c
+163fgdaeb_c -> 114fgdaeb_c
+114fgdaeb_c -> 100fgdaebc
+// (fgda) -> (b)
+100fgda -> 110fgda_b
+110fgda_b -> 115fgda_b
+115fgda_b -> 117fgda_b
+117fgda_b -> 118fgda_b
+118fgda_b -> 100fgdab
+// (fgdab) -> (c)
+100fgdab -> 110fgdab_c
+110fgdab_c -> 111fgdab_c
+111fgdab_c -> 162fgdab_c
+162fgdab_c -> 163fgdab_c
+163fgdab_c -> 114fgdab_c
+114fgdab_c -> 100fgdabc
+// (fgdabc) -> (e)
+100fgdabc -> 130fgdabc_e
+130fgdabc_e -> 145fgdabc_e
+145fgdabc_e -> 100fgdabce
+
+// Vitality -> Images
+// (f) -> (a)
+100f -> 110f_a
+110f_a -> 120f_a
+120f_a -> 121f_a
+121f_a -> 100fa
+// (fa) -> (b)
+100fa -> 110fa_b
+110fa_b -> 115fa_b
+115fa_b -> 117fa_b
+117fa_b -> 118fa_b
+118fa_b -> 100fab
+// (fab) -> (c)
+100fab -> 110fab_c
+110fab_c -> 111fab_c
+111fab_c -> 162fab_c
+162fab_c -> 163fab_c
+163fab_c -> 100fabc
+// (fg) -> (a)
+100fg -> 110fg_a
+110fg_a -> 120fg_a
+120fg_a -> 121fg_a
+121fg_a -> 100fga
+// (fga) -> (b)
+100fga -> 110fga_b
+110fga_b -> 115fga_b
+115fga_b -> 117fga_b
+117fga_b -> 118fga_b
+118fga_b -> 100fgab
+// (fgab) -> (c) 
+100fgab -> 110fgab_c
+110fgab_c -> 111fgab_c
+111fgab_c -> 162fgab_c
+162fgab_c -> 163fgab_c
+163fgab_c -> 100fgabc
+
+//---
+
+// Vitality -> Images -> Items
+// (fga) -> (d)
+100fga -> 130fga_d
+130fga_d -> 131fga_d
+131fga_d -> 133fga_d
+133fga_d -> 184fga_d
+184fga_d -> 192fga_d
+192fga_d -> 134fga_d
+134fga_d -> 135fga_d
+135fga_d -> 137fga_d
+137fga_d -> 141fga_d
+141fga_d -> 138fga_d
+138fga_d -> 100fgad
+// (fga) -> (b)
+100fga -> 110fga_b
+110fga_b -> 115fga_b
+115fga_b -> 117fga_b
+117fga_b -> 118fga_b
+118fga_b -> 100fgab
+// (fgab) -> (c)
+100fgab -> 110fgab_c
+110fgab_c -> 111fgab_c
+111fgab_c -> 162fgab_c
+162fgab_c -> 163fgab_c
+163fgab_c -> 100fgabc
+// (fgab) -> (d)
+100fgab -> 130fgab_d
+130fgab_d -> 131fgab_d
+131fgab_d -> 133fgab_d
+133fgab_d -> 184fgab_d
+184fgab_d -> 192fgab_d
+192fgab_d -> 134fgab_d
+134fgab_d -> 135fgab_d
+135fgab_d -> 137fgab_d
+137fgab_d -> 141fgab_d
+141fgab_d -> 138fgab_d
+138fgab_d -> 100fgabd
+// (fgabd) -> (c)
+100fgabd -> 110fgabd_c
+110fgabd_c -> 111fgabd_c
+111fgabd_c -> 162fgabd_c
+162fgabd_c -> 163fgabd_c
+163fgabd_c -> 114fgabd_c
+114fgabd_c -> 100fgabdc
+// (fgabc) -> (d)
+100fgabc -> 130fgabc_d
+130fgabc_d -> 131fgabc_d
+131fgabc_d -> 133fgabc_d
+133fgabc_d -> 184fgabc_d
+184fgabc_d -> 192fgabc_d
+192fgabc_d -> 134fgabc_d
+134fgabc_d -> 135fgabc_d
+135fgabc_d -> 137fgabc_d
+137fgabc_d -> 113fgabc_d
+113fgabc_d -> 142fgabc_d
+142fgabc_d -> 138fgabc_d
+138fgabc_d -> 100fgabcd
+// (fgabcd) -> (e)
+100fgabcd -> 130fgabcd_e
+130fgabcd_e -> 145fgabcd_e
+145fgabcd_e -> 100fgabcde
+// (fgad) -> (e)
+100fgad -> 130fgad_e
+130fgad_e -> 145fgad_e
+145fgad_e -> 100fgade
+// (fgade) -> (b)
+100fgade -> 110fgade_b
+110fgade_b -> 115fgade_b
+115fgade_b -> 117fgade_b
+117fgade_b -> 118fgade_b
+118fgade_b -> 100fgadeb
+// (fgadeb) -> (c)
+100fgadeb -> 110fgadeb_c
+110fgadeb_c -> 111fgadeb_c
+111fgadeb_c -> 162fgadeb_c
+162fgadeb_c -> 163fgadeb_c
+163fgadeb_c -> 114fgadeb_c
+114fgadeb_c -> 100fgadebc
+// (fgad) -> (b)
+100fgad -> 110fgad_b
+110fgad_b -> 115fgad_b
+115fgad_b -> 117fgad_b
+117fgad_b -> 118fgad_b
+118fgad_b -> 100fgadb
+// (fgadb) -> (c)
+100fgadb -> 110fgadb_c
+110fgadb_c -> 111fgadb_c
+111fgadb_c -> 162fgadb_c
+162fgadb_c -> 163fgadb_c
+163fgadb_c -> 114fgadb_c
+114fgadb_c -> 100fgadbc
+// (fgadbc) -> (e)
+100fgadbc -> 130fgadbc_e
+130fgadbc_e -> 145fgadbc_e
+145fgadbc_e -> 100fgadbce
+
+// Equivalence
+100df == 100fd
+100abd == 100dab
+100afd == 100daf
+100afd == 100fda
+100abcd == 100dabc
+100abcd == 100abdc
+100dafg == 100fgad
+100fgad == 100fgda
+
+100abcdfeg == 100abcdfge
+100abcdfeg == 100abcfgde
+100abcdfeg == 100dabcfeg
+100abcdfeg == 100dabcfge
+100abcdfeg == 100fgabcde
+100abcdfeg == 100fgadbce
+100abcdfeg == 100fgadebc
+100abcdfeg == 100fgdabce
+100abcdfeg == 100fgdaebc
+
+299 == 100abcdfeg

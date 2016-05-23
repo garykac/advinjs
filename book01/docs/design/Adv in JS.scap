@@ -1,0 +1,559 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<ScappleDocument Version="1.1" ID="6CCDCB22-C379-408E-A296-91DE6C8E409C">
+    <Notes>
+        <Note ID="0" FontSize="12.0" Position="199.0,72.0" Width="56.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+            </Appearance>
+            <String>Baseline</String>
+        </Note>
+        <Note ID="1" FontSize="12.0" Position="517.0,425.0" Width="90.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+            </Appearance>
+            <String>Multiple Levels</String>
+        </Note>
+        <Note ID="2" FontSize="12.0" Position="382.0,567.0" Width="147.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+            </Appearance>
+            <String>Transitions between level</String>
+        </Note>
+        <Note ID="3" FontSize="12.0" Position="940.0,188.0" Width="82.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+            </Appearance>
+            <String>Player Health</String>
+        </Note>
+        <Note ID="4" FontSize="12.0" Position="800.0,429.0" Width="83.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+            </Appearance>
+            <String>Multiple Lives</String>
+        </Note>
+        <Note ID="5" FontSize="12.0" Position="385.0,86.0" Width="58.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+            </Appearance>
+            <String>Init game</String>
+        </Note>
+        <Note ID="6" FontSize="12.0" Position="636.0,626.0" Width="38.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+            </Appearance>
+            <String>Fonts</String>
+        </Note>
+        <Note ID="8" FontSize="12.0" Position="200.0,128.0" Width="65.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+            </Appearance>
+            <String>Movement</String>
+        </Note>
+        <Note ID="9" FontSize="12.0" Position="230.0,226.0" Width="180.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+            </Appearance>
+            <String>Constrain movement to left/right</String>
+        </Note>
+        <Note ID="10" FontSize="12.0" Position="505.0,113.0" Width="118.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+            </Appearance>
+            <String>Jumping and gravity</String>
+        </Note>
+        <Note ID="11" FontSize="12.0" Position="508.0,246.0" Width="82.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+            </Appearance>
+            <String>Player sprites</String>
+        </Note>
+        <Note ID="12" FontSize="12.0" Position="587.0,553.0" Width="71.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+            </Appearance>
+            <String>Title screen</String>
+        </Note>
+        <Note ID="14" FontSize="12.0" Position="523.0,446.0" Width="65.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+            </Appearance>
+            <String>Level goal</String>
+        </Note>
+        <Note ID="15" FontSize="12.0" Position="720.0,525.0" Width="108.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+            </Appearance>
+            <String>Key to unlock goal</String>
+        </Note>
+        <Note ID="16" FontSize="12.0" Position="1044.0,462.0" Width="49.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+            </Appearance>
+            <String>Potions</String>
+        </Note>
+        <Note ID="17" FontSize="12.0" Position="726.0,500.0" Width="37.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+            </Appearance>
+            <String>Items</String>
+        </Note>
+        <Note ID="18" FontSize="12.0" Position="710.0,59.0" Width="59.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+            </Appearance>
+            <String>Platforms</String>
+        </Note>
+        <Note ID="19" FontSize="12.0" Position="955.0,440.0" Width="40.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+            </Appearance>
+            <String>Coins</String>
+        </Note>
+        <Note ID="21" FontSize="12.0" Position="1140.0,69.0" Width="101.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+            </Appearance>
+            <String>Moving platforms</String>
+        </Note>
+        <Note ID="22" FontSize="12.0" Position="939.0,274.0" Width="116.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+            </Appearance>
+            <String>Animating monsters</String>
+        </Note>
+        <Note ID="23" FontSize="12.0" Position="1044.0,490.0" Width="98.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+            </Appearance>
+            <String>Items show state</String>
+        </Note>
+        <Note ID="24" FontSize="12.0" Position="713.0,213.0" Width="58.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+            </Appearance>
+            <String>Monsters</String>
+        </Note>
+        <Note ID="25" FontSize="12.0" Position="723.0,239.0" Width="100.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+            </Appearance>
+            <String>Adding monsters</String>
+        </Note>
+        <Note ID="26" FontSize="12.0" Position="722.0,266.0" Width="101.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+            </Appearance>
+            <String>Moving monsters</String>
+        </Note>
+        <Note ID="27" FontSize="12.0" Position="713.0,82.0" Width="109.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+            </Appearance>
+            <String>Collision detection</String>
+        </Note>
+        <Note ID="28" FontSize="12.0" Position="490.0,199.0" Width="96.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+            </Appearance>
+            <String>Loading images</String>
+        </Note>
+        <Note ID="29" FontSize="12.0" Position="1209.0,309.0" Width="81.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+            </Appearance>
+            <String>Monster eyes</String>
+        </Note>
+        <Note ID="30" FontSize="12.0" Position="446.0,327.0" Width="160.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+            </Appearance>
+            <String>Flipping image based on dir</String>
+        </Note>
+        <Note ID="31" FontSize="12.0" Position="450.0,352.0" Width="96.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+            </Appearance>
+            <String>Transformations</String>
+        </Note>
+        <Note ID="32" FontSize="12.0" Position="1054.0,189.0" Width="63.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+            </Appearance>
+            <String>Status bar</String>
+        </Note>
+        <Note ID="33" FontSize="12.0" Position="1219.0,406.0" Width="65.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+            </Appearance>
+            <String>Projectiles</String>
+        </Note>
+        <Note ID="34" FontSize="12.0" Position="200.0,97.0" Width="68.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+            </Appearance>
+            <String>Add Player</String>
+        </Note>
+        <Note ID="35" FontSize="12.0" Position="356.0,58.0" Width="89.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+            </Appearance>
+            <String>Platform Game</String>
+        </Note>
+        <Note ID="37" FontSize="12.0" Position="355.0,115.0" Width="91.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+            </Appearance>
+            <String>Screen bounds</String>
+        </Note>
+        <Note ID="38" FontSize="12.0" Position="250.0,436.0" Width="57.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+            </Appearance>
+            <String>Add goal</String>
+        </Note>
+        <Note ID="39" FontSize="12.0" Position="277.0,465.0" Width="147.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+            </Appearance>
+            <String>Simple collision detection</String>
+        </Note>
+        <Note ID="40" FontSize="12.0" Position="277.0,493.0" Width="108.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+            </Appearance>
+            <String>Game over screen</String>
+        </Note>
+        <Note ID="56" FontSize="12.0" Position="752.0,363.0" Width="48.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+            </Appearance>
+            <String>Level 1</String>
+        </Note>
+        <Note ID="57" FontSize="12.0" Position="933.0,366.0" Width="48.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+            </Appearance>
+            <String>Level 2</String>
+        </Note>
+        <Note ID="58" FontSize="12.0" Position="1089.0,361.0" Width="48.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+            </Appearance>
+            <String>Level 3</String>
+        </Note>
+        <Note ID="68" FontSize="12.0" Position="658.0,654.0" Width="78.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+            </Appearance>
+            <String>Font Squirrel</String>
+        </Note>
+        <Note ID="74" FontSize="12.0" Position="250.0,261.0" Width="88.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+            </Appearance>
+            <String>velocity/friction</String>
+        </Note>
+        <Note ID="95" FontSize="12.0" Position="1216.0,217.0" Width="72.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+            </Appearance>
+            <String>Sunglasses</String>
+        </Note>
+        <Note ID="98" FontSize="12.0" Position="246.0,292.0" Width="39.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+            </Appearance>
+            <String>origin</String>
+        </Note>
+        <Note ID="100" FontSize="12.0" Position="383.0,593.0" Width="41.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+            </Appearance>
+            <String>timers</String>
+        </Note>
+        <Note ID="106" FontSize="12.0" Position="447.0,643.0" Width="129.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+            </Appearance>
+            <String>split into separate files</String>
+        </Note>
+        <Note ID="108" FontSize="12.0" Position="448.0,693.0" Width="200.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+            </Appearance>
+            <String>destroy monsters by jumping on top</String>
+        </Note>
+        <Note ID="109" FontSize="12.0" Position="238.0,649.0" Width="200.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+            </Appearance>
+            <String>make monsters move in a random pattern</String>
+        </Note>
+        <Note ID="110" FontSize="12.0" Position="235.0,701.0" Width="200.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+            </Appearance>
+            <String>different friction for different platforms (eg. ice) and for air</String>
+        </Note>
+        <Note ID="114" FontSize="12.0" Position="433.0,743.0" Width="200.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+            </Appearance>
+            <String>add name to title screen when customizing game</String>
+        </Note>
+        <Note ID="115" FontSize="12.0" Position="841.0,134.0" Width="106.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+            </Appearance>
+            <String>win/lose message</String>
+        </Note>
+        <Note ID="117" FontSize="12.0" Position="646.0,747.0" Width="84.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border>0.0 0.138899 0.490724</Border>
+            </Appearance>
+            <String>fix font load
+fix image load</String>
+        </Note>
+        <Note ID="119" FontSize="12.0" Position="520.0,474.0" Width="79.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border>0.0 0.138899 0.490724</Border>
+            </Appearance>
+            <String>linking levels</String>
+        </Note>
+    </Notes>
+    <BackgroundShapes>
+        <Shape ID="107" Sticky="Yes" Position="189.0,57.0" Width="99.730469" Height="125.0">
+            <Appearance>
+                <Border Weight="1"></Border>
+            </Appearance>
+        </Shape>
+        <Shape ID="47" Sticky="Yes" Position="507.0,410.0" Width="181.0" Height="114.0">
+            <Appearance>
+                <Border Weight="1"></Border>
+                <Fill>0.785405 0.931903 0.977157</Fill>
+            </Appearance>
+            <ConnectedNoteIDs>52, 55, 59, 118</ConnectedNoteIDs>
+        </Shape>
+        <Shape ID="118" Sticky="Yes" Position="372.0,552.0" Width="167.0" Height="79.0">
+            <Appearance>
+                <Border Weight="1"></Border>
+                <Fill>0.785405 0.931903 0.977157</Fill>
+            </Appearance>
+            <ConnectedNoteIDs>47</ConnectedNoteIDs>
+        </Shape>
+        <Shape ID="93" Sticky="Yes" Position="930.0,173.0" Width="102.0" Height="54.0">
+            <Appearance>
+                <Border Weight="1"></Border>
+                <Fill>0.785405 0.931903 0.977157</Fill>
+            </Appearance>
+            <ConnectedNoteIDs>46, 69</ConnectedNoteIDs>
+        </Shape>
+        <Shape ID="72" Sticky="Yes" Position="789.0,422.0" Width="103.0" Height="38.0">
+            <Appearance>
+                <Border Weight="1"></Border>
+                <Fill>0.785405 0.931903 0.977157</Fill>
+            </Appearance>
+            <ConnectedNoteIDs>59</ConnectedNoteIDs>
+        </Shape>
+        <Shape ID="67" Sticky="Yes" Position="627.0,611.0" Width="120.0" Height="75.0">
+            <Appearance>
+                <Border Weight="1"></Border>
+            </Appearance>
+            <ConnectedNoteIDs>55</ConnectedNoteIDs>
+        </Shape>
+        <Shape ID="48" Sticky="Yes" Position="499.0,96.0" Width="138.0" Height="52.0">
+            <Appearance>
+                <Border Weight="1"></Border>
+                <Fill>0.785405 0.931903 0.977157</Fill>
+            </Appearance>
+            <ConnectedNoteIDs>42, 45-46</ConnectedNoteIDs>
+        </Shape>
+        <Shape ID="50" Sticky="Yes" Position="479.0,192.0" Width="134.0" Height="82.0">
+            <Appearance>
+                <Border Weight="1"></Border>
+                <Fill>0.785405 0.931903 0.977157</Fill>
+            </Appearance>
+            <ConnectedNoteIDs>46, 51</ConnectedNoteIDs>
+        </Shape>
+        <Shape ID="55" Sticky="Yes" Position="577.0,540.0" Width="91.0" Height="52.0">
+            <Appearance>
+                <Border Weight="1"></Border>
+                <Fill>0.785405 0.931903 0.977157</Fill>
+            </Appearance>
+            <ConnectedNoteIDs>47, 67</ConnectedNoteIDs>
+        </Shape>
+        <Shape ID="53" Sticky="Yes" Position="717.0,485.0" Width="118.0" Height="69.597656">
+            <Appearance>
+                <Border Weight="1"></Border>
+                <Fill>0.785405 0.931903 0.977157</Fill>
+            </Appearance>
+            <ConnectedNoteIDs>59</ConnectedNoteIDs>
+        </Shape>
+        <Shape ID="70" Sticky="Yes" Position="1034.0,448.0" Width="115.0" Height="71.398438">
+            <Appearance>
+                <Border Weight="1"></Border>
+                <Fill>0.785405 0.931903 0.977157</Fill>
+            </Appearance>
+            <ConnectedNoteIDs>60</ConnectedNoteIDs>
+        </Shape>
+        <Shape ID="45" Sticky="Yes" Position="700.0,43.0" Width="133.0" Height="77.0">
+            <Appearance>
+                <Border Weight="1"></Border>
+                <Fill>0.785405 0.931903 0.977157</Fill>
+            </Appearance>
+            <ConnectedNoteIDs>48</ConnectedNoteIDs>
+        </Shape>
+        <Shape ID="73" Sticky="Yes" Position="945.0,425.0" Width="60.0" Height="54.0">
+            <Appearance>
+                <Border Weight="1"></Border>
+                <Fill>0.785405 0.931903 0.977157</Fill>
+            </Appearance>
+            <ConnectedNoteIDs>60</ConnectedNoteIDs>
+        </Shape>
+        <Shape ID="64" Sticky="Yes" Position="1130.0,54.0" Width="121.0" Height="54.0">
+            <Appearance>
+                <Border Weight="1"></Border>
+                <Fill>0.785405 0.931903 0.977157</Fill>
+            </Appearance>
+            <ConnectedNoteIDs>61</ConnectedNoteIDs>
+        </Shape>
+        <Shape ID="62" Sticky="Yes" Position="929.0,257.0" Width="136.0" Height="55.933594">
+            <Appearance>
+                <Border Weight="1"></Border>
+                <Fill>0.785405 0.931903 0.977157</Fill>
+            </Appearance>
+            <ConnectedNoteIDs>60</ConnectedNoteIDs>
+        </Shape>
+        <Shape ID="46" Sticky="Yes" Position="703.0,197.0" Width="131.0" Height="108.0">
+            <Appearance>
+                <Border Weight="1"></Border>
+                <Fill>0.785405 0.931903 0.977157</Fill>
+            </Appearance>
+            <ConnectedNoteIDs>48, 50, 59, 93, 116</ConnectedNoteIDs>
+        </Shape>
+        <Shape ID="63" Sticky="Yes" Position="1199.0,294.0" Width="101.0" Height="54.0">
+            <Appearance>
+                <Border Weight="1"></Border>
+                <Fill>0.785405 0.931903 0.977157</Fill>
+            </Appearance>
+            <ConnectedNoteIDs>61</ConnectedNoteIDs>
+        </Shape>
+        <Shape ID="51" Sticky="Yes" Position="436.0,312.0" Width="180.0" Height="79.0">
+            <Appearance>
+                <Border Weight="1"></Border>
+                <Fill>0.785405 0.931903 0.977157</Fill>
+            </Appearance>
+            <ConnectedNoteIDs>50</ConnectedNoteIDs>
+        </Shape>
+        <Shape ID="69" Sticky="Yes" Position="1044.0,175.0" Width="83.0" Height="54.0">
+            <Appearance>
+                <Border Weight="1"></Border>
+                <Fill>0.785405 0.931903 0.977157</Fill>
+            </Appearance>
+            <ConnectedNoteIDs>93</ConnectedNoteIDs>
+        </Shape>
+        <Shape ID="66" Sticky="Yes" Position="1209.0,391.0" Width="85.0" Height="54.0">
+            <Appearance>
+                <Border Weight="1"></Border>
+                <Fill>0.785405 0.931903 0.977157</Fill>
+            </Appearance>
+            <ConnectedNoteIDs>61</ConnectedNoteIDs>
+        </Shape>
+        <Shape ID="52" Sticky="Yes" Position="241.0,421.0" Width="193.0" Height="110.0">
+            <Appearance>
+                <Border Weight="1"></Border>
+                <Fill>0.785405 0.931903 0.977157</Fill>
+            </Appearance>
+            <ConnectedNoteIDs>42, 47</ConnectedNoteIDs>
+        </Shape>
+        <Shape ID="42" Sticky="Yes" Position="219.0,215.0" Width="203.105469" Height="115.0">
+            <Appearance>
+                <Border Weight="1"></Border>
+                <Fill>0.785405 0.931903 0.977157</Fill>
+            </Appearance>
+            <ConnectedNoteIDs>48, 52</ConnectedNoteIDs>
+        </Shape>
+        <Shape ID="59" Sticky="Yes" Position="741.0,354.0" Width="70.757812" Height="41.0">
+            <Appearance>
+                <Border Weight="1"></Border>
+                <Fill>0.785405 0.931903 0.977157</Fill>
+            </Appearance>
+            <ConnectedNoteIDs>46-47, 53, 60, 72</ConnectedNoteIDs>
+        </Shape>
+        <Shape ID="60" Sticky="Yes" Position="924.0,349.0" Width="68.0" Height="54.0">
+            <Appearance>
+                <Border Weight="1"></Border>
+                <Fill>0.785405 0.931903 0.977157</Fill>
+            </Appearance>
+            <ConnectedNoteIDs>59, 61-62, 70, 73</ConnectedNoteIDs>
+        </Shape>
+        <Shape ID="61" Sticky="Yes" Position="1079.0,346.0" Width="68.0" Height="54.0">
+            <Appearance>
+                <Border Weight="1"></Border>
+                <Fill>0.785405 0.931903 0.977157</Fill>
+            </Appearance>
+            <ConnectedNoteIDs>60, 63-64, 66, 96</ConnectedNoteIDs>
+        </Shape>
+        <Shape ID="96" Sticky="Yes" Position="1206.0,202.0" Width="92.0" Height="54.0">
+            <Appearance>
+                <Border Weight="1"></Border>
+                <Fill>0.785405 0.931903 0.977157</Fill>
+            </Appearance>
+            <ConnectedNoteIDs>61</ConnectedNoteIDs>
+        </Shape>
+        <Shape ID="116" Sticky="Yes" Position="830.0,123.0" Width="126.0" Height="43.0">
+            <Appearance>
+                <Border Weight="1"></Border>
+                <Fill>0.785405 0.931903 0.977157</Fill>
+            </Appearance>
+            <ConnectedNoteIDs>46</ConnectedNoteIDs>
+        </Shape>
+    </BackgroundShapes>
+    <Stacks>
+        <Stack>16, 23</Stack>
+        <Stack>39-40</Stack>
+    </Stacks>
+    <AutoFit>0-6, 8-12, 14-19, 21-35, 37-40, 51, 56-58, 60-61, 63-64, 66, 68-69, 73-74, 93, 95-96, 98, 100, 106, 115, 117, 119</AutoFit>
+    <NoteStyles>
+        <Style Name="Blue Bubble" ID="745B3CA1-E90D-48D1-9EC7-574C1C13A05E" AffectFontStyle="No" AffectAlignment="No" AffectTextColor="No" AffectNoteBody="Yes" AffectFade="No">
+            <BorderThickness>1</BorderThickness>
+            <BorderColor>0.48589 0.568934 0.756202</BorderColor>
+            <FillColor>0.844061 0.869603 0.923066</FillColor>
+        </Style>
+        <Style Name="Brown Bubble" ID="7EACB9CC-CA77-4585-8EF5-006C20AF5EA9" AffectFontStyle="No" AffectAlignment="No" AffectTextColor="No" AffectNoteBody="Yes" AffectFade="No">
+            <BorderThickness>1</BorderThickness>
+            <BorderColor>0.269487 0.164027 0.186688</BorderColor>
+            <FillColor>0.934152 0.888326 0.785296</FillColor>
+        </Style>
+        <Style Name="Green Bubble" ID="5A540E68-4E26-4469-887D-7518D7274E9E" AffectFontStyle="No" AffectAlignment="No" AffectTextColor="No" AffectNoteBody="Yes" AffectFade="No">
+            <BorderThickness>1</BorderThickness>
+            <BorderColor>0.399094 0.583326 0.354861</BorderColor>
+            <FillColor>0.808837 0.872426 0.801336</FillColor>
+        </Style>
+        <Style Name="Pink Bubble" ID="C7566C42-9275-469A-B378-7322A1B67E4D" AffectFontStyle="No" AffectAlignment="No" AffectTextColor="No" AffectNoteBody="Yes" AffectFade="No">
+            <BorderThickness>1</BorderThickness>
+            <BorderColor>0.69031 0.407259 0.550907</BorderColor>
+            <FillColor>0.898333 0.817465 0.865333</FillColor>
+        </Style>
+        <Style Name="Red Text" ID="2E2BFA84-E195-48D0-8295-941AF9632111" AffectFontStyle="No" AffectAlignment="No" AffectTextColor="Yes" AffectNoteBody="No" AffectFade="No">
+            <TextColor>1.0 0.0 0.0</TextColor>
+        </Style>
+        <Style Name="Title Text" ID="CC400B71-BA35-4400-B79C-85B69DE8BB56" AffectFontStyle="Yes" AffectAlignment="Yes" AffectTextColor="No" AffectNoteBody="No" AffectFade="No">
+            <FontSize>28.0</FontSize>
+            <IsBold>Yes</IsBold>
+        </Style>
+        <Style Name="Yellow Bubble" ID="A0CC075A-2B48-463D-AF7D-F36196878F4B" AffectFontStyle="No" AffectAlignment="No" AffectTextColor="No" AffectNoteBody="Yes" AffectFade="No">
+            <BorderThickness>1</BorderThickness>
+            <BorderColor>0.769437 0.762214 0.390138</BorderColor>
+            <FillColor>0.912959 0.894112 0.644534</FillColor>
+        </Style>
+    </NoteStyles>
+    <UISettings>
+        <BackgroundColor>0.998516 0.983513 0.933467</BackgroundColor>
+        <DefaultFont>Helvetica</DefaultFont>
+        <DefaultTextColor>0.0 0.0 0.0</DefaultTextColor>
+    </UISettings>
+    <PrintSettings PaperSize="612.0,792.0" LeftMargin="72.0" RightMargin="72.0" TopMargin="90.0" BottomMargin="90.0" PaperType="na-letter" Orientation="Portrait" HorizontalPagination="Clip" VerticalPagination="Auto" ScaleFactor="1.0" HorizontallyCentered="Yes" VerticallyCentered="Yes" Collates="Yes" PagesAcross="1" PagesDown="1"></PrintSettings>
+</ScappleDocument>

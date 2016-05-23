@@ -1,0 +1,843 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<ScappleDocument Version="1.1" ID="77A7BE7E-1599-499C-B0CA-4BABE62D469A">
+    <Notes>
+        <Note ID="0" FontSize="12.0" Position="400.0,97.0" Width="145.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1">0.0 0.138899 0.490724</Border>
+                <Fill>0.785405 0.931903 0.977157</Fill>
+            </Appearance>
+            <String>003
+Add base platform
+BADGE: Platform I - Base</String>
+            <ConnectedNoteIDs>1</ConnectedNoteIDs>
+            <PointsToNoteIDs>1</PointsToNoteIDs>
+        </Note>
+        <Note ID="1" FontSize="12.0" Position="584.0,115.0" Width="29.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1">0.0 0.138899 0.490724</Border>
+                <Fill>0.785405 0.931903 0.977157</Fill>
+            </Appearance>
+            <String>004</String>
+            <ConnectedNoteIDs>0, 2-3</ConnectedNoteIDs>
+            <PointsToNoteIDs>2-3</PointsToNoteIDs>
+        </Note>
+        <Note ID="2" FontSize="12.0" Position="632.0,64.0" Width="127.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1">0.0 0.138899 0.490724</Border>
+                <Fill>0.785405 0.931903 0.977157</Fill>
+            </Appearance>
+            <String>005
+Put player on platform</String>
+            <ConnectedNoteIDs>1, 3-4</ConnectedNoteIDs>
+            <PointsToNoteIDs>4</PointsToNoteIDs>
+        </Note>
+        <Note ID="3" FontSize="12.0" Position="634.0,135.0" Width="128.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1">0.0 0.138899 0.490724</Border>
+                <Fill>0.785405 0.931903 0.977157</Fill>
+            </Appearance>
+            <String>010
+Move horizontally
+BADGE: Movement I</String>
+            <ConnectedNoteIDs>1-2, 6, 180</ConnectedNoteIDs>
+            <PointsToNoteIDs>2, 180</PointsToNoteIDs>
+        </Note>
+        <Note ID="4" FontSize="12.0" Position="777.0,59.0" Width="140.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1">0.0 0.138899 0.490724</Border>
+                <Fill>0.785405 0.931903 0.977157</Fill>
+            </Appearance>
+            <String>006
+Add player origin
+BADGE: Sprite I - Origin</String>
+            <ConnectedNoteIDs>2, 5-6</ConnectedNoteIDs>
+            <PointsToNoteIDs>5-6</PointsToNoteIDs>
+        </Note>
+        <Note ID="5" FontSize="12.0" Position="945.0,62.0" Width="140.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1">0.0 0.138899 0.490724</Border>
+                <Fill>0.785405 0.931903 0.977157</Fill>
+            </Appearance>
+            <String>007
+Width/height experiment</String>
+            <ConnectedNoteIDs>4, 6</ConnectedNoteIDs>
+            <PointsToNoteIDs>6</PointsToNoteIDs>
+        </Note>
+        <Note ID="6" FontSize="12.0" Position="832.0,147.0" Width="29.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1">0.0 0.138899 0.490724</Border>
+                <Fill>0.785405 0.931903 0.977157</Fill>
+            </Appearance>
+            <String>008</String>
+            <ConnectedNoteIDs>3-5, 180</ConnectedNoteIDs>
+            <PointsToNoteIDs>3, 180</PointsToNoteIDs>
+        </Note>
+        <Note ID="7" FontSize="12.0" Position="629.0,223.0" Width="169.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1">0.0 0.138899 0.490724</Border>
+                <Fill>0.785405 0.931903 0.977157</Fill>
+            </Appearance>
+            <String>017
+Friction
+BADGE:Movement II - Friction</String>
+            <ConnectedNoteIDs>8, 24, 180</ConnectedNoteIDs>
+            <PointsToNoteIDs>8, 24</PointsToNoteIDs>
+        </Note>
+        <Note ID="8" FontSize="12.0" Position="498.0,249.0" Width="93.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1">0.0 0.138899 0.490724</Border>
+                <Fill>0.785405 0.931903 0.977157</Fill>
+            </Appearance>
+            <String>016
+Explore Friction</String>
+            <ConnectedNoteIDs>7, 24</ConnectedNoteIDs>
+            <PointsToNoteIDs>24</PointsToNoteIDs>
+        </Note>
+        <Note ID="9" FontSize="12.0" Position="753.0,366.0" Width="29.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1">0.0 0.138899 0.490724</Border>
+                <Fill>0.785405 0.931903 0.977157</Fill>
+            </Appearance>
+            <String>020</String>
+            <ConnectedNoteIDs>10-11, 24</ConnectedNoteIDs>
+            <PointsToNoteIDs>10-11</PointsToNoteIDs>
+        </Note>
+        <Note ID="10" FontSize="12.0" Position="652.0,359.0" Width="38.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1">0.0 0.138899 0.490724</Border>
+                <Fill>0.785405 0.931903 0.977157</Fill>
+            </Appearance>
+            <String>025
+Jump</String>
+            <ConnectedNoteIDs>9, 17-18</ConnectedNoteIDs>
+            <PointsToNoteIDs>18</PointsToNoteIDs>
+        </Note>
+        <Note ID="11" FontSize="12.0" Position="848.0,358.0" Width="34.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1">0.0 0.138899 0.490724</Border>
+                <Fill>0.785405 0.931903 0.977157</Fill>
+            </Appearance>
+            <String>040
+Goal</String>
+            <ConnectedNoteIDs>9, 16, 23, 26</ConnectedNoteIDs>
+            <PointsToNoteIDs>16, 26</PointsToNoteIDs>
+        </Note>
+        <Note ID="13" FontSize="12.0" Position="408.0,468.0" Width="121.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1">0.0 0.138899 0.490724</Border>
+                <Fill>0.785405 0.931903 0.977157</Fill>
+            </Appearance>
+            <String>027
+Collide with platform
+(goal merge)</String>
+            <ConnectedNoteIDs>15, 18</ConnectedNoteIDs>
+            <PointsToNoteIDs>15</PointsToNoteIDs>
+        </Note>
+        <Note ID="14" FontSize="12.0" Position="557.0,481.0" Width="119.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1">0.0 0.138899 0.490724</Border>
+                <Fill>0.785405 0.931903 0.977157</Fill>
+            </Appearance>
+            <String>026
+Collide with platform</String>
+            <ConnectedNoteIDs>15, 18</ConnectedNoteIDs>
+            <PointsToNoteIDs>15</PointsToNoteIDs>
+        </Note>
+        <Note ID="15" FontSize="12.0" Position="568.0,543.0" Width="101.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1">0.0 0.138899 0.490724</Border>
+                <Fill>0.785405 0.931903 0.977157</Fill>
+            </Appearance>
+            <String>028
+No double jumps</String>
+            <ConnectedNoteIDs>13-14, 21-22</ConnectedNoteIDs>
+            <PointsToNoteIDs>21-22</PointsToNoteIDs>
+        </Note>
+        <Note ID="16" FontSize="12.0" Position="860.0,438.0" Width="99.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1">0.0 0.138899 0.490724</Border>
+                <Fill>0.785405 0.931903 0.977157</Fill>
+            </Appearance>
+            <String>041
+Collide with goal</String>
+            <ConnectedNoteIDs>11, 28</ConnectedNoteIDs>
+            <PointsToNoteIDs>28</PointsToNoteIDs>
+        </Note>
+        <Note ID="17" FontSize="12.0" Position="801.0,675.0" Width="141.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1">0.0 0.138899 0.490724</Border>
+                <Fill>0.785405 0.931903 0.977157</Fill>
+            </Appearance>
+            <String>042
+Game over disable input</String>
+            <ConnectedNoteIDs>10, 25, 107</ConnectedNoteIDs>
+            <PointsToNoteIDs>10, 107</PointsToNoteIDs>
+        </Note>
+        <Note ID="18" FontSize="12.0" Position="585.0,419.0" Width="87.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1">0.0 0.138899 0.490724</Border>
+                <Fill>0.785405 0.931903 0.977157</Fill>
+            </Appearance>
+            <String>029
+Fall off bottom!</String>
+            <ConnectedNoteIDs>10, 13-14</ConnectedNoteIDs>
+            <PointsToNoteIDs>13-14</PointsToNoteIDs>
+        </Note>
+        <Note ID="21" FontSize="12.0" Position="564.0,608.0" Width="144.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1">0.0 0.138899 0.490724</Border>
+                <Fill>0.785405 0.931903 0.977157</Fill>
+            </Appearance>
+            <String>032
+Check platform collisions</String>
+            <ConnectedNoteIDs>15, 23</ConnectedNoteIDs>
+            <PointsToNoteIDs>23</PointsToNoteIDs>
+        </Note>
+        <Note ID="22" FontSize="12.0" Position="408.0,598.0" Width="145.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1">0.0 0.138899 0.490724</Border>
+                <Fill>0.785405 0.931903 0.977157</Fill>
+            </Appearance>
+            <String>033
+Check platform collisions
+(goal merge)</String>
+            <ConnectedNoteIDs>15, 23</ConnectedNoteIDs>
+            <PointsToNoteIDs>23</PointsToNoteIDs>
+        </Note>
+        <Note ID="23" FontSize="12.0" Position="584.0,682.0" Width="182.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1">0.0 0.138899 0.490724</Border>
+                <Fill>0.785405 0.931903 0.977157</Fill>
+            </Appearance>
+            <String>034
+BADGE: Movement III - Jumping</String>
+            <ConnectedNoteIDs>11, 21-22, 107</ConnectedNoteIDs>
+            <PointsToNoteIDs>11, 107</PointsToNoteIDs>
+        </Note>
+        <Note ID="24" FontSize="12.0" Position="696.0,293.0" Width="141.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1">0.0 0.138899 0.490724</Border>
+                <Fill>0.785405 0.931903 0.977157</Fill>
+            </Appearance>
+            <String>018
+Constrain left/right edge </String>
+            <ConnectedNoteIDs>7-9</ConnectedNoteIDs>
+            <PointsToNoteIDs>9</PointsToNoteIDs>
+        </Note>
+        <Note ID="25" FontSize="12.0" Position="843.0,584.0" Width="150.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1">0.0 0.138899 0.490724</Border>
+                <Fill>0.785405 0.931903 0.977157</Fill>
+            </Appearance>
+            <String>044
+Display game over
+BADGE: Collision I - Basic</String>
+            <ConnectedNoteIDs>17, 28, 108</ConnectedNoteIDs>
+            <PointsToNoteIDs>17</PointsToNoteIDs>
+        </Note>
+        <Note ID="26" FontSize="12.0" Position="983.0,419.0" Width="99.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1">0.0 0.138899 0.490724</Border>
+                <Fill>0.785405 0.931903 0.977157</Fill>
+            </Appearance>
+            <String>043
+Collide with goal
+(jump merge)</String>
+            <ConnectedNoteIDs>11, 28</ConnectedNoteIDs>
+            <PointsToNoteIDs>28</PointsToNoteIDs>
+        </Note>
+        <Note ID="27" FontSize="12.0" Position="751.0,794.0" Width="43.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1">0.0 0.138899 0.490724</Border>
+                <Fill>0.785405 0.931903 0.977157</Fill>
+            </Appearance>
+            <String>050
+Arrays</String>
+            <ConnectedNoteIDs>33, 107</ConnectedNoteIDs>
+            <PointsToNoteIDs>33</PointsToNoteIDs>
+        </Note>
+        <Note ID="28" FontSize="12.0" Position="884.0,513.0" Width="77.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1">0.0 0.138899 0.490724</Border>
+                <Fill>0.785405 0.931903 0.977157</Fill>
+            </Appearance>
+            <String>045
+Add collide()</String>
+            <ConnectedNoteIDs>16, 25-26, 108</ConnectedNoteIDs>
+            <PointsToNoteIDs>25, 108</PointsToNoteIDs>
+        </Note>
+        <Note ID="31" FontSize="24.0" Position="414.0,54.0" Width="91.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+            </Appearance>
+            <String>Stage 1</String>
+        </Note>
+        <Note ID="32" FontSize="24.0" Position="411.0,370.0" Width="91.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+            </Appearance>
+            <String>Stage 2</String>
+        </Note>
+        <Note ID="33" FontSize="12.0" Position="760.0,853.0" Width="29.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1">0.0 0.138899 0.490724</Border>
+                <Fill>0.785405 0.931903 0.977157</Fill>
+            </Appearance>
+            <String>051</String>
+            <ConnectedNoteIDs>27, 34-35</ConnectedNoteIDs>
+            <PointsToNoteIDs>34-35</PointsToNoteIDs>
+        </Note>
+        <Note ID="34" FontSize="12.0" Position="640.0,823.0" Width="58.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1">0.0 0.138899 0.490724</Border>
+                <Fill>0.785405 0.931903 0.977157</Fill>
+            </Appearance>
+            <String>055
+Monsters</String>
+            <ConnectedNoteIDs>33, 39, 50-51</ConnectedNoteIDs>
+            <PointsToNoteIDs>50-51</PointsToNoteIDs>
+        </Note>
+        <Note ID="35" FontSize="12.0" Position="864.0,829.0" Width="29.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1">0.0 0.138899 0.490724</Border>
+                <Fill>0.785405 0.931903 0.977157</Fill>
+            </Appearance>
+            <String>070</String>
+            <ConnectedNoteIDs>33, 43-44, 46-47</ConnectedNoteIDs>
+            <PointsToNoteIDs>46-47</PointsToNoteIDs>
+        </Note>
+        <Note ID="36" FontSize="12.0" Position="831.0,995.0" Width="97.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1">0.0 0.138899 0.490724</Border>
+                <Fill>0.785405 0.931903 0.977157</Fill>
+            </Appearance>
+            <String>071
+Second platform</String>
+            <ConnectedNoteIDs>45, 48</ConnectedNoteIDs>
+            <PointsToNoteIDs>48</PointsToNoteIDs>
+        </Note>
+        <Note ID="37" FontSize="12.0" Position="851.0,1111.0" Width="195.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1">0.0 0.138899 0.490724</Border>
+                <Fill>0.785405 0.931903 0.977157</Fill>
+            </Appearance>
+            <String>072
+Better Collisions
+BADGE: Collision II - Advanced</String>
+            <ConnectedNoteIDs>38, 48</ConnectedNoteIDs>
+            <PointsToNoteIDs>38</PointsToNoteIDs>
+        </Note>
+        <Note ID="38" FontSize="12.0" Position="832.0,1178.0" Width="185.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1">0.0 0.138899 0.490724</Border>
+                <Fill>0.785405 0.931903 0.977157</Fill>
+            </Appearance>
+            <String>073
+Fixing the platforms
+BADGE: Platform II - Four Sided</String>
+            <ConnectedNoteIDs>37, 39</ConnectedNoteIDs>
+            <PointsToNoteIDs>39</PointsToNoteIDs>
+        </Note>
+        <Note ID="39" FontSize="12.0" Position="795.0,1247.0" Width="97.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1">0.0 0.138899 0.490724</Border>
+                <Fill>0.785405 0.931903 0.977157</Fill>
+            </Appearance>
+            <String>074
+Better side walls</String>
+            <ConnectedNoteIDs>34, 38, 44, 109</ConnectedNoteIDs>
+            <PointsToNoteIDs>34, 44, 109</PointsToNoteIDs>
+        </Note>
+        <Note ID="40" FontSize="12.0" Position="713.0,1365.0" Width="109.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1">0.0 0.138899 0.490724</Border>
+                <Fill>0.785405 0.931903 0.977157</Fill>
+            </Appearance>
+            <String>090
+Add _levels global</String>
+            <ConnectedNoteIDs>56, 109</ConnectedNoteIDs>
+            <PointsToNoteIDs>56</PointsToNoteIDs>
+        </Note>
+        <Note ID="41" FontSize="12.0" Position="472.0,1013.0" Width="185.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1">0.0 0.138899 0.490724</Border>
+                <Fill>0.785405 0.931903 0.977157</Fill>
+            </Appearance>
+            <String>056
+Monster collisions
+BADGE: Monster I - Stationary</String>
+            <ConnectedNoteIDs>42, 52</ConnectedNoteIDs>
+            <PointsToNoteIDs>42</PointsToNoteIDs>
+        </Note>
+        <Note ID="42" FontSize="12.0" Position="519.0,1097.0" Width="108.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1">0.0 0.138899 0.490724</Border>
+                <Fill>0.785405 0.931903 0.977157</Fill>
+            </Appearance>
+            <String>057
+Win/lose message</String>
+            <ConnectedNoteIDs>41, 43</ConnectedNoteIDs>
+            <PointsToNoteIDs>43</PointsToNoteIDs>
+        </Note>
+        <Note ID="43" FontSize="12.0" Position="585.0,1169.0" Width="29.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1">0.0 0.138899 0.490724</Border>
+                <Fill>0.785405 0.931903 0.977157</Fill>
+            </Appearance>
+            <String>060</String>
+            <ConnectedNoteIDs>35, 42, 44</ConnectedNoteIDs>
+            <PointsToNoteIDs>35, 44</PointsToNoteIDs>
+        </Note>
+        <Note ID="44" FontSize="12.0" Position="545.0,1221.0" Width="199.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1">0.0 0.138899 0.490724</Border>
+                <Fill>0.785405 0.931903 0.977157</Fill>
+            </Appearance>
+            <String>061
+Moving Monsters
+BADGE: Monster II - Roaming</String>
+            <ConnectedNoteIDs>35, 39, 43, 109</ConnectedNoteIDs>
+            <PointsToNoteIDs>35, 109</PointsToNoteIDs>
+        </Note>
+        <Note ID="45" FontSize="12.0" Position="897.0,938.0" Width="89.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1">0.0 0.138899 0.490724</Border>
+                <Fill>0.785405 0.931903 0.977157</Fill>
+            </Appearance>
+            <String>075
+More platforms</String>
+            <ConnectedNoteIDs>36, 46-47, 49</ConnectedNoteIDs>
+            <PointsToNoteIDs>36, 49</PointsToNoteIDs>
+        </Note>
+        <Note ID="46" FontSize="12.0" Position="859.0,879.0" Width="89.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1">0.0 0.138899 0.490724</Border>
+                <Fill>0.785405 0.931903 0.977157</Fill>
+            </Appearance>
+            <String>076
+More platforms</String>
+            <ConnectedNoteIDs>35, 45</ConnectedNoteIDs>
+            <PointsToNoteIDs>45</PointsToNoteIDs>
+        </Note>
+        <Note ID="47" FontSize="12.0" Position="970.0,869.0" Width="98.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1">0.0 0.138899 0.490724</Border>
+                <Fill>0.785405 0.931903 0.977157</Fill>
+            </Appearance>
+            <String>077
+More platforms
+(monster merge)</String>
+            <ConnectedNoteIDs>35, 45</ConnectedNoteIDs>
+            <PointsToNoteIDs>45</PointsToNoteIDs>
+        </Note>
+        <Note ID="48" FontSize="12.0" Position="885.0,1053.0" Width="124.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1">0.0 0.138899 0.490724</Border>
+                <Fill>0.785405 0.931903 0.977157</Fill>
+            </Appearance>
+            <String>078
+Add 3 more platforms</String>
+            <ConnectedNoteIDs>36-37, 49</ConnectedNoteIDs>
+            <PointsToNoteIDs>37</PointsToNoteIDs>
+        </Note>
+        <Note ID="49" FontSize="12.0" Position="975.0,991.0" Width="98.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1">0.0 0.138899 0.490724</Border>
+                <Fill>0.785405 0.931903 0.977157</Fill>
+            </Appearance>
+            <String>079
+Second platform
+(monster merge)</String>
+            <ConnectedNoteIDs>45, 48</ConnectedNoteIDs>
+            <PointsToNoteIDs>48</PointsToNoteIDs>
+        </Note>
+        <Note ID="50" FontSize="12.0" Position="584.0,886.0" Width="77.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1">0.0 0.138899 0.490724</Border>
+                <Fill>0.785405 0.931903 0.977157</Fill>
+            </Appearance>
+            <String>063
+Init monsters</String>
+            <ConnectedNoteIDs>34, 52</ConnectedNoteIDs>
+            <PointsToNoteIDs>52</PointsToNoteIDs>
+        </Note>
+        <Note ID="51" FontSize="12.0" Position="460.0,876.0" Width="98.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1">0.0 0.138899 0.490724</Border>
+                <Fill>0.785405 0.931903 0.977157</Fill>
+            </Appearance>
+            <String>064
+Init monsters
+(platform merge)</String>
+            <ConnectedNoteIDs>34, 52</ConnectedNoteIDs>
+            <PointsToNoteIDs>52</PointsToNoteIDs>
+        </Note>
+        <Note ID="52" FontSize="12.0" Position="552.0,946.0" Width="60.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1">0.0 0.138899 0.490724</Border>
+                <Fill>0.785405 0.931903 0.977157</Fill>
+            </Appearance>
+            <String>065
+Finish init</String>
+            <ConnectedNoteIDs>41, 50-51</ConnectedNoteIDs>
+            <PointsToNoteIDs>41</PointsToNoteIDs>
+        </Note>
+        <Note ID="54" FontSize="24.0" Position="413.0,791.0" Width="91.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+            </Appearance>
+            <String>Stage 3</String>
+        </Note>
+        <Note ID="55" FontSize="12.0" Position="694.0,1480.0" Width="145.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1">0.0 0.138899 0.490724</Border>
+                <Fill>0.785405 0.931903 0.977157</Fill>
+            </Appearance>
+            <String>092
+Adding 2nd and 3rd level</String>
+            <ConnectedNoteIDs>56-57</ConnectedNoteIDs>
+            <PointsToNoteIDs>57</PointsToNoteIDs>
+        </Note>
+        <Note ID="56" FontSize="12.0" Position="729.0,1421.0" Width="75.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1">0.0 0.138899 0.490724</Border>
+                <Fill>0.785405 0.931903 0.977157</Fill>
+            </Appearance>
+            <String>091
+Cleaning up</String>
+            <ConnectedNoteIDs>40, 55</ConnectedNoteIDs>
+            <PointsToNoteIDs>55</PointsToNoteIDs>
+        </Note>
+        <Note ID="57" FontSize="12.0" Position="705.0,1537.0" Width="126.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1">0.0 0.138899 0.490724</Border>
+                <Fill>0.785405 0.931903 0.977157</Fill>
+            </Appearance>
+            <String>093
+Connecting the levels</String>
+            <ConnectedNoteIDs>55, 174</ConnectedNoteIDs>
+            <PointsToNoteIDs>174</PointsToNoteIDs>
+        </Note>
+        <Note ID="59" FontSize="24.0" Position="415.0,1365.0" Width="91.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+            </Appearance>
+            <String>Stage 4</String>
+        </Note>
+        <Note ID="61" FontSize="12.0" Position="583.875565,1774.246611" Width="53.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1">0.0 0.138899 0.490724</Border>
+                <Fill>0.785405 0.931903 0.977157</Fill>
+            </Appearance>
+            <String>100
+Choices</String>
+            <ConnectedNoteIDs>62, 66, 86-87, 182</ConnectedNoteIDs>
+            <PointsToNoteIDs>62, 66, 86-87</PointsToNoteIDs>
+        </Note>
+        <Note ID="62" FontSize="12.0" Position="759.830384,1872.310617" Width="29.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1">0.0 0.138899 0.490724</Border>
+                <Fill>0.785405 0.931903 0.977157</Fill>
+            </Appearance>
+            <String>299</String>
+            <ConnectedNoteIDs>61, 179</ConnectedNoteIDs>
+        </Note>
+        <Note ID="65" FontSize="12.0" Position="624.988328,2054.552523" Width="68.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1">0.0 0.138899 0.490724</Border>
+                <Fill>0.785405 0.931903 0.977157</Fill>
+            </Appearance>
+            <String>350
+Transitions</String>
+        </Note>
+        <Note ID="66" FontSize="12.0" Position="509.034262,1843.294616" Width="44.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1">0.0 0.138899 0.490724</Border>
+                <Fill>0.785405 0.931903 0.977157</Fill>
+            </Appearance>
+            <String>170
+Vitality</String>
+            <ConnectedNoteIDs>61</ConnectedNoteIDs>
+            <PointsToNoteIDs>61</PointsToNoteIDs>
+        </Note>
+        <Note ID="76" FontSize="12.0" Position="583.988328,2097.552523" Width="149.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1">0.0 0.138899 0.490724</Border>
+                <Fill>0.785405 0.931903 0.977157</Fill>
+            </Appearance>
+            <String>BADGE: Transition I - Title</String>
+        </Note>
+        <Note ID="77" FontSize="12.0" Position="586.988328,2126.552523" Width="160.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1">0.0 0.138899 0.490724</Border>
+                <Fill>0.785405 0.931903 0.977157</Fill>
+            </Appearance>
+            <String>BADGE: Transition II - Timer</String>
+        </Note>
+        <Note ID="86" FontSize="12.0" Position="469.275226,1771.659827" Width="45.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1">0.0 0.138899 0.490724</Border>
+                <Fill>0.785405 0.931903 0.977157</Fill>
+            </Appearance>
+            <String>130
+Items</String>
+            <ConnectedNoteIDs>61</ConnectedNoteIDs>
+            <PointsToNoteIDs>61</PointsToNoteIDs>
+        </Note>
+        <Note ID="87" FontSize="12.0" Position="531.817583,1703.715361" Width="48.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1">0.0 0.138899 0.490724</Border>
+                <Fill>0.785405 0.931903 0.977157</Fill>
+            </Appearance>
+            <String>110
+Images</String>
+            <ConnectedNoteIDs>61</ConnectedNoteIDs>
+            <PointsToNoteIDs>61</PointsToNoteIDs>
+        </Note>
+        <Note ID="93" FontSize="24.0" Position="421.0,1659.0" Width="91.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+            </Appearance>
+            <String>Stage 5</String>
+        </Note>
+        <Note ID="107" FontSize="12.0" Position="758.0,739.0" Width="29.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1">0.0 0.138899 0.490724</Border>
+                <Fill>0.785405 0.931903 0.977157</Fill>
+            </Appearance>
+            <String>049</String>
+            <ConnectedNoteIDs>17, 23, 27</ConnectedNoteIDs>
+            <PointsToNoteIDs>27</PointsToNoteIDs>
+        </Note>
+        <Note ID="108" FontSize="12.0" Position="1002.0,533.0" Width="81.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1">0.0 0.138899 0.490724</Border>
+                <Fill>0.785405 0.931903 0.977157</Fill>
+            </Appearance>
+            <String>046
+Use collide
+(jump merge)</String>
+            <ConnectedNoteIDs>25, 28</ConnectedNoteIDs>
+            <PointsToNoteIDs>25</PointsToNoteIDs>
+        </Note>
+        <Note ID="109" FontSize="12.0" Position="757.0,1314.0" Width="22.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1">0.0 0.138899 0.490724</Border>
+                <Fill>0.785405 0.931903 0.977157</Fill>
+            </Appearance>
+            <String>89</String>
+            <ConnectedNoteIDs>39-40, 44</ConnectedNoteIDs>
+            <PointsToNoteIDs>40</PointsToNoteIDs>
+        </Note>
+        <Note ID="126" FontSize="12.0" Position="642.988328,2015.552523" Width="29.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1">0.0 0.138899 0.490724</Border>
+                <Fill>0.785405 0.931903 0.977157</Fill>
+            </Appearance>
+            <String>300</String>
+        </Note>
+        <Note ID="174" FontSize="12.0" Position="754.160392,1596.632907" Width="29.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1">0.0 0.138899 0.490724</Border>
+                <Fill>0.785405 0.931903 0.977157</Fill>
+            </Appearance>
+            <String>098</String>
+            <ConnectedNoteIDs>57, 181</ConnectedNoteIDs>
+            <PointsToNoteIDs>181</PointsToNoteIDs>
+        </Note>
+        <Note ID="177" FontSize="12.0" Position="903.117846,1715.046875" Width="48.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1">0.0 0.138899 0.490724</Border>
+                <Fill>0.785405 0.931903 0.977157</Fill>
+            </Appearance>
+            <String>200
+Images</String>
+            <ConnectedNoteIDs>178, 181</ConnectedNoteIDs>
+            <PointsToNoteIDs>178</PointsToNoteIDs>
+        </Note>
+        <Note ID="178" FontSize="12.0" Position="896.46875,1780.110693" Width="68.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1">0.0 0.138899 0.490724</Border>
+                <Fill>0.785405 0.931903 0.977157</Fill>
+            </Appearance>
+            <String>230
+Vitality</String>
+            <ConnectedNoteIDs>177, 179</ConnectedNoteIDs>
+            <PointsToNoteIDs>179</PointsToNoteIDs>
+        </Note>
+        <Note ID="179" FontSize="12.0" Position="906.235693,1838.545934" Width="44.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1">0.0 0.138899 0.490724</Border>
+                <Fill>0.785405 0.931903 0.977157</Fill>
+            </Appearance>
+            <String>260
+Health</String>
+            <ConnectedNoteIDs>62, 178</ConnectedNoteIDs>
+            <PointsToNoteIDs>62</PointsToNoteIDs>
+        </Note>
+        <Note ID="180" FontSize="12.0" Position="802.0,185.0" Width="29.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1">0.0 0.138899 0.490724</Border>
+                <Fill>0.785405 0.931903 0.977157</Fill>
+            </Appearance>
+            <String>015</String>
+            <ConnectedNoteIDs>3, 6-7</ConnectedNoteIDs>
+            <PointsToNoteIDs>7</PointsToNoteIDs>
+        </Note>
+        <Note ID="181" FontSize="12.0" Position="685.023908,1659.837726" Width="168.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1">0.0 0.138899 0.490724</Border>
+                <Fill>0.785405 0.931903 0.977157</Fill>
+            </Appearance>
+            <String>099
+Choose: Easy or Challenging</String>
+            <ConnectedNoteIDs>174, 177, 182</ConnectedNoteIDs>
+            <PointsToNoteIDs>177, 182</PointsToNoteIDs>
+        </Note>
+        <Note ID="182" FontSize="12.0" Position="672.988893,1727.430346" Width="29.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1">0.0 0.138899 0.490724</Border>
+                <Fill>0.785405 0.931903 0.977157</Fill>
+            </Appearance>
+            <String>101</String>
+            <ConnectedNoteIDs>61, 181</ConnectedNoteIDs>
+            <PointsToNoteIDs>61</PointsToNoteIDs>
+        </Note>
+    </Notes>
+    <BackgroundShapes>
+        <Shape ID="29" Sticky="Yes" Position="393.0,38.0" Width="700.0" Height="300.0">
+            <Appearance>
+                <Border Weight="1"></Border>
+            </Appearance>
+        </Shape>
+        <Shape ID="30" Sticky="Yes" Position="392.0,341.0" Width="703.0" Height="433.0">
+            <Appearance>
+                <Border Weight="1"></Border>
+            </Appearance>
+        </Shape>
+        <Shape ID="53" Sticky="Yes" Position="393.0,778.0" Width="702.0" Height="569.387329">
+            <Appearance>
+                <Border Weight="1"></Border>
+            </Appearance>
+        </Shape>
+        <Shape ID="58" Sticky="Yes" Position="393.0,1350.0" Width="703.0" Height="289.609375">
+            <Appearance>
+                <Border Weight="1"></Border>
+            </Appearance>
+        </Shape>
+        <Shape ID="90" Sticky="Yes" Position="392.0,1644.0" Width="706.0" Height="258.0">
+            <Appearance>
+                <Border Weight="1"></Border>
+            </Appearance>
+        </Shape>
+    </BackgroundShapes>
+    <AutoFit>0-2, 5-11, 14-18, 21, 23-28, 31-36, 39-40, 42-43, 45-52, 54-57, 59, 61-62, 65-66, 76-77, 87, 93, 107-109, 126, 174, 177, 179-182</AutoFit>
+    <NoteStyles>
+        <Style Name="Blue Bubble" ID="625EFFDB-ACC1-4053-823C-5B30A03FA6A6" AffectFontStyle="No" AffectAlignment="No" AffectTextColor="No" AffectNoteBody="Yes" AffectFade="No">
+            <BorderThickness>1</BorderThickness>
+            <BorderColor>0.48589 0.568934 0.756202</BorderColor>
+            <FillColor>0.844061 0.869603 0.923066</FillColor>
+        </Style>
+        <Style Name="Brown Bubble" ID="2BF4DF64-035D-47BE-A120-0EF362B7158C" AffectFontStyle="No" AffectAlignment="No" AffectTextColor="No" AffectNoteBody="Yes" AffectFade="No">
+            <BorderThickness>1</BorderThickness>
+            <BorderColor>0.269487 0.164027 0.186688</BorderColor>
+            <FillColor>0.934152 0.888326 0.785296</FillColor>
+        </Style>
+        <Style Name="Green Bubble" ID="B709730A-9895-4312-9F76-A24342C0C21A" AffectFontStyle="No" AffectAlignment="No" AffectTextColor="No" AffectNoteBody="Yes" AffectFade="No">
+            <BorderThickness>1</BorderThickness>
+            <BorderColor>0.399094 0.583326 0.354861</BorderColor>
+            <FillColor>0.808837 0.872426 0.801336</FillColor>
+        </Style>
+        <Style Name="Pink Bubble" ID="04C2B323-A436-4A13-97AD-0E0C55C5FEB0" AffectFontStyle="No" AffectAlignment="No" AffectTextColor="No" AffectNoteBody="Yes" AffectFade="No">
+            <BorderThickness>1</BorderThickness>
+            <BorderColor>0.69031 0.407259 0.550907</BorderColor>
+            <FillColor>0.898333 0.817465 0.865333</FillColor>
+        </Style>
+        <Style Name="Red Text" ID="9004C6A8-DB06-44B9-8BDB-0382ADB6168A" AffectFontStyle="No" AffectAlignment="No" AffectTextColor="Yes" AffectNoteBody="No" AffectFade="No">
+            <TextColor>1.0 0.0 0.0</TextColor>
+        </Style>
+        <Style Name="Title Text" ID="ACAA1EC5-5891-4C6A-B8A9-C356AE317845" AffectFontStyle="Yes" AffectAlignment="Yes" AffectTextColor="No" AffectNoteBody="No" AffectFade="No">
+            <FontSize>28.0</FontSize>
+            <IsBold>Yes</IsBold>
+        </Style>
+        <Style Name="Yellow Bubble" ID="32777747-C840-49E7-AC12-96DCB1E10DF0" AffectFontStyle="No" AffectAlignment="No" AffectTextColor="No" AffectNoteBody="Yes" AffectFade="No">
+            <BorderThickness>1</BorderThickness>
+            <BorderColor>0.769437 0.762214 0.390138</BorderColor>
+            <FillColor>0.912959 0.894112 0.644534</FillColor>
+        </Style>
+    </NoteStyles>
+    <UISettings>
+        <BackgroundColor>1.0 1.0 1.0</BackgroundColor>
+        <DefaultFont>Helvetica</DefaultFont>
+        <DefaultTextColor>0.0 0.0 0.0</DefaultTextColor>
+    </UISettings>
+    <PrintSettings PaperSize="612.0,792.0" LeftMargin="72.0" RightMargin="72.0" TopMargin="90.0" BottomMargin="90.0" PaperType="na-letter" Orientation="Portrait" HorizontalPagination="Clip" VerticalPagination="Auto" ScaleFactor="1.0" HorizontallyCentered="Yes" VerticallyCentered="Yes" Collates="Yes" PagesAcross="1" PagesDown="1"></PrintSettings>
+</ScappleDocument>

@@ -1,0 +1,397 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<ScappleDocument Version="1.1" ID="B4DA61CC-0700-4060-83F8-7949605F7909">
+    <Notes>
+        <Note ID="9" FontSize="12.0" Position="459.0,821.0" Width="48.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1">0.0 0.138899 0.490724</Border>
+                <Fill>0.785405 0.931903 0.977157</Fill>
+            </Appearance>
+            <String>110
+Images</String>
+            <ConnectedNoteIDs>29-30, 54, 77</ConnectedNoteIDs>
+            <PointsToNoteIDs>29-30, 77</PointsToNoteIDs>
+        </Note>
+        <Note ID="10" FontSize="12.0" Position="900.0,486.0" Width="37.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1">0.0 0.138899 0.490724</Border>
+                <Fill>0.785405 0.931903 0.977157</Fill>
+            </Appearance>
+            <String>130
+Items</String>
+            <ConnectedNoteIDs>16, 54, 58</ConnectedNoteIDs>
+            <PointsToNoteIDs>16, 58</PointsToNoteIDs>
+        </Note>
+        <Note ID="13" FontSize="12.0" Position="899.0,270.0" Width="142.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1">0.0 0.138899 0.490724</Border>
+                <Fill>0.785405 0.931903 0.977157</Fill>
+            </Appearance>
+            <String>135
+Unlock goal
+BADGE: Treasure I - Key</String>
+            <ConnectedNoteIDs>19-21</ConnectedNoteIDs>
+            <PointsToNoteIDs>20-21</PointsToNoteIDs>
+        </Note>
+        <Note ID="16" FontSize="12.0" Position="855.0,355.0" Width="77.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1">0.0 0.138899 0.490724</Border>
+                <Fill>0.785405 0.931903 0.977157</Fill>
+            </Appearance>
+            <String>131
+Create items</String>
+            <ConnectedNoteIDs>10, 17-18</ConnectedNoteIDs>
+            <PointsToNoteIDs>17-18</PointsToNoteIDs>
+        </Note>
+        <Note ID="17" FontSize="12.0" Position="745.0,295.0" Width="37.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1">0.0 0.138899 0.490724</Border>
+                <Fill>0.785405 0.931903 0.977157</Fill>
+            </Appearance>
+            <String>132
+Draw</String>
+            <ConnectedNoteIDs>16, 19</ConnectedNoteIDs>
+            <PointsToNoteIDs>19</PointsToNoteIDs>
+        </Note>
+        <Note ID="18" FontSize="12.0" Position="595.0,331.0" Width="95.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1">0.0 0.138899 0.490724</Border>
+                <Fill>0.785405 0.931903 0.977157</Fill>
+            </Appearance>
+            <String>133
+Draw
+(image merge)</String>
+            <ConnectedNoteIDs>16, 19, 55</ConnectedNoteIDs>
+            <PointsToNoteIDs>19, 55</PointsToNoteIDs>
+        </Note>
+        <Note ID="19" FontSize="12.0" Position="682.0,202.0" Width="70.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1">0.0 0.138899 0.490724</Border>
+                <Fill>0.785405 0.931903 0.977157</Fill>
+            </Appearance>
+            <String>134
+Item collide</String>
+            <ConnectedNoteIDs>13, 17-18, 55, 65</ConnectedNoteIDs>
+            <PointsToNoteIDs>13</PointsToNoteIDs>
+        </Note>
+        <Note ID="20" FontSize="12.0" Position="946.0,414.0" Width="87.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1">0.0 0.138899 0.490724</Border>
+                <Fill>0.785405 0.931903 0.977157</Fill>
+            </Appearance>
+            <String>136
+Level 2-3 keys</String>
+            <ConnectedNoteIDs>13, 83</ConnectedNoteIDs>
+            <PointsToNoteIDs>83</PointsToNoteIDs>
+        </Note>
+        <Note ID="21" FontSize="12.0" Position="1087.0,535.0" Width="88.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1">0.0 0.138899 0.490724</Border>
+                <Fill>0.785405 0.931903 0.977157</Fill>
+            </Appearance>
+            <String>137
+Level 2-3 keys
+(image merge)</String>
+            <ConnectedNoteIDs>13, 40, 83</ConnectedNoteIDs>
+            <PointsToNoteIDs>40, 83</PointsToNoteIDs>
+        </Note>
+        <Note ID="22" FontSize="12.0" Position="888.0,536.0" Width="157.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1">0.0 0.138899 0.490724</Border>
+                <Fill>0.785405 0.931903 0.977157</Fill>
+            </Appearance>
+            <String>138
+End game item
+BADGE: Treasure II - Finish</String>
+            <ConnectedNoteIDs>54, 82-83</ConnectedNoteIDs>
+            <PointsToNoteIDs>54</PointsToNoteIDs>
+        </Note>
+        <Note ID="25" FontSize="12.0" Position="491.0,532.0" Width="44.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1">0.0 0.138899 0.490724</Border>
+                <Fill>0.785405 0.931903 0.977157</Fill>
+            </Appearance>
+            <String>170
+Vitality</String>
+            <ConnectedNoteIDs>50-51, 54</ConnectedNoteIDs>
+            <PointsToNoteIDs>50-51</PointsToNoteIDs>
+        </Note>
+        <Note ID="29" FontSize="12.0" Position="298.0,798.0" Width="86.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1">0.0 0.138899 0.490724</Border>
+                <Fill>0.785405 0.931903 0.977157</Fill>
+            </Appearance>
+            <String>120
+Player images</String>
+            <ConnectedNoteIDs>9, 32</ConnectedNoteIDs>
+            <PointsToNoteIDs>32</PointsToNoteIDs>
+        </Note>
+        <Note ID="30" FontSize="12.0" Position="661.614198,806.949095" Width="69.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1">0.0 0.138899 0.490724</Border>
+                <Fill>0.785405 0.931903 0.977157</Fill>
+            </Appearance>
+            <String>115
+Transforms</String>
+            <ConnectedNoteIDs>9, 71-72</ConnectedNoteIDs>
+            <PointsToNoteIDs>71-72</PointsToNoteIDs>
+        </Note>
+        <Note ID="31" FontSize="12.0" Position="831.0,740.0" Width="162.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1">0.0 0.138899 0.490724</Border>
+                <Fill>0.785405 0.931903 0.977157</Fill>
+            </Appearance>
+            <String>163
+Platform pattern
+BADGE: Platform III - Pattern</String>
+            <ConnectedNoteIDs>54, 77, 84</ConnectedNoteIDs>
+            <PointsToNoteIDs>54, 84</PointsToNoteIDs>
+        </Note>
+        <Note ID="32" FontSize="12.0" Position="378.0,702.0" Width="147.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1">0.0 0.138899 0.490724</Border>
+                <Fill>0.785405 0.931903 0.977157</Fill>
+            </Appearance>
+            <String>121
+Monster images
+BADGE: Sprite II - Image</String>
+            <ConnectedNoteIDs>29, 33, 54</ConnectedNoteIDs>
+            <PointsToNoteIDs>33, 54, 74</PointsToNoteIDs>
+        </Note>
+        <Note ID="33" FontSize="12.0" Position="168.0,730.0" Width="74.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1">0.0 0.138899 0.490724</Border>
+                <Fill>0.785405 0.931903 0.977157</Fill>
+            </Appearance>
+            <String>122
+Item images</String>
+            <ConnectedNoteIDs>32, 54-55</ConnectedNoteIDs>
+            <PointsToNoteIDs>54-55</PointsToNoteIDs>
+        </Note>
+        <Note ID="40" FontSize="12.0" Position="993.0,654.0" Width="73.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <TextColor>0.0 0.0 0.0</TextColor>
+                <Border Weight="1">0.0 0.138899 0.490724</Border>
+                <Fill>0.785405 0.931903 0.977157</Fill>
+            </Appearance>
+            <String>113
+Unlock goal</String>
+            <ConnectedNoteIDs>21, 54, 82</ConnectedNoteIDs>
+            <PointsToNoteIDs>54, 82</PointsToNoteIDs>
+        </Note>
+        <Note ID="50" FontSize="12.0" Position="307.0,554.0" Width="135.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1">0.0 0.138899 0.490724</Border>
+                <Fill>0.785405 0.931903 0.977157</Fill>
+            </Appearance>
+            <String>180
+Damage from Monsters</String>
+            <ConnectedNoteIDs>25, 53</ConnectedNoteIDs>
+            <PointsToNoteIDs>53</PointsToNoteIDs>
+        </Note>
+        <Note ID="51" FontSize="12.0" Position="286.0,454.0" Width="195.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1">0.0 0.138899 0.490724</Border>
+                <Fill>0.785405 0.931903 0.977157</Fill>
+            </Appearance>
+            <String>190
+Multiple lives
+BADGE: Vitality II - Reincarnation</String>
+            <ConnectedNoteIDs>25, 54, 65</ConnectedNoteIDs>
+            <PointsToNoteIDs>54, 65</PointsToNoteIDs>
+        </Note>
+        <Note ID="53" FontSize="12.0" Position="220.0,619.0" Width="158.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1">0.0 0.138899 0.490724</Border>
+                <Fill>0.785405 0.931903 0.977157</Fill>
+            </Appearance>
+            <String>182
+Health meter
+BADGE: Vitality I - Health</String>
+            <ConnectedNoteIDs>50, 54-55</ConnectedNoteIDs>
+            <PointsToNoteIDs>54-55</PointsToNoteIDs>
+        </Note>
+        <Note ID="54" FontSize="12.0" Position="625.0,518.0" Width="196.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1">0.0 0.138899 0.490724</Border>
+                <Fill>0.785405 0.931903 0.977157</Fill>
+            </Appearance>
+            <String>100
+
+
+</String>
+            <ConnectedNoteIDs>9-10, 22, 25, 31-33, 40, 51, 53, 55, 58, 65, 73, 84</ConnectedNoteIDs>
+            <PointsToNoteIDs>9-10, 25</PointsToNoteIDs>
+        </Note>
+        <Note ID="55" FontSize="12.0" Position="160.0,209.0" Width="103.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1">0.0 0.138899 0.490724</Border>
+                <Fill>0.785405 0.931903 0.977157</Fill>
+            </Appearance>
+            <String>184
+Add key status</String>
+            <ConnectedNoteIDs>18-19, 33, 53-54, 65</ConnectedNoteIDs>
+            <PointsToNoteIDs>19, 54, 65</PointsToNoteIDs>
+        </Note>
+        <Note ID="58" FontSize="12.0" Position="640.0,419.0" Width="170.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1">0.0 0.138899 0.490724</Border>
+                <Fill>0.785405 0.931903 0.977157</Fill>
+            </Appearance>
+            <String>145
+Add potion
+BADGE: Treasure III - Potion</String>
+            <ConnectedNoteIDs>10, 54</ConnectedNoteIDs>
+            <PointsToNoteIDs>27, 54</PointsToNoteIDs>
+        </Note>
+        <Note ID="65" FontSize="12.0" Position="284.0,349.0" Width="84.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1">0.0 0.138899 0.490724</Border>
+                <Fill>0.785405 0.931903 0.977157</Fill>
+            </Appearance>
+            <String>192
+Life status bar</String>
+            <ConnectedNoteIDs>19, 51, 54-55</ConnectedNoteIDs>
+            <PointsToNoteIDs>19, 54</PointsToNoteIDs>
+        </Note>
+        <Note ID="71" FontSize="12.0" Position="653.0,756.0" Width="29.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1">0.0 0.138899 0.490724</Border>
+                <Fill>0.785405 0.931903 0.977157</Fill>
+            </Appearance>
+            <String>116</String>
+            <ConnectedNoteIDs>30, 73</ConnectedNoteIDs>
+            <PointsToNoteIDs>73</PointsToNoteIDs>
+        </Note>
+        <Note ID="72" FontSize="12.0" Position="765.0,747.0" Width="29.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1">0.0 0.138899 0.490724</Border>
+                <Fill>0.785405 0.931903 0.977157</Fill>
+            </Appearance>
+            <String>117</String>
+            <ConnectedNoteIDs>30, 73</ConnectedNoteIDs>
+            <PointsToNoteIDs>73</PointsToNoteIDs>
+        </Note>
+        <Note ID="73" FontSize="12.0" Position="649.0,669.0" Width="159.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1">0.0 0.138899 0.490724</Border>
+                <Fill>0.785405 0.931903 0.977157</Fill>
+            </Appearance>
+            <String>118
+Flip image
+BADGE: Sprite III - Direction</String>
+            <ConnectedNoteIDs>54, 71-72</ConnectedNoteIDs>
+            <PointsToNoteIDs>54, 75</PointsToNoteIDs>
+        </Note>
+        <Note ID="77" FontSize="12.0" Position="652.927928,878.313266" Width="101.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1">0.0 0.138899 0.490724</Border>
+                <Fill>0.785405 0.931903 0.977157</Fill>
+            </Appearance>
+            <String>111
+Pattern transform</String>
+            <ConnectedNoteIDs>9, 31</ConnectedNoteIDs>
+            <PointsToNoteIDs>31</PointsToNoteIDs>
+        </Note>
+        <Note ID="82" FontSize="12.0" Position="987.0,611.0" Width="29.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1">0.0 0.138899 0.490724</Border>
+                <Fill>0.785405 0.931903 0.977157</Fill>
+            </Appearance>
+            <String>142</String>
+            <ConnectedNoteIDs>22, 40</ConnectedNoteIDs>
+            <PointsToNoteIDs>22</PointsToNoteIDs>
+        </Note>
+        <Note ID="83" FontSize="12.0" Position="1016.0,488.0" Width="29.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1">0.0 0.138899 0.490724</Border>
+                <Fill>0.785405 0.931903 0.977157</Fill>
+            </Appearance>
+            <String>141</String>
+            <ConnectedNoteIDs>20-22</ConnectedNoteIDs>
+            <PointsToNoteIDs>22</PointsToNoteIDs>
+        </Note>
+        <Note ID="84" FontSize="12.0" Position="898.0,670.0" Width="73.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1">0.0 0.138899 0.490724</Border>
+                <Fill>0.785405 0.931903 0.977157</Fill>
+            </Appearance>
+            <String>114
+Unlock goal</String>
+            <ConnectedNoteIDs>31, 54</ConnectedNoteIDs>
+            <PointsToNoteIDs>54</PointsToNoteIDs>
+        </Note>
+    </Notes>
+    <BackgroundShapes></BackgroundShapes>
+    <AutoFit>9-10, 13, 16-17, 19-22, 25, 29-31, 33, 40, 50, 65, 71-73, 77, 82-84</AutoFit>
+    <NoteStyles>
+        <Style Name="Blue Bubble" ID="41A3907B-7FEF-4F81-BDB5-739089CDD913" AffectFontStyle="No" AffectAlignment="No" AffectTextColor="No" AffectNoteBody="Yes" AffectFade="No">
+            <BorderThickness>1</BorderThickness>
+            <BorderColor>0.48589 0.568934 0.756202</BorderColor>
+            <FillColor>0.844061 0.869603 0.923066</FillColor>
+        </Style>
+        <Style Name="Brown Bubble" ID="C8D87EFC-9923-46F6-8F66-EA7326F47C98" AffectFontStyle="No" AffectAlignment="No" AffectTextColor="No" AffectNoteBody="Yes" AffectFade="No">
+            <BorderThickness>1</BorderThickness>
+            <BorderColor>0.269487 0.164027 0.186688</BorderColor>
+            <FillColor>0.934152 0.888326 0.785296</FillColor>
+        </Style>
+        <Style Name="Green Bubble" ID="64F33E42-F2BC-41B3-8266-4501FE4B0512" AffectFontStyle="No" AffectAlignment="No" AffectTextColor="No" AffectNoteBody="Yes" AffectFade="No">
+            <BorderThickness>1</BorderThickness>
+            <BorderColor>0.399094 0.583326 0.354861</BorderColor>
+            <FillColor>0.808837 0.872426 0.801336</FillColor>
+        </Style>
+        <Style Name="Pink Bubble" ID="489D17CE-1F81-4F42-83D6-18567B69D90B" AffectFontStyle="No" AffectAlignment="No" AffectTextColor="No" AffectNoteBody="Yes" AffectFade="No">
+            <BorderThickness>1</BorderThickness>
+            <BorderColor>0.69031 0.407259 0.550907</BorderColor>
+            <FillColor>0.898333 0.817465 0.865333</FillColor>
+        </Style>
+        <Style Name="Red Text" ID="B4210A40-63CD-408D-9B21-04F7E78AB4B8" AffectFontStyle="No" AffectAlignment="No" AffectTextColor="Yes" AffectNoteBody="No" AffectFade="No">
+            <TextColor>1.0 0.0 0.0</TextColor>
+        </Style>
+        <Style Name="Title Text" ID="4C98A7E4-7CAB-47AF-A7D6-BF2C43EC3B44" AffectFontStyle="Yes" AffectAlignment="Yes" AffectTextColor="No" AffectNoteBody="No" AffectFade="No">
+            <FontSize>28.0</FontSize>
+            <IsBold>Yes</IsBold>
+        </Style>
+        <Style Name="Yellow Bubble" ID="8DC4947B-ECD1-4074-A603-00AC56F55156" AffectFontStyle="No" AffectAlignment="No" AffectTextColor="No" AffectNoteBody="Yes" AffectFade="No">
+            <BorderThickness>1</BorderThickness>
+            <BorderColor>0.769437 0.762214 0.390138</BorderColor>
+            <FillColor>0.912959 0.894112 0.644534</FillColor>
+        </Style>
+    </NoteStyles>
+    <UISettings>
+        <BackgroundColor>0.999899 1.0 0.999842</BackgroundColor>
+        <DefaultFont>Helvetica</DefaultFont>
+        <DefaultTextColor>0.0 0.0 0.0</DefaultTextColor>
+    </UISettings>
+    <PrintSettings PaperSize="612.0,792.0" LeftMargin="72.0" RightMargin="72.0" TopMargin="90.0" BottomMargin="90.0" PaperType="na-letter" Orientation="Portrait" HorizontalPagination="Clip" VerticalPagination="Auto" ScaleFactor="1.0" HorizontallyCentered="Yes" VerticallyCentered="Yes" Collates="Yes" PagesAcross="1" PagesDown="1"></PrintSettings>
+</ScappleDocument>
