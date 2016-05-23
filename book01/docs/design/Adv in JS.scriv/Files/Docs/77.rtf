@@ -1,0 +1,36 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1138\cocoasubrtf510
+{\fonttbl\f0\fswiss\fcharset0 Helvetica;\f1\fmodern\fcharset0 Courier;\f2\fmodern\fcharset0 Courier-Bold;
+}
+{\colortbl;\red255\green255\blue255;\red105\green105\blue105;}
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\fi360\sl288\slmult1\pardirnatural
+
+\f0\fs24 \cf0 \
+Try it out to see how it works.\
+\
+When you land on the top it works well, but when you hit the bottom or sides, it acts a bit weird. You always jump to the top of the platform.\
+\
+Indeed, all collisions with the platforms are currently assumed to be at the top.\
+\
+To fix this, we need to do a better job with our collision detection. In addition to answering the question "did object A collide with object B", we also need to know if object B (the player) collided with the top, bottom, left or right of object A (the platform).\
+\
+Not surprisingly, this is a bit more complicated than the simple collision detection we did earlier.\
+\
+But before doing that add a few more platforms:\
+\
+\pard\tx1260\tx1860\tx2420\tx3020\tx3560\tx4140\li700\sl288\slmult1\pardirnatural
+
+\f1 \cf2 	_game.platforms = [];\
+	_game.platforms.push(create_platform(0, 360, _game.width, 40));\
+	_game.platforms.push(create_platform(200, 290, 80, 20));\
+
+\f2\b \cf0 	_game.platforms.push(create_platform(300, 240, 80, 20));\
+	_game.platforms.push(create_platform(400, 170, 80, 20));\
+	_game.platforms.push(create_platform(460, 110, 40, 20));\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\fi360\sl288\slmult1\pardirnatural
+
+\f0\b0 \cf0 \
+fdafdsaf\
+\
+GOTO 072\
+\
+}

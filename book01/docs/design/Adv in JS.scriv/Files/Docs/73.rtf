@@ -1,0 +1,116 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1138\cocoasubrtf510
+{\fonttbl\f0\fswiss\fcharset0 Helvetica;\f1\fmodern\fcharset0 Courier;\f2\fmodern\fcharset0 Courier-Bold;
+}
+{\colortbl;\red255\green255\blue255;\red105\green105\blue105;}
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\fi360\sl288\slmult1\pardirnatural
+
+\f0\fs24 \cf0 Let's make the monsters move.\
+\
+\
+\
+\pard\tx1260\tx1860\tx2420\tx3020\tx3560\tx4140\li700\sl288\slmult1\pardirnatural
+
+\f1 \cf2 function draw_player(ctx) \{\
+	...\
+\}\
+\
+
+\f2\b \cf0 function update_monsters() \{\
+	var monsters = _game.monsters;\
+	for (var i = 0; i < monsters.length; i++) \{\
+		var m = monsters[i];\
+		m.x += m.move_x;\
+		if (m.x <= m.min_x || m.x >= m.max_x) \{\
+			m.move_x *= -1;\
+		\}\
+	\}\
+\}\
+
+\f1\b0 \cf2 \
+// Handle input and move the player.\
+function update_player() \{\
+	...\
+\}\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\fi360\sl288\slmult1\pardirnatural
+
+\f0 \cf0 \
+\
+fdfafd\
+\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\fi360\sl288\slmult1\pardirnatural
+
+\f1 \cf2 function update_world() \{\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\fi360\sl288\slmult1\pardirnatural
+
+\f2\b \cf0 	update_monsters();\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\fi360\sl288\slmult1\pardirnatural
+
+\f1\b0 \cf2 	update_player();\
+	check_collisions();\
+	draw();\
+	\
+	requestAnimationFrame(update_world);\
+\}\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\fi360\sl288\slmult1\pardirnatural
+
+\f0 \cf0 \
+\
+fdafd\
+\
+\
+We need to initialize these values:\
+\
+\
+\pard\tx1260\tx1860\tx2420\tx3020\tx3560\tx4140\li700\sl288\slmult1\pardirnatural
+
+\f1 \cf0 \strike \strikec0 function create_monster(x, y, width, height) \{\
+
+\f2\b \strike0\striked0 function create_monster(x, y, width, height, min_x, max_x, move_x) \{\
+
+\f1\b0 \cf2 	var m = \{\};\
+	m.x = x;\
+	m.y = y;\
+	m.width = width;\
+	m.height = height;\
+	m.origin_x = m.width / 2;\
+	m.origin_y = m.height;\
+
+\f2\b \cf0 	m.min_x = min_x;\
+	m.max_x = max_x;\
+	m.move_x = move_x;\
+
+\f1\b0 \cf2 	return m;\
+\}\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\fi360\sl288\slmult1\pardirnatural
+
+\f0 \cf0 \
+\
+fda\
+\
+in init_game()\
+\
+\pard\tx1260\tx1860\tx2420\tx3020\tx3560\tx4140\li700\sl288\slmult1\pardirnatural
+
+\f1 \cf2 	_game.monsters = [];\
+\cf0 \strike \strikec0 	_game.monsters.push(create_monster(350, 360, 20, 20));\
+
+\f2\b \strike0\striked0 	_game.monsters.push(create_monster(350, 360, 20, 20, 60, 480, -1.0));\
+
+\f1\b0 \strike \strikec0 	_game.monsters.push(create_monster(400, 360, 20, 20));\
+
+\f2\b \strike0\striked0 	_game.monsters.push(create_monster(400, 360, 20, 20, 60, 480, 0.8));\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\fi360\sl288\slmult1\pardirnatural
+
+\f0\b0 \cf0 \
+\
+fdafd\
+\
+GAIN "Monster II - Roaming" badge\
+\
+IF you have your "Platform II - Four Sided" badge\
+	THEN GOTO 089\
+	ELSE GOTO 070\
+\
+\
+}

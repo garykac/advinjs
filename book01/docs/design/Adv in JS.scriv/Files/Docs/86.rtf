@@ -1,0 +1,375 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1138\cocoasubrtf510
+{\fonttbl\f0\fswiss\fcharset0 Helvetica;\f1\fmodern\fcharset0 Courier;\f2\fmodern\fcharset0 Courier-Bold;
+}
+{\colortbl;\red255\green255\blue255;\red105\green105\blue105;}
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\fi360\sl288\slmult1\pardirnatural
+
+\f0\fs24 \cf0 Before we add new levels we should streamline the level creation code so that it is easy to create new levels.\
+\
+"streamline" and "clean up" sound like fancy ways of saying that I'm going to write a lot of code, but I'm not going to see the game get any better.\
+\
+True, but the code will get better, which will make it easier for you to add more interesting features to the game. If you don't do this, the code will become harder to manage.\
+\
+\
+We could just copy and paste everything, but that would make future changes more difficult to make.\
+\
+Things that we know will be the same for every level. currently not much, but we'll be adding more here.\
+\
+\pard\tx1260\tx1860\tx2420\tx3020\tx3560\tx4140\li700\sl288\slmult1\pardirnatural
+
+\f1 \cf2 function init_player() \{\
+	...\
+\}\
+\
+
+\f2\b \cf0 function init_level_defaults(level) \{\
+	level.platforms = [];\
+	level.monsters = [];\
+\}\
+
+\f1\b0 \cf2 \
+function init_level1() \{\
+	...\
+\}\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\fi360\sl288\slmult1\pardirnatural
+
+\f0 \cf0 fdafd\
+\
+\pard\tx1260\tx1860\tx2420\tx3020\tx3560\tx4140\li700\sl288\slmult1\pardirnatural
+
+\f1 \cf2 function init_level1() \{\
+	var level = \{\};\
+
+\f2\b \cf0 	init_level_defaults(level);\
+
+\f1\b0 \cf2 \
+\cf0 \strike \strikec0 	level.platforms = [];\
+\cf2 \strike0\striked0 	// The bottom brick platform along the bottom of the stage.\
+	level.platforms.push(create_platform(0, 360, _game.width, 40));\
+	// The left offstage 'wall' to keep the player on the stage.\
+	level.platforms.push(\
+		create_platform(-60, -_game.height, 60, 2 * _game.height));\
+	// The right offstage 'wall' to keep the player on the stage.\
+	level.platforms.push(\
+		create_platform(_game.width, -_game.height, 60, 2 * _game.height));\
+	level.platforms.push(create_platform(200, 290, 80, 20));\
+	level.platforms.push(create_platform(300, 240, 80, 20));\
+	level.platforms.push(create_platform(400, 170, 80, 20));\
+	level.platforms.push(create_platform(460, 110, 40, 20));\
+\
+\cf0 \strike \strikec0 	level.monsters = [];\
+\cf2 \strike0\striked0 	level.monsters.push(create_monster(350, 360, 20, 20, 60, 480, -1.0));\
+	level.monsters.push(create_monster(400, 360, 20, 20, 60, 480, 0.8));\
+\
+	level.goal = create_goal(500, 360);\
+	\
+	_levels.push(level);\
+\}\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\fi360\sl288\slmult1\pardirnatural
+
+\f0 \cf0 \
+Run to make sure everything still works.\
+\
+fdas\
+\
+Now let's look at the platform code. very repetitive.  the only thing different are the values that we pass to create_platform each time.  We can simplify by having an array of just those values and looping through them.\
+\
+\
+Delete the current platform creation code:\
+\
+\pard\tx1260\tx1860\tx2420\tx3020\tx3560\tx4140\li700\sl288\slmult1\pardirnatural
+
+\f1 \cf2 function init_level1() \{\
+	...\
+\
+	// The bottom brick platform along the bottom of the stage.\
+\cf0 \strike \strikec0 	level.platforms.push(create_platform(0, 360, _game.width, 40));\
+\cf2 \strike0\striked0 	// The left offstage 'wall' to keep the player on the stage.\
+\cf0 \strike \strikec0 	level.platforms.push(\
+		create_platform(-60, -_game.height, 60, 2 * _game.height));\
+\cf2 \strike0\striked0 	// The right offstage 'wall' to keep the player on the stage.\
+\cf0 \strike \strikec0 	level.platforms.push(\
+		create_platform(_game.width, -_game.height, 60, 2 * _game.height));\
+	level.platforms.push(create_platform(200, 290, 80, 20));\
+	level.platforms.push(create_platform(300, 240, 80, 20));\
+	level.platforms.push(create_platform(400, 170, 80, 20));\
+	level.platforms.push(create_platform(460, 110, 40, 20));\
+\cf2 \strike0\striked0 \
+	...\
+\}\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\fi360\sl288\slmult1\pardirnatural
+
+\f0 \cf0 \
+\
+and replace it with:\
+\
+\
+\pard\tx1260\tx1860\tx2420\tx3020\tx3560\tx4140\li700\sl288\slmult1\pardirnatural
+
+\f1 \cf2 function init_level1() \{\
+	...\
+\
+
+\f2\b \cf0 	var platform_data = [\
+
+\f1\b0 \cf2 		// The bottom brick platform along the bottom of the stage.\
+
+\f2\b \cf0 		[0, 360, _game.width, 40],\
+
+\f1\b0 \cf2 		// The left offstage 'wall' to keep the player on the stage.\cf0 \
+
+\f2\b 		[-60, -_game.height, 60, 2 * _game.height],\
+
+\f1\b0 \cf2 		// The right offstage 'wall' to keep the player on the stage.\cf0 \
+
+\f2\b 		[_game.width, -_game.height, 60, 2 * _game.height],\
+		[200, 290, 80, 20],\
+		[300, 240, 80, 20],\
+		[400, 170, 80, 20],\
+		[460, 110, 40, 20],\
+	];\
+	for (var i = 0; i < platform_data.length; i++) \{\
+		var p = platform_data[i];\
+		var plat = create_platform(p[0], p[1], p[2], p[3], p[4]);\
+		level.platforms.push(plat);\
+	\}\
+
+\f1\b0 \cf2 \
+	...\
+\}\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\fi360\sl288\slmult1\pardirnatural
+
+\f0 \cf0 \
+The loop to create the platforms from the data is going to be the same for each level, so we can extract that code out into a separate function.\
+\
+\
+fafd\
+\
+\pard\tx1260\tx1860\tx2420\tx3020\tx3560\tx4140\li700\sl288\slmult1\pardirnatural
+
+\f1 \cf2 function init_level1() \{\
+	...\
+\}\
+\
+
+\f2\b \cf0 // platform_data: [x, y, width, height]\
+function add_platforms(level, platform_data) \{\
+	for (var i = 0; i < platform_data.length; i++) \{\
+		var p = platform_data[i];\
+		var plat = create_platform(p[0], p[1], p[2], p[3]);\
+		level.platforms.push(plat);\
+	\}\
+\}\
+
+\f1\b0 \cf2 \
+function create_platform(x, y, width, height) \{\
+	...\
+\}\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\fi360\sl288\slmult1\pardirnatural
+
+\f0 \cf0 \
+fdsaf\
+\
+\pard\tx1260\tx1860\tx2420\tx3020\tx3560\tx4140\li700\sl288\slmult1\pardirnatural
+
+\f1 \cf2 function init_level1() \{\
+	...\
+\
+	var platform_data = [\
+		// The bottom brick platform along the bottom of the stage.\
+		[0, 360, _game.width, 40],\
+		// The left offstage 'wall' to keep the player on the stage.\
+		[-60, -_game.height, 60, 2 * _game.height],\
+		// The right offstage 'wall' to keep the player on the stage.\
+		[_game.width, -_game.height, 60, 2 * _game.height],\
+		[200, 290, 80, 20],\
+		[300, 240, 80, 20],\
+		[400, 170, 80, 20],\
+		[460, 110, 40, 20],\
+	];\
+\cf0 \strike \strikec0 	for (var i = 0; i < platform_data.length; i++) \{\
+		var p = platform_data[i];\
+		var plat = create_platform(p[0], p[1], p[2], p[3], p[4]);\
+		level.platforms.push(plat);\
+	\}\
+
+\f2\b \strike0\striked0 	add_platforms(level, platform_data);\
+
+\f1\b0 \cf2 	...\
+\}\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\fi360\sl288\slmult1\pardirnatural
+
+\f0 \cf0 \
+\
+Run and make sure it works\
+\
+In addition, the main platform on the bottom and the ones on the left and right side are going to be the same for each level, so we can extract those out into a function as well.\
+\
+fdas\
+\
+\pard\tx1260\tx1860\tx2420\tx3020\tx3560\tx4140\li700\sl288\slmult1\pardirnatural
+
+\f1 \cf2 function add_platforms(level, platform_data) \{\
+	...\
+\}\
+\
+
+\f2\b \cf0 function add_default_platforms(level) \{\
+	var platform_data = [\
+		// The bottom brick platform along the bottom of the stage.\
+		[0, 360, _game.width, 40],\
+		// The left offstage 'wall' to keep the player on the stage.\
+		[-60, -_game.height, 60, 2*_game.height],\
+		// The right offstage 'wall' to keep the player on the stage.\
+		[_game.width, -_game.height, 60, 2*_game.height],\
+	];\
+	add_platforms(level, platform_data);\
+\}\
+
+\f1\b0 \cf2 \
+function create_platform(x, y, width, height) \{\
+	...\
+\}\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\fi360\sl288\slmult1\pardirnatural
+
+\f0 \cf0 \
+fdasfd\
+\
+\pard\tx1260\tx1860\tx2420\tx3020\tx3560\tx4140\li700\sl288\slmult1\pardirnatural
+
+\f1 \cf2 function init_level1() \{\
+	...\
+\
+
+\f2\b \cf0 	add_default_platforms(level);\
+
+\f1\b0 \cf2 	var platform_data = [\
+\cf0 \strike \strikec0 		// The bottom brick platform along the bottom of the stage.\
+		[0, 360, _game.width, 40],\
+		// The left offstage 'wall' to keep the player on the stage.\
+		[-60, -_game.height, 60, 2 * _game.height],\
+		// The right offstage 'wall' to keep the player on the stage.\
+		[_game.width, -_game.height, 60, 2 * _game.height],\
+\cf2 \strike0\striked0 		[200, 290, 80, 20],\
+		[300, 240, 80, 20],\
+		[400, 170, 80, 20],\
+		[460, 110, 40, 20],\
+	];\
+	add_platforms(level, platform_data);\
+\
+	...\
+\}\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\fi360\sl288\slmult1\pardirnatural
+
+\f0 \cf0 \
+fdafa\
+\
+Run and verify\
+\
+Now we need to do the same thing for the monsters.\
+\
+The current monster code should be deleted\
+\
+\pard\tx1260\tx1860\tx2420\tx3020\tx3560\tx4140\li700\sl288\slmult1\pardirnatural
+
+\f1 \cf2 function init_level1() \{\
+	...\
+\
+\cf0 \strike \strikec0 	level.monsters.push(create_monster(350, 360, 20, 20, 60, 480, -1.0));\
+	level.monsters.push(create_monster(400, 360, 20, 20, 60, 480, 0.8));\
+\cf2 \strike0\striked0 \
+	...\
+\}\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\fi360\sl288\slmult1\pardirnatural
+
+\f0 \cf0 \
+and replaced with:\
+\
+\pard\tx1260\tx1860\tx2420\tx3020\tx3560\tx4140\li700\sl288\slmult1\pardirnatural
+
+\f1 \cf2 function init_level1() \{\
+	...\
+\
+
+\f2\b \cf0 	var monst = [\
+		[350, 360, 20, 20, 60, 480, -1.0],\
+		[400, 360, 20, 20, 60, 480, 0.8],\
+	];\
+	add_monsters(level, monst);\
+
+\f1\b0 \cf2 \
+	...\
+\}\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\fi360\sl288\slmult1\pardirnatural
+
+\f0 \cf0 \
+\
+and we can add\
+\
+\pard\tx1260\tx1860\tx2420\tx3020\tx3560\tx4140\li700\sl288\slmult1\pardirnatural
+
+\f1 \cf2 function create_platform(x, y, width, height) \{\
+	...\
+\}\
+\
+
+\f2\b \cf0 // monster_data: [x, y, width, height, min_x, max_x, move_x]\
+function add_monsters(level, monster_data) \{\
+	for (var i = 0; i < monster_data.length; i++) \{\
+		var m = monster_data[i];\
+		var monst = create_monster(m[0], m[1], m[2], m[3], m[4], m[5], m[6]);\
+		level.monsters.push(monst);\
+	\}\
+\}\
+
+\f1\b0 \cf2 \
+function create_monster(x, y, width, height, min_x, max_x, move_x) \{\
+	...\
+\}\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\fi360\sl288\slmult1\pardirnatural
+
+\f0 \cf0 \
+\
+one last thing to add is a starting position for the player since each level may want to have the player start in a different location.\
+\
+\pard\tx1260\tx1860\tx2420\tx3020\tx3560\tx4140\li700\sl288\slmult1\pardirnatural
+
+\f1 \cf2 function init_level1() \{\
+	var level = \{\};\
+	init_level_defaults(level);\
+\
+
+\f2\b \cf0 	level.player_start_x = 20;\
+	level.player_start_y = 260;\
+
+\f1\b0 \cf2 \
+	add_default_platforms(level);\
+	var platform_data = [\
+		[200, 290, 80, 20],\
+		[300, 240, 80, 20],\
+		[400, 170, 80, 20],\
+		[460, 110, 40, 20],\
+	];\
+	add_platforms(level, platform_data);\
+\
+	var monst = [\
+		[350, 360, 20, 20, 60, 480, -1.0],\
+		[400, 360, 20, 20, 60, 480, 0.8],\
+	];\
+	add_monsters(level, monst);\
+\
+	level.goal = create_goal(500, 360);\
+	\
+	_levels.push(level);\
+\}\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\fi360\sl288\slmult1\pardirnatural
+
+\f0 \cf0 \
+We'll use these values when we connect the levels together\
+\
+run and verify\
+\
+\
+GOTO 092\
+}

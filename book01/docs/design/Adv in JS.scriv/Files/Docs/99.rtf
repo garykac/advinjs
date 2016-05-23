@@ -1,0 +1,57 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1138\cocoasubrtf510
+{\fonttbl\f0\fswiss\fcharset0 Helvetica;\f1\fmodern\fcharset0 Courier;\f2\fmodern\fcharset0 Courier-Bold;
+}
+{\colortbl;\red255\green255\blue255;\red105\green105\blue105;}
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\fi360\sl288\slmult1\pardirnatural
+
+\f0\fs24 \cf0 To make player collide with item\
+\
+\pard\tx1260\tx1860\tx2420\tx3020\tx3560\tx4140\li700\sl288\slmult1\pardirnatural
+
+\f1 \cf2 function check_collisions() \{\
+	check_platform_collisions();\
+	check_monster_collisions();\
+
+\f2\b \cf0 	check_item_collisions();\
+
+\f1\b0 \cf2 	check_goal_collisions();\
+\}\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\fi360\sl288\slmult1\pardirnatural
+
+\f0 \cf0 \
+fdasfdsaf\
+\
+\pard\tx1260\tx1860\tx2420\tx3020\tx3560\tx4140\li700\sl288\slmult1\pardirnatural
+
+\f1 \cf2 function check_monster_collisions() \{\
+	...\
+\}\
+\
+
+\f2\b \cf0 function check_item_collisions() \{\
+	var level = _levels[_game.current_level];\
+	var items = level.items;\
+	for (var i = 0; i < items.length; i++) \{\
+		var item = items[i];\
+		if (!item.found) \{\
+			if (collide(item, _player)) \{\
+				item.found = true;\
+			\}\
+		\}\
+	\}\
+\}\
+
+\f1\b0 \cf2 \
+function check_goal_collisions() \{\
+	...\
+\}\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\fi360\sl288\slmult1\pardirnatural
+
+\f0 \cf0 \
+Run your code\
+\
+Now the item will disappear once the player touches it.\
+\
+fdasfd\
+\
+GOTO 135}

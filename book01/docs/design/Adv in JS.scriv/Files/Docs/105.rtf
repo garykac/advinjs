@@ -1,0 +1,206 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1138\cocoasubrtf510
+{\fonttbl\f0\fswiss\fcharset0 Helvetica;\f1\fmodern\fcharset0 Courier;\f2\fmodern\fcharset0 Courier-Bold;
+}
+{\colortbl;\red255\green255\blue255;\red105\green105\blue105;}
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\fi360\sl288\slmult1\pardirnatural
+
+\f0\fs24 \cf0 Use bitmap images for the platforms\
+\
+\
+\
+Create the images/backgrounds directory.\
+\
+Create 3 icons:\
+	backgrounds/block.png\
+	backgrounds/brick.png\
+	backgrounds/dirt.png\
+\
+\
+fdsafasd\
+\
+\pard\tx1260\tx1860\tx2420\tx3020\tx3560\tx4140\li700\sl288\slmult1\pardirnatural
+
+\f1 \cf2 function init_game() \{\
+	...\
+	_game.imagedir = "images/";\
+	_game.imagedir_player = _game.imagedir + "player/";\
+	_game.imagedir_monsters = _game.imagedir + "monsters/";\
+
+\f2\b \cf0 	_game.imagedir_backgrounds = _game.imagedir + "backgrounds/";\
+
+\f1\b0 \cf2 	...\
+\}\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\fi360\sl288\slmult1\pardirnatural
+
+\f0 \cf0 \
+\
+fdafdsa\
+\
+\pard\tx1260\tx1860\tx2420\tx3020\tx3560\tx4140\li700\sl288\slmult1\pardirnatural
+
+\f1 \cf2 function init_level1() \{\
+	...\
+	add_default_platforms(level);\
+	var platform_data = [\
+\cf0 \strike \strikec0 		[200, 290, 80, 20],\
+
+\f2\b \strike0\striked0 		[200, 290, 80, 20, "dirt"],\
+
+\f1\b0 \strike \strikec0 		[300, 240, 80, 20],\
+
+\f2\b \strike0\striked0 		[300, 240, 80, 20, "block"],\
+
+\f1\b0 \strike \strikec0 		[400, 170, 80, 20],\
+
+\f2\b \strike0\striked0 		[400, 170, 80, 20, "block"],\
+
+\f1\b0 \strike \strikec0 		[460, 110, 40, 20],\
+
+\f2\b \strike0\striked0 		[460, 110, 40, 20, "dirt"],\
+
+\f1\b0 \cf2 	];\
+	add_platforms(level, platform_data);\
+	...\
+\}\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\fi360\sl288\slmult1\pardirnatural
+
+\f0 \cf0 \
+fdafd\
+\
+The default platforms need to be updated as well\
+\
+\pard\tx1260\tx1860\tx2420\tx3020\tx3560\tx4140\li700\sl288\slmult1\pardirnatural
+
+\f1 \cf2 function add_default_platforms(level) \{\
+	var platform_data = [\
+		// The bottom brick platform along the bottom of the stage.\
+\cf0 \strike \strikec0 		[0, 360, _game.width, 40],\
+
+\f2\b \strike0\striked0 		[0, 360, _game.width, 40, "brick"],\
+
+\f1\b0 \cf2 		// The left offstage 'wall' to keep the player on the stage.\
+\cf0 \strike \strikec0 		[-60, -_game.height, 60, 2*_game.height],\
+
+\f2\b \strike0\striked0 		[-60, -_game.height, 60, 2*_game.height, "#000000"],\
+
+\f1\b0 \cf2 		// The right offstage 'wall' to keep the player on the stage.\
+\cf0 \strike \strikec0 		[_game.width, -_game.height, 60, 2*_game.height],\
+
+\f2\b \strike0\striked0 		[_game.width, -_game.height, 60, 2*_game.height, "#000000"],\
+
+\f1\b0 \cf2 	];\
+	add_platforms(level, platform_data);\
+\}\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\fi360\sl288\slmult1\pardirnatural
+
+\f0 \cf0 \
+fdasfdsa\
+\
+\pard\tx1260\tx1860\tx2420\tx3020\tx3560\tx4140\li700\sl288\slmult1\pardirnatural
+
+\f1 \cf0 \strike \strikec0 // platform_data: [x, y, width, height]\
+
+\f2\b \strike0\striked0 // platform_data: [x, y, width, height, pattern]\
+
+\f1\b0 \cf2 function add_platforms(level, platform_data) \{\
+	for (var i = 0; i < platform_data.length; i++) \{\
+		var p = platform_data[i];\
+\cf0 \strike \strikec0 		var plat = create_platform(p[0], p[1], p[2], p[3]);\
+
+\f2\b \strike0\striked0 		var plat = create_platform(p[0], p[1], p[2], p[3], p[4]);\
+
+\f1\b0 \cf2 		level.platforms.push(plat);\
+	\}\
+\}\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\fi360\sl288\slmult1\pardirnatural
+
+\f0 \cf0 \
+\
+fadsfads\
+\
+\pard\tx1260\tx1860\tx2420\tx3020\tx3560\tx4140\li700\sl288\slmult1\pardirnatural
+
+\f1 \cf0 \strike \strikec0 function create_platform(x, y, width, height) \{\
+
+\f2\b \strike0\striked0 function create_platform(x, y, width, height, pattern) \{\
+
+\f1\b0 \cf2 	var p = \{\};\
+	p.x = x;\
+	p.y = y;\
+	p.width = width;\
+	p.height = height;\
+	p.origin_x = 0;\
+	p.origin_y = 0;	\
+\
+
+\f2\b \cf0 	// If pattern begins with '#' then it's really a background color.\
+	if (pattern.charAt(0) == '#') \{\
+		p.background_color = pattern;\
+	\} else \{\
+		p.pattern = new Image();\
+		p.pattern.src = _game.imagedir_backgrounds + pattern + ".png";\
+	\}\
+
+\f1\b0 \cf2 	\
+	return p;\
+\}\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\fi360\sl288\slmult1\pardirnatural
+
+\f0 \cf0 \
+\
+\
+fdfads\
+\
+\pard\tx1260\tx1860\tx2420\tx3020\tx3560\tx4140\li700\sl288\slmult1\pardirnatural
+
+\f2\b \cf0 function set_transform_xy(ctx, x, y) \{\
+	// Translate origin to (x,y).\
+	ctx.setTransform(1, 0, 0, 1, x, y);\
+\}\
+
+\f1\b0 \cf2 \
+function set_transform(ctx, obj) \{\
+	...\
+\}\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\fi360\sl288\slmult1\pardirnatural
+
+\f0 \cf0 \
+\
+\
+fdasfdsafs\
+\
+\
+\pard\tx1260\tx1860\tx2420\tx3020\tx3560\tx4140\li700\sl288\slmult1\pardirnatural
+
+\f1 \cf2 function draw_platforms(ctx) \{\
+	var level = _levels[_game.current_level];\
+	var platforms = level.platforms;\
+	for (var i = 0; i < platforms.length; i++) \{\
+		var platform = platforms[i];\
+\cf0 \strike \strikec0 		ctx.fillStyle = "green";\
+		ctx.fillRect(platform.x, platform.y, platform.width, platform.height);\
+\cf2 \strike0\striked0 \
+
+\f2\b \cf0 		if (p.background_color) \{\
+			ctx.fillStyle = p.background_color;\
+			ctx.fillRect(p.x, p.y, p.width, p.height);\
+			ctx.strokeStyle = "rgba(0,0,0,0.5)";\
+			ctx.strokeRect(p.x, p.y, p.width, p.height);\
+		\} else \{\
+			var pat = ctx.createPattern(p.pattern, "repeat");\
+			set_transform_xy(ctx, p.x, p.y);\
+			ctx.fillStyle = pat;\
+			ctx.fillRect(0, 0, p.width, p.height);\
+			reset_transform(ctx);\
+		\}
+\f1\b0 \cf2 \
+	\}\
+\}\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\fi360\sl288\slmult1\pardirnatural
+
+\f0 \cf0 \
+\
+fdsafdsa\
+\
+GOTO 100\
+}

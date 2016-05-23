@@ -1,0 +1,3 @@
+BADGE "Player Origin"
+GOTO 007
+GOTO 008

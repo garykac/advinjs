@@ -1,0 +1,62 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1138\cocoasubrtf510
+{\fonttbl\f0\fswiss\fcharset0 Helvetica;\f1\fmodern\fcharset0 Courier;\f2\fmodern\fcharset0 Courier-Bold;
+}
+{\colortbl;\red255\green255\blue255;\red105\green105\blue105;}
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\fi360\sl288\slmult1\pardirnatural
+
+\f0\fs24 \cf0 \
+Yay! We can jump.\
+\
+\'85sort of...\
+\
+But if I hold the jump button down, I can fly off the top of the screen.\
+\
+Yes, apparently you can jump while you're in mid-air, which is not quite what we want. How do you think we should fix that?\
+\
+You should only be allowed to jump if you're standing on a platform.\
+\
+So we should add an 
+\f1 is_jumping
+\f0  flag to the player to keep track of that.\
+\
+\
+In init_player():\
+\pard\tx1260\tx1860\tx2420\tx3020\tx3560\tx4140\li700\sl288\slmult1\pardirnatural
+
+\f1 \cf0 	\cf2 _player.origin_x = _player.width / 2;\
+	_player.origin_y = _player.height;\
+\
+
+\f2\b \cf0 	_player.is_jumping = false;\
+
+\f1\b0 \cf2 	\
+	_player.velocity_x = 0;\
+	_player.velocity_x_delta = 0.8;\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\fi360\sl288\slmult1\pardirnatural
+
+\f0 \cf0 \
+\
+In check_input():\
+\pard\tx1260\tx1860\tx2420\tx3020\tx3560\tx4140\li700\sl288\slmult1\pardirnatural
+
+\f1 \cf2 	// Up arrow, 'w'  and spacebar to jump.\
+	if (_game.keymap[38] || _game.keymap[87] || _game.keymap[32]) \{\
+
+\f2\b \cf0 		// Only allow jumps when the player is not already jumping.\
+		if (!_player.is_jumping) \{\
+			_player.is_jumping = true;\
+
+\f1\b0 \cf2 			_player.velocity_y = _player.velocity_y_jump;\
+
+\f2\b \cf0 		\}\
+
+\f1\b0 \cf2 	\}\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\fi360\sl288\slmult1\pardirnatural
+
+\f0 \cf0 \
+\
+IF you have your "Collision I - Basic" badge\
+	THEN GOTO 033\
+	ELSE GOTO 032\
+\
+}

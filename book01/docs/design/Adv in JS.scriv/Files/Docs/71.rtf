@@ -1,0 +1,72 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1138\cocoasubrtf510
+{\fonttbl\f0\fswiss\fcharset0 Helvetica;\f1\fmodern\fcharset0 Courier;\f2\fmodern\fcharset0 Courier-Bold;
+}
+{\colortbl;\red255\green255\blue255;\red105\green105\blue105;}
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\fi360\sl288\slmult1\pardirnatural
+
+\f0\fs24 \cf0 It's kinda disappointing that winning and losing both result in the same message, so let's change the message based on whether or not the player reaches the goal.\
+\
+\
+init_game()\
+\
+\pard\tx1260\tx1860\tx2420\tx3020\tx3560\tx4140\li700\sl288\slmult1\pardirnatural
+
+\f1 \cf2 	// Game state.\
+	_game.game_over = false;\
+
+\f2\b \cf0 	_game.game_win = false;\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\fi360\sl288\slmult1\pardirnatural
+
+\f0\b0 \cf0 \
+\
+defad\
+\
+\pard\tx1260\tx1860\tx2420\tx3020\tx3560\tx4140\li700\sl288\slmult1\pardirnatural
+
+\f1 \cf2 function check_goal_collisions() \{\
+	var goal = _game.goal;\
+	if (collide(goal, _player)) \{\
+		_game.game_over = true;\
+
+\f2\b \cf0 		_game.game_win = true;\
+
+\f1\b0 \cf2 	\}\
+\}\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\fi360\sl288\slmult1\pardirnatural
+
+\f0 \cf0 \
+\
+fdafd\
+\
+in draw():\
+\
+\pard\tx1260\tx1860\tx2420\tx3020\tx3560\tx4140\li700\sl288\slmult1\pardirnatural
+
+\f1 \cf0 	\cf2 if (_game.game_over) \{\
+		// Dim out the stage by drawing a transparent black rectangle over it.\
+		ctx.fillStyle = "rgba(0, 0, 0, 0.5)";\
+		ctx.fillRect(0, 0, _game.width, _game.height);\
+\
+		ctx.fillStyle = "black";\
+		ctx.font = "48px Helvetica";\
+
+\f2\b \cf0 		if (_game.game_win) \{\
+			ctx.fillText("You Win!", 155, 150);\
+		\} else \{\
+
+\f1\b0 \cf2 			ctx.fillText("Game Over", 140, 150);\
+
+\f2\b \cf0 		\}\
+
+\f1\b0 \cf2 	\}\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\fi360\sl288\slmult1\pardirnatural
+
+\f0 \cf0 \
+fda\
+fdsa\
+\
+IF you have "Platform II - Four Sided" badge\
+	THEN GOTO 061\
+	ELSE GOTO 060\
+\
+}

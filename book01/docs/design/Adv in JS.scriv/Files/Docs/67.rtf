@@ -1,0 +1,72 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1138\cocoasubrtf510
+{\fonttbl\f0\fswiss\fcharset0 Helvetica;\f1\fmodern\fcharset0 Courier;\f2\fmodern\fcharset0 Courier-Bold;
+}
+{\colortbl;\red255\green255\blue255;\red105\green105\blue105;}
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\fi360\sl288\slmult1\pardirnatural
+
+\f0\fs24 \cf0 Now that we have properly behaving platforms, we can add side walls on the left and right and remove our earlier code that constrained the player on the screen.\
+\
+\
+fdafda\
+\
+in init_game()\
+\
+\pard\tx1260\tx1860\tx2420\tx3020\tx3560\tx4140\li700\sl288\slmult1\pardirnatural
+
+\f1 \cf2 	_game.platforms = [];\
+
+\f2\b \cf0 	// The bottom brick platform along the bottom of the stage.\
+
+\f1\b0 \cf2 	_game.platforms.push(create_platform(0, 360, _game.width, 40));\
+
+\f2\b \cf0 	// The left offstage 'wall' to keep the player on the stage.\
+	_game.platforms.push(\
+		create_platform(-60, -_game.height, 60, 2 * _game.height));\
+	// The right offstage 'wall' to keep the player on the stage.\
+	_game.platforms.push(\
+		create_platform(_game.width, -_game.height, 60, 2 * _game.height));\
+
+\f1\b0 \cf2 	_game.platforms.push(create_platform(200, 290, 80, 20));\
+	_game.platforms.push(create_platform(300, 240, 80, 20));\
+	_game.platforms.push(create_platform(400, 170, 80, 20));\
+	_game.platforms.push(create_platform(460, 110, 40, 20));\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\fi360\sl288\slmult1\pardirnatural
+
+\f0 \cf0 \
+Pay attention: Note that -_game.height looks a bit weird because of the negative sign next to the underscore in _game.\
+\
+\
+\
+Now, we can remove:\
+\
+\pard\tx1260\tx1860\tx2420\tx3020\tx3560\tx4140\li700\sl288\slmult1\pardirnatural
+
+\f1 \cf2 function update_player() \{\
+	...	\
+	// Move the player to the new location.\
+	_player.x += _player.velocity_x;\
+	_player.y += _player.velocity_y;\
+\
+\cf0 \strike \strikec0 	if (_player.x < 0) \{\
+		_player.x = 0;\
+	\} else if (_player.x > _game.width) \{\
+		_player.x = _game.width;\
+	\}\
+\cf2 \strike0\striked0 \}\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\fi360\sl288\slmult1\pardirnatural
+
+\f0 \cf0 \
+fdafdsafdf\
+\
+\
+RUN the code\
+Note that the player now stays completely on the screen since it's colliding with a tall platform just offscreen.\
+\
+IF you have your "Monster II - Roaming" badge\
+	THEN GOTO 089\
+\
+IF you have your "Monster I - Stationary" badge\
+	THEN GOTO 061\
+	ELSE GOTO 055\
+\
+}

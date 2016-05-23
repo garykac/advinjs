@@ -1,0 +1,38 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1138\cocoasubrtf510
+{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\fi360\sl288\slmult1\pardirnatural
+
+\f0\fs24 \cf0 Pay attention to ':' (color), and the ';' (semi-colon)\
+	The ':' is non common in JavaScript code, whereas the ';' occurs at the end of each line.\
+\
+'.' and '_'\
+	_player.velocity.x is not the same as _player.velocity_x\
+	_game_width != _game.width\
+\
+Uncaught SyntaxError: Unexpected end of input\
+	This usually means that you forgot a closing \} in your code.\
+	Go back to the code you just added and verify that your \{ and \} match.\
+\
+Uncaught SyntaxError: Unexpected token )\
+	You have a typo around the area where the unexpected token was encountered.\
+	Double check all the code in this area (on the line with the error and the line above it).\
+\
+Uncaught ReferenceError: x is not defined\
+	The variable 'x' is not defined. This means that you're trying to use a variable that you've never initialized to a value.\
+	This can be caused by a number of problems:\
+		Is the variable 'x' the correct name?\
+		Is the variable 'x' actually initialized anywhere?\
+		Is there a typo on the line where 'x' is supposed to get initialized?\
+		If 'x is a function, is the function defined somewhere?\
+\
+Uncaught TypeError: Cannot read property 'x' of undefined\
+	There some code like obj.x trying to read property 'x' of object 'obj', but 'obj' is not defined.\
+	Check to see where 'obj' was supposed to be assigned a value and look for errors there.\
+\
+Uncaught InvalidStateError: An attempt was made to use an object that is not, or is no longer, usable. \
+	This can happen when you try to use an image that not successfully loaded.\
+\
+Failed to load resource\
+	This error can occur when the image you specified can't be found.\
+}

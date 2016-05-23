@@ -1,0 +1,1239 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<ScrivenerProject Version="1.0" Creator="SCRMAC-2.5-25239" Modified="2014-01-14 13:06:34 -0800">
+    <Binder>
+        <BinderItem ID="0" Type="DraftFolder" Created="2013-12-31 06:05:25 -0800" Modified="2013-12-31 06:05:25 -0800">
+            <Title>Draft</Title>
+            <MetaData>
+                <IncludeInCompile>Yes</IncludeInCompile>
+            </MetaData>
+            <CorkboardAndOutliner>
+                <SelectedSubdocumentIDs>20</SelectedSubdocumentIDs>
+            </CorkboardAndOutliner>
+            <Children>
+                <BinderItem ID="57" Type="Text" Created="2014-01-01 15:56:03 -0800" Modified="2014-01-01 15:56:06 -0800">
+                    <Title>Stage 0</Title>
+                    <MetaData>
+                        <IncludeInCompile>Yes</IncludeInCompile>
+                        <NotesTextSelection>0,0</NotesTextSelection>
+                    </MetaData>
+                    <TextSettings>
+                        <TextSelection>0,0</TextSelection>
+                    </TextSettings>
+                    <Children>
+                        <BinderItem ID="21" Type="Text" Created="2013-12-31 08:13:21 -0800" Modified="2013-12-31 08:15:26 -0800">
+                            <Title>Premise</Title>
+                            <MetaData>
+                                <IncludeInCompile>Yes</IncludeInCompile>
+                                <NotesTextSelection>0,0</NotesTextSelection>
+                            </MetaData>
+                            <TextSettings>
+                                <TextSelection>151,0</TextSelection>
+                            </TextSettings>
+                        </BinderItem>
+                        <BinderItem ID="8" Type="Text" Created="2013-12-31 06:30:46 -0800" Modified="2013-12-31 06:31:18 -0800">
+                            <Title>Previous</Title>
+                            <MetaData>
+                                <IncludeInCompile>Yes</IncludeInCompile>
+                                <NotesTextSelection>0,0</NotesTextSelection>
+                            </MetaData>
+                            <TextSettings>
+                                <TextSelection>0,0</TextSelection>
+                            </TextSettings>
+                            <Children>
+                                <BinderItem ID="13" Type="Text" Created="2013-12-31 06:50:52 -0800" Modified="2013-12-31 06:51:18 -0800">
+                                    <Title>Files and Folders</Title>
+                                    <MetaData>
+                                        <IncludeInCompile>Yes</IncludeInCompile>
+                                        <NotesTextSelection>0,0</NotesTextSelection>
+                                    </MetaData>
+                                    <TextSettings>
+                                        <TextSelection>63,0</TextSelection>
+                                    </TextSettings>
+                                </BinderItem>
+                                <BinderItem ID="9" Type="Text" Created="2013-12-31 06:30:59 -0800" Modified="2013-12-31 06:32:00 -0800">
+                                    <Title>Keymap</Title>
+                                    <MetaData>
+                                        <IncludeInCompile>Yes</IncludeInCompile>
+                                        <NotesTextSelection>0,0</NotesTextSelection>
+                                    </MetaData>
+                                    <TextSettings>
+                                        <TextSelection>204,0</TextSelection>
+                                    </TextSettings>
+                                </BinderItem>
+                                <BinderItem ID="10" Type="Text" Created="2013-12-31 06:32:36 -0800" Modified="2013-12-31 07:50:29 -0800">
+                                    <Title>Baseline</Title>
+                                    <MetaData>
+                                        <IncludeInCompile>Yes</IncludeInCompile>
+                                        <NotesTextSelection>0,0</NotesTextSelection>
+                                    </MetaData>
+                                    <TextSettings>
+                                        <TextSelection>151,0</TextSelection>
+                                    </TextSettings>
+                                </BinderItem>
+                            </Children>
+                        </BinderItem>
+                        <BinderItem ID="12" Type="Text" Created="2013-12-31 06:42:20 -0800" Modified="2014-01-01 19:57:21 -0800">
+                            <Title>000 Intro</Title>
+                            <MetaData>
+                                <IncludeInCompile>Yes</IncludeInCompile>
+                                <NotesTextSelection>0,0</NotesTextSelection>
+                            </MetaData>
+                            <TextSettings>
+                                <TextSelection>1289,0</TextSelection>
+                            </TextSettings>
+                            <Children>
+                                <BinderItem ID="11" Type="Text" Created="2013-12-31 06:39:54 -0800" Modified="2013-12-31 06:40:36 -0800">
+                                    <Title>B00 - baseline</Title>
+                                    <MetaData>
+                                        <IncludeInCompile>Yes</IncludeInCompile>
+                                        <NotesTextSelection>0,0</NotesTextSelection>
+                                    </MetaData>
+                                    <TextSettings>
+                                        <TextSelection>108,0</TextSelection>
+                                    </TextSettings>
+                                    <Children>
+                                        <BinderItem ID="14" Type="Text" Created="2013-12-31 07:00:13 -0800" Modified="2014-01-01 07:31:50 -0800">
+                                            <Title>script.js</Title>
+                                            <MetaData>
+                                                <IncludeInCompile>Yes</IncludeInCompile>
+                                                <NotesTextSelection>0,0</NotesTextSelection>
+                                            </MetaData>
+                                            <TextSettings>
+                                                <TextSelection>1068,0</TextSelection>
+                                            </TextSettings>
+                                        </BinderItem>
+                                        <BinderItem ID="15" Type="Text" Created="2013-12-31 07:00:52 -0800" Modified="2013-12-31 07:01:18 -0800">
+                                            <Title>game.html</Title>
+                                            <MetaData>
+                                                <IncludeInCompile>Yes</IncludeInCompile>
+                                                <NotesTextSelection>0,0</NotesTextSelection>
+                                            </MetaData>
+                                            <TextSettings>
+                                                <TextSelection>0,224</TextSelection>
+                                            </TextSettings>
+                                        </BinderItem>
+                                        <BinderItem ID="16" Type="Text" Created="2013-12-31 07:01:26 -0800" Modified="2013-12-31 07:01:39 -0800">
+                                            <Title>style.css</Title>
+                                            <MetaData>
+                                                <IncludeInCompile>Yes</IncludeInCompile>
+                                                <NotesTextSelection>0,0</NotesTextSelection>
+                                            </MetaData>
+                                            <TextSettings>
+                                                <TextSelection>87,0</TextSelection>
+                                            </TextSettings>
+                                        </BinderItem>
+                                    </Children>
+                                </BinderItem>
+                            </Children>
+                        </BinderItem>
+                    </Children>
+                </BinderItem>
+                <BinderItem ID="58" Type="Text" Created="2014-01-01 15:57:00 -0800" Modified="2014-01-01 15:57:05 -0800">
+                    <Title>Stage 1</Title>
+                    <MetaData>
+                        <IncludeInCompile>Yes</IncludeInCompile>
+                        <NotesTextSelection>0,0</NotesTextSelection>
+                    </MetaData>
+                    <TextSettings>
+                        <TextSelection>0,0</TextSelection>
+                    </TextSettings>
+                    <Children>
+                        <BinderItem ID="20" Type="Text" Created="2013-12-31 08:01:40 -0800" Modified="2013-12-31 21:19:21 -0800">
+                            <Title>001 Choosing a game</Title>
+                            <MetaData>
+                                <IncludeInCompile>Yes</IncludeInCompile>
+                                <NotesTextSelection>0,0</NotesTextSelection>
+                            </MetaData>
+                            <TextSettings>
+                                <TextSelection>0,9</TextSelection>
+                            </TextSettings>
+                        </BinderItem>
+                        <BinderItem ID="22" Type="Text" Created="2013-12-31 08:20:10 -0800" Modified="2013-12-31 21:19:29 -0800">
+                            <Title>002 Starting a platformer</Title>
+                            <MetaData>
+                                <IncludeInCompile>Yes</IncludeInCompile>
+                                <NotesTextSelection>0,0</NotesTextSelection>
+                            </MetaData>
+                            <TextSettings>
+                                <TextSelection>581,9</TextSelection>
+                            </TextSettings>
+                        </BinderItem>
+                        <BinderItem ID="24" Type="Text" Created="2013-12-31 09:08:23 -0800" Modified="2014-01-01 18:11:26 -0800">
+                            <Title>003 Adding a base platform</Title>
+                            <MetaData>
+                                <IncludeInCompile>Yes</IncludeInCompile>
+                                <NotesTextSelection>0,0</NotesTextSelection>
+                            </MetaData>
+                            <TextSettings>
+                                <TextSelection>2106,710</TextSelection>
+                            </TextSettings>
+                        </BinderItem>
+                        <BinderItem ID="23" Type="Text" Created="2013-12-31 08:55:50 -0800" Modified="2013-12-31 21:20:16 -0800">
+                            <Title>004 Making the platform work</Title>
+                            <MetaData>
+                                <IncludeInCompile>Yes</IncludeInCompile>
+                                <NotesTextSelection>0,0</NotesTextSelection>
+                            </MetaData>
+                            <TextSettings>
+                                <TextSelection>0,798</TextSelection>
+                            </TextSettings>
+                        </BinderItem>
+                        <BinderItem ID="25" Type="Text" Created="2013-12-31 18:37:17 -0800" Modified="2014-01-01 08:39:38 -0800">
+                            <Title>005 Move the player onto the platform</Title>
+                            <MetaData>
+                                <IncludeInCompile>Yes</IncludeInCompile>
+                                <NotesTextSelection>0,0</NotesTextSelection>
+                            </MetaData>
+                            <TextSettings>
+                                <TextSelection>633,0</TextSelection>
+                            </TextSettings>
+                        </BinderItem>
+                        <BinderItem ID="27" Type="Text" Created="2013-12-31 18:58:25 -0800" Modified="2014-01-01 19:30:32 -0800">
+                            <Title>006 Adding player origin</Title>
+                            <MetaData>
+                                <IncludeInCompile>Yes</IncludeInCompile>
+                                <NotesTextSelection>0,0</NotesTextSelection>
+                            </MetaData>
+                            <TextSettings>
+                                <TextSelection>0,1826</TextSelection>
+                            </TextSettings>
+                        </BinderItem>
+                        <BinderItem ID="42" Type="Text" Created="2014-01-01 08:19:58 -0800" Modified="2014-01-01 08:20:51 -0800">
+                            <Title>007 Experiment with player size</Title>
+                            <MetaData>
+                                <IncludeInCompile>Yes</IncludeInCompile>
+                                <NotesTextSelection>0,0</NotesTextSelection>
+                            </MetaData>
+                            <TextSettings>
+                                <TextSelection>0,108</TextSelection>
+                            </TextSettings>
+                        </BinderItem>
+                        <BinderItem ID="41" Type="Text" Created="2014-01-01 08:19:50 -0800" Modified="2014-01-01 08:21:06 -0800">
+                            <Title>008</Title>
+                            <MetaData>
+                                <IncludeInCompile>Yes</IncludeInCompile>
+                                <NotesTextSelection>0,0</NotesTextSelection>
+                            </MetaData>
+                            <TextSettings>
+                                <TextSelection>0,65</TextSelection>
+                            </TextSettings>
+                        </BinderItem>
+                        <BinderItem ID="26" Type="Text" Created="2013-12-31 18:37:33 -0800" Modified="2014-01-01 19:31:10 -0800">
+                            <Title>010 Constrain the player movement</Title>
+                            <MetaData>
+                                <IncludeInCompile>Yes</IncludeInCompile>
+                                <NotesTextSelection>0,0</NotesTextSelection>
+                            </MetaData>
+                            <TextSettings>
+                                <TextSelection>1,1176</TextSelection>
+                            </TextSettings>
+                        </BinderItem>
+                        <BinderItem ID="30" Type="Text" Created="2013-12-31 22:04:46 -0800" Modified="2014-01-01 17:43:58 -0800">
+                            <Title>015 Friction</Title>
+                            <MetaData>
+                                <IncludeInCompile>Yes</IncludeInCompile>
+                                <NotesTextSelection>0,0</NotesTextSelection>
+                            </MetaData>
+                            <TextSettings>
+                                <TextSelection>0,3176</TextSelection>
+                            </TextSettings>
+                        </BinderItem>
+                        <BinderItem ID="32" Type="Text" Created="2013-12-31 22:58:51 -0800" Modified="2013-12-31 23:06:52 -0800">
+                            <Title>016 More Friction</Title>
+                            <MetaData>
+                                <IncludeInCompile>Yes</IncludeInCompile>
+                                <NotesTextSelection>0,0</NotesTextSelection>
+                            </MetaData>
+                            <TextSettings>
+                                <TextSelection>0,984</TextSelection>
+                            </TextSettings>
+                        </BinderItem>
+                        <BinderItem ID="52" Type="Text" Created="2014-01-01 14:14:41 -0800" Modified="2014-01-03 10:43:45 -0800">
+                            <Title>018 Constrain left/right</Title>
+                            <MetaData>
+                                <IncludeInCompile>Yes</IncludeInCompile>
+                                <NotesTextSelection>0,0</NotesTextSelection>
+                            </MetaData>
+                            <TextSettings>
+                                <TextSelection>0,554</TextSelection>
+                            </TextSettings>
+                        </BinderItem>
+                    </Children>
+                </BinderItem>
+                <BinderItem ID="59" Type="Text" Created="2014-01-01 15:57:22 -0800" Modified="2014-01-01 15:57:27 -0800">
+                    <Title>Stage 2</Title>
+                    <MetaData>
+                        <IncludeInCompile>Yes</IncludeInCompile>
+                        <NotesTextSelection>0,0</NotesTextSelection>
+                    </MetaData>
+                    <TextSettings>
+                        <TextSelection>0,0</TextSelection>
+                    </TextSettings>
+                    <Children>
+                        <BinderItem ID="31" Type="Text" Created="2013-12-31 22:52:35 -0800" Modified="2014-01-03 10:48:16 -0800">
+                            <Title>020 Choices</Title>
+                            <MetaData>
+                                <IncludeInCompile>Yes</IncludeInCompile>
+                                <NotesTextSelection>0,0</NotesTextSelection>
+                            </MetaData>
+                            <TextSettings>
+                                <TextSelection>0,235</TextSelection>
+                            </TextSettings>
+                        </BinderItem>
+                        <BinderItem ID="33" Type="Text" Created="2013-12-31 23:00:19 -0800" Modified="2014-01-01 12:51:55 -0800">
+                            <Title>025 Jumping</Title>
+                            <MetaData>
+                                <IncludeInCompile>Yes</IncludeInCompile>
+                                <NotesTextSelection>0,0</NotesTextSelection>
+                            </MetaData>
+                            <TextSettings>
+                                <TextSelection>0,1258</TextSelection>
+                            </TextSettings>
+                        </BinderItem>
+                        <BinderItem ID="39" Type="Text" Created="2014-01-01 08:00:31 -0800" Modified="2014-01-01 17:44:21 -0800">
+                            <Title>026 Jumping</Title>
+                            <MetaData>
+                                <IncludeInCompile>Yes</IncludeInCompile>
+                                <NotesTextSelection>0,0</NotesTextSelection>
+                            </MetaData>
+                            <TextSettings>
+                                <TextSelection>0,635</TextSelection>
+                            </TextSettings>
+                        </BinderItem>
+                        <BinderItem ID="40" Type="Text" Created="2014-01-01 08:03:11 -0800" Modified="2014-01-01 14:22:31 -0800">
+                            <Title>027 Jumping (after Goal)</Title>
+                            <MetaData>
+                                <IncludeInCompile>Yes</IncludeInCompile>
+                                <NotesTextSelection>0,0</NotesTextSelection>
+                            </MetaData>
+                            <TextSettings>
+                                <TextSelection>0,400</TextSelection>
+                            </TextSettings>
+                        </BinderItem>
+                        <BinderItem ID="37" Type="Text" Created="2014-01-01 07:45:44 -0800" Modified="2014-01-03 11:27:50 -0800">
+                            <Title>028 Jumping 2</Title>
+                            <MetaData>
+                                <IncludeInCompile>Yes</IncludeInCompile>
+                                <NotesTextSelection>0,0</NotesTextSelection>
+                            </MetaData>
+                            <TextSettings>
+                                <TextSelection>0,941</TextSelection>
+                            </TextSettings>
+                        </BinderItem>
+                        <BinderItem ID="46" Type="Text" Created="2014-01-01 11:28:07 -0800" Modified="2014-01-01 11:29:09 -0800">
+                            <Title>029 </Title>
+                            <MetaData>
+                                <IncludeInCompile>Yes</IncludeInCompile>
+                                <NotesTextSelection>0,0</NotesTextSelection>
+                            </MetaData>
+                            <TextSettings>
+                                <TextSelection>0,242</TextSelection>
+                            </TextSettings>
+                        </BinderItem>
+                        <BinderItem ID="49" Type="Text" Created="2014-01-01 12:57:35 -0800" Modified="2014-01-01 17:45:41 -0800">
+                            <Title>032</Title>
+                            <MetaData>
+                                <IncludeInCompile>Yes</IncludeInCompile>
+                                <NotesTextSelection>0,0</NotesTextSelection>
+                            </MetaData>
+                            <TextSettings>
+                                <TextSelection>0,235</TextSelection>
+                            </TextSettings>
+                        </BinderItem>
+                        <BinderItem ID="50" Type="Text" Created="2014-01-01 12:58:31 -0800" Modified="2014-01-01 13:04:39 -0800">
+                            <Title>033</Title>
+                            <MetaData>
+                                <IncludeInCompile>Yes</IncludeInCompile>
+                                <NotesTextSelection>0,0</NotesTextSelection>
+                            </MetaData>
+                            <TextSettings>
+                                <TextSelection>0,196</TextSelection>
+                            </TextSettings>
+                        </BinderItem>
+                        <BinderItem ID="51" Type="Text" Created="2014-01-01 12:58:33 -0800" Modified="2014-01-03 10:55:04 -0800">
+                            <Title>034</Title>
+                            <MetaData>
+                                <IncludeInCompile>Yes</IncludeInCompile>
+                                <NotesTextSelection>0,0</NotesTextSelection>
+                            </MetaData>
+                            <TextSettings>
+                                <TextSelection>0,205</TextSelection>
+                            </TextSettings>
+                        </BinderItem>
+                        <BinderItem ID="34" Type="Text" Created="2013-12-31 23:00:32 -0800" Modified="2014-01-01 18:12:33 -0800">
+                            <Title>040 Adding goals</Title>
+                            <MetaData>
+                                <IncludeInCompile>Yes</IncludeInCompile>
+                                <NotesTextSelection>0,0</NotesTextSelection>
+                            </MetaData>
+                            <TextSettings>
+                                <TextSelection>0,1198</TextSelection>
+                            </TextSettings>
+                        </BinderItem>
+                        <BinderItem ID="43" Type="Text" Created="2013-12-31 23:00:32 -0800" Modified="2014-01-03 13:38:21 -0800">
+                            <Title>041 Goal first collision</Title>
+                            <MetaData>
+                                <IncludeInCompile>Yes</IncludeInCompile>
+                                <NotesTextSelection>0,0</NotesTextSelection>
+                            </MetaData>
+                            <TextSettings>
+                                <TextSelection>427,88</TextSelection>
+                            </TextSettings>
+                        </BinderItem>
+                        <BinderItem ID="45" Type="Text" Created="2014-01-01 10:01:03 -0800" Modified="2014-01-03 10:55:21 -0800">
+                            <Title>042 Game over disable input</Title>
+                            <MetaData>
+                                <IncludeInCompile>Yes</IncludeInCompile>
+                                <NotesTextSelection>0,0</NotesTextSelection>
+                            </MetaData>
+                            <TextSettings>
+                                <TextSelection>0,767</TextSelection>
+                            </TextSettings>
+                        </BinderItem>
+                        <BinderItem ID="44" Type="Text" Created="2014-01-01 09:09:07 -0800" Modified="2014-01-03 12:40:18 -0800">
+                            <Title>043 Goal (after Jumping)</Title>
+                            <MetaData>
+                                <IncludeInCompile>Yes</IncludeInCompile>
+                                <NotesTextSelection>0,0</NotesTextSelection>
+                            </MetaData>
+                            <TextSettings>
+                                <TextSelection>0,0</TextSelection>
+                            </TextSettings>
+                        </BinderItem>
+                        <BinderItem ID="53" Type="Text" Created="2014-01-01 14:31:17 -0800" Modified="2014-01-03 13:35:11 -0800">
+                            <Title>044</Title>
+                            <MetaData>
+                                <IncludeInCompile>Yes</IncludeInCompile>
+                                <NotesTextSelection>0,0</NotesTextSelection>
+                            </MetaData>
+                            <TextSettings>
+                                <TextSelection>772,0</TextSelection>
+                            </TextSettings>
+                        </BinderItem>
+                        <BinderItem ID="55" Type="Text" Created="2014-01-01 15:41:59 -0800" Modified="2014-01-03 13:41:51 -0800">
+                            <Title>045 Add collide()</Title>
+                            <MetaData>
+                                <IncludeInCompile>Yes</IncludeInCompile>
+                                <NotesTextSelection>0,0</NotesTextSelection>
+                            </MetaData>
+                            <TextSettings>
+                                <TextSelection>656,0</TextSelection>
+                            </TextSettings>
+                        </BinderItem>
+                        <BinderItem ID="113" Type="Text" Created="2014-01-03 13:43:29 -0800" Modified="2014-01-03 13:47:05 -0800">
+                            <Title>046 Use collide (jump merge)</Title>
+                            <MetaData>
+                                <IncludeInCompile>Yes</IncludeInCompile>
+                                <NotesTextSelection>0,0</NotesTextSelection>
+                            </MetaData>
+                            <TextSettings>
+                                <TextSelection>0,321</TextSelection>
+                            </TextSettings>
+                        </BinderItem>
+                        <BinderItem ID="112" Type="Text" Created="2014-01-03 10:55:10 -0800" Modified="2014-01-03 10:55:21 -0800">
+                            <Title>049</Title>
+                            <MetaData>
+                                <IncludeInCompile>Yes</IncludeInCompile>
+                                <NotesTextSelection>0,0</NotesTextSelection>
+                            </MetaData>
+                            <TextSettings>
+                                <TextSelection>0,28</TextSelection>
+                            </TextSettings>
+                        </BinderItem>
+                    </Children>
+                </BinderItem>
+                <BinderItem ID="60" Type="Text" Created="2014-01-01 15:57:42 -0800" Modified="2014-01-01 15:57:44 -0800">
+                    <Title>Stage 3</Title>
+                    <MetaData>
+                        <IncludeInCompile>Yes</IncludeInCompile>
+                        <NotesTextSelection>0,0</NotesTextSelection>
+                    </MetaData>
+                    <TextSettings>
+                        <TextSelection>0,0</TextSelection>
+                    </TextSettings>
+                    <Children>
+                        <BinderItem ID="56" Type="Text" Created="2014-01-01 15:55:15 -0800" Modified="2014-01-01 16:54:48 -0800">
+                            <Title>050 Next</Title>
+                            <MetaData>
+                                <IncludeInCompile>Yes</IncludeInCompile>
+                                <NotesTextSelection>0,0</NotesTextSelection>
+                            </MetaData>
+                            <TextSettings>
+                                <TextSelection>0,192</TextSelection>
+                            </TextSettings>
+                        </BinderItem>
+                        <BinderItem ID="63" Type="Text" Created="2014-01-01 16:52:06 -0800" Modified="2014-01-01 16:52:15 -0800">
+                            <Title>051 Choose</Title>
+                            <MetaData>
+                                <IncludeInCompile>Yes</IncludeInCompile>
+                                <NotesTextSelection>0,0</NotesTextSelection>
+                            </MetaData>
+                            <TextSettings>
+                                <TextSelection>0,149</TextSelection>
+                            </TextSettings>
+                        </BinderItem>
+                        <BinderItem ID="61" Type="Text" Created="2014-01-01 16:50:52 -0800" Modified="2014-01-01 22:13:54 -0800">
+                            <Title>055 Add monsters</Title>
+                            <MetaData>
+                                <IncludeInCompile>Yes</IncludeInCompile>
+                                <NotesTextSelection>0,0</NotesTextSelection>
+                            </MetaData>
+                            <TextSettings>
+                                <TextSelection>0,79</TextSelection>
+                            </TextSettings>
+                        </BinderItem>
+                        <BinderItem ID="70" Type="Text" Created="2014-01-01 19:08:43 -0800" Modified="2014-01-02 06:58:40 -0800">
+                            <Title>056 Monster collisions</Title>
+                            <MetaData>
+                                <IncludeInCompile>Yes</IncludeInCompile>
+                                <NotesTextSelection>0,0</NotesTextSelection>
+                            </MetaData>
+                            <TextSettings>
+                                <TextSelection>0,981</TextSelection>
+                            </TextSettings>
+                        </BinderItem>
+                        <BinderItem ID="71" Type="Text" Created="2014-01-01 19:34:28 -0800" Modified="2014-01-01 22:24:24 -0800">
+                            <Title>057 Win/Lose Message</Title>
+                            <MetaData>
+                                <IncludeInCompile>Yes</IncludeInCompile>
+                                <NotesTextSelection>0,0</NotesTextSelection>
+                            </MetaData>
+                            <TextSettings>
+                                <TextSelection>0,874</TextSelection>
+                            </TextSettings>
+                        </BinderItem>
+                        <BinderItem ID="72" Type="Text" Created="2014-01-01 19:57:52 -0800" Modified="2014-01-03 14:06:43 -0800">
+                            <Title>060 Choice</Title>
+                            <MetaData>
+                                <IncludeInCompile>Yes</IncludeInCompile>
+                                <NotesTextSelection>0,0</NotesTextSelection>
+                            </MetaData>
+                            <TextSettings>
+                                <TextSelection>0,231</TextSelection>
+                            </TextSettings>
+                        </BinderItem>
+                        <BinderItem ID="73" Type="Text" Created="2014-01-01 19:58:57 -0800" Modified="2014-01-03 15:59:20 -0800">
+                            <Title>061 Moving monsters</Title>
+                            <MetaData>
+                                <IncludeInCompile>Yes</IncludeInCompile>
+                                <NotesTextSelection>0,0</NotesTextSelection>
+                            </MetaData>
+                            <TextSettings>
+                                <TextSelection>1267,0</TextSelection>
+                            </TextSettings>
+                        </BinderItem>
+                        <BinderItem ID="81" Type="Text" Created="2014-01-01 22:11:23 -0800" Modified="2014-01-01 22:17:09 -0800">
+                            <Title>063 init monsters (1st)</Title>
+                            <MetaData>
+                                <IncludeInCompile>Yes</IncludeInCompile>
+                                <NotesTextSelection>0,0</NotesTextSelection>
+                            </MetaData>
+                            <TextSettings>
+                                <TextSelection>0,254</TextSelection>
+                            </TextSettings>
+                        </BinderItem>
+                        <BinderItem ID="82" Type="Text" Created="2014-01-01 22:11:40 -0800" Modified="2014-01-01 22:17:09 -0800">
+                            <Title>064 init monsters (2nd)</Title>
+                            <MetaData>
+                                <IncludeInCompile>Yes</IncludeInCompile>
+                                <NotesTextSelection>0,0</NotesTextSelection>
+                            </MetaData>
+                            <TextSettings>
+                                <TextSelection>0,336</TextSelection>
+                            </TextSettings>
+                        </BinderItem>
+                        <BinderItem ID="83" Type="Text" Created="2014-01-01 22:12:50 -0800" Modified="2014-01-02 06:59:34 -0800">
+                            <Title>065 init monsters2</Title>
+                            <MetaData>
+                                <IncludeInCompile>Yes</IncludeInCompile>
+                                <NotesTextSelection>0,0</NotesTextSelection>
+                            </MetaData>
+                            <TextSettings>
+                                <TextSelection>1,757</TextSelection>
+                            </TextSettings>
+                        </BinderItem>
+                        <BinderItem ID="62" Type="Text" Created="2014-01-01 16:50:54 -0800" Modified="2014-01-01 20:28:41 -0800">
+                            <Title>070 Platform arrays</Title>
+                            <MetaData>
+                                <IncludeInCompile>Yes</IncludeInCompile>
+                                <NotesTextSelection>0,0</NotesTextSelection>
+                            </MetaData>
+                            <TextSettings>
+                                <TextSelection>0,107</TextSelection>
+                            </TextSettings>
+                        </BinderItem>
+                        <BinderItem ID="64" Type="Text" Created="2014-01-01 18:13:40 -0800" Modified="2014-01-01 21:26:06 -0800">
+                            <Title>071 Add 2nd</Title>
+                            <MetaData>
+                                <IncludeInCompile>Yes</IncludeInCompile>
+                                <NotesTextSelection>0,0</NotesTextSelection>
+                            </MetaData>
+                            <TextSettings>
+                                <TextSelection>0,357</TextSelection>
+                            </TextSettings>
+                        </BinderItem>
+                        <BinderItem ID="65" Type="Text" Created="2014-01-01 18:23:06 -0800" Modified="2014-01-01 18:31:12 -0800">
+                            <Title>072 Better Collisions</Title>
+                            <MetaData>
+                                <IncludeInCompile>Yes</IncludeInCompile>
+                                <NotesTextSelection>0,0</NotesTextSelection>
+                            </MetaData>
+                            <TextSettings>
+                                <TextSelection>0,1877</TextSelection>
+                            </TextSettings>
+                        </BinderItem>
+                        <BinderItem ID="66" Type="Text" Created="2014-01-01 18:28:56 -0800" Modified="2014-01-02 07:00:34 -0800">
+                            <Title>073 Fixing the platforms</Title>
+                            <MetaData>
+                                <IncludeInCompile>Yes</IncludeInCompile>
+                                <NotesTextSelection>0,0</NotesTextSelection>
+                            </MetaData>
+                            <TextSettings>
+                                <TextSelection>0,1131</TextSelection>
+                            </TextSettings>
+                        </BinderItem>
+                        <BinderItem ID="67" Type="Text" Created="2014-01-01 18:39:59 -0800" Modified="2014-01-03 15:59:01 -0800">
+                            <Title>074 Better side walls</Title>
+                            <MetaData>
+                                <IncludeInCompile>Yes</IncludeInCompile>
+                                <NotesTextSelection>0,0</NotesTextSelection>
+                            </MetaData>
+                            <TextSettings>
+                                <TextSelection>1470,0</TextSelection>
+                            </TextSettings>
+                        </BinderItem>
+                        <BinderItem ID="74" Type="Text" Created="2014-01-01 20:26:02 -0800" Modified="2014-01-03 15:00:13 -0800">
+                            <Title>075</Title>
+                            <MetaData>
+                                <IncludeInCompile>Yes</IncludeInCompile>
+                                <NotesTextSelection>0,0</NotesTextSelection>
+                            </MetaData>
+                            <TextSettings>
+                                <TextSelection>0,1697</TextSelection>
+                            </TextSettings>
+                        </BinderItem>
+                        <BinderItem ID="75" Type="Text" Created="2014-01-01 20:27:11 -0800" Modified="2014-01-01 20:27:23 -0800">
+                            <Title>076 More platforms (1st)</Title>
+                            <MetaData>
+                                <IncludeInCompile>Yes</IncludeInCompile>
+                                <NotesTextSelection>0,0</NotesTextSelection>
+                            </MetaData>
+                            <TextSettings>
+                                <TextSelection>0,301</TextSelection>
+                            </TextSettings>
+                        </BinderItem>
+                        <BinderItem ID="76" Type="Text" Created="2014-01-01 20:27:30 -0800" Modified="2014-01-01 21:46:00 -0800">
+                            <Title>077 More platforms (2nd)</Title>
+                            <MetaData>
+                                <IncludeInCompile>Yes</IncludeInCompile>
+                                <NotesTextSelection>0,0</NotesTextSelection>
+                            </MetaData>
+                            <TextSettings>
+                                <TextSelection>0,355</TextSelection>
+                            </TextSettings>
+                        </BinderItem>
+                        <BinderItem ID="77" Type="Text" Created="2014-01-01 21:23:33 -0800" Modified="2014-01-01 21:27:03 -0800">
+                            <Title>078 Add 3 more platforms</Title>
+                            <MetaData>
+                                <IncludeInCompile>Yes</IncludeInCompile>
+                                <NotesTextSelection>0,0</NotesTextSelection>
+                            </MetaData>
+                            <TextSettings>
+                                <TextSelection>0,1019</TextSelection>
+                            </TextSettings>
+                        </BinderItem>
+                        <BinderItem ID="78" Type="Text" Created="2014-01-01 21:25:28 -0800" Modified="2014-01-01 21:48:57 -0800">
+                            <Title>079 Add 2nd (merge)</Title>
+                            <MetaData>
+                                <IncludeInCompile>Yes</IncludeInCompile>
+                                <NotesTextSelection>0,0</NotesTextSelection>
+                            </MetaData>
+                            <TextSettings>
+                                <TextSelection>0,383</TextSelection>
+                            </TextSettings>
+                        </BinderItem>
+                        <BinderItem ID="114" Type="Text" Created="2014-01-03 15:59:11 -0800" Modified="2014-01-03 15:59:20 -0800">
+                            <Title>089</Title>
+                            <MetaData>
+                                <IncludeInCompile>Yes</IncludeInCompile>
+                                <NotesTextSelection>0,0</NotesTextSelection>
+                            </MetaData>
+                            <TextSettings>
+                                <TextSelection>0,23</TextSelection>
+                            </TextSettings>
+                        </BinderItem>
+                    </Children>
+                </BinderItem>
+                <BinderItem ID="68" Type="Text" Created="2014-01-01 18:48:39 -0800" Modified="2014-01-01 18:48:42 -0800">
+                    <Title>Stage 4</Title>
+                    <MetaData>
+                        <IncludeInCompile>Yes</IncludeInCompile>
+                        <NotesTextSelection>0,0</NotesTextSelection>
+                    </MetaData>
+                    <TextSettings>
+                        <TextSelection>0,0</TextSelection>
+                    </TextSettings>
+                    <Children>
+                        <BinderItem ID="69" Type="Text" Created="2014-01-01 18:48:43 -0800" Modified="2014-01-03 16:21:38 -0800">
+                            <Title>090</Title>
+                            <MetaData>
+                                <IncludeInCompile>Yes</IncludeInCompile>
+                                <NotesTextSelection>0,0</NotesTextSelection>
+                            </MetaData>
+                            <TextSettings>
+                                <TextSelection>5045,0</TextSelection>
+                            </TextSettings>
+                        </BinderItem>
+                        <BinderItem ID="86" Type="Text" Created="2014-01-02 07:19:24 -0800" Modified="2014-01-03 17:25:41 -0800">
+                            <Title>091 Cleaning up</Title>
+                            <MetaData>
+                                <IncludeInCompile>Yes</IncludeInCompile>
+                                <NotesTextSelection>0,0</NotesTextSelection>
+                            </MetaData>
+                            <TextSettings>
+                                <TextSelection>7489,0</TextSelection>
+                            </TextSettings>
+                        </BinderItem>
+                        <BinderItem ID="85" Type="Text" Created="2014-01-02 07:14:11 -0800" Modified="2014-01-02 09:14:11 -0800">
+                            <Title>092 Adding a second level</Title>
+                            <MetaData>
+                                <IncludeInCompile>Yes</IncludeInCompile>
+                                <NotesTextSelection>0,0</NotesTextSelection>
+                            </MetaData>
+                            <TextSettings>
+                                <TextSelection>0,1495</TextSelection>
+                            </TextSettings>
+                        </BinderItem>
+                        <BinderItem ID="87" Type="Text" Created="2014-01-02 08:38:52 -0800" Modified="2014-01-03 17:32:37 -0800">
+                            <Title>093 Connecting the levels</Title>
+                            <MetaData>
+                                <IncludeInCompile>Yes</IncludeInCompile>
+                                <NotesTextSelection>0,0</NotesTextSelection>
+                            </MetaData>
+                            <TextSettings>
+                                <TextSelection>2393,0</TextSelection>
+                            </TextSettings>
+                        </BinderItem>
+                    </Children>
+                </BinderItem>
+                <BinderItem ID="88" Type="Text" Created="2014-01-02 09:23:50 -0800" Modified="2014-01-02 09:23:52 -0800">
+                    <Title>Stage 5</Title>
+                    <MetaData>
+                        <IncludeInCompile>Yes</IncludeInCompile>
+                        <NotesTextSelection>0,0</NotesTextSelection>
+                    </MetaData>
+                    <TextSettings>
+                        <TextSelection>0,0</TextSelection>
+                    </TextSettings>
+                    <Children>
+                        <BinderItem ID="89" Type="Text" Created="2014-01-02 09:30:17 -0800" Modified="2014-01-03 18:52:05 -0800">
+                            <Title>100 Choices</Title>
+                            <MetaData>
+                                <IncludeInCompile>Yes</IncludeInCompile>
+                                <NotesTextSelection>0,0</NotesTextSelection>
+                            </MetaData>
+                            <TextSettings>
+                                <TextSelection>871,0</TextSelection>
+                            </TextSettings>
+                        </BinderItem>
+                        <BinderItem ID="90" Type="Text" Created="2014-01-02 10:05:26 -0800" Modified="2014-01-02 17:58:01 -0800">
+                            <Title>110 Images</Title>
+                            <MetaData>
+                                <IncludeInCompile>Yes</IncludeInCompile>
+                                <NotesTextSelection>0,0</NotesTextSelection>
+                            </MetaData>
+                            <TextSettings>
+                                <TextSelection>0,229</TextSelection>
+                            </TextSettings>
+                        </BinderItem>
+                        <BinderItem ID="105" Type="Text" Created="2014-01-02 14:32:10 -0800" Modified="2014-01-02 18:28:09 -0800">
+                            <Title>111 Platform pattern</Title>
+                            <MetaData>
+                                <IncludeInCompile>Yes</IncludeInCompile>
+                                <NotesTextSelection>0,0</NotesTextSelection>
+                            </MetaData>
+                            <TextSettings>
+                                <TextSelection>0,3141</TextSelection>
+                            </TextSettings>
+                        </BinderItem>
+                        <BinderItem ID="108" Type="Text" Created="2014-01-02 16:44:09 -0800" Modified="2014-01-02 17:39:25 -0800">
+                            <Title>115 Flip direction</Title>
+                            <MetaData>
+                                <IncludeInCompile>Yes</IncludeInCompile>
+                                <NotesTextSelection>0,0</NotesTextSelection>
+                            </MetaData>
+                            <TextSettings>
+                                <TextSelection>0,3866</TextSelection>
+                            </TextSettings>
+                        </BinderItem>
+                        <BinderItem ID="104" Type="Text" Created="2014-01-02 14:31:31 -0800" Modified="2014-01-03 21:19:47 -0800">
+                            <Title>120 Player images</Title>
+                            <MetaData>
+                                <IncludeInCompile>Yes</IncludeInCompile>
+                                <NotesTextSelection>0,0</NotesTextSelection>
+                            </MetaData>
+                            <TextSettings>
+                                <TextSelection>35,107</TextSelection>
+                            </TextSettings>
+                        </BinderItem>
+                        <BinderItem ID="107" Type="Text" Created="2014-01-02 15:53:54 -0800" Modified="2014-01-02 18:03:03 -0800">
+                            <Title>121 Monster images</Title>
+                            <MetaData>
+                                <IncludeInCompile>Yes</IncludeInCompile>
+                                <NotesTextSelection>0,0</NotesTextSelection>
+                            </MetaData>
+                            <TextSettings>
+                                <TextSelection>0,2289</TextSelection>
+                            </TextSettings>
+                        </BinderItem>
+                        <BinderItem ID="109" Type="Text" Created="2014-01-02 17:40:41 -0800" Modified="2014-01-03 23:05:11 -0800">
+                            <Title>122 Item images</Title>
+                            <MetaData>
+                                <IncludeInCompile>Yes</IncludeInCompile>
+                                <NotesTextSelection>0,0</NotesTextSelection>
+                            </MetaData>
+                            <TextSettings>
+                                <TextSelection>18,0</TextSelection>
+                            </TextSettings>
+                        </BinderItem>
+                        <BinderItem ID="91" Type="Text" Created="2014-01-02 10:05:47 -0800" Modified="2014-01-02 12:47:50 -0800">
+                            <Title>130 Items</Title>
+                            <MetaData>
+                                <IncludeInCompile>Yes</IncludeInCompile>
+                                <NotesTextSelection>0,0</NotesTextSelection>
+                            </MetaData>
+                            <TextSettings>
+                                <TextSelection>0,129</TextSelection>
+                            </TextSettings>
+                        </BinderItem>
+                        <BinderItem ID="95" Type="Text" Created="2014-01-02 11:29:58 -0800" Modified="2014-01-03 21:37:20 -0800">
+                            <Title>131 Key</Title>
+                            <MetaData>
+                                <IncludeInCompile>Yes</IncludeInCompile>
+                                <NotesTextSelection>0,0</NotesTextSelection>
+                            </MetaData>
+                            <TextSettings>
+                                <TextSelection>305,0</TextSelection>
+                            </TextSettings>
+                        </BinderItem>
+                        <BinderItem ID="97" Type="Text" Created="2014-01-02 12:03:36 -0800" Modified="2014-01-03 21:39:10 -0800">
+                            <Title>132 Item draw - no image</Title>
+                            <MetaData>
+                                <IncludeInCompile>Yes</IncludeInCompile>
+                                <NotesTextSelection>0,0</NotesTextSelection>
+                            </MetaData>
+                            <TextSettings>
+                                <TextSelection>580,0</TextSelection>
+                            </TextSettings>
+                        </BinderItem>
+                        <BinderItem ID="98" Type="Text" Created="2014-01-02 12:03:45 -0800" Modified="2014-01-03 21:43:36 -0800">
+                            <Title>133 item draw - image</Title>
+                            <MetaData>
+                                <IncludeInCompile>Yes</IncludeInCompile>
+                                <NotesTextSelection>0,0</NotesTextSelection>
+                            </MetaData>
+                            <TextSettings>
+                                <TextSelection>1932,0</TextSelection>
+                            </TextSettings>
+                        </BinderItem>
+                        <BinderItem ID="99" Type="Text" Created="2014-01-02 12:03:52 -0800" Modified="2014-01-02 12:52:38 -0800">
+                            <Title>134 Item collide</Title>
+                            <MetaData>
+                                <IncludeInCompile>Yes</IncludeInCompile>
+                                <NotesTextSelection>0,0</NotesTextSelection>
+                            </MetaData>
+                            <TextSettings>
+                                <TextSelection>0,627</TextSelection>
+                            </TextSettings>
+                        </BinderItem>
+                        <BinderItem ID="100" Type="Text" Created="2014-01-02 12:04:36 -0800" Modified="2014-01-02 12:54:58 -0800">
+                            <Title>135 Item key</Title>
+                            <MetaData>
+                                <IncludeInCompile>Yes</IncludeInCompile>
+                                <NotesTextSelection>0,0</NotesTextSelection>
+                            </MetaData>
+                            <TextSettings>
+                                <TextSelection>0,1345</TextSelection>
+                            </TextSettings>
+                        </BinderItem>
+                        <BinderItem ID="101" Type="Text" Created="2014-01-02 12:27:39 -0800" Modified="2014-01-02 12:59:02 -0800">
+                            <Title>136 level 2-3 - no image</Title>
+                            <MetaData>
+                                <IncludeInCompile>Yes</IncludeInCompile>
+                                <NotesTextSelection>0,0</NotesTextSelection>
+                            </MetaData>
+                            <TextSettings>
+                                <TextSelection>343,0</TextSelection>
+                            </TextSettings>
+                        </BinderItem>
+                        <BinderItem ID="102" Type="Text" Created="2014-01-02 12:27:56 -0800" Modified="2014-01-03 23:21:06 -0800">
+                            <Title>137 level 2-3 - image</Title>
+                            <MetaData>
+                                <IncludeInCompile>Yes</IncludeInCompile>
+                                <NotesTextSelection>0,0</NotesTextSelection>
+                            </MetaData>
+                            <TextSettings>
+                                <TextSelection>61,0</TextSelection>
+                            </TextSettings>
+                        </BinderItem>
+                        <BinderItem ID="103" Type="Text" Created="2014-01-02 12:43:48 -0800" Modified="2014-01-02 17:36:57 -0800">
+                            <Title>138 finish</Title>
+                            <MetaData>
+                                <IncludeInCompile>Yes</IncludeInCompile>
+                                <NotesTextSelection>0,0</NotesTextSelection>
+                            </MetaData>
+                            <TextSettings>
+                                <TextSelection>0,497</TextSelection>
+                            </TextSettings>
+                        </BinderItem>
+                        <BinderItem ID="117" Type="Text" Created="2014-01-03 21:21:42 -0800" Modified="2014-01-03 21:23:04 -0800">
+                            <Title>139 add key to status bar</Title>
+                            <MetaData>
+                                <IncludeInCompile>Yes</IncludeInCompile>
+                                <NotesTextSelection>0,0</NotesTextSelection>
+                            </MetaData>
+                            <TextSettings>
+                                <TextSelection>35,0</TextSelection>
+                            </TextSettings>
+                        </BinderItem>
+                        <BinderItem ID="94" Type="Text" Created="2014-01-02 11:23:31 -0800" Modified="2014-01-04 16:15:47 -0800">
+                            <Title>145 Potion</Title>
+                            <MetaData>
+                                <IncludeInCompile>Yes</IncludeInCompile>
+                                <NotesTextSelection>0,0</NotesTextSelection>
+                            </MetaData>
+                            <TextSettings>
+                                <TextSelection>29,0</TextSelection>
+                            </TextSettings>
+                        </BinderItem>
+                        <BinderItem ID="93" Type="Text" Created="2014-01-02 10:06:16 -0800" Modified="2014-01-02 18:35:45 -0800">
+                            <Title>170 Vitality</Title>
+                            <MetaData>
+                                <IncludeInCompile>Yes</IncludeInCompile>
+                                <NotesTextSelection>0,0</NotesTextSelection>
+                            </MetaData>
+                            <TextSettings>
+                                <TextSelection>0,162</TextSelection>
+                            </TextSettings>
+                        </BinderItem>
+                        <BinderItem ID="110" Type="Text" Created="2014-01-02 18:35:11 -0800" Modified="2014-01-02 18:54:25 -0800">
+                            <Title>180 Health</Title>
+                            <MetaData>
+                                <IncludeInCompile>Yes</IncludeInCompile>
+                                <NotesTextSelection>0,0</NotesTextSelection>
+                            </MetaData>
+                            <TextSettings>
+                                <TextSelection>0,1718</TextSelection>
+                            </TextSettings>
+                        </BinderItem>
+                        <BinderItem ID="111" Type="Text" Created="2014-01-02 18:35:17 -0800" Modified="2014-01-02 18:35:35 -0800">
+                            <Title>190 Multiple lives</Title>
+                            <MetaData>
+                                <IncludeInCompile>Yes</IncludeInCompile>
+                                <NotesTextSelection>0,0</NotesTextSelection>
+                            </MetaData>
+                            <TextSettings>
+                                <TextSelection>37,0</TextSelection>
+                            </TextSettings>
+                        </BinderItem>
+                    </Children>
+                </BinderItem>
+                <BinderItem ID="115" Type="Text" Created="2014-01-03 18:51:27 -0800" Modified="2014-01-03 18:51:29 -0800">
+                    <Title>Stage 6</Title>
+                    <MetaData>
+                        <IncludeInCompile>Yes</IncludeInCompile>
+                        <NotesTextSelection>0,0</NotesTextSelection>
+                    </MetaData>
+                    <TextSettings>
+                        <TextSelection>0,0</TextSelection>
+                    </TextSettings>
+                    <Children>
+                        <BinderItem ID="92" Type="Text" Created="2014-01-02 10:06:03 -0800" Modified="2014-01-03 21:22:01 -0800">
+                            <Title>250 Transitions</Title>
+                            <MetaData>
+                                <IncludeInCompile>Yes</IncludeInCompile>
+                                <NotesTextSelection>0,0</NotesTextSelection>
+                            </MetaData>
+                            <TextSettings>
+                                <TextSelection>95,0</TextSelection>
+                            </TextSettings>
+                        </BinderItem>
+                        <BinderItem ID="116" Type="Text" Created="2014-01-03 18:51:35 -0800" Modified="2014-01-03 18:52:00 -0800">
+                            <Title>200</Title>
+                            <MetaData>
+                                <IncludeInCompile>Yes</IncludeInCompile>
+                                <NotesTextSelection>0,0</NotesTextSelection>
+                            </MetaData>
+                            <TextSettings>
+                                <TextSelection>211,0</TextSelection>
+                            </TextSettings>
+                        </BinderItem>
+                        <BinderItem ID="17" Type="Text" Created="2013-12-31 07:24:17 -0800" Modified="2013-12-31 08:19:29 -0800">
+                            <Title>xxx Title screen</Title>
+                            <MetaData>
+                                <IncludeInCompile>Yes</IncludeInCompile>
+                                <NotesTextSelection>0,0</NotesTextSelection>
+                            </MetaData>
+                            <TextSettings>
+                                <TextSelection>105,0</TextSelection>
+                            </TextSettings>
+                        </BinderItem>
+                        <BinderItem ID="38" Type="Text" Created="2014-01-01 07:55:25 -0800" Modified="2014-01-01 12:56:47 -0800">
+                            <Title>xxx Font</Title>
+                            <MetaData>
+                                <IncludeInCompile>Yes</IncludeInCompile>
+                                <NotesTextSelection>0,0</NotesTextSelection>
+                            </MetaData>
+                            <TextSettings>
+                                <TextSelection>0,0</TextSelection>
+                            </TextSettings>
+                        </BinderItem>
+                    </Children>
+                </BinderItem>
+                <BinderItem ID="18" Type="Text" Created="2013-12-31 07:34:17 -0800" Modified="2013-12-31 08:19:32 -0800">
+                    <Title>xxx Breaking into multiple files</Title>
+                    <MetaData>
+                        <IncludeInCompile>Yes</IncludeInCompile>
+                        <NotesTextSelection>0,0</NotesTextSelection>
+                    </MetaData>
+                    <TextSettings>
+                        <TextSelection>606,0</TextSelection>
+                    </TextSettings>
+                </BinderItem>
+            </Children>
+        </BinderItem>
+        <BinderItem ID="1" Type="ResearchFolder" Created="2013-12-31 06:05:25 -0800" Modified="2013-12-31 06:05:25 -0800">
+            <Title>Research</Title>
+            <MetaData>
+                <IncludeInCompile>Yes</IncludeInCompile>
+            </MetaData>
+            <Children>
+                <BinderItem ID="5" Type="Text" Created="2013-12-31 06:12:57 -0800" Modified="2014-01-02 06:10:23 -0800">
+                    <Title>Character Sheet</Title>
+                    <MetaData>
+                        <IncludeInCompile>Yes</IncludeInCompile>
+                        <NotesTextSelection>0,0</NotesTextSelection>
+                    </MetaData>
+                    <TextSettings>
+                        <TextSelection>108,0</TextSelection>
+                    </TextSettings>
+                    <Children>
+                        <BinderItem ID="3" Type="Text" Created="2013-12-31 06:05:25 -0800" Modified="2014-01-01 08:14:52 -0800">
+                            <Title>Skills</Title>
+                            <MetaData>
+                                <IncludeInCompile>Yes</IncludeInCompile>
+                                <NotesTextSelection>0,0</NotesTextSelection>
+                            </MetaData>
+                            <TextSettings>
+                                <TextSelection>54,0</TextSelection>
+                            </TextSettings>
+                        </BinderItem>
+                        <BinderItem ID="4" Type="Text" Created="2013-12-31 06:12:45 -0800" Modified="2014-01-03 02:45:42 -0800">
+                            <Title>Badges</Title>
+                            <MetaData>
+                                <IncludeInCompile>Yes</IncludeInCompile>
+                                <NotesTextSelection>0,0</NotesTextSelection>
+                            </MetaData>
+                            <TextSettings>
+                                <TextSelection>546,105</TextSelection>
+                            </TextSettings>
+                        </BinderItem>
+                    </Children>
+                </BinderItem>
+                <BinderItem ID="6" Type="Text" Created="2013-12-31 06:16:08 -0800" Modified="2013-12-31 06:18:20 -0800">
+                    <Title>Potion percentages</Title>
+                    <MetaData>
+                        <IncludeInCompile>Yes</IncludeInCompile>
+                        <NotesTextSelection>0,0</NotesTextSelection>
+                    </MetaData>
+                    <TextSettings>
+                        <TextSelection>164,0</TextSelection>
+                    </TextSettings>
+                </BinderItem>
+                <BinderItem ID="7" Type="Text" Created="2013-12-31 06:22:22 -0800" Modified="2013-12-31 06:32:28 -0800">
+                    <Title>Collision check</Title>
+                    <MetaData>
+                        <IncludeInCompile>Yes</IncludeInCompile>
+                        <NotesTextSelection>0,0</NotesTextSelection>
+                    </MetaData>
+                    <TextSettings>
+                        <TextSelection>0,1843</TextSelection>
+                    </TextSettings>
+                </BinderItem>
+                <BinderItem ID="19" Type="Text" Created="2013-12-31 07:39:52 -0800" Modified="2014-01-02 15:24:25 -0800">
+                    <Title>Function Map</Title>
+                    <MetaData>
+                        <IncludeInCompile>Yes</IncludeInCompile>
+                        <NotesTextSelection>0,0</NotesTextSelection>
+                    </MetaData>
+                    <TextSettings>
+                        <TextSelection>0,2083</TextSelection>
+                    </TextSettings>
+                </BinderItem>
+                <BinderItem ID="36" Type="Text" Created="2014-01-01 07:33:40 -0800" Modified="2014-01-02 15:41:54 -0800">
+                    <Title>Common Errors</Title>
+                    <MetaData>
+                        <IncludeInCompile>Yes</IncludeInCompile>
+                        <NotesTextSelection>0,0</NotesTextSelection>
+                    </MetaData>
+                    <TextSettings>
+                        <TextSelection>1592,0</TextSelection>
+                    </TextSettings>
+                </BinderItem>
+                <BinderItem ID="84" Type="Text" Created="2014-01-02 06:12:31 -0800" Modified="2014-01-03 02:56:28 -0800">
+                    <Title>To do</Title>
+                    <MetaData>
+                        <IncludeInCompile>Yes</IncludeInCompile>
+                        <NotesTextSelection>0,0</NotesTextSelection>
+                    </MetaData>
+                    <TextSettings>
+                        <TextSelection>227,0</TextSelection>
+                    </TextSettings>
+                </BinderItem>
+            </Children>
+        </BinderItem>
+        <BinderItem ID="2" Type="TrashFolder" Created="2013-12-31 06:05:25 -0800" Modified="2013-12-31 06:05:25 -0800">
+            <Title>Trash</Title>
+            <MetaData>
+                <IncludeInCompile>Yes</IncludeInCompile>
+            </MetaData>
+            <Children>
+                <BinderItem ID="29" Type="Text" Created="2013-12-31 22:00:24 -0800" Modified="2013-12-31 22:01:42 -0800">
+                    <Title>011</Title>
+                    <MetaData>
+                        <IncludeInCompile>Yes</IncludeInCompile>
+                        <NotesTextSelection>0,0</NotesTextSelection>
+                    </MetaData>
+                    <TextSettings>
+                        <TextSelection>0,0</TextSelection>
+                    </TextSettings>
+                </BinderItem>
+                <BinderItem ID="28" Type="Text" Created="2013-12-31 21:46:55 -0800" Modified="2013-12-31 22:02:42 -0800">
+                    <Title>008 Constrain horizontal</Title>
+                    <MetaData>
+                        <IncludeInCompile>Yes</IncludeInCompile>
+                        <NotesTextSelection>0,0</NotesTextSelection>
+                    </MetaData>
+                    <TextSettings>
+                        <TextSelection>0,0</TextSelection>
+                    </TextSettings>
+                </BinderItem>
+                <BinderItem ID="35" Type="Text" Created="2013-12-31 23:01:18 -0800" Modified="2013-12-31 23:01:22 -0800">
+                    <Title>035 Images</Title>
+                    <MetaData>
+                        <IncludeInCompile>Yes</IncludeInCompile>
+                        <NotesTextSelection>0,0</NotesTextSelection>
+                    </MetaData>
+                    <TextSettings>
+                        <TextSelection>0,0</TextSelection>
+                    </TextSettings>
+                </BinderItem>
+                <BinderItem ID="48" Type="Text" Created="2014-01-01 12:49:38 -0800" Modified="2014-01-01 14:06:02 -0800">
+                    <Title>031 Don't fall off left/right</Title>
+                    <MetaData>
+                        <IncludeInCompile>Yes</IncludeInCompile>
+                        <NotesTextSelection>0,0</NotesTextSelection>
+                    </MetaData>
+                    <TextSettings>
+                        <TextSelection>730,0</TextSelection>
+                    </TextSettings>
+                </BinderItem>
+                <BinderItem ID="47" Type="Text" Created="2014-01-01 12:46:21 -0800" Modified="2014-01-01 14:21:40 -0800">
+                    <Title>030 Choice</Title>
+                    <MetaData>
+                        <IncludeInCompile>Yes</IncludeInCompile>
+                        <NotesTextSelection>0,0</NotesTextSelection>
+                    </MetaData>
+                    <TextSettings>
+                        <TextSelection>0,0</TextSelection>
+                    </TextSettings>
+                </BinderItem>
+                <BinderItem ID="54" Type="Text" Created="2014-01-01 14:38:33 -0800" Modified="2014-01-01 14:38:54 -0800">
+                    <Title>045 Goal merge with </Title>
+                    <MetaData>
+                        <IncludeInCompile>Yes</IncludeInCompile>
+                        <NotesTextSelection>0,0</NotesTextSelection>
+                    </MetaData>
+                    <TextSettings>
+                        <TextSelection>0,0</TextSelection>
+                    </TextSettings>
+                </BinderItem>
+                <BinderItem ID="79" Type="Text" Created="2014-01-01 21:40:25 -0800" Modified="2014-01-01 21:42:20 -0800">
+                    <Title>080</Title>
+                    <MetaData>
+                        <IncludeInCompile>Yes</IncludeInCompile>
+                        <NotesTextSelection>0,0</NotesTextSelection>
+                    </MetaData>
+                    <TextSettings>
+                        <TextSelection>0,0</TextSelection>
+                    </TextSettings>
+                </BinderItem>
+                <BinderItem ID="80" Type="Text" Created="2014-01-01 21:40:47 -0800" Modified="2014-01-01 21:41:51 -0800">
+                    <Title>081</Title>
+                    <MetaData>
+                        <IncludeInCompile>Yes</IncludeInCompile>
+                        <NotesTextSelection>0,0</NotesTextSelection>
+                    </MetaData>
+                    <TextSettings>
+                        <TextSelection>692,0</TextSelection>
+                    </TextSettings>
+                </BinderItem>
+                <BinderItem ID="96" Type="Text" Created="2014-01-02 11:42:52 -0800" Modified="2014-01-02 11:42:57 -0800">
+                    <Title>135 Key (with image)</Title>
+                    <MetaData>
+                        <IncludeInCompile>Yes</IncludeInCompile>
+                        <NotesTextSelection>0,0</NotesTextSelection>
+                    </MetaData>
+                    <TextSettings>
+                        <TextSelection>0,0</TextSelection>
+                    </TextSettings>
+                </BinderItem>
+                <BinderItem ID="106" Type="Text" Created="2014-01-02 14:32:26 -0800" Modified="2014-01-02 14:32:31 -0800">
+                    <Title>115 Image direction</Title>
+                    <MetaData>
+                        <IncludeInCompile>Yes</IncludeInCompile>
+                        <NotesTextSelection>0,0</NotesTextSelection>
+                    </MetaData>
+                    <TextSettings>
+                        <TextSelection>0,0</TextSelection>
+                    </TextSettings>
+                </BinderItem>
+            </Children>
+        </BinderItem>
+    </Binder>
+    <Collections>
+        <Collection Type="Binder" ID="28F0C8CF-C3FD-4B27-9C51-5F1BDD39F1C2" Color="0.789419 0.816433 0.846513">
+            <Title>Binder</Title>
+        </Collection>
+        <Collection Type="RecentSearch" ID="FCEA91E7-6615-4CE1-87FC-505CBB74C7AE" Color="0.922 0.91 0.98">
+            <Title>Search Results</Title>
+        </Collection>
+    </Collections>
+    <LabelSettings>
+        <Title>Label</Title>
+        <DefaultLabelID>-1</DefaultLabelID>
+        <Labels>
+            <Label ID="-1">No Label</Label>
+            <Label ID="0" Color="0.9 0.92 0.95">Concept</Label>
+            <Label ID="1" Color="0.985 0.875 0.85">Chapter</Label>
+        </Labels>
+    </LabelSettings>
+    <StatusSettings>
+        <Title>Status</Title>
+        <DefaultStatusID>-1</DefaultStatusID>
+        <StatusItems>
+            <Status ID="-1">No Status</Status>
+            <Status ID="0">To Do</Status>
+            <Status ID="1">First Draft</Status>
+            <Status ID="2">Revised Draft</Status>
+            <Status ID="3">Final Draft</Status>
+            <Status ID="4">Done</Status>
+        </StatusItems>
+    </StatusSettings>
+    <ProjectTargets Notify="No">
+        <DraftTarget Type="Words" CountIncludedOnly="Yes" CurrentCompileGroupOnly="No" Deadline="2013-12-31 06:05:25 -0800" IgnoreDeadline="Yes">0</DraftTarget>
+        <SessionTarget Type="Words" CountDraftOnly="Yes" AllowNegatives="Yes" ResetType="Midnight" DeterminedFromDeadline="No" WritingDays="" CanWriteOnDeadlineDate="No">0</SessionTarget>
+        <PreviousSession Words="0" Characters="0" Date="2014-01-14 13:06:32 -0800"></PreviousSession>
+    </ProjectTargets>
+    <PrintSettings PaperSize="612.0,792.0" LeftMargin="72.0" RightMargin="72.0" TopMargin="90.0" BottomMargin="90.0" PaperType="na-letter" Orientation="Portrait" HorizontalPagination="Clip" VerticalPagination="Auto" ScaleFactor="1.0" HorizontallyCentered="Yes" VerticallyCentered="Yes" Collates="Yes" PagesAcross="1" PagesDown="1"></PrintSettings>
+</ScrivenerProject>

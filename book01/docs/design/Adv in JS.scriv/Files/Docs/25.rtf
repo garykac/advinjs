@@ -1,0 +1,51 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1138\cocoasubrtf510
+{\fonttbl\f0\fswiss\fcharset0 Helvetica;\f1\fmodern\fcharset0 Courier;\f2\fmodern\fcharset0 Courier-Bold;
+}
+{\colortbl;\red255\green255\blue255;\red105\green105\blue105;}
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\fi360\sl288\slmult1\pardirnatural
+
+\f0\fs24 \cf0 YOU: OK, so let's move the player down onto the platform.\
+\
+BALTHAZAR: Do you have an idea on how to do that?\
+\
+YOU: Well, we set the 
+\f1 _player.x
+\f0  and 
+\f1 _player.y
+\f0  value to 
+\f1 0
+\f0  in 
+\f1 init_player()
+\f0 . We can just change those values can't we?\
+\
+BALTHAZAR: Correct. What should we change them to?\
+\
+YOU: I can leave the 
+\f1 x
+\f0  value as 
+\f1 0
+\f0 , but I need to change the 
+\f1 y
+\f0  value to the top of the platform, which is 
+\f1 360
+\f0 , right?\
+\
+\pard\tx1260\tx1860\tx2420\tx3020\tx3560\tx4140\li700\sl288\slmult1\pardirnatural
+
+\f1 \cf2 function init_player() \{\
+	_player.x = 0;\
+\cf0 \strike \strikec0 	_player.y = 0;\
+\strike0\striked0 	
+\f2\b _player.y = 360;
+\f1\b0 \
+\cf2 	_player.width = 20;\
+	_player.height = 20;\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\fi360\sl288\slmult1\pardirnatural
+
+\f0 \cf0 \
+BALTHAZAR: Let's try that and see what happens.\
+\
+YOU: Oh, that doesn't sound promising.\
+\
+RUN your code and GOTO 006\
+}

@@ -1,0 +1,273 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1138\cocoasubrtf510
+{\fonttbl\f0\fswiss\fcharset0 Helvetica;\f1\fmodern\fcharset0 Courier;\f2\fmodern\fcharset0 Courier-Bold;
+}
+{\colortbl;\red255\green255\blue255;\red105\green105\blue105;}
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\fi360\sl288\slmult1\pardirnatural
+
+\f0\fs24 \cf0 Multiple levels\
+\
+init_game is getting to be kindofa mess. We should clean that up. and add multiple levels since we're going to need then.\
+\
+YOU: but we haven't finished the first level yet.\
+\
+***\
+\
+\
+\
+Let's add a new _levels global variable.\
+\
+\
+\pard\tx1260\tx1860\tx2420\tx3020\tx3560\tx4140\li700\sl288\slmult1\pardirnatural
+
+\f1 \cf2 // Global variables.\
+var _game = \{\};\
+var _player = \{\};\
+
+\f2\b \cf0 var _levels = [];\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\fi360\sl288\slmult1\pardirnatural
+
+\f0\b0 \cf0 \
+Note the square brackets since _levels is an array.\
+\
+And copy over the platforms, monsters and goal into a new function called init_level1()\
+\
+init_game:\
+\
+\pard\tx1260\tx1860\tx2420\tx3020\tx3560\tx4140\li700\sl288\slmult1\pardirnatural
+
+\f1 \cf2 	// Game state.\
+	_game.game_over = false;\
+	_game.game_win = false;\
+\cf0 \strike \strikec0 	_game.platforms = [];\
+	// The bottom brick platform along the bottom of the stage.\
+	_game.platforms.push(create_platform(0, 360, _game.width, 40));\
+	// The left offstage 'wall' to keep the player on the stage.\
+	_game.platforms.push(\
+		create_platform(-60, -_game.height, 60, 2 * _game.height));\
+	// The right offstage 'wall' to keep the player on the stage.\
+	_game.platforms.push(\
+		create_platform(_game.width, -_game.height, 60, 2 * _game.height));\
+	_game.platforms.push(create_platform(200, 290, 80, 20));\
+	_game.platforms.push(create_platform(300, 240, 80, 20));\
+	_game.platforms.push(create_platform(400, 170, 80, 20));\
+	_game.platforms.push(create_platform(460, 110, 40, 20));\
+	_game.monsters = [];\
+	_game.monsters.push(create_monster(350, 360, 20, 20, 60, 480, -1.0));\
+	_game.monsters.push(create_monster(400, 360, 20, 20, 60, 480, 0.8));\
+	_game.goal = create_goal(500, 360);\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\fi360\sl288\slmult1\pardirnatural
+
+\f0 \cf0 \strike0\striked0 \
+**\
+If you cut and paste, be sure the change all the _game to level.\
+fff\
+\
+\pard\tx1260\tx1860\tx2420\tx3020\tx3560\tx4140\li700\sl288\slmult1\pardirnatural
+
+\f1 \cf2 function init_player() \{\
+	...\
+\}\
+\
+
+\f2\b \cf0 function init_level1() \{\
+	var level = \{\};\
+\
+	level.platforms = [];\
+	// The bottom brick platform along the bottom of the stage.\
+	level.platforms.push(create_platform(0, 360, _game.width, 40));\
+	// The left offstage 'wall' to keep the player on the stage.\
+	level.platforms.push(\
+		create_platform(-60, -_game.height, 60, 2 * _game.height));\
+	// The right offstage 'wall' to keep the player on the stage.\
+	level.platforms.push(\
+		create_platform(_game.width, -_game.height, 60, 2 * _game.height));\
+	level..platforms.push(create_platform(200, 290, 80, 20));\
+	level.platforms.push(create_platform(300, 240, 80, 20));\
+	level.platforms.push(create_platform(400, 170, 80, 20));\
+	level.platforms.push(create_platform(460, 110, 40, 20));\
+\
+	level.monsters = [];\
+	level.monsters.push(create_monster(350, 360, 20, 20, 60, 480, -1.0));\
+	level.monsters.push(create_monster(400, 360, 20, 20, 60, 480, 0.8));\
+\
+	level.goal = create_goal(500, 360);\
+	\
+	_levels.push(level);\
+\}\
+
+\f1\b0 \cf2 \
+function create_platform(x, y, width, height) \{\
+	...\
+\}\
+\cf0 \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\fi360\sl288\slmult1\pardirnatural
+
+\f0 \cf0 \
+fdaf\
+\
+And call this new function from init():\
+\
+\pard\tx1260\tx1860\tx2420\tx3020\tx3560\tx4140\li700\sl288\slmult1\pardirnatural
+
+\f1 \cf2 function init() \{\
+	init_game();\
+	init_player();\
+
+\f2\b \cf0 	init_level1();\
+
+\f1\b0 \cf2 \}\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\fi360\sl288\slmult1\pardirnatural
+
+\f0 \cf0 \
+\
+fdasf\
+\
+Since we're creating an array of levels, we need to keep track of the current level.\
+\
+init_game:\
+\
+\pard\tx1260\tx1860\tx2420\tx3020\tx3560\tx4140\li700\sl288\slmult1\pardirnatural
+
+\f1 \cf2 	// Game state.\
+	_game.game_over = false;\
+	_game.game_win = false;\
+
+\f2\b \cf0 	_game.current_level = 0;\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\fi360\sl288\slmult1\pardirnatural
+
+\f0\b0 \cf0 \
+\
+We need to \
+fdafds\
+Now we need to fix up all the references to _game.platform, _game.monsters and _game.goal\
+\
+\pard\tx1260\tx1860\tx2420\tx3020\tx3560\tx4140\li700\sl288\slmult1\pardirnatural
+
+\f1 \cf2 function draw_platforms(ctx) \{\
+
+\f2\b \cf0 	var level = _levels[_game.current_level];\
+
+\f1\b0 \strike \strikec0 	var platforms = _game.platforms;\
+
+\f2\b \strike0\striked0 	var platforms = level.platforms;\
+
+\f1\b0 \cf2 	for (var i = 0; i < platforms.length; i++) \{\
+		var platform = platforms[i];\
+		ctx.fillStyle = "green";\
+		ctx.fillRect(platform.x, platform.y, platform.width, platform.height);\
+	\}\
+\}\
+\
+function draw_monsters(ctx) \{\
+
+\f2\b \cf0 	var level = _levels[_game.current_level];\
+
+\f1\b0 \strike \strikec0 	var monsters = _game.monsters;\
+
+\f2\b \strike0\striked0 	var monsters = level.monsters;\
+
+\f1\b0 \cf2 	for (var i = 0; i < monsters.length; i++) \{\
+		var m = monsters[i];\
+		ctx.fillStyle = "#800000";\
+		ctx.fillRect(m.x - m.origin_x, m.y - m.origin_y, m.width, m.height);\
+	\}\
+\}\
+\
+function draw_goal(ctx) \{\
+
+\f2\b \cf0 	var level = _levels[_game.current_level];\
+
+\f1\b0 \strike \strikec0 	var goal = _game.goal;\
+
+\f2\b \strike0\striked0 	var goal = level.goal;\
+
+\f1\b0 \cf2 	ctx.fillStyle = "yellow";\
+	ctx.fillRect(goal.x - goal.origin_x, goal.y - goal.origin_y,\
+					goal.width, goal.height);\
+\}\
+\
+function draw_player() \{\
+	...\
+\}\
+\
+function update_monsters() \{\
+
+\f2\b \cf0 	var level = _levels[_game.current_level];\
+
+\f1\b0 \strike \strikec0 	var monsters = _game.monsters;\
+
+\f2\b \strike0\striked0 	var monsters = level.monsters;\
+
+\f1\b0 \cf2 	for (var i = 0; i < monsters.length; i++) \{\
+		var m = monsters[i];\
+		m.x += m.move_x;\
+		if (m.x <= m.min_x || m.x >= m.max_x) \{\
+			m.move_x *= -1;\
+		\}\
+	\}\
+\}\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\fi360\sl288\slmult1\pardirnatural
+
+\f0 \cf0 fdsafds\
+\
+\pard\tx1260\tx1860\tx2420\tx3020\tx3560\tx4140\li700\sl288\slmult1\pardirnatural
+
+\f1 \cf2 function check_platform_collisions() \{\
+
+\f2\b \cf0 	var level = _levels[_game.current_level];\
+
+\f1\b0 \strike \strikec0 	var platforms = level.platforms;\
+
+\f2\b \strike0\striked0 	var platforms = level.platforms;\
+
+\f1\b0 \cf2 	for (var i = 0; i < platforms.length; i++) \{\
+		var overlap = collide(platforms[i], _player);\
+		if (overlap) \{\
+			...\
+		\}\
+	\}\
+\}\
+\
+function check_monster_collisions() \{\
+
+\f2\b \cf0 	var level = _levels[_game.current_level];\
+
+\f1\b0 \strike \strikec0 	var monsters = _game.monsters;\
+
+\f2\b \strike0\striked0 	var monsters = level.monsters;\
+
+\f1\b0 \cf2 	for (var i = 0; i < monsters.length; i++) \{\
+		var m = monsters[i];\
+		if (collide(m, _player)) \{\
+			_game.game_over = true;\
+		\}\
+	\}\
+\}\
+\
+function check_goal_collisions() \{\
+
+\f2\b \cf0 	var level = _levels[_game.current_level];\
+
+\f1\b0 \strike \strikec0 	var goal = _game.goal;\
+
+\f2\b \strike0\striked0 	var goal = level.goal;\
+
+\f1\b0 \cf2 	if (collide(goal, _player)) \{\
+		_game.game_over = true;\
+		_game.game_win = true;\
+	\}\
+\}\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\fi360\sl288\slmult1\pardirnatural
+
+\f0 \cf0 \
+\
+fdsafs\
+\
+Run to make sure that everything still works.\
+Nothing should have changed.\
+\
+\
+GOTO 091\
+}

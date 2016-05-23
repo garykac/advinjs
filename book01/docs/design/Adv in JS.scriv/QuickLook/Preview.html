@@ -1,0 +1,1508 @@
+<html>
+
+<head>
+<title>Adv in JS</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+	body {background-color: #bac0c7}
+    p.binderItem {margin: 10.0px 0.0px 0.0px 05.0px; font-family:Helvetica, Cochin, Times, Courier, Arial, serif; font-size:12.0px;}
+    .page {border: 1px solid #727272; background: #fff}
+    hr {
+      border-top: 1px dashed #000;
+      border-bottom: 0px solid #fff;
+      color: #fff;
+      background-color: #fff;
+      height: 0px;
+  </style>
+</head>
+
+<body>
+
+<table border="0" width="100%" cellspacing="3">
+<tr>
+<td>
+
+<table class="page" width="100%" cellspacing="10" cellpadding="2">
+<tr>
+<td valign="top">
+
+<ul>
+<li>
+<p class="binderItem"><strong>Stage 0</strong></p>
+</li>
+<hr/>
+<ul>
+<li>
+<p class="binderItem"><strong>Premise</strong><br/>Premise:<br/>
+<br/>
+Student has to do a project for school.<br/>
+<br/>
+Wants to do a browser-based game, but doesn't know how to do that.<br/>
+<br/>
+Was told to come here for help.</p>
+</li>
+<li>
+<p class="binderItem"><strong>Previous</strong></p>
+</li>
+<hr/>
+<ul>
+<li>
+<p class="binderItem"><strong>Files and Folders</strong><br/>How to organize your files and projects<br/>
+<br/>
+folders = directories</p>
+</li>
+<li>
+<p class="binderItem"><strong>Keymap</strong><br/>Keymap keep track of which keys are being pressed.<br/>
+<br/>
+"But what if I'm holding the key down when I start the game?"<br/>
+It will not be aware of that particular key press until you release it and press it again.</p>
+</li>
+<li>
+<p class="binderItem"><strong>Baseline</strong><br/>Canvas<br/>
+ getting the canvas width and height<br/>
+ drawing into a canvas<br/>
+<br/>
+handling key input<br/>
+adding a simple player<br/>
+<br/>
+HTML and CSS<br/>
+<br/>
+global vs. local variables<br/>
+ global are marked with '_'</p>
+</li>
+</ul>
+<hr/>
+<li>
+<p class="binderItem"><strong>000 Intro</strong><br/>We're starting in the middle of the story - after the reader's character has been introduced to the teacher and has already created the "baseline" game.<br/>
+<br/>
+This baseline game is just a very simple set of HTML + CSS + JS files (one each) that initializes a canvas (where the game will take place) and allows a small blue rectangle (representing the player) to be moved around the screen.<br/>
+<br/>
+For now, you should download the following files to catchup with the story:<br/>
+ script.js<br/>
+ game.html<br/>
+ style.css<br/>
+And c...</p>
+</li>
+<hr/>
+<ul>
+<li>
+<p class="binderItem"><strong>B00 - baseline</strong><br/>This is the simple webpage with a canvas on it and a blue square that you can move around with the keyboard.</p>
+</li>
+<hr/>
+<ul>
+<li>
+<p class="binderItem"><strong>script.js</strong><br/>// Global variables<br/>
+var _game = {};<br/>
+var _player = {}; <br/>
+<br/>
+function setup() {<br/>
+ window.addEventListener("load", handle_load, false);<br/>
+ window.addEventListener("keydown", handle_keydown, false);<br/>
+ window.addEventListener("keyup", handle_keyup, false);<br/>
+}<br/>
+<br/>
+// Handle the load event (which is sent when the page has finished loading).<br/>
+function handle_load(event) {<br/>
+ init();<br/>
+ requestAnimationFrame(update_world);<br/>
+}<br/>
+<br/>
+function handle_keydown(event) {<br/>
+ _game.keymap[event.keyCode] = true;<br/>
+}<br/>
+<br/>
+function handle_keyup(...</p>
+</li>
+<li>
+<p class="binderItem"><strong>game.html</strong><br/><html><br/>
+<head><br/>
+ <title>Canvas Game</title><br/>
+<br/>
+ <link rel="stylesheet" type="text/css" href="style.css" /><br/>
+ <script type='text/javascript' src="script.js"></script><br/>
+</head><br/>
+<br/>
+<body><br/>
+<br/>
+<canvas id="stage"></canvas><br/>
+<br/>
+</body><br/>
+</html></p>
+</li>
+<li>
+<p class="binderItem"><strong>style.css</strong><br/>body {<br/>
+ background-color: blue;<br/>
+ color: white;<br/>
+}<br/>
+<br/>
+canvas {<br/>
+ border: 1px solid black;<br/>
+}</p>
+</li>
+</ul>
+</ul>
+</ul>
+<hr/>
+<li>
+<p class="binderItem"><strong>Stage 1</strong></p>
+</li>
+<hr/>
+<ul>
+<li>
+<p class="binderItem"><strong>001 Choosing a game</strong><br/>GOTO 2</p>
+</li>
+<li>
+<p class="binderItem"><strong>002 Starting a platformer</strong><br/>GOTO 3</p>
+</li>
+<li>
+<p class="binderItem"><strong>003 Adding a base platform</strong><br/>BADGE "Platform I"<br/>
+GOTO 004</p>
+</li>
+<li>
+<p class="binderItem"><strong>004 Making the platform work</strong><br/>GOTO 005<br/>
+GOTO 010</p>
+</li>
+<li>
+<p class="binderItem"><strong>005 Move the player onto the platform</strong><br/>GOTO 006</p>
+</li>
+<li>
+<p class="binderItem"><strong>006 Adding player origin</strong><br/>BADGE "Player Origin"<br/>
+GOTO 007<br/>
+GOTO 008</p>
+</li>
+<li>
+<p class="binderItem"><strong>007 Experiment with player size</strong><br/>GOTO 008</p>
+</li>
+<li>
+<p class="binderItem"><strong>008</strong><br/>GOTO 015<br/>
+GOOT 010</p>
+</li>
+<li>
+<p class="binderItem"><strong>010 Constrain the player movement</strong><br/>BADGE Movement I<br/>
+GOTO 015<br/>
+GOTO 005</p>
+</li>
+<li>
+<p class="binderItem"><strong>015 Friction</strong><br/>BADGE Movement II<br/>
+GOTO 020</p>
+</li>
+<li>
+<p class="binderItem"><strong>016 More Friction</strong><br/>Play around with different friction values and see how it affects the player movement. The lower the friction, the more the player will slide. At 0.4 the player will stop almost instantly, whereas at 0.01 it will slide halfway across the screen before stopping.<br/>
+<br/>
+If we wanted to have our game set in an ice world, we could set the friction very low so that the player was constantly sliding around.<br/>
+<br/>
+After experimenting with different values, reset them back to the ones we had originally. This is im...</p>
+</li>
+<li>
+<p class="binderItem"><strong>018 Constrain left/right</strong><br/>The player can still go off the left/right side of the screen.<br/>
+<br/>
+We'll fix this properly later on, but for now, let's add a simple check in update_player()<br/>
+<br/>
+function update_player() {<br/>
+ ...<br/>
+ <br/>
+ // Move the player to the new location.<br/>
+ _player.x += _player.velocity_x;<br/>
+ _player.y += _player.velocity_y;<br/>
+<br/>
+ if (_player.x < 0) {<br/>
+  _player.x = 0;<br/>
+ } else if (_player.x > _game.width) {<br/>
+  _player.x = _game.width;<br/>
+ }<br/>
+}<br/>
+<br/>
+Because _player.x and _player.y specify the origin of the player, the player can still go...</p>
+</li>
+</ul>
+<hr/>
+<li>
+<p class="binderItem"><strong>Stage 2</strong></p>
+</li>
+<hr/>
+<ul>
+<li>
+<p class="binderItem"><strong>020 Choices</strong><br/>GOTO 025<br/>
+GOTO 030<br/>
+GOTO 035</p>
+</li>
+<li>
+<p class="binderItem"><strong>025 Jumping</strong><br/><br/>
+First define how much gravity there should be in this world:<br/>
+<br/>
+In init_game():<br/>
+ // Global world parameters.<br/>
+ _game.friction = 0.15;<br/>
+ _game.gravity = 0.5;<br/>
+<br/>
+<br/>
+<br/>
+We need to set the initial jump velocity and the max allowed velocity for the player<br/>
+<br/>
+In init_player():<br/>
+function init_player() {<br/>
+ ...<br/>
+ _player.velocity_x = 0;<br/>
+ _player.velocity_x_delta = 0.8;<br/>
+ _player.velocity_x_max = 3.5;<br/>
+ _player.velocity_y = 0;<br/>
+ _player.velocity_y_jump = -10;<br/>
+ _player.velocity_y_max = 10;<br/>
+}<br/>
+<br/>
+<br/>
+We need to apply gravity to t...</p>
+</li>
+<li>
+<p class="binderItem"><strong>026 Jumping</strong><br/>(first collision code)<br/>
+<br/>
+Add this basic collision code before your update_world() function:<br/>
+<br/>
+function check_input() {<br/>
+ ...<br/>
+}<br/>
+<br/>
+function check_collisions() {<br/>
+ check_platform_collisions();<br/>
+}<br/>
+<br/>
+function check_platform_collisions() {<br/>
+ if (_player.y > _game.platform.y) {<br/>
+  _player.y = _game.platform.y;<br/>
+  _player.velocity_y = 0;<br/>
+ }<br/>
+}<br/>
+<br/>
+function update_world() {<br/>
+ update_player();<br/>
+ check_collisions();<br/>
+ draw();<br/>
+ <br/>
+ requestAnimationFrame(update_world);<br/>
+}<br/>
+<br/>
+***Ugly that we hard code 360*** we'll be fixing soon.<br/>
+...</p>
+</li>
+<li>
+<p class="binderItem"><strong>027 Jumping (after Goal)</strong><br/>(already have collision code from goal)<br/>
+<br/>
+<br/>
+<br/>
+function check_collisions() {<br/>
+ check_platform_collisions();<br/>
+ check_goal_collisions();<br/>
+}<br/>
+<br/>
+function check_platform_collisions() {<br/>
+ if (collide(_game.platform, _player)) {<br/>
+  _player.y = _game.platform.y;<br/>
+  _player.velocity_y = 0;<br/>
+ }<br/>
+}<br/>
+<br/>
+function check_goal_collisions() {<br/>
+ ...<br/>
+}<br/>
+<br/>
+<br/>
+<br/>
+RUN your code in a browser and verify that it loads without errors.<br/>
+<br/>
+GOTO 028<br/>
+</p>
+</li>
+<li>
+<p class="binderItem"><strong>028 Jumping 2</strong><br/>GOTO 032<br/>
+GOTO 033</p>
+</li>
+<li>
+<p class="binderItem"><strong>029 </strong><br/>We fall off the bottom of the screen! that's because gravity is pulling the player down, but the platform is<br/>
+<br/>
+We need to add some simple collision with the platform.<br/>
+<br/>
+IF you have your "Collision I - Basic" badge<br/>
+ THEN GOTO 027<br/>
+ ELSE GOTO 026</p>
+</li>
+<li>
+<p class="binderItem"><strong>032</strong><br/>and finally, end the jump when we land on a platform.<br/>
+<br/>
+function check_platform_collisions() {<br/>
+ if (_player.y > _game.platform.y) {<br/>
+  _player.is_jumping = false;<br/>
+  _player.y = _game.platform.y;<br/>
+  _player.velocity_y = 0;<br/>
+ }<br/>
+}<br/>
+<br/>
+<br/>
+GOTO 034</p>
+</li>
+<li>
+<p class="binderItem"><strong>033</strong><br/>dfdsa<br/>
+<br/>
+function check_platform_collisions() {<br/>
+ if (collide(_game.platform, _player)) {<br/>
+  _player.is_jumping = false;<br/>
+  _player.y = _game.platform.y;<br/>
+  _player.velocity_y = 0;<br/>
+ }<br/>
+}<br/>
+<br/>
+fdas<br/>
+<br/>
+GOTO 034</p>
+</li>
+<li>
+<p class="binderItem"><strong>034</strong><br/>GOTO 040</p>
+</li>
+<li>
+<p class="binderItem"><strong>040 Adding goals</strong><br/>GOTO 041</p>
+</li>
+<li>
+<p class="binderItem"><strong>041 Goal first collision</strong><br/>GOTO 031</p>
+</li>
+<li>
+<p class="binderItem"><strong>042 Game over disable input</strong><br/>GOTO 040</p>
+</li>
+<li>
+<p class="binderItem"><strong>043 Goal (after Jumping)</strong><br/><br/>
+The goal is displayed, but we want to detect when the player touches the goal.<br/>
+<br/>
+to do that we need collision detection<br/>
+<br/>
+<br/>
+<br/>
+function check_collisions() {<br/>
+ check_platform_collisions();<br/>
+ check_goal_collisions();<br/>
+}<br/>
+<br/>
+<br/>
+and add check_goal_collisions():<br/>
+<br/>
+function check_platform_collisions() {<br/>
+ ...<br/>
+}<br/>
+<br/>
+function check_goal_collisions() {<br/>
+ var goal = _game.goal;<br/>
+ if (collide(goal, _player)) {<br/>
+  _game.game_over = true;<br/>
+ }<br/>
+}<br/>
+<br/>
+// This is called ~60 times per second to update the world.<br/>
+function update_world() ...</p>
+</li>
+<li>
+<p class="binderItem"><strong>044</strong><br/><br/>
+<br/>
+all the code does so far is set a flag when it detects a collision. hard to tell if it is actually working or not.<br/>
+<br/>
+We need to show something to the player when the game is over:<br/>
+<br/>
+function draw() {<br/>
+ var canvas = document.getElementById("stage");<br/>
+ var ctx = canvas.getContext("2d");<br/>
+<br/>
+ erase(ctx);<br/>
+ draw_platforms(ctx);<br/>
+ draw_goal(ctx);<br/>
+ draw_player(ctx);<br/>
+<br/>
+ if (_game.game_over) {<br/>
+  // Dim out the stage by drawing a transparent black rectangle over it.<br/>
+  ctx.fillStyle = "rgba(0, 0, 0, 0.5)";<br/>
+  ctx....</p>
+</li>
+<li>
+<p class="binderItem"><strong>045 Add collide()</strong><br/><br/>
+<br/>
+df<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+function check_goal_collisions() {<br/>
+ ...<br/>
+}<br/>
+<br/>
+// Return true if the 2 objects overlap.<br/>
+function collide(obj1, obj2) {<br/>
+ if ((obj1.x - obj1.origin_x + obj1.width) <= (obj2.x - obj2.origin_x))<br/>
+  return false;<br/>
+ if ((obj1.y - obj1.origin_y + obj1.height) <= (obj2.y - obj2.origin_y))<br/>
+  return false;<br/>
+ if ((obj2.x - obj2.origin_x + obj2.width) <= (obj1.x - obj1.origin_x))<br/>
+  return false;<br/>
+ if ((obj2.y - obj2.origin_y + obj2.height) <= (obj1.y - obj1.origin_y))<br/>
+  return false;<br/>
+ <br/>
+ return true;<br/>
+}<br/>
+<br/>
+// ...</p>
+</li>
+<li>
+<p class="binderItem"><strong>046 Use collide (jump merge)</strong><br/>Now that we have this nifty collide() function, we can use it for our platform collisions as well.<br/>
+<br/>
+function check_platform_collisions() {<br/>
+ if (_player.y > _game.platform.y) {<br/>
+ if (collide(_game.platform, _player)) {<br/>
+  _player.is_jumping = false;<br/>
+  _player.y = _game.platform.y;<br/>
+  _player.velocity_y = 0;<br/>
+ }<br/>
+}<br/>
+<br/>
+<br/>
+GOTO 044</p>
+</li>
+<li>
+<p class="binderItem"><strong>049</strong><br/>Finish this state<br/>
+<br/>
+GOTO 050</p>
+</li>
+</ul>
+<hr/>
+<li>
+<p class="binderItem"><strong>Stage 3</strong></p>
+</li>
+<hr/>
+<ul>
+<li>
+<p class="binderItem"><strong>050 Next</strong><br/>Before we can go further, we need to talk about arrays.<br/>
+<br/>
+*** TODO info about arrays<br/>
+<br/>
+var platform = {};<br/>
+platform.x = 0;<br/>
+<br/>
+var platforms = [];<br/>
+platforms.push({});<br/>
+platforms[0].x = 0;<br/>
+<br/>
+GOTO 051<br/>
+</p>
+</li>
+<li>
+<p class="binderItem"><strong>051 Choose</strong><br/><br/>
+What do you want to do next?<br/>
+<br/>
+Add Monsters or More Platforms?<br/>
+<br/>
+<br/>
+IF you want to add monsters, GOTO 055<br/>
+<br/>
+IF you want to add More Platforms, GOTO 070<br/>
+</p>
+</li>
+<li>
+<p class="binderItem"><strong>055 Add monsters</strong><br/><br/>
+IF you have "Platform II - Four Sided" badge<br/>
+ THEN GOTO 064<br/>
+ ELSE GOTO 063<br/>
+<br/>
+<br/>
+</p>
+</li>
+<li>
+<p class="binderItem"><strong>056 Monster collisions</strong><br/>The monster is drawn, but you can just walk right through it. That's no fun.<br/>
+<br/>
+We can update our collision to support monsters.<br/>
+<br/>
+<br/>
+<br/>
+function check_platform_collisions() { <br/>
+ ...<br/>
+}<br/>
+<br/>
+function check_monster_collisions() {<br/>
+ var monsters = _game.monsters;<br/>
+ for (var i = 0; i < monsters.length; i++) {<br/>
+  var m = monsters[i];<br/>
+  if (collide(m, _player)) {<br/>
+   _game.game_over = true;<br/>
+  }<br/>
+ }<br/>
+}<br/>
+<br/>
+function check_goal_collisions() {<br/>
+ ...<br/>
+}<br/>
+<br/>
+<br/>
+fdfasdf<br/>
+<br/>
+and update check_collisions():<br/>
+<br/>
+function check_collisions() {<br/>
+ ch...</p>
+</li>
+<li>
+<p class="binderItem"><strong>057 Win/Lose Message</strong><br/>It's kinda disappointing that winning and losing both result in the same message, so let's change the message based on whether or not the player reaches the goal.<br/>
+<br/>
+<br/>
+init_game()<br/>
+<br/>
+ // Game state.<br/>
+ _game.game_over = false;<br/>
+ _game.game_win = false;<br/>
+<br/>
+<br/>
+defad<br/>
+<br/>
+function check_goal_collisions() {<br/>
+ var goal = _game.goal;<br/>
+ if (collide(goal, _player)) {<br/>
+  _game.game_over = true;<br/>
+  _game.game_win = true;<br/>
+ }<br/>
+}<br/>
+<br/>
+<br/>
+fdafd<br/>
+<br/>
+in draw():<br/>
+<br/>
+ if (_game.game_over) {<br/>
+  // Dim out the stage by drawing a transparent black r...</p>
+</li>
+<li>
+<p class="binderItem"><strong>060 Choice</strong><br/>What do you want to do next:<br/>
+<br/>
+Make monsters move<br/>
+Add more platforms<br/>
+<br/>
+<br/>
+IF you have the "Platform II - Four Sided" badge<br/>
+ GOTO 061<br/>
+<br/>
+<br/>
+IF you would like to add more platforms, GOTO 070<br/>
+<br/>
+IF you want to make the monsters move, GOTO 061<br/>
+</p>
+</li>
+<li>
+<p class="binderItem"><strong>061 Moving monsters</strong><br/>Let's make the monsters move.<br/>
+<br/>
+<br/>
+<br/>
+function draw_player(ctx) {<br/>
+ ...<br/>
+}<br/>
+<br/>
+function update_monsters() {<br/>
+ var monsters = _game.monsters;<br/>
+ for (var i = 0; i < monsters.length; i++) {<br/>
+  var m = monsters[i];<br/>
+  m.x += m.move_x;<br/>
+  if (m.x <= m.min_x || m.x >= m.max_x) {<br/>
+   m.move_x *= -1;<br/>
+  }<br/>
+ }<br/>
+}<br/>
+<br/>
+// Handle input and move the player.<br/>
+function update_player() {<br/>
+ ...<br/>
+}<br/>
+<br/>
+<br/>
+fdfafd<br/>
+<br/>
+<br/>
+function update_world() {<br/>
+ update_monsters();<br/>
+ update_player();<br/>
+ check_collisions();<br/>
+ draw();<br/>
+ <br/>
+ requestAnimationFrame(update_worl...</p>
+</li>
+<li>
+<p class="binderItem"><strong>063 init monsters (1st)</strong><br/>in init_game():<br/>
+<br/>
+ // Game state.<br/>
+ _game.game_over = false;<br/>
+ _game.platform = create_platform(0, 360, _game.width, 40);<br/>
+ _game.monsters = [];<br/>
+ _game.monsters.push(create_monster(350, 360, 20, 20));<br/>
+ _game.goal = create_goal(500, 360);<br/>
+<br/>
+fdafdsa<br/>
+<br/>
+<br/>
+<br/>
+GOTO 065</p>
+</li>
+<li>
+<p class="binderItem"><strong>064 init monsters (2nd)</strong><br/>in init_game():<br/>
+<br/>
+ // Game state.<br/>
+ _game.game_over = false;<br/>
+ _game.platforms = [];<br/>
+ ...<br/>
+ _game.platforms.push(create_platform(400, 170, 80, 20));<br/>
+ _game.platforms.push(create_platform(460, 110, 40, 20));<br/>
+ _game.monsters = [];<br/>
+ _game.monsters.push(create_monster(350, 360, 20, 20));<br/>
+ _game.goal = create_goal(500, 360);<br/>
+<br/>
+fdafdsa<br/>
+<br/>
+GOTO 065</p>
+</li>
+<li>
+<p class="binderItem"><strong>065 init monsters2</strong><br/><br/>
+<br/>
+To add monsters:<br/>
+<br/>
+function create_platform(x, y, width, height) {<br/>
+ ...<br/>
+}<br/>
+<br/>
+function create_monster(x, y, width, height) {<br/>
+ var m = {};<br/>
+ m.x = x;<br/>
+ m.y = y;<br/>
+ m.width = width;<br/>
+ m.height = height;<br/>
+ m.origin_x = m.width / 2;<br/>
+ m.origin_y = m.height;<br/>
+ return m;<br/>
+}<br/>
+<br/>
+function create_goal(x, y) {<br/>
+ ...<br/>
+}<br/>
+<br/>
+<br/>
+fdsfsd<br/>
+<br/>
+<br/>
+function draw_platforms(ctx) {<br/>
+ ...<br/>
+}<br/>
+<br/>
+function draw_monsters(ctx) {<br/>
+ var monsters = _game.monsters;<br/>
+ for (var i = 0; i < monsters.length; i++) {<br/>
+  var m = monsters[i];<br/>
+  ctx.fillStyle = "#80000...</p>
+</li>
+<li>
+<p class="binderItem"><strong>070 Platform arrays</strong><br/><br/>
+Want to add more platforms<br/>
+<br/>
+IF you have the "Monster I - Stationary" badge<br/>
+ THEN GOTO 077<br/>
+ ELSE GOTO 076<br/>
+</p>
+</li>
+<li>
+<p class="binderItem"><strong>071 Add 2nd</strong><br/>Adding a second platform<br/>
+<br/>
+To add a new platform, all we need to do is create a new one and add it to the platforms array.<br/>
+<br/>
+ // Game state.<br/>
+ _game.game_over = false;<br/>
+ _game.platforms = [];<br/>
+ _game.platforms.push(create_platform(0, 360, _game.width, 40));<br/>
+ _game.platforms.push(create_platform(200, 290, 80, 20));<br/>
+ _game.goal = create_goal(500, 360);<br/>
+<br/>
+GOTO 078</p>
+</li>
+<li>
+<p class="binderItem"><strong>072 Better Collisions</strong><br/>Change collide() from:<br/>
+<br/>
+<br/>
+// Return true if the 2 objects overlap.<br/>
+function collide(obj1, obj2) {<br/>
+ if ((obj1.x - obj1.origin_x + obj1.width) <= (obj2.x - obj2.origin_x))<br/>
+  return false;<br/>
+ if ((obj1.y - obj1.origin_y + obj1.height) <= (obj2.y - obj2.origin_y))<br/>
+  return false;<br/>
+ if ((obj2.x - obj2.origin_x + obj2.width) <= (obj1.x - obj1.origin_x))<br/>
+  return false;<br/>
+ if ((obj2.y - obj2.origin_y + obj2.height) <= (obj1.y - obj1.origin_y))<br/>
+  return false;<br/>
+ <br/>
+ return true;<br/>
+}<br/>
+<br/>
+<br/>
+to:<br/>
+<br/>
+<br/>
+// If the 2 objects ove...</p>
+</li>
+<li>
+<p class="binderItem"><strong>073 Fixing the platforms</strong><br/>Now that we have the collision info, we can fix up the platforms.<br/>
+<br/>
+To do that we need to change how we handle platform collisions<br/>
+<br/>
+old:<br/>
+<br/>
+function check_platform_collisions() {<br/>
+ var platforms = _game.platforms;<br/>
+ for (var i = 0; i < platforms.length; i++) {<br/>
+  if (collide(platforms[i], _player)) {<br/>
+   _player.is_jumping = false;<br/>
+   _player.y = platforms[i].y;<br/>
+   _player.velocity_y = 0;<br/>
+  }<br/>
+ }<br/>
+}<br/>
+<br/>
+<br/>
+new:<br/>
+<br/>
+function check_platform_collisions() {<br/>
+ var platforms = _game.platforms;<br/>
+ for (var i = 0; i < plat...</p>
+</li>
+<li>
+<p class="binderItem"><strong>074 Better side walls</strong><br/>Now that we have properly behaving platforms, we can add side walls on the left and right and remove our earlier code that constrained the player on the screen.<br/>
+<br/>
+<br/>
+fdafda<br/>
+<br/>
+in init_game()<br/>
+<br/>
+ _game.platforms = [];<br/>
+ // The bottom brick platform along the bottom of the stage.<br/>
+ _game.platforms.push(create_platform(0, 360, _game.width, 40));<br/>
+ // The left offstage 'wall' to keep the player on the stage.<br/>
+ _game.platforms.push(<br/>
+  create_platform(-60, -_game.height, 60, 2 * _game.height));<br/>
+ // The right off...</p>
+</li>
+<li>
+<p class="binderItem"><strong>075</strong><br/>fd<br/>
+<br/>
+function draw_platforms(ctx) {<br/>
+ var platform = _game.platform;<br/>
+ var platform = _game.platforms[0];<br/>
+ ctx.fillStyle = "rgb(153, 102, 51)";<br/>
+ ctx.fillRect(platform.x, platform.y, platform.width, platform.height);<br/>
+}<br/>
+<br/>
+fdafd<br/>
+<br/>
+<br/>
+function check_platform_collisions() {<br/>
+ if (collide(_game.platform, _player)) {<br/>
+ if (collide(_game.platforms[0], _player)) {<br/>
+  _player.is_jumping = false;<br/>
+  _player.y = _game.platform.y;<br/>
+  _player.y = _game.platforms[0].y;<br/>
+  _player.velocity_y = 0;<br/>
+ }<br/>
+}<br/>
+<br/>
+Run. it should be the...</p>
+</li>
+<li>
+<p class="binderItem"><strong>076 More platforms (1st)</strong><br/><br/>
+More platforms<br/>
+<br/>
+We need an array of platforms.<br/>
+<br/>
+ // Game state.<br/>
+ _game.game_over = false;<br/>
+ _game.platform = create_platform(0, 360, _game.width, 40);<br/>
+ _game.platforms = [];<br/>
+ _game.platforms.push(create_platform(0, 360, _game.width, 40));<br/>
+ _game.goal = create_goal(500, 360);<br/>
+<br/>
+fdsafdfdsfdsa<br/>
+<br/>
+GOTO 075</p>
+</li>
+<li>
+<p class="binderItem"><strong>077 More platforms (2nd)</strong><br/><br/>
+More platforms<br/>
+<br/>
+Just like we did with the monsters, we need to add an array of platforms.<br/>
+<br/>
+ // Game state.<br/>
+ _game.game_over = false;<br/>
+ _game.game_win = false;<br/>
+ _game.platform = create_platform(0, 360, _game.width, 40);<br/>
+ _game.platforms = [];<br/>
+ _game.platforms.push(create_platform(0, 360, _game.width, 40));<br/>
+ _game.monsters = [];<br/>
+<br/>
+<br/>
+fdsafdfdsfdsa<br/>
+<br/>
+GOTO 075</p>
+</li>
+<li>
+<p class="binderItem"><strong>078 Add 3 more platforms</strong><br/><br/>
+Try it out to see how it works.<br/>
+<br/>
+When you land on the top it works well, but when you hit the bottom or sides, it acts a bit weird. You always jump to the top of the platform.<br/>
+<br/>
+Indeed, all collisions with the platforms are currently assumed to be at the top.<br/>
+<br/>
+To fix this, we need to do a better job with our collision detection. In addition to answering the question "did object A collide with object B", we also need to know if object B (the player) collided with the top, bottom, left or right of...</p>
+</li>
+<li>
+<p class="binderItem"><strong>079 Add 2nd (merge)</strong><br/>Adding a second platform<br/>
+<br/>
+To add a new platform, all we need to do is create a new one and add it to the platforms array.<br/>
+<br/>
+init_game():<br/>
+<br/>
+ // Game state.<br/>
+ _game.game_over = false;<br/>
+ _game.game_win = false;<br/>
+ _game.platforms = [];<br/>
+ _game.platforms.push(create_platform(0, 360, _game.width, 40));<br/>
+ _game.platforms.push(create_platform(200, 290, 80, 20));<br/>
+ _game.monsters = [];<br/>
+<br/>
+<br/>
+GOTO 078</p>
+</li>
+<li>
+<p class="binderItem"><strong>089</strong><br/>Finish stage<br/>
+<br/>
+GOTO 090</p>
+</li>
+</ul>
+<hr/>
+<li>
+<p class="binderItem"><strong>Stage 4</strong></p>
+</li>
+<hr/>
+<ul>
+<li>
+<p class="binderItem"><strong>090</strong><br/>Multiple levels<br/>
+<br/>
+init_game is getting to be kindofa mess. We should clean that up. and add multiple levels since we're going to need then.<br/>
+<br/>
+YOU: but we haven't finished the first level yet.<br/>
+<br/>
+***<br/>
+<br/>
+<br/>
+<br/>
+Let's add a new _levels global variable.<br/>
+<br/>
+<br/>
+// Global variables.<br/>
+var _game = {};<br/>
+var _player = {};<br/>
+var _levels = [];<br/>
+<br/>
+Note the square brackets since _levels is an array.<br/>
+<br/>
+And copy over the platforms, monsters and goal into a new function called init_level1()<br/>
+<br/>
+init_game:<br/>
+<br/>
+ // Game state.<br/>
+ _game.game_ove...</p>
+</li>
+<li>
+<p class="binderItem"><strong>091 Cleaning up</strong><br/>Before we add new levels we should streamline the level creation code so that it is easy to create new levels.<br/>
+<br/>
+"streamline" and "clean up" sound like fancy ways of saying that I'm going to write a lot of code, but I'm not going to see the game get any better.<br/>
+<br/>
+True, but the code will get better, which will make it easier for you to add more interesting features to the game. If you don't do this, the code will become harder to manage.<br/>
+<br/>
+<br/>
+We could just copy and paste everything, but that would mak...</p>
+</li>
+<li>
+<p class="binderItem"><strong>092 Adding a second level</strong><br/>Now that level 1 has been cleaned up, it's easy to add more levels.<br/>
+<br/>
+function init_level1() {<br/>
+ ...<br/>
+}<br/>
+<br/>
+function init_level2() {<br/>
+ var level = {};<br/>
+ init_level_defaults(level);<br/>
+<br/>
+ level.player_start_x = 20;<br/>
+ level.player_start_y = 260;<br/>
+<br/>
+ add_default_platforms(level);<br/>
+<br/>
+ level.goal = create_goal(500, 360);<br/>
+ <br/>
+ _levels.push(level);<br/>
+}<br/>
+<br/>
+function init_level3() {<br/>
+ var level = {};<br/>
+ init_level_defaults(level);<br/>
+<br/>
+ level.player_start_x = 20;<br/>
+ level.player_start_y = 260;<br/>
+<br/>
+ add_default_platforms(level);<br/>
+<br/>
+ level.goa...</p>
+</li>
+<li>
+<p class="binderItem"><strong>093 Connecting the levels</strong><br/><br/>
+To connect the levels, we need to modify the goal so that it indicates the next level to go to.<br/>
+<br/>
+Since we don't have a "game over" level, we'll (temporarily) connect the last level back to the first.<br/>
+<br/>
+YOU: doesn't that mean that the game will never yet.<br/>
+<br/>
+B: Yes, but it's only temporary. We'll be adding a proper ending later.<br/>
+<br/>
+<br/>
+function create_goal(x, y) {<br/>
+function create_goal(x, y, next_level) {<br/>
+ var goal = {};<br/>
+ goal.x = x;<br/>
+ goal.y = y;<br/>
+ goal.width = 20;<br/>
+ goal.height = 20;<br/>
+ goal.origin_x = goal...</p>
+</li>
+</ul>
+<hr/>
+<li>
+<p class="binderItem"><strong>Stage 5</strong></p>
+</li>
+<hr/>
+<ul>
+<li>
+<p class="binderItem"><strong>100 Choices</strong><br/>What would you like to do next?<br/>
+<br/>
+IF you want to work on your:<br/>
+  "Sprite II - Image"<br/>
+  "Sprite III - Direction"<br/>
+  "Platform III - Pattern"<br/>
+ badges<br/>
+ //To work on your "Sprite" and "Platform" badges:<br/>
+ //This will add bitmap images for the player, monsters, items and platforms<br/>
+THEN GOTO 110<br/>
+<br/>
+IF you want to work on your:<br/>
+  "Vitality I - Health"<br/>
+  "Vitality II - Reincarnation"<br/>
+ badges<br/>
+ //To work on your "Vitality" badges:<br/>
+ //This will add health and multiple lives<br/>
+THEN GOTO 170<br/>
+<br/>
+IF you want to work on...</p>
+</li>
+<li>
+<p class="binderItem"><strong>110 Images</strong><br/>IF you do NOT have the "Sprite II - Image" badge:<br/>
+THEN GOTO 120<br/>
+<br/>
+ELSE IF you do NOT have the "Sprite III - Direction" badge:<br/>
+THEN GOTO 115<br/>
+<br/>
+ELSE IF you do NOT have the "Platform III - Pattern" badge:<br/>
+THEN GOTO 111<br/>
+<br/>
+ELSE GOTO 100</p>
+</li>
+<li>
+<p class="binderItem"><strong>111 Platform pattern</strong><br/>Use bitmap images for the platforms<br/>
+<br/>
+<br/>
+<br/>
+Create the images/backgrounds directory.<br/>
+<br/>
+Create 3 icons:<br/>
+ backgrounds/block.png<br/>
+ backgrounds/brick.png<br/>
+ backgrounds/dirt.png<br/>
+<br/>
+<br/>
+fdsafasd<br/>
+<br/>
+function init_game() {<br/>
+ ...<br/>
+ _game.imagedir = "images/";<br/>
+ _game.imagedir_player = _game.imagedir + "player/";<br/>
+ _game.imagedir_monsters = _game.imagedir + "monsters/";<br/>
+ _game.imagedir_backgrounds = _game.imagedir + "backgrounds/";<br/>
+ ...<br/>
+}<br/>
+<br/>
+<br/>
+fdafdsa<br/>
+<br/>
+function init_level1() {<br/>
+ ...<br/>
+ add_default_platforms(level);<br/>
+ var platform_...</p>
+</li>
+<li>
+<p class="binderItem"><strong>115 Flip direction</strong><br/>We could redraw the images in the other direction and then load both of them and choose the appropriate image based on the direction, but it's tedious to draw each image twice.<br/>
+<br/>
+It's easier to have the computer flip them for us as needed.<br/>
+<br/>
+We do that by adding transformations. A transformation changes the coordinate system that we're drawing into.<br/>
+<br/>
+For example:<br/>
+origin at top<br/>
+draw @ 100, 150<br/>
+<br/>
+or<br/>
+transform to move origin down to 100, 150<br/>
+draw @ 0,0<br/>
+<br/>
+are the same thing. this is called translation s...</p>
+</li>
+<li>
+<p class="binderItem"><strong>120 Player images</strong><br/>Use bitmap images for the player<br/>
+<br/>
+<br/>
+Create the images/player directory.<br/>
+<br/>
+Create 3 icons:<br/>
+ player/happy.png<br/>
+ player/normal.png<br/>
+ player/sad.png<br/>
+<br/>
+<br/>
+<br/>
+function init_game() {<br/>
+ ...<br/>
+ // The keymap keeps track of which keys are currently being pressed.<br/>
+ _game.keymap = {};<br/>
+<br/>
+ _game.imagedir = "images/";<br/>
+ _game.imagedir_player = _game.imagedir + "player/";<br/>
+<br/>
+ // Game state.<br/>
+ _game.game_over = false;<br/>
+ ...<br/>
+}<br/>
+<br/>
+<br/>
+fdas<br/>
+<br/>
+<br/>
+function init_player() {<br/>
+ // Player x,y are initialized by the level.<br/>
+ _player.x = 0;<br/>
+ _player.y...</p>
+</li>
+<li>
+<p class="binderItem"><strong>121 Monster images</strong><br/>Use bitmap images for the monsters<br/>
+<br/>
+<br/>
+Now do the same thing for monsters<br/>
+<br/>
+Create the images/monsters directory.<br/>
+<br/>
+Create 2 icons:<br/>
+ monsters/vlad.png<br/>
+ monsters/henrietta.png<br/>
+<br/>
+<br/>
+fdafdsa<br/>
+<br/>
+function init_game() {<br/>
+ ...<br/>
+ _game.imagedir = "images/";<br/>
+ _game.imagedir_player = _game.imagedir + "player/";<br/>
+ _game.imagedir_monsters = _game.imagedir + "monsters/";<br/>
+ ...<br/>
+}<br/>
+<br/>
+<br/>
+fdas<br/>
+And now we need to specify which image to use for each monster.<br/>
+<br/>
+<br/>
+function init_level1() {<br/>
+ ...<br/>
+ var monst = [<br/>
+  [350, 360, 20, 20, 60, 4...</p>
+</li>
+<li>
+<p class="binderItem"><strong>122 Item images</strong><br/>add item images<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+GOTO 100</p>
+</li>
+<li>
+<p class="binderItem"><strong>130 Items</strong><br/><br/>
+IF you do NOT have the "Treasure I - Key" badge<br/>
+ GOTO 131<br/>
+<br/>
+IF you have the "Vitality I - Health" badge<br/>
+ THEN GOTO 140<br/>
+<br/>
+GOTO 100</p>
+</li>
+<li>
+<p class="binderItem"><strong>131 Key</strong><br/>Add key<br/>
+<br/>
+We'll add a key as an item. and support items just like we do for monsters where we have an array that describes the items that we want to create.<br/>
+<br/>
+<br/>
+fda<br/>
+<br/>
+function init_level_defaults(level) {<br/>
+ level.platforms = [];<br/>
+ level.monsters = [];<br/>
+ level.items = [];<br/>
+}<br/>
+<br/>
+This initializes all of the levels.<br/>
+<br/>
+<br/>
+IF you have the "Sprite II - Image" badge, THEN GOTO 133<br/>
+ ELSE GOTO 132<br/>
+<br/>
+<br/>
+</p>
+</li>
+<li>
+<p class="binderItem"><strong>132 Item draw - no image</strong><br/>fda<br/>
+function init_level1() {<br/>
+ ...<br/>
+ add_monsters(level, monst);<br/>
+<br/>
+ var items = [<br/>
+  [480, 110, 20, 20, "key"],<br/>
+ ];<br/>
+ add_items(level, items);<br/>
+<br/>
+ level.goal = create_goal(35, 190, 2);<br/>
+ <br/>
+ _levels.push(level);<br/>
+}<br/>
+<br/>
+fasfdsafsf<br/>
+<br/>
+<br/>
+function create_monster(x, y, width, height, min_x, max_x, move_x) {<br/>
+ ...<br/>
+}<br/>
+<br/>
+// item_data: [x, y, width, height, type]<br/>
+function add_items(level, item_data) {<br/>
+ for (var i = 0; i < item_data.length; i++) {<br/>
+  var d = item_data[i];<br/>
+  var item = create_item(d[0], d[1], d[2], d[3], d[4])...</p>
+</li>
+<li>
+<p class="binderItem"><strong>133 item draw - image</strong><br/><br/>
+<br/>
+<br/>
+draw key image<br/>
+<br/>
+<br/>
+<br/>
+load image<br/>
+<br/>
+<br/>
+function init_game() {<br/>
+ ...<br/>
+ _game.imagedir_monsters = _game.imagedir + "monsters/";<br/>
+ _game.imagedir_items = _game.imagedir + "items/";<br/>
+ ...<br/>
+}<br/>
+<br/>
+<br/>
+fdfdas<br/>
+<br/>
+fda<br/>
+function init_level1() {<br/>
+ ...<br/>
+ add_monsters(level, monst);<br/>
+<br/>
+ var items = [<br/>
+  [480, 110, 20, 20, "key", "key"],<br/>
+ ];<br/>
+ add_items(level, items);<br/>
+<br/>
+ level.goal = create_goal(35, 190, 2);<br/>
+ <br/>
+ _levels.push(level);<br/>
+}<br/>
+<br/>
+fasfdsafsf<br/>
+<br/>
+<br/>
+function create_monster(x, y, width, height, min_x, max_x, move_x, images) {<br/>
+ ...<br/>
+}<br/>
+<br/>
+// ...</p>
+</li>
+<li>
+<p class="binderItem"><strong>134 Item collide</strong><br/>To make player collide with item<br/>
+<br/>
+function check_collisions() {<br/>
+ check_platform_collisions();<br/>
+ check_monster_collisions();<br/>
+ check_item_collisions();<br/>
+ check_goal_collisions();<br/>
+}<br/>
+<br/>
+fdasfdsaf<br/>
+<br/>
+function check_monster_collisions() {<br/>
+ ...<br/>
+}<br/>
+<br/>
+function check_item_collisions() {<br/>
+ var level = _levels[_game.current_level];<br/>
+ var items = level.items;<br/>
+ for (var i = 0; i < items.length; i++) {<br/>
+  var item = items[i];<br/>
+  if (!item.found) {<br/>
+   if (collide(item, _player)) {<br/>
+    item.found = true;<br/>
+   }<br/>
+  }<br/>
+ }<br/>
+}<br/>
+<br/>
+func...</p>
+</li>
+<li>
+<p class="binderItem"><strong>135 Item key</strong><br/>Now that we have support for generic items, we have add different item types the behave differently.<br/>
+<br/>
+The first item is a key that can be used to unlock the goal.<br/>
+<br/>
+We have one key on each level that is used to unlock the goal. If the play does not have the key, they will not be able to enter the goal.<br/>
+<br/>
+<br/>
+function init_level_defaults(level) {<br/>
+ level.player_has_key = false;<br/>
+<br/>
+ level.platforms = [];<br/>
+ level.monsters = [];<br/>
+ level.items = [];<br/>
+}<br/>
+<br/>
+fdasfdsa<br/>
+<br/>
+function check_item_collisions() {<br/>
+ var level = ...</p>
+</li>
+<li>
+<p class="binderItem"><strong>136 level 2-3 - no image</strong><br/>Note that you the goal doesn't indicate whether or not it is currently locked. We'll update that code once we start adding images.<br/>
+<br/>
+<br/>
+We can add a key to level 2<br/>
+<br/>
+function init_level2() {<br/>
+ ...<br/>
+ add_default_platforms(level);<br/>
+<br/>
+ var items = [<br/>
+  [250, 360, 20, 20, "key"],<br/>
+ ];<br/>
+ add_items(level, items);<br/>
+<br/>
+ level.goal = create_goal(500, 360, 2);<br/>
+ ...<br/>
+}<br/>
+<br/>
+<br/>
+fdafd<br/>
+<br/>
+Rather than add a key to level 3 (which would just allow us to loop back to level 1 in any case), we can add a new item that ends the game when y...</p>
+</li>
+<li>
+<p class="binderItem"><strong>137 level 2-3 - image</strong><br/>change goal based on whether or not the player has the key<br/>
+<br/>
+<br/>
+TITLE = Keys for level 2 and 3<br/>
+ID = 137<br/>
+<br/>
+<br/>
+B: We can add a key to level 2<br/>
+<br/>
+BEGIN_CODE<br/>
+.function init_level2() {<br/>
+. ...<br/>
+. add_default_platforms(level);<br/>
+.<br/>
++ var items = [<br/>
++  [250, 360, 18, 20, "key", "key"],<br/>
++ ];<br/>
++ add_items(level, items);<br/>
++<br/>
+. level.goal = create_goal(500, 360, 2);<br/>
+. ...<br/>
+.}<br/>
+END_CODE<br/>
+<br/>
+B: Rather than add a key to level 3 (which would just allow us to loop back to level 1 in any case), we can add a new item that ends the game...</p>
+</li>
+<li>
+<p class="binderItem"><strong>138 finish</strong><br/>fdsafdsa<br/>
+<br/>
+function check_item_collisions() {<br/>
+ var level = _levels[_game.current_level];<br/>
+ var items = level.items;<br/>
+ for (var i = 0; i < items.length; i++) {<br/>
+  var item = items[i];<br/>
+  if (!item.found) {<br/>
+   if (collide(item, _player)) {<br/>
+    if (item.type == "key") {<br/>
+     level.player_has_key = true;<br/>
+    } else if (item.type == "finish") {<br/>
+     _game.game_over = true;<br/>
+     _game.game_win = true;<br/>
+    }<br/>
+    item.found = true;<br/>
+   }<br/>
+  }<br/>
+ }<br/>
+}<br/>
+<br/>
+<br/>
+Gain the "Treasure II - Finish" badge<br/>
+<br/>
+fdsafdsa<br/>
+<br/>
+GOTO 100</p>
+</li>
+<li>
+<p class="binderItem"><strong>139 add key to status bar</strong><br/>draw key in status bar<br/>
+<br/>
+<br/>
+GOTO 134<br/>
+</p>
+</li>
+<li>
+<p class="binderItem"><strong>145 Potion</strong><br/>Add simple potion<br/>
+<br/>
+<br/>
+GOTO 130</p>
+</li>
+<li>
+<p class="binderItem"><strong>170 Vitality</strong><br/><br/>
+IF you do NOT have the "Vitality I - Health" badge:<br/>
+THEN GOTO 180<br/>
+<br/>
+ELSE IF you do NOT have the "Vitality II - Reincarnation" badge:<br/>
+THEN GOTO 190<br/>
+<br/>
+ELSE GOTO 100</p>
+</li>
+<li>
+<p class="binderItem"><strong>180 Health</strong><br/>Add player health  (this adds status bar)<br/>
+<br/>
+<br/>
+<br/>
+fdafdsa<br/>
+<br/>
+<br/>
+function init_player() {<br/>
+ ...<br/>
+ _player.origin_x = 0;<br/>
+ _player.origin_y = 0;<br/>
+<br/>
+ _player.health_max = 50;<br/>
+ _player.health = _player.health_max;<br/>
+ _player.is_jumping = false;<br/>
+ ...<br/>
+}<br/>
+<br/>
+fdafdasfad<br/>
+<br/>
+<br/>
+function start_level(level_id) {<br/>
+ ...<br/>
+}<br/>
+<br/>
+function adjust_health(amount) {<br/>
+ _player.health += amount;<br/>
+ if (_player.health <= 0) {<br/>
+  _player.health = 0;<br/>
+  _game.game_over = true;<br/>
+ }<br/>
+ if (_player.health > _player.health_max) {<br/>
+  _player.health = _player.hea...</p>
+</li>
+<li>
+<p class="binderItem"><strong>190 Multiple lives</strong><br/>Add player multiple lives<br/>
+<br/>
+<br/>
+<br/>
+GOTO 100</p>
+</li>
+</ul>
+<hr/>
+<li>
+<p class="binderItem"><strong>Stage 6</strong></p>
+</li>
+<hr/>
+<ul>
+<li>
+<p class="binderItem"><strong>250 Transitions</strong><br/>To work on your "Transition" badges:<br/>
+ GOTO 150<br/>
+Add title screen<br/>
+Add transitions between levels</p>
+</li>
+<li>
+<p class="binderItem"><strong>200</strong><br/>IF you wan to work on your<br/>
+  "Transition I - Title"<br/>
+  "Transition II - Timer"<br/>
+ badges<br/>
+ //To work on your "Transition" badges:<br/>
+ //This will add a title screen and delayed transitions between levels<br/>
+THEN GOTO 150</p>
+</li>
+<li>
+<p class="binderItem"><strong>xxx Title screen</strong><br/>doesn't have a goal<br/>
+ we can handle by giving it a goal (offscreen), or by checking each level for a goal.</p>
+</li>
+<li>
+<p class="binderItem"><strong>xxx Font</strong></p>
+</li>
+</ul>
+<hr/>
+<li>
+<p class="binderItem"><strong>xxx Breaking into multiple files</strong><br/>One large file. unwieldy<br/>
+<br/>
+We can break it up, but how?<br/>
+<br/>
+One obvious candidate is the level initialization functions. they're big.<br/>
+ Each level could be its own file, or they could all be in one levels.js file<br/>
+<br/>
+We could also have all the drawing-related functions in a draw.js<br/>
+<br/>
+Or we could move all the player related functions into player.js<br/>
+<br/>
+Where would we put draw_player()?<br/>
+<br/>
+cf. object-oriented programming.<br/>
+<br/>
+Each level could be in a separate file, that would make it easier for multiple people to ...</p>
+</li>
+</ul>
+
+</td>
+<td width="8">
+</td>
+</tr>
+</table>
+
+</td>
+</tr>
+</table>
+
+</body>
+</html>

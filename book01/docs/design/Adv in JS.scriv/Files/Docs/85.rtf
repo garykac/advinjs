@@ -1,0 +1,82 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1138\cocoasubrtf510
+{\fonttbl\f0\fswiss\fcharset0 Helvetica;\f1\fmodern\fcharset0 Courier;\f2\fmodern\fcharset0 Courier-Bold;
+}
+{\colortbl;\red255\green255\blue255;\red105\green105\blue105;}
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\fi360\sl288\slmult1\pardirnatural
+
+\f0\fs24 \cf0 Now that level 1 has been cleaned up, it's easy to add more levels.\
+\
+\pard\tx1260\tx1860\tx2420\tx3020\tx3560\tx4140\li700\sl288\slmult1\pardirnatural
+
+\f1 \cf2 function init_level1() \{\
+	...\
+\}\
+\
+
+\f2\b \cf0 function init_level2() \{\
+	var level = \{\};\
+	init_level_defaults(level);\
+\
+	level.player_start_x = 20;\
+	level.player_start_y = 260;\
+\
+	add_default_platforms(level);\
+\
+	level.goal = create_goal(500, 360);\
+	\
+	_levels.push(level);\
+\}\
+\
+function init_level3() \{\
+	var level = \{\};\
+	init_level_defaults(level);\
+\
+	level.player_start_x = 20;\
+	level.player_start_y = 260;\
+\
+	add_default_platforms(level);\
+\
+	level.goal = create_goal(500, 360);\
+	\
+	_levels.push(level);\
+\}\
+
+\f1\b0 \cf2 \
+// platform_data: [x, y, width, height]\
+function add_platforms(level, platform_data) \{\
+	...\
+\}\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\fi360\sl288\slmult1\pardirnatural
+
+\f0 \cf0 \
+These are basically empty placeholder levels at the moment. We'll be fleshing them out later. For now, we just want to get these levels hooked up and then finish up level 1.\
+\
+fdads\
+\
+\pard\tx1260\tx1860\tx2420\tx3020\tx3560\tx4140\li700\sl288\slmult1\pardirnatural
+
+\f1 \cf2 // Initialize the game state.\
+function init() \{\
+	init_game();\
+	init_player();\
+	init_level1();\
+
+\f2\b \cf0 	init_level2();\
+	init_level3();\
+
+\f1\b0 \cf2 \}\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\fi360\sl288\slmult1\pardirnatural
+
+\f0 \cf0 \
+fdafd\
+\
+YOU: If we're going to leave them empty, why'd we bother creating them now?\
+\
+B: So that we have the structure and framework in place. If we plow ahead with level 1 now, we'll have to make lots of tiny changes later when we want to add new levels. By adding this framework now, when we're ready to work on the other levels, we'll be able to start immediately rather than cleaning up the (much larger) mess that we made.\
+\
+Run your code now and nothing (still!) has changed.\
+\
+We need to connect the levels to each other.\
+\
+GOTO 093\
+}

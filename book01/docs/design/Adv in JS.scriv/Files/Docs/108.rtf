@@ -1,0 +1,205 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1138\cocoasubrtf510
+{\fonttbl\f0\fswiss\fcharset0 Helvetica;\f1\fmodern\fcharset0 Courier-Bold;\f2\fmodern\fcharset0 Courier;
+}
+{\colortbl;\red255\green255\blue255;\red105\green105\blue105;}
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\fi360\sl288\slmult1\pardirnatural
+
+\f0\fs24 \cf0 We could redraw the images in the other direction and then load both of them and choose the appropriate image based on the direction, but it's tedious to draw each image twice.\
+\
+It's easier to have the computer flip them for us as needed.\
+\
+We do that by adding transformations. A transformation changes the coordinate system that we're drawing into.\
+\
+For example:\
+origin at top\
+draw @ 100, 150\
+\
+or\
+transform to move origin down to 100, 150\
+draw @ 0,0\
+\
+are the same thing. this is called translation since we have simply translated (moved) the origin of the coordinate system.\
+\
+We can also do a scaling transformation.\
+If we apply a 2x scale transformation\
+then drawing a 10x10 box at 100,150 will appear to draw a 20x20 box at 200,300\
+\
+Negative scales can be used to flip the image.\
+We need to adjust the origin so that it flips in the correct spot.\
+\
+Setting the transformation affects all drawing the comes afterward. So we need to set the transform that we want and then restore it to its original.\
+\
+the canvas context provides functions to save and restore the context, but they are slow because they save the *entire* context font, fillStyle, strokeStyle, transformation and a bunch of other stuff. Since we only need the transform to be saved and restored, we can write our own functions to do this.\
+\
+\
+Put these before the draw() function:\
+\
+\pard\tx1260\tx1860\tx2420\tx3020\tx3560\tx4140\li700\sl288\slmult1\pardirnatural
+
+\f1\b \cf0 function set_transform(ctx, obj) \{\
+	var x = obj.x - obj.origin_x;\
+	var y = obj.y - obj.origin_y;\
+\
+	// Adjust origin if we're facing left.\
+	if (obj.dir < 0)\
+		x += obj.width;\
+\
+	// Translate origin to (x,y).\
+	ctx.setTransform(1, 0, 0, 1, x, y);\
+\
+	// Flip the image if we're facing left.\
+	if (obj.dir < 0)\
+		ctx.scale(-1, 1);\
+\}\
+\
+function reset_transform(ctx) \{\
+	// Reset transform to the identity matrix.\
+	ctx.setTransform(1, 0, 0, 1, 0, 0);\
+\}\
+
+\f2\b0 \cf2 \
+// Erase the stage and draw all the objects.\
+function draw() \{\
+	...\
+\}\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\fi360\sl288\slmult1\pardirnatural
+
+\f0 \cf0 \
+keep track of the current direction for players and monsters\
+\
+\pard\tx1260\tx1860\tx2420\tx3020\tx3560\tx4140\li700\sl288\slmult1\pardirnatural
+
+\f2 \cf2 function init_player() \{\
+	...\
+	_player.origin_y = 0;\
+\
+	_player.is_jumping = false;\
+
+\f1\b \cf0 	_player.dir = 1;\
+
+\f2\b0 \cf2 	\
+	_player.velocity_x = 0;\
+	...\
+\}\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\fi360\sl288\slmult1\pardirnatural
+
+\f0 \cf0 \
+and fixup the input:\
+\
+\pard\tx1260\tx1860\tx2420\tx3020\tx3560\tx4140\li700\sl288\slmult1\pardirnatural
+
+\f2 \cf2 function check_input() \{\
+	// Left arrow or 'a' to move left.\
+	if (_game.keymap[37] || _game.keymap[65]) \{\
+
+\f1\b \cf0 		_player.dir = -1;\
+
+\f2\b0 \cf2 		_player.velocity_x -= _player.velocity_x_delta;\
+		if (_player.velocity_x < -_player.velocity_x_max)\
+			_player.velocity_x = -_player.velocity_x_max;\
+	\}\
+	// Right arrow or 'd' to move right.\
+	if (_game.keymap[39] || _game.keymap[68]) \{\
+
+\f1\b \cf0 		_player.dir = 1;\
+
+\f2\b0 \cf2 		_player.velocity_x += _player.velocity_x_delta;\
+		if (_player.velocity_x > _player.velocity_x_max)\
+			_player.velocity_x = _player.velocity_x_max;\
+	\}\
+	...\
+\}\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\fi360\sl288\slmult1\pardirnatural
+
+\f0 \cf0 \
+\
+fix the player drawing\
+\
+\pard\tx1260\tx1860\tx2420\tx3020\tx3560\tx4140\li700\sl288\slmult1\pardirnatural
+
+\f2 \cf2 function draw_player(ctx) \{\
+	var sprite = update_player_sprite();\
+
+\f1\b \cf0 	set_transform(ctx, _player);\
+
+\f2\b0 \strike \strikec0 	ctx.drawImage(sprite.img, _player.x - _player.origin_x,\
+					_player.y - _player.origin_y);\
+
+\f1\b \strike0\striked0 	ctx.drawImage(sprite.img, 0, 0);\
+	reset_transform(ctx);\
+
+\f2\b0 \cf2 \}\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\fi360\sl288\slmult1\pardirnatural
+
+\f0 \cf0 \
+\
+\
+and now do the same thing for monsters\
+\
+\pard\tx1260\tx1860\tx2420\tx3020\tx3560\tx4140\li700\sl288\slmult1\pardirnatural
+
+\f2 \cf2 function create_monster(x, y, width, height, min_x, max_x, move_x, image) \{\
+	...\
+	m.min_x = min_x;\
+	m.max_x = max_x;\
+	m.move_x = move_x;\
+
+\f1\b \cf0 	m.dir = (move_x > 0) ? 1 : -1;\
+
+\f2\b0 \cf2 \
+	m.img = new Image();\
+	...\
+\}\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\fi360\sl288\slmult1\pardirnatural
+
+\f0 \cf0 \
+and. no input but we we need to adjust the code that moves the monsters around.\
+\
+\pard\tx1260\tx1860\tx2420\tx3020\tx3560\tx4140\li700\sl288\slmult1\pardirnatural
+
+\f2 \cf2 function update_monsters() \{\
+	var monsters = _levels[_game.current_level].monsters;\
+	for (var i = 0; i < monsters.length; i++) \{\
+		var m = monsters[i];\
+		m.x += m.move_x;\
+		if (m.x <= m.min_x || m.x >= m.max_x) \{\
+			m.move_x *= -1;\
+
+\f1\b \cf0 			m.dir *= -1;\
+
+\f2\b0 \cf2 		\}\
+	\}\
+\}\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\fi360\sl288\slmult1\pardirnatural
+
+\f0 \cf0 \
+fdas\
+\
+\
+\pard\tx1260\tx1860\tx2420\tx3020\tx3560\tx4140\li700\sl288\slmult1\pardirnatural
+
+\f2 \cf2 function draw_monsters(ctx) \{\
+	var level = _levels[_game.current_level];\
+	var monsters = level.monsters;\
+	for (var i = 0; i < monsters.length; i++) \{\
+		var m = monsters[i];\
+
+\f1\b \cf0 		set_transform(ctx, m);\
+
+\f2\b0 \strike \strikec0 		ctx.drawImage(m.img, m.x - m.origin_x, m.y - m.origin_y);\
+
+\f1\b \strike0\striked0 		ctx.drawImage(m.img, 0, 0);\
+		reset_transform(ctx);\
+
+\f2\b0 \cf2 	\}\
+\}\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\fi360\sl288\slmult1\pardirnatural
+
+\f0 \cf0 \
+\
+fdfdas\
+\
+\
+You earned the "Sprite III - Direction" badge\
+\
+GOTO 100}

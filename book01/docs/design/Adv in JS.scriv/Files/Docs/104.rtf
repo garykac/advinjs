@@ -1,0 +1,145 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1138\cocoasubrtf510
+{\fonttbl\f0\fswiss\fcharset0 Helvetica;\f1\fmodern\fcharset0 Courier;\f2\fmodern\fcharset0 Courier-Bold;
+}
+{\colortbl;\red255\green255\blue255;\red105\green105\blue105;}
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\fi360\sl288\slmult1\pardirnatural
+
+\f0\fs24 \cf0 Use bitmap images for the player\
+\
+\
+Create the images/player directory.\
+\
+Create 3 icons:\
+	player/happy.png\
+	player/normal.png\
+	player/sad.png\
+\
+\
+\
+\pard\tx1260\tx1860\tx2420\tx3020\tx3560\tx4140\li700\sl288\slmult1\pardirnatural
+
+\f1 \cf2 function init_game() \{\
+	...\
+	// The keymap keeps track of which keys are currently being pressed.\
+	_game.keymap = \{\};\
+\
+
+\f2\b \cf0 	_game.imagedir = "images/";\
+	_game.imagedir_player = _game.imagedir + "player/";\
+
+\f1\b0 \cf2 \
+	// Game state.\
+	_game.game_over = false;\
+	...\
+\}\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\fi360\sl288\slmult1\pardirnatural
+
+\f0 \cf0 \
+\
+fdas\
+\
+\
+\pard\tx1260\tx1860\tx2420\tx3020\tx3560\tx4140\li700\sl288\slmult1\pardirnatural
+
+\f1 \cf2 function init_player() \{\
+	// Player x,y are initialized by the level.\
+	_player.x = 0;\
+	_player.y = 0;\
+	\
+
+\f2\b \cf0 	// Player width,height and origin are initialized by the current sprite.\
+
+\f1\b0 \strike \strikec0 	_player.width = 20;\
+
+\f2\b \strike0\striked0 	_player.width = 0;\
+
+\f1\b0 \strike \strikec0 	_player.height = 20;\
+
+\f2\b \strike0\striked0 	_player.height = 0;\
+
+\f1\b0 \strike \strikec0 	_player.origin_x = _player.width / 2;\
+
+\f2\b \strike0\striked0 	_player.origin_x = 0;\
+
+\f1\b0 \strike \strikec0 	_player.origin_y = _player.height;\
+
+\f2\b \strike0\striked0 	_player.origin_y = 0;\
+
+\f1\b0 \cf2 \
+	_player.is_jumping = false;\
+	\
+	_player.velocity_x = 0;\
+	_player.velocity_x_delta = 0.8;\
+	_player.velocity_x_max = 3.5;\
+	_player.velocity_y = 0;\
+	_player.velocity_y_jump = -10;\
+	_player.velocity_y_max = 10;\
+\
+
+\f2\b \cf0 	_player.sprite = init_player_sprite("normal", 20, 24);\
+	_player.sprite_sad = init_player_sprite("sad", 30, 17);\
+	_player.sprite_happy = init_player_sprite("happy", 20, 24);\
+	update_player_sprite();\
+
+\f1\b0 \cf2 \}\
+\
+
+\f2\b \cf0 function init_player_sprite(name, width, height, origin_x, origin_y) \{\
+	var sprite = \{\};\
+	sprite.width = width;\
+	sprite.height = height;\
+	sprite.origin_x = width / 2;\
+	sprite.origin_y = height;\
+	sprite.img = new Image();\
+	sprite.img.src = _game.imagedir_player + name + ".png";\
+	return sprite;\
+\}\
+\
+function update_player_sprite() \{\
+	var sprite;\
+	if (_game.game_over && !_game.game_win) \{\
+		sprite = _player.sprite_sad;\
+	\} else if (_game.game_win) \{\
+		sprite = _player.sprite_happy;\
+	\} else \{\
+		sprite = _player.sprite;\
+	\}\
+\
+	// Update the player width, height and origin based on the current sprite.\
+	_player.width = sprite.width;\
+	_player.height = sprite.height;\
+	_player.origin_x = sprite.origin_x;\
+	_player.origin_y = sprite.origin_y;\
+	\
+	return sprite;\
+\}\
+
+\f1\b0 \cf2 \
+function init_level_defaults(level) \{\
+	...\
+\}\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\fi360\sl288\slmult1\pardirnatural
+
+\f0 \cf0 \
+and now replace draw_player to use update_player_sprite just before we draw it.\
+\
+\pard\tx1260\tx1860\tx2420\tx3020\tx3560\tx4140\li700\sl288\slmult1\pardirnatural
+
+\f1 \cf2 function draw_player(ctx) \{\
+\cf0 \strike \strikec0 	ctx.fillStyle = "blue";\
+	ctx.fillRect(_player.x - _player.origin_x, _player.y - _player.origin_y,\
+					_player.width, _player.height);\
+
+\f2\b \strike0\striked0 	var sprite = update_player_sprite();\
+	ctx.drawImage(sprite.img, _player.x - _player.origin_x,\
+					_player.y - _player.origin_y);\
+
+\f1\b0 \cf2 \}\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\fi360\sl288\slmult1\pardirnatural
+
+\f0 \cf0 \
+\
+\
+GOTO 121\
+\
+}

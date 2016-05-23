@@ -1,0 +1,71 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1138\cocoasubrtf510
+{\fonttbl\f0\fmodern\fcharset0 Courier;}
+{\colortbl;\red255\green255\blue255;}
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\fi360\sl288\slmult1\pardirnatural
+
+\f0\fs24 \cf0 //   2                 2  2    2\
+//   0                 7  8    9\
+//   0                 6  0    6\
+//                     +-------+   228\
+//   +-----------------+--+    |   230\
+//   |                 |  |    |\
+//   |                 +--+----+   248\
+//   +--------------------+        260\
+// For these 2 objects:\
+//  dx = 4 = 280 - 276\
+//  dy = -18 = 230 - 248\
+\
+shapeA = player\
+shapeB = block\
+\
+    // get the vectors to check against\
+    var vX = (shapeA.x + (shapeA.width / 2)) - (shapeB.x + (shapeB.width / 2)),\
+        vY = (shapeA.y + (shapeA.height / 2)) - (shapeB.y + (shapeB.height / 2)),\
+\
+center of player to center of block\
+vX = (276 + 10) - (200 + 40) = 46\
+vY = (228 + 10) - (230 + 15) = -7\
+\
+vX = (280 + 10) - (200 + 40) = 50\
+vY = (228 + 10) - (230 + 15) = -7\
+\
+        // add the half widths and half heights of the objects\
+        hWidths = (shapeA.width / 2) + (shapeB.width / 2),\
+        hHeights = (shapeA.height / 2) + (shapeB.height / 2),\
+\
+hWidths = 50\
+hHeights = 25\
+\
+        colDir = null;\
+\
+    // if the x and y vector are less than the half width or half height, they we must be inside the object, causing a collision\
+    if (Math.abs(vX) < hWidths && Math.abs(vY) < hHeights) \{\
+        // figures out on which side we are colliding (top, bottom, left, or right)\
+        var oX = hWidths - Math.abs(vX),\
+            oY = hHeights - Math.abs(vY);\
+\
+oX = 50 - 46 = 4\
+oY = 25 - 7 = 18\
+\
+        if (oX >= oY) \{\
+            if (vY > 0) \{\
+                colDir = "t";\
+                shapeA.y += oY;\
+            \} else \{\
+                colDir = "b";\
+                shapeA.y -= oY;\
+            \}\
+        \} else \{\
+            if (vX > 0) \{\
+                colDir = "l";\
+                shapeA.x += oX;\
+\
+player.x += 4\
+\
+            \} else \{\
+                colDir = "r";\
+                shapeA.x -= oX;\
+            \}\
+        \}\
+    \}\
+}

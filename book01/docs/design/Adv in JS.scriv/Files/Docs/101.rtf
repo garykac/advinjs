@@ -1,0 +1,60 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1138\cocoasubrtf510
+{\fonttbl\f0\fswiss\fcharset0 Helvetica;\f1\fmodern\fcharset0 Courier;\f2\fmodern\fcharset0 Courier-Bold;
+}
+{\colortbl;\red255\green255\blue255;\red105\green105\blue105;}
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\fi360\sl288\slmult1\pardirnatural
+
+\f0\fs24 \cf0 Note that you the goal doesn't indicate whether or not it is currently locked. We'll update that code once we start adding images.\
+\
+\
+We can add a key to level 2\
+\
+\pard\tx1260\tx1860\tx2420\tx3020\tx3560\tx4140\li700\sl288\slmult1\pardirnatural
+
+\f1 \cf2 function init_level2() \{\
+	...\
+	add_default_platforms(level);\
+\
+
+\f2\b \cf0 	var items = [\
+		[250, 360, 20, 20, "key"],\
+	];\
+	add_items(level, items);\
+
+\f1\b0 \cf2 \
+	level.goal = create_goal(500, 360, 2);\
+	...\
+\}\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\fi360\sl288\slmult1\pardirnatural
+
+\f0 \cf0 \
+\
+fdafd\
+\
+Rather than add a key to level 3 (which would just allow us to loop back to level 1 in any case), we can add a new item that ends the game when you acquire it.\
+\
+\
+\pard\tx1260\tx1860\tx2420\tx3020\tx3560\tx4140\li700\sl288\slmult1\pardirnatural
+
+\f1 \cf2 function init_level3() \{\
+	...\
+	add_default_platforms(level);\
+\
+
+\f2\b \cf0 	var items = [\
+		[500, 360, 20, 20, "finish"],\
+	];\
+	add_items(level, items);\
+
+\f1\b0 \cf2 \
+	level.goal = create_goal(500, 360, 0);\
+	\
+	_levels.push(level);\
+\}\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\fi360\sl288\slmult1\pardirnatural
+
+\f0 \cf0 \
+\
+GOTO 138\
+\
+}
