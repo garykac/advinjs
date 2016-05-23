@@ -1,0 +1,320 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="744.09448819"
+   height="1052.3622047"
+   id="svg2"
+   version="1.1"
+   inkscape:version="0.48.2 r9819"
+   sodipodi:docname="platform.svg">
+  <defs
+     id="defs4">
+    <marker
+       inkscape:stockid="DotM"
+       orient="auto"
+       refY="0.0"
+       refX="0.0"
+       id="DotM"
+       style="overflow:visible">
+      <path
+         id="path3931"
+         d="M -2.5,-1.0 C -2.5,1.7600000 -4.7400000,4.0 -7.5,4.0 C -10.260000,4.0 -12.5,1.7600000 -12.5,-1.0 C -12.5,-3.7600000 -10.260000,-6.0 -7.5,-6.0 C -4.7400000,-6.0 -2.5,-3.7600000 -2.5,-1.0 z "
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1.0pt;marker-start:none;marker-end:none"
+         transform="scale(0.4) translate(7.4, 1)" />
+    </marker>
+    <marker
+       inkscape:stockid="DotS"
+       orient="auto"
+       refY="0.0"
+       refX="0.0"
+       id="DotS"
+       style="overflow:visible">
+      <path
+         id="path3934"
+         d="M -2.5,-1.0 C -2.5,1.7600000 -4.7400000,4.0 -7.5,4.0 C -10.260000,4.0 -12.5,1.7600000 -12.5,-1.0 C -12.5,-3.7600000 -10.260000,-6.0 -7.5,-6.0 C -4.7400000,-6.0 -2.5,-3.7600000 -2.5,-1.0 z "
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1.0pt;marker-start:none;marker-end:none"
+         transform="scale(0.2) translate(7.4, 1)" />
+    </marker>
+    <marker
+       inkscape:stockid="DotL"
+       orient="auto"
+       refY="0.0"
+       refX="0.0"
+       id="DotL"
+       style="overflow:visible">
+      <path
+         id="path3928"
+         d="M -2.5,-1.0 C -2.5,1.7600000 -4.7400000,4.0 -7.5,4.0 C -10.260000,4.0 -12.5,1.7600000 -12.5,-1.0 C -12.5,-3.7600000 -10.260000,-6.0 -7.5,-6.0 C -4.7400000,-6.0 -2.5,-3.7600000 -2.5,-1.0 z "
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1.0pt;marker-start:none;marker-end:none"
+         transform="scale(0.8) translate(7.4, 1)" />
+    </marker>
+    <marker
+       inkscape:stockid="Arrow1Lend"
+       orient="auto"
+       refY="0.0"
+       refX="0.0"
+       id="Arrow1Lend"
+       style="overflow:visible;">
+      <path
+         id="path3869"
+         d="M 0.0,0.0 L 5.0,-5.0 L -12.5,0.0 L 5.0,5.0 L 0.0,0.0 z "
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1.0pt;marker-start:none;"
+         transform="scale(0.8) rotate(180) translate(12.5,0)" />
+    </marker>
+  </defs>
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="0.98994949"
+     inkscape:cx="445.87754"
+     inkscape:cy="957.71835"
+     inkscape:document-units="px"
+     inkscape:current-layer="layer1"
+     showgrid="false"
+     inkscape:window-width="1389"
+     inkscape:window-height="772"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="0" />
+  <metadata
+     id="metadata7">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <rect
+       style="fill:#996633;fill-opacity:1;stroke:#000000;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0"
+       id="rect2985"
+       width="344.32239"
+       height="65.515747"
+       x="203.67052"
+       y="145.20631"
+       inkscape:export-filename="/Users/garykac/csclass-Fall2013/AdvInJS/images/figures/platform.png"
+       inkscape:export-xdpi="72"
+       inkscape:export-ydpi="72" />
+    <rect
+       style="fill:#0000ff;fill-opacity:1;stroke:#000000;stroke-opacity:1;stroke-width:2;stroke-miterlimit:4;stroke-dasharray:none"
+       id="rect3763"
+       width="48.518154"
+       height="48.518154"
+       x="284.85632"
+       y="96.688156"
+       inkscape:export-filename="/Users/garykac/csclass-Fall2013/AdvInJS/images/figures/platform.png"
+       inkscape:export-xdpi="72"
+       inkscape:export-ydpi="72" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+       d="m 333.37449,51.031822 0,38.628038"
+       id="path2999"
+       inkscape:connector-curvature="0"
+       inkscape:export-filename="/Users/garykac/csclass-Fall2013/AdvInJS/images/figures/platform.png"
+       inkscape:export-xdpi="72"
+       inkscape:export-ydpi="72"
+       sodipodi:nodetypes="cc" />
+    <flowRoot
+       transform="matrix(2.1911424,0,0,2.1911424,136.1373,-224.88199)"
+       style="font-size:12px;font-style:normal;font-weight:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+       id="flowRoot3001"
+       xml:space="preserve"
+       inkscape:export-filename="/Users/garykac/csclass-Fall2013/AdvInJS/images/figures/platform.png"
+       inkscape:export-xdpi="72"
+       inkscape:export-ydpi="72"><flowRegion
+         id="flowRegion3003"><rect
+           style="text-align:start;text-anchor:start"
+           y="110.21932"
+           x="55"
+           height="31.071428"
+           width="59.999996"
+           id="rect3005" /></flowRegion><flowPara
+         style="font-size:10.9531908px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:CCComicrazy;-inkscape-font-specification:CCComicrazy"
+         id="flowPara3007">x<flowSpan
+   style="font-size:5.4765954px;baseline-shift:sub"
+   id="flowSpan3833">player</flowSpan></flowPara></flowRoot>    <flowRoot
+       xml:space="preserve"
+       id="flowRoot3011"
+       style="font-size:12px;font-style:normal;font-weight:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+       transform="matrix(2.1911424,0,0,2.1911424,482.63018,-164.18832)"
+       inkscape:export-filename="/Users/garykac/csclass-Fall2013/AdvInJS/images/figures/platform.png"
+       inkscape:export-xdpi="72"
+       inkscape:export-ydpi="72"><flowRegion
+         id="flowRegion3013"><rect
+           id="rect3015"
+           width="59.999996"
+           height="31.071428"
+           x="55"
+           y="110.21932"
+           style="text-align:start;text-anchor:start" /></flowRegion><flowPara
+         id="flowPara3017"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:CCComicrazy;-inkscape-font-specification:CCComicrazy;baseline-shift:baseline;font-size:10.95319045px">y<flowSpan
+   style="font-size:5.47659522px;baseline-shift:sub"
+   id="flowSpan3835">player</flowSpan></flowPara></flowRoot>    <path
+       sodipodi:nodetypes="cc"
+       inkscape:export-ydpi="72"
+       inkscape:export-xdpi="72"
+       inkscape:export-filename="/Users/garykac/csclass-Fall2013/AdvInJS/images/figures/platform.png"
+       inkscape:connector-curvature="0"
+       id="path3041"
+       d="m 284.85632,51.031822 0,38.628038"
+       style="fill:none;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+       d="m 203.57493,219.14507 0,38.62804"
+       id="path3811"
+       inkscape:connector-curvature="0"
+       inkscape:export-filename="/Users/garykac/csclass-Fall2013/AdvInJS/images/figures/platform.png"
+       inkscape:export-xdpi="72"
+       inkscape:export-ydpi="72"
+       sodipodi:nodetypes="cc" />
+    <path
+       sodipodi:nodetypes="cc"
+       inkscape:export-ydpi="72"
+       inkscape:export-xdpi="72"
+       inkscape:export-filename="/Users/garykac/csclass-Fall2013/AdvInJS/images/figures/platform.png"
+       inkscape:connector-curvature="0"
+       id="path3813"
+       d="m 548.08845,219.14507 0,38.62804"
+       style="fill:none;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none" />
+    <path
+       sodipodi:nodetypes="cc"
+       inkscape:export-ydpi="72"
+       inkscape:export-xdpi="72"
+       inkscape:export-filename="/Users/garykac/csclass-Fall2013/AdvInJS/images/figures/platform.png"
+       inkscape:connector-curvature="0"
+       id="path3815"
+       d="m 593.88895,96.688156 -38.62804,0"
+       style="fill:none;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+       d="m 593.88895,145.20631 -38.62804,0"
+       id="path3819"
+       inkscape:connector-curvature="0"
+       inkscape:export-filename="/Users/garykac/csclass-Fall2013/AdvInJS/images/figures/platform.png"
+       inkscape:export-xdpi="72"
+       inkscape:export-ydpi="72"
+       sodipodi:nodetypes="cc" />
+    <path
+       sodipodi:nodetypes="cc"
+       inkscape:export-ydpi="72"
+       inkscape:export-xdpi="72"
+       inkscape:export-filename="/Users/garykac/csclass-Fall2013/AdvInJS/images/figures/platform.png"
+       inkscape:connector-curvature="0"
+       id="path3821"
+       d="m 593.88895,210.72206 -38.62804,0"
+       style="fill:none;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none" />
+    <text
+       xml:space="preserve"
+       style="font-size:12px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:CCComicrazy;-inkscape-font-specification:CCComicrazy"
+       x="65.788925"
+       y="71.647896"
+       id="text3823"
+       sodipodi:linespacing="125%"
+       inkscape:export-filename="/Users/garykac/csclass-Fall2013/AdvInJS/images/figures/platform.png"
+       inkscape:export-xdpi="72"
+       inkscape:export-ydpi="72"><tspan
+         sodipodi:role="line"
+         id="tspan3825"
+         x="65.788925"
+         y="71.647896"
+         style="font-size:16px">default origin is here</tspan></text>
+    <flowRoot
+       inkscape:export-ydpi="72"
+       inkscape:export-xdpi="72"
+       inkscape:export-filename="/Users/garykac/csclass-Fall2013/AdvInJS/images/figures/platform.png"
+       transform="matrix(2.1911424,0,0,2.1911424,482.63018,-114.18832)"
+       style="font-size:12px;font-style:normal;font-weight:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+       id="flowRoot3837"
+       xml:space="preserve"><flowRegion
+         id="flowRegion3839"><rect
+           style="text-align:start;text-anchor:start"
+           y="110.21932"
+           x="55"
+           height="31.071428"
+           width="59.999996"
+           id="rect3841" /></flowRegion><flowPara
+         style="font-size:10.9531908px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;baseline-shift:baseline;font-family:CCComicrazy;-inkscape-font-specification:CCComicrazy"
+         id="flowPara3843">y<flowSpan
+   id="flowSpan3845"
+   style="font-size:5.4765954px;baseline-shift:sub">platform</flowSpan></flowPara></flowRoot>    <flowRoot
+       inkscape:export-ydpi="72"
+       inkscape:export-xdpi="72"
+       inkscape:export-filename="/Users/garykac/csclass-Fall2013/AdvInJS/images/figures/platform.png"
+       xml:space="preserve"
+       id="flowRoot3847"
+       style="font-size:12px;font-style:normal;font-weight:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+       transform="matrix(2.1911424,0,0,2.1911424,53.565871,11.975153)"><flowRegion
+         id="flowRegion3849"><rect
+           id="rect3851"
+           width="59.999996"
+           height="31.071428"
+           x="55"
+           y="110.21932"
+           style="text-align:start;text-anchor:start" /></flowRegion><flowPara
+         id="flowPara3853"
+         style="font-size:10.9531908px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:CCComicrazy;-inkscape-font-specification:CCComicrazy">x<flowSpan
+   id="flowSpan3855"
+   style="font-size:5.4765954px;baseline-shift:sub">platform</flowSpan></flowPara></flowRoot>    <text
+       sodipodi:linespacing="125%"
+       id="text3857"
+       y="119.35275"
+       x="49.538925"
+       style="font-size:12px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:CCComicrazy;-inkscape-font-specification:CCComicrazy"
+       xml:space="preserve"
+       inkscape:export-filename="/Users/garykac/csclass-Fall2013/AdvInJS/images/figures/platform.png"
+       inkscape:export-xdpi="72"
+       inkscape:export-ydpi="72"><tspan
+         style="font-size:16px"
+         y="119.35275"
+         x="49.538925"
+         id="tspan3859"
+         sodipodi:role="line">you want it to be here</tspan></text>
+    <path
+       style="fill:none;stroke:#000000;stroke-width:2;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;marker-end:url(#DotM)"
+       d="m 236.08937,74.375054 c 10.71429,0 35.46918,6.089376 49.17803,23.203773"
+       id="path3861"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="cc"
+       inkscape:export-filename="/Users/garykac/csclass-Fall2013/AdvInJS/images/figures/platform.png"
+       inkscape:export-xdpi="72"
+       inkscape:export-ydpi="72" />
+    <path
+       inkscape:connector-curvature="0"
+       id="path4871"
+       d="m 228.9137,125.6575 c 23.6445,28.97626 56.78699,35.86657 80.34483,19.14086"
+       style="fill:none;stroke:#000000;stroke-width:2;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;marker-end:url(#DotM)"
+       sodipodi:nodetypes="cc"
+       inkscape:export-filename="/Users/garykac/csclass-Fall2013/AdvInJS/images/figures/platform.png"
+       inkscape:export-xdpi="72"
+       inkscape:export-ydpi="72" />
+    <path
+       sodipodi:nodetypes="cc"
+       inkscape:export-ydpi="72"
+       inkscape:export-xdpi="72"
+       inkscape:export-filename="/Users/garykac/csclass-Fall2013/AdvInJS/images/figures/platform.png"
+       inkscape:connector-curvature="0"
+       id="path4873"
+       d="m 309.11543,51.031822 0,38.628038"
+       style="fill:none;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:2,2;stroke-dashoffset:0" />
+  </g>
+</svg>
