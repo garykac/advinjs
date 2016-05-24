@@ -3,7 +3,7 @@ ID = 016
 
 U: So, what's the range of friction values that I can use?
 
-B: Play around with different friction values and see how it affects the player movement. The lower the friction, the more the player will slide. At 0.4 the player will stop almost instantly, whereas at 0.01 it will slide halfway across the screen before stopping.
+B: You'll have to play around with different friction values and see how it affects the player movement. The lower the friction, the more the player will slide. At 0.4 the player will stop almost instantly, whereas at 0.01 it will slide halfway across the screen before stopping.
 
 U: I could use the 0.01 value if I wanted my game set in an ice world.
 

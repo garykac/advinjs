@@ -1,7 +1,7 @@
 TITLE = Choices II - Jump or Goal
 ID = 020
 
-B: So we have few things that we can work on next:
+B: So we have few things that we can work on next. Which of these would you like to do first?
 
 BEGIN_TASK_LIST
 
@@ -16,6 +16,8 @@ TASK_LIST_ITEM_DATA This will add a goal and end the game when the player reache
 TASK_LIST_ITEM_END
 
 END_TASK_LIST
+
+U: Hmm....
 
 GOTO 025 IF make the player jump
 
