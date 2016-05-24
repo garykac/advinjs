@@ -61,10 +61,10 @@ END_CODE_OK
 
 B: Go ahead and run your code now.
 
-U: The player fall off the bottom of the screen!
+U: The player falls off the bottom of the screen!
 
 B: That's because gravity is pulling the player down - that't what gravity does.
 
-U: How are we going to fix it?
+U: But it was supposed to stop once it hit the platform. How are we going to fix it?
 
 GOTO 029
