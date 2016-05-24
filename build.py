@@ -12,188 +12,20 @@ import sys
 
 from parser import Parser
 
+from book01 import  _book01_info
+
+_stages = _book01_info[0]
+_badge_id2name = _book01_info[1]
+_badge_name2id = {}
+_optional_badges = _book01_info[2]
+_images = _book01_info[3]
+_functions = _book01_info[4]
+
 _version = '0.1'
 
-_book = 'book01'
-
-_stages = [
-	# [stage-name, start-node, end-node, [badges]],
-	['',		'000', '000', []],
-	['stage1',	'001', '018', ['m1', 'm2', 'p1', 's1']],
-	['stage2',	'020', '049', ['c1', 'm3']],
-	['stage3',	'050', '089', ['c2', 'p2', 'x1', 'x2']],
-	['stage4',	'090', '098', ['t1']],
-	['stage5',	'099', '299', ['i1', 'i2', 'i3', 'p3', 's2', 's3', 'v1', 'v2', 'z1']],
-	['stage6',	'300', '345', ['t2', 't3']],
-	['stage7',	'350', '395', ['f1', 'i4', 'l1']],
-	['stage8',	'400', '445', ['i5', 'l2', 'x3']],
-	['stage9',	'450', '495', ['f2', 'l3', 'p4', 'x4']],
-	['',		'500', '500', []],	# Final
-]
-
-_badge_id2name = {
-	'c1': 'Collision I - Basic',
-	'c2': 'Collision II - Advanced',
-	'f1': 'Fluff I - Ouch',
-	'f2': 'Fluff II - Glasses',
-	'i1': 'Treasure I - Key',
-	'i2': 'Treasure II - Finish',
-	'i3': 'Treasure III - Potion',
-	'i4': 'Treasure IV - Coin',
-	'i5': 'Treasure V - Better Potion',
-	'l1': 'Level I',
-	'l2': 'Level II',
-	'l3': 'Level III',
-	'm1': 'Movement I - Horizontal',
-	'm2': 'Movement II - Friction',
-	'm3': 'Movement III - Gravity',
-	'p1': 'Platform I - Base',
-	'p2': 'Platform II - Four Sided',
-	'p3': 'Platform III - Pattern',
-	'p4': 'Platform IV - Moving',
-	's1': 'Sprite I - Origin',
-	's2': 'Sprite II - Image',
-	's3': 'Sprite III - Direction',
-	't1': 'Transition I - Levels',
-	't2': 'Transition II - Title',
-	't3': 'Transition III - Timer',
-	'v1': 'Vitality I - Health',
-	'v2': 'Vitality II - Reincarnation',
-	'x1': 'Monster I - Stationary',
-	'x2': 'Monster II - Roaming',
-	'x3': 'Monster III - Animate',
-	'x4': 'Monster IV - Projectile',
-	'z1': 'Challenge I',
-}
-_badge_name2id = {}
-_optional_badges = ['z1']
-
-_images = {
-	'images/player/normal.png': '20x24',
-	'images/player/happy.png': '20x24',
-	'images/player/ooo.png': '20x24',
-	'images/player/sad.png': '30x17',
-	'images/player/glasses.png': '20x24',
-	'images/player/icon.png': '14x17',
-	'images/monsters/vlad.png': '20x24',
-	'images/monsters/henrietta.png': '30x30',
-	'images/monsters/rufus.png': '28x26',
-	'images/monsters/prescott.png': '26x28',
-	'images/monsters/doppleganger.png': '20x24',
-	'images/monsters/falco1.png': '40x24',
-	'images/monsters/falco2.png': '40x24',
-	'images/monsters/octoboss1.png': '38x24',
-	'images/monsters/octoboss2.png': '38x24',
-	'images/monsters/octoboss3.png': '38x24',
-	'images/monsters/eyes0.png': '20x20',
-	'images/monsters/eyes1.png': '20x20',
-	'images/monsters/eyes2.png': '20x20',
-	'images/monsters/ball-left.png': '10x5',
-	'images/monsters/ball-right.png': '10x5',
-	'images/items/key.png': '18x20',
-	'images/items/gem.png': '21x27',
-	'images/items/potion.png': '16x23',
-	'images/items/coin.png': '20x20',
-	'images/items/potion-1.png': '16x23',
-	'images/items/potion-2.png': '16x23',
-	'images/items/potion-3.png': '16x23',
-	'images/items/potion-4.png': '16x23',
-	'images/items/potion-5.png': '16x23',
-	'images/items/potion-6.png': '16x23',
-	'images/items/potion-7.png': '16x23',
-	'images/items/potion-8.png': '16x23',
-	'images/items/potion-9.png': '16x23',
-	'images/items/potion-10.png': '16x23',
-	'images/items/potion-11.png': '16x23',
-	'images/items/potion-12.png': '16x23',
-	'images/items/potion-13.png': '16x23',
-	'images/items/potion-14.png': '16x23',
-	'images/items/potion-15.png': '16x23',
-	'images/backgrounds/block.png': '20x20',
-	'images/backgrounds/block2.png': '20x20',
-	'images/backgrounds/block-red.png': '20x20',
-	'images/backgrounds/candycane.png': '20x20',
-	'images/backgrounds/dirt.png': '40x20',
-	'images/backgrounds/brick.png': '9x8',
-	'images/backgrounds/post.png': '10x10',
-	'images/backgrounds/wheel.png': '10x10',
-	'images/backgrounds/gate-closed.png': '30x40',
-	'images/backgrounds/gate-open.png': '30x40',
-}
-
-_functions = [
-	'setup',
-
-	'handle_load',
-	'handle_keydown',
-	'handle_keyup',
-
-	'init',
-	'init_game',
-
-	'init_player',
-	'init_player_sprite',
-	'update_player_sprite',
-
-	'init_level_defaults',
-	'init_level0_title',
-	'init_level1',
-	'init_level2',
-	'init_level3',
-
-	'add_platforms',
-	'add_default_platforms',
-	'add_moving_platforms',
-	'create_platform',
-
-	'add_monsters',
-	'add_projectile_monsters',
-	'add_eyeball_monsters',
-	'create_monster',
-
-	'add_items',
-	'add_potion_item',
-	'create_item',
-
-	'create_goal',
-
-	'start_level',
-	'complete_level',
-	'lose_life',
-	'adjust_health',
-
-	'set_transform_xy',
-	'set_transform',
-	'reset_transform',
-
-	'draw',
-	'erase',
-	'draw_platforms',
-	'draw_monsters',
-	'draw_items',
-	'draw_goal',
-	'draw_player',
-	'draw_status',
-
-	'draw_title_screen',
-	'draw_transition_screen',
-
-	'update_platforms',
-	'update_monsters',
-	'update_items',
-	'update_player',
-
-	'check_input',
-
-	'check_collisions',
-	'check_platform_collisions',
-	'check_monster_collisions',
-	'check_item_collisions',
-	'check_goal_collisions',
-
-	'collide',
-
-	'update_world',
+_books = [
+	'book00',
+	'book01',
 ]
 
 def init_globals():
@@ -209,8 +41,10 @@ def error(msg):
 # ----------
 
 class StageGenerator(object):
-	def __init__(self, stage_id, options):
+	def __init__(self, book, stage_id, options):
 		self.options = options
+
+		self.book = book
 
 		self.id = stage_id
 		self.stage_name = _stages[stage_id][0]
@@ -267,11 +101,11 @@ class StageGenerator(object):
 		errors = 0
 
 		if self.options.html:
-			make_dir(os.path.join(_book, self.stage_name))
+			make_dir(os.path.join(self.book, self.stage_name))
 			for n in sorted(self.nodes):
-				errors += self.process_node_create_html(_book, self.stage_name, n)
+				errors += self.process_node_create_html(self.book, self.stage_name, n)
 		if self.options.pathcheck:
-			errors += self.verify_paths(_book)
+			errors += self.verify_paths(self.book)
 
 		#for t in sorted(self.titles.keys()):
 		#	print t, self.titles[t]
@@ -321,7 +155,7 @@ class StageGenerator(object):
 		if self.options.verbose:
 			print 'calc_links for %s' % node
 
-		filename = os.path.join('src', _book, self.stage_name, node + '.txt')
+		filename = os.path.join('src', self.book, self.stage_name, node + '.txt')
 		if not os.path.exists(filename):
 			error('Unable to find node: %s' % filename)
 		f = open(filename, 'r')
@@ -743,7 +577,9 @@ def main():
 
 	argparser = argparse.ArgumentParser(
 		description='Build and verify script for Adventures in JavasSript')
-	argparser.add_argument('--stage',
+	argparser.add_argument('--book', required=True,
+		help = 'The book to process. Use "all" for all books.')
+	argparser.add_argument('--stage', required=True,
 		help = 'The stage id to process. Use "all" for all stages.')
 	argparser.add_argument('--clean', required=False, action='store_true',
 		help = 'True to delete previous files before beginning.')
@@ -753,12 +589,25 @@ def main():
 		help = 'True to generate html files.')
 	argparser.add_argument('--pathcheck', required=False, action='store_true',
 		help = 'True to verify paths between nodes are valid.')
-	argparser.add_argument('--debug',
+	argparser.add_argument('--debug', required=False,
 		help = 'Print additional debug info.')
-	argparser.add_argument('--trace',
+	argparser.add_argument('--trace', required=False,
 		help = 'Print additional debug trace info for this node.')
-	argparser.set_defaults(clean=False, verbose=False, html=False, pathcheck=False)
+	argparser.set_defaults(clean=False, verbose=False, html=False, pathcheck=False, debug=False)
 	args = argparser.parse_args()
+
+	bookid = 0
+	books = []
+	if args.book == 'all':
+		books = _books
+	else:
+		bookid = int(args.book)
+		if bookid < 0 or bookid >= len(_books):
+			error('Invalid book %s' % bookid)
+		books.append(_books[bookid])
+
+	# TODO: Iterate through all books in the list.
+	book = books[0]
 
 	stage = 0
 	stages = []
@@ -778,21 +627,21 @@ def main():
 				make_dir('snapshots')
 		else:
 			if args.pathcheck:
-				rm_dir(os.path.join('snapshots', _book, _stages[stage][0]))
+				rm_dir(os.path.join('snapshots', book, _stages[stage][0]))
 			if args.html:
-				rm_dir(os.path.join(_book, _stages[stage][0]))
+				rm_dir(os.path.join(book, _stages[stage][0]))
 
 	if args.pathcheck:
 		copy_core_snapshot_files()
 	if args.html:
 		print 'Creating core HTML files'
 		create_main_html_files(args)
-		create_book_files(_book, args)
+		create_book_files(book, args)
 
 	errors = 0
 	init_globals()
 	for s in stages:
-		sg = StageGenerator(s, args)
+		sg = StageGenerator(book, s, args)
 		errors += sg.process()
 
 	if errors == 0:
