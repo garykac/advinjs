@@ -31,32 +31,15 @@
 </div></div></div>
 <div class="container">
 <h1>015 : Slowing down</h1>
-<div class="name">Balthazar:</div><p class="balthazar">Now that you have the player constrained to move on the main platform, you can start working on the rest of the game.</p>
-<div class="name">Balthazar:</div><p class="balthazar">Did we come up with a list of things to do?</p>
-<div class="name">You:</div><p class="you">Well, we had Platforms, Jumping, Monsters, ...</p>
+<div class="name">Balthazar:</div><p class="balthazar">Now that you have the player constrained to move on the main platform, you can start working on the rest of the game. What do you want to work on first?</p>
+<div class="name">You:</div><p class="you">Well, I need platforms, monsters, ...</p>
 <div class="name">Balthazar:</div><p class="balthazar">Oh wait, I just remembered, we should fix the player movement so that player can build up speed and come sliding to a stop.</p>
 <div class="name">You:</div><p class="you">Why do we need that?</p>
-<div class="name">Balthazar:</div><p class="balthazar">We don't **need** it, but it makes the game far more satisfying to play than simply moving one or two pixels at a time.</p>
+<div class="name">Balthazar:</div><p class="balthazar">Well, we don't absolutely *need* it, but it does make the game far more satisfying to play than simply moving one or two pixels at a time.</p>
 <div class="name">You:</div><p class="you">It sounds like it's going to be hard.</p>
-<div class="name">Balthazar:</div><p class="balthazar">Actually, it's not. We already have a velocity. We just need to add a maximum velocity and then add some friction.</p>
-<div class="name">You:</div><p class="you">Friction?</p>
-<div class="name">Balthazar:</div><p class="balthazar">Yes, that will slow the player down to a stop, but it will be a smooth stop rather than an abrupt one. You should define a global friction value in <span class="code-inline-color">init_game()</span>.</p>
-<div class="panel panel-default">
-<div class="panel-code-header">Define a global friction variable.</div><div class="panel-code code"><span class="context">function init_game() {</span>
-<span class="context">    ...</span>
-<span class="context">    // The keymap keeps track of which keys are currently being pressed.</span>
-<span class="context">    _game.keymap = {};</span>
-<span class="context"></span>
-<span class="context">    // Game state.</span>
-<span class="context">    _game.platform = create_platform(0, 360, _game.width, 40);</span>
-<img src="../../css/plus.png" width="15" height="15"/><span class="add"></span>
-<img src="../../css/plus.png" width="15" height="15"/><span class="add">    // Global world parameters.</span>
-<img src="../../css/plus.png" width="15" height="15"/><span class="add">    _game.friction = 0.15;</span>
-<span class="context">}</span>
-</div>
-<div class="panel-code-footer">Run your code in a browser and verify that there are no errors.</div></div>
-<div class="name">Balthazar:</div><p class="balthazar">You'll also want to define the amount that the velocity increases while the player hold down movement keys. This can be stored in <span class="code-inline-color">velocity_x_delta</span>.</p>
-<div class="name">Balthazar:</div><p class="balthazar">And you'll also need a maximum velocity to prevent the player from going too fast.</p>
+<div class="name">Balthazar:</div><p class="balthazar">Actually, it's not. You already have variables to store the player's current velocity in <span class="code-inline-color">velocity_x</span> and <span class="code-inline-color">velocity_y</span>. Now you'll need add a place to store the "delta", which is the amount to add to the velocity then the arrow keys are pressed.</p>
+<div class="name">You:</div><p class="you">But if we keep adding to the velocity, won't the player keep going faster and faster until they fly off the edge of the screen?</p>
+<div class="name">Balthazar:</div><p class="balthazar">Yes, that's why you also need a *maximum* velocity -- you'll allow the velocity to increase up to the maximum, then you won't let it get any higher.</p>
 <div class="panel panel-default">
 <div class="panel-code-header">Define how fast the player's velocity should increase.</div><div class="panel-code code"><span class="context">function init_player() {</span>
 <span class="context">    ...</span>
@@ -67,9 +50,16 @@
 <span class="context">}</span>
 </div>
 <div class="panel-code-footer">Run your code in a browser and verify that there are no errors.</div></div>
-<div class="name">Balthazar:</div><p class="balthazar">Now you can simply add the player's <span class="code-inline-color">velocity_x_delta</span> the current velocity as long as they're holding a movement key, but you'll need to clamp the velocity so that it doesn't get larger than <span class="code-inline-color">velocity_x_max</span>.</p>
+<div class="name">You:</div><p class="you">Why are they set to <span class="code-inline-color">0.8</span> and <span class="code-inline-color">3.5</span>? What do those numbers mean? And why don't I need them for the y velocity?</p>
+<div class="name">Balthazar:</div><p class="balthazar">Whoa! One question at a time! The <span class="code-inline-color">0.8</span> value means that if you press the arrow key, then player will start moving 0.8 pixels every time the screen is updated. And if the player holds the key down, it will increase until it reaches <span class="code-inline-color">3.5</span> pixels per update.</p>
+<div class="name">You:</div><p class="you">But how can you move <span class="code-inline-color">0.8</span> pixels? Don't you have to move 1 pixel or 2 pixels? What does it mean to move 3.5 pixels?</p>
+<div class="name">Balthazar:</div><p class="balthazar">Ahh. Good observation. When the player is drawn, the x,y position will be rounded to the nearest integer value. So we can track the player position and velocity using real numbers (like 0.8) and they'll be automagically converted to integers when needed.</p>
+<div class="name">You:</div><p class="you">OK. So why don't we need any of this for the y velocity?</p>
+<div class="name">Balthazar:</div><p class="balthazar">The y-direction is the jumping direction, so we'll handle that when we add support for jumping.</p>
+<div class="name">You:</div><p class="you">Oh, OK. So how do I use these values?</p>
+<div class="name">Balthazar:</div><p class="balthazar">Every update, you can simply add the player's <span class="code-inline-color">velocity_x_delta</span> to the current velocity if they're holding a movement key, but you'll need to clamp the velocity so that it doesn't get larger than <span class="code-inline-color">velocity_x_max</span>.</p>
 <div class="name">You:</div><p class="you">Previously, I had <span class="code-inline-color">-1</span> when the player was moving left. Do I need to subtract from the velocity when moving left and add when moving right?</p>
-<div class="name">Balthazar:</div><p class="balthazar">Yes. And you need to make sure you don't go less than -<span class="code-inline-color">velocity_x_max</span> when going left, or greater than +<span class="code-inline-color">velocity_x_max</span> when going right.</p>
+<div class="name">Balthazar:</div><p class="balthazar">Correct. And you need to make sure you don't go less than -<span class="code-inline-color">velocity_x_max</span> when going left, or greater than +<span class="code-inline-color">velocity_x_max</span> when going right.</p>
 <div class="panel panel-default">
 <div class="panel-code-header">Update the player's velocity using the new variables.</div><div class="panel-code code"><span class="context">function check_input() {</span>
 <img src="../../css/cross.png" width="15" height="15"/><span class="delete">    _player.velocity_x = 0;</span>
@@ -94,7 +84,7 @@
 <span class="context">}</span>
 </div>
 <div class="panel-code-footer">Run your code in a browser and verify that there are no errors.</div></div>
-<div class="name">Balthazar:</div><p class="balthazar">Even though the friction support is not yet complete, you should run the code now to see what happens.</p>
+<div class="name">Balthazar:</div><p class="balthazar">Try your code now and see what happens.</p>
 <div class="name">You:</div><p class="you">Yargh! The player keeps moving and it's hard to make it stop.</p>
 <div class="name">Balthazar:</div><p class="balthazar">Hmm.. we should probably fix that.</p>
 <p class="alert alert-info"><a href="017.html"><span class="goto">GOTO 017</span></a></p>

@@ -1,6 +1,8 @@
 TITLE = Experimenting with friction
 ID = 016
 
+U: So, what's the range of friction values that I can use?
+
 B: Play around with different friction values and see how it affects the player movement. The lower the friction, the more the player will slide. At 0.4 the player will stop almost instantly, whereas at 0.01 it will slide halfway across the screen before stopping.
 
 U: I could use the 0.01 value if I wanted my game set in an ice world.
@@ -9,6 +11,6 @@ B: Indeed, and everyone would be sliding around uncontrollably.
 
 B: After experimenting with different values, reset them back to the ones you had originally. This is important because when you start adding platforms for the player to jump between, the max velocity and friction will affect how the game plays.
 
-B: One other thing to note, the friction values are assumed to be between 0 and 1 (exclusive). Strange things will happen if you choose values less than 0 or greater then 1. But feel free to experiment.
+B: One other thing to note, because the friction value represents a percentage (of velocity lost), it is assumed to be between 0 and 1 (exclusive). Strange things will happen if you choose a value less than 0 or greater then 1. But feel free to experiment.
 
 GOTO 018

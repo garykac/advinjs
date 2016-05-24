@@ -39,7 +39,7 @@
 <div class="name">Balthazar:</div><p class="balthazar">And you can do that by defining an origin for the player. As a default, you can just use the middle of the bottom of the player.</p>
 <div class="row">
 <div class="col-md-12"><div class="image-table">
-<a href="../figures/platform.png"><img src="../figures/platform.png" width="493" height="207" /></a>
+<a href="../figures/platform.png"><img class="figure" src="../figures/platform.png" width="493" height="207" /></a>
 </div></div>
 </div>
 <div class="name">You:</div><p class="you">So <span class="code-inline-color">origin_x</span> is half of the player width and <span class="code-inline-color">origin_y</span> is the full height of the player.</p>
@@ -67,6 +67,9 @@
 </div>
 <div class="panel-code-footer">Run your code in a browser and verify that there are no errors.</div></div>
 <div class="name">Balthazar:</div><p class="balthazar">Since the player's horizontal origin is now the center, you'll probably want to adjust the initial <span class="code-inline-color">x</span> position (otherwise the player will be halfway off the screen). The player doesn't have to be exactly at the left edge, so we can just add something like <span class="code-inline-color">20</span>.</p>
+<div class="name">You:</div><p class="you">That sounds like more work than just subtracting the player height.</p>
+<div class="name">Balthazar:</div><p class="balthazar">Yes, but later on you're going to want to change the size of the player and you're going to be happy you made this change.</p>
+<div class="name">You:</div><p class="you">I hope so.</p>
 <div class="panel panel-default">
 <div class="panel-code-header">Adjust the player's starting x-position.</div><div class="panel-code code"><span class="context">function init_player() {</span>
 <img src="../../css/cross.png" width="15" height="15"/><span class="delete">    _player.x = 0;</span>
@@ -76,9 +79,12 @@
 <span class="context">}</span>
 </div>
 <div class="panel-code-footer">Run your code in a browser and verify that there are no errors.</div></div>
-<div class="name">You:</div><p class="you">That sounds like more work than just subtracting the player height.</p>
-<div class="name">Balthazar:</div><p class="balthazar">Yes, but later on you're going to want to change the size of the player and you're going to be happy you made this change.</p>
-<div class="name">You:</div><p class="you">I hope so.</p>
+<div class="name">Balthazar:</div><p class="balthazar">If you run your code now, you'll find the player resting on the platform.</p>
+<div class="row">
+<div class="col-md-12"><div class="image-table">
+<a href="../screenshots/006.png"><img class="screenshot" src="../screenshots/006.png" width="550" height="400" /></a>
+</div></div>
+</div>
 <p class="alert alert-success"><strong>Congratulations!</strong> You've earned the <span class="badge-gain">Sprite I - Origin</span> badge!</p>
 <p class="alert alert-info"><a href="007.html"><span class="goto">GOTO 007</span></a> if you want to experiment with changing the player width and height</p>
 <p class="alert alert-info"><a href="008.html"><span class="goto">GOTO 008</span></a></p>

@@ -1,9 +1,43 @@
 TITLE = Friction
 ID = 017
 
-U: So how are we going to fix the player moving too far?
+U: So how am I going to fix the player not being able to stop?
 
-B: By adding friction. You already have a friction value (=0.15=), so all you have to do is multiply the player's velocity by =(1 - friction)= each time you update the player. In our case, you'll be multiplying by 0.85 (= 1 - 0.15).
+B: You'll fix it by adding friction. The friction will slow the player down and have it come gently to a stop.
+
+U: So, let me guess, I need to add a variable to keep track of the player's friction, right?
+
+B: Yep, except it's not the player's friction. The friction is part of the game world, so you should add it in =init_game()=.
+
+BEGIN_CODE_INFO Define a global friction variable.
+.function init_game() {
+.	...
+.	// The keymap keeps track of which keys are currently being pressed.
+.	_game.keymap = {};
+.
+.	// Game state.
+.	_game.platform = create_platform(0, 360, _game.width, 40);
++
++	// Global world parameters.
++	_game.friction = 0.15;
+.}
+END_CODE_OK
+
+U: Where did that =0.15= number come from?
+
+B: Well, from experimenting, I just happen to know that =0.15= is a reasonably good value. You can choose a different value later if you want, but this is a good starting value.
+
+U: OK, but how do I use this friction value?
+
+B: The friction value defines the percentage of velocity that the player loses every time the game state is updated.
+
+U: But that's not how friction was defined in our physics class...
+
+B: Yes, we're cheating a bit here to make the math easier. We're not really modeling friction, but it's useful to think of it as friction so that it makes sense when reading the code.
+
+U: So how do I use this fake friction?
+
+B: Since the friction is the percentage of the player's velocity that is lost, you need to multiply the player's velocity by =(1 - friction)= each time you update. In youy case, you'll end up multiplying by 0.85 (= 1 - 0.15).
 
 B: This will cause the velocity to slowly decrease based on how much friction we specify. Higher friction values will cause the player to slow down more quickly. Lower friction will have the player slide for a longer time before stopping.
 
@@ -20,7 +54,7 @@ BEGIN_CODE_INFO Slow the player down by applying friction.
 .}
 END_CODE_OK
 
-U: If I keep multiplying by 0.85, the number will keep getting smaller and smaller, but it'll never reach 0. Doesn't that mean that the player will keep sliding forever? 
+U: If I keep multiplying by 0.85, the number will keep getting smaller and smaller, but it'll never reach 0. Doesn't that mean that the player will keep sliding forever?
 
 B: Mathematically, the velocity won't ever reach 0, but practically once the velocity is less than 0.01 the player won't be moving on the screen anymore.
 

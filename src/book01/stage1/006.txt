@@ -24,7 +24,7 @@ BEGIN_CODE_INFO Initialize the player's origin based on the player width and hei
 .	_player.height = 20;
 +	_player.origin_x = _player.width / 2;
 +	_player.origin_y = _player.height;
-.	
+.
 .	_player.velocity_x = 0;
 .	_player.velocity_y = 0;
 .}
@@ -43,6 +43,12 @@ END_CODE_OK
 
 B: Since the player's horizontal origin is now the center, you'll probably want to adjust the initial =x= position (otherwise the player will be halfway off the screen). The player doesn't have to be exactly at the left edge, so we can just add something like =20=.
 
+U: That sounds like more work than just subtracting the player height.
+
+B: Yes, but later on you're going to want to change the size of the player and you're going to be happy you made this change.
+
+U: I hope so.
+
 BEGIN_CODE_INFO Adjust the player's starting x-position.
 .function init_player() {
 -	_player.x = 0;
@@ -52,11 +58,9 @@ BEGIN_CODE_INFO Adjust the player's starting x-position.
 .}
 END_CODE_OK
 
-U: That sounds like more work than just subtracting the player height.
+B: If you run your code now, you'll find the player resting on the platform.
 
-B: Yes, but later on you're going to want to change the size of the player and you're going to be happy you made this change.
-
-U: I hope so.
+SCREENSHOT 006.png 550x400
 
 GAIN Sprite I - Origin
 

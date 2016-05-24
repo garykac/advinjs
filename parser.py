@@ -211,6 +211,9 @@ class Parser(object):
 		if re.match(r'FIGURE ', line):
 			self.add_data('FIGURE', line[7:])
 			return True
+		if re.match(r'SCREENSHOT ', line):
+			self.add_data('SCREENSHOT', line[11:])
+			return True
 		if re.match(r'RUN_VERIFY', line):
 			self.add_data('RUN_VERIFY', '')
 			return True
@@ -486,11 +489,24 @@ class Parser(object):
 					height = m.group(3)
 					fout.write('<div class="row">\n')
 					fout.write('<div class="col-md-12"><div class="image-table">\n')
-					fout.write('<a href="%s"><img src="%s" width="%s" height="%s" /></a>\n' % (file, file, width, height))
+					fout.write('<a href="%s"><img class="figure" src="%s" width="%s" height="%s" /></a>\n' % (file, file, width, height))
 					fout.write('</div></div>\n')
 					fout.write('</div>\n')
 					continue
 				self.error('Unknown format: FIGURE "%s"' % d[1])
+			elif d[0] == 'SCREENSHOT':
+				m = re.match(r'([a-zA-Z0-9\/\-\.]+) (\d+)x(\d+)', d[1])
+				if m:
+					file = '../screenshots/' + m.group(1)
+					width = m.group(2)
+					height = m.group(3)
+					fout.write('<div class="row">\n')
+					fout.write('<div class="col-md-12"><div class="image-table">\n')
+					fout.write('<a href="%s"><img class="screenshot" src="%s" width="%s" height="%s" /></a>\n' % (file, file, width, height))
+					fout.write('</div></div>\n')
+					fout.write('</div>\n')
+					continue
+				self.error('Unknown format: SCREENSHOT "%s"' % d[1])
 			elif d[0] == 'ADMIN':
 				fout.write('<p class="admin">%s</p>\n' % self.expand_text(d[1], True))
 			elif d[0] == 'GAIN':
@@ -593,7 +609,7 @@ class Parser(object):
 					if not os.path.exists(file):
 						self.error('Screenshot image does not exist: %s' % file)
 					fout.write('<div class="%s"><div class="image-table">\n' % self.image_table_class)
-					fout.write('<a href="%s"><img class="screenshot" src="%s" width="%s" height="%s" /></a>\n' % (file, file, width, height))
+					fout.write('<a href="%s"><img class="screenshot-small" src="%s" width="%s" height="%s" /></a>\n' % (file, file, width, height))
 					fout.write('<div class="caption"><p align="center">%s</p></div>\n' % caption)
 					fout.write('</div></div>\n')
 					continue

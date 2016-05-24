@@ -3,11 +3,11 @@ ID = 010
 
 U: Alright, let's make the player move left and right.
 
-B: Good. And how do we do that?
+B: Good. And how do you think we should do that?
 
-U: By removing the code that handles up and down keys?
+U: Umm.. by turning off the up and down keys?
 
-B: And where is that code?
+B: Right. And where is the code we need to remove to turn them off?
 
 U: It's in the =check_input()= function. We can just remove the parts that deal with the up arrow and down arrow.
 

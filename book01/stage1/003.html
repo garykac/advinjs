@@ -85,7 +85,7 @@
 <div class="name">You:</div><p class="you">You mean "draw platforms" with an 's'? But we're only drawing one platform.</p>
 <div class="name">Balthazar:</div><p class="balthazar">True, but we'll be adding more platforms soon enough, and we might as well give the function its proper name now so that we don't have to rename it later.</p>
 <div class="name">You:</div><p class="you">OK. <span class="thinking">Whatever</span></p>
-<div class="name">Balthazar:</div><p class="balthazar">Add a call to <span class="code-inline-color">draw_platforms()</span> in the <span class="code-inline-color">draw()</span> function. Place it after the <span class="code-inline-color">erase()</span> but before the call to <span class="code-inline-color">draw_player()</span>, that way the player will be drawn in front of the platforms.</p>
+<div class="name">Balthazar:</div><p class="balthazar">Add a call to <span class="code-inline-color">draw_platforms()</span> in the <span class="code-inline-color">draw()</span> function. Place it after you erase the screen (that is, after you call <span class="code-inline-color">erase()</span>) but before you draw the player (before <span class="code-inline-color">draw_player()</span>), that way the player will be drawn in front of the platforms.</p>
 <div class="panel panel-default">
 <div class="panel-code-header">Call <span class="code-inline">draw_platforms()</span> from within <span class="code-inline">draw()</span></div><div class="panel-code code"><span class="context">function draw() {</span>
 <span class="context">    var canvas = document.getElementById("stage");</span>
@@ -120,6 +120,11 @@
 </div>
 <div class="panel-code-footer">Run your code in a browser and verify that there are no errors.</div></div>
 <div class="name">Balthazar:</div><p class="balthazar">After you've typed in all that code, try it out and see what happens.</p>
+<div class="row">
+<div class="col-md-12"><div class="image-table">
+<a href="../screenshots/003.png"><img class="screenshot" src="../screenshots/003.png" width="550" height="400" /></a>
+</div></div>
+</div>
 <div class="name">You:</div><p class="you">OK. I've got a giant brown platform along the bottom of the screen, but I can still move the player all around the screen.</p>
 <div class="name">Balthazar:</div><p class="balthazar">That's OK. We'll fix that next.</p>
 <p class="alert alert-success"><strong>Congratulations!</strong> You've earned the <span class="badge-gain">Platform I - Base</span> badge!</p>

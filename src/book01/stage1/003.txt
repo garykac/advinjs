@@ -78,7 +78,7 @@ B: True, but we'll be adding more platforms soon enough, and we might as well gi
 
 U: OK. {Whatever}
 
-B: Add a call to =draw_platforms()= in the =draw()= function. Place it after the =erase()= but before the call to =draw_player()=, that way the player will be drawn in front of the platforms.
+B: Add a call to =draw_platforms()= in the =draw()= function. Place it after you erase the screen (that is, after you call =erase()=) but before you draw the player (before =draw_player()=), that way the player will be drawn in front of the platforms.
 
 BEGIN_CODE_INFO Call =draw_platforms()= from within =draw()=
 .function draw() {
@@ -117,6 +117,8 @@ BEGIN_CODE_INFO Create the =draw_platforms()= function
 END_CODE_OK
 
 B: After you've typed in all that code, try it out and see what happens.
+
+SCREENSHOT 003.png 550x400
 
 U: OK. I've got a giant brown platform along the bottom of the screen, but I can still move the player all around the screen.
 
