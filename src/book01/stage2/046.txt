@@ -13,7 +13,7 @@ BEGIN_CODE
 .	p.width = width;
 .	p.height = height;
 +	p.origin_x = 0;
-+	p.origin_y = 0;	
++	p.origin_y = 0;
 .	return p;
 .}
 END_CODE

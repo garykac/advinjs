@@ -31,7 +31,26 @@
 </div></div></div>
 <div class="container">
 <h1>045 : Basic collision</h1>
-<!-- TODO: text -->
+<div class="name">Balthazar:</div><p class="balthazar">There are many ways of handling collision detection, but one of the simplest is to check the rectangles for each object to see if they overlap.</p>
+<div class="name">You:</div><p class="you">Uh-oh, is this where things start getting hard?</p>
+<div class="name">Balthazar:</div><p class="balthazar">Not really, but if you don't understand the basic ideas of how the collision detection works, you'll find the code to be confusing. So that's why I want to make sure that you understand how it works before we start with the code.</p>
+<div class="name">You:</div><p class="you">OK <span class="thinking">...but it still sounds like this is going to be hard</span></p>
+<div class="name">Balthazar:</div><p class="balthazar">Let's say we have 2 objects: <span class="code-inline-color">obj1</span> and <span class="code-inline-color">obj2</span> and we want to know if they overlap.</p>
+<div class="name">You:</div><p class="you">"We have 2 objects..."</p>
+<div class="name">Balthazar:</div><p class="balthazar">No, no, no. Don't actually say it. I meant, let's pretend that we have 2 objects, <span class="code-inline-color">obj1</span> and <span class="code-inline-color">obj2</span>.</p>
+<div class="name">You:</div><p class="you">Oh, OK, that's easier. I'm pretending now.</p>
+<div class="name">Balthazar:</div><p class="balthazar">Each of these object has an x,y position and a width and a height. For object1, these values are stored in: <span class="code-inline-color">obj1.x</span>, <span class="code-inline-color">obj1.y</span>, <span class="code-inline-color">obj1.width</span> and <span class="code-inline-color">obj1.height</span>.</p>
+<div class="name">Balthazar:</div><p class="balthazar">Let's focus initially on the x-direction. We know that the objects do *not* overlap in the x-direction if the right-most edge of object1 is to the left of the left-most edge of object2.</p>
+<div class="name">You:</div><p class="you">And I could code that like: <span class="code-inline-color">if (obj1.x + obj1.width <</span> obj2.x)<span class="code-inline-color"> and have it return </span>false=?</p>
+<div class="name">Balthazar:</div><p class="balthazar">Exactly. And also do a similar check for the other side by swapping the objects: if the right-most edge of object1 is to the left of the left-most edge of object1, then they don't overlap.</p>
+<div class="name">You:</div><p class="you">Hmm.. that doesn't sound too hard.</p>
+<div class="name">Balthazar:</div><p class="balthazar">Doing the same thing for the y-direction and you eliminate all the cases where they object don't overlap. Any object pairs that pass these checks must overlap.</p>
+<div class="name">You:</div><p class="you">Cool. So I can just add 4 of these <span class="code-inline-color">if</span> checks and that's it?</p>
+<div class="name">Balthazar:</div><p class="balthazar">Well, there's one more thing.</p>
+<div class="name">You:</div><p class="you"><span class="thinking">sigh</span> There always is...</p>
+<div class="name">Balthazar:</div><p class="balthazar">Remember that we added an origin to our player? We need to take that into account when calculating the left, right, top and bottom boundaries.</p>
+<div class="name">You:</div><p class="you">So instead of <span class="code-inline-color">obj1.x + obj1.width</span>, I need to subtract the origin to get the upper-left point, just like I did when I was drawing. That's makes it <span class="code-inline-color">obj1.x - obj1.origin_x + obj1.width</span>.</p>
+<div class="name">Balthazar:</div><p class="balthazar">Exactly!</p>
 <div class="panel panel-default">
 <div class="panel-code code"><span class="context">// Return true if the 2 objects overlap.</span>
 <span class="context">function collide(obj1, obj2) {</span>
@@ -51,10 +70,10 @@
 </div>
 </div>
 <div class="name">Balthazar:</div><p class="balthazar">And now if you run your code it will detect when the player touches the goal.</p>
-<div class="name">You:</div><p class="you">It's not working - I can walk over to the goal and the game doesn't end.</p>
-<div class="name">Balthazar:</div><p class="balthazar">Actually, it is working. You just can't tell that it's working. When the player touches the goal, the boolean variable <span class="code-inline-color">game_over</span> is set to <span class="code-inline-color">true</span>. The problem is that we don't currently do anything special when the game is over.</p>
+<div class="name">You:</div><p class="you">I think I did something wrong. It's not working - I can walk over to the goal and the game doesn't end.</p>
+<div class="name">Balthazar:</div><p class="balthazar">Actually, the collision check is working -- it's just not obvious that it's doing anything. When the player touches the goal, the boolean variable <span class="code-inline-color">game_over</span> is indeed set to <span class="code-inline-color">true</span>. The problem is that you don't currently do anything special when the game is over.</p>
 <div class="name">You:</div><p class="you">We should fix that.</p>
-<div class="name">Balthazar:</div><p class="balthazar">And that's just what we'll do next.</p>
+<div class="name">Balthazar:</div><p class="balthazar">And that's just what you'll do next.</p>
 <p class="alert alert-info"><a href="046.html"><span class="goto">GOTO 046</span></a> if you already have the <span class="badge-check">Movement III - Gravity</span> badge.</p>
 <p class="alert alert-info"><a href="044.html"><span class="goto">GOTO 044</span></a></p>
 </div>
