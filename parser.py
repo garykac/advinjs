@@ -688,7 +688,7 @@ class Parser(object):
 		fout.write('<script type="text/javascript">\n')
 		fout.write('\tvar _gaq = _gaq || [];\n')
 		fout.write("\t_gaq.push(['_setAccount', 'UA-17513364-1']);\n")
-		fout.write("\t_gaq.push(['_setDomainName', 'cse4k12.org']);\n")
+		fout.write("\t_gaq.push(['_setDomainName', 'garykac.github.io']);\n")
 		fout.write("\t_gaq.push(['_setAllowLinker', true]);\n")
 		fout.write("\t_gaq.push(['_trackPageview']);\n")
 		fout.write('\n')
