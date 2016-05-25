@@ -178,10 +178,10 @@ _book01_functions = [
 	'update_world',
 ]
 
-_book01_info = [
-	_book01_stages,
-	_book01_badges,
-	_book01_optional_badges,
-	_book01_images,
-	_book01_functions,
-]
+_book01_info = {
+	'stages': _book01_stages,
+	'badges': _book01_badges,
+	'badges_optional': _book01_optional_badges,
+	'images': _book01_images,
+	'functions': _book01_functions,
+}

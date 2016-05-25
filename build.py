@@ -12,7 +12,7 @@ import sys
 
 from parser import Parser
 
-from book01 import  _book01_info
+from book01 import _book01_info
 
 _version = '0.1'
 
@@ -32,14 +32,14 @@ class StageGenerator(object):
 		self.options = options
 
 		self.book = book
-		self.stages = _books[book][0]
-		self.badge_id2name = _books[book][1]
+		self.stages = _books[book]['stages']
+		self.badge_id2name = _books[book]['badges']
 		self.badge_name2id = {}
 		for id, name in self.badge_id2name.items():
 			self.badge_name2id[name] = id
-		self.optional_badges = _books[book][2]
-		self.images = _books[book][3]
-		self.functions = _books[book][4]
+		self.badges_optional = _books[book]['badges_optional']
+		self.images = _books[book]['images']
+		self.functions = _books[book]['functions']
 
 		self.id = stage_id
 		self.stage_name = self.stages[stage_id][0]
@@ -356,7 +356,7 @@ class StageGenerator(object):
 					end_nodes.append([node_code, path_so_far[:]])
 				# Make sure all the badges have been obtained.
 				for b in self.stage_badges:
-					if not self.badge_id2name[b] in badges and not b in self.optional_badges:
+					if not self.badge_id2name[b] in badges and not b in self.badges_optional:
 						error('End of %s without obtaining badge: %s' % (self.stage_name, self.badge_id2name[b]))
 				continue
 			links = self.links[node_id]
@@ -550,7 +550,7 @@ def process_html(infile, outfile, book, options):
 		print '  %s -> html' % infile
 	images = None
 	if book:
-		images = _books[book][3]
+		images = _books[book]['images']
 	try:
 		parser = Parser(options)
 		if not parser.parse(infile, name, images):
@@ -608,7 +608,7 @@ def main():
 	for book in books:
 		book_info = _books[book]
 
-		book_stages = book_info[0]
+		book_stages = book_info['stages']
 
 		stage = 0
 		stages = []
