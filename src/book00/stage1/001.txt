@@ -1,0 +1,6 @@
+TITLE = The Beginning
+ID = 001
+
+B: xxxx
+
+GOTO 009

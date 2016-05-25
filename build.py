@@ -12,12 +12,13 @@ import sys
 
 from parser import Parser
 
+from book00 import _book00_info
 from book01 import _book01_info
 
 _version = '0.1'
 
 _books = {
-	'book00': None,
+	'book00': _book00_info,
 	'book01': _book01_info,
 }
 
@@ -494,7 +495,7 @@ class StageGenerator(object):
 		return True
 
 def make_dir(dir):
-	if not os.path.exists(dir):
+	if dir != '' and not os.path.exists(dir):
 		os.makedirs(dir)
 
 def rm_dir(dir):
@@ -511,8 +512,8 @@ def copy_snapshot_dir(book, stage_src, src, stage_dst, dst):
 
 	distutils.dir_util.copy_tree(snapshot_src, snapshot_dst)
 
-def copy_core_snapshot_files():
-	distutils.dir_util.copy_tree('baseline', 'snapshots/book01/000')
+def copy_core_snapshot_files(book):
+	distutils.dir_util.copy_tree('baseline', 'snapshots/%s/000' % book)
 
 def create_main_html_files(options):
 	if options.clean:
@@ -545,6 +546,7 @@ def process_html(infile, outfile, book, options):
 	"""
 	errors = 0
 	name = os.path.splitext(os.path.basename(infile))[0]
+	make_dir(os.path.dirname(outfile))
 	success = True
 	if options.verbose:
 		print '  %s -> html' % infile
@@ -633,7 +635,7 @@ def main():
 					rm_dir(os.path.join(book, book_stages[stage][0]))
 
 		if args.pathcheck:
-			copy_core_snapshot_files()
+			copy_core_snapshot_files(book)
 		if args.html:
 			create_book_files(book, args)
 

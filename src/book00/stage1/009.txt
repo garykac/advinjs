@@ -1,0 +1,8 @@
+TITLE = Node 009
+ID = 009
+
+B: xxxx
+
+GAIN Simple Badge
+
+GOTO 018

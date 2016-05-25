@@ -1,0 +1,10 @@
+TITLE = Friction
+ID = 018
+
+B: Congratulations! You've finished stage 1.
+
+B: This is the last stage so that means that you've finished.
+
+FINISH_STAGE 1
+
+GOTO 000 END
