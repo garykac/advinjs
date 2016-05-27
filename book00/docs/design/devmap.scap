@@ -1,0 +1,435 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<ScappleDocument Version="1.1" ID="A4106EAB-61F3-474B-BC60-3FDCB651E24B">
+    <Notes>
+        <Note ID="0" FontSize="12.0" Position="169.597656,616.539062" Width="58.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1">0.0 0.138899 0.490724</Border>
+                <Fill>0.785405 0.931903 0.977157</Fill>
+            </Appearance>
+            <String>Variables</String>
+        </Note>
+        <Note ID="1" FontSize="12.0" Position="297.917969,575.714844" Width="75.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1">0.0 0.138899 0.490724</Border>
+                <Fill>0.785405 0.931903 0.977157</Fill>
+            </Appearance>
+            <String>Input Events</String>
+        </Note>
+        <Note ID="2" FontSize="12.0" Position="200.894531,643.964844" Width="139.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1">0.0 0.138899 0.490724</Border>
+                <Fill>0.785405 0.931903 0.977157</Fill>
+            </Appearance>
+            <String>Variables Global vs local</String>
+        </Note>
+        <Note ID="9" FontSize="12.0" Position="171.199219,573.472656" Width="44.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1"></Border>
+                <Fill>0.784314 0.933333 0.976471</Fill>
+            </Appearance>
+            <String>events</String>
+        </Note>
+        <Note ID="10" FontSize="12.0" Position="222.835938,575.316406" Width="69.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1"></Border>
+                <Fill>0.784314 0.933333 0.976471</Fill>
+            </Appearance>
+            <String>Load Event</String>
+        </Note>
+        <Note ID="11" FontSize="12.0" Position="379.082031,576.480469" Width="65.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1"></Border>
+                <Fill>0.784314 0.933333 0.976471</Fill>
+            </Appearance>
+            <String>Keyevents</String>
+        </Note>
+        <Note ID="12" FontSize="24.0" Position="581.886719,707.519531" Width="134.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+            </Appearance>
+            <String>canvas - JS</String>
+        </Note>
+        <Note ID="13" FontSize="12.0" Position="619.828125,802.378906" Width="51.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1"></Border>
+                <Fill>0.784314 0.933333 0.976471</Fill>
+            </Appearance>
+            <String>drawing</String>
+        </Note>
+        <Note ID="14" FontSize="12.0" Position="591.382812,829.539062" Width="137.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1"></Border>
+                <Fill>0.784314 0.933333 0.976471</Fill>
+            </Appearance>
+            <String>requestAnimationFrame</String>
+        </Note>
+        <Note ID="15" FontSize="12.0" Position="201.074219,671.363281" Width="141.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1"></Border>
+                <Fill>0.784314 0.933333 0.976471</Fill>
+            </Appearance>
+            <String>basic: int, string, boolean</String>
+        </Note>
+        <Note ID="16" FontSize="12.0" Position="199.722656,695.613281" Width="33.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1"></Border>
+                <Fill>0.784314 0.933333 0.976471</Fill>
+            </Appearance>
+            <String>dicts</String>
+        </Note>
+        <Note ID="17" FontSize="24.0" Position="130.296875,500.046875" Width="110.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+            </Appearance>
+            <String>javascript</String>
+        </Note>
+        <Note ID="18" FontSize="12.0" Position="618.886719,746.734375" Width="93.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1"></Border>
+                <Fill>0.784314 0.933333 0.976471</Fill>
+            </Appearance>
+            <String>getElementById</String>
+        </Note>
+        <Note ID="19" FontSize="12.0" Position="168.605469,542.175781" Width="138.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1"></Border>
+                <Fill>0.784314 0.933333 0.976471</Fill>
+            </Appearance>
+            <String>inline JS vs separate file</String>
+        </Note>
+        <Note ID="20" FontSize="24.0" Position="151.320312,171.101562" Width="54.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+            </Appearance>
+            <String>html</String>
+        </Note>
+        <Note ID="21" FontSize="24.0" Position="157.488281,279.0" Width="44.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+            </Appearance>
+            <String>css</String>
+        </Note>
+        <Note ID="22" FontSize="12.0" Position="191.257812,315.152344" Width="142.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1"></Border>
+                <Fill>0.784314 0.933333 0.976471</Fill>
+            </Appearance>
+            <String>inline css vs separate file</String>
+        </Note>
+        <Note ID="23" FontSize="12.0" Position="189.222656,204.664062" Width="68.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1"></Border>
+                <Fill>0.784314 0.933333 0.976471</Fill>
+            </Appearance>
+            <String>head, body</String>
+        </Note>
+        <Note ID="24" FontSize="24.0" Position="586.703125,502.488281" Width="237.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+            </Appearance>
+            <String>canvas - HTML/CSS</String>
+        </Note>
+        <Note ID="25" FontSize="12.0" Position="618.910156,776.644531" Width="166.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1"></Border>
+                <Fill>0.784314 0.933333 0.976471</Fill>
+            </Appearance>
+            <String>specifying size in JS (vs html)</String>
+        </Note>
+        <Note ID="26" FontSize="12.0" Position="610.703125,540.84375" Width="71.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1"></Border>
+                <Fill>0.784314 0.933333 0.976471</Fill>
+            </Appearance>
+            <String>canvas size</String>
+        </Note>
+        <Note ID="27" FontSize="12.0" Position="613.40625,567.089844" Width="59.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1"></Border>
+                <Fill>0.784314 0.933333 0.976471</Fill>
+            </Appearance>
+            <String>canvas id</String>
+        </Note>
+        <Note ID="28" FontSize="12.0" Position="190.820312,343.761719" Width="75.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1"></Border>
+                <Fill>0.784314 0.933333 0.976471</Fill>
+            </Appearance>
+            <String>color, border</String>
+        </Note>
+        <Note ID="29" FontSize="12.0" Position="234.757812,697.746094" Width="42.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1"></Border>
+                <Fill>0.784314 0.933333 0.976471</Fill>
+            </Appearance>
+            <String>arrays</String>
+        </Note>
+        <Note ID="30" FontSize="12.0" Position="167.097656,762.839844" Width="69.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1"></Border>
+                <Fill>0.784314 0.933333 0.976471</Fill>
+            </Appearance>
+            <String>flow control</String>
+        </Note>
+        <Note ID="31" FontSize="12.0" Position="240.714844,763.449219" Width="68.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1"></Border>
+                <Fill>0.784314 0.933333 0.976471</Fill>
+            </Appearance>
+            <String>if-then-else</String>
+        </Note>
+        <Note ID="32" FontSize="12.0" Position="312.296875,764.375" Width="55.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1"></Border>
+                <Fill>0.784314 0.933333 0.976471</Fill>
+            </Appearance>
+            <String>for loops</String>
+        </Note>
+        <Note ID="33" FontSize="12.0" Position="158.175781,75.542969" Width="75.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1"></Border>
+                <Fill>0.784314 0.933333 0.976471</Fill>
+            </Appearance>
+            <String>computer os</String>
+        </Note>
+        <Note ID="34" FontSize="12.0" Position="158.257812,126.046875" Width="51.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1"></Border>
+                <Fill>0.784314 0.933333 0.976471</Fill>
+            </Appearance>
+            <String>browser</String>
+        </Note>
+        <Note ID="35" FontSize="12.0" Position="159.265625,100.046875" Width="61.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1"></Border>
+                <Fill>0.784314 0.933333 0.976471</Fill>
+            </Appearance>
+            <String>text editor</String>
+        </Note>
+        <Note ID="36" FontSize="12.0" Position="213.726562,128.992188" Width="232.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1"></Border>
+                <Fill>0.784314 0.933333 0.976471</Fill>
+            </Appearance>
+            <String>using the dev console to browse the DOM</String>
+        </Note>
+        <Note ID="37" FontSize="12.0" Position="168.066406,730.265625" Width="57.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1"></Border>
+                <Fill>0.784314 0.933333 0.976471</Fill>
+            </Appearance>
+            <String>functions</String>
+        </Note>
+        <Note ID="38" FontSize="12.0" Position="230.976562,731.917969" Width="69.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1"></Border>
+                <Fill>0.784314 0.933333 0.976471</Fill>
+            </Appearance>
+            <String>parameters</String>
+        </Note>
+        <Note ID="39" FontSize="24.0" Position="135.394531,36.085938" Width="141.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+            </Appearance>
+            <String>environment</String>
+        </Note>
+        <Note ID="40" FontSize="12.0" Position="602.578125,84.535156" Width="63.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1"></Border>
+                <Fill>0.784314 0.933333 0.976471</Fill>
+            </Appearance>
+            <String>hyperlinks</String>
+        </Note>
+        <Note ID="41" FontSize="24.0" Position="583.917969,42.71875" Width="145.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+            </Appearance>
+            <String>HTML Game</String>
+        </Note>
+        <Note ID="56" FontSize="12.0" Position="612.429688,594.265625" Width="75.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1"></Border>
+                <Fill>0.784314 0.933333 0.976471</Fill>
+            </Appearance>
+            <String>canvas style</String>
+        </Note>
+        <Note ID="57" FontSize="12.0" Position="188.964844,234.75" Width="114.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1"></Border>
+                <Fill>0.784314 0.933333 0.976471</Fill>
+            </Appearance>
+            <String>h1, p, i, b, em, span</String>
+        </Note>
+        <Note ID="65" FontSize="12.0" Position="281.0,618.0" Width="149.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1"></Border>
+                <Fill>0.784314 0.933333 0.976471</Fill>
+            </Appearance>
+            <String>dev console for debugging</String>
+        </Note>
+        <Note ID="66" FontSize="12.0" Position="381.0,650.0" Width="53.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1"></Border>
+                <Fill>0.784314 0.933333 0.976471</Fill>
+            </Appearance>
+            <String>vs const</String>
+        </Note>
+        <Note ID="67" FontSize="12.0" Position="352.859375,677.699219" Width="115.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1"></Border>
+                <Fill>0.784314 0.933333 0.976471</Fill>
+            </Appearance>
+            <String>naming conventions</String>
+        </Note>
+        <Note ID="68" FontSize="12.0" Position="789.0,90.0" Width="49.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1"></Border>
+                <Fill>0.784314 0.933333 0.976471</Fill>
+            </Appearance>
+            <String>cookies</String>
+        </Note>
+        <Note ID="69" FontSize="12.0" Position="360.0,527.0" Width="64.0" Level="1">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1"></Border>
+                <Fill>0.784314 0.933333 0.976471</Fill>
+            </Appearance>
+            <String>comments</String>
+        </Note>
+        <Note ID="70" FontSize="12.0" Position="383.550781,775.527344" Width="74.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1"></Border>
+                <Fill>0.784314 0.933333 0.976471</Fill>
+            </Appearance>
+            <String>boolean ops</String>
+        </Note>
+    </Notes>
+    <BackgroundShapes>
+        <Shape ID="64" Sticky="Yes" Position="571.886719,701.519531" Width="262.179688" Height="174.0" Shadow="Yes">
+            <Appearance>
+                <Border Weight="1"></Border>
+            </Appearance>
+        </Shape>
+        <Shape ID="62" Sticky="Yes" Position="120.296875,492.265625" Width="360.363281" Height="313.0" Shadow="Yes">
+            <Appearance>
+                <Border Weight="1"></Border>
+            </Appearance>
+        </Shape>
+        <Shape ID="60" Sticky="Yes" Position="140.140625,164.699219" Width="282.0" Height="100.0" Shadow="Yes">
+            <Appearance>
+                <Border Weight="1"></Border>
+            </Appearance>
+        </Shape>
+        <Shape ID="59" Sticky="Yes" Position="147.488281,276.0" Width="252.949219" Height="100.0" Shadow="Yes">
+            <Appearance>
+                <Border Weight="1"></Border>
+            </Appearance>
+        </Shape>
+        <Shape ID="61" Sticky="Yes" Position="578.960938,488.058594" Width="261.0" Height="140.0" Shadow="Yes">
+            <Appearance>
+                <Border Weight="1"></Border>
+            </Appearance>
+        </Shape>
+        <Shape ID="58" Sticky="Yes" Position="133.480469,30.046875" Width="346.0" Height="128.0" Shadow="Yes">
+            <Appearance>
+                <Border Weight="1"></Border>
+            </Appearance>
+        </Shape>
+        <Shape ID="42" Sticky="Yes" Position="574.105469,34.824219" Width="320.0" Height="82.460938" Shadow="Yes">
+            <Appearance>
+                <Border Weight="1"></Border>
+            </Appearance>
+        </Shape>
+    </BackgroundShapes>
+    <Stacks>
+        <Stack>2, 15</Stack>
+        <Stack>22, 28</Stack>
+    </Stacks>
+    <AutoFit>0-2, 9-23, 25-35, 37-41, 56-57, 65-68, 70</AutoFit>
+    <NoteStyles>
+        <Style Name="Basic" ID="64BDFF72-1226-414B-9EA0-C2B243F9FBFB" AffectFontStyle="Yes" AffectAlignment="Yes" AffectTextColor="Yes" AffectNoteBody="Yes" AffectSize="No" AffectFade="No" AffectSticky="Yes">
+            <FontSize>12.0</FontSize>
+            <Alignment>Left</Alignment>
+            <BorderThickness>1</BorderThickness>
+            <BorderColor>0.0 0.138899 0.490724</BorderColor>
+            <FillColor>0.785405 0.931903 0.977157</FillColor>
+            <Size>75.0,150.0</Size>
+        </Style>
+        <Style Name="Blue Bubble" ID="6507BC30-D2AF-40F9-AE02-085CE3E949F1" AffectFontStyle="No" AffectAlignment="No" AffectTextColor="No" AffectNoteBody="Yes" AffectFade="No">
+            <BorderThickness>1</BorderThickness>
+            <BorderColor>0.477193 0.557066 0.76433</BorderColor>
+            <FillColor>0.840969 0.866828 0.925903</FillColor>
+        </Style>
+        <Style Name="Brown Bubble" ID="1E825ED7-5DCB-428C-8549-0DB7DB196115" AffectFontStyle="No" AffectAlignment="No" AffectTextColor="No" AffectNoteBody="Yes" AffectFade="No">
+            <BorderThickness>1</BorderThickness>
+            <BorderColor>0.290055 0.1523 0.182215</BorderColor>
+            <FillColor>0.940019 0.892907 0.779716</FillColor>
+        </Style>
+        <Style Name="Green Bubble" ID="100612C8-82DC-41E0-A2E5-31BA6E1F867A" AffectFontStyle="No" AffectAlignment="No" AffectTextColor="No" AffectNoteBody="Yes" AffectFade="No">
+            <BorderThickness>1</BorderThickness>
+            <BorderColor>0.331867 0.609932 0.356197</BorderColor>
+            <FillColor>0.790123 0.882328 0.80198</FillColor>
+        </Style>
+        <Style Name="Pink Bubble" ID="F02E00D5-54B3-4EF0-A05D-6B398FB2E129" AffectFontStyle="No" AffectAlignment="No" AffectTextColor="No" AffectNoteBody="Yes" AffectFade="No">
+            <BorderThickness>1</BorderThickness>
+            <BorderColor>0.747881 0.366532 0.542813</BorderColor>
+            <FillColor>0.918452 0.807302 0.863467</FillColor>
+        </Style>
+        <Style Name="Red Text" ID="E8AAABF2-376A-4BF1-8724-022A09E1F078" AffectFontStyle="No" AffectAlignment="No" AffectTextColor="Yes" AffectNoteBody="No" AffectFade="No">
+            <TextColor>1.0 0.0 0.0</TextColor>
+        </Style>
+        <Style Name="Title Text" ID="C09067F3-D6B5-4730-8D63-7C785DF86591" AffectFontStyle="Yes" AffectAlignment="Yes" AffectTextColor="Yes" AffectNoteBody="Yes" AffectSize="No" AffectFade="No" AffectSticky="No">
+            <FontSize>24.0</FontSize>
+            <Alignment>Left</Alignment>
+            <BorderThickness>0</BorderThickness>
+            <Size>225.0,150.0</Size>
+        </Style>
+        <Style Name="Yellow Bubble" ID="D40DA40A-A81B-444F-A2BF-D4C0E5AD6C46" AffectFontStyle="No" AffectAlignment="No" AffectTextColor="No" AffectNoteBody="Yes" AffectFade="No">
+            <BorderThickness>1</BorderThickness>
+            <BorderColor>0.756763 0.785592 0.373258</BorderColor>
+            <FillColor>0.906773 0.910625 0.634363</FillColor>
+        </Style>
+    </NoteStyles>
+    <UISettings>
+        <BackgroundColor>0.999737 0.986332 0.931298</BackgroundColor>
+        <DefaultFont>Helvetica</DefaultFont>
+        <DefaultTextColor>0.0 0.0 0.0</DefaultTextColor>
+    </UISettings>
+    <PrintSettings PaperSize="612.0,792.0" LeftMargin="72.0" RightMargin="72.0" TopMargin="90.0" BottomMargin="90.0" PaperType="na-letter" Orientation="Portrait" HorizontalPagination="Clip" VerticalPagination="Auto" ScaleFactor="1.0" HorizontallyCentered="Yes" VerticallyCentered="Yes" Collates="Yes" PagesAcross="1" PagesDown="1"></PrintSettings>
+</ScappleDocument>

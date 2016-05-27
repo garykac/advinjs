@@ -3,6 +3,8 @@ ID = 009
 
 B: xxxx
 
+CREATE_FILE script.js
+
 GAIN Simple Badge
 
 GOTO 018

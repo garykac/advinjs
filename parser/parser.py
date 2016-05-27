@@ -231,6 +231,13 @@ class Parser(object):
 			dir = line[11:]
 			self.add_data('CREATE_DIR', dir)
 			return True
+		if re.match(r'CREATE_FILE ', line):
+			file = line[12:]
+			self.add_data('CREATE_FILE', file)
+			dst = os.path.join('snapshots', self.book, self.stage, self.fullnodeid, file)
+			f = open(dst, 'w')
+			f.close()
+			return True
 		if re.match(r'BEGIN_COPY_FILE', line):
 			self.in_copy_file = True
 			self.add_data('BEGIN_COPY_FILE', '')
@@ -517,6 +524,8 @@ class Parser(object):
 
 			elif d[0] == 'CREATE_DIR':
 				fout.write('<div class="alert alert-info"><p>Create the following directory in your project:</p><ul class="list-group"><li class="list-group-item"><span class="code-inline">%s</span></li></ul></div>\n' % d[1])
+			elif d[0] == 'CREATE_FILE':
+				fout.write('<div class="alert alert-info"><p>Create the following file in your project:</p><ul class="list-group"><li class="list-group-item"><span class="code-inline">%s</span></li></ul></div>\n' % d[1])
 			elif d[0] == 'BEGIN_COPY_FILE':
 				fout.write('<div class="alert alert-info"><p>Copy the following files into your project:</p><ul class="list-group">\n')
 			elif d[0] == 'COPY_FILE':
@@ -685,19 +694,16 @@ class Parser(object):
 		#fout.write("<link href='http://fonts.googleapis.com/css?family=Abel' rel='stylesheet' type='text/css'>\n")
 		#fout.write("<link href='http://fonts.googleapis.com/css?family=Philosopher:400,700,400italic,700italic' rel='stylesheet' type='text/css'>\n")
 		fout.write('\n')
-		fout.write('<script type="text/javascript">\n')
-		fout.write('\tvar _gaq = _gaq || [];\n')
-		fout.write("\t_gaq.push(['_setAccount', 'UA-17513364-1']);\n")
-		fout.write("\t_gaq.push(['_setDomainName', 'garykac.github.io']);\n")
-		fout.write("\t_gaq.push(['_setAllowLinker', true]);\n")
-		fout.write("\t_gaq.push(['_trackPageview']);\n")
-		fout.write('\n')
-		fout.write('\t(function() {\n')
-		fout.write("\t\tvar ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;\n")
-		fout.write("\t\tga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';\n")
-		fout.write("\t\tvar s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);\n")
-		fout.write('\t})();\n')
+
+		fout.write('<script>\n')
+		fout.write("\t(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){\n")
+		fout.write("\t(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),\n")
+		fout.write("\tm=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)\n")
+		fout.write("\t})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');\n")
+		fout.write("\tga('create', 'UA-1163903-6', 'auto');\n")
+		fout.write("\tga('send', 'pageview');\n")
 		fout.write('</script>\n')
+
 		fout.write('\n')
 		fout.write('</head>\n')
 		fout.write('\n')

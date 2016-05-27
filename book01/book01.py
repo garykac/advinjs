@@ -179,9 +179,11 @@ _book01_functions = [
 ]
 
 _book01_info = {
+	'prereq': 'book00',
 	'stages': _book01_stages,
 	'badges': _book01_badges,
 	'badges_optional': _book01_optional_badges,
 	'images': _book01_images,
+	'files': ['script.js'],
 	'functions': _book01_functions,
 }

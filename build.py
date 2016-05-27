@@ -10,10 +10,10 @@ import shutil
 import subprocess
 import sys
 
-from parser import Parser
+from parser.parser import Parser
 
-from book00 import _book00_info
-from book01 import _book01_info
+from book00.book00 import _book00_info
+from book01.book01 import _book01_info
 
 _version = '0.1'
 
@@ -33,6 +33,7 @@ class StageGenerator(object):
 		self.options = options
 
 		self.book = book
+		self.prereq = _books[book]['prereq']
 		self.stages = _books[book]['stages']
 		self.badge_id2name = _books[book]['badges']
 		self.badge_name2id = {}
@@ -40,6 +41,7 @@ class StageGenerator(object):
 			self.badge_name2id[name] = id
 		self.badges_optional = _books[book]['badges_optional']
 		self.images = _books[book]['images']
+		self.files = _books[book]['files']
 		self.functions = _books[book]['functions']
 
 		self.id = stage_id
@@ -88,6 +90,9 @@ class StageGenerator(object):
 	def process(self):
 		print 'Processing stage%d' % self.id
 
+		if self.options.pathcheck:
+			self.copy_baseline_snapshot_files()
+
 		while self.nodelist:
 			curr = self.nodelist.pop(0)
 			if curr != self.end_node:
@@ -107,6 +112,13 @@ class StageGenerator(object):
 		#	print t, self.titles[t]
 
 		return errors
+
+	def copy_baseline_snapshot_files(self):
+		if self.prereq:
+			# Todo copy files from pre-req's final output
+			distutils.dir_util.copy_tree('baseline', 'snapshots/%s/000' % self.book)
+		else:
+			make_dir('snapshots/%s/000' % self.book)
 
 	# Calculating links
 
@@ -237,7 +249,7 @@ class StageGenerator(object):
 
 	def process_node_create_html(self, book, stage, nodeid):
 		if self.options.verbose:
-			print 'html', node
+			print 'html', nodeid
 		errors = 0
 		infile = os.path.join('src', book, stage, nodeid + '.txt')
 		success = True
@@ -250,7 +262,7 @@ class StageGenerator(object):
 			success = False
 
 		if not success:
-			print '%s' % node
+			print '%s' % nodeid
 			print 'Parse failure'
 			errors += 1
 			sys.exit(0)
@@ -436,62 +448,64 @@ class StageGenerator(object):
 	def check_equal(self, book, stage, path1, path2):
 		errors = 0
 
-		filename1 = path1[0]
+		node1 = path1[0]
 		path_so_far1 = path1[1]
-		filename2 = path2[0]
+		node2 = path2[0]
 		path_so_far2 = path2[1]
 
-		#print '%s == %s' % (filename1, filename2)
+		for file in self.files:
+			#print '%s == %s' % (node1, node2)
 
-		file1 = os.path.join('snapshots', book, stage, filename1, 'script.js')
-		file2 = os.path.join('snapshots', book, stage, filename2, 'script.js')
+			file1 = os.path.join('snapshots', book, stage, node1, file)
+			file2 = os.path.join('snapshots', book, stage, node2, file)
 
-		with open(file1) as f1:
-			lines1 = f1.readlines()
-		with open(file2) as f2:
-			lines2 = f2.readlines()
+			with open(file1) as f1:
+				lines1 = f1.readlines()
+			with open(file2) as f2:
+				lines2 = f2.readlines()
 
-		bad_count = 0
-		bad1 = []
-		bad2 = []
-		for i in range(0, len(lines1)):
-			if lines1[i] != lines2[i]:
-				if bad_count == 0:
-					print '%s == %s' % (filename1, filename2)
-					print 'Error: files not equal'
-					errors += 1
-				if bad_count > 10:
-					break
-				bad_count += 1
-				bad1.append(lines1[i].rstrip())
-				bad2.append(lines2[i].rstrip())
+			bad_count = 0
+			bad1 = []
+			bad2 = []
+			for i in range(0, len(lines1)):
+				if lines1[i] != lines2[i]:
+					if bad_count == 0:
+						print '%s == %s' % (node1, node2)
+						print 'Error: files not equal'
+						errors += 1
+					if bad_count > 10:
+						break
+					bad_count += 1
+					bad1.append(lines1[i].rstrip())
+					bad2.append(lines2[i].rstrip())
 
-		if len(bad1) != 0:
-			print filename1
-			print path_so_far1
-			for line in bad1:
-				print '1:', line
-			print filename2
-			print path_so_far2
-			for line in bad2:
-				print '2:', line
+			if len(bad1) != 0:
+				print node1
+				print path_so_far1
+				for line in bad1:
+					print '1:', line
+				print node2
+				print path_so_far2
+				for line in bad2:
+					print '2:', line
 
 		return errors
 
 	# Verify that the functions occur in the correct order
 	def check_function_order(self, book, stage, node):
-		findex = 0
-		f = open(os.path.join('snapshots', book, stage, node, 'script.js'), 'r')
-		for line in f:
-			m = re.match(r'function (.+)\(', line)
-			if m:
-				fname = m.group(1)
-				while self.functions[findex] != fname:
-					findex += 1
-					if findex >= len(self.functions):
-						print 'Failed to find', fname
-						return False
-		f.close()
+		for file in self.files:
+			findex = 0
+			f = open(os.path.join('snapshots', book, stage, node, file), 'r')
+			for line in f:
+				m = re.match(r'function (.+)\(', line)
+				if m:
+					fname = m.group(1)
+					while self.functions[findex] != fname:
+						findex += 1
+						if findex >= len(self.functions):
+							print 'Failed to find', fname
+							return False
+			f.close()
 		return True
 
 def make_dir(dir):
@@ -511,9 +525,6 @@ def copy_snapshot_dir(book, stage_src, src, stage_dst, dst):
 	snapshot_dst = os.path.join('snapshots', book, stage_dst, dst)
 
 	distutils.dir_util.copy_tree(snapshot_src, snapshot_dst)
-
-def copy_core_snapshot_files(book):
-	distutils.dir_util.copy_tree('baseline', 'snapshots/%s/000' % book)
 
 def create_main_html_files(options):
 	if options.clean:
@@ -634,8 +645,6 @@ def main():
 				if args.html:
 					rm_dir(os.path.join(book, book_stages[stage][0]))
 
-		if args.pathcheck:
-			copy_core_snapshot_files(book)
 		if args.html:
 			create_book_files(book, args)
 
