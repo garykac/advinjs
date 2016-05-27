@@ -42,11 +42,20 @@ class Parser(object):
 			'code': self.parse_code,
 		}
 
-	def parse(self, infile, nodeid, images, book=None, stage=None, fullnodeid=None, todo=False):
+	def parse(self, stagegen, infile, nodeid, fullnodeid=None, todo=False):
+		"""
+		nodeid: The name of the node being parse. This is the same as the
+			infile without the path or extension.
+		"""
+		self.stagegen = stagegen
 		self.nodeid = nodeid
-		self.images = images
-		self.book = book
-		self.stage = stage
+		self.images = None
+		self.book = None
+		self.stage = None
+		if self.stagegen:
+			self.images = self.stagegen.images
+			self.book = self.stagegen.book
+			self.stage = self.stagegen.stage_name
 		self.fullnodeid = fullnodeid
 		if self.fullnodeid == None:
 			self.fullnodeid = nodeid

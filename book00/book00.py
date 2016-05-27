@@ -43,5 +43,6 @@ _book00_info = {
 	'badges_optional': _book00_optional_badges,
 	'images': _book00_images,
 	'files': [],
+	'default_file': 'script.js',
 	'functions': _book00_functions,
 }

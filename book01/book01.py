@@ -185,5 +185,6 @@ _book01_info = {
 	'badges_optional': _book01_optional_badges,
 	'images': _book01_images,
 	'files': ['script.js'],
+	'default_file': 'script.js',
 	'functions': _book01_functions,
 }

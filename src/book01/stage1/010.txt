@@ -29,7 +29,7 @@ BEGIN_CODE_INFO Delete the code that moves the player up and down.
 .}
 END_CODE_OK
 
-B: Excellent, try that and verify that is works.
+B: Excellent, try that and verify that it works.
 
 GAIN Movement I - Horizontal
 

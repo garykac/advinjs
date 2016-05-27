@@ -42,6 +42,7 @@ class StageGenerator(object):
 		self.badges_optional = _books[book]['badges_optional']
 		self.images = _books[book]['images']
 		self.files = _books[book]['files']
+		self.default_file = _books[book]['default_file']
 		self.functions = _books[book]['functions']
 
 		self.id = stage_id
@@ -88,7 +89,7 @@ class StageGenerator(object):
 			print msg
 
 	def process(self):
-		print 'Processing stage%d' % self.id
+		print 'Processing %s stage%d' % (self.book, self.id)
 
 		if self.options.pathcheck:
 			self.copy_baseline_snapshot_files()
@@ -104,7 +105,7 @@ class StageGenerator(object):
 		if self.options.html:
 			make_dir(os.path.join(self.book, self.stage_name))
 			for n in sorted(self.nodes):
-				errors += self.process_node_create_html(self.book, self.stage_name, n)
+				errors += self.process_node_create_html(n)
 		if self.options.pathcheck:
 			errors += self.verify_paths(self.book)
 
@@ -247,15 +248,15 @@ class StageGenerator(object):
 
 	# Processing nodes
 
-	def process_node_create_html(self, book, stage, nodeid):
+	def process_node_create_html(self, nodeid):
 		if self.options.verbose:
 			print 'html', nodeid
 		errors = 0
-		infile = os.path.join('src', book, stage, nodeid + '.txt')
+		infile = os.path.join('src', self.book, self.stage_name, nodeid + '.txt')
 		success = True
 		try:
 			parser = Parser(self.options)
-			if not parser.parse(infile, nodeid, self.images, book=book, stage=stage, todo=True):
+			if not parser.parse(self, infile, nodeid, todo=True):
 				success = False
 		except Exception as e:
 			print 'Exception:', e
@@ -266,7 +267,7 @@ class StageGenerator(object):
 			print 'Parse failure'
 			errors += 1
 			sys.exit(0)
-		parser.export_html(os.path.join(book, stage, nodeid + '.html'))
+		parser.export_html(os.path.join(self.book, self.stage_name, nodeid + '.html'))
 
 		return errors
 
@@ -301,6 +302,12 @@ class StageGenerator(object):
 			print 'path %s -> %s' % (src, dst)
 		#print node_path
 
+		if stage_dst != self.stage_name:
+			print '%s -> %s' % (src, dst)
+			print 'Unexpected stage name: %s instead of %s' % (stage_dst, self.stage_name)
+			errors += 1
+			sys.exit(0)
+
 		copy_snapshot_dir(book, stage_src, src, stage_dst, dst)
 
 		errors = 0
@@ -310,7 +317,7 @@ class StageGenerator(object):
 
 		try:
 			parser = Parser(self.options, verify_code=True)
-			if not parser.parse(infile, nodeid, self.images, book=book, stage=stage_dst, fullnodeid=dst):
+			if not parser.parse(self, infile, nodeid, fullnodeid=dst):
 				success = False
 		except:
 			success = False
@@ -566,7 +573,7 @@ def process_html(infile, outfile, book, options):
 		images = _books[book]['images']
 	try:
 		parser = Parser(options)
-		if not parser.parse(infile, name, images):
+		if not parser.parse(None, infile, name):
 			print 'Failure during parse_main'
 			success = False
 	except:
@@ -619,6 +626,8 @@ def main():
 
 	errors = 0
 	for book in books:
+		print 'Processing %s' % book
+
 		book_info = _books[book]
 
 		book_stages = book_info['stages']
