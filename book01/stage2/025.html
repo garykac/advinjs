@@ -28,7 +28,7 @@
 <h1>025 : Jump</h1>
 <div class="name">Balthazar:</div><p class="balthazar">First define how much gravity there should be in this world:</p>
 <div class="panel panel-default">
-<div class="panel-code-header">Define a gravity variable.</div><div class="panel-code code"><span class="context">function init_game() {</span>
+<div class="panel-code-header"><span class="panel-code-header-filename">script.js:</span> Define a gravity variable.</div><div class="panel-code code"><span class="context">function init_game() {</span>
 <span class="context">    ...</span>
 <span class="context">    // Global world parameters.</span>
 <span class="context">    _game.friction = 0.15;</span>
@@ -38,7 +38,7 @@
 <div class="panel-code-footer">Run your code in a browser and verify that there are no errors.</div></div>
 <div class="name">Balthazar:</div><p class="balthazar">We need to set the initial jump velocity and the max allowed velocity for the player</p>
 <div class="panel panel-default">
-<div class="panel-code-header">Define the initial jump velocity.</div><div class="panel-code code"><span class="context">function init_player() {</span>
+<div class="panel-code-header"><span class="panel-code-header-filename">script.js:</span> Define the initial jump velocity.</div><div class="panel-code code"><span class="context">function init_player() {</span>
 <span class="context">    ...</span>
 <span class="context">    _player.velocity_x = 0;</span>
 <span class="context">    _player.velocity_x_delta = 0.8;</span>
@@ -51,7 +51,7 @@
 <div class="panel-code-footer">Run your code in a browser and verify that there are no errors.</div></div>
 <div class="name">Balthazar:</div><p class="balthazar">We need to apply gravity to the player (just like we did with friction).</p>
 <div class="panel panel-default">
-<div class="panel-code-header">Update the player y-velocity to account for gravity.</div><div class="panel-code code"><span class="context">function update_player() {</span>
+<div class="panel-code-header"><span class="panel-code-header-filename">script.js:</span> Update the player y-velocity to account for gravity.</div><div class="panel-code code"><span class="context">function update_player() {</span>
 <span class="context">    ...</span>
 <span class="context">    // Apply the global world effects on the player.</span>
 <span class="context">    _player.velocity_x *= (1.0 - _game.friction);</span>
@@ -64,7 +64,7 @@
 <div class="panel-code-footer">Run your code in a browser and verify that there are no errors.</div></div>
 <div class="name">Balthazar:</div><p class="balthazar">and finally check for the jump key to initiate the jump. In this case, Up arrow, 'w' and spacebar:</p>
 <div class="panel panel-default">
-<div class="panel-code-header">Add support for the jump keys.</div><div class="panel-code code"><span class="context">function check_input() {</span>
+<div class="panel-code-header"><span class="panel-code-header-filename">script.js:</span> Add support for the jump keys.</div><div class="panel-code code"><span class="context">function check_input() {</span>
 <span class="context">    ...</span>
 <span class="context">    // Right arrow or 'd' to move right.</span>
 <span class="context">    if (_game.keymap[39] || _game.keymap[68]) {</span>

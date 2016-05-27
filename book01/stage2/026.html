@@ -30,7 +30,7 @@
 <div class="name">Balthazar:</div><p class="balthazar">We check to make sure that player's y-coordinate (the bottom of the player) doesn't go below the platform's y-coordinate (the top of the platform). If that ever happens, we move the player to the top of the platform and set the player's y-velocity to 0.</p>
 <div class="name">Balthazar:</div><p class="balthazar">Right now, this platform collision detection is pretty basic - and only works with a single platform. We'll be expanding it later to make it more general.</p>
 <div class="panel panel-default">
-<div class="panel-code-header">Create the <span class="code-inline">check_platform_collisions()</span> function.</div><div class="panel-code code"><span class="context">function check_input() {</span>
+<div class="panel-code-header"><span class="panel-code-header-filename">script.js:</span> Create the <span class="code-inline">check_platform_collisions()</span> function.</div><div class="panel-code code"><span class="context">function check_input() {</span>
 <span class="context">    ...</span>
 <span class="context">}</span>
 <span class="context"></span>
@@ -50,7 +50,7 @@
 <div class="name">Balthazar:</div><p class="balthazar">Since we'll be doing a lot more collision detection, we might as well create a <span class="code-inline-color">check_collisions()</span> function that will check for all the collisions that we care about in the game.</p>
 <div class="name">Balthazar:</div><p class="balthazar">Right now, we only have platform collisions, so we only need to call <span class="code-inline-color">check_platform_collisions()</span>. We'll be adding more to this function later.</p>
 <div class="panel panel-default">
-<div class="panel-code-header">Create the <span class="code-inline">check_collisions()</span> function.</div><div class="panel-code code"><span class="context">function check_input() {</span>
+<div class="panel-code-header"><span class="panel-code-header-filename">script.js:</span> Create the <span class="code-inline">check_collisions()</span> function.</div><div class="panel-code code"><span class="context">function check_input() {</span>
 <span class="context">    ...</span>
 <span class="context">}</span>
 <span class="context"></span>
@@ -65,7 +65,7 @@
 <div class="panel-code-footer">Run your code in a browser and verify that there are no errors.</div></div>
 <div class="name">Balthazar:</div><p class="balthazar">And finally, we need to call our <span class="code-inline-color">check_collisions()</span> function. We need to do that in <span class="code-inline-color">update_world()</span> so that the game checks for collisions whenever anything moves on the screen.</p>
 <div class="panel panel-default">
-<div class="panel-code-header">Add a call to <span class="code-inline">check_collision()</span> in <span class="code-inline">update_world()</span>.</div><div class="panel-code code"><span class="context">// This is called ~60 times per second to update the world.</span>
+<div class="panel-code-header"><span class="panel-code-header-filename">script.js:</span> Add a call to <span class="code-inline">check_collision()</span> in <span class="code-inline">update_world()</span>.</div><div class="panel-code code"><span class="context">// This is called ~60 times per second to update the world.</span>
 <span class="context">function update_world() {</span>
 <span class="context">    update_player();</span>
 <img src="../../css/plus.png" width="15" height="15"/><span class="add">    check_collisions();</span>

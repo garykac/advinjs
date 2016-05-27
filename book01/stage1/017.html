@@ -31,7 +31,7 @@
 <div class="name">You:</div><p class="you">So, let me guess, I need to add a variable to keep track of the player's friction, right?</p>
 <div class="name">Balthazar:</div><p class="balthazar">Yep, except it's not the player's friction. The friction is part of the game world, so you should add it in <span class="code-inline-color">init_game()</span>.</p>
 <div class="panel panel-default">
-<div class="panel-code-header">Define a global friction variable.</div><div class="panel-code code"><span class="context">function init_game() {</span>
+<div class="panel-code-header"><span class="panel-code-header-filename">script.js:</span> Define a global friction variable.</div><div class="panel-code code"><span class="context">function init_game() {</span>
 <span class="context">    ...</span>
 <span class="context">    // The keymap keeps track of which keys are currently being pressed.</span>
 <span class="context">    _game.keymap = {};</span>
@@ -54,7 +54,7 @@
 <div class="name">Balthazar:</div><p class="balthazar">Since the friction is the percentage of the player's velocity that is lost, you need to multiply the player's velocity by <span class="code-inline-color">(1 - friction)</span> each time you update. In youy case, you'll end up multiplying by 0.85 (= 1 - 0.15).</p>
 <div class="name">Balthazar:</div><p class="balthazar">This will cause the velocity to slowly decrease based on how much friction we specify. Higher friction values will cause the player to slow down more quickly. Lower friction will have the player slide for a longer time before stopping.</p>
 <div class="panel panel-default">
-<div class="panel-code-header">Slow the player down by applying friction.</div><div class="panel-code code"><span class="context">function update_player() {</span>
+<div class="panel-code-header"><span class="panel-code-header-filename">script.js:</span> Slow the player down by applying friction.</div><div class="panel-code code"><span class="context">function update_player() {</span>
 <span class="context">    check_input();</span>
 <span class="context"></span>
 <img src="../../css/plus.png" width="15" height="15"/><span class="add">    // Apply the global world effects on the player.</span>

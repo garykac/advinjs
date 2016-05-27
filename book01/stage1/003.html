@@ -36,7 +36,7 @@
 <div class="name">You:</div><p class="you">Oh. Probably in the <span class="code-inline-color">draw()</span> function.</p>
 <div class="name">Balthazar:</div><p class="balthazar">Right, but before you draw it you should first create a platform. A platform needs an x, y location and a width and a height. You can write a function called <span class="code-inline-color">create_platform()</span> that takes these parameters and then creates a platform.</p>
 <div class="panel panel-default">
-<div class="panel-code-header">Create the <span class="code-inline">create_platform()</span> function</div><div class="panel-code code"><span class="context">function init_player() {</span>
+<div class="panel-code-header"><span class="panel-code-header-filename">script.js:</span> Create the <span class="code-inline">create_platform()</span> function</div><div class="panel-code code"><span class="context">function init_player() {</span>
 <span class="context">    ...</span>
 <span class="context">}</span>
 <span class="context"></span>
@@ -64,7 +64,7 @@
 <div class="name">Balthazar:</div><p class="balthazar">True, but that's a lot of work to support being able to resize your screen.</p>
 <div class="name">You:</div><p class="you">Ah. A lot of work. Gotcha. Let's skip that, then.</p>
 <div class="panel panel-default">
-<div class="panel-code-header">Call <span class="code-inline">create_platform()</span> to create the base platform.</div><div class="panel-code code"><span class="context">function init_game() {</span>
+<div class="panel-code-header"><span class="panel-code-header-filename">script.js:</span> Call <span class="code-inline">create_platform()</span> to create the base platform.</div><div class="panel-code code"><span class="context">function init_game() {</span>
 <span class="context">    ...</span>
 <span class="context">    // The keymap keeps track of which keys are currently being pressed.</span>
 <span class="context">    _game.keymap = {};</span>
@@ -82,7 +82,7 @@
 <div class="name">You:</div><p class="you">OK. <span class="thinking">Whatever</span></p>
 <div class="name">Balthazar:</div><p class="balthazar">Add a call to <span class="code-inline-color">draw_platforms()</span> in the <span class="code-inline-color">draw()</span> function. Place it after you erase the screen (that is, after you call <span class="code-inline-color">erase()</span>) but before you draw the player (before <span class="code-inline-color">draw_player()</span>), that way the player will be drawn in front of the platforms.</p>
 <div class="panel panel-default">
-<div class="panel-code-header">Call <span class="code-inline">draw_platforms()</span> from within <span class="code-inline">draw()</span></div><div class="panel-code code"><span class="context">function draw() {</span>
+<div class="panel-code-header"><span class="panel-code-header-filename">script.js:</span> Call <span class="code-inline">draw_platforms()</span> from within <span class="code-inline">draw()</span></div><div class="panel-code code"><span class="context">function draw() {</span>
 <span class="context">    var canvas = document.getElementById("stage");</span>
 <span class="context">    var ctx = canvas.getContext("2d");</span>
 <span class="context"></span>
@@ -96,7 +96,7 @@
 <div class="name">You:</div><p class="you">Can I choose another color?</p>
 <div class="name">Balthazar:</div><p class="balthazar">Any color you like, just replace the red, green and blue components of the <span class="code-inline-color">rgb()</span> with values between 0 and 255 (inclusive).</p>
 <div class="panel panel-default">
-<div class="panel-code-header">Create the <span class="code-inline">draw_platforms()</span> function</div><div class="panel-code code"><span class="context">// Erase the canvas by filling it with white.</span>
+<div class="panel-code-header"><span class="panel-code-header-filename">script.js:</span> Create the <span class="code-inline">draw_platforms()</span> function</div><div class="panel-code code"><span class="context">// Erase the canvas by filling it with white.</span>
 <span class="context">function erase(ctx) {</span>
 <span class="context">    ...</span>
 <span class="context">}</span>

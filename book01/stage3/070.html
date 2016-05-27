@@ -32,7 +32,7 @@
 <div class="name">Balthazar:</div><p class="balthazar">We can update <span class="code-inline-color">_player.platform</span> by initializing it to <span class="code-inline-color">null</span> (instead of <span class="code-inline-color">false</span>) and setting it to the platform (instead of <span class="code-inline-color">true</span>) when the player collides with a platform.</p>
 <div class="name">Balthazar:</div><p class="balthazar">The <span class="code-inline-color">null</span> value simply means that there is no object stored in the variable - in our case, it means that there is no platform associated with the player.</p>
 <div class="panel panel-default">
-<div class="panel-code-header">Initializing the <span class="code-inline">platform</span> variable to <span class="code-inline">null</span>.</div><div class="panel-code code"><span class="context">function init_player() {</span>
+<div class="panel-code-header"><span class="panel-code-header-filename">script.js:</span> Initializing the <span class="code-inline">platform</span> variable to <span class="code-inline">null</span>.</div><div class="panel-code code"><span class="context">function init_player() {</span>
 <span class="context">    ...</span>
 <span class="context">    _player.origin_x = _player.width / 2;</span>
 <span class="context">    _player.origin_y = _player.height;</span>
@@ -48,7 +48,7 @@
 <div class="panel-code-footer">Run your code in a browser and verify that there are no errors.</div></div>
 <div class="name">Balthazar:</div><p class="balthazar">Fortunately we can still use <span class="code-inline-color">_player.platform</span> in the <span class="code-inline-color">if</span> statement in <span class="code-inline-color">check_input()</span> because (in JavaScript) a <span class="code-inline-color">null</span> value will be interpreted as <span class="code-inline-color">false</span>. Any non-<span class="code-inline-color">null</span> value will be interpreted as <span class="code-inline-color">true</span>.</p>
 <div class="panel panel-default">
-<div class="panel-code-header">Updating <span class="code-inline">platform</span> to <span class="code-inline">null</span>.</div><div class="panel-code code"><span class="context">function check_input() {</span>
+<div class="panel-code-header"><span class="panel-code-header-filename">script.js:</span> Updating <span class="code-inline">platform</span> to <span class="code-inline">null</span>.</div><div class="panel-code code"><span class="context">function check_input() {</span>
 <span class="context">    ...</span>
 <span class="context">    // Up arrow, 'w'  and spacebar to jump.</span>
 <span class="context">    if (_game.keymap[38] || _game.keymap[87] || _game.keymap[32]) {</span>

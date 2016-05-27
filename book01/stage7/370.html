@@ -42,7 +42,7 @@
 </ul></div>
 <div class="name">Balthazar:</div><p class="balthazar">In the code, we need to create a new player sprite and also create a boolean variable to keep track of whether or not the player is currently touching the monster.</p>
 <div class="panel panel-default">
-<div class="panel-code-header">Add new sprite and <span class="code-inline">is_touching_monster</span> variable.</div><div class="panel-code code"><span class="context">function init_player() {</span>
+<div class="panel-code-header"><span class="panel-code-header-filename">script.js:</span> Add new sprite and <span class="code-inline">is_touching_monster</span> variable.</div><div class="panel-code code"><span class="context">function init_player() {</span>
 <span class="context">    ...</span>
 <span class="context">    _player.platform = null;</span>
 <span class="context">    _player.health_max = 50;</span>
@@ -61,7 +61,7 @@
 <div class="panel-code-footer">Run your code in a browser and verify that there are no errors.</div></div>
 <div class="name">Balthazar:</div><p class="balthazar">And then we simply select this new sprite whenever the <span class="code-inline-color">is_touching_monster</span> variable is <span class="code-inline-color">true</span>.</p>
 <div class="panel panel-default">
-<div class="panel-code-header">Select the pain sprite when the player is touching a monster.</div><div class="panel-code code"><span class="context">function update_player_sprite() {</span>
+<div class="panel-code-header"><span class="panel-code-header-filename">script.js:</span> Select the pain sprite when the player is touching a monster.</div><div class="panel-code code"><span class="context">function update_player_sprite() {</span>
 <span class="context">    var sprite;</span>
 <span class="context">    if (_player.health <= 0) {</span>
 <span class="context">        sprite = _player.sprite_sad;</span>
@@ -78,7 +78,7 @@
 <div class="panel-code-footer">Run your code in a browser and verify that there are no errors.</div></div>
 <div class="name">Balthazar:</div><p class="balthazar">And finally, we need to set <span class="code-inline-color">is_touching_monster</span> to <span class="code-inline-color">true</span> whenever the player is touching a monster. That is, whenever we detect a collision between the player and a monster.</p>
 <div class="panel panel-default">
-<div class="panel-code-header">Update <span class="code-inline">is_touching_monster</span> based on monster collisions.</div><div class="panel-code code"><span class="context">function check_monster_collisions() {</span>
+<div class="panel-code-header"><span class="panel-code-header-filename">script.js:</span> Update <span class="code-inline">is_touching_monster</span> based on monster collisions.</div><div class="panel-code code"><span class="context">function check_monster_collisions() {</span>
 <span class="context">    var level = _levels[_game.current_level];</span>
 <span class="context">    var monsters = level.monsters;</span>
 <span class="context">    var damage = 0;</span>

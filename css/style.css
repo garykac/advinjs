@@ -259,6 +259,14 @@ h3 {
 	color: #000000;
 }
 
+.panel-code-header-filename {
+	font-family: "Courier New", Courier, monospace;
+	font-size: 0.9em;
+	font-style: normal;
+	font-weight: bold;
+	color: #000000;
+}
+
 .panel-code-footer {
 	padding: 2px 15px;
 	background-color: #d9edf7;

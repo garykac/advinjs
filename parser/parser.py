@@ -14,8 +14,8 @@ class Parser(object):
 		self.parse_mode = ['top']
 
 		self.book = None
-
 		self.stage = None
+		self.images = {}
 
 		# The full id of the node, with any badge annotations appended to the
 		# base node name.
@@ -23,8 +23,6 @@ class Parser(object):
 
 		# The simple node id (just the number).
 		self.nodeid = ''
-
-		self.images = {}
 
 		self.in_copy_file = False
 
@@ -49,13 +47,13 @@ class Parser(object):
 		"""
 		self.stagegen = stagegen
 		self.nodeid = nodeid
-		self.images = None
 		self.book = None
 		self.stage = None
+		self.images = {}
 		if self.stagegen:
-			self.images = self.stagegen.images
 			self.book = self.stagegen.book
 			self.stage = self.stagegen.stage_name
+			self.images = self.stagegen.images
 		self.fullnodeid = fullnodeid
 		if self.fullnodeid == None:
 			self.fullnodeid = nodeid
@@ -387,7 +385,7 @@ class Parser(object):
 				fout.write('<div class="panel panel-default">\n')
 			elif d[0] == 'BEGIN_CODE_INFO':
 				fout.write('<div class="panel panel-default">\n')
-				fout.write('<div class="panel-code-header">%s</div>' % self.expand_text(d[1], False))
+				fout.write('<div class="panel-code-header"><span class="panel-code-header-filename">%s:</span> %s</div>' % (self.stagegen.default_file, self.expand_text(d[1], False)))
 			elif d[0] == 'CODE':
 				css_path = ('../' * self.dir_depth) + 'css'
 				fout.write('<div class="panel-code code">')

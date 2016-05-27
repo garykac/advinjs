@@ -30,7 +30,7 @@
 <div class="name">Balthazar:</div><p class="balthazar">We do this by initializing the <span class="code-inline-color">_player.platform</span> variable to <span class="code-inline-color">false</span> and then checking the platform to see if the player has collided with it. If the player has collided with the platform, then we set <span class="code-inline-color">_player.platform</span> to be <span class="code-inline-color">true</span>.</p>
 <div class="name">Balthazar:</div><p class="balthazar">This works because gravity is constantly pulling the character down onto the platform. The only time the player will **not** be colliding with a platform is when the player is in the middle of a jump.</p>
 <div class="panel panel-default">
-<div class="panel-code-header">Record the platform if the player collides with it.</div><div class="panel-code code"><span class="context">function check_platform_collisions() {</span>
+<div class="panel-code-header"><span class="panel-code-header-filename">script.js:</span> Record the platform if the player collides with it.</div><div class="panel-code code"><span class="context">function check_platform_collisions() {</span>
 <img src="../../css/plus.png" width="15" height="15"/><span class="add">    _player.platform = false;</span>
 <span class="context">    if (_player.y > _game.platform.y) {</span>
 <img src="../../css/plus.png" width="15" height="15"/><span class="add">        _player.platform = true;</span>

@@ -29,7 +29,7 @@
 <div class="name">Balthazar:</div><p class="balthazar">We show the goal on the screen, but we want to detect when the player touches the goal and then end the game.</p>
 <div class="name">Balthazar:</div><p class="balthazar">The first thing we need is a boolean variable that keeps track of whether or not the game is over. This should be initialized to <span class="code-inline-color">false</span>.</p>
 <div class="panel panel-default">
-<div class="panel-code-header">Add <span class="code-inline">game_over</span> variable.</div><div class="panel-code code"><span class="context">function init_game() {</span>
+<div class="panel-code-header"><span class="panel-code-header-filename">script.js:</span> Add <span class="code-inline">game_over</span> variable.</div><div class="panel-code code"><span class="context">function init_game() {</span>
 <span class="context">    ...</span>
 <span class="context">    // Game state.</span>
 <img src="../../css/plus.png" width="15" height="15"/><span class="add">    _game.game_over = false;</span>
@@ -45,7 +45,7 @@
 <div class="name">Balthazar:</div><p class="balthazar">We can add a <span class="code-inline-color">check_goal_collisions()</span> function to detect when the player collides with the goal object. If that happens, we set the <span class="code-inline-color">game_over</span> flag to <span class="code-inline-color">true</span>.</p>
 <div class="name">Balthazar:</div><p class="balthazar">We're also temporarily adding a "dummy" version of the <span class="code-inline-color">collide()</span> function. This dummy version does nothing except return <span class="code-inline-color">false</span> (meaning no collision found). We'll be creating a proper version of <span class="code-inline-color">collide()</span> once we finish hooking up the goal collision code. We'll add a "NYI" comment to indicate that it's "Not Yet Implemented".</p>
 <div class="panel panel-default">
-<div class="panel-code-header">Create the <span class="code-inline">check_goal_collisions()</span> function.</div><div class="panel-code code"><span class="context">function check_input() {</span>
+<div class="panel-code-header"><span class="panel-code-header-filename">script.js:</span> Create the <span class="code-inline">check_goal_collisions()</span> function.</div><div class="panel-code code"><span class="context">function check_input() {</span>
 <span class="context">    ...</span>
 <span class="context">}</span>
 <span class="context"></span>

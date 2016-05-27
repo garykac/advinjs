@@ -39,7 +39,7 @@
 </div>
 <div class="name">You:</div><p class="you">So <span class="code-inline-color">origin_x</span> is half of the player width and <span class="code-inline-color">origin_y</span> is the full height of the player.</p>
 <div class="panel panel-default">
-<div class="panel-code-header">Initialize the player's origin based on the player width and height.</div><div class="panel-code code"><span class="context">function init_player() {</span>
+<div class="panel-code-header"><span class="panel-code-header-filename">script.js:</span> Initialize the player's origin based on the player width and height.</div><div class="panel-code code"><span class="context">function init_player() {</span>
 <span class="context">    ...</span>
 <span class="context">    _player.width = 20;</span>
 <span class="context">    _player.height = 20;</span>
@@ -53,7 +53,7 @@
 <div class="panel-code-footer">Run your code in a browser and verify that there are no errors.</div></div>
 <div class="name">Balthazar:</div><p class="balthazar">And now that origin can be used to calculate the upper-left corner when we need to draw the player. You simply subtract off the origin when drawing.</p>
 <div class="panel panel-default">
-<div class="panel-code-header">Update <span class="code-inline">draw_player()</span> to use the player origin.</div><div class="panel-code code"><span class="context">function draw_player(ctx) {</span>
+<div class="panel-code-header"><span class="panel-code-header-filename">script.js:</span> Update <span class="code-inline">draw_player()</span> to use the player origin.</div><div class="panel-code code"><span class="context">function draw_player(ctx) {</span>
 <span class="context">    ctx.fillStyle = "blue";</span>
 <img src="../../css/cross.png" width="15" height="15"/><span class="delete">    ctx.fillRect(_player.x, _player.y, _player.width, _player.height);</span>
 <img src="../../css/plus.png" width="15" height="15"/><span class="add">    ctx.fillRect(_player.x - _player.origin_x, _player.y - _player.origin_y,</span>
@@ -66,7 +66,7 @@
 <div class="name">Balthazar:</div><p class="balthazar">Yes, but later on you're going to want to change the size of the player and you're going to be happy you made this change.</p>
 <div class="name">You:</div><p class="you">I hope so.</p>
 <div class="panel panel-default">
-<div class="panel-code-header">Adjust the player's starting x-position.</div><div class="panel-code code"><span class="context">function init_player() {</span>
+<div class="panel-code-header"><span class="panel-code-header-filename">script.js:</span> Adjust the player's starting x-position.</div><div class="panel-code code"><span class="context">function init_player() {</span>
 <img src="../../css/cross.png" width="15" height="15"/><span class="delete">    _player.x = 0;</span>
 <img src="../../css/plus.png" width="15" height="15"/><span class="add">    _player.x = 20;</span>
 <span class="context">    _player.y = 360;</span>

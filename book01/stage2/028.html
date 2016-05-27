@@ -33,7 +33,7 @@
 <div class="name">You:</div><p class="you">You should only be allowed to jump if you're standing on a platform.</p>
 <div class="name">Balthazar:</div><p class="balthazar">So we should add a variable to the player that keeps track of whether-or-not the player is currently on a platform.</p>
 <div class="panel panel-default">
-<div class="panel-code-header">Add a <span class="code-inline">platform</span> variable to the player.</div><div class="panel-code code"><span class="context">function init_player() {</span>
+<div class="panel-code-header"><span class="panel-code-header-filename">script.js:</span> Add a <span class="code-inline">platform</span> variable to the player.</div><div class="panel-code code"><span class="context">function init_player() {</span>
 <span class="context">    ...</span>
 <span class="context">    _player.origin_x = _player.width / 2;</span>
 <span class="context">    _player.origin_y = _player.height;</span>
@@ -48,7 +48,7 @@
 <div class="panel-code-footer">Run your code in a browser and verify that there are no errors.</div></div>
 <div class="name">Balthazar:</div><p class="balthazar">And we need to check this variable whenever the player tries to jump.</p>
 <div class="panel panel-default">
-<div class="panel-code-header">Only allow jumps if the player is on a platform.</div><div class="panel-code code"><span class="context">function check_input() {</span>
+<div class="panel-code-header"><span class="panel-code-header-filename">script.js:</span> Only allow jumps if the player is on a platform.</div><div class="panel-code code"><span class="context">function check_input() {</span>
 <span class="context">    ...</span>
 <span class="context">    // Up arrow, 'w'  and spacebar to jump.</span>
 <span class="context">    if (_game.keymap[38] || _game.keymap[87] || _game.keymap[32]) {</span>

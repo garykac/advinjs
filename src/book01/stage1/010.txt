@@ -3,13 +3,15 @@ ID = 010
 
 U: Alright, let's make the player move left and right.
 
-B: Good. And how do you think we should do that?
+B: Good. And how do you think you should go about doing that?
 
 U: Umm.. by turning off the up and down keys?
 
-B: Right. And where is the code we need to remove to turn them off?
+B: Right. And do you know what code you need to remove to turn off those keys?
 
-U: It's in the =check_input()= function. We can just remove the parts that deal with the up arrow and down arrow.
+U: Well, the =check_input()= function handles the keyboard input. So I can just remove the parts that deal with the up arrow and down arrow.
+
+B: Excellent, try that and verify that it works.
 
 BEGIN_CODE_INFO Delete the code that moves the player up and down.
 .function check_input() {
@@ -28,8 +30,6 @@ BEGIN_CODE_INFO Delete the code that moves the player up and down.
 -	}
 .}
 END_CODE_OK
-
-B: Excellent, try that and verify that it works.
 
 GAIN Movement I - Horizontal
 
