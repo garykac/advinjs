@@ -9,6 +9,7 @@ import re
 import shutil
 import subprocess
 import sys
+import traceback
 
 from parser.parser import Parser
 
@@ -260,6 +261,8 @@ class StageGenerator(object):
 				success = False
 		except Exception as e:
 			print 'Exception:', e
+			exc_type, exc_value, exc_traceback = sys.exc_info()
+			traceback.print_exception(exc_type, exc_value, exc_traceback)
 			success = False
 
 		if not success:
@@ -320,6 +323,8 @@ class StageGenerator(object):
 			if not parser.parse(self, infile, nodeid, fullnodeid=dst):
 				success = False
 		except:
+			exc_type, exc_value, exc_traceback = sys.exc_info()
+			traceback.print_exception(exc_type, exc_value, exc_traceback)
 			success = False
 
 		if not success:
@@ -577,7 +582,8 @@ def process_html(infile, outfile, book, options):
 			print 'Failure during parse_main'
 			success = False
 	except:
-		print 'Parsing exception:', sys.exc_info()[0]
+		exc_type, exc_value, exc_traceback = sys.exc_info()
+		traceback.print_exception(exc_type, exc_value, exc_traceback)
 		success = False
 
 	if not success:
@@ -625,7 +631,7 @@ def main():
 		books.append('book%02d' % bookid)
 
 	errors = 0
-	for book in books:
+	for book in sorted(books):
 		print 'Processing %s' % book
 
 		book_info = _books[book]
