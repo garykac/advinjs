@@ -7,4 +7,4 @@ B: This is the last stage so that means that you've finished.
 
 FINISH_STAGE 1
 
-GOTO 000 END
+GOTO END

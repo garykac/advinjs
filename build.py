@@ -186,7 +186,7 @@ class StageGenerator(object):
 						else:
 							error('Unexpected next stage: found "%s", expected "%s"' % (target, self.next_stage_node))
 						continue
-					m = re.match(r'GOTO (\d\d\d) END', line)
+					m = re.match(r'GOTO END', line)
 					if m:
 						if self.id != len(self.stages)-2:
 							error('Unexpected end of game in node: %s' % node)

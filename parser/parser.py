@@ -486,9 +486,8 @@ class Parser(object):
 					next_stage = m.group(2)
 					fout.write('<p class="alert alert-info"><a href="../stage%s/%s.html"><span class="goto">GOTO %s</span></a> to proceed to stage %s.</p>\n' % (next_stage, target, target, next_stage))
 					continue
-				m = re.match(r'(\d\d\d) END', d[1])
+				m = re.match(r'END', d[1])
 				if m:
-					target = m.group(1)
 					fout.write('<p class="alert alert-info">End of Game.</p>\n')
 					continue
 				m = re.match(r'(\d\d\d)(.*)', d[1])
