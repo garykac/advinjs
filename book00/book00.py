@@ -1,7 +1,7 @@
 _book00_stages = [
 	# [stage-name, start-node, end-node, [badges]],
 	['',		'000', '000', []],
-	['stage1',	'001', '018', ['c1']],
+	['stage1',	'001', '080', ['c1']],
 	['',		'500', '500', []],	# Final
 ]
 

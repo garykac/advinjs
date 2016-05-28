@@ -1,5 +1,5 @@
-TITLE = Friction
-ID = 018
+TITLE = Node 80
+ID = 080
 
 B: Congratulations! You've finished stage 1.
 

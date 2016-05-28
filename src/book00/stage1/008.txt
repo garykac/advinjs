@@ -1,0 +1,26 @@
+TITLE = Node 008
+ID = 008
+
+B: xxxx
+
+CREATE_FILE game.html
+
+BEGIN_CODE_INFO (game.html) Basic HTML file
+^
++<html>
++<head>
++	<title>Canvas Game</title>
++
++	<link rel="stylesheet" type="text/css" href="style.css" />
++	<script type='text/javascript' src="script.js"></script>
++</head>
++
++<body>
++
++<canvas id="stage"></canvas>
++
++</body>
++</html>
+END_CODE_OK
+
+GOTO 020

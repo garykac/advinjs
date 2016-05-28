@@ -1,0 +1,20 @@
+TITLE = Node 020
+ID = 020
+
+B: xxxx
+
+CREATE_FILE style.css
+
+BEGIN_CODE_INFO (style.css) Basic CSS file
+^
++body {
++	background-color: blue;
++	color: white;
++}
++
++canvas {
++	border: 1px solid black;
++}
+END_CODE_OK
+
+GOTO 040
