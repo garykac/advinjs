@@ -6,16 +6,24 @@ import sys
 from parse_code import Parse_Code
 
 class Parser(object):
-	def __init__(self, options, verify_code=False):
+	def __init__(self, stagegen, options, pathcheck=False):
+		self.stagegen = stagegen
+		self.book = None
+		self.stage = None
+		self.images = {}
+		self.default_file = None
+		if self.stagegen:
+			self.book = self.stagegen.book
+			self.stage = self.stagegen.stage_name
+			self.images = self.stagegen.images
+			self.default_file = self.stagegen.default_file
+
+		self.pathcheck = pathcheck
 
 		self.data = []
 
 		# A stack of parse modes.
 		self.parse_mode = ['top']
-
-		self.book = None
-		self.stage = None
-		self.images = {}
 
 		# The full id of the node, with any badge annotations appended to the
 		# base node name.
@@ -30,7 +38,7 @@ class Parser(object):
 		self.current_line = 0
 
 		# Top-level parsers.
-		self.parse_code = Parse_Code(self, 'code', verify_code, options)
+		self.parse_code = Parse_Code(self, 'code', self.default_file, pathcheck, options)
 
 		self.parsers = [
 			self.parse_code,
@@ -40,20 +48,12 @@ class Parser(object):
 			'code': self.parse_code,
 		}
 
-	def parse(self, stagegen, infile, nodeid, fullnodeid=None, todo=False):
+	def parse(self, infile, nodeid, fullnodeid=None, todo=False):
 		"""
 		nodeid: The name of the node being parse. This is the same as the
 			infile without the path or extension.
 		"""
-		self.stagegen = stagegen
 		self.nodeid = nodeid
-		self.book = None
-		self.stage = None
-		self.images = {}
-		if self.stagegen:
-			self.book = self.stagegen.book
-			self.stage = self.stagegen.stage_name
-			self.images = self.stagegen.images
 		self.fullnodeid = fullnodeid
 		if self.fullnodeid == None:
 			self.fullnodeid = nodeid
@@ -241,9 +241,10 @@ class Parser(object):
 		if re.match(r'CREATE_FILE ', line):
 			file = line[12:]
 			self.add_data('CREATE_FILE', file)
-			dst = os.path.join('snapshots', self.book, self.stage, self.fullnodeid, file)
-			f = open(dst, 'w')
-			f.close()
+			if self.pathcheck:
+				dst = os.path.join('snapshots', self.book, self.stage, self.fullnodeid, file)
+				f = open(dst, 'w')
+				f.close()
 			return True
 		if re.match(r'BEGIN_COPY_FILE', line):
 			self.in_copy_file = True
@@ -258,14 +259,15 @@ class Parser(object):
 				self.error('COPY_FILE outside of BEGIN/END')
 			path = line[10:]
 			self.add_data('COPY_FILE', path)
-			src = os.path.join(self.book, path)
-			dst = os.path.join('snapshots', self.book, self.stage, self.fullnodeid, path)
-			dir = os.path.dirname(dst)
-			if not os.path.exists(dir):
-				os.makedirs(dir)
-			if not os.path.exists(src):
-				self.error('Unable to find: %s' % src)
-			shutil.copy(src, dst)
+			if self.pathcheck:
+				src = os.path.join(self.book, path)
+				dst = os.path.join('snapshots', self.book, self.stage, self.fullnodeid, path)
+				dir = os.path.dirname(dst)
+				if not os.path.exists(dir):
+					os.makedirs(dir)
+				if not os.path.exists(src):
+					self.error('Unable to find: %s' % src)
+				shutil.copy(src, dst)
 			return True
 
 		if re.match(r'BEGIN_IMAGE_TABLE ', line):
@@ -384,8 +386,14 @@ class Parser(object):
 			elif d[0] == 'BEGIN_CODE':
 				fout.write('<div class="panel panel-default">\n')
 			elif d[0] == 'BEGIN_CODE_INFO':
+				filename = self.stagegen.default_file
+				text = d[1]
+				m = re.match(r'\((.+)\) (.+)', d[1])
+				if m:
+					filename = m.group(1)
+					text = m.group(2)
 				fout.write('<div class="panel panel-default">\n')
-				fout.write('<div class="panel-code-header"><span class="panel-code-header-filename">%s:</span> %s</div>' % (self.stagegen.default_file, self.expand_text(d[1], False)))
+				fout.write('<div class="panel-code-header"><span class="panel-code-header-filename">%s:</span> %s</div>' % (filename, self.expand_text(text, False)))
 			elif d[0] == 'CODE':
 				css_path = ('../' * self.dir_depth) + 'css'
 				fout.write('<div class="panel-code code">')
@@ -400,7 +408,7 @@ class Parser(object):
 						fout.write('<img src="%s/cross.png" width="15" height="15"/><span class="delete">%s</span>\n' % (css_path, line))
 					elif type == '>':
 						fout.write('<span class="indent">%s</span>\n' % line)
-					else:
+					elif type != '^':
 						self.error('Unknown mark: "%s"' % type)
 				fout.write('</div>\n')
 			elif d[0] == 'END_CODE':

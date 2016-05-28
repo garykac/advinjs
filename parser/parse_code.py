@@ -3,18 +3,21 @@ import re
 import shutil
 
 class Parse_Code(object):
-	def __init__(self, parser, modename, verify, options):
+	def __init__(self, parser, modename, default_file, verify, options):
 		self.parser = parser
 		self.modename = modename
+		self.default_file = default_file
 		self.options = options
 
 		self.begin_code = 'BEGIN_CODE'
 		self.begin_code_info = ''
 
+		self.file = ''
+
 		self.debug = options.debug
 		self.verify = verify
 
-		self.prefix = set(['.', '+', '>', '-'])
+		self.prefix = set(['.', '+', '>', '-', '^'])
 		self.lines = []
 
 	def match_toplevel(self, line):
@@ -22,9 +25,13 @@ class Parse_Code(object):
 		if re.match('BEGIN_CODE', line):
 			self.begin_code = 'BEGIN_CODE'
 			self.begin_code_info = ''
+			self.file = self.default_file
 			if re.match('BEGIN_CODE_INFO', line):
 				self.begin_code = 'BEGIN_CODE_INFO'
 				self.begin_code_info = line[16:]
+				m = re.match(r'\((.+)\) (.+)', self.begin_code_info)
+				if m:
+					self.file = m.group(1)
 			elif line != 'BEGIN_CODE':
 				p.error('Unrecognized BEGIN_CODE line: %s' % line)
 			return True
@@ -79,34 +86,50 @@ class Parse_Code(object):
 	def process_code(self):
 		p = self.parser
 
-		source_file = os.path.join('snapshots', p.book, p.stage, p.fullnodeid, 'script.js')
+		source_file = os.path.join('snapshots', p.book, p.stage, p.fullnodeid, self.file)
 		if not os.path.isfile(source_file):
 			p.error('File "%s" doesn\'t exist' % source_file)
-		try:
-			fin = open(source_file, 'r')
-		except IOError as e:
-			p.error('Unable to open "%s": %s' % (fin, e))
+		# Handle empty input file.
+		empty_source_file = os.path.getsize(source_file) == 0
+		if empty_source_file:
+			fin = [None]
+		else:
+			try:
+				fin = open(source_file, 'r')
+			except IOError as e:
+				p.error('Unable to open "%s": %s' % (fin, e))
 
-		dst_file = os.path.join('snapshots', p.book, p.stage, p.fullnodeid, 'script2.js')
+		dst_file = os.path.join('snapshots', p.book, p.stage, p.fullnodeid, 'tmp.txt')
 		try:
 			fout = open(dst_file, 'w')
 		except IOError as e:
 			p.error('Unable to open "%s" for writing: %s' % (fin, e))
 
 		first_mode = self.lines[0][0]
-		if first_mode != '.' and first_mode != '-':
-			p.error('First line mode must be . or -: %s' % first_mode)
+		if not empty_source_file:
+			if first_mode != '.' and first_mode != '-':
+				p.error('First line mode must be "." or "-": %s' % first_mode)
+			match_index = 0;
+			match_mode = 'search'
+		else:
+			if first_mode != '^':
+				p.error('First line mode must be "^" for empty source files: %s' % first_mode)
+			match_index = 1;
+			match_mode = 'match'
 
-		match_index = 0;
-		match_mode = 'search'
 		for line in fin:
-			line = line.rstrip()
+			if line:
+				line = line.rstrip()
+
+			if self.debug:
+				print match_mode, line
 
 			if match_index >= len(self.lines):
 				match_mode = 'done'
 
 			if match_mode == 'done':
-				fout.write('%s\n' % line)
+				if line != None:
+					fout.write('%s\n' % line)
 			else:
 				match_line = self.lines[match_index][1:]
 
@@ -147,7 +170,8 @@ class Parse_Code(object):
 						else:
 							match_mode = 'done'
 					if match_mode == 'done':
-						fout.write('%s\n' % line)
+						if line != None:
+							fout.write('%s\n' % line)
 						if self.debug:
 							print 'writing umatched:', line
 						continue
@@ -200,8 +224,8 @@ class Parse_Code(object):
 					if write_line:
 						fout.write('%s\n' % line)
 
-
-		fin.close()
+		if not empty_source_file:
+			fin.close()
 		fout.close()
 
 		if self.debug:
