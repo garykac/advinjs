@@ -647,10 +647,10 @@ class Parser(object):
 				m = re.match(r'([a-zA-Z0-9\/\-\.]+) (\d+)x(\d+) (.*)', d[1])
 				if m:
 					file = m.group(1)
-					width = m.group(2)
-					height = m.group(3)
+					width = int(m.group(2))
+					height = int(m.group(3))
 					caption = m.group(4)
-					fout.write('<td><a href="%s" class="image-table"><img src="%s" width="%s" height="%s" /></a></td>\n' % (file, file, width, height))
+					fout.write('<td><a href="%s" class="image-table"><img src="%s" width="%d" height="%d" /></a></td>\n' % (file, file, width*2, height*2))
 					self.captions.append(caption)
 					continue
 				self.error('Unknown format: MAIN_TABLE_IMAGE "%s"' % d[1])

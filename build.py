@@ -38,7 +38,7 @@ class StageGenerator(object):
 		self.stages = _books[book]['stages']
 		self.load_badge_list()
 		self.badges_optional = _books[book]['badges_optional']
-		self.images = _books[book]['images']
+		self.load_image_list()
 		self.files = _books[book]['files']
 		self.default_file = _books[book]['default_file']
 		self.load_function_list()
@@ -97,6 +97,17 @@ class StageGenerator(object):
 		self.badge_name2id = {}
 		for id, name in self.badge_id2name.items():
 			self.badge_name2id[name] = id
+
+	def load_image_list(self):
+		self.images = {}
+		f = open(os.path.join('src', self.book, 'images.txt'), 'r')
+		for line in f:
+			# 'images.txt' generates an HTML file, so ignore all lines that
+			# don't identify an image.
+			if line.startswith('MAIN_TABLE_IMAGE'):
+				(cmd, fullpath, size, name) = line.split(' ')
+				self.images[fullpath] = size
+		f.close()
 
 	def load_function_list(self):
 		self.functions = []

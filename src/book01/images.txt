@@ -13,12 +13,12 @@ H3 Player images
 INFO These files should be placed in the =images/player/= directory.
 
 BEGIN_MAIN_TABLE
-MAIN_TABLE_IMAGE images/player/normal.png 40x48 normal.png
-MAIN_TABLE_IMAGE images/player/happy.png 40x48 happy.png
-MAIN_TABLE_IMAGE images/player/ooo.png 40x48 ooo.png
-MAIN_TABLE_IMAGE images/player/sad.png 60x34 sad.png
-MAIN_TABLE_IMAGE images/player/glasses.png 40x48 glasses.png
-MAIN_TABLE_IMAGE images/player/icon.png 28x34 icon.png
+MAIN_TABLE_IMAGE images/player/normal.png 20x24 normal.png
+MAIN_TABLE_IMAGE images/player/happy.png 20x24 happy.png
+MAIN_TABLE_IMAGE images/player/ooo.png 20x24 ooo.png
+MAIN_TABLE_IMAGE images/player/sad.png 30x17 sad.png
+MAIN_TABLE_IMAGE images/player/glasses.png 20x24 glasses.png
+MAIN_TABLE_IMAGE images/player/icon.png 14x17 icon.png
 END_MAIN_TABLE
 
 H3 Monster images
@@ -26,33 +26,33 @@ H3 Monster images
 INFO These files should be placed in the =images/monsters/= directory.
 
 BEGIN_MAIN_TABLE
-MAIN_TABLE_IMAGE images/monsters/vlad.png 40x48 vlad.png
-MAIN_TABLE_IMAGE images/monsters/henrietta.png 60x60 henrietta.png
-MAIN_TABLE_IMAGE images/monsters/rufus.png 56x52 rufus.png
-MAIN_TABLE_IMAGE images/monsters/prescott.png 52x56 prescott.png
-MAIN_TABLE_IMAGE images/monsters/doppleganger.png 40x48 doppleganger.png
+MAIN_TABLE_IMAGE images/monsters/vlad.png 20x24 vlad.png
+MAIN_TABLE_IMAGE images/monsters/henrietta.png 30x30 henrietta.png
+MAIN_TABLE_IMAGE images/monsters/rufus.png 28x26 rufus.png
+MAIN_TABLE_IMAGE images/monsters/prescott.png 26x28 prescott.png
+MAIN_TABLE_IMAGE images/monsters/doppleganger.png 20x24 doppleganger.png
 END_MAIN_TABLE
 
 BEGIN_MAIN_TABLE
-MAIN_TABLE_IMAGE images/monsters/falco1.png 80x48 falco1.png
-MAIN_TABLE_IMAGE images/monsters/falco2.png 80x48 falco2.png
+MAIN_TABLE_IMAGE images/monsters/falco1.png 40x24 falco1.png
+MAIN_TABLE_IMAGE images/monsters/falco2.png 40x24 falco2.png
 END_MAIN_TABLE
 
 BEGIN_MAIN_TABLE
-MAIN_TABLE_IMAGE images/monsters/octoboss1.png 76x48 octoboss1.png
-MAIN_TABLE_IMAGE images/monsters/octoboss2.png 76x48 octoboss2.png
-MAIN_TABLE_IMAGE images/monsters/octoboss3.png 76x48 octoboss3.png
+MAIN_TABLE_IMAGE images/monsters/octoboss1.png 38x24 octoboss1.png
+MAIN_TABLE_IMAGE images/monsters/octoboss2.png 38x24 octoboss2.png
+MAIN_TABLE_IMAGE images/monsters/octoboss3.png 38x24 octoboss3.png
 END_MAIN_TABLE
 
 BEGIN_MAIN_TABLE
-MAIN_TABLE_IMAGE images/monsters/eyes0.png 40x40 eyes0.png
-MAIN_TABLE_IMAGE images/monsters/eyes1.png 40x40 eyes1.png
-MAIN_TABLE_IMAGE images/monsters/eyes2.png 40x40 eyes2.png
+MAIN_TABLE_IMAGE images/monsters/eyes0.png 20x20 eyes0.png
+MAIN_TABLE_IMAGE images/monsters/eyes1.png 20x20 eyes1.png
+MAIN_TABLE_IMAGE images/monsters/eyes2.png 20x20 eyes2.png
 END_MAIN_TABLE
 
 BEGIN_MAIN_TABLE
-MAIN_TABLE_IMAGE images/monsters/ball-left.png 20x10 ball-left.png
-MAIN_TABLE_IMAGE images/monsters/ball-right.png 20x10 ball-right.png
+MAIN_TABLE_IMAGE images/monsters/ball-left.png 10x5 ball-left.png
+MAIN_TABLE_IMAGE images/monsters/ball-right.png 10x5 ball-right.png
 END_MAIN_TABLE
 
 H3 Item images
@@ -60,34 +60,34 @@ H3 Item images
 INFO These files should be placed in the =images/items/= directory.
 
 BEGIN_MAIN_TABLE
-MAIN_TABLE_IMAGE images/items/key.png 36x40 key.png
-MAIN_TABLE_IMAGE images/items/gem.png 42x54 gem.png
-MAIN_TABLE_IMAGE images/items/potion.png 32x46 potion.png
-MAIN_TABLE_IMAGE images/items/coin.png 40x40 coin.png
+MAIN_TABLE_IMAGE images/items/key.png 18x20 key.png
+MAIN_TABLE_IMAGE images/items/gem.png 21x27 gem.png
+MAIN_TABLE_IMAGE images/items/potion.png 16x23 potion.png
+MAIN_TABLE_IMAGE images/items/coin.png 20x20 coin.png
 END_MAIN_TABLE
 
 BEGIN_MAIN_TABLE
-MAIN_TABLE_IMAGE images/items/potion-1.png 32x46 potion-1.png
-MAIN_TABLE_IMAGE images/items/potion-2.png 32x46 potion-2.png
-MAIN_TABLE_IMAGE images/items/potion-3.png 32x46 potion-3.png
-MAIN_TABLE_IMAGE images/items/potion-4.png 32x46 potion-4.png
-MAIN_TABLE_IMAGE images/items/potion-5.png 32x46 potion-5.png
-MAIN_TABLE_IMAGE images/items/potion-6.png 32x46 potion-6.png
+MAIN_TABLE_IMAGE images/items/potion-1.png 16x23 potion-1.png
+MAIN_TABLE_IMAGE images/items/potion-2.png 16x23 potion-2.png
+MAIN_TABLE_IMAGE images/items/potion-3.png 16x23 potion-3.png
+MAIN_TABLE_IMAGE images/items/potion-4.png 16x23 potion-4.png
+MAIN_TABLE_IMAGE images/items/potion-5.png 16x23 potion-5.png
+MAIN_TABLE_IMAGE images/items/potion-6.png 16x23 potion-6.png
 END_MAIN_TABLE
 
 BEGIN_MAIN_TABLE
-MAIN_TABLE_IMAGE images/items/potion-7.png 32x46 potion-7.png
-MAIN_TABLE_IMAGE images/items/potion-8.png 32x46 potion-8.png
-MAIN_TABLE_IMAGE images/items/potion-9.png 32x46 potion-9.png
-MAIN_TABLE_IMAGE images/items/potion-10.png 32x46 potion-10.png
-MAIN_TABLE_IMAGE images/items/potion-11.png 32x46 potion-11.png
-MAIN_TABLE_IMAGE images/items/potion-12.png 32x46 potion-12.png
+MAIN_TABLE_IMAGE images/items/potion-7.png 16x23 potion-7.png
+MAIN_TABLE_IMAGE images/items/potion-8.png 16x23 potion-8.png
+MAIN_TABLE_IMAGE images/items/potion-9.png 16x23 potion-9.png
+MAIN_TABLE_IMAGE images/items/potion-10.png 16x23 potion-10.png
+MAIN_TABLE_IMAGE images/items/potion-11.png 16x23 potion-11.png
+MAIN_TABLE_IMAGE images/items/potion-12.png 16x23 potion-12.png
 END_MAIN_TABLE
 
 BEGIN_MAIN_TABLE
-MAIN_TABLE_IMAGE images/items/potion-13.png 32x46 potion-13.png
-MAIN_TABLE_IMAGE images/items/potion-14.png 32x46 potion-14.png
-MAIN_TABLE_IMAGE images/items/potion-15.png 32x46 potion-15.png
+MAIN_TABLE_IMAGE images/items/potion-13.png 16x23 potion-13.png
+MAIN_TABLE_IMAGE images/items/potion-14.png 16x23 potion-14.png
+MAIN_TABLE_IMAGE images/items/potion-15.png 16x23 potion-15.png
 END_MAIN_TABLE
 
 H3 Background images
@@ -95,20 +95,20 @@ H3 Background images
 INFO These files should be placed in the =images/backgrounds/= directory.
 
 BEGIN_MAIN_TABLE
-MAIN_TABLE_IMAGE images/backgrounds/block.png 40x40 block.png
-MAIN_TABLE_IMAGE images/backgrounds/block2.png 40x40 block2.png
-MAIN_TABLE_IMAGE images/backgrounds/block-red.png 40x40 block-red.png
-MAIN_TABLE_IMAGE images/backgrounds/candycane.png 40x40 candycane.png
+MAIN_TABLE_IMAGE images/backgrounds/block.png 20x20 block.png
+MAIN_TABLE_IMAGE images/backgrounds/block2.png 20x20 block2.png
+MAIN_TABLE_IMAGE images/backgrounds/block-red.png 20x20 block-red.png
+MAIN_TABLE_IMAGE images/backgrounds/candycane.png 20x20 candycane.png
 END_MAIN_TABLE
 
 BEGIN_MAIN_TABLE
-MAIN_TABLE_IMAGE images/backgrounds/dirt.png 80x40 dirt.png
-MAIN_TABLE_IMAGE images/backgrounds/brick.png 18x16 brick.png
-MAIN_TABLE_IMAGE images/backgrounds/post.png 20x20 post.png
-MAIN_TABLE_IMAGE images/backgrounds/wheel.png 20x20 wheel.png
+MAIN_TABLE_IMAGE images/backgrounds/dirt.png 40x20 dirt.png
+MAIN_TABLE_IMAGE images/backgrounds/brick.png 9x8 brick.png
+MAIN_TABLE_IMAGE images/backgrounds/post.png 10x10 post.png
+MAIN_TABLE_IMAGE images/backgrounds/wheel.png 10x10 wheel.png
 END_MAIN_TABLE
 
 BEGIN_MAIN_TABLE
-MAIN_TABLE_IMAGE images/backgrounds/gate-closed.png 60x80 gate-closed.png
-MAIN_TABLE_IMAGE images/backgrounds/gate-open.png 60x80 gate-open.png
+MAIN_TABLE_IMAGE images/backgrounds/gate-closed.png 30x40 gate-closed.png
+MAIN_TABLE_IMAGE images/backgrounds/gate-open.png 30x40 gate-open.png
 END_MAIN_TABLE
