@@ -7,16 +7,15 @@ from parse_code import Parse_Code
 
 class Parser(object):
 	def __init__(self, stagegen, options, pathcheck=False):
-		self.stagegen = stagegen
 		self.book = None
 		self.stage = None
 		self.images = {}
 		self.default_file = None
-		if self.stagegen:
-			self.book = self.stagegen.book
-			self.stage = self.stagegen.stage_name
-			self.images = self.stagegen.images
-			self.default_file = self.stagegen.default_file
+		if stagegen:
+			self.book = stagegen.book.name
+			self.stage = stagegen.stage_name
+			self.images = stagegen.book.images
+			self.default_file = stagegen.book.default_file
 
 		self.pathcheck = pathcheck
 
@@ -386,7 +385,7 @@ class Parser(object):
 			elif d[0] == 'BEGIN_CODE':
 				fout.write('<div class="panel panel-default">\n')
 			elif d[0] == 'BEGIN_CODE_INFO':
-				filename = self.stagegen.default_file
+				filename = self.default_file
 				text = d[1]
 				m = re.match(r'\((.+)\) (.+)', d[1])
 				if m:

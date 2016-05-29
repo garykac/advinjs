@@ -27,41 +27,133 @@ def error(msg):
 	print 'Error: %s' % msg
 	sys.exit(1)
 
-# ----------
+class Book(object):
+	def __init__(self, name):
+		self.name = name
+		self.prereq = _books[name]['prereq']
+		self.load_stage_info()
+		self.load_badge_list()
+		self.badges_optional = _books[name]['badges_optional']
+		self.load_image_list()
+		self.files = _books[name]['files']
+		self.default_file = _books[name]['default_file']
+		self.load_function_list()
+
+	def load_stage_info(self):
+		self.stages = []
+		self.stages.append(['', '000', '000', []])
+		f = open(os.path.join('src', self.name, 'stages.txt'), 'r')
+		for stageinfo in f:
+			(name, start, end, badges) = stageinfo.rstrip().split(';')
+			badge_list = badges.split(',')
+			self.stages.append([name, start, end, badge_list])
+		f.close()
+		self.stages.append(['', '500', '500', []])
+
+	def load_badge_list(self):
+		self.badge_id2name = {}
+		f = open(os.path.join('src', self.name, 'badges.txt'), 'r')
+		for badgeinfo in f:
+			(id, name) = badgeinfo.rstrip().split(':')
+			self.badge_id2name[id] = name
+		f.close()
+
+		self.badge_name2id = {}
+		for id, name in self.badge_id2name.items():
+			self.badge_name2id[name] = id
+
+	def load_image_list(self):
+		self.images = {}
+		f = open(os.path.join('src', self.name, 'images.txt'), 'r')
+		for line in f:
+			# 'images.txt' generates an HTML file, so ignore all lines that
+			# don't identify an image.
+			if line.startswith('MAIN_TABLE_IMAGE'):
+				(cmd, fullpath, size, name) = line.split(' ')
+				self.images[fullpath] = size
+		f.close()
+
+	def load_function_list(self):
+		self.functions = []
+		f = open(os.path.join('src', self.name, 'functions.txt'), 'r')
+		for fname in f:
+			self.functions.append(fname.rstrip())
+		f.close()
+
+	def num_stages(self):
+		return len(self.stages)-1
+
+	def stage_name(self, id):
+		return self.stages[id][0]
+
+	def stage_info(self, id):
+		""" Return array of [stage-name, start-node, end-node, [badges]].
+		"""
+		return self.stages[id]
+
+	def final_stage_id(self):
+		""" Return id of the final stage in this book.
+		"""
+		return len(self.stages)-2
+
+	def get_badge_id(self, badge_name):
+		""" Return 2-char badge id for the given badge name.
+		"""
+		return self.badge_name2id[badge_name]
+
+	def get_badge_name(self, badge_id):
+		""" Return full badge name for the given 2-char badge id.
+		"""
+		return self.badge_id2name[badge_id]
+
+	def is_badge_optional(self, badge_id):
+		""" Return true if this badge is not required to finish the book.
+		"""
+		return badge_id in self.badges_optional
+
+	def create_book_files(self, options):
+		if options.clean:
+			print 'Creating images.zip'
+			subprocess.call(
+					['zip', '-r', 'images.zip', 'images',
+						'-i', '*.png'],
+					cwd = self.name)
+
+		errors = process_html('src/%s/images.txt' % self.name,
+				'%s/images.html' % self.name, options)
+		if errors != 0:
+			error('Error processing core html files')
+
 
 class StageGenerator(object):
 	def __init__(self, book, stage_id, options):
 		self.options = options
 
 		self.book = book
-		self.prereq = _books[book]['prereq']
-		self.stages = _books[book]['stages']
-		self.load_badge_list()
-		self.badges_optional = _books[book]['badges_optional']
-		self.load_image_list()
-		self.files = _books[book]['files']
-		self.default_file = _books[book]['default_file']
-		self.load_function_list()
 
 		self.id = stage_id
-		self.stage_name = self.stages[stage_id][0]
+		self.stage_name = book.stage_name(stage_id)
 
-		# The base node (from the previous stage) that we need
+		prev_stage = book.stage_info(stage_id-1)
+		this_stage = book.stage_info(stage_id)
+		next_stage = book.stage_info(stage_id+1)
+
+		# The end node from the previous stage that we need
 		# to copy as a baseline for the start node.
-		self.source_node = self.stages[stage_id-1][2]
+		self.source_node = prev_stage[2]
 
 		# The first node in this stage.
-		self.start_node = self.stages[stage_id][1]
+		self.start_node = this_stage[1]
 
-		# The final node in this stage.
-		self.end_node = self.stages[stage_id][2]
+		# The last node in this stage.
+		self.end_node = this_stage[2]
 
 		# The first node in the next stage.
 		# We need to verify that the final node links here.
-		self.next_stage_node = self.stages[stage_id+1][1]
+		self.next_stage_node = next_stage[1]
 
 		# List of badges that are allowed in this stage.
-		self.stage_badges = self.stages[stage_id][3]
+		self.stage_badges = this_stage[3]
 
 		# List of nodes to process.
 		self.nodelist = [self.start_node]
@@ -86,38 +178,8 @@ class StageGenerator(object):
 		if self.options.trace in node:
 			print msg
 
-	def load_badge_list(self):
-		self.badge_id2name = {}
-		f = open(os.path.join('src', self.book, 'badges.txt'), 'r')
-		for badgeinfo in f:
-			(id, name) = badgeinfo.rstrip().split(':')
-			self.badge_id2name[id] = name
-		f.close()
-
-		self.badge_name2id = {}
-		for id, name in self.badge_id2name.items():
-			self.badge_name2id[name] = id
-
-	def load_image_list(self):
-		self.images = {}
-		f = open(os.path.join('src', self.book, 'images.txt'), 'r')
-		for line in f:
-			# 'images.txt' generates an HTML file, so ignore all lines that
-			# don't identify an image.
-			if line.startswith('MAIN_TABLE_IMAGE'):
-				(cmd, fullpath, size, name) = line.split(' ')
-				self.images[fullpath] = size
-		f.close()
-
-	def load_function_list(self):
-		self.functions = []
-		f = open(os.path.join('src', self.book, 'functions.txt'), 'r')
-		for fname in f:
-			self.functions.append(fname.rstrip())
-		f.close()
-
 	def process(self):
-		print 'Processing %s stage%d' % (self.book, self.id)
+		print 'Processing %s %s' % (self.book.name, self.stage_name)
 
 		if self.options.pathcheck:
 			self.copy_baseline_snapshot_files()
@@ -131,11 +193,11 @@ class StageGenerator(object):
 		errors = 0
 
 		if self.options.html:
-			make_dir(os.path.join(self.book, self.stage_name))
+			make_dir(os.path.join(self.book.name, self.stage_name))
 			for n in sorted(self.nodes):
 				errors += self.process_node_create_html(n)
 		if self.options.pathcheck:
-			errors += self.verify_paths(self.book)
+			errors += self.verify_paths()
 
 		#for t in sorted(self.titles.keys()):
 		#	print t, self.titles[t]
@@ -143,16 +205,18 @@ class StageGenerator(object):
 		return errors
 
 	def copy_baseline_snapshot_files(self):
-		if self.prereq:
+		if self.book.prereq:
 			# Todo copy files from pre-req's final output
-			distutils.dir_util.copy_tree('baseline', 'snapshots/%s/000' % self.book)
+			distutils.dir_util.copy_tree('baseline', 'snapshots/%s/000' % self.book.name)
 		else:
-			make_dir('snapshots/%s/000' % self.book)
+			make_dir('snapshots/%s/000' % self.book.name)
 
 	# Calculating links
 
 	def check_badge(self, badge):
-		badge_id = self.badge_name2id[badge]
+		""" Make sure the given badge name is valid for this stage.
+		"""
+		badge_id = self.book.get_badge_id(badge)
 		if not badge_id in self.stage_badges:
 			error('Invalid badge "%s"' % badge)
 
@@ -192,7 +256,7 @@ class StageGenerator(object):
 		if self.options.verbose:
 			print 'calc_links for %s' % node
 
-		filename = os.path.join('src', self.book, self.stage_name, node + '.txt')
+		filename = os.path.join('src', self.book.name, self.stage_name, node + '.txt')
 		if not os.path.exists(filename):
 			error('Unable to find node: %s' % filename)
 		f = open(filename, 'r')
@@ -215,7 +279,7 @@ class StageGenerator(object):
 						continue
 					m = re.match(r'GOTO END', line)
 					if m:
-						if self.id != len(self.stages)-2:
+						if self.id != self.book.final_stage_id():
 							error('Unexpected end of game in node: %s' % node)
 						found_stage_link = True
 						continue
@@ -280,7 +344,7 @@ class StageGenerator(object):
 		if self.options.verbose:
 			print 'html', nodeid
 		errors = 0
-		infile = os.path.join('src', self.book, self.stage_name, nodeid + '.txt')
+		infile = os.path.join('src', self.book.name, self.stage_name, nodeid + '.txt')
 		success = True
 		try:
 			parser = Parser(self, self.options)
@@ -297,13 +361,13 @@ class StageGenerator(object):
 			print 'Parse failure'
 			errors += 1
 			sys.exit(0)
-		parser.export_html(os.path.join(self.book, self.stage_name, nodeid + '.html'))
+		parser.export_html(os.path.join(self.book.name, self.stage_name, nodeid + '.html'))
 
 		return errors
 
 	# Verify paths
 
-	def verify_paths(self, book):
+	def verify_paths(self):
 		errors = 0
 		self.calc_path_checks()
 
@@ -315,19 +379,20 @@ class StageGenerator(object):
 
 			if check == 'TRANS':
 				node_path = path[3]
-				self.process_node_path(book, self.stage_name, src, self.stage_name, tgt, node_path)
+				self.process_node_path(self.stage_name, src, self.stage_name, tgt, node_path)
 			elif check == 'TRANS_BASE':
 				node_path = path[3]
-				self.process_node_path(book, self.stages[self.id-1][0], src, self.stage_name, tgt, node_path)
+				prev_stage = self.book.stage_info(self.id-1)
+				self.process_node_path(prev_stage[0], src, self.stage_name, tgt, node_path)
 			elif check == 'EQ':
-				errors += self.check_equal(book, self.stage_name, src, tgt)
+				errors += self.check_equal(self.stage_name, src, tgt)
 			elif check == 'COPY':
-				copy_snapshot_dir(book, self.stage_name, src, self.stage_name, tgt)
+				copy_snapshot_dir(self.book.name, self.stage_name, src, self.stage_name, tgt)
 			else:
 				error('Unknown check: %s' % check)
 		return errors
 
-	def process_node_path(self, book, stage_src, src, stage_dst, dst, node_path):
+	def process_node_path(self, stage_src, src, stage_dst, dst, node_path):
 		if self.options.verbose:
 			print 'path %s -> %s' % (src, dst)
 		#print node_path
@@ -338,11 +403,11 @@ class StageGenerator(object):
 			errors += 1
 			sys.exit(0)
 
-		copy_snapshot_dir(book, stage_src, src, stage_dst, dst)
+		copy_snapshot_dir(self.book.name, stage_src, src, stage_dst, dst)
 
 		errors = 0
 		nodeid = dst[0:3]
-		infile = os.path.join('src', book, stage_dst, nodeid + '.txt')
+		infile = os.path.join('src', self.book.name, stage_dst, nodeid + '.txt')
 		success = True
 
 		try:
@@ -361,7 +426,7 @@ class StageGenerator(object):
 			errors += 1
 			sys.exit(0)
 
-		if not self.check_function_order(book, self.stage_name, dst):
+		if not self.check_function_order(self.stage_name, dst):
 			print '%s -> %s' % (src, dst)
 			print node_path
 			print 'Function order fail'
@@ -370,7 +435,7 @@ class StageGenerator(object):
 		return errors
 
 	def calc_badge_code(self, badges):
-		return ''.join([self.badge_name2id[x] for x in badges])
+		return ''.join([self.book.get_badge_id(x) for x in badges])
 
 	def add_path(self, src, tgt, badges, path_so_far):
 		badge_code = self.calc_badge_code(badges)
@@ -382,9 +447,11 @@ class StageGenerator(object):
 		self.paths.append([tgt, badges[:], new_path])
 
 	def calc_path_checks(self):
-		base = self.stages[self.id-1][2]
-		start = self.stages[self.id][1]
-		end = self.stages[self.id][2]
+		prev_stage = self.book.stage_info(self.id-1)
+		this_stage = self.book.stage_info(self.id)
+		base = prev_stage[2]
+		start = this_stage[1]
+		end = this_stage[2]
 
 		end_nodes = []
 		done_nodes = set()
@@ -408,8 +475,8 @@ class StageGenerator(object):
 					end_nodes.append([node_code, path_so_far[:]])
 				# Make sure all the badges have been obtained.
 				for b in self.stage_badges:
-					if not self.badge_id2name[b] in badges and not b in self.badges_optional:
-						error('End of %s without obtaining badge: %s' % (self.stage_name, self.badge_id2name[b]))
+					if not self.book.get_badge_name(b) in badges and not self.book.is_badge_optional(b):
+						error('End of %s without obtaining badge: %s' % (self.stage_name, self.book.get_badge_name(b)))
 				continue
 			links = self.links[node_id]
 
@@ -484,7 +551,7 @@ class StageGenerator(object):
 		if end_nodes[0][0] != end_nodes[0][0][0:3]:
 			self.path_checks.append(['COPY', end_nodes[0][0], end_nodes[0][0][0:3]])
 
-	def check_equal(self, book, stage, path1, path2):
+	def check_equal(self, stage, path1, path2):
 		errors = 0
 
 		node1 = path1[0]
@@ -492,11 +559,11 @@ class StageGenerator(object):
 		node2 = path2[0]
 		path_so_far2 = path2[1]
 
-		for file in self.files:
+		for file in self.book.files:
 			#print '%s == %s' % (node1, node2)
 
-			file1 = os.path.join('snapshots', book, stage, node1, file)
-			file2 = os.path.join('snapshots', book, stage, node2, file)
+			file1 = os.path.join('snapshots', self.book.name, stage, node1, file)
+			file2 = os.path.join('snapshots', self.book.name, stage, node2, file)
 
 			with open(file1) as f1:
 				lines1 = f1.readlines()
@@ -531,17 +598,17 @@ class StageGenerator(object):
 		return errors
 
 	# Verify that the functions occur in the correct order
-	def check_function_order(self, book, stage, node):
-		for file in self.files:
+	def check_function_order(self, stage, node):
+		for file in self.book.files:
 			findex = 0
-			f = open(os.path.join('snapshots', book, stage, node, file), 'r')
+			f = open(os.path.join('snapshots', self.book.name, stage, node, file), 'r')
 			for line in f:
 				m = re.match(r'function (.+)\(', line)
 				if m:
 					fname = m.group(1)
-					while self.functions[findex] != fname:
+					while self.book.functions[findex] != fname:
 						findex += 1
-						if findex >= len(self.functions):
+						if findex >= len(self.book.functions):
 							print 'Failed to find', fname
 							return False
 			f.close()
@@ -571,26 +638,14 @@ def create_main_html_files(options):
 		subprocess.call(['zip', '-r', 'baseline.zip', 'baseline'])
 
 	errors = 0
-	errors += process_html('src/index.txt', 'index.html', None, options)
-	errors += process_html('src/baseline.txt', 'baseline.html', None, options)
-	errors += process_html('src/howtoplay.txt', 'howtoplay.html', None, options)
+	errors += process_html('src/index.txt', 'index.html', options)
+	errors += process_html('src/baseline.txt', 'baseline.html', options)
+	errors += process_html('src/howtoplay.txt', 'howtoplay.html', options)
 
 	if errors != 0:
 		error('Error processing core html files')
 
-def create_book_files(book, options):
-	if options.clean:
-		print 'Creating images.zip'
-		subprocess.call(
-				['zip', '-r', 'images.zip', 'images',
-					'-i', '*.png'],
-				cwd = book)
-
-	errors = process_html('src/%s/images.txt' % book, '%s/images.html' % book, book, options)
-	if errors != 0:
-		error('Error processing core html files')
-
-def process_html(infile, outfile, book, options):
+def process_html(infile, outfile, options):
 	"""
 	Process simple (non-node) src file and generate an HTML file.
 	"""
@@ -655,22 +710,24 @@ def main():
 		books.append('book%02d' % bookid)
 
 	errors = 0
-	for book in sorted(books):
-		print 'Processing %s' % book
+	for bookname in sorted(books):
+		print 'Processing %s' % bookname
 
-		book_info = _books[book]
+		book = Book(bookname)
 
-		book_stages = book_info['stages']
+		#book_info = _books[book]
 
-		stage = 0
+		#book_stages = book_info['stages']
+
+		stage_id = 0
 		stages = []
 		if args.stage == 'all':
-			stages = range(1, len(book_stages)-1)
+			stages = range(1, book.num_stages())
 		else:
-			stage = int(args.stage)
-			if stage <= 0 or stage >= len(book_stages)-1:
-				error('Invalid stage %s' % stage)
-			stages.append(stage)
+			stage_id = int(args.stage)
+			if stage_id <= 0 or stage_id >= book.num_stages():
+				error('Invalid stage %d' % stage_id)
+			stages.append(stage_id)
 
 		if args.clean:
 			if args.stage == 'all':
@@ -680,23 +737,23 @@ def main():
 					make_dir('snapshots')
 			else:
 				if args.pathcheck:
-					rm_dir(os.path.join('snapshots', book, book_stages[stage][0]))
+					rm_dir(os.path.join('snapshots', book.name, book.stage_name(stage_id)))
 				if args.html:
-					rm_dir(os.path.join(book, book_stages[stage][0]))
+					rm_dir(os.path.join(book.name, book.stage_name(stage_id)))
 
 		if args.html:
-			create_book_files(book, args)
+			book.create_book_files(args)
 
 		for s in stages:
 			sg = StageGenerator(book, s, args)
 			errors += sg.process()
 
 		if args.pathcheck:
-			final_stage = book_stages[len(book_stages)-2][0]
-			final_node = book_stages[len(book_stages)-2][2]
-			print 'Copying final stage from', final_stage, final_node
-			snapshot_src = os.path.join('snapshots', book, final_stage, final_node)
-			snapshot_dst = os.path.join(book, 'final')
+			final_id = book.final_stage_id()
+			(stage, start, end, badges) = book.stage_info(final_id)
+			print 'Copying final stage from', stage, end
+			snapshot_src = os.path.join('snapshots', book.name, stage, end)
+			snapshot_dst = os.path.join(book.name, 'final')
 			make_dir(snapshot_dst)
 
 			distutils.dir_util.copy_tree(snapshot_src, snapshot_dst)
