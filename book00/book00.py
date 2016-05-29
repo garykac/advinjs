@@ -5,10 +5,6 @@ _book00_stages = [
 	['',		'500', '500', []],	# Final
 ]
 
-_book00_badges = {
-	'c1': 'Simple Badge',
-}
-
 _book00_optional_badges = []
 
 _book00_images = {
@@ -17,7 +13,6 @@ _book00_images = {
 _book00_info = {
 	'prereq': None,
 	'stages': _book00_stages,
-	'badges': _book00_badges,
 	'badges_optional': _book00_optional_badges,
 	'images': _book00_images,
 	'files': [],

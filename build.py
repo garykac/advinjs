@@ -36,10 +36,7 @@ class StageGenerator(object):
 		self.book = book
 		self.prereq = _books[book]['prereq']
 		self.stages = _books[book]['stages']
-		self.badge_id2name = _books[book]['badges']
-		self.badge_name2id = {}
-		for id, name in self.badge_id2name.items():
-			self.badge_name2id[name] = id
+		self.load_badge_list()
 		self.badges_optional = _books[book]['badges_optional']
 		self.images = _books[book]['images']
 		self.files = _books[book]['files']
@@ -88,6 +85,18 @@ class StageGenerator(object):
 	def log_node(self, node, msg):
 		if self.options.trace in node:
 			print msg
+
+	def load_badge_list(self):
+		self.badge_id2name = {}
+		f = open(os.path.join('src', self.book, 'badges.txt'), 'r')
+		for badgeinfo in f:
+			(id, name) = badgeinfo.rstrip().split(':')
+			self.badge_id2name[id] = name
+		f.close()
+
+		self.badge_name2id = {}
+		for id, name in self.badge_id2name.items():
+			self.badge_name2id[name] = id
 
 	def load_function_list(self):
 		self.functions = []

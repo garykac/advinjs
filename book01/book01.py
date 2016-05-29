@@ -13,41 +13,6 @@ _book01_stages = [
 	['',		'500', '500', []],	# Final
 ]
 
-_book01_badges = {
-	'c1': 'Collision I - Basic',
-	'c2': 'Collision II - Advanced',
-	'f1': 'Fluff I - Ouch',
-	'f2': 'Fluff II - Glasses',
-	'i1': 'Treasure I - Key',
-	'i2': 'Treasure II - Finish',
-	'i3': 'Treasure III - Potion',
-	'i4': 'Treasure IV - Coin',
-	'i5': 'Treasure V - Better Potion',
-	'l1': 'Level I',
-	'l2': 'Level II',
-	'l3': 'Level III',
-	'm1': 'Movement I - Horizontal',
-	'm2': 'Movement II - Friction',
-	'm3': 'Movement III - Gravity',
-	'p1': 'Platform I - Base',
-	'p2': 'Platform II - Four Sided',
-	'p3': 'Platform III - Pattern',
-	'p4': 'Platform IV - Moving',
-	's1': 'Sprite I - Origin',
-	's2': 'Sprite II - Image',
-	's3': 'Sprite III - Direction',
-	't1': 'Transition I - Levels',
-	't2': 'Transition II - Title',
-	't3': 'Transition III - Timer',
-	'v1': 'Vitality I - Health',
-	'v2': 'Vitality II - Reincarnation',
-	'x1': 'Monster I - Stationary',
-	'x2': 'Monster II - Roaming',
-	'x3': 'Monster III - Animate',
-	'x4': 'Monster IV - Projectile',
-	'z1': 'Challenge I',
-}
-
 _book01_optional_badges = ['z1']
 
 _book01_images = {
@@ -106,7 +71,6 @@ _book01_images = {
 _book01_info = {
 	'prereq': 'book00',
 	'stages': _book01_stages,
-	'badges': _book01_badges,
 	'badges_optional': _book01_optional_badges,
 	'images': _book01_images,
 	'files': ['script.js'],
