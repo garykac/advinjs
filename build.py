@@ -664,6 +664,16 @@ def main():
 			sg = StageGenerator(book, s, args)
 			errors += sg.process()
 
+		if args.pathcheck:
+			final_stage = book_stages[len(book_stages)-2][0]
+			final_node = book_stages[len(book_stages)-2][2]
+			print 'Copying final stage from', final_stage, final_node
+			snapshot_src = os.path.join('snapshots', book, final_stage, final_node)
+			snapshot_dst = os.path.join(book, 'final')
+			make_dir(snapshot_dst)
+
+			distutils.dir_util.copy_tree(snapshot_src, snapshot_dst)
+
 	if args.html:
 		print 'Creating core HTML files'
 		create_main_html_files(args)
