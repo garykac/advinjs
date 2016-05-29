@@ -29,4 +29,4 @@ x1:Monster I - Stationary
 x2:Monster II - Roaming
 x3:Monster III - Animate
 x4:Monster IV - Projectile
-z1:Challenge I
+z1:*Challenge I

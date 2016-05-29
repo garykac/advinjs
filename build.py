@@ -13,27 +13,152 @@ import traceback
 
 from parser.parser import Parser
 
-from book00.book00 import _book00_info
-from book01.book01 import _book01_info
-
 _version = '0.1'
-
-_books = {
-	'book00': _book00_info,
-	'book01': _book01_info,
-}
 
 def error(msg):
 	print 'Error: %s' % msg
 	sys.exit(1)
 
+def make_dir(dir):
+	if dir != '' and not os.path.exists(dir):
+		os.makedirs(dir)
+
+def rm_dir(dir):
+	if os.path.exists(dir):
+		shutil.rmtree(dir)
+
+class Library(object):
+	def __init__(self, args):
+		self.options = args
+		self.load_book_list()
+
+	def load_book_list(self):
+		self.books = []
+		f = open(os.path.join('src', 'books.txt'), 'r')
+		for bname in f:
+			self.books.append(bname.rstrip())
+		f.close()
+
+	def process(self):
+		bookid = 0
+		books = []
+		if self.options.book == 'all':
+			books = self.books
+		else:
+			bookid = int(self.options.book)
+			if bookid < 0 or bookid >= len(self.books):
+				error('Invalid book %s' % bookid)
+			books.append(self.books[bookid])
+
+		errors = 0
+		for bookname in books:
+			errors += self.process_book(bookname)
+
+		if self.options.html:
+			print 'Creating core HTML files'
+			self.create_main_html_files(self.options)
+
+		if errors == 0:
+			print 'Success!'
+		else:
+			print 'Errors:', errors
+
+	def process_book(self, bookname):
+		print 'Processing %s' % bookname
+
+		book = Book(self, bookname)
+
+		stage_id = 0
+		stages = []
+		if self.options.stage == 'all':
+			stages = range(1, book.num_stages())
+		else:
+			stage_id = int(self.options.stage)
+			if stage_id <= 0 or stage_id >= book.num_stages():
+				error('Invalid stage %d' % stage_id)
+			stages.append(stage_id)
+
+		if self.options.clean:
+			if self.options.stage == 'all':
+				if self.options.pathcheck:
+					print 'Creating core snapshot files'
+					rm_dir('snapshots')
+					make_dir('snapshots')
+			else:
+				if self.options.pathcheck:
+					rm_dir(os.path.join('snapshots', book.name, book.stage_name(stage_id)))
+				if self.options.html:
+					rm_dir(os.path.join(book.name, book.stage_name(stage_id)))
+
+		if self.options.html:
+			book.create_book_files(self.options)
+
+		errors = 0
+		for s in stages:
+			sg = StageGenerator(book, s, self.options)
+			errors += sg.process()
+
+		if self.options.pathcheck:
+			final_id = book.final_stage_id()
+			(stage, start, end, badges) = book.stage_info(final_id)
+			print 'Copying final stage from %s/%s' % (stage, end)
+			snapshot_src = os.path.join('snapshots', book.name, stage, end)
+			snapshot_dst = os.path.join(book.name, 'final')
+			make_dir(snapshot_dst)
+
+			distutils.dir_util.copy_tree(snapshot_src, snapshot_dst)
+
+		return errors
+
+	def create_main_html_files(self, options):
+		if options.clean:
+			print 'Creating baseline.zip'
+			subprocess.call(['zip', '-r', 'baseline.zip', 'baseline'])
+
+		errors = 0
+		errors += self.process_html('src/index.txt', 'index.html', options)
+		errors += self.process_html('src/baseline.txt', 'baseline.html', options)
+		errors += self.process_html('src/howtoplay.txt', 'howtoplay.html', options)
+
+		if errors != 0:
+			error('Error processing core html files')
+
+	def process_html(self, infile, outfile, options):
+		"""
+		Process simple (non-node) src file and generate an HTML file.
+		"""
+		errors = 0
+		name = os.path.splitext(os.path.basename(infile))[0]
+		make_dir(os.path.dirname(outfile))
+		success = True
+		if options.verbose:
+			print '  %s -> html' % infile
+		try:
+			parser = Parser(None, options)
+			if not parser.parse(infile, name):
+				print 'Failure during parse_main'
+				success = False
+		except:
+			exc_type, exc_value, exc_traceback = sys.exc_info()
+			traceback.print_exception(exc_type, exc_value, exc_traceback)
+			success = False
+
+		if not success:
+			print '%s' % file
+			print 'Parse failure'
+			errors += 1
+		else:
+			parser.export_html(outfile)
+
+		return errors
+
 class Book(object):
-	def __init__(self, name):
+	def __init__(self, library, name):
+		self.library = library
 		self.name = name
 		self.load_book_info()
 		self.load_stage_info()
 		self.load_badge_list()
-		self.badges_optional = _books[name]['badges_optional']
 		self.load_image_list()
 		self.load_function_list()
 
@@ -67,10 +192,14 @@ class Book(object):
 		self.stages.append(['', '500', '500', []])
 
 	def load_badge_list(self):
+		self.badges_optional = []
 		self.badge_id2name = {}
 		f = open(os.path.join('src', self.name, 'badges.txt'), 'r')
 		for badgeinfo in f:
 			(id, name) = badgeinfo.rstrip().split(':')
+			if name[0] == '*':
+				name = name[1:]
+				self.badges_optional.append(id)
 			self.badge_id2name[id] = name
 		f.close()
 
@@ -135,10 +264,20 @@ class Book(object):
 						'-i', '*.png'],
 					cwd = self.name)
 
-		errors = process_html('src/%s/images.txt' % self.name,
+		errors = self.library.process_html('src/%s/images.txt' % self.name,
 				'%s/images.html' % self.name, options)
 		if errors != 0:
 			error('Error processing core html files')
+
+	def copy_snapshot_dir(self, stage_src, src, stage_dst, dst):
+		"""
+		Copy snapshot dir from previous node so we can update it.
+		"""
+		make_dir(os.path.join('snapshots', self.name, stage_dst))
+		snapshot_src = os.path.join('snapshots', self.name, stage_src, src)
+		snapshot_dst = os.path.join('snapshots', self.name, stage_dst, dst)
+
+		distutils.dir_util.copy_tree(snapshot_src, snapshot_dst)
 
 
 class StageGenerator(object):
@@ -403,7 +542,7 @@ class StageGenerator(object):
 			elif check == 'EQ':
 				errors += self.check_equal(self.stage_name, src, tgt)
 			elif check == 'COPY':
-				copy_snapshot_dir(self.book.name, self.stage_name, src, self.stage_name, tgt)
+				self.book.copy_snapshot_dir(self.stage_name, src, self.stage_name, tgt)
 			else:
 				error('Unknown check: %s' % check)
 		return errors
@@ -419,7 +558,7 @@ class StageGenerator(object):
 			errors += 1
 			sys.exit(0)
 
-		copy_snapshot_dir(self.book.name, stage_src, src, stage_dst, dst)
+		self.book.copy_snapshot_dir(stage_src, src, stage_dst, dst)
 
 		errors = 0
 		nodeid = dst[0:3]
@@ -630,66 +769,6 @@ class StageGenerator(object):
 			f.close()
 		return True
 
-def make_dir(dir):
-	if dir != '' and not os.path.exists(dir):
-		os.makedirs(dir)
-
-def rm_dir(dir):
-	if os.path.exists(dir):
-		shutil.rmtree(dir)
-
-def copy_snapshot_dir(book, stage_src, src, stage_dst, dst):
-	"""
-	Copy snapshot dir from previous node so we can update it.
-	"""
-	make_dir(os.path.join('snapshots', book, stage_dst))
-	snapshot_src = os.path.join('snapshots', book, stage_src, src)
-	snapshot_dst = os.path.join('snapshots', book, stage_dst, dst)
-
-	distutils.dir_util.copy_tree(snapshot_src, snapshot_dst)
-
-def create_main_html_files(options):
-	if options.clean:
-		print 'Creating baseline.zip'
-		subprocess.call(['zip', '-r', 'baseline.zip', 'baseline'])
-
-	errors = 0
-	errors += process_html('src/index.txt', 'index.html', options)
-	errors += process_html('src/baseline.txt', 'baseline.html', options)
-	errors += process_html('src/howtoplay.txt', 'howtoplay.html', options)
-
-	if errors != 0:
-		error('Error processing core html files')
-
-def process_html(infile, outfile, options):
-	"""
-	Process simple (non-node) src file and generate an HTML file.
-	"""
-	errors = 0
-	name = os.path.splitext(os.path.basename(infile))[0]
-	make_dir(os.path.dirname(outfile))
-	success = True
-	if options.verbose:
-		print '  %s -> html' % infile
-	try:
-		parser = Parser(None, options)
-		if not parser.parse(infile, name):
-			print 'Failure during parse_main'
-			success = False
-	except:
-		exc_type, exc_value, exc_traceback = sys.exc_info()
-		traceback.print_exception(exc_type, exc_value, exc_traceback)
-		success = False
-
-	if not success:
-		print '%s' % file
-		print 'Parse failure'
-		errors += 1
-	else:
-		parser.export_html(outfile)
-
-	return errors
-
 def main():
 	print "Adventures in JavaScript"
 	print "Build script", _version
@@ -715,73 +794,8 @@ def main():
 	argparser.set_defaults(clean=False, verbose=False, html=False, pathcheck=False, debug=False)
 	args = argparser.parse_args()
 
-	bookid = 0
-	books = []
-	if args.book == 'all':
-		books = _books.keys()
-	else:
-		bookid = int(args.book)
-		if bookid < 0 or bookid >= len(_books):
-			error('Invalid book %s' % bookid)
-		books.append('book%02d' % bookid)
-
-	errors = 0
-	for bookname in sorted(books):
-		print 'Processing %s' % bookname
-
-		book = Book(bookname)
-
-		#book_info = _books[book]
-
-		#book_stages = book_info['stages']
-
-		stage_id = 0
-		stages = []
-		if args.stage == 'all':
-			stages = range(1, book.num_stages())
-		else:
-			stage_id = int(args.stage)
-			if stage_id <= 0 or stage_id >= book.num_stages():
-				error('Invalid stage %d' % stage_id)
-			stages.append(stage_id)
-
-		if args.clean:
-			if args.stage == 'all':
-				if args.pathcheck:
-					print 'Creating core snapshot files'
-					rm_dir('snapshots')
-					make_dir('snapshots')
-			else:
-				if args.pathcheck:
-					rm_dir(os.path.join('snapshots', book.name, book.stage_name(stage_id)))
-				if args.html:
-					rm_dir(os.path.join(book.name, book.stage_name(stage_id)))
-
-		if args.html:
-			book.create_book_files(args)
-
-		for s in stages:
-			sg = StageGenerator(book, s, args)
-			errors += sg.process()
-
-		if args.pathcheck:
-			final_id = book.final_stage_id()
-			(stage, start, end, badges) = book.stage_info(final_id)
-			print 'Copying final stage from', stage, end
-			snapshot_src = os.path.join('snapshots', book.name, stage, end)
-			snapshot_dst = os.path.join(book.name, 'final')
-			make_dir(snapshot_dst)
-
-			distutils.dir_util.copy_tree(snapshot_src, snapshot_dst)
-
-	if args.html:
-		print 'Creating core HTML files'
-		create_main_html_files(args)
-
-	if errors == 0:
-		print 'Success!'
-	else:
-		print 'Errors:', errors
+	library = Library(args)
+	library.process()
 
 if __name__ == '__main__':
 	main()
