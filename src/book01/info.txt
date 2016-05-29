@@ -1,0 +1,3 @@
+prereq:book00
+files:script.js
+default_file:script.js

@@ -1,0 +1,3 @@
+prereq:
+files:
+default_file:script.js

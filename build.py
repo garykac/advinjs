@@ -30,14 +30,30 @@ def error(msg):
 class Book(object):
 	def __init__(self, name):
 		self.name = name
-		self.prereq = _books[name]['prereq']
+		self.load_book_info()
 		self.load_stage_info()
 		self.load_badge_list()
 		self.badges_optional = _books[name]['badges_optional']
 		self.load_image_list()
-		self.files = _books[name]['files']
-		self.default_file = _books[name]['default_file']
 		self.load_function_list()
+
+	def load_book_info(self):
+		f = open(os.path.join('src', self.name, 'info.txt'), 'r')
+		for info in f:
+			(key, value) = info.rstrip().split(':')
+			if key == 'prereq':
+				self.prereq = value or None
+			elif key == 'files':
+				# Split on whitespace so that we can use split().
+				# Using split(',') (or some other delimiter) would result in an
+				# empty |value| producing ['']. By using split(), we get the
+				# desired result: an empty array [].
+				self.files = value.split()
+			elif key == 'default_file':
+				self.default_file = value
+			else:
+				error('Unknown info key: %s' % key)
+		f.close()
 
 	def load_stage_info(self):
 		self.stages = []
