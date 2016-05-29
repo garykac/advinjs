@@ -44,7 +44,7 @@ class StageGenerator(object):
 		self.images = _books[book]['images']
 		self.files = _books[book]['files']
 		self.default_file = _books[book]['default_file']
-		self.functions = _books[book]['functions']
+		self.load_function_list()
 
 		self.id = stage_id
 		self.stage_name = self.stages[stage_id][0]
@@ -88,6 +88,13 @@ class StageGenerator(object):
 	def log_node(self, node, msg):
 		if self.options.trace in node:
 			print msg
+
+	def load_function_list(self):
+		self.functions = []
+		f = open(os.path.join('src', self.book, 'functions.txt'), 'r')
+		for fname in f:
+			self.functions.append(fname.rstrip())
+		f.close()
 
 	def process(self):
 		print 'Processing %s stage%d' % (self.book, self.id)

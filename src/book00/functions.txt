@@ -1,0 +1,13 @@
+setup
+handle_load
+handle_keydown
+handle_keyup
+init
+init_game
+init_player
+draw
+erase
+draw_player
+update_player
+check_input
+update_world

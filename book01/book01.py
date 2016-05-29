@@ -103,81 +103,6 @@ _book01_images = {
 	'images/backgrounds/gate-open.png': '30x40',
 }
 
-_book01_functions = [
-	'setup',
-
-	'handle_load',
-	'handle_keydown',
-	'handle_keyup',
-
-	'init',
-	'init_game',
-
-	'init_player',
-	'init_player_sprite',
-	'update_player_sprite',
-
-	'init_level_defaults',
-	'init_level0_title',
-	'init_level1',
-	'init_level2',
-	'init_level3',
-
-	'add_platforms',
-	'add_default_platforms',
-	'add_moving_platforms',
-	'create_platform',
-
-	'add_monsters',
-	'add_projectile_monsters',
-	'add_eyeball_monsters',
-	'create_monster',
-
-	'add_items',
-	'add_potion_item',
-	'create_item',
-
-	'create_goal',
-
-	'start_level',
-	'complete_level',
-	'lose_life',
-	'adjust_health',
-
-	'set_transform_xy',
-	'set_transform',
-	'reset_transform',
-
-	'draw',
-	'erase',
-	'draw_platforms',
-	'draw_monsters',
-	'draw_items',
-	'draw_goal',
-	'draw_player',
-	'draw_status',
-
-	'draw_title_screen',
-	'draw_transition_screen',
-
-	'update_platforms',
-	'update_monsters',
-	'update_items',
-	'update_player',
-
-	'check_input',
-
-	'check_collisions',
-	'check_platform_collisions',
-	'check_monster_collisions',
-	'check_item_collisions',
-	'check_goal_collisions',
-
-	'collide',
-
-	'update_world',
-]
-
 _book01_info = {
 	'prereq': 'book00',
 	'stages': _book01_stages,
@@ -186,5 +111,4 @@ _book01_info = {
 	'images': _book01_images,
 	'files': ['script.js'],
 	'default_file': 'script.js',
-	'functions': _book01_functions,
 }
