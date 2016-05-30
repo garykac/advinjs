@@ -1,3 +1,4 @@
+title:Getting Started
 prereq:
 files:
 default_file:script.js

@@ -166,7 +166,9 @@ class Book(object):
 		f = open(os.path.join('src', self.name, 'info.txt'), 'r')
 		for info in f:
 			(key, value) = info.rstrip().split(':')
-			if key == 'prereq':
+			if key == 'title':
+				self.title = value
+			elif key == 'prereq':
 				self.prereq = value or None
 			elif key == 'files':
 				# Split on whitespace so that we can use split().
