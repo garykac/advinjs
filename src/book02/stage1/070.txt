@@ -1,0 +1,56 @@
+TITLE = Node 070
+ID = 070
+
+B: Paddles move kinda slow.
+
+BEGIN_CODE_INFO
+.// Initialize general game state info.
+.function init_game() {
+.	var canvas = document.getElementById("stage");
+.	canvas.width = 550;
+.	canvas.height = 400;
+.
+.	_game.width = canvas.width;
+.	_game.height = canvas.height;
+.
+.	// The keymap keeps track of which keys are currently being pressed.
+.	_game.keymap = {};
++
++	// How fast the player paddles move.
++	_game.paddle_speed = 3;
+.}
+END_CODE_OK
+
+BEGIN_CODE_INFO
+.function check_input() {
+.	_player1.velocity_y = 0;
+.
+.	// Player 1 uses the WASD keys to move.
+.	// 'w' or 'a' to move up.
+.	if (_game.keymap[87] || _game.keymap[65]) {
+-		_player1.velocity_y = -1;
++		_player1.velocity_y = -_game.paddle_speed;
+.	}
+.	// 's' or 'd' to move up.
+.	if (_game.keymap[83] || _game.keymap[68]) {
+-		_player1.velocity_y = 1;
++		_player1.velocity_y = _game.paddle_speed;
+.	}
+.
+.	_player2.velocity_y = 0;
+.
+.	// Player 2 uses the Arrow keys to move.
+.	// Up arrow or Right arrow to move up.
+.	if (_game.keymap[38] || _game.keymap[39]) {
+-		_player2.velocity_y = -1;
++		_player2.velocity_y = -_game.paddle_speed;
+.	}
+.	// Down arrow or Left arrow to move up.
+.	if (_game.keymap[40] || _game.keymap[37]) {
+-		_player2.velocity_y = 1;
++		_player2.velocity_y = _game.paddle_speed;
+.	}
+.}
+END_CODE_OK
+
+GOTO 080

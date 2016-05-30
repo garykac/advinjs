@@ -1,0 +1,126 @@
+TITLE = Node 025
+ID = 025
+
+B: Since we're going to add a second player, rename =_player= to =_player1=.
+
+B: If your text editor supports global search and replace, change all occurrences "_player" to "_player1".
+
+BEGIN_CODE_INFO
+.// Global variables.
+.var _game = {};
+-var _player = {};
++var _player1 = {};
+END_CODE_ERROR all the references to =_player= are now invalid
+
+BEGIN_CODE_INFO
+.// Initialize the game state.
+.function init() {
+.	init_game();
+-	init_player();
++	init_player1();
+.}
+END_CODE_ERROR =init_player1()= hasn't been renamed yet
+
+BEGIN_CODE_INFO
+-// Initialize player data.
++// Initialize Player 1 data.
+-function init_player() {
++function init_player1() {
+-	_player.x = 0;
++	_player1.x = 0;
+-	_player.y = 0;
++	_player1.y = 0;
+-	_player.width = 20;
++	_player1.width = 20;
+-	_player.height = 20;
++	_player1.height = 20;
+.
+-	_player.velocity_x = 0;
++	_player1.velocity_x = 0;
+-	_player.velocity_y = 0;
++	_player1.velocity_y = 0;
+.}
+END_CODE_ERROR there are still more places to fix up
+
+
+BEGIN_CODE_INFO
+.// Erase the canvas and draw all the objects.
+.function draw() {
+.	var canvas = document.getElementById("stage");
+.	var ctx = canvas.getContext("2d");
+.
+.	erase(ctx);
+-	draw_player(ctx);
++	draw_player1(ctx);
+.}
+END_CODE_ERROR =draw_player1()= hasn't been renamed yet
+
+
+BEGIN_CODE_INFO
+-// Draw the player.
++// Draw player 1.
+-function draw_player(ctx) {
++function draw_player1(ctx) {
+.	ctx.fillStyle = "blue";
+-	ctx.fillRect(_player.x, _player.y, _player.width, _player.height);
++	ctx.fillRect(_player1.x, _player1.y, _player1.width, _player1.height);
+.}
+END_CODE_ERROR there are still a few more to fix
+
+BEGIN_CODE_INFO
+-// Handle input and move the player.
++// Handle input and move player 1.
+-function update_player() {
++function update_player1() {
+.	check_input();
+.
+-	// Move the player to the new location.
+-	_player.x += _player.velocity_x;
+-	_player.y += _player.velocity_y;
++	_player1.x += _player1.velocity_x;
++	_player1.y += _player1.velocity_y;
+.}
+END_CODE_ERROR there are still a few more to fix
+
+BEGIN_CODE_INFO
+.function check_input() {
+-	_player.velocity_x = 0;
+-	_player.velocity_y = 0;
++	_player1.velocity_x = 0;
++	_player1.velocity_y = 0;
+.
+.	// Left arrow or 'a' to move left.
+.	if (_game.keymap[37] || _game.keymap[65]) {
+-		_player.velocity_x = -1;
++		_player1.velocity_x = -1;
+.	}
+.	// Right arrow or 'd' to move right.
+.	if (_game.keymap[39] || _game.keymap[68]) {
+-		_player.velocity_x = 1;
++		_player1.velocity_x = 1;
+.	}
+.	// Up arrow or 'w' to move up.
+.	if (_game.keymap[38] || _game.keymap[87]) {
+-		_player.velocity_y = -1;
++		_player1.velocity_y = -1;
+.	}
+.	// Down arrow or 's' to move up.
+.	if (_game.keymap[40] || _game.keymap[83]) {
+-		_player.velocity_y = 1;
++		_player1.velocity_y = 1;
+.	}
+.}
+END_CODE_ERROR there is still one last thing to fix
+
+BEGIN_CODE_INFO
+.// This is called ~60 times per second to update the world.
+.function update_world() {
+-	update_player();
++	update_player1();
+.	draw();
+.
+.	requestAnimationFrame(update_world);
+.}
+END_CODE_OK
+
+GOTO 030

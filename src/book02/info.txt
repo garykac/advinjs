@@ -1,0 +1,7 @@
+title:Pong
+prereq:book00
+files:script.js
+default_file:script.js
+images:
+html:
+zip:

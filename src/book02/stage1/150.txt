@@ -1,0 +1,78 @@
+TITLE = Node 150
+ID = 150
+
+B: xxxx
+
+BEGIN_CODE
+.// Initialize general game state info.
+.function init_game() {
+.	...
+.	// How fast the player paddles move.
+.	_game.paddle_speed = 3;
+.
+.	// How fast the ball moves (in x and y direction).
+-	_game.ball_speed = 2;
++	_game.default_ball_speed = 2;
++	_game.current_ball_speed = 0;
+.
+.	// Current game state: 'score', 'playing', 'gameover'
+.	_game.state = 'playing';
+.
+.	...
+.}
+END_CODE_ERROR =ball_speed= is no longer defined
+
+BEGIN_CODE
+.// Initialize ball data.
+.function init_ball() {
+.	_ball.width = 20;
+.	_ball.height = 20;
+.	_ball.x = (_game.width - _ball.width) / 2.0;
+.	_ball.y = 0;
+.
+-	_ball.velocity_x = _game.ball_speed;
+-	_ball.velocity_y = _game.ball_speed;
++	_game.current_ball_speed = _game.default_ball_speed;
++	_ball.velocity_x = _game.current_ball_speed;
++	_ball.velocity_y = _game.current_ball_speed;
+.}
+END_CODE_ERROR
+
+
+BEGIN_CODE
+.// Handle ball movement and collision.
+.function update_ball() {
+.	...
+.	// Bounce off vertical walls.
+.	if (_ball.x <= 0) {
+.		update_scores(0, 1);
+.	}
+.	if (_ball.x >= _game.width - _ball.width) {
+.		update_scores(1, 0);
+.	}
+.
+.	// Bounce off paddles.
+-	var ball_speed2 = (_game.ball_speed / 2.0)
++	var ball_speed2 = (_game.current_ball_speed / 2.0)
+.	if (_ball.velocity_x < 0
+.			&& _ball.x + ball_speed2 > _player1.x + _player1.width
+.			&& _ball.x - ball_speed2 <= _player1.x + _player1.width
+.			&& _ball.y + _ball.height >= _player1.y
+.			&& _ball.y <= _player1.y + _player1.height) {
+-		_ball.velocity_x = _game.ball_speed;
++		_game.current_ball_speed *= 1.05;
++		_ball.velocity_x = _game.current_ball_speed;
+.	}
+.	if (_ball.velocity_x > 0
+.			&& _ball.x + _ball.width + ball_speed2 > _player2.x
+.			&& _ball.x + _ball.width - ball_speed2 <= _player2.x
+.			&& _ball.y + _ball.height >= _player2.y
+.			&& _ball.y <= _player2.y + _player2.height) {
+-		_ball.velocity_x = -_game.ball_speed;
++		_game.current_ball_speed *= 1.05;
++		_ball.velocity_x = -_game.current_ball_speed;
+.	}
+.}
+END_CODE_ERROR
+
+GOTO 200

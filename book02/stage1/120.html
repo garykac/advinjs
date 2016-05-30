@@ -1,0 +1,50 @@
+<html>
+<head>
+<title>120 : Node 120</title>
+
+<link rel="stylesheet" href="../../css/bootstrap.min.css">
+<link type="text/css" rel="stylesheet" href="../../css/style.css" />
+<link href='http://fonts.googleapis.com/css?family=Trade+Winds' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Sacramento' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Piedra' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Aclonica' rel='stylesheet' type='text/css'>
+
+<script>
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-1163903-6', 'auto');
+	ga('send', 'pageview');
+</script>
+
+</head>
+
+<body>
+<div class="navbar navbar-inverse navbar-static-top" role="navigation"><div class="container"><div class="navbar-header">
+<a class="navbar-brand" href="../index.html"><span class="title1">Adventures in</span> <span class="title2">JavaScript</span></a>
+</div></div></div>
+<div class="container">
+<h1>120 : Node 120</h1>
+<div class="name">Balthazar:</div><p class="balthazar">xxxx</p>
+<div class="panel panel-default">
+<div class="panel-code code"><span class="context">function update_scores(player1, player2) {</span>
+<span class="context">    // Update the scores.</span>
+<span class="context">    _player1.score += player1;</span>
+<span class="context">    _player2.score += player2;</span>
+<span class="context"></span>
+<span class="context">    // Reset the ball.</span>
+<span class="context">    init_ball();</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add"></span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">    // Which direction should the next ball be served?</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">    // It should come from the player who just scored the point.</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">    if (player2 > 0) {</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">        _ball.velocity_x *= -1;</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">    }</span>
+<span class="context">}</span>
+</div>
+<div class="panel-code-footer">Run your code in a browser and verify that there are no errors.</div></div>
+<p class="alert alert-info"><a href="130.html"><span class="goto">GOTO 130</span></a></p>
+</div>
+</body>
+</html>

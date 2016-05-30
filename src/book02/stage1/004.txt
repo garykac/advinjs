@@ -1,0 +1,16 @@
+TITLE = Node 004
+ID = 004
+
+B: Change title of web page to "Pong".
+
+BEGIN_CODE_INFO (game.html) Basic HTML file
+.<head>
+-	<title>Canvas Game</title>
++	<title>Pong</title>
+.
+.	<link rel="stylesheet" type="text/css" href="style.css" />
+.	<script type='text/javascript' src="script.js"></script>
+.</head>
+END_CODE_OK
+
+GOTO 007

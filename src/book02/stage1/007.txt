@@ -1,0 +1,15 @@
+TITLE = Node 007
+ID = 007
+
+B: xxxx
+
+BEGIN_CODE_INFO (style.css) Basic CSS file
+.body {
+-	background-color: blue;
++	background-color: white;
+-	color: white;
++	color: black;
+.}
+END_CODE_OK
+
+GOTO 020

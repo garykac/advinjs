@@ -1,0 +1,47 @@
+TITLE = Node 100
+ID = 100
+
+B: xxxx
+
+BEGIN_CODE_INFO
+.// Handle ball movement and collision.
+.function update_ball() {
+.	_ball.x += _ball.velocity_x;
+.	_ball.y += _ball.velocity_y;
+.
+.	// Bounce off horizontal walls.
+.	if (_ball.y <= 0) {
+.		_ball.velocity_y *= -1;
+.	}
+.	if (_ball.y >= _game.height - _ball.height) {
+.		_ball.velocity_y *= -1;
+.	}
+.
+.	// Bounce off vertical walls.
+.	if (_ball.x <= 0) {
+.		_ball.velocity_x *= -1;
+.	}
+.	if (_ball.x >= _game.width - _ball.width) {
+.		_ball.velocity_x *= -1;
+.	}
++
++	// Bounce off paddles.
++	var ball_speed2 = (_game.ball_speed / 2.0)
++	if (_ball.velocity_x < 0
++			&& _ball.x + ball_speed2 > _player1.x + _player1.width
++			&& _ball.x - ball_speed2 <= _player1.x + _player1.width
++			&& _ball.y + _ball.height >= _player1.y
++			&& _ball.y <= _player1.y + _player1.height) {
++		_ball.velocity_x = _game.ball_speed;
++	}
++	if (_ball.velocity_x > 0
++			&& _ball.x + _ball.width + ball_speed2 > _player2.x
++			&& _ball.x + _ball.width - ball_speed2 <= _player2.x
++			&& _ball.y + _ball.height >= _player2.y
++			&& _ball.y <= _player2.y + _player2.height) {
++		_ball.velocity_x = -_game.ball_speed;
++	}
+.}
+END_CODE_OK
+
+GOTO 110

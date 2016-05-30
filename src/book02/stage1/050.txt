@@ -1,0 +1,62 @@
+TITLE = Node 050
+ID = 050
+
+B: Let's make player 2 move
+
+BEGIN_CODE_INFO Remove =velocity_x= since players can't move left or right.
+.// Initialize Player 1 data.
+.function init_player1() {
+.	_player1.width = 20;
+.	_player1.height = 80;
+.	_player1.x = 30;
+.	_player1.y = (_game.height - _player1.height) / 2.0;
+.
+-	_player1.velocity_x = 0;
+.	_player1.velocity_y = 0;
+.}
+.
+.// Initialize Player 2 data.
+.function init_player2() {
+.	_player2.width = 20;
+.	_player2.height = 80;
+.	_player2.x = 500;
+.	_player2.y = (_game.height - _player2.height) / 2.0;
+.
+-	_player2.velocity_x = 0;
+.	_player2.velocity_y = 0;
+.}
+END_CODE_ERROR there is still one more place to fix
+
+BEGIN_CODE_INFO
+.// Handle movement for Player 1.
+.function update_player1() {
+-	_player1.x += _player1.velocity_x;
+.	_player1.y += _player1.velocity_y;
+.}
+END_CODE_OK
+
+BEGIN_CODE_INFO
+.// Handle movement for Player 1.
+.function update_player1() {
+.	...
+.}
++
++// Handle movement for Player 2.
++function update_player2() {
++	_player2.y += _player2.velocity_y;
++}
+END_CODE_OK
+
+BEGIN_CODE_INFO
+.// This is called ~60 times per second to update the world.
+.function update_world() {
+.	check_input();
+.	update_player1();
++	update_player2();
+.	draw();
+.
+.	requestAnimationFrame(update_world);
+.}
+END_CODE_OK
+
+GOTO 060

@@ -1,0 +1,23 @@
+TITLE = Node 120
+ID = 120
+
+B: xxxx
+
+BEGIN_CODE
+.function update_scores(player1, player2) {
+.	// Update the scores.
+.	_player1.score += player1;
+.	_player2.score += player2;
+.
+.	// Reset the ball.
+.	init_ball();
++
++	// Which direction should the next ball be served?
++	// It should come from the player who just scored the point.
++	if (player2 > 0) {
++		_ball.velocity_x *= -1;
++	}
+.}
+END_CODE_OK
+
+GOTO 130

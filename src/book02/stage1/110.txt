@@ -1,0 +1,77 @@
+TITLE = Node 110
+ID = 110
+
+B: xxxx
+
+BEGIN_CODE_INFO Initialize the score for each player
+.// Initialize Player 1 data.
+.function init_player1() {
+.	_player1.width = 20;
+.	_player1.height = 80;
+.	_player1.x = 30;
+.	_player1.y = (_game.height - _player1.height) / 2.0;
+.
+.	_player1.velocity_y = 0;
++	_player1.score = 0;
+.}
+.
+.// Initialize Player 2 data.
+.function init_player2() {
+.	_player2.width = 20;
+.	_player2.height = 80;
+.	_player2.x = 500;
+.	_player2.y = (_game.height - _player2.height) / 2.0;
+.
+.	_player2.velocity_y = 0;
++	_player2.score = 0;
+.}
+
+END_CODE_OK
+
+BEGIN_CODE_INFO Add a function to update the scores
+.// Initialize ball data.
+.function init_ball() {
+.	...
+.}
++
++function update_scores(player1, player2) {
++	// Update the scores.
++	_player1.score += player1;
++	_player2.score += player2;
++
++	// Reset the ball.
++	init_ball();
++}
+END_CODE_OK
+
+BEGIN_CODE_INFO
+.// Handle ball movement and collision.
+.function update_ball() {
+.	_ball.x += _ball.velocity_x;
+.	_ball.y += _ball.velocity_y;
+.
+.	// Bounce off horizontal walls.
+.	if (_ball.y <= 0) {
+.		_ball.velocity_y *= -1;
+.	}
+.	if (_ball.y >= _game.height - _ball.height) {
+.		_ball.velocity_y *= -1;
+.	}
+.
+.	// Bounce off vertical walls.
+.	if (_ball.x <= 0) {
+-		_ball.velocity_x *= -1;
++		update_scores(0, 1);
+.	}
+.	if (_ball.x >= _game.width - _ball.width) {
+-		_ball.velocity_x *= -1;
++		update_scores(1, 0);
+.	}
+.
+.	// Bounce off paddles.
+.	var ball_speed2 = (_game.ball_speed / 2.0)
+.	...
+.}
+END_CODE_OK
+
+GOTO 120

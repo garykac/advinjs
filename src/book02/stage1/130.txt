@@ -1,0 +1,125 @@
+TITLE = Node 130
+ID = 130
+
+B: xxxx
+
+BEGIN_CODE
+.// Initialize the game state.
+.function init() {
+.	init_game();
+.	init_player1();
+.	init_player2();
+.	init_ball();
++
++	// Start game by showing the score.
++	update_scores(0, 0);
+.}
+.
+.// Initialize general game state info.
+.function init_game() {
+.	var canvas = document.getElementById("stage");
+.	canvas.width = 550;
+.	canvas.height = 400;
+.
+.	_game.width = canvas.width;
+.	_game.height = canvas.height;
+.
+.	// The keymap keeps track of which keys are currently being pressed.
+.	_game.keymap = {};
+.
+.	// How fast the player paddles move.
+.	_game.paddle_speed = 3;
+.
+.	// How fast the ball moves (in x and y direction).
+.	_game.ball_speed = 2;
++
++	// Current game state: 'score', 'playing', 'gameover'
++	_game.state = 'playing';
++
++	// Timer for tracking how long to display the score.
++	_game.score_timer = 0;
++	// How long to display score (in 60ths of a second).
++	_game.score_timer_reset = 120;
+.}
+END_CODE_OK
+
+
+BEGIN_CODE
+.function update_scores(player1, player2) {
+.	// Update the scores.
+.	_player1.score += player1;
+.	_player2.score += player2;
+.
+.	// Reset the ball.
+.	init_ball();
+.
+.	// Which direction should the next ball be served?
+.	// It should come from the player who just scored the point.
+.	if (player2 > 0) {
+.		_ball.velocity_x *= -1;
+.	}
++
++	// Has either player won?
++	if (_player1.score >= 9 || _player2.score >= 9) {
++		_game.state = 'gameover';
++	} else {
++		_game.state = 'score';
++		_game.score_timer = _game.score_timer_reset;
++	}
+.}
+END_CODE_OK
+
+
+BEGIN_CODE
+.// Erase the canvas and draw all the objects.
+.function draw() {
+.	var canvas = document.getElementById("stage");
+.	var ctx = canvas.getContext("2d");
+.
+.	erase(ctx);
++	if (_game.state == 'playing') {
+>		draw_player1(ctx);
+>		draw_player2(ctx);
+>		draw_ball(ctx);
++	} else if (_game.state == 'score') {
++		draw_player1(ctx);
++		draw_player2(ctx);
++		draw_score(ctx);
++		_game.score_timer--;
++		if (_game.score_timer <= 0) {
++			_game.state = 'playing';
++		}
++	} else {
++		draw_score(ctx);
++	}
+.}
+END_CODE_ERROR =draw_score()= hasn't been created yet
+
+BEGIN_CODE_INFO Create a placeholder for =draw_score()=
+.// Draw the ball.
+.function draw_ball(ctx) {
+.	ctx.fillStyle = "white";
+.	ctx.fillRect(_ball.x, _ball.y, _ball.width, _ball.height);
+.}
++
++function draw_score(ctx) {
++	// TODO
++}
+END_CODE_OK
+
+BEGIN_CODE
+.// This is called ~60 times per second to update the world.
+.function update_world() {
++	if (_game.state == 'playing') {
+>		check_input();
+>		update_player1();
+>		update_player2();
+>		update_ball();
++	}
+.	draw();
+.
+.	requestAnimationFrame(update_world);
+.}
+END_CODE_OK
+
+GOTO 140

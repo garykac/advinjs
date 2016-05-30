@@ -1,0 +1,8 @@
+TITLE = Node 200
+ID = 200
+
+B: xxxx
+
+GAIN Simple Badge
+
+GOTO 300

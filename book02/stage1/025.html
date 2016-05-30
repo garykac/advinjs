@@ -1,0 +1,150 @@
+<html>
+<head>
+<title>025 : Node 025</title>
+
+<link rel="stylesheet" href="../../css/bootstrap.min.css">
+<link type="text/css" rel="stylesheet" href="../../css/style.css" />
+<link href='http://fonts.googleapis.com/css?family=Trade+Winds' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Sacramento' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Piedra' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Aclonica' rel='stylesheet' type='text/css'>
+
+<script>
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-1163903-6', 'auto');
+	ga('send', 'pageview');
+</script>
+
+</head>
+
+<body>
+<div class="navbar navbar-inverse navbar-static-top" role="navigation"><div class="container"><div class="navbar-header">
+<a class="navbar-brand" href="../index.html"><span class="title1">Adventures in</span> <span class="title2">JavaScript</span></a>
+</div></div></div>
+<div class="container">
+<h1>025 : Node 025</h1>
+<div class="name">Balthazar:</div><p class="balthazar">Since we're going to add a second player, rename <span class="code-inline-color">_player</span> to <span class="code-inline-color">_player1</span>.</p>
+<div class="name">Balthazar:</div><p class="balthazar">If your text editor supports global search and replace, change all occurrences "_player" to "_player1".</p>
+<div class="panel panel-default">
+<div class="panel-code-header"><span class="panel-code-header-filename">script.js:</span> </div><div class="panel-code code"><span class="context">// Global variables.</span>
+<span class="context">var _game = {};</span>
+<img src="../../css/cross.png" width="15" height="15"/><span class="delete">var _player = {};</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">var _player1 = {};</span>
+</div>
+<div class="panel-code-footer">If you run your code now, you'll see an error because all the references to <span class="code-inline">_player</span> are now invalid.</div></div>
+<div class="panel panel-default">
+<div class="panel-code-header"><span class="panel-code-header-filename">script.js:</span> </div><div class="panel-code code"><span class="context">// Initialize the game state.</span>
+<span class="context">function init() {</span>
+<span class="context">    init_game();</span>
+<img src="../../css/cross.png" width="15" height="15"/><span class="delete">    init_player();</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">    init_player1();</span>
+<span class="context">}</span>
+</div>
+<div class="panel-code-footer">If you run your code now, you'll see an error because <span class="code-inline">init_player1()</span> hasn't been renamed yet.</div></div>
+<div class="panel panel-default">
+<div class="panel-code-header"><span class="panel-code-header-filename">script.js:</span> </div><div class="panel-code code"><img src="../../css/cross.png" width="15" height="15"/><span class="delete">// Initialize player data.</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">// Initialize Player 1 data.</span>
+<img src="../../css/cross.png" width="15" height="15"/><span class="delete">function init_player() {</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">function init_player1() {</span>
+<img src="../../css/cross.png" width="15" height="15"/><span class="delete">    _player.x = 0;</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">    _player1.x = 0;</span>
+<img src="../../css/cross.png" width="15" height="15"/><span class="delete">    _player.y = 0;</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">    _player1.y = 0;</span>
+<img src="../../css/cross.png" width="15" height="15"/><span class="delete">    _player.width = 20;</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">    _player1.width = 20;</span>
+<img src="../../css/cross.png" width="15" height="15"/><span class="delete">    _player.height = 20;</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">    _player1.height = 20;</span>
+<span class="context"></span>
+<img src="../../css/cross.png" width="15" height="15"/><span class="delete">    _player.velocity_x = 0;</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">    _player1.velocity_x = 0;</span>
+<img src="../../css/cross.png" width="15" height="15"/><span class="delete">    _player.velocity_y = 0;</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">    _player1.velocity_y = 0;</span>
+<span class="context">}</span>
+</div>
+<div class="panel-code-footer">If you run your code now, you'll see an error because there are still more places to fix up.</div></div>
+<div class="panel panel-default">
+<div class="panel-code-header"><span class="panel-code-header-filename">script.js:</span> </div><div class="panel-code code"><span class="context">// Erase the canvas and draw all the objects.</span>
+<span class="context">function draw() {</span>
+<span class="context">    var canvas = document.getElementById("stage");</span>
+<span class="context">    var ctx = canvas.getContext("2d");</span>
+<span class="context"></span>
+<span class="context">    erase(ctx);</span>
+<img src="../../css/cross.png" width="15" height="15"/><span class="delete">    draw_player(ctx);</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">    draw_player1(ctx);</span>
+<span class="context">}</span>
+</div>
+<div class="panel-code-footer">If you run your code now, you'll see an error because <span class="code-inline">draw_player1()</span> hasn't been renamed yet.</div></div>
+<div class="panel panel-default">
+<div class="panel-code-header"><span class="panel-code-header-filename">script.js:</span> </div><div class="panel-code code"><img src="../../css/cross.png" width="15" height="15"/><span class="delete">// Draw the player.</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">// Draw player 1.</span>
+<img src="../../css/cross.png" width="15" height="15"/><span class="delete">function draw_player(ctx) {</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">function draw_player1(ctx) {</span>
+<span class="context">    ctx.fillStyle = "blue";</span>
+<img src="../../css/cross.png" width="15" height="15"/><span class="delete">    ctx.fillRect(_player.x, _player.y, _player.width, _player.height);</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">    ctx.fillRect(_player1.x, _player1.y, _player1.width, _player1.height);</span>
+<span class="context">}</span>
+</div>
+<div class="panel-code-footer">If you run your code now, you'll see an error because there are still a few more to fix.</div></div>
+<div class="panel panel-default">
+<div class="panel-code-header"><span class="panel-code-header-filename">script.js:</span> </div><div class="panel-code code"><img src="../../css/cross.png" width="15" height="15"/><span class="delete">// Handle input and move the player.</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">// Handle input and move player 1.</span>
+<img src="../../css/cross.png" width="15" height="15"/><span class="delete">function update_player() {</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">function update_player1() {</span>
+<span class="context">    check_input();</span>
+<span class="context"></span>
+<img src="../../css/cross.png" width="15" height="15"/><span class="delete">    // Move the player to the new location.</span>
+<img src="../../css/cross.png" width="15" height="15"/><span class="delete">    _player.x += _player.velocity_x;</span>
+<img src="../../css/cross.png" width="15" height="15"/><span class="delete">    _player.y += _player.velocity_y;</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">    _player1.x += _player1.velocity_x;</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">    _player1.y += _player1.velocity_y;</span>
+<span class="context">}</span>
+</div>
+<div class="panel-code-footer">If you run your code now, you'll see an error because there are still a few more to fix.</div></div>
+<div class="panel panel-default">
+<div class="panel-code-header"><span class="panel-code-header-filename">script.js:</span> </div><div class="panel-code code"><span class="context">function check_input() {</span>
+<img src="../../css/cross.png" width="15" height="15"/><span class="delete">    _player.velocity_x = 0;</span>
+<img src="../../css/cross.png" width="15" height="15"/><span class="delete">    _player.velocity_y = 0;</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">    _player1.velocity_x = 0;</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">    _player1.velocity_y = 0;</span>
+<span class="context"></span>
+<span class="context">    // Left arrow or 'a' to move left.</span>
+<span class="context">    if (_game.keymap[37] || _game.keymap[65]) {</span>
+<img src="../../css/cross.png" width="15" height="15"/><span class="delete">        _player.velocity_x = -1;</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">        _player1.velocity_x = -1;</span>
+<span class="context">    }</span>
+<span class="context">    // Right arrow or 'd' to move right.</span>
+<span class="context">    if (_game.keymap[39] || _game.keymap[68]) {</span>
+<img src="../../css/cross.png" width="15" height="15"/><span class="delete">        _player.velocity_x = 1;</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">        _player1.velocity_x = 1;</span>
+<span class="context">    }</span>
+<span class="context">    // Up arrow or 'w' to move up.</span>
+<span class="context">    if (_game.keymap[38] || _game.keymap[87]) {</span>
+<img src="../../css/cross.png" width="15" height="15"/><span class="delete">        _player.velocity_y = -1;</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">        _player1.velocity_y = -1;</span>
+<span class="context">    }</span>
+<span class="context">    // Down arrow or 's' to move up.</span>
+<span class="context">    if (_game.keymap[40] || _game.keymap[83]) {</span>
+<img src="../../css/cross.png" width="15" height="15"/><span class="delete">        _player.velocity_y = 1;</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">        _player1.velocity_y = 1;</span>
+<span class="context">    }</span>
+<span class="context">}</span>
+</div>
+<div class="panel-code-footer">If you run your code now, you'll see an error because there is still one last thing to fix.</div></div>
+<div class="panel panel-default">
+<div class="panel-code-header"><span class="panel-code-header-filename">script.js:</span> </div><div class="panel-code code"><span class="context">// This is called ~60 times per second to update the world.</span>
+<span class="context">function update_world() {</span>
+<img src="../../css/cross.png" width="15" height="15"/><span class="delete">    update_player();</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">    update_player1();</span>
+<span class="context">    draw();</span>
+<span class="context"></span>
+<span class="context">    requestAnimationFrame(update_world);</span>
+<span class="context">}</span>
+</div>
+<div class="panel-code-footer">Run your code in a browser and verify that there are no errors.</div></div>
+<p class="alert alert-info"><a href="030.html"><span class="goto">GOTO 030</span></a></p>
+</div>
+</body>
+</html>

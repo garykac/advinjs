@@ -1,0 +1,83 @@
+TITLE = Node 040
+ID = 040
+
+B: Two player game, so we need to use some keys for player 1 and some other keys for player 2.
+
+B: Move =check_input()= into =update_world()= since we need to use it for both players.
+
+BEGIN_CODE_INFO Move =check_input()=
+-// Handle input and move player 1.
++// Handle movement for Player 1.
+.function update_player1() {
+-	check_input();
+-
+.	_player1.x += _player1.velocity_x;
+.	_player1.y += _player1.velocity_y;
+.}
+.
+.function check_input() {
+.	...
+.}
+.
+.// This is called ~60 times per second to update the world.
+.function update_world() {
++	check_input();
+.	update_player1();
+.	draw();
+.
+.	requestAnimationFrame(update_world);
+.}
+END_CODE_OK
+
+B: Update =check_input()= to handle keys for both players.
+
+B: Use WASD for player 1 and arrow keys for player 2.
+
+B: Players can only move up and down, so we never need to update =velocity_x=.
+
+B: Since players can only move up and down, we also remap left/right to up/down.
+
+BEGIN_CODE_INFO Update key handling
+.function check_input() {
+-	_player1.velocity_x = 0;
+.	_player1.velocity_y = 0;
+.
+-	// Left arrow or 'a' to move left.
+-	if (_game.keymap[37] || _game.keymap[65]) {
+-		_player1.velocity_x = -1;
+-	}
+-	// Right arrow or 'd' to move right.
+-	if (_game.keymap[39] || _game.keymap[68]) {
+-		_player1.velocity_x = 1;
+-	}
+-	// Up arrow or 'w' to move up.
++	// Player 1 uses the WASD keys to move.
++	// 'w' or 'a' to move up.
+-	if (_game.keymap[38] || _game.keymap[87]) {
++	if (_game.keymap[87] || _game.keymap[65]) {
+.		_player1.velocity_y = -1;
+.	}
+-	// Down arrow or 's' to move up.
++	// 's' or 'd' to move up.
+-	if (_game.keymap[40] || _game.keymap[83]) {
++	if (_game.keymap[83] || _game.keymap[68]) {
+.		_player1.velocity_y = 1;
+.	}
++
++	_player2.velocity_y = 0;
++
++	// Player 2 uses the Arrow keys to move.
++	// Up arrow or Right arrow to move up.
++	if (_game.keymap[38] || _game.keymap[39]) {
++		_player2.velocity_y = -1;
++	}
++	// Down arrow or Left arrow to move up.
++	if (_game.keymap[40] || _game.keymap[37]) {
++		_player2.velocity_y = 1;
++	}
+.}
+END_CODE_OK
+
+B: Player 2 doesn't move yet.
+
+GOTO 050

@@ -1,0 +1,68 @@
+TITLE = Node 080
+ID = 080
+
+B: Move the ball.
+
+BEGIN_CODE
+.// Initialize general game state info.
+.function init_game() {
+.	var canvas = document.getElementById("stage");
+.	canvas.width = 550;
+.	canvas.height = 400;
+.
+.	_game.width = canvas.width;
+.	_game.height = canvas.height;
+.
+.	// The keymap keeps track of which keys are currently being pressed.
+.	_game.keymap = {};
+.
+.	// How fast the player paddles move.
+.	_game.paddle_speed = 3;
++
++	// How fast the ball moves (in x and y direction).
++	_game.ball_speed = 2;
+.}
+END_CODE_OK
+
+BEGIN_CODE
+.// Initialize ball data.
+.function init_ball() {
+.	_ball.width = 20;
+.	_ball.height = 20;
+.	_ball.x = (_game.width - _ball.width) / 2.0;
+.	_ball.y = 0;
+.
+-	_ball.velocity_x = 0;
+-	_ball.velocity_y = 0;
++	_ball.velocity_x = _game.ball_speed;
++	_ball.velocity_y = _game.ball_speed;
+.}
+END_CODE_OK
+
+BEGIN_CODE
+.// Handle movement for Player 2.
+.function update_player2() {
+.	...
+.}
++
++// Handle ball movement.
++function update_ball() {
++	_ball.x += _ball.velocity_x;
++	_ball.y += _ball.velocity_y;
++}
+END_CODE_OK
+
+BEGIN_CODE
+.// This is called ~60 times per second to update the world.
+.function update_world() {
+.	check_input();
+.	update_player1();
+.	update_player2();
++	update_ball();
+.	draw();
+.
+.	requestAnimationFrame(update_world);
+.}
+END_CODE_OK
+
+GOTO 090

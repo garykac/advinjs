@@ -1,0 +1,31 @@
+TITLE = Node 090
+ID = 090
+
+B: Handle bouncing off the walls.
+
+BEGIN_CODE_INFO
+-// Handle ball movement.
++// Handle ball movement and collision.
+.function update_ball() {
+.	_ball.x += _ball.velocity_x;
+.	_ball.y += _ball.velocity_y;
++
++	// Bounce off horizontal walls.
++	if (_ball.y <= 0) {
++		_ball.velocity_y *= -1;
++	}
++	if (_ball.y >= _game.height - _ball.height) {
++		_ball.velocity_y *= -1;
++	}
++
++	// Bounce off vertical walls.
++	if (_ball.x <= 0) {
++		_ball.velocity_x *= -1;
++	}
++	if (_ball.x >= _game.width - _ball.width) {
++		_ball.velocity_x *= -1;
++	}
+.}
+END_CODE_OK
+
+GOTO 100

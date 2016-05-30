@@ -1,0 +1,150 @@
+<html>
+<head>
+<title>130 : Node 130</title>
+
+<link rel="stylesheet" href="../../css/bootstrap.min.css">
+<link type="text/css" rel="stylesheet" href="../../css/style.css" />
+<link href='http://fonts.googleapis.com/css?family=Trade+Winds' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Sacramento' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Piedra' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Aclonica' rel='stylesheet' type='text/css'>
+
+<script>
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-1163903-6', 'auto');
+	ga('send', 'pageview');
+</script>
+
+</head>
+
+<body>
+<div class="navbar navbar-inverse navbar-static-top" role="navigation"><div class="container"><div class="navbar-header">
+<a class="navbar-brand" href="../index.html"><span class="title1">Adventures in</span> <span class="title2">JavaScript</span></a>
+</div></div></div>
+<div class="container">
+<h1>130 : Node 130</h1>
+<div class="name">Balthazar:</div><p class="balthazar">xxxx</p>
+<div class="panel panel-default">
+<div class="panel-code code"><span class="context">// Initialize the game state.</span>
+<span class="context">function init() {</span>
+<span class="context">    init_game();</span>
+<span class="context">    init_player1();</span>
+<span class="context">    init_player2();</span>
+<span class="context">    init_ball();</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add"></span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">    // Start game by showing the score.</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">    update_scores(0, 0);</span>
+<span class="context">}</span>
+<span class="context"></span>
+<span class="context">// Initialize general game state info.</span>
+<span class="context">function init_game() {</span>
+<span class="context">    var canvas = document.getElementById("stage");</span>
+<span class="context">    canvas.width = 550;</span>
+<span class="context">    canvas.height = 400;</span>
+<span class="context"></span>
+<span class="context">    _game.width = canvas.width;</span>
+<span class="context">    _game.height = canvas.height;</span>
+<span class="context"></span>
+<span class="context">    // The keymap keeps track of which keys are currently being pressed.</span>
+<span class="context">    _game.keymap = {};</span>
+<span class="context"></span>
+<span class="context">    // How fast the player paddles move.</span>
+<span class="context">    _game.paddle_speed = 3;</span>
+<span class="context"></span>
+<span class="context">    // How fast the ball moves (in x and y direction).</span>
+<span class="context">    _game.ball_speed = 2;</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add"></span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">    // Current game state: 'score', 'playing', 'gameover'</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">    _game.state = 'playing';</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add"></span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">    // Timer for tracking how long to display the score.</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">    _game.score_timer = 0;</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">    // How long to display score (in 60ths of a second).</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">    _game.score_timer_reset = 120;</span>
+<span class="context">}</span>
+</div>
+<div class="panel-code-footer">Run your code in a browser and verify that there are no errors.</div></div>
+<div class="panel panel-default">
+<div class="panel-code code"><span class="context">function update_scores(player1, player2) {</span>
+<span class="context">    // Update the scores.</span>
+<span class="context">    _player1.score += player1;</span>
+<span class="context">    _player2.score += player2;</span>
+<span class="context"></span>
+<span class="context">    // Reset the ball.</span>
+<span class="context">    init_ball();</span>
+<span class="context"></span>
+<span class="context">    // Which direction should the next ball be served?</span>
+<span class="context">    // It should come from the player who just scored the point.</span>
+<span class="context">    if (player2 > 0) {</span>
+<span class="context">        _ball.velocity_x *= -1;</span>
+<span class="context">    }</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add"></span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">    // Has either player won?</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">    if (_player1.score >= 9 || _player2.score >= 9) {</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">        _game.state = 'gameover';</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">    } else {</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">        _game.state = 'score';</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">        _game.score_timer = _game.score_timer_reset;</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">    }</span>
+<span class="context">}</span>
+</div>
+<div class="panel-code-footer">Run your code in a browser and verify that there are no errors.</div></div>
+<div class="panel panel-default">
+<div class="panel-code code"><span class="context">// Erase the canvas and draw all the objects.</span>
+<span class="context">function draw() {</span>
+<span class="context">    var canvas = document.getElementById("stage");</span>
+<span class="context">    var ctx = canvas.getContext("2d");</span>
+<span class="context"></span>
+<span class="context">    erase(ctx);</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">    if (_game.state == 'playing') {</span>
+<span class="indent">        draw_player1(ctx);</span>
+<span class="indent">        draw_player2(ctx);</span>
+<span class="indent">        draw_ball(ctx);</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">    } else if (_game.state == 'score') {</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">        draw_player1(ctx);</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">        draw_player2(ctx);</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">        draw_score(ctx);</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">        _game.score_timer--;</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">        if (_game.score_timer <= 0) {</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">            _game.state = 'playing';</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">        }</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">    } else {</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">        draw_score(ctx);</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">    }</span>
+<span class="context">}</span>
+</div>
+<div class="panel-code-footer">If you run your code now, you'll see an error because <span class="code-inline">draw_score()</span> hasn't been created yet.</div></div>
+<div class="panel panel-default">
+<div class="panel-code-header"><span class="panel-code-header-filename">script.js:</span> Create a placeholder for <span class="code-inline">draw_score()</span></div><div class="panel-code code"><span class="context">// Draw the ball.</span>
+<span class="context">function draw_ball(ctx) {</span>
+<span class="context">    ctx.fillStyle = "white";</span>
+<span class="context">    ctx.fillRect(_ball.x, _ball.y, _ball.width, _ball.height);</span>
+<span class="context">}</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add"></span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">function draw_score(ctx) {</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">    // TODO</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">}</span>
+</div>
+<div class="panel-code-footer">Run your code in a browser and verify that there are no errors.</div></div>
+<div class="panel panel-default">
+<div class="panel-code code"><span class="context">// This is called ~60 times per second to update the world.</span>
+<span class="context">function update_world() {</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">    if (_game.state == 'playing') {</span>
+<span class="indent">        check_input();</span>
+<span class="indent">        update_player1();</span>
+<span class="indent">        update_player2();</span>
+<span class="indent">        update_ball();</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">    }</span>
+<span class="context">    draw();</span>
+<span class="context"></span>
+<span class="context">    requestAnimationFrame(update_world);</span>
+<span class="context">}</span>
+</div>
+<div class="panel-code-footer">Run your code in a browser and verify that there are no errors.</div></div>
+<p class="alert alert-info"><a href="140.html"><span class="goto">GOTO 140</span></a></p>
+</div>
+</body>
+</html>

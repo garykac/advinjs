@@ -1,0 +1,32 @@
+TITLE = Node 060
+ID = 060
+
+B: Paddles can move off top and bottom of screen.
+
+BEGIN_CODE_INFO
+.// Handle movement for Player 1.
+.function update_player1() {
+.	_player1.y += _player1.velocity_y;
++
++	// Make sure paddle doesn't go off-screen.
++	if (_player1.y < 0) {
++		_player1.y = 0;
++	} else if (_player1.y > _game.height - _player1.height) {
++		_player1.y = _game.height - _player1.height;
++	}
+.}
+.
+.// Handle movement for Player 2.
+.function update_player2() {
+.	_player2.y += _player2.velocity_y;
++
++	// Make sure paddle doesn't go off-screen.
++	if (_player2.y < 0) {
++		_player2.y = 0;
++	} else if (_player2.y > _game.height - _player2.height) {
++		_player2.y = _game.height - _player2.height;
++	}
+.}
+END_CODE_OK
+
+GOTO 070

@@ -1,0 +1,107 @@
+TITLE = Node 030
+ID = 030
+
+B: xxxx
+
+BEGIN_CODE_INFO Add variables for second player and ball
+.// Global variables.
+.var _game = {};
+.var _player1 = {};
++var _player2 = {};
++var _ball = {};
+END_CODE_OK
+
+
+BEGIN_CODE_INFO Initialize the players and ball
+.// Initialize the game state.
+.function init() {
+.	init_game();
+.	init_player1();
++	init_player2();
++	init_ball();
+.}
+END_CODE_ERROR the =init_player2()= and =init_ball()= functions don't exist yet
+
+B: Make the paddle tall and center is vertically on the left side of the screen.
+
+BEGIN_CODE_INFO Initialize player 1
+.// Initialize Player 1 data.
+.function init_player1() {
+-	_player1.x = 0;
+-	_player1.y = 0;
+.	_player1.width = 20;
+-	_player1.height = 20;
++	_player1.height = 80;
++	_player1.x = 30;
++	_player1.y = (_game.height - _player1.height) / 2.0;
+.
+.	_player1.velocity_x = 0;
+.	_player1.velocity_y = 0;
+.}
+END_CODE_ERROR =init_player2()= and =init_ball()= still need to be created
+
+BEGIN_CODE_INFO Initialize player 2 and the ball
+.function init_player1() {
+.	...
+.}
+.
++// Initialize Player 2 data.
++function init_player2() {
++	_player2.width = 20;
++	_player2.height = 80;
++	_player2.x = 500;
++	_player2.y = (_game.height - _player2.height) / 2.0;
++
++	_player2.velocity_x = 0;
++	_player2.velocity_y = 0;
++}
++
++// Initialize ball data.
++function init_ball() {
++	_ball.width = 20;
++	_ball.height = 20;
++	_ball.x = (_game.width - _ball.width) / 2.0;
++	_ball.y = 0;
++
++	_ball.velocity_x = 0;
++	_ball.velocity_y = 0;
++}
++
+END_CODE_OK
+
+BEGIN_CODE_INFO Draw player 2 and the ball
+.// Erase the canvas and draw all the objects.
+.function draw() {
+.	var canvas = document.getElementById("stage");
+.	var ctx = canvas.getContext("2d");
+.
+.	erase(ctx);
+.	draw_player1(ctx);
++	draw_player2(ctx);
++	draw_ball(ctx);
+.}
+END_CODE_ERROR =draw_player2()= and =draw_ball()= still need to be created
+
+BEGIN_CODE_INFO Draw player 2 and the ball (continued)
+.// Draw player 1.
+.function draw_player1(ctx) {
+-	ctx.fillStyle = "blue";
++	ctx.fillStyle = "white";
+.	ctx.fillRect(_player1.x, _player1.y, _player1.width, _player1.height);
+.}
+.
++// Draw player 2.
++function draw_player2(ctx) {
++	ctx.fillStyle = "white";
++	ctx.fillRect(_player2.x, _player2.y, _player2.width, _player2.height);
++}
++
++// Draw the ball.
++function draw_ball(ctx) {
++	ctx.fillStyle = "white";
++	ctx.fillRect(_ball.x, _ball.y, _ball.width, _ball.height);
++}
++
+END_CODE_OK
+
+GOTO 040
