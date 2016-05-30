@@ -91,7 +91,10 @@ class Library(object):
 					rm_dir(os.path.join(book.name, book.stage_name(stage_id)))
 
 		if self.options.html:
-			book.create_book_files(self.options)
+			book.create_html_files(self.options)
+
+		if self.options.zip:
+			book.create_zip_files()
 
 		errors = 0
 		for s in stages:
@@ -179,6 +182,12 @@ class Book(object):
 				self.files = value.split()
 			elif key == 'default_file':
 				self.default_file = value
+			elif key == 'images':
+				self.image_files = value.split()
+			elif key == 'html':
+				self.html_files = value.split()
+			elif key == 'zip':
+				self.zip_files = value.split()
 			else:
 				error('Unknown info key: %s' % key)
 		f.close()
@@ -212,14 +221,15 @@ class Book(object):
 
 	def load_image_list(self):
 		self.images = {}
-		f = open(os.path.join('src', self.name, 'images.txt'), 'r')
-		for line in f:
-			# 'images.txt' generates an HTML file, so ignore all lines that
-			# don't identify an image.
-			if line.startswith('MAIN_TABLE_IMAGE'):
-				(cmd, fullpath, size, name) = line.split(' ')
-				self.images[fullpath] = size
-		f.close()
+		for image_file in self.image_files:
+			f = open(os.path.join('src', self.name, '%s.txt' % image_file), 'r')
+			for line in f:
+				# 'images.txt' generates an HTML file, so ignore all lines that
+				# don't identify an image.
+				if line.startswith('MAIN_TABLE_IMAGE'):
+					(cmd, fullpath, size, name) = line.split(' ')
+					self.images[fullpath] = size
+			f.close()
 
 	def load_function_list(self):
 		self.functions = []
@@ -259,18 +269,22 @@ class Book(object):
 		"""
 		return badge_id in self.badges_optional
 
-	def create_book_files(self, options):
-		if options.clean:
+	def create_zip_files(self):
+		for zip_src in self.zip_files:
 			print 'Creating images.zip'
 			subprocess.call(
 					['zip', '-r', 'images.zip', 'images',
 						'-i', '*.png'],
 					cwd = self.name)
 
-		errors = self.library.process_html('src/%s/images.txt' % self.name,
-				'%s/images.html' % self.name, options)
-		if errors != 0:
-			error('Error processing core html files')
+	def create_html_files(self, options):
+		for html_src in self.html_files:
+			errors = self.library.process_html(
+					'src/%s/%s.txt' % (self.name, html_src),
+					'%s/%s.html' % (self.name, html_src),
+					options)
+			if errors != 0:
+				error('Error processing html file: %s' % html_src)
 
 	def copy_snapshot_dir(self, stage_src, src, stage_dst, dst):
 		"""
@@ -793,6 +807,8 @@ def main():
 		help = 'True to generate html files.')
 	argparser.add_argument('--pathcheck', required=False, action='store_true',
 		help = 'True to verify paths between nodes are valid.')
+	argparser.add_argument('--zip', required=False, action='store_true',
+		help = 'True to generate zip files.')
 	argparser.add_argument('--debug', required=False, action='store_true',
 		help = 'Print additional debug info.')
 	argparser.add_argument('--trace', required=False,

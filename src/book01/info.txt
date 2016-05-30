@@ -2,3 +2,6 @@ title:Legend of JavaScript
 prereq:book00
 files:script.js
 default_file:script.js
+images:images
+html:images
+zip:images

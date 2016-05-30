@@ -1,5 +1,0 @@
-TITLE = Adventures in JavaScript
-
-H2 Bitmap images for the game
-
-INFO While you can technically use any images for your game, these ones are the proper size and shape to match the code that we're going to write.
