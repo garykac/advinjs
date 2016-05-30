@@ -484,6 +484,9 @@ class StageGenerator(object):
 					target = m.group(1)
 					self.add_link([node, target, ''])
 					continue
+				m = re.match(r'GOTO END', line)
+				if m:
+					error('"GOTO END" is only valid in the last node of the last stage')
 				error('Unknown GOTO format: GOTO "%s"' % line)
 
 			if line[0:8] == 'TITLE = ':
