@@ -104,6 +104,7 @@ class Library(object):
 			print 'Copying final stage from %s/%s' % (stage, end)
 			snapshot_src = os.path.join('snapshots', book.name, stage, end)
 			snapshot_dst = os.path.join(book.name, 'final')
+			rm_dir(snapshot_dst)
 			make_dir(snapshot_dst)
 
 			distutils.dir_util.copy_tree(snapshot_src, snapshot_dst)
