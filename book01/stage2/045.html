@@ -50,13 +50,13 @@
 <div class="panel-code code"><span class="context">// Return true if the 2 objects overlap.</span>
 <span class="context">function collide(obj1, obj2) {</span>
 <img src="../../css/cross.png" width="15" height="15"/><span class="delete">    // NYI</span>
-<img src="../../css/plus.png" width="15" height="15"/><span class="add">    if ((obj1.x - obj1.origin_x + obj1.width) <= (obj2.x - obj2.origin_x))</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">    if ((obj1.x - obj1.origin_x + obj1.width) &lt;= (obj2.x - obj2.origin_x))</span>
 <img src="../../css/plus.png" width="15" height="15"/><span class="add">        return false;</span>
-<img src="../../css/plus.png" width="15" height="15"/><span class="add">    if ((obj1.y - obj1.origin_y + obj1.height) <= (obj2.y - obj2.origin_y))</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">    if ((obj1.y - obj1.origin_y + obj1.height) &lt;= (obj2.y - obj2.origin_y))</span>
 <img src="../../css/plus.png" width="15" height="15"/><span class="add">        return false;</span>
-<img src="../../css/plus.png" width="15" height="15"/><span class="add">    if ((obj2.x - obj2.origin_x + obj2.width) <= (obj1.x - obj1.origin_x))</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">    if ((obj2.x - obj2.origin_x + obj2.width) &lt;= (obj1.x - obj1.origin_x))</span>
 <img src="../../css/plus.png" width="15" height="15"/><span class="add">        return false;</span>
-<img src="../../css/plus.png" width="15" height="15"/><span class="add">    if ((obj2.y - obj2.origin_y + obj2.height) <= (obj1.y - obj1.origin_y))</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">    if ((obj2.y - obj2.origin_y + obj2.height) &lt;= (obj1.y - obj1.origin_y))</span>
 <img src="../../css/plus.png" width="15" height="15"/><span class="add">        return false;</span>
 <img src="../../css/plus.png" width="15" height="15"/><span class="add"></span>
 <img src="../../css/cross.png" width="15" height="15"/><span class="delete">    return false;</span>

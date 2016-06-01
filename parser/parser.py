@@ -418,6 +418,7 @@ class Parser(object):
 				for line in d[1]:
 					type = line[0]
 					line = line[1:].replace('\t', '    ')
+					line = line.replace('<', '&lt;')
 					if type == '.':
 						fout.write('<span class="context">%s</span>\n' % line)
 					elif type == '+':

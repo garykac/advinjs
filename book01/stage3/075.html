@@ -57,7 +57,7 @@
 <div class="panel panel-default">
 <div class="panel-code code"><span class="context">function draw_platforms(ctx) {</span>
 <img src="../../css/plus.png" width="15" height="15"/><span class="add">    var platforms = _game.platforms;</span>
-<img src="../../css/plus.png" width="15" height="15"/><span class="add">    for (var i = 0; i < platforms.length; i++) {</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">    for (var i = 0; i &lt; platforms.length; i++) {</span>
 <img src="../../css/cross.png" width="15" height="15"/><span class="delete">        var platform = _game.platforms[0];</span>
 <img src="../../css/plus.png" width="15" height="15"/><span class="add">        var platform = platforms[i];</span>
 <span class="indent">        ctx.fillStyle = "rgb(153, 102, 51)";</span>
@@ -72,7 +72,7 @@
 <div class="panel-code code"><span class="context">function check_platform_collisions() {</span>
 <img src="../../css/plus.png" width="15" height="15"/><span class="add">    var platforms = _game.platforms;</span>
 <span class="context">    _player.platform = null;</span>
-<img src="../../css/plus.png" width="15" height="15"/><span class="add">    for (var i = 0; i < platforms.length; i++) {</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">    for (var i = 0; i &lt; platforms.length; i++) {</span>
 <img src="../../css/cross.png" width="15" height="15"/><span class="delete">        if (collide(_game.platforms[0], _player)) {</span>
 <img src="../../css/plus.png" width="15" height="15"/><span class="add">        if (collide(platforms[i], _player)) {</span>
 <img src="../../css/cross.png" width="15" height="15"/><span class="delete">            _player.platform = _game.platforms[0];</span>

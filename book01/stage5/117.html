@@ -37,14 +37,14 @@
 <img src="../../css/plus.png" width="15" height="15"/><span class="add">    var y = obj.y - obj.origin_y;</span>
 <img src="../../css/plus.png" width="15" height="15"/><span class="add"></span>
 <img src="../../css/plus.png" width="15" height="15"/><span class="add">    // Adjust origin if we're facing left.</span>
-<img src="../../css/plus.png" width="15" height="15"/><span class="add">    if (obj.dir < 0)</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">    if (obj.dir &lt; 0)</span>
 <img src="../../css/plus.png" width="15" height="15"/><span class="add">        x += obj.width;</span>
 <img src="../../css/plus.png" width="15" height="15"/><span class="add"></span>
 <img src="../../css/plus.png" width="15" height="15"/><span class="add">    // Translate origin to (x,y).</span>
 <img src="../../css/plus.png" width="15" height="15"/><span class="add">    ctx.setTransform(1, 0, 0, 1, x, y);</span>
 <img src="../../css/plus.png" width="15" height="15"/><span class="add"></span>
 <img src="../../css/plus.png" width="15" height="15"/><span class="add">    // Flip the image if we're facing left.</span>
-<img src="../../css/plus.png" width="15" height="15"/><span class="add">    if (obj.dir < 0)</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">    if (obj.dir &lt; 0)</span>
 <img src="../../css/plus.png" width="15" height="15"/><span class="add">        ctx.scale(-1, 1);</span>
 <img src="../../css/plus.png" width="15" height="15"/><span class="add">}</span>
 <img src="../../css/plus.png" width="15" height="15"/><span class="add"></span>

@@ -155,7 +155,7 @@
 <span class="context"></span>
 <img src="../../css/plus.png" width="15" height="15"/><span class="add">// item_data: [x, y, width, height, type, image]</span>
 <img src="../../css/plus.png" width="15" height="15"/><span class="add">function add_items(level, item_data) {</span>
-<img src="../../css/plus.png" width="15" height="15"/><span class="add">    for (var i = 0; i < item_data.length; i++) {</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">    for (var i = 0; i &lt; item_data.length; i++) {</span>
 <img src="../../css/plus.png" width="15" height="15"/><span class="add">        var d = item_data[i];</span>
 <img src="../../css/plus.png" width="15" height="15"/><span class="add">        var item = create_item(d[0], d[1], d[2], d[3], d[4], d[5]);</span>
 <img src="../../css/plus.png" width="15" height="15"/><span class="add">        level.items.push(item);</span>
@@ -201,7 +201,7 @@
 <img src="../../css/plus.png" width="15" height="15"/><span class="add">function draw_items(ctx) {</span>
 <img src="../../css/plus.png" width="15" height="15"/><span class="add">    var level = _levels[_game.current_level];</span>
 <img src="../../css/plus.png" width="15" height="15"/><span class="add">    var items = level.items;</span>
-<img src="../../css/plus.png" width="15" height="15"/><span class="add">    for (var i = 0; i < items.length; i++) {</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">    for (var i = 0; i &lt; items.length; i++) {</span>
 <img src="../../css/plus.png" width="15" height="15"/><span class="add">        var t = items[i];</span>
 <img src="../../css/plus.png" width="15" height="15"/><span class="add">        if (!t.found) {</span>
 <img src="../../css/plus.png" width="15" height="15"/><span class="add">            ctx.drawImage(t.img, t.x - t.origin_x, t.y - t.origin_y);</span>
@@ -228,7 +228,7 @@
 <img src="../../css/plus.png" width="15" height="15"/><span class="add">function check_item_collisions() {</span>
 <img src="../../css/plus.png" width="15" height="15"/><span class="add">    var level = _levels[_game.current_level];</span>
 <img src="../../css/plus.png" width="15" height="15"/><span class="add">    var items = level.items;</span>
-<img src="../../css/plus.png" width="15" height="15"/><span class="add">    for (var i = 0; i < items.length; i++) {</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">    for (var i = 0; i &lt; items.length; i++) {</span>
 <img src="../../css/plus.png" width="15" height="15"/><span class="add">        var item = items[i];</span>
 <img src="../../css/plus.png" width="15" height="15"/><span class="add">        if (!item.found) {</span>
 <img src="../../css/plus.png" width="15" height="15"/><span class="add">            if (collide(item, _player)) {</span>
@@ -326,7 +326,7 @@
 <div class="panel-code code"><span class="context">function check_item_collisions() {</span>
 <span class="context">    var level = _levels[_game.current_level];</span>
 <span class="context">    var items = level.items;</span>
-<span class="context">    for (var i = 0; i < items.length; i++) {</span>
+<span class="context">    for (var i = 0; i &lt; items.length; i++) {</span>
 <span class="context">        var item = items[i];</span>
 <span class="context">        if (!item.found) {</span>
 <span class="context">            if (collide(item, _player)) {</span>
@@ -372,7 +372,7 @@
 <img src="../../css/plus.png" width="15" height="15"/><span class="add">    }</span>
 <img src="../../css/plus.png" width="15" height="15"/><span class="add"></span>
 <span class="context">    // Draw player icons to indicate how many extra lives remain.</span>
-<span class="context">    for (var i = 0; i < _game.player_lives-1; i++) {</span>
+<span class="context">    for (var i = 0; i &lt; _game.player_lives-1; i++) {</span>
 <span class="context">        ctx.drawImage(_game.img_player, _game.width - 30 - (i * 20), 12);</span>
 <span class="context">    }</span>
 <span class="context">}</span>
@@ -382,7 +382,7 @@
 <div class="panel-code code"><span class="context">function check_item_collisions() {</span>
 <span class="context">    var level = _levels[_game.current_level];</span>
 <span class="context">    var items = level.items;</span>
-<span class="context">    for (var i = 0; i < items.length; i++) {</span>
+<span class="context">    for (var i = 0; i &lt; items.length; i++) {</span>
 <span class="context">        var item = items[i];</span>
 <span class="context">        if (!item.found) {</span>
 <span class="context">            if (collide(item, _player)) {</span>

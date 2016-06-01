@@ -63,7 +63,7 @@
 <img src="../../css/plus.png" width="15" height="15"/><span class="add"></span>
 <img src="../../css/plus.png" width="15" height="15"/><span class="add">// platform_data: [x, y, width, height, pattern, min_x, max_x, move_x]</span>
 <img src="../../css/plus.png" width="15" height="15"/><span class="add">function add_moving_platforms(level, platform_data) {</span>
-<img src="../../css/plus.png" width="15" height="15"/><span class="add">    for (var i = 0; i < platform_data.length; i++) {</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">    for (var i = 0; i &lt; platform_data.length; i++) {</span>
 <img src="../../css/plus.png" width="15" height="15"/><span class="add">        var p = platform_data[i];</span>
 <img src="../../css/plus.png" width="15" height="15"/><span class="add">        var plat = create_platform(p[0], p[1], p[2], p[3], p[4]);</span>
 <img src="../../css/plus.png" width="15" height="15"/><span class="add"></span>
@@ -97,11 +97,11 @@
 <img src="../../css/plus.png" width="15" height="15"/><span class="add"></span>
 <img src="../../css/plus.png" width="15" height="15"/><span class="add">function update_platforms() {</span>
 <img src="../../css/plus.png" width="15" height="15"/><span class="add">    var platforms = _levels[_game.current_level].platforms;</span>
-<img src="../../css/plus.png" width="15" height="15"/><span class="add">    for (var i = 0; i < platforms.length; i++) {</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">    for (var i = 0; i &lt; platforms.length; i++) {</span>
 <img src="../../css/plus.png" width="15" height="15"/><span class="add">        var p = platforms[i];</span>
 <img src="../../css/plus.png" width="15" height="15"/><span class="add">        if (p.moving) {</span>
 <img src="../../css/plus.png" width="15" height="15"/><span class="add">            p.x += p.move_x;</span>
-<img src="../../css/plus.png" width="15" height="15"/><span class="add">            if (p.x <= p.min_x || p.x >= p.max_x) {</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">            if (p.x &lt;= p.min_x || p.x >= p.max_x) {</span>
 <img src="../../css/plus.png" width="15" height="15"/><span class="add">                p.move_x *= -1;</span>
 <img src="../../css/plus.png" width="15" height="15"/><span class="add">            }</span>
 <img src="../../css/plus.png" width="15" height="15"/><span class="add">        }</span>

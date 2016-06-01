@@ -73,7 +73,7 @@
 <div class="panel-code code"><span class="context">function check_item_collisions() {</span>
 <span class="context">    var level = _levels[_game.current_level];</span>
 <span class="context">    var items = level.items;</span>
-<span class="context">    for (var i = 0; i < items.length; i++) {</span>
+<span class="context">    for (var i = 0; i &lt; items.length; i++) {</span>
 <span class="context">        var item = items[i];</span>
 <span class="context">        if (!item.found) {</span>
 <span class="context">            if (collide(item, _player)) {</span>
@@ -124,7 +124,7 @@
 <img src="../../css/plus.png" width="15" height="15"/><span class="add">    ctx.fillText("x" + _player.coins, _game.width - 37, 26);</span>
 <img src="../../css/plus.png" width="15" height="15"/><span class="add"></span>
 <span class="context">    // Draw player icons to indicate how many extra lives remain.</span>
-<span class="context">    for (var i = 0; i < _game.player_lives-1; i++) {</span>
+<span class="context">    for (var i = 0; i &lt; _game.player_lives-1; i++) {</span>
 <img src="../../css/cross.png" width="15" height="15"/><span class="delete">        ctx.drawImage(_game.img_player, _game.width - 30 - (i * 20), 12);</span>
 <img src="../../css/plus.png" width="15" height="15"/><span class="add">        ctx.drawImage(_game.img_player, _game.width - 80 - (i * 20), 12);</span>
 <span class="context">    }</span>

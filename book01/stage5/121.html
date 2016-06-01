@@ -74,7 +74,7 @@
 <div class="panel-code code"><img src="../../css/cross.png" width="15" height="15"/><span class="delete">// monster_data: [x, y, width, height, min_x, max_x, move_x]</span>
 <img src="../../css/plus.png" width="15" height="15"/><span class="add">// monster_data: [x, y, width, height, min_x, max_x, move_x, image]</span>
 <span class="context">function add_monsters(level, monster_data) {</span>
-<span class="context">    for (var i = 0; i < monster_data.length; i++) {</span>
+<span class="context">    for (var i = 0; i &lt; monster_data.length; i++) {</span>
 <span class="context">        var m = monster_data[i];</span>
 <img src="../../css/cross.png" width="15" height="15"/><span class="delete">        var monst = create_monster(m[0], m[1], m[2], m[3], m[4], m[5], m[6]);</span>
 <img src="../../css/plus.png" width="15" height="15"/><span class="add">        var monst = create_monster(m[0], m[1], m[2], m[3], m[4], m[5], m[6], m[7]);</span>
@@ -110,7 +110,7 @@
 <div class="panel-code code"><span class="context">function draw_monsters(ctx) {</span>
 <span class="context">    var level = _levels[_game.current_level];</span>
 <span class="context">    var monsters = level.monsters;</span>
-<span class="context">    for (var i = 0; i < monsters.length; i++) {</span>
+<span class="context">    for (var i = 0; i &lt; monsters.length; i++) {</span>
 <span class="context">        var m = monsters[i];</span>
 <img src="../../css/cross.png" width="15" height="15"/><span class="delete">        ctx.fillStyle = "#800000";</span>
 <img src="../../css/cross.png" width="15" height="15"/><span class="delete">        ctx.fillRect(m.x - m.origin_x, m.y - m.origin_y, m.width, m.height);</span>

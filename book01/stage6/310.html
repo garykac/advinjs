@@ -133,7 +133,7 @@
 <div class="panel-code code"><span class="context">function update_player_sprite() {</span>
 <span class="context">    var sprite;</span>
 <img src="../../css/cross.png" width="15" height="15"/><span class="delete">    if (_game.game_over && !_game.game_win) {</span>
-<img src="../../css/plus.png" width="15" height="15"/><span class="add">    if (_player.health <= 0) {</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">    if (_player.health &lt;= 0) {</span>
 <span class="context">        sprite = _player.sprite_sad;</span>
 <span class="context">    } else if (_game.game_win) {</span>
 <span class="context">        sprite = _player.sprite_happy;</span>
@@ -157,7 +157,7 @@
 <img src="../../css/plus.png" width="15" height="15"/><span class="add"></span>
 <img src="../../css/plus.png" width="15" height="15"/><span class="add">    // Countdown timer.</span>
 <img src="../../css/plus.png" width="15" height="15"/><span class="add">    _game.delay--;</span>
-<img src="../../css/plus.png" width="15" height="15"/><span class="add">    if (_game.delay <= 0) {</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">    if (_game.delay &lt;= 0) {</span>
 <img src="../../css/plus.png" width="15" height="15"/><span class="add">        _game.in_transition = false;</span>
 <img src="../../css/plus.png" width="15" height="15"/><span class="add">        if (type == "level-end" || type == "lose-life") {</span>
 <img src="../../css/plus.png" width="15" height="15"/><span class="add">            start_level(_game.next_level);</span>

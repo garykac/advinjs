@@ -148,14 +148,14 @@
 <img src="../../css/plus.png" width="15" height="15"/><span class="add">    var y = obj.y - obj.origin_y;</span>
 <img src="../../css/plus.png" width="15" height="15"/><span class="add"></span>
 <img src="../../css/plus.png" width="15" height="15"/><span class="add">    // Adjust origin if we're facing left.</span>
-<img src="../../css/plus.png" width="15" height="15"/><span class="add">    if (obj.dir < 0)</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">    if (obj.dir &lt; 0)</span>
 <img src="../../css/plus.png" width="15" height="15"/><span class="add">        x += obj.width;</span>
 <img src="../../css/plus.png" width="15" height="15"/><span class="add"></span>
 <img src="../../css/plus.png" width="15" height="15"/><span class="add">    // Translate origin to (x,y).</span>
 <img src="../../css/plus.png" width="15" height="15"/><span class="add">    ctx.setTransform(1, 0, 0, 1, x, y);</span>
 <img src="../../css/plus.png" width="15" height="15"/><span class="add"></span>
 <img src="../../css/plus.png" width="15" height="15"/><span class="add">    // Flip the image if we're facing left.</span>
-<img src="../../css/plus.png" width="15" height="15"/><span class="add">    if (obj.dir < 0)</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">    if (obj.dir &lt; 0)</span>
 <img src="../../css/plus.png" width="15" height="15"/><span class="add">        ctx.scale(-1, 1);</span>
 <img src="../../css/plus.png" width="15" height="15"/><span class="add">}</span>
 <img src="../../css/plus.png" width="15" height="15"/><span class="add"></span>
@@ -172,7 +172,7 @@
 <span class="context">    if (_game.keymap[37] || _game.keymap[65]) {</span>
 <img src="../../css/plus.png" width="15" height="15"/><span class="add">        _player.dir = -1;</span>
 <span class="context">        _player.velocity_x -= _player.velocity_x_delta;</span>
-<span class="context">        if (_player.velocity_x < -_player.velocity_x_max) {</span>
+<span class="context">        if (_player.velocity_x &lt; -_player.velocity_x_max) {</span>
 <span class="context">            _player.velocity_x = -_player.velocity_x_max;</span>
 <span class="context">        }</span>
 <span class="context">    }</span>

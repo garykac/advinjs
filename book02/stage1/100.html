@@ -34,7 +34,7 @@
 <span class="context">    _ball.y += _ball.velocity_y;</span>
 <span class="context"></span>
 <span class="context">    // Bounce off horizontal walls.</span>
-<span class="context">    if (_ball.y <= 0) {</span>
+<span class="context">    if (_ball.y &lt;= 0) {</span>
 <span class="context">        _ball.velocity_y *= -1;</span>
 <span class="context">    }</span>
 <span class="context">    if (_ball.y >= _game.height - _ball.height) {</span>
@@ -42,7 +42,7 @@
 <span class="context">    }</span>
 <span class="context"></span>
 <span class="context">    // Bounce off vertical walls.</span>
-<span class="context">    if (_ball.x <= 0) {</span>
+<span class="context">    if (_ball.x &lt;= 0) {</span>
 <span class="context">        _ball.velocity_x *= -1;</span>
 <span class="context">    }</span>
 <span class="context">    if (_ball.x >= _game.width - _ball.width) {</span>
@@ -51,18 +51,18 @@
 <img src="../../css/plus.png" width="15" height="15"/><span class="add"></span>
 <img src="../../css/plus.png" width="15" height="15"/><span class="add">    // Bounce off paddles.</span>
 <img src="../../css/plus.png" width="15" height="15"/><span class="add">    var ball_speed2 = (_game.ball_speed / 2.0)</span>
-<img src="../../css/plus.png" width="15" height="15"/><span class="add">    if (_ball.velocity_x < 0</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">    if (_ball.velocity_x &lt; 0</span>
 <img src="../../css/plus.png" width="15" height="15"/><span class="add">            && _ball.x + ball_speed2 > _player1.x + _player1.width</span>
-<img src="../../css/plus.png" width="15" height="15"/><span class="add">            && _ball.x - ball_speed2 <= _player1.x + _player1.width</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">            && _ball.x - ball_speed2 &lt;= _player1.x + _player1.width</span>
 <img src="../../css/plus.png" width="15" height="15"/><span class="add">            && _ball.y + _ball.height >= _player1.y</span>
-<img src="../../css/plus.png" width="15" height="15"/><span class="add">            && _ball.y <= _player1.y + _player1.height) {</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">            && _ball.y &lt;= _player1.y + _player1.height) {</span>
 <img src="../../css/plus.png" width="15" height="15"/><span class="add">        _ball.velocity_x = _game.ball_speed;</span>
 <img src="../../css/plus.png" width="15" height="15"/><span class="add">    }</span>
 <img src="../../css/plus.png" width="15" height="15"/><span class="add">    if (_ball.velocity_x > 0</span>
 <img src="../../css/plus.png" width="15" height="15"/><span class="add">            && _ball.x + _ball.width + ball_speed2 > _player2.x</span>
-<img src="../../css/plus.png" width="15" height="15"/><span class="add">            && _ball.x + _ball.width - ball_speed2 <= _player2.x</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">            && _ball.x + _ball.width - ball_speed2 &lt;= _player2.x</span>
 <img src="../../css/plus.png" width="15" height="15"/><span class="add">            && _ball.y + _ball.height >= _player2.y</span>
-<img src="../../css/plus.png" width="15" height="15"/><span class="add">            && _ball.y <= _player2.y + _player2.height) {</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">            && _ball.y &lt;= _player2.y + _player2.height) {</span>
 <img src="../../css/plus.png" width="15" height="15"/><span class="add">        _ball.velocity_x = -_game.ball_speed;</span>
 <img src="../../css/plus.png" width="15" height="15"/><span class="add">    }</span>
 <span class="context">}</span>

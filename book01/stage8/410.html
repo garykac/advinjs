@@ -69,7 +69,7 @@
 <img src="../../css/plus.png" width="15" height="15"/><span class="add">    // If the image is specified as an array, then it defines a set of</span>
 <img src="../../css/plus.png" width="15" height="15"/><span class="add">    // images that need to be animated.</span>
 <img src="../../css/plus.png" width="15" height="15"/><span class="add">    if (image instanceof Array) {</span>
-<img src="../../css/plus.png" width="15" height="15"/><span class="add">        for (var j = 0; j < image.length; j++) {</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">        for (var j = 0; j &lt; image.length; j++) {</span>
 <img src="../../css/plus.png" width="15" height="15"/><span class="add">            var image_name = image[j][0];</span>
 <img src="../../css/plus.png" width="15" height="15"/><span class="add">            var delay = image[j][1];</span>
 <img src="../../css/plus.png" width="15" height="15"/><span class="add">            var sprite = {};</span>
@@ -98,7 +98,7 @@
 <div class="panel-code code"><span class="context">function draw_monsters(ctx) {</span>
 <span class="context">    var level = _levels[_game.current_level];</span>
 <span class="context">    var monsters = level.monsters;</span>
-<span class="context">    for (var i = 0; i < monsters.length; i++) {</span>
+<span class="context">    for (var i = 0; i &lt; monsters.length; i++) {</span>
 <span class="context">        var m = monsters[i];</span>
 <span class="context">        set_transform(ctx, m);</span>
 <img src="../../css/cross.png" width="15" height="15"/><span class="delete">        ctx.drawImage(m.img, 0, 0);</span>
@@ -113,10 +113,10 @@
 <div class="panel-code code"><span class="context">function update_monsters() {</span>
 <span class="context">    var level = _levels[_game.current_level];</span>
 <span class="context">    var monsters = level.monsters;</span>
-<span class="context">    for (var i = 0; i < monsters.length; i++) {</span>
+<span class="context">    for (var i = 0; i &lt; monsters.length; i++) {</span>
 <span class="context">        var m = monsters[i];</span>
 <span class="context">        m.x += m.move_x;</span>
-<span class="context">        if (m.x <= m.min_x || m.x >= m.max_x) {</span>
+<span class="context">        if (m.x &lt;= m.min_x || m.x >= m.max_x) {</span>
 <span class="context">            m.move_x *= -1;</span>
 <span class="context">            m.dir *= -1;</span>
 <span class="context">        }</span>

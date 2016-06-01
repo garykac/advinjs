@@ -63,7 +63,7 @@
 <div class="panel panel-default">
 <div class="panel-code-header"><span class="panel-code-header-filename">script.js:</span> Select the pain sprite when the player is touching a monster.</div><div class="panel-code code"><span class="context">function update_player_sprite() {</span>
 <span class="context">    var sprite;</span>
-<span class="context">    if (_player.health <= 0) {</span>
+<span class="context">    if (_player.health &lt;= 0) {</span>
 <span class="context">        sprite = _player.sprite_sad;</span>
 <span class="context">    } else if (_game.game_win) {</span>
 <span class="context">        sprite = _player.sprite_happy;</span>
@@ -83,7 +83,7 @@
 <span class="context">    var monsters = level.monsters;</span>
 <span class="context">    var damage = 0;</span>
 <img src="../../css/plus.png" width="15" height="15"/><span class="add">    _player.is_touching_monster = false;</span>
-<span class="context">    for (var i = 0; i < monsters.length; i++) {</span>
+<span class="context">    for (var i = 0; i &lt; monsters.length; i++) {</span>
 <span class="context">        var m = monsters[i];</span>
 <span class="context">        if (collide(m, _player)) {</span>
 <span class="context">            damage++;</span>

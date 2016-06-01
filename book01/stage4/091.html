@@ -119,7 +119,7 @@
 <img src="../../css/plus.png" width="15" height="15"/><span class="add">        [400, 170, 80, 20],</span>
 <img src="../../css/plus.png" width="15" height="15"/><span class="add">        [460, 110, 40, 20],</span>
 <img src="../../css/plus.png" width="15" height="15"/><span class="add">    ];</span>
-<img src="../../css/plus.png" width="15" height="15"/><span class="add">    for (var i = 0; i < platform_data.length; i++) {</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">    for (var i = 0; i &lt; platform_data.length; i++) {</span>
 <img src="../../css/plus.png" width="15" height="15"/><span class="add">        var p = platform_data[i];</span>
 <img src="../../css/plus.png" width="15" height="15"/><span class="add">        var plat = create_platform(p[0], p[1], p[2], p[3], p[4]);</span>
 <img src="../../css/plus.png" width="15" height="15"/><span class="add">        level.platforms.push(plat);</span>
@@ -137,7 +137,7 @@
 <span class="context"></span>
 <img src="../../css/plus.png" width="15" height="15"/><span class="add">// platform_data: [x, y, width, height]</span>
 <img src="../../css/plus.png" width="15" height="15"/><span class="add">function add_platforms(level, platform_data) {</span>
-<img src="../../css/plus.png" width="15" height="15"/><span class="add">    for (var i = 0; i < platform_data.length; i++) {</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">    for (var i = 0; i &lt; platform_data.length; i++) {</span>
 <img src="../../css/plus.png" width="15" height="15"/><span class="add">        var p = platform_data[i];</span>
 <img src="../../css/plus.png" width="15" height="15"/><span class="add">        var plat = create_platform(p[0], p[1], p[2], p[3]);</span>
 <img src="../../css/plus.png" width="15" height="15"/><span class="add">        level.platforms.push(plat);</span>
@@ -167,7 +167,7 @@
 <span class="context">        [400, 170, 80, 20],</span>
 <span class="context">        [460, 110, 40, 20],</span>
 <span class="context">    ];</span>
-<img src="../../css/cross.png" width="15" height="15"/><span class="delete">    for (var i = 0; i < platform_data.length; i++) {</span>
+<img src="../../css/cross.png" width="15" height="15"/><span class="delete">    for (var i = 0; i &lt; platform_data.length; i++) {</span>
 <img src="../../css/cross.png" width="15" height="15"/><span class="delete">        var p = platform_data[i];</span>
 <img src="../../css/cross.png" width="15" height="15"/><span class="delete">        var plat = create_platform(p[0], p[1], p[2], p[3], p[4]);</span>
 <img src="../../css/cross.png" width="15" height="15"/><span class="delete">        level.platforms.push(plat);</span>
@@ -266,7 +266,7 @@
 <span class="context"></span>
 <img src="../../css/plus.png" width="15" height="15"/><span class="add">// monster_data: [x, y, width, height, min_x, max_x, move_x]</span>
 <img src="../../css/plus.png" width="15" height="15"/><span class="add">function add_monsters(level, monster_data) {</span>
-<img src="../../css/plus.png" width="15" height="15"/><span class="add">    for (var i = 0; i < monster_data.length; i++) {</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">    for (var i = 0; i &lt; monster_data.length; i++) {</span>
 <img src="../../css/plus.png" width="15" height="15"/><span class="add">        var m = monster_data[i];</span>
 <img src="../../css/plus.png" width="15" height="15"/><span class="add">        var monst = create_monster(m[0], m[1], m[2], m[3], m[4], m[5], m[6]);</span>
 <img src="../../css/plus.png" width="15" height="15"/><span class="add">        level.monsters.push(monst);</span>

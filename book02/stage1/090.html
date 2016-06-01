@@ -35,7 +35,7 @@
 <span class="context">    _ball.y += _ball.velocity_y;</span>
 <img src="../../css/plus.png" width="15" height="15"/><span class="add"></span>
 <img src="../../css/plus.png" width="15" height="15"/><span class="add">    // Bounce off horizontal walls.</span>
-<img src="../../css/plus.png" width="15" height="15"/><span class="add">    if (_ball.y <= 0) {</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">    if (_ball.y &lt;= 0) {</span>
 <img src="../../css/plus.png" width="15" height="15"/><span class="add">        _ball.velocity_y *= -1;</span>
 <img src="../../css/plus.png" width="15" height="15"/><span class="add">    }</span>
 <img src="../../css/plus.png" width="15" height="15"/><span class="add">    if (_ball.y >= _game.height - _ball.height) {</span>
@@ -43,7 +43,7 @@
 <img src="../../css/plus.png" width="15" height="15"/><span class="add">    }</span>
 <img src="../../css/plus.png" width="15" height="15"/><span class="add"></span>
 <img src="../../css/plus.png" width="15" height="15"/><span class="add">    // Bounce off vertical walls.</span>
-<img src="../../css/plus.png" width="15" height="15"/><span class="add">    if (_ball.x <= 0) {</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">    if (_ball.x &lt;= 0) {</span>
 <img src="../../css/plus.png" width="15" height="15"/><span class="add">        _ball.velocity_x *= -1;</span>
 <img src="../../css/plus.png" width="15" height="15"/><span class="add">    }</span>
 <img src="../../css/plus.png" width="15" height="15"/><span class="add">    if (_ball.x >= _game.width - _ball.width) {</span>

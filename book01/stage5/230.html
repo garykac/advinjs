@@ -102,7 +102,7 @@
 <span class="context"></span>
 <img src="../../css/plus.png" width="15" height="15"/><span class="add">function adjust_health(amount) {</span>
 <img src="../../css/plus.png" width="15" height="15"/><span class="add">    _player.health += amount;</span>
-<img src="../../css/plus.png" width="15" height="15"/><span class="add">    if (_player.health <= 0) {</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">    if (_player.health &lt;= 0) {</span>
 <img src="../../css/plus.png" width="15" height="15"/><span class="add">        _player.health = 0;</span>
 <img src="../../css/plus.png" width="15" height="15"/><span class="add">        _game.game_over = true;</span>
 <img src="../../css/plus.png" width="15" height="15"/><span class="add">    }</span>
@@ -129,7 +129,7 @@
 <img src="../../css/plus.png" width="15" height="15"/><span class="add"></span>
 <span class="context">function adjust_health(amount) {</span>
 <span class="context">    _player.health += amount;</span>
-<span class="context">    if (_player.health <= 0) {</span>
+<span class="context">    if (_player.health &lt;= 0) {</span>
 <span class="context">        _player.health = 0;</span>
 <img src="../../css/cross.png" width="15" height="15"/><span class="delete">        _game.game_over = true;</span>
 <img src="../../css/plus.png" width="15" height="15"/><span class="add">        lose_life();</span>
@@ -160,7 +160,7 @@
 <span class="context">    ctx.strokeRect(_game.meter_x, _game.meter_y, _game.meter_width, _game.meter_height);</span>
 <img src="../../css/plus.png" width="15" height="15"/><span class="add"></span>
 <img src="../../css/plus.png" width="15" height="15"/><span class="add">    // Draw player icons to indicate how many extra lives remain.</span>
-<img src="../../css/plus.png" width="15" height="15"/><span class="add">    for (var i = 0; i < _game.player_lives-1; i++) {</span>
+<img src="../../css/plus.png" width="15" height="15"/><span class="add">    for (var i = 0; i &lt; _game.player_lives-1; i++) {</span>
 <img src="../../css/plus.png" width="15" height="15"/><span class="add">        ctx.drawImage(_game.img_player, _game.width - 30 - (i * 20), 12);</span>
 <img src="../../css/plus.png" width="15" height="15"/><span class="add">    }</span>
 <span class="context">}</span>
@@ -171,7 +171,7 @@
 <span class="context">    var level = _levels[_game.current_level];</span>
 <span class="context">    var monsters = level.monsters;</span>
 <img src="../../css/plus.png" width="15" height="15"/><span class="add">    var damage = 0;</span>
-<span class="context">    for (var i = 0; i < monsters.length; i++) {</span>
+<span class="context">    for (var i = 0; i &lt; monsters.length; i++) {</span>
 <span class="context">        var m = monsters[i];</span>
 <span class="context">        if (collide(m, _player)) {</span>
 <img src="../../css/cross.png" width="15" height="15"/><span class="delete">            _game.game_over = true;</span>

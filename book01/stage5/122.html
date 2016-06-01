@@ -95,7 +95,7 @@
 <div class="panel-code code"><img src="../../css/cross.png" width="15" height="15"/><span class="delete">// item_data: [x, y, width, height, type]</span>
 <img src="../../css/plus.png" width="15" height="15"/><span class="add">// item_data: [x, y, width, height, type, image]</span>
 <span class="context">function add_items(level, item_data) {</span>
-<span class="context">    for (var i = 0; i < item_data.length; i++) {</span>
+<span class="context">    for (var i = 0; i &lt; item_data.length; i++) {</span>
 <span class="context">        var d = item_data[i];</span>
 <img src="../../css/cross.png" width="15" height="15"/><span class="delete">        var item = create_item(d[0], d[1], d[2], d[3], d[4]);</span>
 <img src="../../css/plus.png" width="15" height="15"/><span class="add">        var item = create_item(d[0], d[1], d[2], d[3], d[4], d[5]);</span>
@@ -128,7 +128,7 @@
 <div class="panel-code code"><span class="context">function draw_items(ctx) {</span>
 <span class="context">    var level = _levels[_game.current_level];</span>
 <span class="context">    var items = level.items;</span>
-<span class="context">    for (var i = 0; i < items.length; i++) {</span>
+<span class="context">    for (var i = 0; i &lt; items.length; i++) {</span>
 <span class="context">        var t = items[i];</span>
 <span class="context">        if (!t.found) {</span>
 <img src="../../css/cross.png" width="15" height="15"/><span class="delete">            ctx.fillStyle = "magenta";</span>

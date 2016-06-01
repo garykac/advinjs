@@ -131,7 +131,7 @@
 <img src="../../css/plus.png" width="15" height="15"/><span class="add">    var level = _levels[_game.current_level];</span>
 <img src="../../css/cross.png" width="15" height="15"/><span class="delete">    var platforms = _game.platforms;</span>
 <img src="../../css/plus.png" width="15" height="15"/><span class="add">    var platforms = level.platforms;</span>
-<span class="context">    for (var i = 0; i < platforms.length; i++) {</span>
+<span class="context">    for (var i = 0; i &lt; platforms.length; i++) {</span>
 <span class="context">        var platform = platforms[i];</span>
 <span class="context">        ctx.fillStyle = "rgb(153, 102, 51)";</span>
 <span class="context">        ctx.fillRect(platform.x, platform.y, platform.width, platform.height);</span>
@@ -142,7 +142,7 @@
 <img src="../../css/plus.png" width="15" height="15"/><span class="add">    var level = _levels[_game.current_level];</span>
 <img src="../../css/cross.png" width="15" height="15"/><span class="delete">    var monsters = _game.monsters;</span>
 <img src="../../css/plus.png" width="15" height="15"/><span class="add">    var monsters = level.monsters;</span>
-<span class="context">    for (var i = 0; i < monsters.length; i++) {</span>
+<span class="context">    for (var i = 0; i &lt; monsters.length; i++) {</span>
 <span class="context">        var m = monsters[i];</span>
 <span class="context">        ctx.fillStyle = "#800000";</span>
 <span class="context">        ctx.fillRect(m.x - m.origin_x, m.y - m.origin_y, m.width, m.height);</span>
@@ -165,10 +165,10 @@
 <img src="../../css/plus.png" width="15" height="15"/><span class="add">    var level = _levels[_game.current_level];</span>
 <img src="../../css/cross.png" width="15" height="15"/><span class="delete">    var monsters = _game.monsters;</span>
 <img src="../../css/plus.png" width="15" height="15"/><span class="add">    var monsters = level.monsters;</span>
-<span class="context">    for (var i = 0; i < monsters.length; i++) {</span>
+<span class="context">    for (var i = 0; i &lt; monsters.length; i++) {</span>
 <span class="context">        var m = monsters[i];</span>
 <span class="context">        m.x += m.move_x;</span>
-<span class="context">        if (m.x <= m.min_x || m.x >= m.max_x) {</span>
+<span class="context">        if (m.x &lt;= m.min_x || m.x >= m.max_x) {</span>
 <span class="context">            m.move_x *= -1;</span>
 <span class="context">        }</span>
 <span class="context">    }</span>
@@ -182,7 +182,7 @@
 <img src="../../css/cross.png" width="15" height="15"/><span class="delete">    var platforms = _game.platforms;</span>
 <img src="../../css/plus.png" width="15" height="15"/><span class="add">    var platforms = level.platforms;</span>
 <span class="context">    _player.platform = null;</span>
-<span class="context">    for (var i = 0; i < platforms.length; i++) {</span>
+<span class="context">    for (var i = 0; i &lt; platforms.length; i++) {</span>
 <span class="context">        var overlap = collide(platforms[i], _player);</span>
 <span class="context">        if (overlap) {</span>
 <span class="context">            ...</span>
@@ -194,7 +194,7 @@
 <img src="../../css/plus.png" width="15" height="15"/><span class="add">    var level = _levels[_game.current_level];</span>
 <img src="../../css/cross.png" width="15" height="15"/><span class="delete">    var monsters = _game.monsters;</span>
 <img src="../../css/plus.png" width="15" height="15"/><span class="add">    var monsters = level.monsters;</span>
-<span class="context">    for (var i = 0; i < monsters.length; i++) {</span>
+<span class="context">    for (var i = 0; i &lt; monsters.length; i++) {</span>
 <span class="context">        var m = monsters[i];</span>
 <span class="context">        if (collide(m, _player)) {</span>
 <span class="context">            _game.game_over = true;</span>

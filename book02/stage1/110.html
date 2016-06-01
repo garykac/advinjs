@@ -74,7 +74,7 @@
 <span class="context">    _ball.y += _ball.velocity_y;</span>
 <span class="context"></span>
 <span class="context">    // Bounce off horizontal walls.</span>
-<span class="context">    if (_ball.y <= 0) {</span>
+<span class="context">    if (_ball.y &lt;= 0) {</span>
 <span class="context">        _ball.velocity_y *= -1;</span>
 <span class="context">    }</span>
 <span class="context">    if (_ball.y >= _game.height - _ball.height) {</span>
@@ -82,7 +82,7 @@
 <span class="context">    }</span>
 <span class="context"></span>
 <span class="context">    // Bounce off vertical walls.</span>
-<span class="context">    if (_ball.x <= 0) {</span>
+<span class="context">    if (_ball.x &lt;= 0) {</span>
 <img src="../../css/cross.png" width="15" height="15"/><span class="delete">        _ball.velocity_x *= -1;</span>
 <img src="../../css/plus.png" width="15" height="15"/><span class="add">        update_scores(0, 1);</span>
 <span class="context">    }</span>

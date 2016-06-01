@@ -91,7 +91,7 @@
 <div class="panel-code code"><img src="../../css/cross.png" width="15" height="15"/><span class="delete">// platform_data: [x, y, width, height]</span>
 <img src="../../css/plus.png" width="15" height="15"/><span class="add">// platform_data: [x, y, width, height, pattern]</span>
 <span class="context">function add_platforms(level, platform_data) {</span>
-<span class="context">    for (var i = 0; i < platform_data.length; i++) {</span>
+<span class="context">    for (var i = 0; i &lt; platform_data.length; i++) {</span>
 <span class="context">        var p = platform_data[i];</span>
 <img src="../../css/cross.png" width="15" height="15"/><span class="delete">        var plat = create_platform(p[0], p[1], p[2], p[3]);</span>
 <img src="../../css/plus.png" width="15" height="15"/><span class="add">        var plat = create_platform(p[0], p[1], p[2], p[3], p[4]);</span>
@@ -129,7 +129,7 @@
 <div class="panel-code code"><span class="context">function draw_platforms(ctx) {</span>
 <span class="context">    var level = _levels[_game.current_level];</span>
 <span class="context">    var platforms = level.platforms;</span>
-<span class="context">    for (var i = 0; i < platforms.length; i++) {</span>
+<span class="context">    for (var i = 0; i &lt; platforms.length; i++) {</span>
 <span class="context">        var platform = platforms[i];</span>
 <img src="../../css/cross.png" width="15" height="15"/><span class="delete">        ctx.fillStyle = "rgb(153, 102, 51)";</span>
 <img src="../../css/cross.png" width="15" height="15"/><span class="delete">        ctx.fillRect(platform.x, platform.y, platform.width, platform.height);</span>
