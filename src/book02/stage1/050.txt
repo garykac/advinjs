@@ -25,7 +25,7 @@ BEGIN_CODE_INFO Remove =velocity_x= since players can't move left or right.
 -	_player2.velocity_x = 0;
 .	_player2.velocity_y = 0;
 .}
-END_CODE_ERROR there is still one more place to fix
+END_CODE_ERROR there is still one more reference to =velocity_x= to fix.
 
 BEGIN_CODE_INFO
 .// Handle movement for Player 1.
