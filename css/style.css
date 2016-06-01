@@ -228,7 +228,44 @@ h3 {
 	color: #404040;
 }
 
+/* Book panels */
+
+.panel-book-header {
+	padding: 2px 15px;
+	background-color: #d9edf7;
+	border-bottom: 1px solid #dddddd;
+	border-top-right-radius: 5px;
+	border-top-left-radius: 5px;
+	font-family: 'Piedra', cursive;
+	font-size: 1.6em;
+	color: #000000;
+}
+
+.panel-bookinfo {
+}
+
+.bookinfo {
+	margin: 8px 0;
+}
+
+.bookinfo-data {
+	margin: 0;
+	font-size: 0.8em;
+}
+
+.bookinfo-data-label {
+	font-weight: bold;
+}
+
+.bookinfo-data-text {
+}
+
+.bookinfo-row {
+	margin: 10px 0;
+}
+
 /* Bootstrap panel extras for showing code. */
+
 .panel-code {
 	display: block;
 	font-family: monospace;

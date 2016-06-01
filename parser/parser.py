@@ -315,8 +315,27 @@ class Parser(object):
 				self.add_data('INFO', line[5:])
 				return True
 
-			if re.match(r'BEGIN_SCREENSHOT_TABLE', line):
-				self.add_data('BEGIN_SCREENSHOT_TABLE', '')
+			if re.match(r'BOOK ', line):
+				self.add_data('BOOK', line[5:])
+				return True
+			if re.match(r'BOOKINFO_BEGIN ', line):
+				self.add_data('BOOKINFO_BEGIN', line[15:])
+				return True
+			if re.match(r'BOOKINFO_DATA ', line):
+				self.add_data('BOOKINFO_DATA', line[14:])
+				return True
+			if re.match(r'BOOKINFO ', line):
+				self.add_data('BOOKINFO', line[9:])
+				return True
+			if re.match(r'BOOKINFO_END', line):
+				self.add_data('BOOKINFO_END', line[15:])
+				return True
+			if re.match(r'BOOKEND', line):
+				self.add_data('BOOKEND', '')
+				return True
+
+			if re.match(r'BEGIN_SCREENSHOT_TABLE ', line):
+				self.add_data('BEGIN_SCREENSHOT_TABLE', line[23:])
 				return True
 			if re.match(r'SCREENSHOT_TABLE_IMAGE ', line):
 				self.add_data('SCREENSHOT_TABLE_IMAGE', line[23:])
@@ -618,9 +637,32 @@ class Parser(object):
 			elif d[0] == 'INFO':
 				fout.write('<p class="info">%s</p>\n' % self.expand_text(d[1], True))
 
+			elif d[0] == 'BOOK':
+				fout.write('<div class="panel panel-default">\n')
+				fout.write('<div class="panel-book-header">Book %s</div>' % self.expand_text(d[1], False))
+			elif d[0] == 'BOOKINFO_BEGIN':
+				fout.write('<div class="panel-bookinfo">\n')
+				fout.write('<div class="row bookinfo-row">\n')
+				fout.write('<div class="col-md-3">\n')
+				file = d[1]
+				width = 206
+				height = 150
+				fout.write('<a href="%s"><img class="screenshot-small" src="%s" width="%s" height="%s" /></a>\n' % (file, file, width, height))
+				fout.write('</div>\n')
+				fout.write('<div class="col-md-9">\n')
+			elif d[0] == 'BOOKINFO_DATA':
+				(label, text) = d[1].split(':')
+				fout.write('<p class="bookinfo-data"><span class="bookinfo-data-label">%s</span>: <span class="bookinfo-data-text">%s</span></p>\n' % (self.expand_text(label, True), self.expand_text(text, True)))
+			elif d[0] == 'BOOKINFO':
+				fout.write('<p class="bookinfo">%s</p>\n' % self.expand_text(d[1], True))
+			elif d[0] == 'BOOKINFO_END':
+				fout.write('</div></div></div>\n')
+			elif d[0] == 'BOOKEND':
+				fout.write('</div>\n')
+
 			elif d[0] == 'BEGIN_SCREENSHOT_TABLE':
 				fout.write('<div class="row">\n')
-				self.set_table_columns('4')
+				self.set_table_columns(d[1])
 			elif d[0] == 'SCREENSHOT_TABLE_IMAGE':
 				m = re.match(r'([a-zA-Z0-9\/\-\.]+) (\d+)x(\d+) (.*)', d[1])
 				if m:

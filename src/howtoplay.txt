@@ -94,9 +94,9 @@ END_CODE
 
 H3 Function order
 
-INFO In order to make sure that everyone puts the functions in the same order, this book also provides neighboring function context as needed.
+INFO To ensure that everyone puts the functions in the same order, this book also provides neighboring function context as needed.
 
-INFO In the following example, the new =draw_platforms()= function should be placed between the =erase()= and =draw_player()= functions.
+INFO In the following example, the new =draw_platforms()= function should be placed between the existing =erase()= and =draw_player()= functions.
 
 BEGIN_CODE
 .// Erase the stage by filling it with white.
