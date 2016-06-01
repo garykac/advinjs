@@ -78,7 +78,7 @@ B: True, but we'll be adding more platforms soon enough, and we might as well gi
 
 U: OK. {Whatever}
 
-B: Add a call to =draw_platforms()= in the =draw()= function. Place it after you erase the screen (that is, after you call =erase()=) but before you draw the player (before =draw_player()=), that way the player will be drawn in front of the platforms.
+B: Add a call to =draw_platforms()= in the =draw()= function. Make sure the order is =erase()=, =draw_platforms()= and then =draw_player()=. That way the player will be drawn in front of the platforms.
 
 BEGIN_CODE_INFO Call =draw_platforms()= from within =draw()=
 .function draw() {
@@ -95,7 +95,7 @@ B: And finally you need to create the =draw_platforms()= function that will do t
 
 U: Can I choose another color?
 
-B: Any color you like, just replace the red, green and blue components of the =rgb()= with values between 0 and 255 (inclusive).
+B: Any color you like, just replace the red, green and blue components of =rgb()= with values between 0 and 255 (inclusive). Note that if you choose a color that is similar to the background color, you'll have a hard time seeing the platform.
 
 BEGIN_CODE_INFO Create the =draw_platforms()= function
 .// Erase the canvas by filling it with white.
@@ -118,7 +118,7 @@ END_CODE_OK
 
 B: After you've typed in all that code, try it out and see what happens.
 
-SCREENSHOT 003.png 550x400
+SCREENSHOT 003.png 225x200
 
 U: OK. I've got a giant brown platform along the bottom of the screen, but I can still move the player all around the screen.
 

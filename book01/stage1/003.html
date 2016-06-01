@@ -80,7 +80,7 @@
 <div class="name">You:</div><p class="you">You mean "draw platforms" with an 's'? But we're only drawing one platform.</p>
 <div class="name">Balthazar:</div><p class="balthazar">True, but we'll be adding more platforms soon enough, and we might as well give the function its proper name now so that we don't have to rename it later.</p>
 <div class="name">You:</div><p class="you">OK. <span class="thinking">Whatever</span></p>
-<div class="name">Balthazar:</div><p class="balthazar">Add a call to <span class="code-inline-color">draw_platforms()</span> in the <span class="code-inline-color">draw()</span> function. Place it after you erase the screen (that is, after you call <span class="code-inline-color">erase()</span>) but before you draw the player (before <span class="code-inline-color">draw_player()</span>), that way the player will be drawn in front of the platforms.</p>
+<div class="name">Balthazar:</div><p class="balthazar">Add a call to <span class="code-inline-color">draw_platforms()</span> in the <span class="code-inline-color">draw()</span> function. Make sure the order is <span class="code-inline-color">erase()</span>, <span class="code-inline-color">draw_platforms()</span> and then <span class="code-inline-color">draw_player()</span>. That way the player will be drawn in front of the platforms.</p>
 <div class="panel panel-default">
 <div class="panel-code-header"><span class="panel-code-header-filename">script.js:</span> Call <span class="code-inline">draw_platforms()</span> from within <span class="code-inline">draw()</span></div><div class="panel-code code"><span class="context">function draw() {</span>
 <span class="context">    var canvas = document.getElementById("stage");</span>
@@ -94,7 +94,7 @@
 <div class="panel-code-footer">If you run your code now, you'll see an error because the <span class="code-inline">draw_platforms()</span> function has not yet been defined.</div></div>
 <div class="name">Balthazar:</div><p class="balthazar">And finally you need to create the <span class="code-inline-color">draw_platforms()</span> function that will do the actual drawing. For now, you should just fill a rectangle with an appropriately brownish color like RGB = 153, 102, 51.</p>
 <div class="name">You:</div><p class="you">Can I choose another color?</p>
-<div class="name">Balthazar:</div><p class="balthazar">Any color you like, just replace the red, green and blue components of the <span class="code-inline-color">rgb()</span> with values between 0 and 255 (inclusive).</p>
+<div class="name">Balthazar:</div><p class="balthazar">Any color you like, just replace the red, green and blue components of <span class="code-inline-color">rgb()</span> with values between 0 and 255 (inclusive). Note that if you choose a color that is similar to the background color, you'll have a hard time seeing the platform.</p>
 <div class="panel panel-default">
 <div class="panel-code-header"><span class="panel-code-header-filename">script.js:</span> Create the <span class="code-inline">draw_platforms()</span> function</div><div class="panel-code code"><span class="context">// Erase the canvas by filling it with white.</span>
 <span class="context">function erase(ctx) {</span>
@@ -117,7 +117,7 @@
 <div class="name">Balthazar:</div><p class="balthazar">After you've typed in all that code, try it out and see what happens.</p>
 <div class="row">
 <div class="col-md-12"><div class="image-table">
-<a href="../screenshots/003.png"><img class="screenshot" src="../screenshots/003.png" width="550" height="400" /></a>
+<a href="../screenshots/003.png"><img class="screenshot" src="../screenshots/003.png" width="225" height="200" /></a>
 </div></div>
 </div>
 <div class="name">You:</div><p class="you">OK. I've got a giant brown platform along the bottom of the screen, but I can still move the player all around the screen.</p>

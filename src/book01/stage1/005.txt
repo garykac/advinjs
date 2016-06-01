@@ -26,7 +26,7 @@ B: Let's try that and see what happens.
 
 U: Uh-oh, that doesn't sound promising.
 
-SCREENSHOT 005.png 550x400
+SCREENSHOT 005.png 225x200
 
 U: Hey, the player is drawn under the platform. That's not right!
 

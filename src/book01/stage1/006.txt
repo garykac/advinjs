@@ -60,7 +60,7 @@ END_CODE_OK
 
 B: If you run your code now, you'll find the player resting on the platform.
 
-SCREENSHOT 006.png 550x400
+SCREENSHOT 006.png 225x200
 
 GAIN Sprite I - Origin
 
