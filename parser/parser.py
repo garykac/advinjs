@@ -743,11 +743,6 @@ class Parser(object):
 		fout.write("<link href='http://fonts.googleapis.com/css?family=Piedra' rel='stylesheet' type='text/css'>\n")
 		# Used for Balthazar text.
 		fout.write("<link href='http://fonts.googleapis.com/css?family=Aclonica' rel='stylesheet' type='text/css'>\n")
-		# No longer used.
-		#fout.write("<link href='http://fonts.googleapis.com/css?family=Sigmar+One' rel='stylesheet' type='text/css'>\n")
-		#fout.write("<link href='http://fonts.googleapis.com/css?family=Shanti' rel='stylesheet' type='text/css'>\n")
-		#fout.write("<link href='http://fonts.googleapis.com/css?family=Abel' rel='stylesheet' type='text/css'>\n")
-		#fout.write("<link href='http://fonts.googleapis.com/css?family=Philosopher:400,700,400italic,700italic' rel='stylesheet' type='text/css'>\n")
 		fout.write('\n')
 
 		fout.write('<script>\n')
